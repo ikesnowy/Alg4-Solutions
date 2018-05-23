@@ -1,0 +1,61 @@
+#----------------------------------
+# Header
+#
+
+menu:
+  Home: /
+  Archive: /archives
+
+rss: /atom.xml
+
+#----------------------------------
+# Footer
+#
+
+social:
+  GitHub: https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp
+  Weibo: 
+  Twitter: 
+  LinkedIn: 
+
+#----------------------------------
+# Search
+#
+
+search_title: 搜索解答
+search_subtitle: 目前已完成到 1.3
+search_placeholder: 题目编号/关键字
+
+#----------------------------------
+# Comment
+#
+
+# fill in with your duoshuo/disqus short_name
+duoshuo: 
+disqus: 
+
+#----------------------------------
+# Analytics
+#
+
+# ga for google analytics
+# ba for baidu analytics (百度统计)
+
+ga: 
+ba: 
+
+#----------------------------------
+# Miscellaneous
+#
+
+# author_page is your personal website url
+author_page: 
+
+home_title: 最近添加
+archive_title: 归档
+article_breadcrumb: 题解
+page_breadcrumb: 页
+
+favicon: /favicon.png
+
+#----------------------------------

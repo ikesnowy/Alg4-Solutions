@@ -1,0 +1,8 @@
+<div class="section" id="PostList">
+	<h2 class="center"><%= __(theme.home_title) %></h2>
+	<div class="post-list">
+		<% page.posts.each(function(post, index) { %>
+		<p class="post-title"><a href="<%= url_for(post.path) %>"><%= (index+1)+'. '+(post.title == "" ? "no-title" : post.title) %></a></p>
+		<% }); %>
+	</div>
+</div>
