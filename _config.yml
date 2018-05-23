@@ -91,7 +91,7 @@ feed:
 deploy:
   type: git
   repo: git@github.com:ikesnowy/Alg4-Solutions.git
-  brench: master
+  brench: gh-pages
 
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
