@@ -3,19 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 《算法（第四版）》C# 题解
 subtitle:
 description:
 keywords:
-author: John Doe
-language:
+author: 沈星繁
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
-root: /
-permalink: :year/:month/:day/:title/
+url: https://ikesnowy.github.io/Alg4-Solutions
+root: /Alg4-Solutions/
+permalink: :title/
 permalink_defaults:
 
 # Directory
@@ -35,12 +35,12 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
-  enable: true
-  line_number: true
+  enable: false
+  line_number: false
   auto_detect: false
   tab_replace:
   
@@ -73,9 +73,43 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: qna
+sitemap:
+    path: sitemap.xml
+    template:
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: git@github.com:ikesnowy/Alg4-Solutions.git
+  brench: master
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'base16-ateliersulphurpool.light'
+  line_number: true    # default false
+
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    src: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+    config:
+      tex2jax:
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ]
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        processEscapes: true
+      # MathJax config
+  katex:
+    css: 
+    js:  # not used
+    config:
+      # KaTeX config
