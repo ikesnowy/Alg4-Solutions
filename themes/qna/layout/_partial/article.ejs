@@ -1,7 +1,15 @@
 <div class="section" id="Post">
 	<div class="section_content">
-		<p class="breadcrumb"><a href="<%- url_for() %>"><%= isArticle ? __(theme.article_breadcrumb) : __(theme.page_breadcrumb) %></a> / <%= (page.title == "" ? "no-title" : page.title) %></p>
+		<p class="breadcrumb">
+			<a href="<%- url_for() %>">
+				<%= isArticle ? __(theme.article_breadcrumb) : __(theme.page_breadcrumb) %>
+			</a> / 
+			<%= (page.title == "" ? "no-title" : page.title) %>
+
+		</p>
 		<div class="page_content mdcss">
+			<h1><%=page.title%></h1>
+			<p>上次更新：<%= date(page.updated) %></p>
 			<%- page.content %>
 		</div>
 	</div>

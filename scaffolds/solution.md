@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags: Fundamental
+tags: Sort
 ---
 
 # 题目
