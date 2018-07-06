@@ -5,7 +5,8 @@
 menu:
   Home: /
   Archive: /archives
-  About: /about
+  Help: /help
+  About: https://ikesnowy.com
 
 rss: /atom.xml
 
@@ -42,7 +43,7 @@ disqus:
 # ga for google analytics
 # ba for baidu analytics (百度统计)
 
-ga: 
+ga: UA-121852990-1
 ba: 
 
 #----------------------------------

@@ -103,7 +103,7 @@ prism_plugin:
 math:
   engine: 'mathjax' # or 'katex'
   mathjax:
-    src: "//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    src: //cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
     config:
       tex2jax:
         inlineMath: [ ['$','$'], ["\\(","\\)"] ]
