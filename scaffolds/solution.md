@@ -19,4 +19,4 @@ tags: Sort
 
 # 另请参阅
 
-[Quick 库](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick)
+[PriorityQueue 库](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue)
