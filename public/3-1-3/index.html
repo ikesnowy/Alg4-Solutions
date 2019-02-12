@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <title>3.1.3 | 《算法（第四版）》C# 题解</title>
+        
+        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+        
+        
+        <link rel="icon" href="//favicon.ico">
+        
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+    <body onscroll="scrollYListener()">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+            <div class="mobile_menu_btn">
+  <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
+  <span>toggle menu</span>
+  </button>
+</div>
+<div class="slide_menu">
+  <nav class="nav_scroll">
+    <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+    </ul>
+  </nav>
+  <div class="social">
+    <ul class="clearfix">
+      
+      
+      <li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <div class="copyright">
+    &copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+  </div>
+</div>
+<header>
+  <div class="mobile_navbar clearfix">
+    
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    
+  </div>
+  <div class="row clearfix no_form">
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    <nav class="nav_scroll">
+      <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+            <div class="section" id="Search">
+	<div class="section_content">
+		<h3>
+		搜索解答
+		<br>
+		目前已完成到 2.5
+		</h3>
+		<div id="search-content" class="search-content-modal unexpanded">
+			<div id="search-view">
+				<div class="search-info box">
+					<input type="text" id="search-input" placeholder="题目编号/关键字">
+					<div class="magnifying-glass" id="search-button">
+						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
+						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+					</svg>
+				</div>
+			</div>
+			<div class="modal" id="search-result" style="display:none">
+				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<ul id="search-result-list">
+				</ul>
+				<span>
+					<button onclick="dismissSearchResultModal()">×</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+var path = "/search.xml";
+searchFunc(path, 'search-input', 'search-result-list');
+</script>
+
+<script>
+function dismissSearchResultModal() {
+	document.getElementById("search-result").style.display = "none";
+}
+</script>
+</div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.1.3
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.1.3</h1>
+			<p>上次更新：2019-02-12</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.3<br>开发一个符号表的实现 OrderedSequentialSearchST，<br>使用有序链表来实现我们的有序符号表 API。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>基于无序链表的官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/SequentialSearchST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/SequentialSearchST.java.html</a></p>
+<p>有序符号表的 API 见书中表 3.1.4（中文版 P230，英文版 P366）。<br>在官方实现的基础上修改 <code>Put</code> 方法，先找到合适位置再插入新的键值对，保证链表有序。<br>为方便插入操作，可以使用双向链表作为基础进行实现。<br>表中同时维护开头和末尾引用，加快获得最值的速度。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> SymbolTable
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 基于有序链表的有序符号表实现。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;typeparam name="Key">符号表键类型。&lt;/typeparam></span>
+    <span class="token comment" spellcheck="true">/// &lt;typeparam name="Value">符号表值类型。&lt;/typeparam></span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderedSequentialSearchST</span><span class="token operator">&lt;</span>Key<span class="token punctuation">,</span> Value<span class="token operator">></span> <span class="token punctuation">:</span> IST<span class="token operator">&lt;</span>Key<span class="token punctuation">,</span> Value<span class="token operator">></span><span class="token punctuation">,</span> IOrderedST<span class="token operator">&lt;</span>Key<span class="token punctuation">,</span> Value<span class="token operator">></span> 
+        <span class="token keyword">where</span> Key <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Key<span class="token operator">></span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 符号表结点。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">Node</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> Key Key <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">// 键。</span>
+            <span class="token keyword">public</span> Value Value <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>    <span class="token comment" spellcheck="true">// 值。</span>
+            <span class="token keyword">public</span> Node Next <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>      <span class="token comment" spellcheck="true">// 后继。</span>
+            <span class="token keyword">public</span> Node Prev <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>      <span class="token comment" spellcheck="true">// 前驱。</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> Node first <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// 起始结点。</span>
+        <span class="token keyword">private</span> Node tail <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 末尾结点。</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">// 键值对数量。</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 构造基于有序链表的有序符号表。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token function">OrderedSequentialSearchST</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 大于等于 key 的最小值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Key <span class="token function">Ceiling</span><span class="token punctuation">(</span>Key key<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>tail<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Greater</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> pointer<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Prev<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> pointer <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Key<span class="token punctuation">)</span> <span class="token punctuation">:</span> pointer<span class="token punctuation">.</span>Key<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 键 &lt;paramref name="key"/> 在表中是否存在对应的值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="key">键。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">Contains</span><span class="token punctuation">(</span>Key key<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">Floor</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 从表中删去键 &lt;paramref name="key"/> 对应的值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="key">键。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Delete</span><span class="token punctuation">(</span>Key key<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pointer <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token function">Delete</span><span class="token punctuation">(</span>pointer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 从链表中删除结点 &lt;paramref name="node"/>。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="node">待删除的结点。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Delete</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node prev <span class="token operator">=</span> node<span class="token punctuation">.</span>Prev<span class="token punctuation">;</span>
+            Node next <span class="token operator">=</span> node<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> next<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                prev<span class="token punctuation">.</span>Next <span class="token operator">=</span> next<span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>tail <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 删除最大的键。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">DeleteMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">"ST Underflow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Delete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>tail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 删除最小的键。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">DeleteMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">"ST Underflow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Delete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 小于等于 Key 的最大值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Key <span class="token function">Floor</span><span class="token punctuation">(</span>Key key<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> pointer<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> pointer <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Key<span class="token punctuation">)</span> <span class="token punctuation">:</span> pointer<span class="token punctuation">.</span>Key<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获取键 &lt;paramref name="key"/> 对应的值，不存在则返回 null。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="key">键。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Value <span class="token function">Get</span><span class="token punctuation">(</span>Key key<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Greater</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> pointer<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pointer <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> pointer<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token keyword">return</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 符号表是否为空。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获得符号表中所有键的集合。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> IEnumerable<span class="token operator">&lt;</span>Key<span class="token operator">></span> <span class="token function">Keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span>Key<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token function">Keys</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">.</span>Key<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>tail<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获得符号表中 [&lt;paramref name="lo"/>, &lt;paramref name="hi"/>] 之间的键。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="lo">范围起点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="hi">范围终点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> IEnumerable<span class="token operator">&lt;</span>Key<span class="token operator">></span> <span class="token function">Keys</span><span class="token punctuation">(</span>Key lo<span class="token punctuation">,</span> Key hi<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            List<span class="token operator">&lt;</span>Key<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span>Key<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">,</span> lo<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                list<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>hi<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                list<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> list<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 最大的键。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Key <span class="token function">Max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>tail <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Key<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>tail<span class="token punctuation">.</span>Key<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 最小的键。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Key <span class="token function">Min</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Key<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">.</span>Key<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 向符号表插入键值对，重复值将被替换。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="key">键。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="value">值。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Put</span><span class="token punctuation">(</span>Key key<span class="token punctuation">,</span> Value <span class="token keyword">value</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">Delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Node temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Key <span class="token operator">=</span> key<span class="token punctuation">,</span>
+                Value <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">,</span>
+                Prev <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+                Next <span class="token operator">=</span> <span class="token keyword">null</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+            Node left <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>right<span class="token punctuation">.</span>Key<span class="token punctuation">,</span> temp<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                left <span class="token operator">=</span> right<span class="token punctuation">;</span>
+                right <span class="token operator">=</span> right<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token function">Insert</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">,</span> temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>tail <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 小于 Key 的键的数量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Rank</span><span class="token punctuation">(</span>Key key<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+                counter<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> counter<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获得排名为 k 的键（从 0 开始）。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="k">排名&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Key <span class="token function">Select</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">>=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">"k must less than ST size!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> pointer<span class="token punctuation">.</span>Key<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获得符号表中键值对的数量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// [&lt;paramref name="lo"/>, &lt;paramref name="hi"/>] 之间键的数量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="lo">范围起点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="hi">范围终点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Size</span><span class="token punctuation">(</span>Key lo<span class="token punctuation">,</span> Key hi<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            Node pointer <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">,</span> lo<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>pointer <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>pointer<span class="token punctuation">.</span>Key<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pointer <span class="token operator">=</span> pointer<span class="token punctuation">.</span>Next<span class="token punctuation">;</span>
+                counter<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> counter<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 键 &lt;paramref name="a"/> 是否小于 &lt;paramref name="b"/>。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">检查是否较小的键。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">检查是否较大的键。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token function">Less</span><span class="token punctuation">(</span>Key a<span class="token punctuation">,</span> Key b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> a<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 键 &lt;paramref name="a"/> 是否大于 &lt;paramref name="b"/>。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">检查是否较大的键。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">检查是否较小的键。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token function">Greater</span><span class="token punctuation">(</span>Key a<span class="token punctuation">,</span> Key b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> a<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将结点 &lt;paramref name="k"/> 插入到 &lt;paramref name="left"/> 和 &lt;paramref name="right"/> 之间。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="left">作为前驱的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="right">作为后继的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="insert">待插入的结点。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Insert</span><span class="token punctuation">(</span>Node left<span class="token punctuation">,</span> Node right<span class="token punctuation">,</span> Node k<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            k<span class="token punctuation">.</span>Prev <span class="token operator">=</span> left<span class="token punctuation">;</span>
+            k<span class="token punctuation">.</span>Next <span class="token operator">=</span> right<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                left<span class="token punctuation">.</span>Next <span class="token operator">=</span> k<span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                right<span class="token punctuation">.</span>Prev <span class="token operator">=</span> k<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/3%20Searching/3.1/SymbolTable" target="_blank" rel="noopener">SymbolTable 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
+</div>
+
+	
+	
+	
+	<div class="section" id="Pagenation">
+		
+		
+		<a href="/3-1-2/">Next</a>
+		
+	</div>
+	
+
+            <footer>
+	<div class="footer_wrap">
+		<div class="social">
+			<ul class="clearfix">
+				
+				
+				<li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul>
+		</div>
+		<img src="/img/line.jpg">
+		<div class="copyright">
+			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+		</div>
+	</div>
+</footer>
+        </div>
+        <script type="text/javascript">
+        function scrollYListener() {
+        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
+        var width = document.documentElement.clientWidth;
+        var supportPageOffset = window.pageXOffset !== undefined;
+        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+        if (scrollY >= searchHeight-10) {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
+        } else {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
+        }
+        }
+        var isMenuExpanded = false;
+        document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
+        if (isMenuExpanded) {
+        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+        } else {
+        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+        }
+        isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-121852990-1', 'auto');
+        ga('send', 'pageview');
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        
+        
+    </body>
+</html>
