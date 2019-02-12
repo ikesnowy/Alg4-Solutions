@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <title>2.2.18 | 《算法（第四版）》C# 题解</title>
+        
+        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+        
+        
+        <link rel="icon" href="//favicon.ico">
+        
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+    <body onscroll="scrollYListener()">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+            <div class="mobile_menu_btn">
+  <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
+  <span>toggle menu</span>
+  </button>
+</div>
+<div class="slide_menu">
+  <nav class="nav_scroll">
+    <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+    </ul>
+  </nav>
+  <div class="social">
+    <ul class="clearfix">
+      
+      
+      <li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <div class="copyright">
+    &copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+  </div>
+</div>
+<header>
+  <div class="mobile_navbar clearfix">
+    
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    
+  </div>
+  <div class="row clearfix no_form">
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    <nav class="nav_scroll">
+      <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+            <div class="section" id="Search">
+	<div class="section_content">
+		<h3>
+		搜索解答
+		<br>
+		目前已完成到 2.5
+		</h3>
+		<div id="search-content" class="search-content-modal unexpanded">
+			<div id="search-view">
+				<div class="search-info box">
+					<input type="text" id="search-input" placeholder="题目编号/关键字">
+					<div class="magnifying-glass" id="search-button">
+						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
+						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+					</svg>
+				</div>
+			</div>
+			<div class="modal" id="search-result" style="display:none">
+				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<ul id="search-result-list">
+				</ul>
+				<span>
+					<button onclick="dismissSearchResultModal()">×</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+var path = "/search.xml";
+searchFunc(path, 'search-input', 'search-result-list');
+</script>
+
+<script>
+function dismissSearchResultModal() {
+	document.getElementById("search-result").style.display = "none";
+}
+</script>
+</div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			2.2.18
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>2.2.18</h1>
+			<p>上次更新：2019-02-11</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.18<br>打乱链表。<br>实现一个分治算法，<br>使用线性对数级别的时间和对数级别的额外空间随机打乱一条链表。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>可以在用归并排序的方法做。<br>将归并时取两边较小的元素改为随机取一侧的值，即可实现打乱的效果。<br>算法的分析和普通归并排序一致，满足题目要求。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>分治法打乱链表的实现。</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_18
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 分治法打乱链表。</span>
+<span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MergeShuffle</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token function">MergeShuffle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 利用分治法打乱链表。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">链表元素类型。&lt;/typeparam></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">等待打乱的链表。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token generic-method function">Shuffle<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>LinkedList<span class="token operator">&lt;</span>T<span class="token operator">></span> a<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> blockLen <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>blockLen <span class="token operator">&lt;=</span> a<span class="token punctuation">.</span><span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 找到第一个块</span>
+                Node<span class="token operator">&lt;</span>T<span class="token operator">></span> lo <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">GetFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Node<span class="token operator">&lt;</span>T<span class="token operator">></span> mid <span class="token operator">=</span> <span class="token function">FindBlock</span><span class="token punctuation">(</span>lo<span class="token punctuation">,</span> blockLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>mid<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>mid<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Node<span class="token operator">&lt;</span>T<span class="token operator">></span> hi <span class="token operator">=</span> <span class="token function">FindBlock</span><span class="token punctuation">(</span>mid<span class="token punctuation">.</span>next<span class="token punctuation">,</span> blockLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Node<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> result<span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>lo <span class="token operator">==</span> a<span class="token punctuation">.</span><span class="token function">GetFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        result <span class="token operator">=</span> <span class="token function">Merge</span><span class="token punctuation">(</span>lo<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> hi<span class="token punctuation">,</span> random<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        a<span class="token punctuation">.</span><span class="token function">SetFirst</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">else</span>
+                    <span class="token punctuation">{</span>
+                        result <span class="token operator">=</span> <span class="token function">Merge</span><span class="token punctuation">(</span>lo<span class="token punctuation">.</span>next<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> hi<span class="token punctuation">,</span> random<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        lo<span class="token punctuation">.</span>next <span class="token operator">=</span> result<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+
+
+                    <span class="token comment" spellcheck="true">// 跳到表尾</span>
+                    lo <span class="token operator">=</span> result<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>lo<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                        mid <span class="token operator">=</span> <span class="token function">FindBlock</span><span class="token punctuation">(</span>lo<span class="token punctuation">.</span>next<span class="token punctuation">,</span> blockLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">else</span>
+                        mid <span class="token operator">=</span> lo<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                blockLen <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将两个有序链表块随机归并，返回新的表头。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">链表元素类型。&lt;/typeparam></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="lo">第一个块起点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="mid">第一个块终点（第二个块起点的前驱）。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="hi">第二个块的终点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>新的表头。&lt;/returns></span>
+        <span class="token keyword">private</span> Node<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token generic-method function">Merge<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>T<span class="token operator">></span> lo<span class="token punctuation">,</span> Node<span class="token operator">&lt;</span>T<span class="token operator">></span> mid<span class="token punctuation">,</span> Node<span class="token operator">&lt;</span>T<span class="token operator">></span> hi<span class="token punctuation">,</span> Random random<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node<span class="token operator">&lt;</span>T<span class="token operator">></span> after <span class="token operator">=</span> hi<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 要合并的两个块之后的元素</span>
+            Node<span class="token operator">&lt;</span>T<span class="token operator">></span> first <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            Node<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            Node<span class="token operator">&lt;</span>T<span class="token operator">></span> i <span class="token operator">=</span> lo<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">// 链表1</span>
+            Node<span class="token operator">&lt;</span>T<span class="token operator">></span> j <span class="token operator">=</span> mid<span class="token punctuation">.</span>next<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 链表2</span>
+
+            <span class="token comment" spellcheck="true">// 切割链表</span>
+            mid<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            hi<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+            Node<span class="token operator">&lt;</span>T<span class="token operator">></span> current <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 决定新的表头</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0.5</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                current <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                i <span class="token operator">=</span> i<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                current <span class="token operator">=</span> j<span class="token punctuation">;</span>
+                j <span class="token operator">=</span> j<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            first <span class="token operator">=</span> current<span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 归并表</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0.5</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    current<span class="token punctuation">.</span>next <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                    i <span class="token operator">=</span> i<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+                    current <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    current<span class="token punctuation">.</span>next <span class="token operator">=</span> j<span class="token punctuation">;</span>
+                    j <span class="token operator">=</span> j<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+                    current <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                current<span class="token punctuation">.</span>next <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                current<span class="token punctuation">.</span>next <span class="token operator">=</span> i<span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 连接表尾（链表 1 的尾部或者链表 2 的尾部）</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mid<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                mid<span class="token punctuation">.</span>next <span class="token operator">=</span> after<span class="token punctuation">;</span>
+                result<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                hi<span class="token punctuation">.</span>next <span class="token operator">=</span> after<span class="token punctuation">;</span>
+                result<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> hi<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            result<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> first<span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获取从指定位置开始定长的链表。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">链表的元素类型。&lt;/typeparam></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="lo">链表的起始结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="length">需要获取的链表长度。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>结果链表的最后一个元素结点。&lt;/returns></span>
+        <span class="token keyword">private</span> Node<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token generic-method function">FindBlock<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>T<span class="token operator">></span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> length<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node<span class="token operator">&lt;</span>T<span class="token operator">></span> hi <span class="token operator">=</span> lo<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> hi<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                hi <span class="token operator">=</span> hi<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> hi<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2/Merge" target="_blank" rel="noopener">Merge 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
+</div>
+
+	
+	
+	
+	<div class="section" id="Pagenation">
+		
+		<a href="/2-2-19/">Prev</a>
+		
+		
+		<a href="/2-2-17/">Next</a>
+		
+	</div>
+	
+
+            <footer>
+	<div class="footer_wrap">
+		<div class="social">
+			<ul class="clearfix">
+				
+				
+				<li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul>
+		</div>
+		<img src="/img/line.jpg">
+		<div class="copyright">
+			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+		</div>
+	</div>
+</footer>
+        </div>
+        <script type="text/javascript">
+        function scrollYListener() {
+        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
+        var width = document.documentElement.clientWidth;
+        var supportPageOffset = window.pageXOffset !== undefined;
+        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+        if (scrollY >= searchHeight-10) {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
+        } else {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
+        }
+        }
+        var isMenuExpanded = false;
+        document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
+        if (isMenuExpanded) {
+        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+        } else {
+        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+        }
+        isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-121852990-1', 'auto');
+        ga('send', 'pageview');
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        
+        
+    </body>
+</html>

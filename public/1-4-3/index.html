@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <title>1.4.3 | 《算法（第四版）》C# 题解</title>
+        
+        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+        
+        
+        <link rel="icon" href="//favicon.ico">
+        
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+    <body onscroll="scrollYListener()">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+            <div class="mobile_menu_btn">
+  <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
+  <span>toggle menu</span>
+  </button>
+</div>
+<div class="slide_menu">
+  <nav class="nav_scroll">
+    <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+    </ul>
+  </nav>
+  <div class="social">
+    <ul class="clearfix">
+      
+      
+      <li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <div class="copyright">
+    &copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+  </div>
+</div>
+<header>
+  <div class="mobile_navbar clearfix">
+    
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    
+  </div>
+  <div class="row clearfix no_form">
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    <nav class="nav_scroll">
+      <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+            <div class="section" id="Search">
+	<div class="section_content">
+		<h3>
+		搜索解答
+		<br>
+		目前已完成到 2.5
+		</h3>
+		<div id="search-content" class="search-content-modal unexpanded">
+			<div id="search-view">
+				<div class="search-info box">
+					<input type="text" id="search-input" placeholder="题目编号/关键字">
+					<div class="magnifying-glass" id="search-button">
+						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
+						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+					</svg>
+				</div>
+			</div>
+			<div class="modal" id="search-result" style="display:none">
+				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<ul id="search-result-list">
+				</ul>
+				<span>
+					<button onclick="dismissSearchResultModal()">×</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+var path = "/search.xml";
+searchFunc(path, 'search-input', 'search-result-list');
+</script>
+
+<script>
+function dismissSearchResultModal() {
+	document.getElementById("search-result").style.display = "none";
+}
+</script>
+</div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			1.4.3
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>1.4.3</h1>
+			<p>上次更新：2019-02-11</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.3<br>修改 DoublingTest，使用 StdDraw 产生类似于正文中的标准图像和对数图像，<br>根据需要调整比例使图像总能够充满窗口的大部分区域。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>见代码，这里贴出绘图函数，窗体只是在得到测试结果之后简单调用以下这两个函数。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PaintLinear</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testResult<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//新建一个绘图窗口</span>
+    Form2 linear <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Form2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    linear<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//新建画布</span>
+    Graphics canvas <span class="token operator">=</span> linear<span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取窗口区域</span>
+    Rectangle rect <span class="token operator">=</span> linear<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度（十等分）</span>
+    <span class="token keyword">int</span> unitY <span class="token operator">=</span> rect<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> unitX <span class="token operator">=</span> rect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取中心区域（上下左右增加 10% 的内补）</span>
+    Rectangle center <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>X <span class="token operator">+</span> unitX<span class="token punctuation">,</span> rect<span class="token punctuation">.</span>Y <span class="token operator">+</span> unitY<span class="token punctuation">,</span> unitX <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">,</span> unitY <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//绘制坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> center<span class="token punctuation">.</span>Width<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//对 X 轴 10 等分，对 Y 轴 10 等分</span>
+    <span class="token keyword">int</span> xaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> yaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记 X 轴坐标值</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        canvas<span class="token punctuation">.</span><span class="token function">DrawString</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">"N"</span><span class="token punctuation">,</span> linear<span class="token punctuation">.</span>Font<span class="token punctuation">,</span> Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> i <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//反转坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> linear<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度</span>
+    <span class="token keyword">double</span> Unit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> testResult<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记</span>
+    PointF<span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> j <span class="token operator">+</span><span class="token operator">=</span> j<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>X <span class="token operator">+</span> j <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>Y <span class="token operator">+</span> Unit <span class="token operator">*</span> testResult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//链接</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLines</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    canvas<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PaintLogarithm</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testResult<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//新建一个绘图窗口</span>
+    Form2 log <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Form2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    log<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//新建画布</span>
+    Graphics canvas <span class="token operator">=</span> log<span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取窗口区域</span>
+    Rectangle rect <span class="token operator">=</span> log<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度（十等分）</span>
+    <span class="token keyword">int</span> unitY <span class="token operator">=</span> rect<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> unitX <span class="token operator">=</span> rect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取中心区域（上下左右增加 10% 的内补）</span>
+    Rectangle center <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>X <span class="token operator">+</span> unitX<span class="token punctuation">,</span> rect<span class="token punctuation">.</span>Y <span class="token operator">+</span> unitY<span class="token punctuation">,</span> unitX <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">,</span> unitY <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//绘制坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> center<span class="token punctuation">.</span>Width<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//对 X 轴 10 等分，对 Y 轴 10 等分</span>
+    <span class="token keyword">int</span> xaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> yaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记 X 轴坐标值</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        canvas<span class="token punctuation">.</span><span class="token function">DrawString</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">"N"</span><span class="token punctuation">,</span> log<span class="token punctuation">.</span>Font<span class="token punctuation">,</span> Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> i <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//反转坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> log<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度</span>
+    <span class="token keyword">double</span> Unit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> testResult<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记</span>
+    PointF<span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> j <span class="token operator">+</span><span class="token operator">=</span> j<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>X <span class="token operator">+</span> j <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>Y <span class="token operator">+</span> Unit <span class="token operator">*</span> testResult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//链接</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLines</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+		</div>
+	</div>
+
+	
+
+	
+	
+</div>
+
+	
+	
+	
+	<div class="section" id="Pagenation">
+		
+		<a href="/1-4-4/">Prev</a>
+		
+		
+		<a href="/1-4-2/">Next</a>
+		
+	</div>
+	
+
+            <footer>
+	<div class="footer_wrap">
+		<div class="social">
+			<ul class="clearfix">
+				
+				
+				<li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul>
+		</div>
+		<img src="/img/line.jpg">
+		<div class="copyright">
+			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+		</div>
+	</div>
+</footer>
+        </div>
+        <script type="text/javascript">
+        function scrollYListener() {
+        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
+        var width = document.documentElement.clientWidth;
+        var supportPageOffset = window.pageXOffset !== undefined;
+        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+        if (scrollY >= searchHeight-10) {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
+        } else {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
+        }
+        }
+        var isMenuExpanded = false;
+        document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
+        if (isMenuExpanded) {
+        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+        } else {
+        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+        }
+        isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-121852990-1', 'auto');
+        ga('send', 'pageview');
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        
+        
+    </body>
+</html>

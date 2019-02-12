@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags: Sort
+tags: Searching
 ---
 
 # 题目
@@ -19,4 +19,4 @@ tags: Sort
 
 # 另请参阅
 
-[SortApplication 库](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication)
+[SymbolTable 库](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/3%20Searching/3.1/SymbolTable)
