@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <title>2.1.35 | 《算法（第四版）》C# 题解</title>
+        
+        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+        
+        
+        <link rel="icon" href="//favicon.ico">
+        
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+    <body onscroll="scrollYListener()">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+            <div class="mobile_menu_btn">
+  <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
+  <span>toggle menu</span>
+  </button>
+</div>
+<div class="slide_menu">
+  <nav class="nav_scroll">
+    <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+    </ul>
+  </nav>
+  <div class="social">
+    <ul class="clearfix">
+      
+      
+      <li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <div class="copyright">
+    &copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+  </div>
+</div>
+<header>
+  <div class="mobile_navbar clearfix">
+    
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    
+  </div>
+  <div class="row clearfix no_form">
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    <nav class="nav_scroll">
+      <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+            <div class="section" id="Search">
+	<div class="section_content">
+		<h3>
+		搜索解答
+		<br>
+		目前已完成到 2.5
+		</h3>
+		<div id="search-content" class="search-content-modal unexpanded">
+			<div id="search-view">
+				<div class="search-info box">
+					<input type="text" id="search-input" placeholder="题目编号/关键字">
+					<div class="magnifying-glass" id="search-button">
+						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
+						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+					</svg>
+				</div>
+			</div>
+			<div class="modal" id="search-result" style="display:none">
+				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<ul id="search-result-list">
+				</ul>
+				<span>
+					<button onclick="dismissSearchResultModal()">×</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+var path = "/search.xml";
+searchFunc(path, 'search-input', 'search-result-list');
+</script>
+
+<script>
+function dismissSearchResultModal() {
+	document.getElementById("search-result").style.display = "none";
+}
+</script>
+</div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			2.1.35
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>2.1.35</h1>
+			<p>上次更新：2019-02-11</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.35<br>不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括： </p>
+<p>高斯分布<br>泊松分布<br>几何分布<br>离散分布（一种特殊情况见练习 2.1.28）。</p>
+<p>评估并验证这些输入数据对本节讨论的算法的影响。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>难点是如何生成符合这些分布的随机数。<br>Java 的话官方给的 stdRandom 里面都有相应的实现。<br>结果：<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>几种随机数的实现：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> Sort
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 静态类，包含用于生成排序算法测试数据的方法。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SortUtil</span>
+    <span class="token punctuation">{</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">static</span> Random UniformGenerator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 产生符合正态分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="average">正态分布的期望值 μ。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="standardDeviation">正态分布的标准差 σ。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>符合正态分布的随机数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Normal</span><span class="token punctuation">(</span><span class="token keyword">double</span> average<span class="token punctuation">,</span> <span class="token keyword">double</span> standardDeviation<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span> u1 <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> u2 <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">double</span> z0 <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Sqrt</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2.0</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>u1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Cos</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span>PI <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">*</span> u2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> z0 <span class="token operator">*</span> standardDeviation <span class="token operator">+</span> average<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 生成符合泊松分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="average">泊松分布的期望值 λ。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>一个符合泊松分布的随机数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Poission</span><span class="token punctuation">(</span><span class="token keyword">double</span> average<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> p <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Pow</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span>E<span class="token punctuation">,</span> <span class="token operator">-</span>average<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> s <span class="token operator">=</span> p<span class="token punctuation">;</span>
+            <span class="token keyword">double</span> u <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">do</span>
+            <span class="token punctuation">{</span>
+                x<span class="token operator">++</span><span class="token punctuation">;</span>
+                p <span class="token operator">*</span><span class="token operator">=</span> average <span class="token operator">/</span> x<span class="token punctuation">;</span>
+                s <span class="token operator">+</span><span class="token operator">=</span> p<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>u <span class="token operator">></span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> x<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 生成符合几何分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="p">几何分布的概率 p，这应该是一个小于 1 的非负数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;exception cref="ArgumentOutOfRangeException">概率不能大于 1.&lt;/exception></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>符合几何分布的随机数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Geometry</span><span class="token punctuation">(</span><span class="token keyword">double</span> p<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentOutOfRangeException</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">,</span> <span class="token string">"概率不能大于 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">double</span> result<span class="token punctuation">;</span>
+            result <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Ceiling</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 根据指定的几率数组产生符合离散分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="probabilities">各取值的可能性。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>符合随机分布的随机整数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Discrete</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> probabilities<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>probabilities <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentNullException</span><span class="token punctuation">(</span><span class="token string">"Argument array is null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">double</span> EPSION <span class="token operator">=</span> 1E<span class="token number">-14</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> probabilities<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"array entry "</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">" must be nonnegative:"</span> <span class="token operator">+</span> probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                sum <span class="token operator">+</span><span class="token operator">=</span> probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> <span class="token number">1.0</span> <span class="token operator">+</span> EPSION <span class="token operator">||</span> sum <span class="token operator">&lt;</span> <span class="token number">1.0</span> <span class="token operator">-</span> EPSION<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"sum of array entries does not equal 1.0:"</span> <span class="token operator">+</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">double</span> r <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                sum <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> probabilities<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    sum <span class="token operator">+</span><span class="token operator">=</span> probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> r<span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Main 方法：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> Sort<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_35
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 2.1.35
+     * 
+     * 不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括：
+     * 高斯分布
+     * 泊松分布
+     * 几何分布
+     * 离散分布（一种特殊情况见练习 2.1.28）。
+     * 评估并验证这些输入数据对本节讨论的算法的影响。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            InsertionSort insertionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            SelectionSort selectionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ShellSort shellSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 高斯分布（正态分布）</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetNormalDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arraySelection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayShell <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Normal Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 泊松分布</span>
+            arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetPossionDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Poission Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 几何分布</span>
+            arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetGeometricDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Geometric Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 离散分布</span>
+            arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetDiscretDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Discret Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
+</div>
+
+	
+	
+	
+	<div class="section" id="Pagenation">
+		
+		<a href="/2-1-36/">Prev</a>
+		
+		
+		<a href="/2-1-34/">Next</a>
+		
+	</div>
+	
+
+            <footer>
+	<div class="footer_wrap">
+		<div class="social">
+			<ul class="clearfix">
+				
+				
+				<li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul>
+		</div>
+		<img src="/img/line.jpg">
+		<div class="copyright">
+			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+		</div>
+	</div>
+</footer>
+        </div>
+        <script type="text/javascript">
+        function scrollYListener() {
+        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
+        var width = document.documentElement.clientWidth;
+        var supportPageOffset = window.pageXOffset !== undefined;
+        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+        if (scrollY >= searchHeight-10) {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
+        } else {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
+        }
+        }
+        var isMenuExpanded = false;
+        document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
+        if (isMenuExpanded) {
+        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+        } else {
+        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+        }
+        isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-121852990-1', 'auto');
+        ga('send', 'pageview');
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        
+        
+    </body>
+</html>

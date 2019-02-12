@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <title>2.2.13 | 《算法（第四版）》C# 题解</title>
+        
+        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+        
+        
+        <link rel="icon" href="//favicon.ico">
+        
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+    <body onscroll="scrollYListener()">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+            <div class="mobile_menu_btn">
+  <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
+  <span>toggle menu</span>
+  </button>
+</div>
+<div class="slide_menu">
+  <nav class="nav_scroll">
+    <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+    </ul>
+  </nav>
+  <div class="social">
+    <ul class="clearfix">
+      
+      
+      <li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <div class="copyright">
+    &copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+  </div>
+</div>
+<header>
+  <div class="mobile_navbar clearfix">
+    
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    
+  </div>
+  <div class="row clearfix no_form">
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    <nav class="nav_scroll">
+      <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+            <div class="section" id="Search">
+	<div class="section_content">
+		<h3>
+		搜索解答
+		<br>
+		目前已完成到 2.5
+		</h3>
+		<div id="search-content" class="search-content-modal unexpanded">
+			<div id="search-view">
+				<div class="search-info box">
+					<input type="text" id="search-input" placeholder="题目编号/关键字">
+					<div class="magnifying-glass" id="search-button">
+						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
+						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+					</svg>
+				</div>
+			</div>
+			<div class="modal" id="search-result" style="display:none">
+				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<ul id="search-result-list">
+				</ul>
+				<span>
+					<button onclick="dismissSearchResultModal()">×</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+var path = "/search.xml";
+searchFunc(path, 'search-input', 'search-result-list');
+</script>
+
+<script>
+function dismissSearchResultModal() {
+	document.getElementById("search-result").style.display = "none";
+}
+</script>
+</div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			2.2.13
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>2.2.13</h1>
+			<p>上次更新：2019-02-11</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.13<br>平均情况的下限。<br>请证明任意基于比较的排序算法的预期比较次数至少为 ~NlogN<br>（假设输入元素的所有排列的出现概率是均等的）。<br>提示：<br>比较次数至少是比较树的外部路径的长度<br>（根结点到叶子结点的路径长度之和），<br>当树平衡时该值最小。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>假设对三个数进行排序，<br>这三个数是：35，10，17<br>三个数排序的决策树如下，<br>结点代表比较对应位置上的数。<br><img src="./1.jpg" alt=""><br>对于 35,10,17 来说，路径遵循右、左、左，最后得到的结果就是 2 3 1（10,17,35）。<br>我们可以发现决策树上的每一个叶子节点都代表一种排列顺序，对于 N 个数，叶子节点就有 $ N! $ 个<br>根据二叉树的性质，高度为 $ h $ 的二叉树最多有 $ 2^h $ 个叶子节点<br>那么，对于 $ N $ 个数，决策树的高度 $ h $ 的最小值可以通过下面这个式子得出来<br>$ 2^h &gt;= n! $<br>$ h \ge log(n!) $<br>因此可以得到决策树高度 $ h $ 的最小值是 $ log(n!) $ </p>
+<p>接下来我们来计算平均路径长度<br>我们令函数 $ H(k) $ 代表有 $ k $ 个叶子节点的平衡决策树的所有路径长度之和<br>上例中 $ H(6) = 2 + 2 + 3 + 3 + 3 + 3 = 16 $<br>由于平衡决策树的性质，$ H(k) = 2H(k / 2) + k $<br>（加上 $ k $ 的原因：左右子树的高度比整个树的高度小 $ 1 $，因此每条路径的长度都必须加 $ 1 $，总共多加了 $ k $ 次）<br>因此 $ H(k) = klogk $<br>现在令 $ k = n! $<br>$ H(n!) = n!log(n!) $<br>由于每次排序时我们只经过某一条路径（上例中我们只经过了右、左、左这条路径）<br>而且每种路径的出现概率相等<br>因此平均比较次数应该为 $ H(n!) / n! = log(n!) = nlog(n) $<br>证明完毕</p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://www.cs.auckland.ac.nz/courses/compsci220s1c/lectures/2016S1C/CS220-Lecture12.pdf" target="_blank" rel="noopener">排序算法的下界-Data Selection. Lower bound for sorting-PDF</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
+</div>
+
+	
+	
+	
+	<div class="section" id="Pagenation">
+		
+		<a href="/2-2-14/">Prev</a>
+		
+		
+		<a href="/2-2-12/">Next</a>
+		
+	</div>
+	
+
+            <footer>
+	<div class="footer_wrap">
+		<div class="social">
+			<ul class="clearfix">
+				
+				
+				<li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul>
+		</div>
+		<img src="/img/line.jpg">
+		<div class="copyright">
+			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+		</div>
+	</div>
+</footer>
+        </div>
+        <script type="text/javascript">
+        function scrollYListener() {
+        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
+        var width = document.documentElement.clientWidth;
+        var supportPageOffset = window.pageXOffset !== undefined;
+        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+        if (scrollY >= searchHeight-10) {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
+        } else {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
+        }
+        }
+        var isMenuExpanded = false;
+        document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
+        if (isMenuExpanded) {
+        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+        } else {
+        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+        }
+        isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-121852990-1', 'auto');
+        ga('send', 'pageview');
+        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+        
+        
+    </body>
+</html>

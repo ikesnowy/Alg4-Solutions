@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <title>2.4.24 | 《算法（第四版）》C# 题解</title>
+        
+        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+        
+        
+        <link rel="icon" href="//favicon.ico">
+        
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+    <body onscroll="scrollYListener()">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+            <div class="mobile_menu_btn">
+  <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
+  <span>toggle menu</span>
+  </button>
+</div>
+<div class="slide_menu">
+  <nav class="nav_scroll">
+    <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+    </ul>
+  </nav>
+  <div class="social">
+    <ul class="clearfix">
+      
+      
+      <li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  <div class="copyright">
+    &copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+  </div>
+</div>
+<header>
+  <div class="mobile_navbar clearfix">
+    
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    
+  </div>
+  <div class="row clearfix no_form">
+    <div class="logo">
+      <a href="/">《算法（第四版）》C# 题解</a>
+    </div>
+    <nav class="nav_scroll">
+      <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">主页</a> </li>
+      
+      
+      <li class=""> <a href="/help">帮助</a> </li>
+      
+      
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+            <div class="section" id="Search">
+	<div class="section_content">
+		<h3>
+		搜索解答
+		<br>
+		目前已完成到 2.5
+		</h3>
+		<div id="search-content" class="search-content-modal unexpanded">
+			<div id="search-view">
+				<div class="search-info box">
+					<input type="text" id="search-input" placeholder="题目编号/关键字">
+					<div class="magnifying-glass" id="search-button">
+						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
+						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+					</svg>
+				</div>
+			</div>
+			<div class="modal" id="search-result" style="display:none">
+				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<ul id="search-result-list">
+				</ul>
+				<span>
+					<button onclick="dismissSearchResultModal()">×</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+var path = "/search.xml";
+searchFunc(path, 'search-input', 'search-result-list');
+</script>
+
+<script>
+function dismissSearchResultModal() {
+	document.getElementById("search-result").style.display = "none";
+}
+</script>
+</div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			2.4.24
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>2.4.24</h1>
+			<p>上次更新：2019-02-11</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.24<br>使用链接的优先队列。<br>用堆排序的二叉树实现一个优先队列，但使用链表结构代替数组。<br>每个结点都需要三个链接：两个向下，一个向上。<br>你的实现即使在无法预知队列大小的情况下也能保证优先队列的基本操作所需时间为对数级别。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>链式实现，每个结点都包含一个指向父结点的指针和两个指向子结点的指针。<br>交换结点可以直接用交换两个结点的值来实现（与数组的实现一样），而不是对两个结点的指针进行交换。<br>于是 <code>Sink()</code> 和 <code>Swim()</code> 操作就比较简单，直接按照定义实现即可。</p>
+<p>比较困难的是删除和插入结点，或者更具体的说，<br>如何找到按照完全二叉树定义下序号向后/向前一位的结点？<br>我们首先在堆里面维护两个指针，一个指向根结点（<code>root</code>），另一个指向当前最后一个结点（<code>last</code>）。<br>当需要插入新结点时，我们需要找到 <code>last</code> 的后一位的父结点，然后把新的结点插入为该结点的左子结点。<br>这段话可能比较绕，下面这个示意图可以帮助理解，有三种情况：<br><img src="./1.png" alt=""><br>标黄的代表 <code>last</code> 指着的位置。<br>我们先从简单的说起，中间的第二种情况，新插入的结点应该放在右侧，即作为 <code>last</code> 的父结点的右子结点。<br>如果 <code>last</code> 已经是右子结点了，那么就考虑第三种情况。<br>此时应该向上回溯，直到在某一次回溯中，结点是从父结点的左侧回溯上来的<br>（即图中路径 A-B-B，B-B 这一步是从左子树回溯上来的）。<br>于是待插入的位置就在该父结点的右子树的最左侧结点（即图中根结点的右子结点 A）。<br>最后是图中第一种情况，整棵树已经是满二叉树了。<br>这种情况下会一路回溯到根结点，那么只要一路下沉到最左侧的叶子结点，把新结点插入到其左子树上即可。</p>
+<p>删除结点同理，也是这三种情况，只是需要找前一个结点，判断条件中的左右正好相反。<br>如果已经是右子结点了，只需要把 <code>last</code> 改为其父结点的左子树即可。<br>如果是左子结点，就需要回溯，直到某一次回溯是从右子树回溯上来的，<code>last</code> 应该指向其左子树的最右侧结点。<br>如果删除后正好变成满二叉树，那么会一直回溯到根结点，<code>last</code> 应该指向整棵树的最右侧结点。</p>
+<p>代码实现中还需要处理只有一个结点以及没有结点时的特殊情况。</p>
+<p>根据上面的算法，插入/删除找到相应位置所需的最大耗时为 2lgN<br>（从树的一侧回溯到根结点，再下沉到另一侧的底部）。<br>Sink 和 Swim 是 O(lgN) 级的，因此整个插入/删除操作是 O(lgN) 的。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> PriorityQueue
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 基于链式结构实现的最大堆。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;typeparam name="Key">优先队列中保存的数据类型。&lt;/typeparam></span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MaxPQLinked</span><span class="token operator">&lt;</span>Key<span class="token operator">></span> <span class="token punctuation">:</span> IMaxPQ<span class="token operator">&lt;</span>Key<span class="token operator">></span> <span class="token keyword">where</span> Key <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Key<span class="token operator">></span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 二叉堆的根结点。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> root <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 二叉堆的最后一个结点。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> last <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 二叉堆中的结点个数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> nodesCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 建立一个链式结构的最大堆。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token function">MaxPQLinked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 删除并返回最大值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>最大值。&lt;/returns></span>
+        <span class="token keyword">public</span> Key <span class="token function">DelMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Key result <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
+            <span class="token function">Exch</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">.</span>Left <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>root <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 获得前一个结点。</span>
+            TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> newLast <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>newLast <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Right<span class="token punctuation">)</span>
+                newLast <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Left<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 找到上一棵子树。</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>newLast <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>newLast <span class="token operator">!=</span> newLast<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Left<span class="token punctuation">)</span>
+                        <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    newLast <span class="token operator">=</span> newLast<span class="token punctuation">.</span>Prev<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token comment" spellcheck="true">// 已经是满二叉树。</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>newLast <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 一路向右，回到上一层。</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>newLast<span class="token punctuation">.</span>Right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                        newLast <span class="token operator">=</span> newLast<span class="token punctuation">.</span>Right<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment" spellcheck="true">// 不是满二叉树。</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 向左子树移动，再一路向右。</span>
+                    newLast <span class="token operator">=</span> newLast<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Left<span class="token punctuation">;</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>newLast<span class="token punctuation">.</span>Right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                        newLast <span class="token operator">=</span> newLast<span class="token punctuation">.</span>Right<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 删除最后一个结点。</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Left <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Left <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Right <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+            <span class="token function">Sink</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 指向新的最后一个结点。</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> newLast<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 插入一个新的结点。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="v">待插入的结点。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Insert</span><span class="token punctuation">(</span>Key v<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> item <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token operator">&lt;</span>Key<span class="token operator">></span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 堆为空。</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>root <span class="token operator">=</span> item<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> item<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 堆只有一个结点。</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                item<span class="token punctuation">.</span>Prev <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">.</span>Left <span class="token operator">=</span> item<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> item<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token function">Swim</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 定位到最后一个节点的父结点。</span>
+            TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> prev <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>Prev<span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 右子节点为空，插入到右子节点。</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>Right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                item<span class="token punctuation">.</span>Prev <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+                prev<span class="token punctuation">.</span>Right <span class="token operator">=</span> item<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 当前子树已满，需要向上回溯。</span>
+                <span class="token comment" spellcheck="true">// 找到下一个子树（回溯的时候是从左子树回溯上去的）。</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>prev <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">!=</span> prev<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Right<span class="token punctuation">)</span>
+                        <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    prev <span class="token operator">=</span> prev<span class="token punctuation">.</span>Prev<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token comment" spellcheck="true">// 已经是满二叉树。</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 一路向左，进入下一层。</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>Left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                        prev <span class="token operator">=</span> prev<span class="token punctuation">.</span>Left<span class="token punctuation">;</span>
+
+                    item<span class="token punctuation">.</span>Prev <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+                    prev<span class="token punctuation">.</span>Left <span class="token operator">=</span> item<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment" spellcheck="true">// 不是满二叉树。</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 向右子树移动，再一路向左。</span>
+                    prev <span class="token operator">=</span> prev<span class="token punctuation">.</span>Prev<span class="token punctuation">.</span>Right<span class="token punctuation">;</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>Left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                        prev <span class="token operator">=</span> prev<span class="token punctuation">.</span>Left<span class="token punctuation">;</span>
+
+                    item<span class="token punctuation">.</span>Prev <span class="token operator">=</span> prev<span class="token punctuation">;</span>
+                    prev<span class="token punctuation">.</span>Left <span class="token operator">=</span> item<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> item<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token function">Swim</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回二叉堆是否为空。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回二叉堆中的最大值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Key <span class="token function">Max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回二叉堆中的元素个数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>nodesCount<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 使结点上浮。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="k">需要上浮的结点。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Swim</span><span class="token punctuation">(</span>TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> k<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>k<span class="token punctuation">.</span>Prev <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>k<span class="token punctuation">.</span>Prev<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token function">Exch</span><span class="token punctuation">(</span>k<span class="token punctuation">.</span>Prev<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    k <span class="token operator">=</span> k<span class="token punctuation">.</span>Prev<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 使结点下沉。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="k">需要下沉的结点。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Sink</span><span class="token punctuation">(</span>TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> k<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>k<span class="token punctuation">.</span>Left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">||</span> k<span class="token punctuation">.</span>Right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> toExch <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>k<span class="token punctuation">.</span>Left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> k<span class="token punctuation">.</span>Right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                    toExch <span class="token operator">=</span> <span class="token function">Less</span><span class="token punctuation">(</span>k<span class="token punctuation">.</span>Left<span class="token punctuation">,</span> k<span class="token punctuation">.</span>Right<span class="token punctuation">)</span> <span class="token operator">?</span> k<span class="token punctuation">.</span>Right <span class="token punctuation">:</span> k<span class="token punctuation">.</span>Left<span class="token punctuation">;</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>k<span class="token punctuation">.</span>Left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                    toExch <span class="token operator">=</span> k<span class="token punctuation">.</span>Left<span class="token punctuation">;</span>
+                <span class="token keyword">else</span>
+                    toExch <span class="token operator">=</span> k<span class="token punctuation">.</span>Right<span class="token punctuation">;</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> toExch<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token function">Exch</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> toExch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                k <span class="token operator">=</span> toExch<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 交换二叉堆中的两个结点。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">要交换的第一个结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">要交换的第二个结点。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Exch</span><span class="token punctuation">(</span>TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> a<span class="token punctuation">,</span> TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Key temp <span class="token operator">=</span> a<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
+            a<span class="token punctuation">.</span>Value <span class="token operator">=</span> b<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
+            b<span class="token punctuation">.</span>Value <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 比较第一个结点值的是否小于第二个。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">判断是否较小的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">判断是否较大的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token function">Less</span><span class="token punctuation">(</span>TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> a<span class="token punctuation">,</span> TreeNode<span class="token operator">&lt;</span>Key<span class="token operator">></span> b<span class="token punctuation">)</span>
+            <span class="token operator">=</span><span class="token operator">></span> a<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>Value<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
+</div>
+
+	
+	
+	
+	<div class="section" id="Pagenation">
+		
+		<a href="/2-4-25/">Prev</a>
+		
+		
+		<a href="/2-4-23/">Next</a>
+		
+	</div>
+	
+
+            <footer>
+	<div class="footer_wrap">
+		<div class="social">
+			<ul class="clearfix">
+				
+				
+				<li> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+				
+				
+				
+				
+				
+				
+				
+				
+			</ul>
+		</div>
+		<img src="/img/line.jpg">
+		<div class="copyright">
+			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+		</div>
+	</div>
+</footer>
+        </div>
+        <script type="text/javascript">
+        function scrollYListener() {
+        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
+        var width = document.documentElement.clientWidth;
+        var supportPageOffset = window.pageXOffset !== undefined;
+        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+        if (scrollY >= searchHeight-10) {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
+        } else {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
+        }
+        }
+        var isMenuExpanded = false;
+        document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
+        if (isMenuExpanded) {
+        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+        } else {
+        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+        }
+        isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-121852990-1', 'auto');
+        ga('send', 'pageview');
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        
+        
+    </body>
+</html>
