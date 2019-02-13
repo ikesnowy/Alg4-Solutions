@@ -37,6 +37,9 @@
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
       
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
+      
     </ul>
   </nav>
   <div class="social">
@@ -81,6 +84,9 @@
       
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -139,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.22</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-13</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.22<br>快速三向切分。（J.Bently，D.McIlroy）<br>用将重复元素放置于子数组两端的方式实现一个信息量最优的排序算法。<br>使用两个索引 p 和 q，使得 a[lo…p-1] 和 a[q+1..hi] 的元素都和 a[lo] 相等。<br>使用另外两个索引 i 和 j，使得 a[p…i-1] 小于 a[lo]，a[j+i..q] 大于 a[lo]。<br>在内循环中加入代码，在 a[i] 和 v 相等时将其与 a[p] 交换（并将 p 加 1），<br>在 a[j] 和 v 相等且 a[i] 和 a[j] 尚未和 v 进行比较之前将其与 a[q] 交换。<br>添加在切分循环结束后将和 v 相等的元素交换到正确位置的代码，如图 2.3.6 所示。<br>请注意：<br>这里实现的代码和正文中给出的代码时等价的，<br>因为这里额外的交换用于和切分元素相等的元素，<br>而正文中的代码将额外的交换用于和切分元素不等的元素。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现见：<a href="https://algs4.cs.princeton.edu/23quicksort/QuickBentleyMcIlroy.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/23quicksort/QuickBentleyMcIlroy.java.html</a></p>
 <h2 id="快速三向切分"><a href="#快速三向切分" class="headerlink" title="快速三向切分"></a>快速三向切分</h2><p>论文引用见「另请参阅」部分。<br>算法演示<br><img src="./3.gif" alt=""></p>
@@ -365,7 +371,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p>有关这种快速排序算法的来源以及三个数的中位数的选取算法，请参阅下面这篇 1993 年的论文：<br><a href="https://doi.org/10.1002/spe.4380231105" target="_blank" rel="noopener">Bentley J L, McIlroy M D. Engineering a sort function[J]. Software: Practice and Experience, 1993, 23(11): 1249-1265.</a><br>下面这份 2002 年的 PPT 详细解释和分析了官方实现代码的思路和性能：<br><a href="https://www.cs.princeton.edu/~rs/talks/QuicksortIsOptimal.pdf" target="_blank" rel="noopener">Sedgewick R, Bentley J. Quicksort is optimal[J]. Knuthfest, Stanford University, Stanford, 2002.</a><br>有关选取中位数 Ninther 算法，请参阅下面这篇 1978 年的论文：<br><a href="https://www.sciencedirect.com/science/article/pii/B9780122047503500241" target="_blank" rel="noopener">Tukey J W. The ninther, a technique for low-effort robust (resistant) location in large samples[M]//Contributions to Survey Sampling and Applied Statistics. 1978: 251-257.</a><br>以及按照惯例给出本题用到的类库链接：<br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p>有关这种快速排序算法的来源以及三个数的中位数的选取算法，请参阅下面这篇 1993 年的论文：<br><a href="https://doi.org/10.1002/spe.4380231105" target="_blank" rel="noopener">Bentley J L, McIlroy M D. Engineering a sort function[J]. Software: Practice and Experience, 1993, 23(11): 1249-1265.</a><br>下面这份 2002 年的 PPT 详细解释和分析了官方实现代码的思路和性能：<br><a href="https://www.cs.princeton.edu/~rs/talks/QuicksortIsOptimal.pdf" target="_blank" rel="noopener">Sedgewick R, Bentley J. Quicksort is optimal[J]. Knuthfest, Stanford University, Stanford, 2002.</a><br>有关选取中位数 Ninther 算法，请参阅下面这篇 1978 年的论文：<br><a href="https://www.sciencedirect.com/science/article/pii/B9780122047503500241" target="_blank" rel="noopener">Tukey J W. The ninther, a technique for low-effort robust (resistant) location in large samples[M]//Contributions to Survey Sampling and Applied Statistics. 1978: 251-257.</a><br>以及按照惯例给出本题用到的类库链接：<br><a href="https://alg4.ikesnowy.com/docs/api/Quick.html">Quick 库</a></p>
 
 		</div>
 	</div>

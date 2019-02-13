@@ -37,6 +37,9 @@
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
       
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
+      
     </ul>
   </nav>
   <div class="social">
@@ -81,6 +84,9 @@
       
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -139,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.29</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-13</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.29<br>随机化。<br>用经验性的研究对比随机选择切分元素和正文所述的一开始就将数组随机化这两种策略的效果。<br>在子数组大小为 M 时进行切换，<br>将大小为 N 的不重复数组排序，其中 M=10、20 和 50，N=10^3、10^4、10^5 和 10^6。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>在快排类内部添加一个随机数发生器，每次随机取枢轴并交换至第一位进行切分。</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token generic-method function">Partition<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
@@ -342,7 +348,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/Quick.html">Quick 库</a></p>
 
 		</div>
 	</div>

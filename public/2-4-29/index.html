@@ -37,6 +37,9 @@
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
       
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
+      
     </ul>
   </nav>
   <div class="social">
@@ -81,6 +84,9 @@
       
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -139,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.29</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-13</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.29<br>同时面向最大和最小元素的优先队列。<br>设计一个数据类型，支持如下操作：<br>插入元素、删除最大元素、删除最小元素（所需时间均为对数级别），<br>以及找到最大元素、找到最小元素（所需时间均为常数级别）。<br>提示：用两个堆。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>算法思想比较简单，但在实现上会有一些复杂。</p>
 <p>用一个最大堆和一个最小堆，每个堆中都保存了全部数组元素，且相同的元素之间有指针相连。<br><img src="./1.png" alt=""><br>插入元素时需要构建两个完全相同的元素分别插入到两个堆中。<br>找到最小元素和找到最大元素只需要分别返回最大堆和最小堆的堆顶元素即可。<br>以删除最小元素为例，先对最小堆进行 DelMin() 操作，再通过指针找到对应最大堆的元素并删除。</p>
@@ -479,7 +485,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://en.wikipedia.org/wiki/Double-ended_priority_queue" target="_blank" rel="noopener">Double Ended Priority Queue-Wikipedia</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://en.wikipedia.org/wiki/Double-ended_priority_queue" target="_blank" rel="noopener">Double Ended Priority Queue-Wikipedia</a><br><a href="https://alg4.ikesnowy.com/docs/api/PriorityQueue.html">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

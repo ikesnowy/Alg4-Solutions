@@ -37,6 +37,9 @@
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
       
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
+      
     </ul>
   </nav>
   <div class="social">
@@ -81,6 +84,9 @@
       
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -139,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.31</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-13</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.31<br>快速插入。<br>用基于比较的方式实现 MinPQ 的 API，<br>使得插入元素需要 ~loglogN 次比较，删除最小元素需要 ~2logN 次比较。<br>提示：在 swim() 方法中用二分查找来寻找祖先结点。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先可以观察到堆有这样一个性质，从根结点到某一个叶子结点的路径是有序的，满足二分查找的条件。</p>
 <p>但是，<br>从叶子结点到根结点的路径可以通过不断地令 <code>k = k / 2</code> 得到（从下往上只有一条路径）。<br>但从根结点到叶子结点的路径却不能简单地通过 <code>k = k * 2</code> 得到（从上往下会有两条分支）。<br>因此只通过堆本身是无法满足二分查找对于随机访问的要求的。</p>
@@ -184,7 +190,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/PriorityQueue.html">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

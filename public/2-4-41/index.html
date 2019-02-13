@@ -37,6 +37,9 @@
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
       
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
+      
     </ul>
   </nav>
   <div class="social">
@@ -81,6 +84,9 @@
       
       
       <li class=""> <a href="/thanks">鸣谢</a> </li>
+      
+      
+      <li class=""> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -139,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.41</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-13</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.41<br>Multiway 堆。<br>根据正文中的描述实现基于完全堆有序的三叉树和四叉树的堆排序。<br>对于 N=10^3、10^6 和 10^9 大小的随机不重复数组，<br>记录你的程序所使用的比较次数和标准实现所使用的比较次数。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>多叉堆和二叉堆的实现上并没有很大的区别，<br>只不过下沉（<code>Sink</code>）时需要比较的子结点数量变多了，上浮时父结点的下标不再是 $ \lfloor k /2 \rfloor $。<br>于是只要能推出 $ d $ 叉堆的下标换算公式即可解决整个问题。</p>
 <p>先考虑 $ d $ 叉堆的在数组中的保存方式，<br>第一层显然只有根结点，第二层显然有 $ d $ 个结点，第三层则有 $ d \times d=d^2 $ 个结点，如下图所示：<br><img src="./1.png" alt=""><br>不难推出第 $ k $ 层有 $ d^{k-1} $ 个结点。</p>
@@ -227,7 +233,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://en.wikipedia.org/wiki/D-ary_heap" target="_blank" rel="noopener">D-ary Heap-Wikipedia</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://en.wikipedia.org/wiki/D-ary_heap" target="_blank" rel="noopener">D-ary Heap-Wikipedia</a><br><a href="https://alg4.ikesnowy.com/docs/api/PriorityQueue.html">PriorityQueue 库</a></p>
 
 		</div>
 	</div>
