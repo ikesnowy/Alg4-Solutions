@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.5.12</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-13</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.12<br>使用路径压缩的 quick-union 算法。<br>根据路径压缩修改 quick-union 算法（请见 1.5.2.3 节），<br>在 find() 方法中添加一个循环来将从 p 到根节点的路径上的每个触点都连接到根节点。<br>给出一列输入，<br>使该方法能够产生一条长度为 4 的路径。<br>注意：该算法的所有操作的均摊成本已知为对数级别。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>QuickUnionPathCompression 的官方实现：<a href="http://algs4.cs.princeton.edu/15uf/QuickUnionPathCompressionUF.java.html" target="_blank" rel="noopener">QuickUnionPathCompressionUF.java</a><br>在找到根节点之后，再访问一遍 p 到根节点这条路径上的所有结点，将它们直接和根节点相连。<br>重写过后的 Find() 方法：</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
@@ -245,7 +245,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/UnionFind.html">UnionFind 库</a></p>
 
 		</div>
 	</div>

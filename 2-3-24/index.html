@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.24</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-13</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.24<br>取样排序。（W.Frazer，A.McKellar）<br>实现一个快速排序，取样大小为 2^k-1。<br>首先将取样得到的元素排序，然后在递归函数中使用样品的中位数切分。<br>分为两部分的其余样品元素无需再次排序并可以分别应用于原数组的两个子数组。<br>这种算法称为取样排序。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>取样排序的想法很简单：<br>常规快排的枢轴只有一个。<br>如果用一个数组来充当枢轴，根据排序位置的不同自动选择对应的枢轴，<br>显然能够更好的估计中位数，以求更好的切分效果。<br>于是引入了「取样」的概念，假如我们从源数组中随机取了 3 个元素并对其排序，<br>那么这 3 个元素的中位数可以作为第一次切分的枢轴，剩余两个元素则可以充当切分后两个子数组的枢轴。<br>那么当取样元素到达一个合适的数量时，就能达到提升切分效率的目标。</p>
 <p>大致思路如下：<br>首先先从输入数组里随机取一些元素，作为「取样数组」。<br>用任意排序算法（比如快排）对取样数组进行排序。<br>（由于取样数组通常都比较小，这一步的时间消耗通常不会影响性能）<br>取出取样数组里面的中位数，当作枢轴对剩下的数组进行切分。<br>之后的切分中，根据排序区间在剩余数组中的相对位置，<br>用取样数组中对应位置的数作为枢轴，直到整个排序完成。</p>
@@ -363,7 +363,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p>关于取样排序的论文（1970 年）：<br><a href="https://dl.acm.org/citation.cfm?id=321600" target="_blank" rel="noopener">Frazer W D, McKellar A C. Samplesort: A sampling approach to minimal storage tree sorting[J]. Journal of the ACM (JACM), 1970, 17(3): 496-507.</a><br>维基百科中的取样排序：<br><a href="https://en.wikipedia.org/wiki/Samplesort" target="_blank" rel="noopener">Samplesort-Wikipedia</a><br>本题用到的类库链接：<br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p>关于取样排序的论文（1970 年）：<br><a href="https://dl.acm.org/citation.cfm?id=321600" target="_blank" rel="noopener">Frazer W D, McKellar A C. Samplesort: A sampling approach to minimal storage tree sorting[J]. Journal of the ACM (JACM), 1970, 17(3): 496-507.</a><br>维基百科中的取样排序：<br><a href="https://en.wikipedia.org/wiki/Samplesort" target="_blank" rel="noopener">Samplesort-Wikipedia</a><br>本题用到的类库链接：<br><a href="https://alg4.ikesnowy.com/docs/api/Quick.html">Quick 库</a></p>
 
 		</div>
 	</div>
