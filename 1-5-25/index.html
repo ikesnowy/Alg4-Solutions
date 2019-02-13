@@ -140,10 +140,8 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.25</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.5.25 随机网格的倍率测试。 开发一个性能测试用例，从命令行接受一个 int 值 T 并进行 T 次以下实验： 使用练习 1.5.18 的用例生成一个 N×N 的随机网格， 所有连接的方向随机且排列随机。 和我们的开发用例一样使用 UnionFind 来检查触点的连通性， 不断循环直到所有触点均相互连通。 对于每个 N，打印出 N 值和平均所需的连接数以及前后两次运行时间的比值。 使用你的程序验证正文中的猜想： quick-find 和 quick-union 算法的运行时间是平方级别的， 加权 quick-union 算法则接近线性级别。 注意： 随着 N 值加倍，网格中触点的数量会乘以 4， 因此平方级别的算法运行时间会变为原来的 16 倍， 线性级别的算法的运行时间则变为原来的 4 倍。</p>
-<h1 id="解答">解答</h1>
-<p>略微修改 1.5.22 的代码即可。 我电脑上的结果：</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.25<br>随机网格的倍率测试。<br>开发一个性能测试用例，从命令行接受一个 int 值 T 并进行 T 次以下实验：<br>使用练习 1.5.18 的用例生成一个 N×N 的随机网格，<br>所有连接的方向随机且排列随机。<br>和我们的开发用例一样使用 UnionFind 来检查触点的连通性，<br>不断循环直到所有触点均相互连通。<br>对于每个 N，打印出 N 值和平均所需的连接数以及前后两次运行时间的比值。<br>使用你的程序验证正文中的猜想：<br>quick-find 和 quick-union 算法的运行时间是平方级别的，<br>加权 quick-union 算法则接近线性级别。<br>注意：<br>随着 N 值加倍，网格中触点的数量会乘以 4，<br>因此平方级别的算法运行时间会变为原来的 16 倍，<br>线性级别的算法的运行时间则变为原来的 4 倍。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>略微修改 1.5.22 的代码即可。<br>我电脑上的结果：</p>
 <pre><code>Quick-Find
 N:1600
 平均用时（毫秒）：4
@@ -170,132 +168,131 @@ N:6400
 N:25600
 平均用时（毫秒）：12    比值：6
 N:102400
-平均用时（毫秒）：64    比值：5.33333333333333</code></pre>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> System.<span class="fu">Diagnostics</span>;</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">using</span> UnionFind;</a>
-<a class="sourceLine" id="cb2-4" title="4"></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">5.</span>_<span class="dv">25</span></a>
-<a class="sourceLine" id="cb2-6" title="6">{</a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * 1.5.25</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 随机网格的倍率测试。</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 开发一个性能测试用例，</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * 从命令行接受一个 int 值 T 并进行 T 次以下实验：</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">     * 使用练习 1.5.18 的用例生成一个 N×N 的随机网格，</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">     * 所有连接的方向随机且排列随机。</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">     * 和我们的开发用例一样使用 UnionFind 来检查触点的连通性，</span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">     * 不断循环直到所有触点均相互连通。</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co">     * 对于每个 N，打印出 N 值和平均所需的连接数以及前后两次运行时间的比值。</span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">     * 使用你的程序验证正文中的猜想：</span></a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="co">     * quick-find 和 quick-union 算法的运行时间是平方级别的，</span></a>
-<a class="sourceLine" id="cb2-20" title="20"><span class="co">     * 加权 quick-union 算法则接近线性级别。</span></a>
-<a class="sourceLine" id="cb2-21" title="21"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-22" title="22"><span class="co">     * 注意：随着 N 值加倍，网格中触点的数量会乘以 4，</span></a>
-<a class="sourceLine" id="cb2-23" title="23"><span class="co">     * 因此平方级别的算法运行时间会变为原来的 16 倍，</span></a>
-<a class="sourceLine" id="cb2-24" title="24"><span class="co">     * 线性级别的算法的运行时间则变为原来的 4 倍</span></a>
-<a class="sourceLine" id="cb2-25" title="25"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-26" title="26"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-27" title="27">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-28" title="28">    {</a>
-<a class="sourceLine" id="cb2-29" title="29">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-30" title="30">        {</a>
-<a class="sourceLine" id="cb2-31" title="31">            <span class="dt">int</span> n = <span class="dv">40</span>;</a>
-<a class="sourceLine" id="cb2-32" title="32">            <span class="dt">int</span> t = <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb2-33" title="33"></a>
-<a class="sourceLine" id="cb2-34" title="34">            <span class="co">// quick-find</span></a>
-<a class="sourceLine" id="cb2-35" title="35">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Quick-Find&quot;</span>);</a>
-<a class="sourceLine" id="cb2-36" title="36">            <span class="dt">long</span> last = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-37" title="37">            <span class="dt">long</span> now = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-38" title="38">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; t; ++i, n *= <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb2-39" title="39">            {</a>
-<a class="sourceLine" id="cb2-40" title="40">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;N:&quot;</span> + n * n);</a>
-<a class="sourceLine" id="cb2-41" title="41">                <span class="dt">var</span> connections = RandomGrid.<span class="fu">GetConnections</span>(n);</a>
-<a class="sourceLine" id="cb2-42" title="42"></a>
-<a class="sourceLine" id="cb2-43" title="43">                QuickFindUF quickFind = <span class="kw">new</span> <span class="fu">QuickFindUF</span>(n * n);</a>
-<a class="sourceLine" id="cb2-44" title="44">                now = <span class="fu">RunTest</span>(quickFind, connections);</a>
-<a class="sourceLine" id="cb2-45" title="45">                <span class="kw">if</span> (last == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-46" title="46">                {</a>
-<a class="sourceLine" id="cb2-47" title="47">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;平均用时（毫秒）：&quot;</span> + now);</a>
-<a class="sourceLine" id="cb2-48" title="48">                    last = now;</a>
-<a class="sourceLine" id="cb2-49" title="49">                }</a>
-<a class="sourceLine" id="cb2-50" title="50">                <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-51" title="51">                {</a>
-<a class="sourceLine" id="cb2-52" title="52">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;平均用时（毫秒）：&quot;</span> + now + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">比值：&quot;</span> + (<span class="dt">double</span>)now / last);</a>
-<a class="sourceLine" id="cb2-53" title="53">                    last = now;</a>
-<a class="sourceLine" id="cb2-54" title="54">                }</a>
-<a class="sourceLine" id="cb2-55" title="55">            }</a>
-<a class="sourceLine" id="cb2-56" title="56"></a>
-<a class="sourceLine" id="cb2-57" title="57">            <span class="co">// quick-union</span></a>
-<a class="sourceLine" id="cb2-58" title="58">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Quick-Union&quot;</span>);</a>
-<a class="sourceLine" id="cb2-59" title="59">            n = <span class="dv">40</span>;</a>
-<a class="sourceLine" id="cb2-60" title="60">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; t; ++i, n *= <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb2-61" title="61">            {</a>
-<a class="sourceLine" id="cb2-62" title="62">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;N:&quot;</span> + n * n);</a>
-<a class="sourceLine" id="cb2-63" title="63">                <span class="dt">var</span> connections = RandomGrid.<span class="fu">GetConnections</span>(n);</a>
-<a class="sourceLine" id="cb2-64" title="64"></a>
-<a class="sourceLine" id="cb2-65" title="65">                QuickUnionUF quickFind = <span class="kw">new</span> <span class="fu">QuickUnionUF</span>(n * n);</a>
-<a class="sourceLine" id="cb2-66" title="66">                now = <span class="fu">RunTest</span>(quickFind, connections);</a>
-<a class="sourceLine" id="cb2-67" title="67">                <span class="kw">if</span> (last == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-68" title="68">                {</a>
-<a class="sourceLine" id="cb2-69" title="69">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;平均用时（毫秒）：&quot;</span> + now);</a>
-<a class="sourceLine" id="cb2-70" title="70">                    last = now;</a>
-<a class="sourceLine" id="cb2-71" title="71">                }</a>
-<a class="sourceLine" id="cb2-72" title="72">                <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-73" title="73">                {</a>
-<a class="sourceLine" id="cb2-74" title="74">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;平均用时（毫秒）：&quot;</span> + now + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">比值：&quot;</span> + (<span class="dt">double</span>)now / last);</a>
-<a class="sourceLine" id="cb2-75" title="75">                    last = now;</a>
-<a class="sourceLine" id="cb2-76" title="76">                }</a>
-<a class="sourceLine" id="cb2-77" title="77">            }</a>
-<a class="sourceLine" id="cb2-78" title="78"></a>
-<a class="sourceLine" id="cb2-79" title="79">            <span class="co">// 加权 quick-union</span></a>
-<a class="sourceLine" id="cb2-80" title="80">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Weighted Quick-Union&quot;</span>);</a>
-<a class="sourceLine" id="cb2-81" title="81">            n = <span class="dv">40</span>;</a>
-<a class="sourceLine" id="cb2-82" title="82">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; t; ++i, n *= <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb2-83" title="83">            {</a>
-<a class="sourceLine" id="cb2-84" title="84">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;N:&quot;</span> + n * n);</a>
-<a class="sourceLine" id="cb2-85" title="85">                <span class="dt">var</span> connections = RandomGrid.<span class="fu">GetConnections</span>(n);</a>
-<a class="sourceLine" id="cb2-86" title="86"></a>
-<a class="sourceLine" id="cb2-87" title="87">                WeightedQuickUnionUF quickFind = <span class="kw">new</span> <span class="fu">WeightedQuickUnionUF</span>(n * n);</a>
-<a class="sourceLine" id="cb2-88" title="88">                now = <span class="fu">RunTest</span>(quickFind, connections);</a>
-<a class="sourceLine" id="cb2-89" title="89">                <span class="kw">if</span> (last == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-90" title="90">                {</a>
-<a class="sourceLine" id="cb2-91" title="91">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;平均用时（毫秒）：&quot;</span> + now);</a>
-<a class="sourceLine" id="cb2-92" title="92">                    last = now;</a>
-<a class="sourceLine" id="cb2-93" title="93">                }</a>
-<a class="sourceLine" id="cb2-94" title="94">                <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-95" title="95">                {</a>
-<a class="sourceLine" id="cb2-96" title="96">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;平均用时（毫秒）：&quot;</span> + now + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">比值：&quot;</span> + (<span class="dt">double</span>)now / last);</a>
-<a class="sourceLine" id="cb2-97" title="97">                    last = now;</a>
-<a class="sourceLine" id="cb2-98" title="98">                }</a>
-<a class="sourceLine" id="cb2-99" title="99">            }</a>
-<a class="sourceLine" id="cb2-100" title="100">        }</a>
-<a class="sourceLine" id="cb2-101" title="101"></a>
-<a class="sourceLine" id="cb2-102" title="102">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-103" title="103">        <span class="co">/// 进行若干次随机试验，输出平均 union 次数，返回平均耗时。</span></a>
-<a class="sourceLine" id="cb2-104" title="104">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-105" title="105">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;uf&quot;</span><span class="kw">&gt;</span><span class="co">用于测试的并查集。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-106" title="106">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;connections&quot;</span><span class="kw">&gt;</span><span class="co">用于测试的输入。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-107" title="107">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">平均耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-108" title="108">        <span class="kw">static</span> <span class="dt">long</span> <span class="fu">RunTest</span>(UF uf, Connection[] connections)</a>
-<a class="sourceLine" id="cb2-109" title="109">        {</a>
-<a class="sourceLine" id="cb2-110" title="110">            Stopwatch timer = <span class="kw">new</span> <span class="fu">Stopwatch</span>();</a>
-<a class="sourceLine" id="cb2-111" title="111">            <span class="dt">long</span> repeatTime = <span class="dv">3</span>;</a>
-<a class="sourceLine" id="cb2-112" title="112">            timer.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb2-113" title="113">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; repeatTime; ++i)</a>
-<a class="sourceLine" id="cb2-114" title="114">            {</a>
-<a class="sourceLine" id="cb2-115" title="115">                ErdosRenyi.<span class="fu">Count</span>(uf, connections);</a>
-<a class="sourceLine" id="cb2-116" title="116">            }</a>
-<a class="sourceLine" id="cb2-117" title="117">            timer.<span class="fu">Stop</span>();</a>
-<a class="sourceLine" id="cb2-118" title="118"></a>
-<a class="sourceLine" id="cb2-119" title="119">            <span class="kw">return</span> timer.<span class="fu">ElapsedMilliseconds</span> / repeatTime;</a>
-<a class="sourceLine" id="cb2-120" title="120">        }</a>
-<a class="sourceLine" id="cb2-121" title="121">    }</a>
-<a class="sourceLine" id="cb2-122" title="122">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+平均用时（毫秒）：64    比值：5.33333333333333
+</code></pre><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
+<span class="token keyword">using</span> UnionFind<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_25
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.5.25
+     * 
+     * 随机网格的倍率测试。
+     * 开发一个性能测试用例，
+     * 从命令行接受一个 int 值 T 并进行 T 次以下实验：
+     * 使用练习 1.5.18 的用例生成一个 N×N 的随机网格，
+     * 所有连接的方向随机且排列随机。
+     * 和我们的开发用例一样使用 UnionFind 来检查触点的连通性，
+     * 不断循环直到所有触点均相互连通。
+     * 对于每个 N，打印出 N 值和平均所需的连接数以及前后两次运行时间的比值。
+     * 使用你的程序验证正文中的猜想：
+     * quick-find 和 quick-union 算法的运行时间是平方级别的，
+     * 加权 quick-union 算法则接近线性级别。
+     * 
+     * 注意：随着 N 值加倍，网格中触点的数量会乘以 4，
+     * 因此平方级别的算法运行时间会变为原来的 16 倍，
+     * 线性级别的算法的运行时间则变为原来的 4 倍
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// quick-find</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Quick-Find"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">long</span> last <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">long</span> now <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> t<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"N:"</span> <span class="token operator">+</span> n <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> connections <span class="token operator">=</span> RandomGrid<span class="token punctuation">.</span><span class="token function">GetConnections</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                QuickFindUF quickFind <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickFindUF</span><span class="token punctuation">(</span>n <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                now <span class="token operator">=</span> <span class="token function">RunTest</span><span class="token punctuation">(</span>quickFind<span class="token punctuation">,</span> connections<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>last <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"平均用时（毫秒）："</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    last <span class="token operator">=</span> now<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"平均用时（毫秒）："</span> <span class="token operator">+</span> now <span class="token operator">+</span> <span class="token string">"\t比值："</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>now <span class="token operator">/</span> last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    last <span class="token operator">=</span> now<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// quick-union</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Quick-Union"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            n <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> t<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"N:"</span> <span class="token operator">+</span> n <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> connections <span class="token operator">=</span> RandomGrid<span class="token punctuation">.</span><span class="token function">GetConnections</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                QuickUnionUF quickFind <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickUnionUF</span><span class="token punctuation">(</span>n <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                now <span class="token operator">=</span> <span class="token function">RunTest</span><span class="token punctuation">(</span>quickFind<span class="token punctuation">,</span> connections<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>last <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"平均用时（毫秒）："</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    last <span class="token operator">=</span> now<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"平均用时（毫秒）："</span> <span class="token operator">+</span> now <span class="token operator">+</span> <span class="token string">"\t比值："</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>now <span class="token operator">/</span> last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    last <span class="token operator">=</span> now<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 加权 quick-union</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Weighted Quick-Union"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            n <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> t<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"N:"</span> <span class="token operator">+</span> n <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> connections <span class="token operator">=</span> RandomGrid<span class="token punctuation">.</span><span class="token function">GetConnections</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                WeightedQuickUnionUF quickFind <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeightedQuickUnionUF</span><span class="token punctuation">(</span>n <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                now <span class="token operator">=</span> <span class="token function">RunTest</span><span class="token punctuation">(</span>quickFind<span class="token punctuation">,</span> connections<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>last <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"平均用时（毫秒）："</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    last <span class="token operator">=</span> now<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"平均用时（毫秒）："</span> <span class="token operator">+</span> now <span class="token operator">+</span> <span class="token string">"\t比值："</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>now <span class="token operator">/</span> last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    last <span class="token operator">=</span> now<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 进行若干次随机试验，输出平均 union 次数，返回平均耗时。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="uf">用于测试的并查集。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="connections">用于测试的输入。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>平均耗时。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token function">RunTest</span><span class="token punctuation">(</span>UF uf<span class="token punctuation">,</span> Connection<span class="token punctuation">[</span><span class="token punctuation">]</span> connections<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Stopwatch timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">long</span> repeatTime <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+            timer<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> repeatTime<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                ErdosRenyi<span class="token punctuation">.</span><span class="token function">Count</span><span class="token punctuation">(</span>uf<span class="token punctuation">,</span> connections<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            timer<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> timer<span class="token punctuation">.</span>ElapsedMilliseconds <span class="token operator">/</span> repeatTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
 
 		</div>
 	</div>

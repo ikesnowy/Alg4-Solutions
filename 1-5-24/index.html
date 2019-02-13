@@ -140,10 +140,8 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.24</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.5.24 适用于 Erdös-Renyi 模型的快速算法。 在练习1.5.23 的测试中增加加权 quick-union 算法和使用路径压缩的加权 quick-union 算法。 你能分辨出这两种算法的区别吗？</p>
-<h1 id="解答">解答</h1>
-<p>根据上题的代码略作修改即可，路径压缩大概可以快 1/3。</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.24<br>适用于 Erdös-Renyi 模型的快速算法。<br>在练习1.5.23 的测试中增加加权 quick-union 算法和使用路径压缩的加权 quick-union 算法。<br>你能分辨出这两种算法的区别吗？</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>根据上题的代码略作修改即可，路径压缩大概可以快 1/3。</p>
 <pre><code>N:10000
 加权 quick-find 耗时（毫秒）：9
 带路径压缩的加权 quick-union 耗时（毫秒）：6
@@ -167,70 +165,69 @@ N:80000
 N:160000
 加权 quick-find 耗时（毫秒）：67
 带路径压缩的加权 quick-union 耗时（毫秒）：41
-比值：1.63414634146341</code></pre>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> UnionFind;</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">using</span> System.<span class="fu">Diagnostics</span>;</a>
-<a class="sourceLine" id="cb2-4" title="4"></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">5.</span>_<span class="dv">24</span></a>
-<a class="sourceLine" id="cb2-6" title="6">{</a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * 1.5.24</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 适用于 Erdös-Renyi 模型的快速算法。</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 在练习1.5.23 的测试中增加加权 quick-union 算法和使用路径压缩的加权 quick-union 算法。</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * 你能分辨出这两种算法的区别吗？</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-15" title="15">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-16" title="16">    {</a>
-<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-18" title="18">        {</a>
-<a class="sourceLine" id="cb2-19" title="19">            <span class="dt">int</span> n = <span class="dv">5000</span>;</a>
-<a class="sourceLine" id="cb2-20" title="20">            <span class="kw">for</span> (<span class="dt">int</span> t = <span class="dv">0</span>; t &lt; <span class="dv">5</span>; ++t)</a>
-<a class="sourceLine" id="cb2-21" title="21">            {</a>
-<a class="sourceLine" id="cb2-22" title="22">                <span class="dt">var</span> input = ErdosRenyi.<span class="fu">Generate</span>(n);</a>
-<a class="sourceLine" id="cb2-23" title="23">                <span class="dt">var</span> weightedQuickUnionUF = <span class="kw">new</span> <span class="fu">WeightedQuickUnionUF</span>(n);</a>
-<a class="sourceLine" id="cb2-24" title="24">                <span class="dt">var</span> weightedQuickUnionPathCompressionUF = <span class="kw">new</span> <span class="fu">WeightedQuickUnionPathCompressionUF</span>(n);</a>
-<a class="sourceLine" id="cb2-25" title="25"></a>
-<a class="sourceLine" id="cb2-26" title="26">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;N:&quot;</span> + n);</a>
-<a class="sourceLine" id="cb2-27" title="27"></a>
-<a class="sourceLine" id="cb2-28" title="28">                <span class="dt">long</span> weightedQuickUnionTime = <span class="fu">RunTest</span>(weightedQuickUnionUF, input);</a>
-<a class="sourceLine" id="cb2-29" title="29">                <span class="dt">long</span> weightedQuickUnionPathCompressionTime = <span class="fu">RunTest</span>(weightedQuickUnionPathCompressionUF, input);</a>
-<a class="sourceLine" id="cb2-30" title="30"></a>
-<a class="sourceLine" id="cb2-31" title="31">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;加权 quick-find 耗时（毫秒）：&quot;</span> + weightedQuickUnionTime);</a>
-<a class="sourceLine" id="cb2-32" title="32">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;带路径压缩的加权 quick-union 耗时（毫秒）：&quot;</span> + weightedQuickUnionPathCompressionTime);</a>
-<a class="sourceLine" id="cb2-33" title="33">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;比值：&quot;</span> + (<span class="dt">double</span>)weightedQuickUnionTime / weightedQuickUnionPathCompressionTime);</a>
-<a class="sourceLine" id="cb2-34" title="34">                Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb2-35" title="35"></a>
-<a class="sourceLine" id="cb2-36" title="36">                n *= <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb2-37" title="37">            }</a>
-<a class="sourceLine" id="cb2-38" title="38">        }</a>
-<a class="sourceLine" id="cb2-39" title="39"></a>
-<a class="sourceLine" id="cb2-40" title="40">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-41" title="41">        <span class="co">/// 进行若干次随机试验，输出平均 union 次数，返回平均耗时。</span></a>
-<a class="sourceLine" id="cb2-42" title="42">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-43" title="43">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;uf&quot;</span><span class="kw">&gt;</span><span class="co">用于测试的并查集。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-44" title="44">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;connections&quot;</span><span class="kw">&gt;</span><span class="co">用于测试的输入。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-45" title="45">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">平均耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-46" title="46">        <span class="kw">static</span> <span class="dt">long</span> <span class="fu">RunTest</span>(UF uf, Connection[] connections)</a>
-<a class="sourceLine" id="cb2-47" title="47">        {</a>
-<a class="sourceLine" id="cb2-48" title="48">            Stopwatch timer = <span class="kw">new</span> <span class="fu">Stopwatch</span>();</a>
-<a class="sourceLine" id="cb2-49" title="49">            <span class="dt">int</span> repeatTime = <span class="dv">5</span>;</a>
-<a class="sourceLine" id="cb2-50" title="50">            timer.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb2-51" title="51">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; repeatTime; ++i)</a>
-<a class="sourceLine" id="cb2-52" title="52">            {</a>
-<a class="sourceLine" id="cb2-53" title="53">                ErdosRenyi.<span class="fu">Count</span>(uf, connections);</a>
-<a class="sourceLine" id="cb2-54" title="54">            }</a>
-<a class="sourceLine" id="cb2-55" title="55">            timer.<span class="fu">Stop</span>();</a>
-<a class="sourceLine" id="cb2-56" title="56"></a>
-<a class="sourceLine" id="cb2-57" title="57">            <span class="kw">return</span> timer.<span class="fu">ElapsedMilliseconds</span> / repeatTime;</a>
-<a class="sourceLine" id="cb2-58" title="58">        }</a>
-<a class="sourceLine" id="cb2-59" title="59">    }</a>
-<a class="sourceLine" id="cb2-60" title="60">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+比值：1.63414634146341
+</code></pre><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> UnionFind<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_24
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.5.24
+     * 
+     * 适用于 Erdös-Renyi 模型的快速算法。
+     * 在练习1.5.23 的测试中增加加权 quick-union 算法和使用路径压缩的加权 quick-union 算法。
+     * 你能分辨出这两种算法的区别吗？
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">5000</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> t <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token operator">++</span>t<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">var</span> input <span class="token operator">=</span> ErdosRenyi<span class="token punctuation">.</span><span class="token function">Generate</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> weightedQuickUnionUF <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeightedQuickUnionUF</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> weightedQuickUnionPathCompressionUF <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeightedQuickUnionPathCompressionUF</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"N:"</span> <span class="token operator">+</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">long</span> weightedQuickUnionTime <span class="token operator">=</span> <span class="token function">RunTest</span><span class="token punctuation">(</span>weightedQuickUnionUF<span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">long</span> weightedQuickUnionPathCompressionTime <span class="token operator">=</span> <span class="token function">RunTest</span><span class="token punctuation">(</span>weightedQuickUnionPathCompressionUF<span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"加权 quick-find 耗时（毫秒）："</span> <span class="token operator">+</span> weightedQuickUnionTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"带路径压缩的加权 quick-union 耗时（毫秒）："</span> <span class="token operator">+</span> weightedQuickUnionPathCompressionTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"比值："</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>weightedQuickUnionTime <span class="token operator">/</span> weightedQuickUnionPathCompressionTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 进行若干次随机试验，输出平均 union 次数，返回平均耗时。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="uf">用于测试的并查集。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="connections">用于测试的输入。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>平均耗时。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token function">RunTest</span><span class="token punctuation">(</span>UF uf<span class="token punctuation">,</span> Connection<span class="token punctuation">[</span><span class="token punctuation">]</span> connections<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Stopwatch timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> repeatTime <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+            timer<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> repeatTime<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                ErdosRenyi<span class="token punctuation">.</span><span class="token function">Count</span><span class="token punctuation">(</span>uf<span class="token punctuation">,</span> connections<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            timer<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> timer<span class="token punctuation">.</span>ElapsedMilliseconds <span class="token operator">/</span> repeatTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
 
 		</div>
 	</div>

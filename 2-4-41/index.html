@@ -140,97 +140,94 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.41</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.4.41 Multiway 堆。 根据正文中的描述实现基于完全堆有序的三叉树和四叉树的堆排序。 对于 N=10<sup>3、10</sup>6 和 10^9 大小的随机不重复数组， 记录你的程序所使用的比较次数和标准实现所使用的比较次数。</p>
-<h1 id="解答">解答</h1>
-<p>多叉堆和二叉堆的实现上并没有很大的区别， 只不过下沉（<code>Sink</code>）时需要比较的子结点数量变多了，上浮时父结点的下标不再是 $ k /2 $。 于是只要能推出 $ d $ 叉堆的下标换算公式即可解决整个问题。</p>
-<p>先考虑 $ d $ 叉堆的在数组中的保存方式， 第一层显然只有根结点，第二层显然有 $ d $ 个结点，第三层则有 $ d d=d^2 $ 个结点，如下图所示： <img src="./1.png"> 不难推出第 $ k $ 层有 $ d^{k-1} $ 个结点。</p>
-<p>接下来我们对其标号，根结点为 1，以此类推，如下图： <img src="./2.png"></p>
-<p>现在我们来推导某个结点的子结点的下标公式。 结点 $ i $ 的第一个子结点在哪里呢？ 首先要加上本层剩下的结点，再加上它前面结点的所有子结点，再下一个就是它的第一个子结点了。 以 2 号结点为例，它是第二层的第一个结点，第二层共有 $ d^{2-1}=d $ 个结点，剩下 $ d-1 $ 个结点。 2 号结点前面没有更多兄弟结点，于是第一个子结点下标即为 $ 2 + d - 1 + 1= 2 + d $。 3 号结点之后剩余 $ d-2 $ 个结点，加上前面 2 号结点的 $ d $ 个子结点， 它的第一个子结点下标为 $ 3+d-2+d+1= 2+2d $。 不难发现规律，结点序号加一，子结点的下标就要对应加上 $ d <span class="math inline">\(（要加上前一个结点的子结点）， 这个规律也可以从图上（\)</span> d=3 $）看出来： <img src="./3.png"> 1号结点的子结点范围是 $ [2,d+1] $，每加一个结点子结点就要加上 $ d $ 。 于是立即可以推得结点 $ i $ 的子结点下标范围是 $ [d(i-1)+2,di+1] $ 。 代入 $ d=2 $，可以发现是符合我们已知的规律的。</p>
-<p>接下来是结点 $ i $ 的父结点， 我们由上面的式子反推可以得到父结点的下标为 $ (i-2)/d +1$（或者 <span class="math inline">\(\lceil (i-2)/d \rceil\)</span>）。 获得这两个公式之后，只需要将 <code>sink</code> 和 <code>swim</code> 方法中上升和下降的公式做相应更改即可。</p>
-<p>测试结果，注意下标可能会超过 <code>int</code> 的范围，请使用 <code>long</code>。： <img src="./4.png"></p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> PriorityQueue</a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/// d 叉堆排序类，提供堆排序的静态方法。</span></a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">class</span> HeapMultiway</a>
-<a class="sourceLine" id="cb1-10" title="10">    {</a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-12" title="12">        <span class="co">/// 利用堆排序对数组进行排序。</span></a>
-<a class="sourceLine" id="cb1-13" title="13">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;pq&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-15" title="15">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;d&quot;</span><span class="kw">&gt;</span><span class="co">堆的分叉数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-16" title="16">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> Sort&lt;T&gt;(T[] pq, <span class="dt">int</span> d) where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb1-17" title="17">        {</a>
-<a class="sourceLine" id="cb1-18" title="18">            <span class="dt">int</span> n = pq.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-19" title="19">            <span class="co">// 建堆</span></a>
-<a class="sourceLine" id="cb1-20" title="20">            <span class="kw">for</span> (<span class="dt">int</span> k = (n - <span class="dv">2</span>) / d + <span class="dv">1</span>; k &gt;= <span class="dv">1</span>; k--)</a>
-<a class="sourceLine" id="cb1-21" title="21">            {</a>
-<a class="sourceLine" id="cb1-22" title="22">                <span class="fu">Sink</span>(pq, k, n, d);</a>
-<a class="sourceLine" id="cb1-23" title="23">            }</a>
-<a class="sourceLine" id="cb1-24" title="24">            <span class="co">// 排序</span></a>
-<a class="sourceLine" id="cb1-25" title="25">            <span class="kw">while</span> (n &gt; <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1-26" title="26">            {</a>
-<a class="sourceLine" id="cb1-27" title="27">                <span class="fu">Exch</span>(pq, <span class="dv">1</span>, n--);</a>
-<a class="sourceLine" id="cb1-28" title="28">                <span class="fu">Sink</span>(pq, <span class="dv">1</span>, n, d);</a>
-<a class="sourceLine" id="cb1-29" title="29">            }</a>
-<a class="sourceLine" id="cb1-30" title="30">        }</a>
-<a class="sourceLine" id="cb1-31" title="31"></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-33" title="33">        <span class="co">/// 令堆中的元素下沉。</span></a>
-<a class="sourceLine" id="cb1-34" title="34">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-35" title="35">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;pq&quot;</span><span class="kw">&gt;</span><span class="co">需要执行操作的堆。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-36" title="36">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要执行下沉的结点下标。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-37" title="37">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">堆中元素的数目。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-38" title="38">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;d&quot;</span><span class="kw">&gt;</span><span class="co">堆的分叉数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-39" title="39">        <span class="kw">private</span> <span class="kw">static</span> <span class="dt">void</span> Sink&lt;T&gt;(T[] pq, <span class="dt">int</span> k, <span class="dt">int</span> n, <span class="dt">int</span> d) where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb1-40" title="40">        {</a>
-<a class="sourceLine" id="cb1-41" title="41">            <span class="kw">while</span> ((k - <span class="dv">1</span>) * d + <span class="dv">2</span> &lt;= n)</a>
-<a class="sourceLine" id="cb1-42" title="42">            {</a>
-<a class="sourceLine" id="cb1-43" title="43">                <span class="dt">int</span> j = d * (k - <span class="dv">1</span>) + <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-44" title="44">                <span class="co">// 在 d 个子结点中找到最大的那个</span></a>
-<a class="sourceLine" id="cb1-45" title="45">                <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>, q = j; i &lt; d; i++)</a>
-<a class="sourceLine" id="cb1-46" title="46">                {</a>
-<a class="sourceLine" id="cb1-47" title="47">                    <span class="kw">if</span> (q + i &lt;= n &amp;&amp; <span class="fu">Less</span>(pq, j, q + i))</a>
-<a class="sourceLine" id="cb1-48" title="48">                        j = q + i;</a>
-<a class="sourceLine" id="cb1-49" title="49">                }</a>
-<a class="sourceLine" id="cb1-50" title="50">                <span class="kw">if</span> (!<span class="fu">Less</span>(pq, k, j))</a>
-<a class="sourceLine" id="cb1-51" title="51">                    <span class="kw">break</span>;</a>
-<a class="sourceLine" id="cb1-52" title="52">                <span class="fu">Exch</span>(pq, k, j);</a>
-<a class="sourceLine" id="cb1-53" title="53">                k = j;</a>
-<a class="sourceLine" id="cb1-54" title="54">            }</a>
-<a class="sourceLine" id="cb1-55" title="55">        }</a>
-<a class="sourceLine" id="cb1-56" title="56"></a>
-<a class="sourceLine" id="cb1-57" title="57">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-58" title="58">        <span class="co">/// 比较堆中下标为 </span><span class="kw">&lt;paramref</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">/&gt;</span><span class="co"> 的元素是否小于下标为 </span><span class="kw">&lt;paramref</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">/&gt;</span><span class="co"> 的元素。</span></a>
-<a class="sourceLine" id="cb1-59" title="59">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-60" title="60">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;pq&quot;</span><span class="kw">&gt;</span><span class="co">元素所在的数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-61" title="61">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要比较是否较小的结点序号。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-62" title="62">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">需要比较是否较大的结点序号。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-63" title="63">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-64" title="64">        <span class="kw">private</span> <span class="kw">static</span> <span class="dt">bool</span> Less&lt;T&gt;(T[] pq, <span class="dt">int</span> a, <span class="dt">int</span> b) where T : IComparable&lt;T&gt; =&gt; pq[a - <span class="dv">1</span>].<span class="fu">CompareTo</span>(pq[b - <span class="dv">1</span>]) &lt; <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-65" title="65"></a>
-<a class="sourceLine" id="cb1-66" title="66">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-67" title="67">        <span class="co">/// 交换堆中的两个元素。</span></a>
-<a class="sourceLine" id="cb1-68" title="68">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-69" title="69">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;pq&quot;</span><span class="kw">&gt;</span><span class="co">要交换的元素所在堆。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-70" title="70">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">要交换的结点序号。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-71" title="71">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">要交换的结点序号。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-72" title="72">        <span class="kw">private</span> <span class="kw">static</span> <span class="dt">void</span> Exch&lt;T&gt;(T[] pq, <span class="dt">int</span> a, <span class="dt">int</span> b)</a>
-<a class="sourceLine" id="cb1-73" title="73">        {</a>
-<a class="sourceLine" id="cb1-74" title="74">            T temp = pq[a - <span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb1-75" title="75">            pq[a - <span class="dv">1</span>] = pq[b - <span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb1-76" title="76">            pq[b - <span class="dv">1</span>] = temp;</a>
-<a class="sourceLine" id="cb1-77" title="77">        }</a>
-<a class="sourceLine" id="cb1-78" title="78">    }</a>
-<a class="sourceLine" id="cb1-79" title="79">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://en.wikipedia.org/wiki/D-ary_heap" target="_blank" rel="noopener">D-ary Heap-Wikipedia</a> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.41<br>Multiway 堆。<br>根据正文中的描述实现基于完全堆有序的三叉树和四叉树的堆排序。<br>对于 N=10^3、10^6 和 10^9 大小的随机不重复数组，<br>记录你的程序所使用的比较次数和标准实现所使用的比较次数。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>多叉堆和二叉堆的实现上并没有很大的区别，<br>只不过下沉（<code>Sink</code>）时需要比较的子结点数量变多了，上浮时父结点的下标不再是 $ \lfloor k /2 \rfloor $。<br>于是只要能推出 $ d $ 叉堆的下标换算公式即可解决整个问题。</p>
+<p>先考虑 $ d $ 叉堆的在数组中的保存方式，<br>第一层显然只有根结点，第二层显然有 $ d $ 个结点，第三层则有 $ d \times d=d^2 $ 个结点，如下图所示：<br><img src="./1.png" alt=""><br>不难推出第 $ k $ 层有 $ d^{k-1} $ 个结点。</p>
+<p>接下来我们对其标号，根结点为 1，以此类推，如下图：<br><img src="./2.png" alt=""></p>
+<p>现在我们来推导某个结点的子结点的下标公式。<br>结点 $ i $ 的第一个子结点在哪里呢？<br>首先要加上本层剩下的结点，再加上它前面结点的所有子结点，再下一个就是它的第一个子结点了。<br>以 2 号结点为例，它是第二层的第一个结点，第二层共有 $ d^{2-1}=d $ 个结点，剩下 $ d-1 $ 个结点。<br>2 号结点前面没有更多兄弟结点，于是第一个子结点下标即为 $ 2 + d - 1 + 1= 2 + d $。<br>3 号结点之后剩余 $ d-2 $ 个结点，加上前面 2 号结点的 $ d $ 个子结点，<br>它的第一个子结点下标为 $ 3+d-2+d+1= 2+2d $。<br>不难发现规律，结点序号加一，子结点的下标就要对应加上 $ d $（要加上前一个结点的子结点），<br>这个规律也可以从图上（$ d=3 $）看出来：<br><img src="./3.png" alt=""><br>1号结点的子结点范围是 $ [2,d+1] $，每加一个结点子结点就要加上 $ d $ 。<br>于是立即可以推得结点 $ i $ 的子结点下标范围是 $ [d(i-1)+2,di+1] $ 。<br>代入 $ d=2 $，可以发现是符合我们已知的规律的。</p>
+<p>接下来是结点 $ i $ 的父结点，<br>我们由上面的式子反推可以得到父结点的下标为 $ \lfloor (i-2)/d \rfloor +1$（或者 $\lceil (i-2)/d \rceil$）。<br>获得这两个公式之后，只需要将 <code>sink</code> 和 <code>swim</code> 方法中上升和下降的公式做相应更改即可。</p>
+<p>测试结果，注意下标可能会超过 <code>int</code> 的范围，请使用 <code>long</code>。：<br><img src="./4.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> PriorityQueue
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// d 叉堆排序类，提供堆排序的静态方法。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的元素类型。&lt;/typeparam></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">HeapMultiway</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 利用堆排序对数组进行排序。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="pq">需要排序的数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="d">堆的分叉数。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> pq<span class="token punctuation">,</span> <span class="token keyword">int</span> d<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> pq<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 建堆</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> d <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">;</span> k<span class="token operator">--</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token function">Sink</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> k<span class="token punctuation">,</span> n<span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// 排序</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token function">Exch</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">Sink</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 令堆中的元素下沉。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="pq">需要执行操作的堆。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="k">需要执行下沉的结点下标。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">堆中元素的数目。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="d">堆的分叉数。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token generic-method function">Sink<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> pq<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> d<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> d <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">&lt;=</span> n<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> j <span class="token operator">=</span> d <span class="token operator">*</span> <span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 在 d 个子结点中找到最大的那个</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> q <span class="token operator">=</span> j<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> d<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>q <span class="token operator">+</span> i <span class="token operator">&lt;=</span> n <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> j<span class="token punctuation">,</span> q <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                        j <span class="token operator">=</span> q <span class="token operator">+</span> i<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">Less</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> k<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token function">Exch</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> k<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                k <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 比较堆中下标为 &lt;paramref name="a"/> 的元素是否小于下标为 &lt;paramref name="b"/> 的元素。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="pq">元素所在的数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要比较是否较小的结点序号。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">需要比较是否较大的结点序号。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token generic-method function">Less<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> pq<span class="token punctuation">,</span> <span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">=</span><span class="token operator">></span> pq<span class="token punctuation">[</span>a <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>pq<span class="token punctuation">[</span>b <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 交换堆中的两个元素。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="pq">要交换的元素所在堆。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">要交换的结点序号。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">要交换的结点序号。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token generic-method function">Exch<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> pq<span class="token punctuation">,</span> <span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            T temp <span class="token operator">=</span> pq<span class="token punctuation">[</span>a <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            pq<span class="token punctuation">[</span>a <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> pq<span class="token punctuation">[</span>b <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            pq<span class="token punctuation">[</span>b <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://en.wikipedia.org/wiki/D-ary_heap" target="_blank" rel="noopener">D-ary Heap-Wikipedia</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

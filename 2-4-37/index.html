@@ -140,72 +140,69 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.37</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.4.37 性能测试Ⅱ。 编写一个性能测试用例，用插入元素操作填满一个优先队列， 然后在一秒钟之内尽可能多地连续反复调用删除最大元素和插入元素的操作。 用一列随机的长短不同的元素多次重复以上过程， 将程序能够完成的删除最大元素操作的平均次数打印出来或是绘成图表。</p>
-<h1 id="解答">解答</h1>
-<p>建立一个全局变量 <code>isRunning</code> ，每次 <code>DelMax()</code> 之前都先确认这个值是否为 <code>true</code>， 设立一个 <code>Timer</code> 在 1 秒钟之后自动将 <code>isRunning</code> 置为 <code>false</code>。</p>
-<p>测试结果如下： <img src="./1.png"> 随着 <code>n</code> 增大，一秒钟之内能执行的 <code>DelMax()</code> 次数会下降。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">Timers</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> PriorityQueue;</a>
-<a class="sourceLine" id="cb1-4" title="4"></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">4.</span>_<span class="dv">37</span></a>
-<a class="sourceLine" id="cb1-6" title="6">{</a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-8" title="8">    {</a>
-<a class="sourceLine" id="cb1-9" title="9">        <span class="kw">static</span> <span class="dt">bool</span> isRunning = <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">static</span> Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-11" title="11"></a>
-<a class="sourceLine" id="cb1-12" title="12">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-13" title="13">        {</a>
-<a class="sourceLine" id="cb1-14" title="14">            <span class="dt">int</span> doubleTime = <span class="dv">6</span>;</a>
-<a class="sourceLine" id="cb1-15" title="15">            <span class="dt">int</span> repeatTime = <span class="dv">6</span>;</a>
-<a class="sourceLine" id="cb1-16" title="16">            <span class="dt">int</span> n = <span class="dv">1000000</span>;</a>
-<a class="sourceLine" id="cb1-17" title="17">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; doubleTime; i++)</a>
-<a class="sourceLine" id="cb1-18" title="18">            {</a>
-<a class="sourceLine" id="cb1-19" title="19">                <span class="dt">int</span> totalDelCount = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-20" title="20">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;n=&quot;</span> + n);</a>
-<a class="sourceLine" id="cb1-21" title="21">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; repeatTime; j++)</a>
-<a class="sourceLine" id="cb1-22" title="22">                {</a>
-<a class="sourceLine" id="cb1-23" title="23">                    MaxPQ&lt;<span class="dt">int</span>&gt; pq = <span class="kw">new</span> MaxPQ&lt;<span class="dt">int</span>&gt;(n);</a>
-<a class="sourceLine" id="cb1-24" title="24">                    <span class="dt">int</span> delCount = <span class="fu">Test</span>(n, pq);</a>
-<a class="sourceLine" id="cb1-25" title="25">                    totalDelCount += delCount;</a>
-<a class="sourceLine" id="cb1-26" title="26">                    Console.<span class="fu">Write</span>(delCount + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-27" title="27">                }</a>
-<a class="sourceLine" id="cb1-28" title="28">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;平均最大删除次数：&quot;</span> + totalDelCount / repeatTime);</a>
-<a class="sourceLine" id="cb1-29" title="29">                n *= <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-30" title="30">            }</a>
-<a class="sourceLine" id="cb1-31" title="31">        }</a>
-<a class="sourceLine" id="cb1-32" title="32"></a>
-<a class="sourceLine" id="cb1-33" title="33">        <span class="kw">static</span> <span class="dt">int</span> <span class="fu">Test</span>(<span class="dt">int</span> n, MaxPQ&lt;<span class="dt">int</span>&gt; pq)</a>
-<a class="sourceLine" id="cb1-34" title="34">        {</a>
-<a class="sourceLine" id="cb1-35" title="35">            Timer timer = <span class="kw">new</span> <span class="fu">Timer</span>(<span class="dv">1000</span>);</a>
-<a class="sourceLine" id="cb1-36" title="36">            timer.<span class="fu">Elapsed</span> += <span class="kw">new</span> <span class="fu">ElapsedEventHandler</span>(StopRunning);</a>
-<a class="sourceLine" id="cb1-37" title="37">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-38" title="38">            {</a>
-<a class="sourceLine" id="cb1-39" title="39">                pq.<span class="fu">Insert</span>(random.<span class="fu">Next</span>());</a>
-<a class="sourceLine" id="cb1-40" title="40">            }</a>
-<a class="sourceLine" id="cb1-41" title="41"></a>
-<a class="sourceLine" id="cb1-42" title="42">            <span class="dt">int</span> delCount = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-43" title="43">            <span class="fu">StartRunning</span>();</a>
-<a class="sourceLine" id="cb1-44" title="44">            timer.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb1-45" title="45">            <span class="kw">while</span> (isRunning &amp;&amp; !pq.<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb1-46" title="46">            {</a>
-<a class="sourceLine" id="cb1-47" title="47">                pq.<span class="fu">DelMax</span>();</a>
-<a class="sourceLine" id="cb1-48" title="48">                delCount++;</a>
-<a class="sourceLine" id="cb1-49" title="49">            }</a>
-<a class="sourceLine" id="cb1-50" title="50">            timer.<span class="fu">Stop</span>();</a>
-<a class="sourceLine" id="cb1-51" title="51">            <span class="kw">return</span> delCount;</a>
-<a class="sourceLine" id="cb1-52" title="52">        }</a>
-<a class="sourceLine" id="cb1-53" title="53"></a>
-<a class="sourceLine" id="cb1-54" title="54">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">StartRunning</span>() =&gt; isRunning = <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-55" title="55">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">StopRunning</span>(<span class="dt">object</span> source, ElapsedEventArgs e)</a>
-<a class="sourceLine" id="cb1-56" title="56">            =&gt; isRunning = <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb1-57" title="57">    }</a>
-<a class="sourceLine" id="cb1-58" title="58">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.37<br>性能测试Ⅱ。<br>编写一个性能测试用例，用插入元素操作填满一个优先队列，<br>然后在一秒钟之内尽可能多地连续反复调用删除最大元素和插入元素的操作。<br>用一列随机的长短不同的元素多次重复以上过程，<br>将程序能够完成的删除最大元素操作的平均次数打印出来或是绘成图表。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>建立一个全局变量 <code>isRunning</code> ，每次 <code>DelMax()</code> 之前都先确认这个值是否为 <code>true</code>，<br>设立一个 <code>Timer</code> 在 1 秒钟之后自动将 <code>isRunning</code> 置为 <code>false</code>。</p>
+<p>测试结果如下：<br><img src="./1.png" alt=""><br>随着 <code>n</code> 增大，一秒钟之内能执行的 <code>DelMax()</code> 次数会下降。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Timers<span class="token punctuation">;</span>
+<span class="token keyword">using</span> PriorityQueue<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_37
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">bool</span> isRunning <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">static</span> Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> doubleTime <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> repeatTime <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">1000000</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> doubleTime<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> totalDelCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"n="</span> <span class="token operator">+</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> repeatTime<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    MaxPQ<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">int</span> delCount <span class="token operator">=</span> <span class="token function">Test</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> pq<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    totalDelCount <span class="token operator">+</span><span class="token operator">=</span> delCount<span class="token punctuation">;</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>delCount <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"平均最大删除次数："</span> <span class="token operator">+</span> totalDelCount <span class="token operator">/</span> repeatTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> MaxPQ<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Timer timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Timer</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            timer<span class="token punctuation">.</span>Elapsed <span class="token operator">+</span><span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ElapsedEventHandler</span><span class="token punctuation">(</span>StopRunning<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pq<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">int</span> delCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token function">StartRunning</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            timer<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>isRunning <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>pq<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pq<span class="token punctuation">.</span><span class="token function">DelMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                delCount<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            timer<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> delCount<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">StartRunning</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> isRunning <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">StopRunning</span><span class="token punctuation">(</span><span class="token keyword">object</span> source<span class="token punctuation">,</span> ElapsedEventArgs e<span class="token punctuation">)</span>
+            <span class="token operator">=</span><span class="token operator">></span> isRunning <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

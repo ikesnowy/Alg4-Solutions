@@ -140,199 +140,196 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.3.29</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.3.29 用环形链表实现 Queue。 环形链表也是一条链表，只是没有任何结点的链接为空，且只要链表非空则 last.next 的值为 first。 只能使用一个 Node 类型的实例变量（last）。</p>
-<h1 id="解答">解答</h1>
-<p>其实就是一个长这样的链表： <img src="./1.png"></p>
-<p>显然说 first 和最后一个节点的指针重复了，所以我们只需要保留 last 的指针就行了。 <img src="./2.png"></p>
-<p>入队（注意顺序） <img src="./3.png"></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.29<br>用环形链表实现 Queue。<br>环形链表也是一条链表，只是没有任何结点的链接为空，且只要链表非空则 last.next 的值为 first。<br>只能使用一个 Node 类型的实例变量（last）。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>其实就是一个长这样的链表：<br><img src="./1.png" alt=""></p>
+<p>显然说 first 和最后一个节点的指针重复了，所以我们只需要保留 last 的指针就行了。<br><img src="./2.png" alt=""></p>
+<p>入队（注意顺序）<br><img src="./3.png" alt=""></p>
 <p>出队</p>
-<p><img src="./4.png"></p>
-<h1 id="代码">代码</h1>
-<h2 id="queue.cs">Queue.cs</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Collections</span>.<span class="fu">Generic</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">using</span> System.<span class="fu">Text</span>;</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">29</span></a>
-<a class="sourceLine" id="cb1-7" title="7">{</a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">public</span> <span class="kw">class</span> Queue&lt;Item&gt; : IEnumerable&lt;Item&gt;</a>
-<a class="sourceLine" id="cb1-9" title="9">    {</a>
-<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">private</span> Node&lt;Item&gt; last;</a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">private</span> <span class="dt">int</span> count;</a>
-<a class="sourceLine" id="cb1-12" title="12"></a>
-<a class="sourceLine" id="cb1-13" title="13">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="co">/// 默认构造函数。</span></a>
-<a class="sourceLine" id="cb1-15" title="15">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-16" title="16">        <span class="kw">public</span> <span class="fu">Queue</span>()</a>
-<a class="sourceLine" id="cb1-17" title="17">        {</a>
-<a class="sourceLine" id="cb1-18" title="18">            <span class="kw">this</span>.<span class="fu">last</span> = <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb1-19" title="19">            <span class="kw">this</span>.<span class="fu">count</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-20" title="20">        }</a>
-<a class="sourceLine" id="cb1-21" title="21"></a>
-<a class="sourceLine" id="cb1-22" title="22">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-23" title="23">        <span class="co">/// 检查队列是否为空。</span></a>
-<a class="sourceLine" id="cb1-24" title="24">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-25" title="25">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-26" title="26">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsEmpty</span>()</a>
-<a class="sourceLine" id="cb1-27" title="27">        {</a>
-<a class="sourceLine" id="cb1-28" title="28">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">last</span> == <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb1-29" title="29">        }</a>
-<a class="sourceLine" id="cb1-30" title="30"></a>
-<a class="sourceLine" id="cb1-31" title="31">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="co">/// 返回队列中元素的数量。</span></a>
-<a class="sourceLine" id="cb1-33" title="33">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-34" title="34">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-35" title="35">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Size</span>()</a>
-<a class="sourceLine" id="cb1-36" title="36">        {</a>
-<a class="sourceLine" id="cb1-37" title="37">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">count</span>;</a>
-<a class="sourceLine" id="cb1-38" title="38">        }</a>
-<a class="sourceLine" id="cb1-39" title="39"></a>
-<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-41" title="41">        <span class="co">/// 返回队列中的第一个元素（但不让它出队）。</span></a>
-<a class="sourceLine" id="cb1-42" title="42">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-43" title="43">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-44" title="44">        <span class="kw">public</span> Item <span class="fu">Peek</span>()</a>
-<a class="sourceLine" id="cb1-45" title="45">        {</a>
-<a class="sourceLine" id="cb1-46" title="46">            <span class="kw">if</span> (<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb1-47" title="47">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">InvalidOperationException</span>(<span class="st">&quot;Queue underflow&quot;</span>);</a>
-<a class="sourceLine" id="cb1-48" title="48">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">last</span>.<span class="fu">next</span>.<span class="fu">item</span>;</a>
-<a class="sourceLine" id="cb1-49" title="49">        }</a>
-<a class="sourceLine" id="cb1-50" title="50"></a>
-<a class="sourceLine" id="cb1-51" title="51">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-52" title="52">        <span class="co">/// 将一个新元素加入队列中。</span></a>
-<a class="sourceLine" id="cb1-53" title="53">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-54" title="54">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;item&quot;</span><span class="kw">&gt;</span><span class="co">要入队的元素。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-55" title="55">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Enqueue</span>(Item item)</a>
-<a class="sourceLine" id="cb1-56" title="56">        {</a>
-<a class="sourceLine" id="cb1-57" title="57">            Node&lt;Item&gt; oldLast = <span class="kw">this</span>.<span class="fu">last</span>;</a>
-<a class="sourceLine" id="cb1-58" title="58">            <span class="kw">this</span>.<span class="fu">last</span> = <span class="kw">new</span> Node&lt;Item&gt;();</a>
-<a class="sourceLine" id="cb1-59" title="59">            <span class="kw">this</span>.<span class="fu">last</span>.<span class="fu">item</span> = item;</a>
-<a class="sourceLine" id="cb1-60" title="60">            <span class="kw">this</span>.<span class="fu">last</span>.<span class="fu">next</span> = <span class="kw">this</span>.<span class="fu">last</span>;</a>
-<a class="sourceLine" id="cb1-61" title="61"></a>
-<a class="sourceLine" id="cb1-62" title="62">            <span class="kw">if</span> (oldLast != <span class="kw">null</span>)</a>
-<a class="sourceLine" id="cb1-63" title="63">            {</a>
-<a class="sourceLine" id="cb1-64" title="64">                <span class="kw">this</span>.<span class="fu">last</span>.<span class="fu">next</span> = oldLast.<span class="fu">next</span>;</a>
-<a class="sourceLine" id="cb1-65" title="65">                oldLast.<span class="fu">next</span> = <span class="kw">this</span>.<span class="fu">last</span>;</a>
-<a class="sourceLine" id="cb1-66" title="66">            }</a>
-<a class="sourceLine" id="cb1-67" title="67">            count++;</a>
-<a class="sourceLine" id="cb1-68" title="68">        }</a>
-<a class="sourceLine" id="cb1-69" title="69"></a>
-<a class="sourceLine" id="cb1-70" title="70">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-71" title="71">        <span class="co">/// 将队列中的第一个元素出队并返回它。</span></a>
-<a class="sourceLine" id="cb1-72" title="72">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-73" title="73">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-74" title="74">        <span class="kw">public</span> Item <span class="fu">Dequeue</span>()</a>
-<a class="sourceLine" id="cb1-75" title="75">        {</a>
-<a class="sourceLine" id="cb1-76" title="76">            <span class="kw">if</span> (<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb1-77" title="77">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">InvalidOperationException</span>(<span class="st">&quot;Queue underflow&quot;</span>);</a>
-<a class="sourceLine" id="cb1-78" title="78">            Item item = <span class="kw">this</span>.<span class="fu">last</span>.<span class="fu">next</span>.<span class="fu">item</span>;</a>
-<a class="sourceLine" id="cb1-79" title="79">            <span class="kw">this</span>.<span class="fu">last</span>.<span class="fu">next</span> = <span class="kw">this</span>.<span class="fu">last</span>.<span class="fu">next</span>.<span class="fu">next</span>;</a>
-<a class="sourceLine" id="cb1-80" title="80">            <span class="kw">this</span>.<span class="fu">count</span>--;</a>
-<a class="sourceLine" id="cb1-81" title="81">            <span class="kw">if</span> (<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb1-82" title="82">                <span class="kw">this</span>.<span class="fu">last</span> = <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb1-83" title="83">            <span class="kw">return</span> item;</a>
-<a class="sourceLine" id="cb1-84" title="84">        }</a>
-<a class="sourceLine" id="cb1-85" title="85"></a>
-<a class="sourceLine" id="cb1-86" title="86">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">string</span> <span class="fu">ToString</span>()</a>
-<a class="sourceLine" id="cb1-87" title="87">        {</a>
-<a class="sourceLine" id="cb1-88" title="88">            StringBuilder s = <span class="kw">new</span> <span class="fu">StringBuilder</span>();</a>
-<a class="sourceLine" id="cb1-89" title="89">            <span class="kw">foreach</span> (Item item <span class="kw">in</span> <span class="kw">this</span>)</a>
-<a class="sourceLine" id="cb1-90" title="90">            {</a>
-<a class="sourceLine" id="cb1-91" title="91">                s.<span class="fu">Append</span>(item);</a>
-<a class="sourceLine" id="cb1-92" title="92">                s.<span class="fu">Append</span>(<span class="st">&quot; &quot;</span>);</a>
-<a class="sourceLine" id="cb1-93" title="93">            }</a>
-<a class="sourceLine" id="cb1-94" title="94">            <span class="kw">return</span> s.<span class="fu">ToString</span>();</a>
-<a class="sourceLine" id="cb1-95" title="95">        }</a>
-<a class="sourceLine" id="cb1-96" title="96"></a>
-<a class="sourceLine" id="cb1-97" title="97">        <span class="kw">public</span> IEnumerator&lt;Item&gt; <span class="fu">GetEnumerator</span>()</a>
-<a class="sourceLine" id="cb1-98" title="98">        {</a>
-<a class="sourceLine" id="cb1-99" title="99">            <span class="kw">return</span> <span class="kw">new</span> <span class="fu">QueueEnumerator</span>(<span class="kw">this</span>.<span class="fu">last</span>);</a>
-<a class="sourceLine" id="cb1-100" title="100">        }</a>
-<a class="sourceLine" id="cb1-101" title="101"></a>
-<a class="sourceLine" id="cb1-102" title="102">        IEnumerator IEnumerable.<span class="fu">GetEnumerator</span>()</a>
-<a class="sourceLine" id="cb1-103" title="103">        {</a>
-<a class="sourceLine" id="cb1-104" title="104">            <span class="kw">return</span> <span class="fu">GetEnumerator</span>();</a>
-<a class="sourceLine" id="cb1-105" title="105">        }</a>
-<a class="sourceLine" id="cb1-106" title="106"></a>
-<a class="sourceLine" id="cb1-107" title="107">        <span class="kw">private</span> <span class="kw">class</span> QueueEnumerator : IEnumerator&lt;Item&gt;</a>
-<a class="sourceLine" id="cb1-108" title="108">        {</a>
-<a class="sourceLine" id="cb1-109" title="109">            <span class="kw">private</span> Node&lt;Item&gt; current;</a>
-<a class="sourceLine" id="cb1-110" title="110">            <span class="kw">private</span> Node&lt;Item&gt; first;</a>
-<a class="sourceLine" id="cb1-111" title="111"></a>
-<a class="sourceLine" id="cb1-112" title="112">            <span class="kw">public</span> <span class="fu">QueueEnumerator</span>(Node&lt;Item&gt; last)</a>
-<a class="sourceLine" id="cb1-113" title="113">            {</a>
-<a class="sourceLine" id="cb1-114" title="114">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="kw">new</span> Node&lt;Item&gt;();</a>
-<a class="sourceLine" id="cb1-115" title="115">                <span class="kw">this</span>.<span class="fu">current</span>.<span class="fu">next</span> = last.<span class="fu">next</span>;</a>
-<a class="sourceLine" id="cb1-116" title="116">                <span class="kw">this</span>.<span class="fu">first</span> = <span class="kw">this</span>.<span class="fu">current</span>;</a>
-<a class="sourceLine" id="cb1-117" title="117">            }</a>
-<a class="sourceLine" id="cb1-118" title="118"></a>
-<a class="sourceLine" id="cb1-119" title="119">            Item IEnumerator&lt;Item&gt;.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">current</span>.<span class="fu">item</span>;</a>
-<a class="sourceLine" id="cb1-120" title="120"></a>
-<a class="sourceLine" id="cb1-121" title="121">            <span class="dt">object</span> IEnumerator.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">current</span>.<span class="fu">item</span>;</a>
-<a class="sourceLine" id="cb1-122" title="122"></a>
-<a class="sourceLine" id="cb1-123" title="123">            <span class="dt">void</span> IDisposable.<span class="fu">Dispose</span>()</a>
-<a class="sourceLine" id="cb1-124" title="124">            {</a>
-<a class="sourceLine" id="cb1-125" title="125">                <span class="kw">this</span>.<span class="fu">first</span> = <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb1-126" title="126">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb1-127" title="127">            }</a>
-<a class="sourceLine" id="cb1-128" title="128"></a>
-<a class="sourceLine" id="cb1-129" title="129">            <span class="dt">bool</span> IEnumerator.<span class="fu">MoveNext</span>()</a>
-<a class="sourceLine" id="cb1-130" title="130">            {</a>
-<a class="sourceLine" id="cb1-131" title="131">                <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">current</span>.<span class="fu">next</span> == first.<span class="fu">next</span>)</a>
-<a class="sourceLine" id="cb1-132" title="132">                    <span class="kw">return</span> <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb1-133" title="133">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="kw">this</span>.<span class="fu">current</span>.<span class="fu">next</span>;</a>
-<a class="sourceLine" id="cb1-134" title="134">                <span class="kw">return</span> <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-135" title="135">            }</a>
-<a class="sourceLine" id="cb1-136" title="136"></a>
-<a class="sourceLine" id="cb1-137" title="137">            <span class="dt">void</span> IEnumerator.<span class="fu">Reset</span>()</a>
-<a class="sourceLine" id="cb1-138" title="138">            {</a>
-<a class="sourceLine" id="cb1-139" title="139">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="kw">this</span>.<span class="fu">first</span>;</a>
-<a class="sourceLine" id="cb1-140" title="140">            }</a>
-<a class="sourceLine" id="cb1-141" title="141">        }</a>
-<a class="sourceLine" id="cb1-142" title="142">    }</a>
-<a class="sourceLine" id="cb1-143" title="143"></a>
-<a class="sourceLine" id="cb1-144" title="144">    <span class="kw">public</span> <span class="kw">class</span> Node&lt;Item&gt;</a>
-<a class="sourceLine" id="cb1-145" title="145">    {</a>
-<a class="sourceLine" id="cb1-146" title="146">        <span class="kw">public</span> Item item;</a>
-<a class="sourceLine" id="cb1-147" title="147">        <span class="kw">public</span> Node&lt;Item&gt; next;</a>
-<a class="sourceLine" id="cb1-148" title="148">    }</a>
-<a class="sourceLine" id="cb1-149" title="149">}</a></code></pre></div>
-<h2 id="program.cs">Program.cs</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">29</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">     * 1.3.29</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * 用环形链表实现 Queue。</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 环形链表也是一条链表，只是没有任何结点的链接为空，且只要链表非空则 last.next 的值为 first。</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 只能使用一个 Node 类型的实例变量（last）。</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-13" title="13">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-14" title="14">    {</a>
-<a class="sourceLine" id="cb2-15" title="15">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-16" title="16">        {</a>
-<a class="sourceLine" id="cb2-17" title="17">            <span class="dt">string</span> input = <span class="st">&quot;to be or not to - be - - that - - - is&quot;</span>;</a>
-<a class="sourceLine" id="cb2-18" title="18">            <span class="dt">string</span>[] s = input.<span class="fu">Split</span>(<span class="ch">&#39; &#39;</span>);</a>
-<a class="sourceLine" id="cb2-19" title="19">            Queue&lt;<span class="dt">string</span>&gt; queue = <span class="kw">new</span> Queue&lt;<span class="dt">string</span>&gt;();</a>
-<a class="sourceLine" id="cb2-20" title="20"></a>
-<a class="sourceLine" id="cb2-21" title="21">            <span class="kw">foreach</span> (<span class="dt">string</span> n <span class="kw">in</span> s)</a>
-<a class="sourceLine" id="cb2-22" title="22">            {</a>
-<a class="sourceLine" id="cb2-23" title="23">                <span class="kw">if</span> (!n.<span class="fu">Equals</span>(<span class="st">&quot;-&quot;</span>))</a>
-<a class="sourceLine" id="cb2-24" title="24">                    queue.<span class="fu">Enqueue</span>(n);</a>
-<a class="sourceLine" id="cb2-25" title="25">                <span class="kw">else</span> <span class="kw">if</span> (!queue.<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb2-26" title="26">                    Console.<span class="fu">WriteLine</span>(queue.<span class="fu">Dequeue</span>());</a>
-<a class="sourceLine" id="cb2-27" title="27">            }</a>
-<a class="sourceLine" id="cb2-28" title="28"></a>
-<a class="sourceLine" id="cb2-29" title="29">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;({queue.Size()}) left on queue&quot;</span>);</a>
-<a class="sourceLine" id="cb2-30" title="30">            Console.<span class="fu">WriteLine</span>(queue);</a>
-<a class="sourceLine" id="cb2-31" title="31">        }</a>
-<a class="sourceLine" id="cb2-32" title="32">    }</a>
-<a class="sourceLine" id="cb2-33" title="33">}</a></code></pre></div>
+<p><img src="./4.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="Queue-cs"><a href="#Queue-cs" class="headerlink" title="Queue.cs"></a>Queue.cs</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Text<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_29
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Queue</span><span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token punctuation">:</span> IEnumerable<span class="token operator">&lt;</span>Item<span class="token operator">></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> Node<span class="token operator">&lt;</span>Item<span class="token operator">></span> last<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> count<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token function">Queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 检查队列是否为空。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回队列中元素的数量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回队列中的第一个元素（但不让它出队）。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Item <span class="token function">Peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidOperationException</span><span class="token punctuation">(</span><span class="token string">"Queue underflow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>next<span class="token punctuation">.</span>item<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将一个新元素加入队列中。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="item">要入队的元素。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Enqueue</span><span class="token punctuation">(</span>Item item<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node<span class="token operator">&lt;</span>Item<span class="token operator">></span> oldLast <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>Item<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>item <span class="token operator">=</span> item<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>oldLast <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>next <span class="token operator">=</span> oldLast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+                oldLast<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将队列中的第一个元素出队并返回它。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Item <span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidOperationException</span><span class="token punctuation">(</span><span class="token string">"Queue underflow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Item item <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>next<span class="token punctuation">.</span>item<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">string</span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            StringBuilder s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span>Item item <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                s<span class="token punctuation">.</span><span class="token function">Append</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                s<span class="token punctuation">.</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">QueueEnumerator</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        IEnumerator IEnumerable<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">QueueEnumerator</span> <span class="token punctuation">:</span> IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">private</span> Node<span class="token operator">&lt;</span>Item<span class="token operator">></span> current<span class="token punctuation">;</span>
+            <span class="token keyword">private</span> Node<span class="token operator">&lt;</span>Item<span class="token operator">></span> first<span class="token punctuation">;</span>
+
+            <span class="token keyword">public</span> <span class="token function">QueueEnumerator</span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>Item<span class="token operator">></span> last<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>Item<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">.</span>next <span class="token operator">=</span> last<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            Item IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span><span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">.</span>item<span class="token punctuation">;</span>
+
+            <span class="token keyword">object</span> IEnumerator<span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">.</span>item<span class="token punctuation">;</span>
+
+            <span class="token keyword">void</span> IDisposable<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">bool</span> IEnumerator<span class="token punctuation">.</span><span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">.</span>next <span class="token operator">==</span> first<span class="token punctuation">.</span>next<span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">void</span> IEnumerator<span class="token punctuation">.</span><span class="token function">Reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>Item<span class="token operator">></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> Item item<span class="token punctuation">;</span>
+        <span class="token keyword">public</span> Node<span class="token operator">&lt;</span>Item<span class="token operator">></span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Program-cs"><a href="#Program-cs" class="headerlink" title="Program.cs"></a>Program.cs</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_29
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.3.29
+     * 
+     * 用环形链表实现 Queue。
+     * 环形链表也是一条链表，只是没有任何结点的链接为空，且只要链表非空则 last.next 的值为 first。
+     * 只能使用一个 Node 类型的实例变量（last）。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">string</span> input <span class="token operator">=</span> <span class="token string">"to be or not to - be - - that - - - is"</span><span class="token punctuation">;</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> s <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Queue<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Queue</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">string</span> n <span class="token keyword">in</span> s<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>n<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    queue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>queue<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>queue<span class="token punctuation">.</span><span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"({queue.Size()}) left on queue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

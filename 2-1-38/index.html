@@ -140,177 +140,174 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.38</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.1.38 不同类型的元素。编写一个测试用例，生成由多种数据类型元素组成的数组，元素的主键值随机，包括：</p>
-<p>每个元素的主键均为 String 类型（至少长 10 个字符），并含有一个 double 值。 每个元素的主键均为 double 类型，并含有 10 个 String 值（每个都至少长 10 个字符）。 每个元素的主键均为 int 类型，并含有一个 int[20] 值。</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.38<br>不同类型的元素。编写一个测试用例，生成由多种数据类型元素组成的数组，元素的主键值随机，包括： </p>
+<p>每个元素的主键均为 String 类型（至少长 10 个字符），并含有一个 double 值。<br>每个元素的主键均为 double 类型，并含有 10 个 String 值（每个都至少长 10 个字符）。<br>每个元素的主键均为 int 类型，并含有一个 int[20] 值。</p>
 <p>评估并验证这些输入数据对本节讨论的算法的性能的影响。</p>
-<h1 id="解答">解答</h1>
-<p>这里实现了一个 Pair 类，用来排序。 每一个元素都有相应的 key 值和 value 值，排序时只使用 key 值进行排序。 <img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Sort;</a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">38</span></a>
-<a class="sourceLine" id="cb1-5" title="5">{</a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 2.1.38</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 不同类型的元素。</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 编写一个测试用例，生成由多种数据类型元素组成的数组，元素的主键值随机，包括：</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 每个元素的主键均为 String 类型（至少长 10 个字符），并含有一个 double 值。</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 每个元素的主键均为 double 类型，并含有 10 个 String 值（每个都至少长 10 个字符）。</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * 每个元素的主键均为 int 类型，并含有一个 int[20] 值。</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">     * 评估并验证这些输入数据对本节讨论的算法的性能的影响。</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-18" title="18">    {</a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-20" title="20">        {</a>
-<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">int</span> n = <span class="dv">10000</span>;</a>
-<a class="sourceLine" id="cb1-22" title="22"></a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="dt">double</span>[] results = <span class="fu">TestA</span>(n);</a>
-<a class="sourceLine" id="cb1-24" title="24">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;string + double&quot;</span>);</a>
-<a class="sourceLine" id="cb1-25" title="25">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort:&quot;</span> + results[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb1-26" title="26">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort:&quot;</span> + results[<span class="dv">1</span>]);</a>
-<a class="sourceLine" id="cb1-27" title="27">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort:&quot;</span> + results[<span class="dv">2</span>]);</a>
-<a class="sourceLine" id="cb1-28" title="28"></a>
-<a class="sourceLine" id="cb1-29" title="29">            results = <span class="fu">TestB</span>(n);</a>
-<a class="sourceLine" id="cb1-30" title="30">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;double + 10 string&quot;</span>);</a>
-<a class="sourceLine" id="cb1-31" title="31">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort:&quot;</span> + results[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb1-32" title="32">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort:&quot;</span> + results[<span class="dv">1</span>]);</a>
-<a class="sourceLine" id="cb1-33" title="33">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort:&quot;</span> + results[<span class="dv">2</span>]);</a>
-<a class="sourceLine" id="cb1-34" title="34"></a>
-<a class="sourceLine" id="cb1-35" title="35">            results = <span class="fu">TestC</span>(n);</a>
-<a class="sourceLine" id="cb1-36" title="36">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;int + int[]&quot;</span>);</a>
-<a class="sourceLine" id="cb1-37" title="37">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort:&quot;</span> + results[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb1-38" title="38">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort:&quot;</span> + results[<span class="dv">1</span>]);</a>
-<a class="sourceLine" id="cb1-39" title="39">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort:&quot;</span> + results[<span class="dv">2</span>]);</a>
-<a class="sourceLine" id="cb1-40" title="40">        }</a>
-<a class="sourceLine" id="cb1-41" title="41"></a>
-<a class="sourceLine" id="cb1-42" title="42">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-43" title="43">        <span class="co">/// 第一个测试，测试结果按照 Insertion, Selection, Shell 排序。</span></a>
-<a class="sourceLine" id="cb1-44" title="44">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-45" title="45">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">测试的数组长度。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-46" title="46">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">测试结果。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-47" title="47">        <span class="kw">static</span> <span class="dt">double</span>[] <span class="fu">TestA</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb1-48" title="48">        {</a>
-<a class="sourceLine" id="cb1-49" title="49">            InsertionSort insertionSort = <span class="kw">new</span> <span class="fu">InsertionSort</span>();</a>
-<a class="sourceLine" id="cb1-50" title="50">            SelectionSort selectionSort = <span class="kw">new</span> <span class="fu">SelectionSort</span>();</a>
-<a class="sourceLine" id="cb1-51" title="51">            ShellSort shellSort = <span class="kw">new</span> <span class="fu">ShellSort</span>();</a>
-<a class="sourceLine" id="cb1-52" title="52"></a>
-<a class="sourceLine" id="cb1-53" title="53">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-54" title="54"></a>
-<a class="sourceLine" id="cb1-55" title="55">            <span class="co">// 每个元素的主键均为 String 类型（至少长 10 个字符），并含有一个 double 值。</span></a>
-<a class="sourceLine" id="cb1-56" title="56">            Pair&lt;<span class="dt">string</span>, <span class="dt">double</span>&gt;[] array = <span class="kw">new</span> Pair&lt;<span class="dt">string</span>, <span class="dt">double</span>&gt;[n];</a>
-<a class="sourceLine" id="cb1-57" title="57">            Pair&lt;<span class="dt">string</span>, <span class="dt">double</span>&gt;[] arrayBak = <span class="kw">new</span> Pair&lt;<span class="dt">string</span>, <span class="dt">double</span>&gt;[n];</a>
-<a class="sourceLine" id="cb1-58" title="58">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-59" title="59">            {</a>
-<a class="sourceLine" id="cb1-60" title="60">                array[i] = <span class="kw">new</span> Pair&lt;<span class="dt">string</span>, <span class="dt">double</span>&gt;(<span class="fu">RandomString</span>(<span class="dv">20</span>, random), random.<span class="fu">NextDouble</span>());</a>
-<a class="sourceLine" id="cb1-61" title="61">            }</a>
-<a class="sourceLine" id="cb1-62" title="62">            array.<span class="fu">CopyTo</span>(arrayBak, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-63" title="63"></a>
-<a class="sourceLine" id="cb1-64" title="64">            <span class="dt">double</span>[] results = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">3</span>];</a>
-<a class="sourceLine" id="cb1-65" title="65">            results[<span class="dv">0</span>] = SortCompare.<span class="fu">Time</span>(insertionSort, array);</a>
-<a class="sourceLine" id="cb1-66" title="66">            arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-67" title="67">            results[<span class="dv">1</span>] = SortCompare.<span class="fu">Time</span>(selectionSort, array);</a>
-<a class="sourceLine" id="cb1-68" title="68">            arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-69" title="69">            results[<span class="dv">2</span>] = SortCompare.<span class="fu">Time</span>(shellSort, array);</a>
-<a class="sourceLine" id="cb1-70" title="70">            <span class="kw">return</span> results;</a>
-<a class="sourceLine" id="cb1-71" title="71">        }</a>
-<a class="sourceLine" id="cb1-72" title="72"></a>
-<a class="sourceLine" id="cb1-73" title="73">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-74" title="74">        <span class="co">/// 第二个测试，测试结果按照 Insertion, Selection, Shell 排序。</span></a>
-<a class="sourceLine" id="cb1-75" title="75">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-76" title="76">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">测试的数组长度。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-77" title="77">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">测试结果。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-78" title="78">        <span class="kw">static</span> <span class="dt">double</span>[] <span class="fu">TestB</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb1-79" title="79">        {</a>
-<a class="sourceLine" id="cb1-80" title="80">            InsertionSort insertionSort = <span class="kw">new</span> <span class="fu">InsertionSort</span>();</a>
-<a class="sourceLine" id="cb1-81" title="81">            SelectionSort selectionSort = <span class="kw">new</span> <span class="fu">SelectionSort</span>();</a>
-<a class="sourceLine" id="cb1-82" title="82">            ShellSort shellSort = <span class="kw">new</span> <span class="fu">ShellSort</span>();</a>
-<a class="sourceLine" id="cb1-83" title="83"></a>
-<a class="sourceLine" id="cb1-84" title="84">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-85" title="85"></a>
-<a class="sourceLine" id="cb1-86" title="86">            <span class="co">// 每个元素的主键均为 double 类型，并含有 10 个 String 值（每个都至少长 10 个字符）。</span></a>
-<a class="sourceLine" id="cb1-87" title="87">            Pair&lt;<span class="dt">double</span>, <span class="dt">string</span>[]&gt;[] array = <span class="kw">new</span> Pair&lt;<span class="dt">double</span>, <span class="dt">string</span>[]&gt;[n];</a>
-<a class="sourceLine" id="cb1-88" title="88">            Pair&lt;<span class="dt">double</span>, <span class="dt">string</span>[]&gt;[] arrayBak = <span class="kw">new</span> Pair&lt;<span class="dt">double</span>, <span class="dt">string</span>[]&gt;[n];</a>
-<a class="sourceLine" id="cb1-89" title="89">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-90" title="90">            {</a>
-<a class="sourceLine" id="cb1-91" title="91">                <span class="dt">string</span>[] temp = <span class="kw">new</span> <span class="dt">string</span>[<span class="dv">10</span>];</a>
-<a class="sourceLine" id="cb1-92" title="92">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; <span class="dv">10</span>; j++)</a>
-<a class="sourceLine" id="cb1-93" title="93">                {</a>
-<a class="sourceLine" id="cb1-94" title="94">                    temp[j] = <span class="fu">RandomString</span>(<span class="dv">12</span>, random);</a>
-<a class="sourceLine" id="cb1-95" title="95">                }</a>
-<a class="sourceLine" id="cb1-96" title="96">                array[i] = <span class="kw">new</span> Pair&lt;<span class="dt">double</span>, <span class="dt">string</span>[]&gt;(random.<span class="fu">NextDouble</span>(), temp);</a>
-<a class="sourceLine" id="cb1-97" title="97">            }</a>
-<a class="sourceLine" id="cb1-98" title="98">            array.<span class="fu">CopyTo</span>(arrayBak, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-99" title="99"></a>
-<a class="sourceLine" id="cb1-100" title="100">            <span class="dt">double</span>[] results = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">3</span>];</a>
-<a class="sourceLine" id="cb1-101" title="101">            results[<span class="dv">0</span>] = SortCompare.<span class="fu">Time</span>(insertionSort, array);</a>
-<a class="sourceLine" id="cb1-102" title="102">            arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-103" title="103">            results[<span class="dv">1</span>] = SortCompare.<span class="fu">Time</span>(selectionSort, array);</a>
-<a class="sourceLine" id="cb1-104" title="104">            arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-105" title="105">            results[<span class="dv">2</span>] = SortCompare.<span class="fu">Time</span>(shellSort, array);</a>
-<a class="sourceLine" id="cb1-106" title="106">            <span class="kw">return</span> results;</a>
-<a class="sourceLine" id="cb1-107" title="107">        }</a>
-<a class="sourceLine" id="cb1-108" title="108"></a>
-<a class="sourceLine" id="cb1-109" title="109">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-110" title="110">        <span class="co">/// 第三个测试，测试结果按照 Insertion, Selection, Shell 排序。</span></a>
-<a class="sourceLine" id="cb1-111" title="111">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-112" title="112">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">测试的数组长度。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-113" title="113">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">测试结果。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-114" title="114">        <span class="kw">static</span> <span class="dt">double</span>[] <span class="fu">TestC</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb1-115" title="115">        {</a>
-<a class="sourceLine" id="cb1-116" title="116">            InsertionSort insertionSort = <span class="kw">new</span> <span class="fu">InsertionSort</span>();</a>
-<a class="sourceLine" id="cb1-117" title="117">            SelectionSort selectionSort = <span class="kw">new</span> <span class="fu">SelectionSort</span>();</a>
-<a class="sourceLine" id="cb1-118" title="118">            ShellSort shellSort = <span class="kw">new</span> <span class="fu">ShellSort</span>();</a>
-<a class="sourceLine" id="cb1-119" title="119"></a>
-<a class="sourceLine" id="cb1-120" title="120">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-121" title="121"></a>
-<a class="sourceLine" id="cb1-122" title="122">            <span class="co">// 每个元素的主键均为 int 类型，并含有一个 int[20] 值。</span></a>
-<a class="sourceLine" id="cb1-123" title="123">            Pair&lt;<span class="dt">int</span>, <span class="dt">int</span>[]&gt;[] array = <span class="kw">new</span> Pair&lt;<span class="dt">int</span>, <span class="dt">int</span>[]&gt;[n];</a>
-<a class="sourceLine" id="cb1-124" title="124">            Pair&lt;<span class="dt">int</span>, <span class="dt">int</span>[]&gt;[] arrayBak = <span class="kw">new</span> Pair&lt;<span class="dt">int</span>, <span class="dt">int</span>[]&gt;[n];</a>
-<a class="sourceLine" id="cb1-125" title="125">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-126" title="126">            {</a>
-<a class="sourceLine" id="cb1-127" title="127">                <span class="dt">int</span>[] temp = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">20</span>];</a>
-<a class="sourceLine" id="cb1-128" title="128">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; <span class="dv">20</span>; j++)</a>
-<a class="sourceLine" id="cb1-129" title="129">                {</a>
-<a class="sourceLine" id="cb1-130" title="130">                    temp[j] = random.<span class="fu">Next</span>();</a>
-<a class="sourceLine" id="cb1-131" title="131">                }</a>
-<a class="sourceLine" id="cb1-132" title="132">                array[i] = <span class="kw">new</span> Pair&lt;<span class="dt">int</span>, <span class="dt">int</span>[]&gt;(random.<span class="fu">Next</span>(), temp);</a>
-<a class="sourceLine" id="cb1-133" title="133">            }</a>
-<a class="sourceLine" id="cb1-134" title="134">            array.<span class="fu">CopyTo</span>(arrayBak, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-135" title="135"></a>
-<a class="sourceLine" id="cb1-136" title="136">            <span class="dt">double</span>[] results = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">3</span>];</a>
-<a class="sourceLine" id="cb1-137" title="137">            results[<span class="dv">0</span>] = SortCompare.<span class="fu">Time</span>(insertionSort, array);</a>
-<a class="sourceLine" id="cb1-138" title="138">            arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-139" title="139">            results[<span class="dv">1</span>] = SortCompare.<span class="fu">Time</span>(selectionSort, array);</a>
-<a class="sourceLine" id="cb1-140" title="140">            arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-141" title="141">            results[<span class="dv">2</span>] = SortCompare.<span class="fu">Time</span>(shellSort, array);</a>
-<a class="sourceLine" id="cb1-142" title="142">            <span class="kw">return</span> results;</a>
-<a class="sourceLine" id="cb1-143" title="143">        }</a>
-<a class="sourceLine" id="cb1-144" title="144"></a>
-<a class="sourceLine" id="cb1-145" title="145"></a>
-<a class="sourceLine" id="cb1-146" title="146">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-147" title="147">        <span class="co">/// 获取一个随机 </span><span class="kw">&lt;see</span><span class="ot"> cref=</span><span class="dt">&quot;string&quot;</span><span class="kw">/&gt;</span><span class="co">。</span></a>
-<a class="sourceLine" id="cb1-148" title="148">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-149" title="149">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;&lt;see</span><span class="ot"> cref=</span><span class="dt">&quot;string&quot;</span><span class="kw">/&gt;</span><span class="co"> 的长度。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-150" title="150">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;random&quot;</span><span class="kw">&gt;</span><span class="co">随机数生成器。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-151" title="151">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">获取一个随机 </span><span class="kw">&lt;see</span><span class="ot"> cref=</span><span class="dt">&quot;string&quot;</span><span class="kw">/&gt;</span><span class="co">。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-152" title="152">        <span class="kw">static</span> <span class="dt">string</span> <span class="fu">RandomString</span>(<span class="dt">int</span> n, Random random)</a>
-<a class="sourceLine" id="cb1-153" title="153">        {</a>
-<a class="sourceLine" id="cb1-154" title="154">            <span class="dt">char</span>[] value = <span class="kw">new</span> <span class="dt">char</span>[n];</a>
-<a class="sourceLine" id="cb1-155" title="155">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-156" title="156">            {</a>
-<a class="sourceLine" id="cb1-157" title="157">                value[i] = (<span class="dt">char</span>)random.<span class="fu">Next</span>(<span class="dt">char</span>.<span class="fu">MinValue</span> + <span class="dv">10</span>, <span class="dt">char</span>.<span class="fu">MaxValue</span> - <span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb1-158" title="158">            }</a>
-<a class="sourceLine" id="cb1-159" title="159">            <span class="kw">return</span> <span class="kw">new</span> <span class="dt">string</span>(value);</a>
-<a class="sourceLine" id="cb1-160" title="160">        }</a>
-<a class="sourceLine" id="cb1-161" title="161">    }</a>
-<a class="sourceLine" id="cb1-162" title="162">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里实现了一个 Pair 类，用来排序。<br>每一个元素都有相应的 key 值和 value 值，排序时只使用 key 值进行排序。<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> Sort<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_38
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 2.1.38
+     * 
+     * 不同类型的元素。
+     * 编写一个测试用例，生成由多种数据类型元素组成的数组，元素的主键值随机，包括：
+     * 每个元素的主键均为 String 类型（至少长 10 个字符），并含有一个 double 值。
+     * 每个元素的主键均为 double 类型，并含有 10 个 String 值（每个都至少长 10 个字符）。
+     * 每个元素的主键均为 int 类型，并含有一个 int[20] 值。
+     * 评估并验证这些输入数据对本节讨论的算法的性能的影响。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> results <span class="token operator">=</span> <span class="token function">TestA</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"string + double"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            results <span class="token operator">=</span> <span class="token function">TestB</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"double + 10 string"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            results <span class="token operator">=</span> <span class="token function">TestC</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"int + int[]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort:"</span> <span class="token operator">+</span> results<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 第一个测试，测试结果按照 Insertion, Selection, Shell 排序。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">测试的数组长度。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>测试结果。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">TestA</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            InsertionSort insertionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            SelectionSort selectionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ShellSort shellSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 每个元素的主键均为 String 类型（至少长 10 个字符），并含有一个 double 值。</span>
+            Pair<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">></span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            Pair<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayBak <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">></span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token function">RandomString</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> random<span class="token punctuation">)</span><span class="token punctuation">,</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            array<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayBak<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 第二个测试，测试结果按照 Insertion, Selection, Shell 排序。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">测试的数组长度。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>测试结果。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">TestB</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            InsertionSort insertionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            SelectionSort selectionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ShellSort shellSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 每个元素的主键均为 double 类型，并含有 10 个 String 值（每个都至少长 10 个字符）。</span>
+            Pair<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token punctuation">,</span> <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token punctuation">,</span> <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            Pair<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token punctuation">,</span> <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayBak <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token punctuation">,</span> <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">string</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    temp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">RandomString</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> random<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token punctuation">,</span> <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            array<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayBak<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 第三个测试，测试结果按照 Insertion, Selection, Shell 排序。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">测试的数组长度。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>测试结果。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">TestC</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            InsertionSort insertionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            SelectionSort selectionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ShellSort shellSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 每个元素的主键均为 int 类型，并含有一个 int[20] 值。</span>
+            Pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            Pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayBak <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    temp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            array<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayBak<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            results<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获取一个随机 &lt;see cref="string"/>。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">&lt;see cref="string"/> 的长度。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="random">随机数生成器。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>获取一个随机 &lt;see cref="string"/>。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">string</span> <span class="token function">RandomString</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> Random random<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">value</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">char</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">value</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span>random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">.</span>MinValue <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token punctuation">.</span>MaxValue <span class="token operator">-</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">string</span><span class="token punctuation">(</span><span class="token keyword">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
 
 		</div>
 	</div>

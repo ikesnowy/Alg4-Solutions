@@ -140,10 +140,8 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.4</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.5.4 在正文的加权 quick-union 算法示例中， 对于输入的每一对整数（包括对照输入和最坏情况下的输入）， 给出 id[] 和 sz[] 数组的内容以及访问数组的次数。</p>
-<h1 id="解答">解答</h1>
-<p>对照输入和最坏输入均在书中出现，中文版见：P146，英文版见：P229。 样例输出：</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.4<br>在正文的加权 quick-union 算法示例中，<br>对于输入的每一对整数（包括对照输入和最坏情况下的输入），<br>给出 id[] 和 sz[] 数组的内容以及访问数组的次数。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对照输入和最坏输入均在书中出现，中文版见：P146，英文版见：P229。<br>样例输出：</p>
 <pre><code>3
 index:  0 1 2 3 4 5 6 7 8 9
 parent: 0 1 2 4 4 5 6 7 8 9
@@ -265,80 +263,79 @@ index:  0 1 2 3 4 5 6 7 8 9
 parent: 0 0 0 0 0 0 0 0 0 0
 size:   10 1 1 1 1 1 1 1 1 1
 parent visit count:3
-size visit count:4</code></pre>
-<h1 id="代码">代码</h1>
-<p>Main 方法：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> UnionFind;</a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">5.</span>_<span class="dv">4</span></a>
-<a class="sourceLine" id="cb2-5" title="5">{</a>
-<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * 1.5.4</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 在正文的加权 quick-union 算法示例中，</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 对于输入的每一对整数（包括对照输入和最坏情况下的输入），</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 给出 id[] 和 sz[] 数组的内容以及访问数组的次数。</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-14" title="14">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-15" title="15">    {</a>
-<a class="sourceLine" id="cb2-16" title="16">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-17" title="17">        {</a>
-<a class="sourceLine" id="cb2-18" title="18">            <span class="dt">char</span>[] split = { <span class="ch">&#39;\n&#39;</span>, <span class="ch">&#39;\r&#39;</span> };</a>
-<a class="sourceLine" id="cb2-19" title="19">            <span class="dt">string</span>[] inputReference = TestCase.<span class="fu">Properties</span>.<span class="fu">Resources</span>.<span class="fu">tinyUF</span>.<span class="fu">Split</span>(split, StringSplitOptions.<span class="fu">RemoveEmptyEntries</span>);</a>
-<a class="sourceLine" id="cb2-20" title="20">            <span class="dt">string</span>[] inputWorst = TestCase.<span class="fu">Properties</span>.<span class="fu">Resources</span>.<span class="fu">worstUF</span>.<span class="fu">Split</span>(split, StringSplitOptions.<span class="fu">RemoveEmptyEntries</span>);</a>
-<a class="sourceLine" id="cb2-21" title="21">            </a>
-<a class="sourceLine" id="cb2-22" title="22">            <span class="fu">RunTest</span>(inputReference);</a>
-<a class="sourceLine" id="cb2-23" title="23">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;-------------------------------------&quot;</span>);</a>
-<a class="sourceLine" id="cb2-24" title="24">            <span class="fu">RunTest</span>(inputWorst);</a>
-<a class="sourceLine" id="cb2-25" title="25">        }</a>
-<a class="sourceLine" id="cb2-26" title="26"></a>
-<a class="sourceLine" id="cb2-27" title="27">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">RunTest</span>(<span class="dt">string</span>[] input)</a>
-<a class="sourceLine" id="cb2-28" title="28">        {</a>
-<a class="sourceLine" id="cb2-29" title="29">            <span class="dt">var</span> weightedQuickUnion = <span class="kw">new</span> <span class="fu">WeightedQuickUnionUF</span>(<span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb2-30" title="30">            <span class="dt">int</span> n = <span class="dt">int</span>.<span class="fu">Parse</span>(input[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb2-31" title="31">            <span class="dt">int</span>[] parent = weightedQuickUnion.<span class="fu">GetParent</span>();</a>
-<a class="sourceLine" id="cb2-32" title="32">            <span class="dt">int</span>[] size = weightedQuickUnion.<span class="fu">GetSize</span>();</a>
-<a class="sourceLine" id="cb2-33" title="33"></a>
-<a class="sourceLine" id="cb2-34" title="34">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb2-35" title="35">            {</a>
-<a class="sourceLine" id="cb2-36" title="36">                <span class="dt">string</span>[] unit = input[i].<span class="fu">Split</span>(<span class="ch">&#39; &#39;</span>);</a>
-<a class="sourceLine" id="cb2-37" title="37">                <span class="dt">int</span> p = <span class="dt">int</span>.<span class="fu">Parse</span>(unit[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb2-38" title="38">                <span class="dt">int</span> q = <span class="dt">int</span>.<span class="fu">Parse</span>(unit[<span class="dv">1</span>]);</a>
-<a class="sourceLine" id="cb2-39" title="39"></a>
-<a class="sourceLine" id="cb2-40" title="40">                Console.<span class="fu">WriteLine</span>($<span class="st">&quot;{p} {q}&quot;</span>);</a>
-<a class="sourceLine" id="cb2-41" title="41">                weightedQuickUnion.<span class="fu">Union</span>(p, q);</a>
-<a class="sourceLine" id="cb2-42" title="42"></a>
-<a class="sourceLine" id="cb2-43" title="43">                Console.<span class="fu">Write</span>(<span class="st">&quot;index:</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb2-44" title="44">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; <span class="dv">10</span>; ++j)</a>
-<a class="sourceLine" id="cb2-45" title="45">                {</a>
-<a class="sourceLine" id="cb2-46" title="46">                    Console.<span class="fu">Write</span>(j + <span class="st">&quot; &quot;</span>);</a>
-<a class="sourceLine" id="cb2-47" title="47">                }</a>
-<a class="sourceLine" id="cb2-48" title="48">                Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb2-49" title="49"></a>
-<a class="sourceLine" id="cb2-50" title="50">                Console.<span class="fu">Write</span>(<span class="st">&quot;parent:</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb2-51" title="51">                <span class="kw">foreach</span> (<span class="dt">int</span> m <span class="kw">in</span> parent)</a>
-<a class="sourceLine" id="cb2-52" title="52">                {</a>
-<a class="sourceLine" id="cb2-53" title="53">                    Console.<span class="fu">Write</span>(m + <span class="st">&quot; &quot;</span>);</a>
-<a class="sourceLine" id="cb2-54" title="54">                }</a>
-<a class="sourceLine" id="cb2-55" title="55">                Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb2-56" title="56">                Console.<span class="fu">Write</span>(<span class="st">&quot;size:</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb2-57" title="57">                <span class="kw">foreach</span> (<span class="dt">int</span> m <span class="kw">in</span> size)</a>
-<a class="sourceLine" id="cb2-58" title="58">                {</a>
-<a class="sourceLine" id="cb2-59" title="59">                    Console.<span class="fu">Write</span>(m + <span class="st">&quot; &quot;</span>);</a>
-<a class="sourceLine" id="cb2-60" title="60">                }</a>
-<a class="sourceLine" id="cb2-61" title="61">                Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb2-62" title="62">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;parent visit count:&quot;</span> + weightedQuickUnion.<span class="fu">ArrayParentVisitCount</span>);</a>
-<a class="sourceLine" id="cb2-63" title="63">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;size visit count:&quot;</span> + weightedQuickUnion.<span class="fu">ArraySizeVisitCount</span>);</a>
-<a class="sourceLine" id="cb2-64" title="64">                Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb2-65" title="65">                weightedQuickUnion.<span class="fu">ResetArrayCount</span>();</a>
-<a class="sourceLine" id="cb2-66" title="66">            }</a>
-<a class="sourceLine" id="cb2-67" title="67">        }</a>
-<a class="sourceLine" id="cb2-68" title="68">    }</a>
-<a class="sourceLine" id="cb2-69" title="69">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+size visit count:4
+</code></pre><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>Main 方法：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> UnionFind<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_4
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.5.4
+     * 
+     * 在正文的加权 quick-union 算法示例中，
+     * 对于输入的每一对整数（包括对照输入和最坏情况下的输入），
+     * 给出 id[] 和 sz[] 数组的内容以及访问数组的次数。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> split <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">'\r'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> inputReference <span class="token operator">=</span> TestCase<span class="token punctuation">.</span>Properties<span class="token punctuation">.</span>Resources<span class="token punctuation">.</span>tinyUF<span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span>split<span class="token punctuation">,</span> StringSplitOptions<span class="token punctuation">.</span>RemoveEmptyEntries<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> inputWorst <span class="token operator">=</span> TestCase<span class="token punctuation">.</span>Properties<span class="token punctuation">.</span>Resources<span class="token punctuation">.</span>worstUF<span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span>split<span class="token punctuation">,</span> StringSplitOptions<span class="token punctuation">.</span>RemoveEmptyEntries<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token function">RunTest</span><span class="token punctuation">(</span>inputReference<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"-------------------------------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">RunTest</span><span class="token punctuation">(</span>inputWorst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">RunTest</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> weightedQuickUnion <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeightedQuickUnionUF</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> parent <span class="token operator">=</span> weightedQuickUnion<span class="token punctuation">.</span><span class="token function">GetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> size <span class="token operator">=</span> weightedQuickUnion<span class="token punctuation">.</span><span class="token function">GetSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> unit <span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> p <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>unit<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> q <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>unit<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"{p} {q}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                weightedQuickUnion<span class="token punctuation">.</span><span class="token function">Union</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"index:\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>j <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"parent:\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">int</span> m <span class="token keyword">in</span> parent<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"size:\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">int</span> m <span class="token keyword">in</span> size<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"parent visit count:"</span> <span class="token operator">+</span> weightedQuickUnion<span class="token punctuation">.</span>ArrayParentVisitCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"size visit count:"</span> <span class="token operator">+</span> weightedQuickUnion<span class="token punctuation">.</span>ArraySizeVisitCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                weightedQuickUnion<span class="token punctuation">.</span><span class="token function">ResetArrayCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
 
 		</div>
 	</div>

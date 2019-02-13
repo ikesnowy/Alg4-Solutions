@@ -140,146 +140,145 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.25</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.4.25 计算数论。 编写程序 CubeSum.java，在不使用额外空间的条件下， 按大小顺序打印所有 a<sup>3+b</sup>3 的结果，其中 a 和 b 为 0 至 N 之间所有的整数。 也就是说，不要全部计算 N^2 个和然后排序， 而是创建一个最小优先队列，初始状态为 (0^3, 0, 0),(1^3, 0, 0),(2^3, 2, 0),...,(N^3, N, 0)。 这样只要优先队列非空，删除并打印最小的元素 (i<sup>3+j</sup>3, i, j)。 然后如果 j&lt;N，插入元素 (i<sup>3+(j+1)</sup>3, i, j+1)。 用这段程序找出 0 到 10^6 之间所有满足 a<sup>3+b</sup>3 = c<sup>3+d</sup>3 的不同整数 a, b, c, d。</p>
-<h1 id="解答">解答</h1>
-<p>官方实现：https://algs4.cs.princeton.edu/24pq/CubeSum.java.html</p>
-<p>注意这道题并不是要打印所有的 $ a<sup>3+b</sup>3 $ 的结果，而是需要找到 $ a<sup>3+b</sup>3=c<sup>3+d</sup>3 $ 这个丢番图方程的解。 因此在官方实现的基础上，每次取出最小值之后和之前的最小值比较，如果相等则输出对应的组合。 关键代码如下：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1">CubeSum prev = <span class="kw">new</span> <span class="fu">CubeSum</span>(-<span class="dv">1</span>, <span class="dv">-1</span>);</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="dt">long</span> pairCount = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">while</span> (!pq.<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    CubeSum s = pq.<span class="fu">DelMin</span>();</a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">if</span> (s.<span class="fu">sum</span> == prev.<span class="fu">sum</span>)          <span class="co">// 如果与之前的数相等</span></a>
-<a class="sourceLine" id="cb1-7" title="7">    {</a>
-<a class="sourceLine" id="cb1-8" title="8">        Console.<span class="fu">WriteLine</span>(s + <span class="st">&quot; = &quot;</span> + prev.<span class="fu">i</span> + <span class="st">&quot;^3 + &quot;</span> + prev.<span class="fu">j</span> + <span class="st">&quot;^3&quot;</span>);</a>
-<a class="sourceLine" id="cb1-9" title="9">        pairCount++;</a>
-<a class="sourceLine" id="cb1-10" title="10">    }         </a>
-<a class="sourceLine" id="cb1-11" title="11">    <span class="kw">if</span> (s.<span class="fu">j</span> &lt; n)</a>
-<a class="sourceLine" id="cb1-12" title="12">        pq.<span class="fu">Insert</span>(<span class="kw">new</span> <span class="fu">CubeSum</span>(s.<span class="fu">i</span>, s.<span class="fu">j</span> + <span class="dv">1</span>));</a>
-<a class="sourceLine" id="cb1-13" title="13">    prev = s;</a>
-<a class="sourceLine" id="cb1-14" title="14">}</a></code></pre></div>
-<p>当然，对于 n=10^6 来说结果会非常大，程序的运行时间需要以天为单位计算（约 14 天）。 n=10^4 时，总共可以找到 41570 对数据。（result10K.txt, 下载大小 506 KB，解压后 1.93 MB） n=10^5 时，总共可以找到 895023 对数据。(result100K.txt，下载大小 12.7 MB，解压后 47.5 MB) n=10^6 时，总共可以找到 16953323 对数据。（result1M.txt，下载大小 280 MB，解压后 0.98 GB）</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.25<br>计算数论。<br>编写程序 CubeSum.java，在不使用额外空间的条件下，<br>按大小顺序打印所有 a^3+b^3 的结果，其中 a 和 b 为 0 至 N 之间所有的整数。<br>也就是说，不要全部计算 N^2 个和然后排序，<br>而是创建一个最小优先队列，初始状态为 (0^3, 0, 0),(1^3, 0, 0),(2^3, 2, 0),…,(N^3, N, 0)。<br>这样只要优先队列非空，删除并打印最小的元素 (i^3+j^3, i, j)。<br>然后如果 j&lt;N，插入元素 (i^3+(j+1)^3, i, j+1)。<br>用这段程序找出 0 到 10^6 之间所有满足 a^3+b^3 = c^3+d^3 的不同整数 a, b, c, d。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/24pq/CubeSum.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/24pq/CubeSum.java.html</a></p>
+<p>注意这道题并不是要打印所有的 $ a^3+b^3 $ 的结果，而是需要找到 $ a^3+b^3=c^3+d^3 $ 这个丢番图方程的解。<br>因此在官方实现的基础上，每次取出最小值之后和之前的最小值比较，如果相等则输出对应的组合。<br>关键代码如下：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">CubeSum prev <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CubeSum</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">long</span> pairCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>pq<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    CubeSum s <span class="token operator">=</span> pq<span class="token punctuation">.</span><span class="token function">DelMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>sum <span class="token operator">==</span> prev<span class="token punctuation">.</span>sum<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true">// 如果与之前的数相等</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>s <span class="token operator">+</span> <span class="token string">" = "</span> <span class="token operator">+</span> prev<span class="token punctuation">.</span>i <span class="token operator">+</span> <span class="token string">"^3 + "</span> <span class="token operator">+</span> prev<span class="token punctuation">.</span>j <span class="token operator">+</span> <span class="token string">"^3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pairCount<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>         
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>j <span class="token operator">&lt;</span> n<span class="token punctuation">)</span>
+        pq<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CubeSum</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>i<span class="token punctuation">,</span> s<span class="token punctuation">.</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    prev <span class="token operator">=</span> s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，对于 n=10^6 来说结果会非常大，程序的运行时间需要以天为单位计算（约 14 天）。<br>n=10^4 时，总共可以找到 41570 对数据。（result10K.txt, 下载大小 506 KB，解压后 1.93 MB）<br>n=10^5 时，总共可以找到 895023 对数据。(result100K.txt，下载大小 12.7 MB，解压后 47.5 MB)<br>n=10^6 时，总共可以找到 16953323 对数据。（result1M.txt，下载大小 280 MB，解压后 0.98 GB）</p>
 <p>结果下载链接：<a href="https://pan.baidu.com/s/1Jl8H6tYZC8h_21jDvy7Yxw" target="_blank" rel="noopener">百度云</a>、<a href="https://1drv.ms/f/s!AgRf1DW8ZhM95tEgIrRysk83jLS2kQ" target="_blank" rel="noopener">Onedrive</a></p>
-<h1 id="代码">代码</h1>
-<p>CubeSum.cs</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">4.</span>_<span class="dv">25</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/// 立方和类，保存 a^3+b^3 的值。</span></a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-8" title="8">    <span class="kw">class</span> CubeSum : IComparable&lt;CubeSum&gt;</a>
-<a class="sourceLine" id="cb2-9" title="9">    {</a>
-<a class="sourceLine" id="cb2-10" title="10">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-11" title="11">        <span class="co">/// 立方和。</span></a>
-<a class="sourceLine" id="cb2-12" title="12">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-13" title="13">        <span class="kw">internal</span> <span class="kw">readonly</span> <span class="dt">long</span> sum;</a>
-<a class="sourceLine" id="cb2-14" title="14">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-15" title="15">        <span class="co">/// 第一个数。</span></a>
-<a class="sourceLine" id="cb2-16" title="16">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">internal</span> <span class="kw">readonly</span> <span class="dt">long</span> i;</a>
-<a class="sourceLine" id="cb2-18" title="18">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-19" title="19">        <span class="co">/// 第二个数。</span></a>
-<a class="sourceLine" id="cb2-20" title="20">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-21" title="21">        <span class="kw">internal</span> <span class="kw">readonly</span> <span class="dt">long</span> j;</a>
-<a class="sourceLine" id="cb2-22" title="22"></a>
-<a class="sourceLine" id="cb2-23" title="23">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-24" title="24">        <span class="co">/// 建立一个立方和类。</span></a>
-<a class="sourceLine" id="cb2-25" title="25">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-26" title="26">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;i&quot;</span><span class="kw">&gt;</span><span class="co">立方和的第一个数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-27" title="27">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;j&quot;</span><span class="kw">&gt;</span><span class="co">立方和的第二个数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-28" title="28">        <span class="kw">public</span> <span class="fu">CubeSum</span>(<span class="dt">long</span> i, <span class="dt">long</span> j)</a>
-<a class="sourceLine" id="cb2-29" title="29">        {</a>
-<a class="sourceLine" id="cb2-30" title="30">            <span class="kw">this</span>.<span class="fu">sum</span> = i * i * i + j * j * j;</a>
-<a class="sourceLine" id="cb2-31" title="31">            <span class="kw">this</span>.<span class="fu">i</span> = i;</a>
-<a class="sourceLine" id="cb2-32" title="32">            <span class="kw">this</span>.<span class="fu">j</span> = j;</a>
-<a class="sourceLine" id="cb2-33" title="33">        }</a>
-<a class="sourceLine" id="cb2-34" title="34"></a>
-<a class="sourceLine" id="cb2-35" title="35">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-36" title="36">        <span class="co">/// 比较两个立方和的大小，返回 1, 0, -1 中的一个。</span></a>
-<a class="sourceLine" id="cb2-37" title="37">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-38" title="38">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;other&quot;</span><span class="kw">&gt;</span><span class="co">需要与之比较的另一个数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-39" title="39">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-40" title="40">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">CompareTo</span>(CubeSum other)</a>
-<a class="sourceLine" id="cb2-41" title="41">        {</a>
-<a class="sourceLine" id="cb2-42" title="42">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">sum</span>.<span class="fu">CompareTo</span>(other.<span class="fu">sum</span>);</a>
-<a class="sourceLine" id="cb2-43" title="43">        }</a>
-<a class="sourceLine" id="cb2-44" title="44"></a>
-<a class="sourceLine" id="cb2-45" title="45">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-46" title="46">        <span class="co">/// 返回 &quot;sum = i^3 + j^3&quot; 形式的字符串。</span></a>
-<a class="sourceLine" id="cb2-47" title="47">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-48" title="48">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-49" title="49">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">string</span> <span class="fu">ToString</span>()</a>
-<a class="sourceLine" id="cb2-50" title="50">        {</a>
-<a class="sourceLine" id="cb2-51" title="51">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">sum</span> + <span class="st">&quot; = &quot;</span> + <span class="kw">this</span>.<span class="fu">i</span> + <span class="st">&quot;^3 + &quot;</span> + <span class="kw">this</span>.<span class="fu">j</span> + <span class="st">&quot;^3&quot;</span>;</a>
-<a class="sourceLine" id="cb2-52" title="52">        }</a>
-<a class="sourceLine" id="cb2-53" title="53">    }</a>
-<a class="sourceLine" id="cb2-54" title="54">}</a></code></pre></div>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>CubeSum.cs</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_25
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 立方和类，保存 a^3+b^3 的值。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">class</span> <span class="token class-name">CubeSum</span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>CubeSum<span class="token operator">></span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 立方和。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">internal</span> <span class="token keyword">readonly</span> <span class="token keyword">long</span> sum<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 第一个数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">internal</span> <span class="token keyword">readonly</span> <span class="token keyword">long</span> i<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 第二个数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">internal</span> <span class="token keyword">readonly</span> <span class="token keyword">long</span> j<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 建立一个立方和类。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="i">立方和的第一个数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="j">立方和的第二个数。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token function">CubeSum</span><span class="token punctuation">(</span><span class="token keyword">long</span> i<span class="token punctuation">,</span> <span class="token keyword">long</span> j<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>sum <span class="token operator">=</span> i <span class="token operator">*</span> i <span class="token operator">*</span> i <span class="token operator">+</span> j <span class="token operator">*</span> j <span class="token operator">*</span> j<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>i <span class="token operator">=</span> i<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>j <span class="token operator">=</span> j<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 比较两个立方和的大小，返回 1, 0, -1 中的一个。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="other">需要与之比较的另一个数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>CubeSum other<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sum<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回 "sum = i^3 + j^3" 形式的字符串。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">string</span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sum <span class="token operator">+</span> <span class="token string">" = "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>i <span class="token operator">+</span> <span class="token string">"^3 + "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>j <span class="token operator">+</span> <span class="token string">"^3"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>主程序</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw">using</span> System.<span class="fu">IO</span>;</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">using</span> PriorityQueue;</a>
-<a class="sourceLine" id="cb3-4" title="4"></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">4.</span>_<span class="dv">25</span></a>
-<a class="sourceLine" id="cb3-6" title="6">{</a>
-<a class="sourceLine" id="cb3-7" title="7">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">     * 2.4.25</span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">     * 计算数论。</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">     * 编写程序 CubeSum.java，</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">     * 在不使用额外空间的条件下，</span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">     * 按大小顺序打印所有 a^3+b^3 的结果，</span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">     * 其中 a 和 b 为 0 至 N 之间所有的整数。</span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">     * 也就是说，不要全部计算 N^2 个和然后排序，</span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">     * 而是创建一个最小优先队列，</span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="co">     * 初始状态为 (0^3, 0, 0),(1^3, 0, 0),(2^3, 2, 0),...,(N^3, N, 0)。</span></a>
-<a class="sourceLine" id="cb3-18" title="18"><span class="co">     * 这样只要优先队列非空，删除并打印最小的元素 (i^3+j^3, i, j)。</span></a>
-<a class="sourceLine" id="cb3-19" title="19"><span class="co">     * 然后如果 j&lt;N，插入元素 (i^3+(j+1)^3, i, j+1)。</span></a>
-<a class="sourceLine" id="cb3-20" title="20"><span class="co">     * 用这段程序找出 0 到 10^6 之间</span></a>
-<a class="sourceLine" id="cb3-21" title="21"><span class="co">     * 所有满足 a^3+b^3 = c^3+d^3 的不同整数 a, b, c, d。</span></a>
-<a class="sourceLine" id="cb3-22" title="22"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb3-23" title="23"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb3-24" title="24">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb3-25" title="25">    {</a>
-<a class="sourceLine" id="cb3-26" title="26">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb3-27" title="27">        {</a>
-<a class="sourceLine" id="cb3-28" title="28">            <span class="dt">int</span> n = <span class="dv">1000000</span>;</a>
-<a class="sourceLine" id="cb3-29" title="29"></a>
-<a class="sourceLine" id="cb3-30" title="30">            MinPQ&lt;CubeSum&gt; pq = <span class="kw">new</span> MinPQ&lt;CubeSum&gt;();</a>
-<a class="sourceLine" id="cb3-31" title="31">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;正在初始化&quot;</span>);</a>
-<a class="sourceLine" id="cb3-32" title="32">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt;= n; i++)</a>
-<a class="sourceLine" id="cb3-33" title="33">            {</a>
-<a class="sourceLine" id="cb3-34" title="34">                pq.<span class="fu">Insert</span>(<span class="kw">new</span> <span class="fu">CubeSum</span>(i, i));</a>
-<a class="sourceLine" id="cb3-35" title="35">            }</a>
-<a class="sourceLine" id="cb3-36" title="36"></a>
-<a class="sourceLine" id="cb3-37" title="37">            FileStream ostream = <span class="kw">new</span> <span class="fu">FileStream</span>(<span class="st">&quot;./result.txt&quot;</span>, FileMode.<span class="fu">Create</span>, FileAccess.<span class="fu">Write</span>);</a>
-<a class="sourceLine" id="cb3-38" title="38">            StreamWriter sw = <span class="kw">new</span> <span class="fu">StreamWriter</span>(ostream);</a>
-<a class="sourceLine" id="cb3-39" title="39">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;正在写入文件……&quot;</span>);</a>
-<a class="sourceLine" id="cb3-40" title="40">            CubeSum prev = <span class="kw">new</span> <span class="fu">CubeSum</span>(-<span class="dv">1</span>, <span class="dv">-1</span>);</a>
-<a class="sourceLine" id="cb3-41" title="41">            <span class="dt">long</span> pairCount = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb3-42" title="42">            <span class="kw">while</span> (!pq.<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb3-43" title="43">            {</a>
-<a class="sourceLine" id="cb3-44" title="44">                CubeSum s = pq.<span class="fu">DelMin</span>();</a>
-<a class="sourceLine" id="cb3-45" title="45">                <span class="kw">if</span> (s.<span class="fu">sum</span> == prev.<span class="fu">sum</span>)</a>
-<a class="sourceLine" id="cb3-46" title="46">                {</a>
-<a class="sourceLine" id="cb3-47" title="47">                    sw.<span class="fu">WriteLine</span>(s + <span class="st">&quot; = &quot;</span> + prev.<span class="fu">i</span> + <span class="st">&quot;^3 + &quot;</span> + prev.<span class="fu">j</span> + <span class="st">&quot;^3&quot;</span>);</a>
-<a class="sourceLine" id="cb3-48" title="48">                    pairCount++;</a>
-<a class="sourceLine" id="cb3-49" title="49">                }         </a>
-<a class="sourceLine" id="cb3-50" title="50">                <span class="kw">if</span> (s.<span class="fu">j</span> &lt; n)</a>
-<a class="sourceLine" id="cb3-51" title="51">                    pq.<span class="fu">Insert</span>(<span class="kw">new</span> <span class="fu">CubeSum</span>(s.<span class="fu">i</span>, s.<span class="fu">j</span> + <span class="dv">1</span>));</a>
-<a class="sourceLine" id="cb3-52" title="52">                prev = s;</a>
-<a class="sourceLine" id="cb3-53" title="53">            }</a>
-<a class="sourceLine" id="cb3-54" title="54">            sw.<span class="fu">WriteLine</span>(<span class="st">&quot;共找到&quot;</span> + pairCount + <span class="st">&quot;对数据&quot;</span>);</a>
-<a class="sourceLine" id="cb3-55" title="55">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;共找到&quot;</span> + pairCount + <span class="st">&quot;对数据&quot;</span>);</a>
-<a class="sourceLine" id="cb3-56" title="56">            sw.<span class="fu">Close</span>();</a>
-<a class="sourceLine" id="cb3-57" title="57">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;结果已经保存到程序所在目录下的 result.txt 文件中&quot;</span>);</a>
-<a class="sourceLine" id="cb3-58" title="58">        }</a>
-<a class="sourceLine" id="cb3-59" title="59">    }</a>
-<a class="sourceLine" id="cb3-60" title="60">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="http://mathworld.wolfram.com/DiophantineEquation3rdPowers.html" target="_blank" rel="noopener">Diophantine Equation-3rd Powers - Wolfram MathWorld</a> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>IO<span class="token punctuation">;</span>
+<span class="token keyword">using</span> PriorityQueue<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_25
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 2.4.25
+     * 
+     * 计算数论。
+     * 编写程序 CubeSum.java，
+     * 在不使用额外空间的条件下，
+     * 按大小顺序打印所有 a^3+b^3 的结果，
+     * 其中 a 和 b 为 0 至 N 之间所有的整数。
+     * 也就是说，不要全部计算 N^2 个和然后排序，
+     * 而是创建一个最小优先队列，
+     * 初始状态为 (0^3, 0, 0),(1^3, 0, 0),(2^3, 2, 0),...,(N^3, N, 0)。
+     * 这样只要优先队列非空，删除并打印最小的元素 (i^3+j^3, i, j)。
+     * 然后如果 j&lt;N，插入元素 (i^3+(j+1)^3, i, j+1)。
+     * 用这段程序找出 0 到 10^6 之间
+     * 所有满足 a^3+b^3 = c^3+d^3 的不同整数 a, b, c, d。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">1000000</span><span class="token punctuation">;</span>
+
+            MinPQ<span class="token operator">&lt;</span>CubeSum<span class="token operator">></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MinPQ</span><span class="token operator">&lt;</span>CubeSum<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"正在初始化"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pq<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CubeSum</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            FileStream ostream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileStream</span><span class="token punctuation">(</span><span class="token string">"./result.txt"</span><span class="token punctuation">,</span> FileMode<span class="token punctuation">.</span>Create<span class="token punctuation">,</span> FileAccess<span class="token punctuation">.</span>Write<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            StreamWriter sw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StreamWriter</span><span class="token punctuation">(</span>ostream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"正在写入文件……"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            CubeSum prev <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CubeSum</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">long</span> pairCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>pq<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                CubeSum s <span class="token operator">=</span> pq<span class="token punctuation">.</span><span class="token function">DelMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>sum <span class="token operator">==</span> prev<span class="token punctuation">.</span>sum<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    sw<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>s <span class="token operator">+</span> <span class="token string">" = "</span> <span class="token operator">+</span> prev<span class="token punctuation">.</span>i <span class="token operator">+</span> <span class="token string">"^3 + "</span> <span class="token operator">+</span> prev<span class="token punctuation">.</span>j <span class="token operator">+</span> <span class="token string">"^3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    pairCount<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>         
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>j <span class="token operator">&lt;</span> n<span class="token punctuation">)</span>
+                    pq<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CubeSum</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>i<span class="token punctuation">,</span> s<span class="token punctuation">.</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                prev <span class="token operator">=</span> s<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            sw<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"共找到"</span> <span class="token operator">+</span> pairCount <span class="token operator">+</span> <span class="token string">"对数据"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"共找到"</span> <span class="token operator">+</span> pairCount <span class="token operator">+</span> <span class="token string">"对数据"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sw<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"结果已经保存到程序所在目录下的 result.txt 文件中"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="http://mathworld.wolfram.com/DiophantineEquation3rdPowers.html" target="_blank" rel="noopener">Diophantine Equation-3rd Powers - Wolfram MathWorld</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

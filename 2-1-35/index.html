@@ -140,199 +140,197 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.35</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.1.35 不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括：</p>
-<p>高斯分布 泊松分布 几何分布 离散分布（一种特殊情况见练习 2.1.28）。</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.35<br>不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括： </p>
+<p>高斯分布<br>泊松分布<br>几何分布<br>离散分布（一种特殊情况见练习 2.1.28）。</p>
 <p>评估并验证这些输入数据对本节讨论的算法的影响。</p>
-<h1 id="解答">解答</h1>
-<p>难点是如何生成符合这些分布的随机数。 Java 的话官方给的 stdRandom 里面都有相应的实现。 结果： <img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<p>几种随机数的实现：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> Sort</a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/// 静态类，包含用于生成排序算法测试数据的方法。</span></a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">class</span> SortUtil</a>
-<a class="sourceLine" id="cb1-9" title="9">    {</a>
-<a class="sourceLine" id="cb1-10" title="10"></a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">public</span> <span class="kw">static</span> Random UniformGenerator = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-12" title="12"></a>
-<a class="sourceLine" id="cb1-13" title="13">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="co">/// 产生符合正态分布的随机数。</span></a>
-<a class="sourceLine" id="cb1-15" title="15">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-16" title="16">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;average&quot;</span><span class="kw">&gt;</span><span class="co">正态分布的期望值 μ。&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-17" title="17">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;standardDeviation&quot;</span><span class="kw">&gt;</span><span class="co">正态分布的标准差 σ。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-18" title="18">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">符合正态分布的随机数。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">Normal</span>(<span class="dt">double</span> average, <span class="dt">double</span> standardDeviation)</a>
-<a class="sourceLine" id="cb1-20" title="20">        {</a>
-<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">double</span> u1 = UniformGenerator.<span class="fu">NextDouble</span>();</a>
-<a class="sourceLine" id="cb1-22" title="22">            <span class="dt">double</span> u2 = UniformGenerator.<span class="fu">NextDouble</span>();</a>
-<a class="sourceLine" id="cb1-23" title="23"></a>
-<a class="sourceLine" id="cb1-24" title="24">            <span class="dt">double</span> z0 = Math.<span class="fu">Sqrt</span>(-<span class="fl">2.0</span> * Math.<span class="fu">Log</span>(u1)) * Math.<span class="fu">Cos</span>(Math.<span class="fu">PI</span> * <span class="dv">2</span> * u2);</a>
-<a class="sourceLine" id="cb1-25" title="25">            </a>
-<a class="sourceLine" id="cb1-26" title="26">            <span class="kw">return</span> z0 * standardDeviation + average;</a>
-<a class="sourceLine" id="cb1-27" title="27">        }</a>
-<a class="sourceLine" id="cb1-28" title="28"></a>
-<a class="sourceLine" id="cb1-29" title="29">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-30" title="30">        <span class="co">/// 生成符合泊松分布的随机数。</span></a>
-<a class="sourceLine" id="cb1-31" title="31">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;average&quot;</span><span class="kw">&gt;</span><span class="co">泊松分布的期望值 λ。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-33" title="33">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">一个符合泊松分布的随机数。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-34" title="34">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">Poission</span>(<span class="dt">double</span> average)</a>
-<a class="sourceLine" id="cb1-35" title="35">        {</a>
-<a class="sourceLine" id="cb1-36" title="36">            <span class="dt">double</span> x = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-37" title="37">            <span class="dt">double</span> p = Math.<span class="fu">Pow</span>(Math.<span class="fu">E</span>, -average);</a>
-<a class="sourceLine" id="cb1-38" title="38">            <span class="dt">double</span> s = p;</a>
-<a class="sourceLine" id="cb1-39" title="39">            <span class="dt">double</span> u = UniformGenerator.<span class="fu">NextDouble</span>();</a>
-<a class="sourceLine" id="cb1-40" title="40">            <span class="kw">do</span></a>
-<a class="sourceLine" id="cb1-41" title="41">            {</a>
-<a class="sourceLine" id="cb1-42" title="42">                x++;</a>
-<a class="sourceLine" id="cb1-43" title="43">                p *= average / x;</a>
-<a class="sourceLine" id="cb1-44" title="44">                s += p;</a>
-<a class="sourceLine" id="cb1-45" title="45">            } <span class="kw">while</span> (u &gt; s);</a>
-<a class="sourceLine" id="cb1-46" title="46">            <span class="kw">return</span> x;</a>
-<a class="sourceLine" id="cb1-47" title="47">        }</a>
-<a class="sourceLine" id="cb1-48" title="48"></a>
-<a class="sourceLine" id="cb1-49" title="49">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-50" title="50">        <span class="co">/// 生成符合几何分布的随机数。</span></a>
-<a class="sourceLine" id="cb1-51" title="51">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-52" title="52">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">几何分布的概率 p，这应该是一个小于 1 的非负数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-53" title="53">        <span class="co">/// </span><span class="kw">&lt;exception</span><span class="ot"> cref=</span><span class="dt">&quot;ArgumentOutOfRangeException&quot;</span><span class="kw">&gt;</span><span class="co">概率不能大于 1.</span><span class="kw">&lt;/exception&gt;</span></a>
-<a class="sourceLine" id="cb1-54" title="54">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">符合几何分布的随机数。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-55" title="55">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">Geometry</span>(<span class="dt">double</span> p)</a>
-<a class="sourceLine" id="cb1-56" title="56">        {</a>
-<a class="sourceLine" id="cb1-57" title="57">            <span class="kw">if</span> (p &gt; <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1-58" title="58">            {</a>
-<a class="sourceLine" id="cb1-59" title="59">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentOutOfRangeException</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;概率不能大于 1&quot;</span>);</a>
-<a class="sourceLine" id="cb1-60" title="60">            }</a>
-<a class="sourceLine" id="cb1-61" title="61"></a>
-<a class="sourceLine" id="cb1-62" title="62">            <span class="dt">double</span> result;</a>
-<a class="sourceLine" id="cb1-63" title="63">            result = Math.<span class="fu">Ceiling</span>(Math.<span class="fu">Log</span>(<span class="dv">1</span> - UniformGenerator.<span class="fu">NextDouble</span>()) / Math.<span class="fu">Log</span>(<span class="dv">1</span> - p));</a>
-<a class="sourceLine" id="cb1-64" title="64"></a>
-<a class="sourceLine" id="cb1-65" title="65">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb1-66" title="66">        }</a>
-<a class="sourceLine" id="cb1-67" title="67"></a>
-<a class="sourceLine" id="cb1-68" title="68">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-69" title="69">        <span class="co">/// 根据指定的几率数组产生符合离散分布的随机数。</span></a>
-<a class="sourceLine" id="cb1-70" title="70">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-71" title="71">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;probabilities&quot;</span><span class="kw">&gt;</span><span class="co">各取值的可能性。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-72" title="72">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">符合随机分布的随机整数。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-73" title="73">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">Discrete</span>(<span class="dt">double</span>[] probabilities)</a>
-<a class="sourceLine" id="cb1-74" title="74">        {</a>
-<a class="sourceLine" id="cb1-75" title="75">            <span class="kw">if</span> (probabilities == <span class="kw">null</span>)</a>
-<a class="sourceLine" id="cb1-76" title="76">            {</a>
-<a class="sourceLine" id="cb1-77" title="77">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentNullException</span>(<span class="st">&quot;Argument array is null&quot;</span>);</a>
-<a class="sourceLine" id="cb1-78" title="78">            }</a>
-<a class="sourceLine" id="cb1-79" title="79"></a>
-<a class="sourceLine" id="cb1-80" title="80">            <span class="dt">double</span> EPSION = <span class="fl">1E-14</span>;</a>
-<a class="sourceLine" id="cb1-81" title="81">            <span class="dt">double</span> sum = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-82" title="82">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; probabilities.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-83" title="83">            {</a>
-<a class="sourceLine" id="cb1-84" title="84">                <span class="kw">if</span> (probabilities[i] &lt;= <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb1-85" title="85">                {</a>
-<a class="sourceLine" id="cb1-86" title="86">                    <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentException</span>(<span class="st">&quot;array entry &quot;</span> + i + <span class="st">&quot; must be nonnegative:&quot;</span> + probabilities[i]);</a>
-<a class="sourceLine" id="cb1-87" title="87">                }</a>
-<a class="sourceLine" id="cb1-88" title="88"></a>
-<a class="sourceLine" id="cb1-89" title="89">                sum += probabilities[i];</a>
-<a class="sourceLine" id="cb1-90" title="90">            }</a>
-<a class="sourceLine" id="cb1-91" title="91"></a>
-<a class="sourceLine" id="cb1-92" title="92">            <span class="kw">if</span> (sum &gt; <span class="fl">1.0</span> + EPSION || sum &lt; <span class="fl">1.0</span> - EPSION)</a>
-<a class="sourceLine" id="cb1-93" title="93">            {</a>
-<a class="sourceLine" id="cb1-94" title="94">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentException</span>(<span class="st">&quot;sum of array entries does not equal 1.0:&quot;</span> + sum);</a>
-<a class="sourceLine" id="cb1-95" title="95">            }</a>
-<a class="sourceLine" id="cb1-96" title="96"></a>
-<a class="sourceLine" id="cb1-97" title="97">            <span class="kw">while</span> (<span class="kw">true</span>)</a>
-<a class="sourceLine" id="cb1-98" title="98">            {</a>
-<a class="sourceLine" id="cb1-99" title="99">                <span class="dt">double</span> r = UniformGenerator.<span class="fu">NextDouble</span>();</a>
-<a class="sourceLine" id="cb1-100" title="100">                sum = <span class="fl">0.0</span>;</a>
-<a class="sourceLine" id="cb1-101" title="101">                <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; probabilities.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-102" title="102">                {</a>
-<a class="sourceLine" id="cb1-103" title="103">                    sum += probabilities[i];</a>
-<a class="sourceLine" id="cb1-104" title="104">                    <span class="kw">if</span> (sum &gt; r)</a>
-<a class="sourceLine" id="cb1-105" title="105">                    {</a>
-<a class="sourceLine" id="cb1-106" title="106">                        <span class="kw">return</span> i;</a>
-<a class="sourceLine" id="cb1-107" title="107">                    }</a>
-<a class="sourceLine" id="cb1-108" title="108">                }</a>
-<a class="sourceLine" id="cb1-109" title="109">            }</a>
-<a class="sourceLine" id="cb1-110" title="110">        }</a>
-<a class="sourceLine" id="cb1-111" title="111">    }</a>
-<a class="sourceLine" id="cb1-112" title="112">}</a></code></pre></div>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>难点是如何生成符合这些分布的随机数。<br>Java 的话官方给的 stdRandom 里面都有相应的实现。<br>结果：<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>几种随机数的实现：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> Sort
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 静态类，包含用于生成排序算法测试数据的方法。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SortUtil</span>
+    <span class="token punctuation">{</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">static</span> Random UniformGenerator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 产生符合正态分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="average">正态分布的期望值 μ。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="standardDeviation">正态分布的标准差 σ。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>符合正态分布的随机数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Normal</span><span class="token punctuation">(</span><span class="token keyword">double</span> average<span class="token punctuation">,</span> <span class="token keyword">double</span> standardDeviation<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span> u1 <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> u2 <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">double</span> z0 <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Sqrt</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2.0</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>u1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Cos</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span>PI <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">*</span> u2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> z0 <span class="token operator">*</span> standardDeviation <span class="token operator">+</span> average<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 生成符合泊松分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="average">泊松分布的期望值 λ。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>一个符合泊松分布的随机数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Poission</span><span class="token punctuation">(</span><span class="token keyword">double</span> average<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> p <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Pow</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span>E<span class="token punctuation">,</span> <span class="token operator">-</span>average<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> s <span class="token operator">=</span> p<span class="token punctuation">;</span>
+            <span class="token keyword">double</span> u <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">do</span>
+            <span class="token punctuation">{</span>
+                x<span class="token operator">++</span><span class="token punctuation">;</span>
+                p <span class="token operator">*</span><span class="token operator">=</span> average <span class="token operator">/</span> x<span class="token punctuation">;</span>
+                s <span class="token operator">+</span><span class="token operator">=</span> p<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>u <span class="token operator">></span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> x<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 生成符合几何分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="p">几何分布的概率 p，这应该是一个小于 1 的非负数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;exception cref="ArgumentOutOfRangeException">概率不能大于 1.&lt;/exception></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>符合几何分布的随机数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Geometry</span><span class="token punctuation">(</span><span class="token keyword">double</span> p<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentOutOfRangeException</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">,</span> <span class="token string">"概率不能大于 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">double</span> result<span class="token punctuation">;</span>
+            result <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Ceiling</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 根据指定的几率数组产生符合离散分布的随机数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="probabilities">各取值的可能性。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>符合随机分布的随机整数。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Discrete</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> probabilities<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>probabilities <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentNullException</span><span class="token punctuation">(</span><span class="token string">"Argument array is null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">double</span> EPSION <span class="token operator">=</span> 1E<span class="token number">-14</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> probabilities<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"array entry "</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">" must be nonnegative:"</span> <span class="token operator">+</span> probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                sum <span class="token operator">+</span><span class="token operator">=</span> probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> <span class="token number">1.0</span> <span class="token operator">+</span> EPSION <span class="token operator">||</span> sum <span class="token operator">&lt;</span> <span class="token number">1.0</span> <span class="token operator">-</span> EPSION<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"sum of array entries does not equal 1.0:"</span> <span class="token operator">+</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">double</span> r <span class="token operator">=</span> UniformGenerator<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                sum <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> probabilities<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    sum <span class="token operator">+</span><span class="token operator">=</span> probabilities<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> r<span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Main 方法：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> Sort;</a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">35</span></a>
-<a class="sourceLine" id="cb2-5" title="5">{</a>
-<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * 2.1.35</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括：</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 高斯分布</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 泊松分布</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * 几何分布</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">     * 离散分布（一种特殊情况见练习 2.1.28）。</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">     * 评估并验证这些输入数据对本节讨论的算法的影响。</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-17" title="17">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-18" title="18">    {</a>
-<a class="sourceLine" id="cb2-19" title="19">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-20" title="20">        {</a>
-<a class="sourceLine" id="cb2-21" title="21">            InsertionSort insertionSort = <span class="kw">new</span> <span class="fu">InsertionSort</span>();</a>
-<a class="sourceLine" id="cb2-22" title="22">            SelectionSort selectionSort = <span class="kw">new</span> <span class="fu">SelectionSort</span>();</a>
-<a class="sourceLine" id="cb2-23" title="23">            ShellSort shellSort = <span class="kw">new</span> <span class="fu">ShellSort</span>();</a>
-<a class="sourceLine" id="cb2-24" title="24">            <span class="dt">int</span> n = <span class="dv">10000</span>;</a>
-<a class="sourceLine" id="cb2-25" title="25"></a>
-<a class="sourceLine" id="cb2-26" title="26">            <span class="co">// 高斯分布（正态分布）</span></a>
-<a class="sourceLine" id="cb2-27" title="27">            <span class="dt">double</span>[] arrayInsertion = SortCompare.<span class="fu">GetNormalDistributionArray</span>(n);</a>
-<a class="sourceLine" id="cb2-28" title="28">            <span class="dt">double</span>[] arraySelection = <span class="kw">new</span> <span class="dt">double</span>[n];</a>
-<a class="sourceLine" id="cb2-29" title="29">            <span class="dt">double</span>[] arrayShell = <span class="kw">new</span> <span class="dt">double</span>[n];</a>
-<a class="sourceLine" id="cb2-30" title="30"></a>
-<a class="sourceLine" id="cb2-31" title="31">            arrayInsertion.<span class="fu">CopyTo</span>(arraySelection, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-32" title="32">            arrayInsertion.<span class="fu">CopyTo</span>(arrayShell, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-33" title="33"></a>
-<a class="sourceLine" id="cb2-34" title="34">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Normal Distribution:&quot;</span>);</a>
-<a class="sourceLine" id="cb2-35" title="35">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion: &quot;</span> + SortCompare.<span class="fu">Time</span>(insertionSort, arrayInsertion));</a>
-<a class="sourceLine" id="cb2-36" title="36">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection: &quot;</span> + SortCompare.<span class="fu">Time</span>(selectionSort, arraySelection));</a>
-<a class="sourceLine" id="cb2-37" title="37">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell: &quot;</span> + SortCompare.<span class="fu">Time</span>(shellSort, arrayShell));</a>
-<a class="sourceLine" id="cb2-38" title="38"></a>
-<a class="sourceLine" id="cb2-39" title="39">            <span class="co">// 泊松分布</span></a>
-<a class="sourceLine" id="cb2-40" title="40">            arrayInsertion = SortCompare.<span class="fu">GetPossionDistributionArray</span>(n);</a>
-<a class="sourceLine" id="cb2-41" title="41">            arrayInsertion.<span class="fu">CopyTo</span>(arraySelection, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-42" title="42">            arrayInsertion.<span class="fu">CopyTo</span>(arrayShell, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-43" title="43"></a>
-<a class="sourceLine" id="cb2-44" title="44">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Poission Distribution:&quot;</span>);</a>
-<a class="sourceLine" id="cb2-45" title="45">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion: &quot;</span> + SortCompare.<span class="fu">Time</span>(insertionSort, arrayInsertion));</a>
-<a class="sourceLine" id="cb2-46" title="46">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection: &quot;</span> + SortCompare.<span class="fu">Time</span>(selectionSort, arraySelection));</a>
-<a class="sourceLine" id="cb2-47" title="47">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell: &quot;</span> + SortCompare.<span class="fu">Time</span>(shellSort, arrayShell));</a>
-<a class="sourceLine" id="cb2-48" title="48"></a>
-<a class="sourceLine" id="cb2-49" title="49">            <span class="co">// 几何分布</span></a>
-<a class="sourceLine" id="cb2-50" title="50">            arrayInsertion = SortCompare.<span class="fu">GetGeometricDistributionArray</span>(n, <span class="fl">0.3</span>);</a>
-<a class="sourceLine" id="cb2-51" title="51">            arrayInsertion.<span class="fu">CopyTo</span>(arraySelection, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-52" title="52">            arrayInsertion.<span class="fu">CopyTo</span>(arrayShell, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-53" title="53"></a>
-<a class="sourceLine" id="cb2-54" title="54">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Geometric Distribution:&quot;</span>);</a>
-<a class="sourceLine" id="cb2-55" title="55">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion: &quot;</span> + SortCompare.<span class="fu">Time</span>(insertionSort, arrayInsertion));</a>
-<a class="sourceLine" id="cb2-56" title="56">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection: &quot;</span> + SortCompare.<span class="fu">Time</span>(selectionSort, arraySelection));</a>
-<a class="sourceLine" id="cb2-57" title="57">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell: &quot;</span> + SortCompare.<span class="fu">Time</span>(shellSort, arrayShell));</a>
-<a class="sourceLine" id="cb2-58" title="58"></a>
-<a class="sourceLine" id="cb2-59" title="59">            <span class="co">// 离散分布</span></a>
-<a class="sourceLine" id="cb2-60" title="60">            arrayInsertion = SortCompare.<span class="fu">GetDiscretDistributionArray</span>(n, <span class="kw">new</span> <span class="dt">double</span>[] { <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span> });</a>
-<a class="sourceLine" id="cb2-61" title="61">            arrayInsertion.<span class="fu">CopyTo</span>(arraySelection, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-62" title="62">            arrayInsertion.<span class="fu">CopyTo</span>(arrayShell, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb2-63" title="63"></a>
-<a class="sourceLine" id="cb2-64" title="64">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Discret Distribution:&quot;</span>);</a>
-<a class="sourceLine" id="cb2-65" title="65">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion: &quot;</span> + SortCompare.<span class="fu">Time</span>(insertionSort, arrayInsertion));</a>
-<a class="sourceLine" id="cb2-66" title="66">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection: &quot;</span> + SortCompare.<span class="fu">Time</span>(selectionSort, arraySelection));</a>
-<a class="sourceLine" id="cb2-67" title="67">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell: &quot;</span> + SortCompare.<span class="fu">Time</span>(shellSort, arrayShell));</a>
-<a class="sourceLine" id="cb2-68" title="68">        }</a>
-<a class="sourceLine" id="cb2-69" title="69">    }</a>
-<a class="sourceLine" id="cb2-70" title="70">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> Sort<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_35
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 2.1.35
+     * 
+     * 不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括：
+     * 高斯分布
+     * 泊松分布
+     * 几何分布
+     * 离散分布（一种特殊情况见练习 2.1.28）。
+     * 评估并验证这些输入数据对本节讨论的算法的影响。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            InsertionSort insertionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            SelectionSort selectionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ShellSort shellSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 高斯分布（正态分布）</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetNormalDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arraySelection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayShell <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Normal Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 泊松分布</span>
+            arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetPossionDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Poission Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 几何分布</span>
+            arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetGeometricDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Geometric Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 离散分布</span>
+            arrayInsertion <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetDiscretDistributionArray</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arraySelection<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arrayInsertion<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayShell<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Discret Distribution:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">,</span> arrayInsertion<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">,</span> arraySelection<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell: "</span> <span class="token operator">+</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">,</span> arrayShell<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
 
 		</div>
 	</div>

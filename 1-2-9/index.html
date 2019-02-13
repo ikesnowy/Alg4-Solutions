@@ -140,139 +140,138 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.2.9</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.2.9 修改 BinarySearch（请见 1.1.10.1 节中的二分查找代码）， 使用 Counter 统计在有查找中被检查的键的总数并在查找全部结束后打印该值。 提示：在 main() 中创建一个 Counter 对象并将它作为参数传递给 rank()</p>
-<h1 id="解答">解答</h1>
-<p>首先实现一个 Counter 类，随后使用非递归版本的 BinarySearch，每进行一次 While 循环就让 Counter 加一。</p>
-<h1 id="代码">代码</h1>
-<p>Counter 类</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">2.</span>_<span class="dv">9</span></a>
-<a class="sourceLine" id="cb1-2" title="2">{</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4">    <span class="co">/// 计数器类</span></a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">class</span> Counter</a>
-<a class="sourceLine" id="cb1-7" title="7">    {</a>
-<a class="sourceLine" id="cb1-8" title="8">        <span class="kw">private</span> <span class="kw">readonly</span> <span class="dt">string</span> name;</a>
-<a class="sourceLine" id="cb1-9" title="9">        <span class="kw">private</span> <span class="dt">int</span> count;</a>
-<a class="sourceLine" id="cb1-10" title="10"></a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-12" title="12">        <span class="co">/// 构造函数。</span></a>
-<a class="sourceLine" id="cb1-13" title="13">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;id&quot;</span><span class="kw">&gt;</span><span class="co">计数器的名称。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-15" title="15">        <span class="kw">public</span> <span class="fu">Counter</span>(<span class="dt">string</span> id)</a>
-<a class="sourceLine" id="cb1-16" title="16">        {</a>
-<a class="sourceLine" id="cb1-17" title="17">            <span class="kw">this</span>.<span class="fu">name</span> = id;</a>
-<a class="sourceLine" id="cb1-18" title="18">        }</a>
-<a class="sourceLine" id="cb1-19" title="19"></a>
-<a class="sourceLine" id="cb1-20" title="20">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-21" title="21">        <span class="co">/// 计数器加一。</span></a>
-<a class="sourceLine" id="cb1-22" title="22">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-23" title="23">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Increment</span>()</a>
-<a class="sourceLine" id="cb1-24" title="24">        {</a>
-<a class="sourceLine" id="cb1-25" title="25">            count++;</a>
-<a class="sourceLine" id="cb1-26" title="26">        }</a>
-<a class="sourceLine" id="cb1-27" title="27"></a>
-<a class="sourceLine" id="cb1-28" title="28">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-29" title="29">        <span class="co">/// 获取当前计数值。</span></a>
-<a class="sourceLine" id="cb1-30" title="30">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-31" title="31">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Tally</span>()</a>
-<a class="sourceLine" id="cb1-33" title="33">        {</a>
-<a class="sourceLine" id="cb1-34" title="34">            <span class="kw">return</span> count;</a>
-<a class="sourceLine" id="cb1-35" title="35">        }</a>
-<a class="sourceLine" id="cb1-36" title="36"></a>
-<a class="sourceLine" id="cb1-37" title="37">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-38" title="38">        <span class="co">/// 输出形如 “1 counter” 的字符串。</span></a>
-<a class="sourceLine" id="cb1-39" title="39">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-41" title="41">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">string</span> <span class="fu">ToString</span>()</a>
-<a class="sourceLine" id="cb1-42" title="42">        {</a>
-<a class="sourceLine" id="cb1-43" title="43">            <span class="kw">return</span> count + <span class="st">&quot; &quot;</span> + name;</a>
-<a class="sourceLine" id="cb1-44" title="44">        }</a>
-<a class="sourceLine" id="cb1-45" title="45">    }</a>
-<a class="sourceLine" id="cb1-46" title="46">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.9<br>修改 BinarySearch（请见 1.1.10.1 节中的二分查找代码），<br>使用 Counter 统计在有查找中被检查的键的总数并在查找全部结束后打印该值。<br>提示：在 main() 中创建一个 Counter 对象并将它作为参数传递给 rank()</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先实现一个 Counter 类，随后使用非递归版本的 BinarySearch，每进行一次 While 循环就让 Counter 加一。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>Counter 类</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_9
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 计数器类</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">class</span> <span class="token class-name">Counter</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token keyword">string</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> count<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 构造函数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="id">计数器的名称。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token keyword">string</span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> id<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 计数器加一。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获取当前计数值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Tally</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 输出形如 “1 counter” 的字符串。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">string</span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> count <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Main 方法</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> System.<span class="fu">IO</span>;</a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">2.</span>_<span class="dv">9</span></a>
-<a class="sourceLine" id="cb2-5" title="5">{</a>
-<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * 1.2.9</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 修改 BinarySearch（请见 1.1.10.1 节中的二分查找代码），</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 使用 Counter 统计在有查找中被检查的键的总数并在查找全部结束后打印该值。</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 提示：在 main() 中创建一个 Counter 对象并将它作为参数传递给 rank()</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-14" title="14">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-15" title="15">    {</a>
-<a class="sourceLine" id="cb2-16" title="16">        <span class="co">//参考 1.1.10 节的代码</span></a>
-<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-18" title="18">        {</a>
-<a class="sourceLine" id="cb2-19" title="19">            Counter count = <span class="kw">new</span> <span class="fu">Counter</span>(<span class="st">&quot;BinarySearch&quot;</span>);</a>
-<a class="sourceLine" id="cb2-20" title="20"></a>
-<a class="sourceLine" id="cb2-21" title="21">            <span class="co">//读取白名单</span></a>
-<a class="sourceLine" id="cb2-22" title="22">            <span class="dt">string</span>[] whiteListString = File.<span class="fu">ReadAllLines</span>(<span class="st">&quot;tinyW.txt&quot;</span>);</a>
-<a class="sourceLine" id="cb2-23" title="23">            <span class="dt">int</span>[] whiteList = <span class="kw">new</span> <span class="dt">int</span>[whiteListString.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb2-24" title="24">            </a>
-<a class="sourceLine" id="cb2-25" title="25">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; whiteListString.<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb2-26" title="26">            {</a>
-<a class="sourceLine" id="cb2-27" title="27">                whiteList[i] = <span class="dt">int</span>.<span class="fu">Parse</span>(whiteListString[i]);</a>
-<a class="sourceLine" id="cb2-28" title="28">            }</a>
-<a class="sourceLine" id="cb2-29" title="29">            Array.<span class="fu">Sort</span>(whiteList);</a>
-<a class="sourceLine" id="cb2-30" title="30"></a>
-<a class="sourceLine" id="cb2-31" title="31">            <span class="co">//读取查询值</span></a>
-<a class="sourceLine" id="cb2-32" title="32">            <span class="dt">string</span>[] inputListString = File.<span class="fu">ReadAllLines</span>(<span class="st">&quot;tinyT.txt&quot;</span>);</a>
-<a class="sourceLine" id="cb2-33" title="33">            <span class="dt">int</span>[] inputList = <span class="kw">new</span> <span class="dt">int</span>[inputListString.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb2-34" title="34"></a>
-<a class="sourceLine" id="cb2-35" title="35">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; inputListString.<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb2-36" title="36">            {</a>
-<a class="sourceLine" id="cb2-37" title="37">                inputList[i] = <span class="dt">int</span>.<span class="fu">Parse</span>(inputListString[i]);</a>
-<a class="sourceLine" id="cb2-38" title="38">            }</a>
-<a class="sourceLine" id="cb2-39" title="39"></a>
-<a class="sourceLine" id="cb2-40" title="40">            <span class="co">//对每一个查询值进行二分查找</span></a>
-<a class="sourceLine" id="cb2-41" title="41">            <span class="kw">foreach</span> (<span class="dt">int</span> n <span class="kw">in</span> inputList)</a>
-<a class="sourceLine" id="cb2-42" title="42">            {</a>
-<a class="sourceLine" id="cb2-43" title="43">                <span class="dt">int</span> result = <span class="fu">rank</span>(n, whiteList, count);</a>
-<a class="sourceLine" id="cb2-44" title="44">                <span class="co">//将不在白名单上的数据输出</span></a>
-<a class="sourceLine" id="cb2-45" title="45">                <span class="kw">if</span> (result == <span class="dv">-1</span>)</a>
-<a class="sourceLine" id="cb2-46" title="46">                {</a>
-<a class="sourceLine" id="cb2-47" title="47">                    Console.<span class="fu">WriteLine</span>(n);</a>
-<a class="sourceLine" id="cb2-48" title="48">                }</a>
-<a class="sourceLine" id="cb2-49" title="49">            }</a>
-<a class="sourceLine" id="cb2-50" title="50">            Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb2-51" title="51"></a>
-<a class="sourceLine" id="cb2-52" title="52">            <span class="co">//输出查询数目</span></a>
-<a class="sourceLine" id="cb2-53" title="53">            Console.<span class="fu">WriteLine</span>(count.<span class="fu">Tally</span>());</a>
-<a class="sourceLine" id="cb2-54" title="54">        }</a>
-<a class="sourceLine" id="cb2-55" title="55"></a>
-<a class="sourceLine" id="cb2-56" title="56">        <span class="kw">static</span> <span class="dt">int</span> <span class="fu">rank</span>(<span class="dt">int</span> key, <span class="dt">int</span>[] a, Counter count)</a>
-<a class="sourceLine" id="cb2-57" title="57">        {</a>
-<a class="sourceLine" id="cb2-58" title="58">            <span class="dt">int</span> lo = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-59" title="59">            <span class="dt">int</span> hi = a.<span class="fu">Length</span> - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-60" title="60">            <span class="kw">while</span> (lo &lt;= hi)</a>
-<a class="sourceLine" id="cb2-61" title="61">            {</a>
-<a class="sourceLine" id="cb2-62" title="62">                <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb2-63" title="63">                count.<span class="fu">Increment</span>();</a>
-<a class="sourceLine" id="cb2-64" title="64">                <span class="kw">if</span> (key &lt; a[mid])</a>
-<a class="sourceLine" id="cb2-65" title="65">                {</a>
-<a class="sourceLine" id="cb2-66" title="66">                    hi = mid - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-67" title="67">                }</a>
-<a class="sourceLine" id="cb2-68" title="68">                <span class="kw">else</span> <span class="kw">if</span> (key &gt; a[mid])</a>
-<a class="sourceLine" id="cb2-69" title="69">                {</a>
-<a class="sourceLine" id="cb2-70" title="70">                    lo = mid + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-71" title="71">                }</a>
-<a class="sourceLine" id="cb2-72" title="72">                <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-73" title="73">                {</a>
-<a class="sourceLine" id="cb2-74" title="74">                    <span class="kw">return</span> mid;</a>
-<a class="sourceLine" id="cb2-75" title="75">                }</a>
-<a class="sourceLine" id="cb2-76" title="76">            }</a>
-<a class="sourceLine" id="cb2-77" title="77">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
-<a class="sourceLine" id="cb2-78" title="78">        }</a>
-<a class="sourceLine" id="cb2-79" title="79">    }</a>
-<a class="sourceLine" id="cb2-80" title="80">}</a></code></pre></div>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>IO<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_9
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.2.9
+     * 
+     * 修改 BinarySearch（请见 1.1.10.1 节中的二分查找代码），
+     * 使用 Counter 统计在有查找中被检查的键的总数并在查找全部结束后打印该值。
+     * 提示：在 main() 中创建一个 Counter 对象并将它作为参数传递给 rank()
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//参考 1.1.10 节的代码</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Counter count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Counter</span><span class="token punctuation">(</span><span class="token string">"BinarySearch"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//读取白名单</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> whiteListString <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllLines</span><span class="token punctuation">(</span><span class="token string">"tinyW.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> whiteList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>whiteListString<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> whiteListString<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                whiteList<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>whiteListString<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>whiteList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//读取查询值</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> inputListString <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllLines</span><span class="token punctuation">(</span><span class="token string">"tinyT.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> inputList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>inputListString<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> inputListString<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                inputList<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>inputListString<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">//对每一个查询值进行二分查找</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">int</span> n <span class="token keyword">in</span> inputList<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token function">rank</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> whiteList<span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//将不在白名单上的数据输出</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//输出查询数目</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token function">Tally</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">rank</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> Counter count<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> lo <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> hi <span class="token operator">=</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;=</span> hi<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                count<span class="token punctuation">.</span><span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">&lt;</span> a<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    hi <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">></span> a<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    lo <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> mid<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

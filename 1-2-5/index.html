@@ -140,40 +140,39 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.2.5</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.2.5 以下这段代码会打印出什么？</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">String</span> s = <span class="st">&quot;Hello World&quot;</span>;</a>
-<a class="sourceLine" id="cb1-2" title="2">s.<span class="fu">toUpperCase</span>();</a>
-<a class="sourceLine" id="cb1-3" title="3">s.<span class="fu">substring</span>(<span class="dv">6</span>, <span class="dv">11</span>);</a>
-<a class="sourceLine" id="cb1-4" title="4">StdOut.<span class="fu">println</span>(s);</a></code></pre></div>
-<h1 id="解答">解答</h1>
-<p>string 类型中的 Uppercase() 以及 Substring() 都不会改变原有字符串，而是新建一个字符串。 因此输出仍然为 Hello World。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">2.</span>_<span class="dv">5</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">     * 1.2.5</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * 以下这段代码会打印出什么？</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * String s = &quot;Hello World&quot;;</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * s.toUpperCase();</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * s.substring(6, 11);</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * StdOut.println(s);</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-15" title="15">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-16" title="16">    {</a>
-<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-18" title="18">        {</a>
-<a class="sourceLine" id="cb2-19" title="19">            <span class="dt">string</span> s = <span class="st">&quot;Hello World&quot;</span>;</a>
-<a class="sourceLine" id="cb2-20" title="20">            s.<span class="fu">ToUpper</span>();</a>
-<a class="sourceLine" id="cb2-21" title="21">            s.<span class="fu">Substring</span>(<span class="dv">6</span>, <span class="dv">5</span>);<span class="co">//C# 中两个参数分别代表子串起始下标和长度</span></a>
-<a class="sourceLine" id="cb2-22" title="22">            Console.<span class="fu">WriteLine</span>(s);</a>
-<a class="sourceLine" id="cb2-23" title="23">        }</a>
-<a class="sourceLine" id="cb2-24" title="24">    }</a>
-<a class="sourceLine" id="cb2-25" title="25">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.5<br>以下这段代码会打印出什么？</p>
+<pre class="line-numbers language-java"><code class="language-java">String s <span class="token operator">=</span> <span class="token string">"Hello World"</span><span class="token punctuation">;</span>
+s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+StdOut<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>string 类型中的 Uppercase() 以及 Substring() 都不会改变原有字符串，而是新建一个字符串。<br>因此输出仍然为 Hello World。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_5
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.2.5
+     * 
+     * 以下这段代码会打印出什么？
+     * String s = "Hello World";
+     * s.toUpperCase();
+     * s.substring(6, 11);
+     * StdOut.println(s);
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">string</span> s <span class="token operator">=</span> <span class="token string">"Hello World"</span><span class="token punctuation">;</span>
+            s<span class="token punctuation">.</span><span class="token function">ToUpper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            s<span class="token punctuation">.</span><span class="token function">Substring</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//C# 中两个参数分别代表子串起始下标和长度</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

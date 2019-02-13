@@ -140,14 +140,12 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.1</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.1 证明从 N 个数中取三个整数的不同组合总数为 N(N - 1)(N - 2) / 6。</p>
-<h1 id="解答">解答</h1>
-<p>即为证明组合计算公式：</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.1<br>证明从 N 个数中取三个整数的不同组合总数为 N(N - 1)(N - 2) / 6。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>即为证明组合计算公式：</p>
 <p>$ C(N, 3) $</p>
-<p><span class="math inline">\(= N! / [(N - 3)! × 3!]\)</span> <span class="math inline">\(= [(N - 2) * (N - 1) * N] / 3!\)</span> <span class="math inline">\(= N(N - 1)(N - 2) / 6\)</span></p>
-<p>显然 N 必须大于等于 3。 <span class="math inline">\(N = 3\)</span> 时公式正确，只有一种组合。 <span class="math inline">\(N = 4\)</span> 时公式正确，只有四种组合。</p>
-<p>扩展到 <span class="math inline">\(N+1\)</span> 个数，将 <span class="math inline">\(N = N + 1\)</span> 代入，可得： <span class="math inline">\((N + 1)N(N - 1) / 6\)</span> <span class="math inline">\(N + 1\)</span> 个数能组成的三位数组合可以这样理解 前 N 个数中取三个数的所有组合 +多出的一个数和前 N 个数中的任意取两个数的所有组合 即为 <span class="math inline">\(N(N-1)(N - 2) / 6 + C(N, 2)\)</span> 变形后即为 <span class="math inline">\((N + 1)N(N - 1) / 6\)</span> 得证。</p>
+<p>$= N! / [(N - 3)! × 3!]$<br>$= [(N - 2) <em> (N - 1) </em> N] / 3!$<br>$= N(N - 1)(N - 2) / 6$</p>
+<p>显然 N 必须大于等于 3。<br>$N = 3$ 时公式正确，只有一种组合。<br>$N = 4$ 时公式正确，只有四种组合。</p>
+<p>扩展到 $N+1$ 个数，将 $N = N + 1$ 代入，可得：<br>$(N + 1)N(N - 1) / 6$<br>$N + 1$ 个数能组成的三位数组合可以这样理解<br>前 N 个数中取三个数的所有组合 +多出的一个数和前 N 个数中的任意取两个数的所有组合<br>即为 $N(N-1)(N - 2) / 6 + C(N, 2)$<br>变形后即为 $(N + 1)N(N - 1) / 6$<br>得证。</p>
 
 		</div>
 	</div>

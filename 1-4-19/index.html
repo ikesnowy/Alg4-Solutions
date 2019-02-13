@@ -140,131 +140,128 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.19</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.19 矩阵的局部最小元素。 给定一个含有 N^2 个不同整数的 N×N 数组 a[]。 设计一个运送时间和 N 成正比的算法来找出一个局部最小元素： 满足 a[i][j] &lt; a[i+1][j]、a[i][j] &lt; a[i][j+1]、a[i][j] &lt; a[i-1][j] 以及 a[i][j] &lt; a[i][j-1] 的索引 i 和 j。 程序运行时间在最坏情况下应该和 N 成正比。</p>
-<h1 id="解答">解答</h1>
-<p>问题类似于 POJ 上的一道题「滑雪」，从数值较高的一侧向周围数值较小的一侧移动，直到到达「山谷」（局部最小）。</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.19<br>矩阵的局部最小元素。 给定一个含有 N^2 个不同整数的 N×N 数组 a[]。<br>设计一个运送时间和 N 成正比的算法来找出一个局部最小元素：<br>满足 a[i][j] &lt; a[i+1][j]、a[i][j] &lt; a[i][j+1]、a[i][j] &lt; a[i-1][j] 以及 a[i][j] &lt; a[i][j-1] 的索引 i 和 j。<br>程序运行时间在最坏情况下应该和 N 成正比。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>问题类似于 POJ 上的一道题「滑雪」，从数值较高的一侧向周围数值较小的一侧移动，直到到达「山谷」（局部最小）。</p>
 <p>首先在中间行搜索最小值，再将最小值与其上下两个元素比较，如果不满足题意，则“滑向”较小的一侧，矩阵被分为了两半（上下两侧）。</p>
 <p>在较小的一侧，找到中间列的最小值，再将最小值与其左右两个元素比较，如果不满足题意，类似的移动到较小的一侧（左右两侧）。</p>
 <p>现在查找范围缩小到了原来矩阵的四分之一，递归的进行上述操作，最后可以得到答案。</p>
 <p>每次查找最小值都是对行/列进行遍历，遍历耗时和 N 成正比。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">19</span></a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">     * 1.4.19</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * 矩阵的局部最小元素。</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 给定一个含有 N^2 个不同整数的 N×N 数组 a[]。</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 设计一个运行时间和 N 成正比的算法来找出一个局部最小元素：</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 满足 a[i][j] &lt; a[i+1][j]、a[i][j] &lt; a[i][j+1]、a[i][j] &lt; a[i-1][j] 以及 a[i][j] &lt; a[i][j-1] 的索引 i 和 j。</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 程序运行时间在最坏情况下应该和 N 成正比。</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-15" title="15">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-16" title="16">    {</a>
-<a class="sourceLine" id="cb1-17" title="17">        <span class="co">// 先查找 N/2 行中的最小元素，并令其与上下元素比较，</span></a>
-<a class="sourceLine" id="cb1-18" title="18">        <span class="co">// 如果不满足题意，则向相邻的最小元素靠近再次查找</span></a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-20" title="20">        {</a>
-<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">int</span>[,] matrix = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">5</span>, <span class="dv">5</span>] </a>
-<a class="sourceLine" id="cb1-22" title="22">            { </a>
-<a class="sourceLine" id="cb1-23" title="23">                { <span class="dv">26</span>, <span class="dv">3</span>, <span class="dv">4</span> , <span class="dv">10</span>, <span class="dv">11</span> }, </a>
-<a class="sourceLine" id="cb1-24" title="24">                { <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">13</span> }, </a>
-<a class="sourceLine" id="cb1-25" title="25">                { <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span> , <span class="dv">14</span>, <span class="dv">15</span> }, </a>
-<a class="sourceLine" id="cb1-26" title="26">                { <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">27</span>, <span class="dv">20</span> }, </a>
-<a class="sourceLine" id="cb1-27" title="27">                { <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">25</span> }</a>
-<a class="sourceLine" id="cb1-28" title="28">            };</a>
-<a class="sourceLine" id="cb1-29" title="29">            Console.<span class="fu">WriteLine</span>(<span class="fu">MinimumRow</span>(matrix, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>));</a>
-<a class="sourceLine" id="cb1-30" title="30">        }</a>
-<a class="sourceLine" id="cb1-31" title="31"></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-33" title="33">        <span class="co">/// 在矩阵中间行查找局部最小。</span></a>
-<a class="sourceLine" id="cb1-34" title="34">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-35" title="35">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;matrix&quot;</span><span class="kw">&gt;</span><span class="co">矩阵。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-36" title="36">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;rowStart&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的行起始。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-37" title="37">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;rowLength&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的行结尾。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-38" title="38">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;colStart&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的列起始。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-39" title="39">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;colLength&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的列结尾。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">矩阵中的局部最小元素。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-41" title="41">        <span class="kw">static</span> <span class="dt">int</span> <span class="fu">MinimumRow</span>(<span class="dt">int</span>[,] matrix, <span class="dt">int</span> rowStart, <span class="dt">int</span> rowLength, <span class="dt">int</span> colStart, <span class="dt">int</span> colLength)</a>
-<a class="sourceLine" id="cb1-42" title="42">        {</a>
-<a class="sourceLine" id="cb1-43" title="43">            <span class="dt">int</span> min = <span class="dt">int</span>.<span class="fu">MaxValue</span>;</a>
-<a class="sourceLine" id="cb1-44" title="44">            <span class="kw">if</span> (rowLength &lt; <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb1-45" title="45">                <span class="kw">return</span> <span class="dt">int</span>.<span class="fu">MaxValue</span>;</a>
-<a class="sourceLine" id="cb1-46" title="46">            <span class="dt">int</span> mid = rowStart + rowLength / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-47" title="47">            <span class="dt">int</span> minCol = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-48" title="48">            <span class="co">// 获取矩阵中间行的最小值</span></a>
-<a class="sourceLine" id="cb1-49" title="49">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; colLength; ++i)</a>
-<a class="sourceLine" id="cb1-50" title="50">            {</a>
-<a class="sourceLine" id="cb1-51" title="51">                <span class="kw">if</span> (min &gt; matrix[mid, colStart + i])</a>
-<a class="sourceLine" id="cb1-52" title="52">                {</a>
-<a class="sourceLine" id="cb1-53" title="53">                    min = matrix[mid, colStart + i];</a>
-<a class="sourceLine" id="cb1-54" title="54">                    minCol = i;</a>
-<a class="sourceLine" id="cb1-55" title="55">                }</a>
-<a class="sourceLine" id="cb1-56" title="56">            }</a>
-<a class="sourceLine" id="cb1-57" title="57">            <span class="co">// 检查是否满足条件</span></a>
-<a class="sourceLine" id="cb1-58" title="58">            <span class="kw">if</span> (matrix[mid, minCol] &lt; matrix[mid - <span class="dv">1</span>, minCol] &amp;&amp; matrix[mid, minCol] &lt; matrix[mid + <span class="dv">1</span>, minCol])</a>
-<a class="sourceLine" id="cb1-59" title="59">            {</a>
-<a class="sourceLine" id="cb1-60" title="60">                <span class="kw">return</span> matrix[mid, minCol];</a>
-<a class="sourceLine" id="cb1-61" title="61">            }</a>
-<a class="sourceLine" id="cb1-62" title="62">            <span class="co">// 如果不满足则向较小一侧移动</span></a>
-<a class="sourceLine" id="cb1-63" title="63">            <span class="kw">if</span> (matrix[mid - <span class="dv">1</span>, minCol] &gt; matrix[mid + <span class="dv">1</span>, minCol])</a>
-<a class="sourceLine" id="cb1-64" title="64">            {</a>
-<a class="sourceLine" id="cb1-65" title="65">                <span class="kw">return</span> <span class="fu">MinimumCol</span>(matrix, rowStart, rowLength, mid + <span class="dv">1</span>, colLength / <span class="dv">2</span> + <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-66" title="66">            }</a>
-<a class="sourceLine" id="cb1-67" title="67">            <span class="kw">else</span></a>
-<a class="sourceLine" id="cb1-68" title="68">            {</a>
-<a class="sourceLine" id="cb1-69" title="69">                <span class="kw">return</span> <span class="fu">MinimumCol</span>(matrix, rowStart, rowLength, colStart, colLength / <span class="dv">2</span> + <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-70" title="70">            }</a>
-<a class="sourceLine" id="cb1-71" title="71">        }</a>
-<a class="sourceLine" id="cb1-72" title="72"></a>
-<a class="sourceLine" id="cb1-73" title="73">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-74" title="74">        <span class="co">/// 在矩阵中间列查找局部最小。</span></a>
-<a class="sourceLine" id="cb1-75" title="75">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-76" title="76">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;matrix&quot;</span><span class="kw">&gt;</span><span class="co">矩阵。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-77" title="77">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;rowStart&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的行起始。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-78" title="78">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;rowLength&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的行结尾。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-79" title="79">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;colStart&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的列起始。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-80" title="80">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;colLength&quot;</span><span class="kw">&gt;</span><span class="co">实际查找范围的列结尾。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-81" title="81">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">矩阵中的局部最小元素。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-82" title="82">        <span class="kw">static</span> <span class="dt">int</span> <span class="fu">MinimumCol</span>(<span class="dt">int</span>[,] matrix, <span class="dt">int</span> rowStart, <span class="dt">int</span> rowLength, <span class="dt">int</span> colStart, <span class="dt">int</span> colLength)</a>
-<a class="sourceLine" id="cb1-83" title="83">        {</a>
-<a class="sourceLine" id="cb1-84" title="84">            <span class="dt">int</span> min = <span class="dt">int</span>.<span class="fu">MaxValue</span>;</a>
-<a class="sourceLine" id="cb1-85" title="85">            <span class="dt">int</span> n = matrix.<span class="fu">GetLength</span>(<span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-86" title="86">            <span class="dt">int</span> mid = n / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-87" title="87">            <span class="dt">int</span> minRow = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-88" title="88"></a>
-<a class="sourceLine" id="cb1-89" title="89">            <span class="co">// 获取矩阵中间列最小值</span></a>
-<a class="sourceLine" id="cb1-90" title="90">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
-<a class="sourceLine" id="cb1-91" title="91">            {</a>
-<a class="sourceLine" id="cb1-92" title="92">                <span class="kw">if</span> (min &gt; matrix[i, mid])</a>
-<a class="sourceLine" id="cb1-93" title="93">                {</a>
-<a class="sourceLine" id="cb1-94" title="94">                    min = matrix[i, mid];</a>
-<a class="sourceLine" id="cb1-95" title="95">                    minRow = i;</a>
-<a class="sourceLine" id="cb1-96" title="96">                }</a>
-<a class="sourceLine" id="cb1-97" title="97">            }</a>
-<a class="sourceLine" id="cb1-98" title="98">            <span class="co">// 检查是否满足条件</span></a>
-<a class="sourceLine" id="cb1-99" title="99">            <span class="kw">if</span> (matrix[minRow, mid] &lt; matrix[minRow, mid - <span class="dv">1</span>] &amp;&amp; matrix[minRow, mid] &lt; matrix[minRow, mid + <span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb1-100" title="100">            {</a>
-<a class="sourceLine" id="cb1-101" title="101">                <span class="kw">return</span> matrix[minRow, mid];</a>
-<a class="sourceLine" id="cb1-102" title="102">            }</a>
-<a class="sourceLine" id="cb1-103" title="103">            <span class="co">// 如果不满足则向较小一侧移动</span></a>
-<a class="sourceLine" id="cb1-104" title="104">            <span class="kw">if</span> (matrix[minRow, mid - <span class="dv">1</span>] &gt; matrix[minRow, mid + <span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb1-105" title="105">            {</a>
-<a class="sourceLine" id="cb1-106" title="106">                <span class="kw">return</span> <span class="fu">MinimumRow</span>(matrix, mid + <span class="dv">1</span>, rowLength / <span class="dv">2</span> + <span class="dv">1</span>, colStart, colLength);</a>
-<a class="sourceLine" id="cb1-107" title="107">            }</a>
-<a class="sourceLine" id="cb1-108" title="108">            <span class="kw">else</span></a>
-<a class="sourceLine" id="cb1-109" title="109">            {</a>
-<a class="sourceLine" id="cb1-110" title="110">                <span class="kw">return</span> <span class="fu">MinimumRow</span>(matrix, rowStart, rowLength / <span class="dv">2</span> + <span class="dv">1</span>, colStart, colLength);</a>
-<a class="sourceLine" id="cb1-111" title="111">            }</a>
-<a class="sourceLine" id="cb1-112" title="112">        }</a>
-<a class="sourceLine" id="cb1-113" title="113">    }</a>
-<a class="sourceLine" id="cb1-114" title="114">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="http://bailian.openjudge.cn/practice/1088/" target="_blank" rel="noopener">POJ-滑雪</a></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_19
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.4.19
+     * 
+     * 矩阵的局部最小元素。
+     * 给定一个含有 N^2 个不同整数的 N×N 数组 a[]。
+     * 设计一个运行时间和 N 成正比的算法来找出一个局部最小元素：
+     * 满足 a[i][j] &lt; a[i+1][j]、a[i][j] &lt; a[i][j+1]、a[i][j] &lt; a[i-1][j] 以及 a[i][j] &lt; a[i][j-1] 的索引 i 和 j。
+     * 程序运行时间在最坏情况下应该和 N 成正比。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 先查找 N/2 行中的最小元素，并令其与上下元素比较，</span>
+        <span class="token comment" spellcheck="true">// 如果不满足题意，则向相邻的最小元素靠近再次查找</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token punctuation">]</span> matrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span> 
+            <span class="token punctuation">{</span> 
+                <span class="token punctuation">{</span> <span class="token number">26</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span> <span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+                <span class="token punctuation">{</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+                <span class="token punctuation">{</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span> <span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">15</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+                <span class="token punctuation">{</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">20</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+                <span class="token punctuation">{</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">25</span> <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token function">MinimumRow</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 在矩阵中间行查找局部最小。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="matrix">矩阵。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="rowStart">实际查找范围的行起始。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="rowLength">实际查找范围的行结尾。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="colStart">实际查找范围的列起始。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="colLength">实际查找范围的列结尾。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>矩阵中的局部最小元素。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">MinimumRow</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> rowStart<span class="token punctuation">,</span> <span class="token keyword">int</span> rowLength<span class="token punctuation">,</span> <span class="token keyword">int</span> colStart<span class="token punctuation">,</span> <span class="token keyword">int</span> colLength<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> min <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>rowLength <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token keyword">int</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> mid <span class="token operator">=</span> rowStart <span class="token operator">+</span> rowLength <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> minCol <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 获取矩阵中间行的最小值</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> colLength<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>min <span class="token operator">></span> matrix<span class="token punctuation">[</span>mid<span class="token punctuation">,</span> colStart <span class="token operator">+</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    min <span class="token operator">=</span> matrix<span class="token punctuation">[</span>mid<span class="token punctuation">,</span> colStart <span class="token operator">+</span> i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    minCol <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// 检查是否满足条件</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>mid<span class="token punctuation">,</span> minCol<span class="token punctuation">]</span> <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span>mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> minCol<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> matrix<span class="token punctuation">[</span>mid<span class="token punctuation">,</span> minCol<span class="token punctuation">]</span> <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span>mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> minCol<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> matrix<span class="token punctuation">[</span>mid<span class="token punctuation">,</span> minCol<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// 如果不满足则向较小一侧移动</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> minCol<span class="token punctuation">]</span> <span class="token operator">></span> matrix<span class="token punctuation">[</span>mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> minCol<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">MinimumCol</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rowStart<span class="token punctuation">,</span> rowLength<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> colLength <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">MinimumCol</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rowStart<span class="token punctuation">,</span> rowLength<span class="token punctuation">,</span> colStart<span class="token punctuation">,</span> colLength <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 在矩阵中间列查找局部最小。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="matrix">矩阵。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="rowStart">实际查找范围的行起始。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="rowLength">实际查找范围的行结尾。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="colStart">实际查找范围的列起始。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="colLength">实际查找范围的列结尾。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>矩阵中的局部最小元素。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">MinimumCol</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> rowStart<span class="token punctuation">,</span> <span class="token keyword">int</span> rowLength<span class="token punctuation">,</span> <span class="token keyword">int</span> colStart<span class="token punctuation">,</span> <span class="token keyword">int</span> colLength<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> min <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> matrix<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> mid <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> minRow <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 获取矩阵中间列最小值</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>min <span class="token operator">></span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">,</span> mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    min <span class="token operator">=</span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">,</span> mid<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    minRow <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// 检查是否满足条件</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>minRow<span class="token punctuation">,</span> mid<span class="token punctuation">]</span> <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span>minRow<span class="token punctuation">,</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> matrix<span class="token punctuation">[</span>minRow<span class="token punctuation">,</span> mid<span class="token punctuation">]</span> <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span>minRow<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> matrix<span class="token punctuation">[</span>minRow<span class="token punctuation">,</span> mid<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// 如果不满足则向较小一侧移动</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>minRow<span class="token punctuation">,</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">></span> matrix<span class="token punctuation">[</span>minRow<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">MinimumRow</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> rowLength <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> colStart<span class="token punctuation">,</span> colLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">MinimumRow</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> rowStart<span class="token punctuation">,</span> rowLength <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> colStart<span class="token punctuation">,</span> colLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="http://bailian.openjudge.cn/practice/1088/" target="_blank" rel="noopener">POJ-滑雪</a></p>
 
 		</div>
 	</div>

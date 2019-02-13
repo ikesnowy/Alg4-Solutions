@@ -140,159 +140,158 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.2.16</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.2.16 有理数。 为有理数实现一个不可变数据类型 Rational，支持加减乘除操作。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="kw">class</span> Rational</a>
-<a class="sourceLine" id="cb1-2" title="2">{</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="fu">Rantional</span>(<span class="dt">int</span> numerator, <span class="dt">int</span> denominator)</a>
-<a class="sourceLine" id="cb1-4" title="4">    Rational <span class="fu">plus</span> (Rational b);</a>
-<a class="sourceLine" id="cb1-5" title="5">    Rational <span class="fu">minus</span>(Rational b);</a>
-<a class="sourceLine" id="cb1-6" title="6">    Rational <span class="fu">times</span>(Rational b);</a>
-<a class="sourceLine" id="cb1-7" title="7">    Rational <span class="fu">divides</span>(Rational b);</a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="bu">Boolean</span> <span class="fu">equals</span>(Rational that);</a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="bu">String</span> <span class="fu">toString</span>();</a>
-<a class="sourceLine" id="cb1-10" title="10">}</a></code></pre></div>
-<p>无需测试溢出（请见练习 1.2.17），只需使用两个 long 型实例变量表示分子和分母来控制溢出的可能性。 使用欧几里得算法来保证分子和分母没有公因子。 编写一个测试用例检测你实现的所有方法。</p>
-<h1 id="解答">解答</h1>
-<p>JAVA 版本参考：<a href="http://algs4.cs.princeton.edu/12oop/Rational.java.html" class="uri" target="_blank" rel="noopener">http://algs4.cs.princeton.edu/12oop/Rational.java.html</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.16<br>有理数。<br>为有理数实现一个不可变数据类型 Rational，支持加减乘除操作。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Rational</span>
+<span class="token punctuation">{</span>
+    <span class="token function">Rantional</span><span class="token punctuation">(</span><span class="token keyword">int</span> numerator<span class="token punctuation">,</span> <span class="token keyword">int</span> denominator<span class="token punctuation">)</span>
+    Rational <span class="token function">plus</span> <span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Rational <span class="token function">minus</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Rational <span class="token function">times</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Rational <span class="token function">divides</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Boolean <span class="token function">equals</span><span class="token punctuation">(</span>Rational that<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>无需测试溢出（请见练习 1.2.17），只需使用两个 long 型实例变量表示分子和分母来控制溢出的可能性。<br>使用欧几里得算法来保证分子和分母没有公因子。<br>编写一个测试用例检测你实现的所有方法。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>JAVA 版本参考：<a href="http://algs4.cs.princeton.edu/12oop/Rational.java.html" target="_blank" rel="noopener">http://algs4.cs.princeton.edu/12oop/Rational.java.html</a></p>
 <p>欧几里得算法仅适用于正整数，使用前需要注意。</p>
 <p>用欧几里得算法找到公因子之后直接化简即可。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">2.</span>_<span class="dv">16</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="kw">public</span> <span class="kw">class</span> Rational</a>
-<a class="sourceLine" id="cb2-6" title="6">    {</a>
-<a class="sourceLine" id="cb2-7" title="7">        <span class="kw">public</span> <span class="dt">long</span> Numerator { <span class="kw">get</span>; }</a>
-<a class="sourceLine" id="cb2-8" title="8">        <span class="kw">public</span> <span class="dt">long</span> Denominator { <span class="kw">get</span>; }</a>
-<a class="sourceLine" id="cb2-9" title="9">        <span class="kw">private</span> <span class="dt">bool</span> isNagative;</a>
-<a class="sourceLine" id="cb2-10" title="10"></a>
-<a class="sourceLine" id="cb2-11" title="11">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-12" title="12">        <span class="co">/// 构造一个有理数对象，自动变为最简形式。</span></a>
-<a class="sourceLine" id="cb2-13" title="13">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-14" title="14">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;numerator&quot;</span><span class="kw">&gt;</span><span class="co">分子。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-15" title="15">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;denominator&quot;</span><span class="kw">&gt;</span><span class="co">分母。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-16" title="16">        <span class="co">/// </span><span class="kw">&lt;exception</span><span class="ot"> cref=</span><span class="dt">&quot;ArgumentException&quot;</span><span class="kw">&gt;</span><span class="co">分母为 0 时抛出</span><span class="kw">&lt;/exception&gt;</span></a>
-<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">public</span> <span class="fu">Rational</span>(<span class="dt">long</span> numerator, <span class="dt">long</span> denominator)</a>
-<a class="sourceLine" id="cb2-18" title="18">        {</a>
-<a class="sourceLine" id="cb2-19" title="19">            <span class="kw">if</span> (denominator == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-20" title="20">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentException</span>(<span class="st">&quot;Denominator cannot be 0&quot;</span>);</a>
-<a class="sourceLine" id="cb2-21" title="21"></a>
-<a class="sourceLine" id="cb2-22" title="22">            <span class="kw">if</span> (numerator &lt; <span class="dv">0</span> &amp;&amp; denominator &lt; <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-23" title="23">            {</a>
-<a class="sourceLine" id="cb2-24" title="24">                isNagative = <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb2-25" title="25">                numerator = -numerator;</a>
-<a class="sourceLine" id="cb2-26" title="26">                denominator = -denominator;</a>
-<a class="sourceLine" id="cb2-27" title="27">            }</a>
-<a class="sourceLine" id="cb2-28" title="28">            <span class="kw">else</span> <span class="kw">if</span> (numerator &lt; <span class="dv">0</span> || denominator &lt; <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-29" title="29">            {</a>
-<a class="sourceLine" id="cb2-30" title="30">                isNagative = <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb2-31" title="31">            }</a>
-<a class="sourceLine" id="cb2-32" title="32">            <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-33" title="33">            {</a>
-<a class="sourceLine" id="cb2-34" title="34">                isNagative = <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb2-35" title="35">            }</a>
-<a class="sourceLine" id="cb2-36" title="36"></a>
-<a class="sourceLine" id="cb2-37" title="37">            <span class="dt">long</span> gcd = <span class="fu">GCD</span>(Math.<span class="fu">Abs</span>(numerator), Math.<span class="fu">Abs</span>(denominator));</a>
-<a class="sourceLine" id="cb2-38" title="38">            <span class="kw">if</span> (gcd != <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-39" title="39">            {</a>
-<a class="sourceLine" id="cb2-40" title="40">                numerator /= gcd;</a>
-<a class="sourceLine" id="cb2-41" title="41">                denominator /= gcd;</a>
-<a class="sourceLine" id="cb2-42" title="42">            }</a>
-<a class="sourceLine" id="cb2-43" title="43">            <span class="kw">this</span>.<span class="fu">Numerator</span> = numerator;</a>
-<a class="sourceLine" id="cb2-44" title="44">            <span class="kw">this</span>.<span class="fu">Denominator</span> = denominator;</a>
-<a class="sourceLine" id="cb2-45" title="45">        }</a>
-<a class="sourceLine" id="cb2-46" title="46"></a>
-<a class="sourceLine" id="cb2-47" title="47">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-48" title="48">        <span class="co">/// 将两个有理数对象相加，返回一个有理数。</span></a>
-<a class="sourceLine" id="cb2-49" title="49">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-50" title="50">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">加数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-51" title="51">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-52" title="52">        <span class="kw">public</span> Rational <span class="fu">Plus</span>(Rational b)</a>
-<a class="sourceLine" id="cb2-53" title="53">        {</a>
-<a class="sourceLine" id="cb2-54" title="54">            Rational result = <span class="kw">new</span> <span class="fu">Rational</span>(<span class="kw">this</span>.<span class="fu">Numerator</span> * b.<span class="fu">Denominator</span> + b.<span class="fu">Numerator</span> * <span class="kw">this</span>.<span class="fu">Denominator</span>, <span class="kw">this</span>.<span class="fu">Denominator</span> * b.<span class="fu">Denominator</span>);</a>
-<a class="sourceLine" id="cb2-55" title="55">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-56" title="56">        }</a>
-<a class="sourceLine" id="cb2-57" title="57"></a>
-<a class="sourceLine" id="cb2-58" title="58">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-59" title="59">        <span class="co">/// 以当前对象为被减数，减去一个有理数。</span></a>
-<a class="sourceLine" id="cb2-60" title="60">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-61" title="61">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">减数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-62" title="62">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-63" title="63">        <span class="kw">public</span> Rational <span class="fu">Minus</span>(Rational b)</a>
-<a class="sourceLine" id="cb2-64" title="64">        {</a>
-<a class="sourceLine" id="cb2-65" title="65">            Rational result = <span class="kw">new</span> <span class="fu">Rational</span>(<span class="kw">this</span>.<span class="fu">Numerator</span> * b.<span class="fu">Denominator</span> - b.<span class="fu">Numerator</span> * <span class="kw">this</span>.<span class="fu">Denominator</span>, <span class="kw">this</span>.<span class="fu">Denominator</span> * b.<span class="fu">Denominator</span>);</a>
-<a class="sourceLine" id="cb2-66" title="66">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-67" title="67">        }</a>
-<a class="sourceLine" id="cb2-68" title="68"></a>
-<a class="sourceLine" id="cb2-69" title="69">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-70" title="70">        <span class="co">/// 将两个有理数对象相乘。</span></a>
-<a class="sourceLine" id="cb2-71" title="71">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-72" title="72">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">乘数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-73" title="73">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-74" title="74">        <span class="kw">public</span> Rational <span class="fu">Multiply</span>(Rational b)</a>
-<a class="sourceLine" id="cb2-75" title="75">        {</a>
-<a class="sourceLine" id="cb2-76" title="76">            Rational result = <span class="kw">new</span> <span class="fu">Rational</span>(<span class="kw">this</span>.<span class="fu">Numerator</span> * b.<span class="fu">Numerator</span>, <span class="kw">this</span>.<span class="fu">Denominator</span> * b.<span class="fu">Denominator</span>);</a>
-<a class="sourceLine" id="cb2-77" title="77">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-78" title="78">        }</a>
-<a class="sourceLine" id="cb2-79" title="79"></a>
-<a class="sourceLine" id="cb2-80" title="80">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-81" title="81">        <span class="co">/// 以当前有理数为被除数，除以一个有理数。</span></a>
-<a class="sourceLine" id="cb2-82" title="82">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-83" title="83">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">除数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-84" title="84">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-85" title="85">        <span class="kw">public</span> Rational <span class="fu">Divide</span>(Rational b)</a>
-<a class="sourceLine" id="cb2-86" title="86">        {</a>
-<a class="sourceLine" id="cb2-87" title="87">            Rational result = <span class="kw">new</span> <span class="fu">Rational</span>(<span class="kw">this</span>.<span class="fu">Numerator</span> * b.<span class="fu">Denominator</span>, <span class="kw">this</span>.<span class="fu">Denominator</span> * b.<span class="fu">Numerator</span>);</a>
-<a class="sourceLine" id="cb2-88" title="88">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-89" title="89">        }</a>
-<a class="sourceLine" id="cb2-90" title="90"></a>
-<a class="sourceLine" id="cb2-91" title="91">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-92" title="92">        <span class="co">/// 求两个正整数的最大公约数。</span></a>
-<a class="sourceLine" id="cb2-93" title="93">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-94" title="94">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">第一个整数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-95" title="95">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">第二个整数。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-96" title="96">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-97" title="97">        <span class="kw">private</span> <span class="dt">long</span> <span class="fu">GCD</span>(<span class="dt">long</span> a, <span class="dt">long</span> b)</a>
-<a class="sourceLine" id="cb2-98" title="98">        {</a>
-<a class="sourceLine" id="cb2-99" title="99">            <span class="kw">if</span> (b == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-100" title="100">                <span class="kw">return</span> a;</a>
-<a class="sourceLine" id="cb2-101" title="101">            <span class="kw">return</span> <span class="fu">GCD</span>(b, a % b);</a>
-<a class="sourceLine" id="cb2-102" title="102">        }</a>
-<a class="sourceLine" id="cb2-103" title="103"></a>
-<a class="sourceLine" id="cb2-104" title="104">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">bool</span> <span class="fu">Equals</span>(<span class="dt">object</span> obj)</a>
-<a class="sourceLine" id="cb2-105" title="105">        {</a>
-<a class="sourceLine" id="cb2-106" title="106">            <span class="kw">if</span> (<span class="kw">this</span> == obj)</a>
-<a class="sourceLine" id="cb2-107" title="107">                <span class="kw">return</span> <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb2-108" title="108">            <span class="kw">if</span> (obj == <span class="kw">null</span>)</a>
-<a class="sourceLine" id="cb2-109" title="109">                <span class="kw">return</span> <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb2-110" title="110">            <span class="kw">if</span> (obj.<span class="fu">GetType</span>() != <span class="kw">this</span>.<span class="fu">GetType</span>())</a>
-<a class="sourceLine" id="cb2-111" title="111">                <span class="kw">return</span> <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb2-112" title="112"></a>
-<a class="sourceLine" id="cb2-113" title="113">            Rational that = (Rational)obj;</a>
-<a class="sourceLine" id="cb2-114" title="114">            <span class="kw">return</span> (<span class="kw">this</span>.<span class="fu">Numerator</span> == that.<span class="fu">Numerator</span>) &amp;&amp; (<span class="kw">this</span>.<span class="fu">Denominator</span> == that.<span class="fu">Denominator</span>);</a>
-<a class="sourceLine" id="cb2-115" title="115">        }</a>
-<a class="sourceLine" id="cb2-116" title="116"></a>
-<a class="sourceLine" id="cb2-117" title="117">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">GetHashCode</span>()</a>
-<a class="sourceLine" id="cb2-118" title="118">        {</a>
-<a class="sourceLine" id="cb2-119" title="119">            <span class="kw">return</span> <span class="dv">31</span> * <span class="kw">this</span>.<span class="fu">Numerator</span>.<span class="fu">GetHashCode</span>() + <span class="kw">this</span>.<span class="fu">Denominator</span>.<span class="fu">GetHashCode</span>();</a>
-<a class="sourceLine" id="cb2-120" title="120">        }</a>
-<a class="sourceLine" id="cb2-121" title="121"></a>
-<a class="sourceLine" id="cb2-122" title="122">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-123" title="123">        <span class="co">/// 返回形如 “分子/分母” 的字符串</span></a>
-<a class="sourceLine" id="cb2-124" title="124">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-125" title="125">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-126" title="126">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">string</span> <span class="fu">ToString</span>()</a>
-<a class="sourceLine" id="cb2-127" title="127">        {</a>
-<a class="sourceLine" id="cb2-128" title="128">            <span class="dt">string</span> result = <span class="st">&quot;&quot;</span>;</a>
-<a class="sourceLine" id="cb2-129" title="129">            <span class="kw">if</span> (isNagative)</a>
-<a class="sourceLine" id="cb2-130" title="130">                result += <span class="st">&quot;-&quot;</span>;</a>
-<a class="sourceLine" id="cb2-131" title="131">            result += Math.<span class="fu">Abs</span>(<span class="kw">this</span>.<span class="fu">Numerator</span>) + <span class="st">&quot;/&quot;</span> + Math.<span class="fu">Abs</span>(<span class="kw">this</span>.<span class="fu">Denominator</span>);</a>
-<a class="sourceLine" id="cb2-132" title="132">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-133" title="133">        }</a>
-<a class="sourceLine" id="cb2-134" title="134">    }</a>
-<a class="sourceLine" id="cb2-135" title="135">}</a></code></pre></div>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_16
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Rational</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">long</span> Numerator <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token keyword">long</span> Denominator <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">private</span> <span class="token keyword">bool</span> isNagative<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 构造一个有理数对象，自动变为最简形式。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="numerator">分子。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="denominator">分母。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;exception cref="ArgumentException">分母为 0 时抛出&lt;/exception></span>
+        <span class="token keyword">public</span> <span class="token function">Rational</span><span class="token punctuation">(</span><span class="token keyword">long</span> numerator<span class="token punctuation">,</span> <span class="token keyword">long</span> denominator<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>denominator <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"Denominator cannot be 0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>numerator <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> denominator <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                isNagative <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+                numerator <span class="token operator">=</span> <span class="token operator">-</span>numerator<span class="token punctuation">;</span>
+                denominator <span class="token operator">=</span> <span class="token operator">-</span>denominator<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>numerator <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> denominator <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                isNagative <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                isNagative <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">long</span> gcd <span class="token operator">=</span> <span class="token function">GCD</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">Abs</span><span class="token punctuation">(</span>numerator<span class="token punctuation">)</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">Abs</span><span class="token punctuation">(</span>denominator<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>gcd <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                numerator <span class="token operator">/</span><span class="token operator">=</span> gcd<span class="token punctuation">;</span>
+                denominator <span class="token operator">/</span><span class="token operator">=</span> gcd<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>Numerator <span class="token operator">=</span> numerator<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator <span class="token operator">=</span> denominator<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将两个有理数对象相加，返回一个有理数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">加数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Rational <span class="token function">Plus</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Rational result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rational</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Numerator <span class="token operator">*</span> b<span class="token punctuation">.</span>Denominator <span class="token operator">+</span> b<span class="token punctuation">.</span>Numerator <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator <span class="token operator">*</span> b<span class="token punctuation">.</span>Denominator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 以当前对象为被减数，减去一个有理数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">减数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Rational <span class="token function">Minus</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Rational result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rational</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Numerator <span class="token operator">*</span> b<span class="token punctuation">.</span>Denominator <span class="token operator">-</span> b<span class="token punctuation">.</span>Numerator <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator <span class="token operator">*</span> b<span class="token punctuation">.</span>Denominator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将两个有理数对象相乘。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">乘数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Rational <span class="token function">Multiply</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Rational result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rational</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Numerator <span class="token operator">*</span> b<span class="token punctuation">.</span>Numerator<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator <span class="token operator">*</span> b<span class="token punctuation">.</span>Denominator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 以当前有理数为被除数，除以一个有理数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">除数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> Rational <span class="token function">Divide</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Rational result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rational</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Numerator <span class="token operator">*</span> b<span class="token punctuation">.</span>Denominator<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator <span class="token operator">*</span> b<span class="token punctuation">.</span>Numerator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 求两个正整数的最大公约数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">第一个整数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="b">第二个整数。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">GCD</span><span class="token punctuation">(</span><span class="token keyword">long</span> a<span class="token punctuation">,</span> <span class="token keyword">long</span> b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token function">GCD</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">bool</span> <span class="token function">Equals</span><span class="token punctuation">(</span><span class="token keyword">object</span> obj<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> obj<span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">GetType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">GetType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+
+            Rational that <span class="token operator">=</span> <span class="token punctuation">(</span>Rational<span class="token punctuation">)</span>obj<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Numerator <span class="token operator">==</span> that<span class="token punctuation">.</span>Numerator<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Denominator <span class="token operator">==</span> that<span class="token punctuation">.</span>Denominator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">GetHashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">31</span> <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Numerator<span class="token punctuation">.</span><span class="token function">GetHashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Denominator<span class="token punctuation">.</span><span class="token function">GetHashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回形如 “分子/分母” 的字符串</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">string</span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">string</span> result <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>isNagative<span class="token punctuation">)</span>
+                result <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"-"</span><span class="token punctuation">;</span>
+            result <span class="token operator">+</span><span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Abs</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Numerator<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">Abs</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Denominator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

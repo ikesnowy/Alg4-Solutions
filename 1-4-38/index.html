@@ -140,113 +140,113 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.38</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.38 3-sum 的初级算法的实现。 通过实验评估以下 ThreeSum 内循环的实现性能。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; i++)</a>
-<a class="sourceLine" id="cb1-2" title="2">    <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; N; j++)</a>
-<a class="sourceLine" id="cb1-3" title="3">        <span class="kw">for</span> (<span class="dt">int</span> k = <span class="dv">0</span>; k &lt; N; k++)</a>
-<a class="sourceLine" id="cb1-4" title="4">            <span class="kw">if</span> (i &lt; j &amp;&amp; j &lt; k)</a>
-<a class="sourceLine" id="cb1-5" title="5">                <span class="kw">if</span> (a[i] + a[j] + a[k] == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb1-6" title="6">                    cnt++;</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.38<br>3-sum 的初级算法的实现。<br>通过实验评估以下 ThreeSum 内循环的实现性能。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;</span> k<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                    cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>为此实现另一个版本的 DoublingTest，计算该程序和 ThreeSum 的运行时间的比例。</p>
-<h1 id="解答">解答</h1>
-<p>把 DoublingTest 中调用的函数稍作修改即可。 <img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<p>ThreeSum 测试类</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">38</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/// ThreeSum 测试类。</span></a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-8" title="8">    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">class</span> DoubleTest</a>
-<a class="sourceLine" id="cb2-9" title="9">    {</a>
-<a class="sourceLine" id="cb2-10" title="10">        <span class="kw">private</span> <span class="kw">static</span> <span class="kw">readonly</span> <span class="dt">int</span> MAXIMUM_INTEGER = <span class="dv">1000000</span>;</a>
-<a class="sourceLine" id="cb2-11" title="11"></a>
-<a class="sourceLine" id="cb2-12" title="12">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-13" title="13">        <span class="co">/// 返回对 n 个随机整数的数组进行一次 ThreeSum 所需的时间。</span></a>
-<a class="sourceLine" id="cb2-14" title="14">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-15" title="15">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">随机数组的长度。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-16" title="16">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">TimeTrial</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb2-18" title="18">        {</a>
-<a class="sourceLine" id="cb2-19" title="19">            <span class="dt">int</span>[] a = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
-<a class="sourceLine" id="cb2-20" title="20">            Random random = <span class="kw">new</span> <span class="fu">Random</span>(DateTime.<span class="fu">Now</span>.<span class="fu">Millisecond</span>);</a>
-<a class="sourceLine" id="cb2-21" title="21">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
-<a class="sourceLine" id="cb2-22" title="22">            {</a>
-<a class="sourceLine" id="cb2-23" title="23">                a[i] = random.<span class="fu">Next</span>(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);</a>
-<a class="sourceLine" id="cb2-24" title="24">            }</a>
-<a class="sourceLine" id="cb2-25" title="25">            Measurement.<span class="fu">Stopwatch</span> timer = <span class="kw">new</span> Measurement.<span class="fu">Stopwatch</span>();</a>
-<a class="sourceLine" id="cb2-26" title="26">            ThreeSum.<span class="fu">Count</span>(a);</a>
-<a class="sourceLine" id="cb2-27" title="27">            <span class="kw">return</span> timer.<span class="fu">ElapsedTime</span>();</a>
-<a class="sourceLine" id="cb2-28" title="28">        }</a>
-<a class="sourceLine" id="cb2-29" title="29">    }</a>
-<a class="sourceLine" id="cb2-30" title="30">}</a></code></pre></div>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>把 DoublingTest 中调用的函数稍作修改即可。<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>ThreeSum 测试类</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_38
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// ThreeSum 测试类。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DoubleTest</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">readonly</span> <span class="token keyword">int</span> MAXIMUM_INTEGER <span class="token operator">=</span> <span class="token number">1000000</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 返回对 n 个随机整数的数组进行一次 ThreeSum 所需的时间。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">随机数组的长度。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">TimeTrial</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span>DateTime<span class="token punctuation">.</span>Now<span class="token punctuation">.</span>Millisecond<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token operator">-</span>MAXIMUM_INTEGER<span class="token punctuation">,</span> MAXIMUM_INTEGER<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            Measurement<span class="token punctuation">.</span>Stopwatch timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Measurement<span class="token punctuation">.</span>Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ThreeSum<span class="token punctuation">.</span><span class="token function">Count</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> timer<span class="token punctuation">.</span><span class="token function">ElapsedTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>ThreeSum</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">38</span></a>
-<a class="sourceLine" id="cb3-4" title="4">{</a>
-<a class="sourceLine" id="cb3-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-6" title="6">    <span class="co">/// 用暴力方法寻找数组中和为零的三元组。</span></a>
-<a class="sourceLine" id="cb3-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-8" title="8">    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">class</span> ThreeSum</a>
-<a class="sourceLine" id="cb3-9" title="9">    {</a>
-<a class="sourceLine" id="cb3-10" title="10">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-11" title="11">        <span class="co">/// 输出所有和为零的三元组。</span></a>
-<a class="sourceLine" id="cb3-12" title="12">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-13" title="13">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">输入数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-14" title="14">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">PrintAll</span>(<span class="dt">int</span>[] a)</a>
-<a class="sourceLine" id="cb3-15" title="15">        {</a>
-<a class="sourceLine" id="cb3-16" title="16">            <span class="dt">int</span> n = a.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb3-17" title="17">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
-<a class="sourceLine" id="cb3-18" title="18">            {</a>
-<a class="sourceLine" id="cb3-19" title="19">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; n; ++j)</a>
-<a class="sourceLine" id="cb3-20" title="20">                {</a>
-<a class="sourceLine" id="cb3-21" title="21">                    <span class="kw">for</span> (<span class="dt">int</span> k = <span class="dv">0</span>; k &lt; n; ++k)</a>
-<a class="sourceLine" id="cb3-22" title="22">                    {</a>
-<a class="sourceLine" id="cb3-23" title="23">                        <span class="kw">if</span> (i &lt; j &amp;&amp; j &lt; k)</a>
-<a class="sourceLine" id="cb3-24" title="24">                        {</a>
-<a class="sourceLine" id="cb3-25" title="25">                            <span class="kw">if</span> ((<span class="dt">long</span>)a[i] + a[j] + a[k] == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb3-26" title="26">                            {</a>
-<a class="sourceLine" id="cb3-27" title="27">                                Console.<span class="fu">WriteLine</span>($<span class="st">&quot;{a[i]} + {a[j]} + {a[k]}&quot;</span>);</a>
-<a class="sourceLine" id="cb3-28" title="28">                            }</a>
-<a class="sourceLine" id="cb3-29" title="29">                        }</a>
-<a class="sourceLine" id="cb3-30" title="30">                    }</a>
-<a class="sourceLine" id="cb3-31" title="31">                }</a>
-<a class="sourceLine" id="cb3-32" title="32">            }</a>
-<a class="sourceLine" id="cb3-33" title="33">        }</a>
-<a class="sourceLine" id="cb3-34" title="34"></a>
-<a class="sourceLine" id="cb3-35" title="35">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-36" title="36">        <span class="co">/// 计算和为零的三元组的数量。</span></a>
-<a class="sourceLine" id="cb3-37" title="37">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-38" title="38">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">输入数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-39" title="39">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb3-40" title="40">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">Count</span>(<span class="dt">int</span>[] a)</a>
-<a class="sourceLine" id="cb3-41" title="41">        {</a>
-<a class="sourceLine" id="cb3-42" title="42">            <span class="dt">int</span> n = a.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb3-43" title="43">            <span class="dt">int</span> count = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb3-44" title="44">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
-<a class="sourceLine" id="cb3-45" title="45">            {</a>
-<a class="sourceLine" id="cb3-46" title="46">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; n; ++j)</a>
-<a class="sourceLine" id="cb3-47" title="47">                {</a>
-<a class="sourceLine" id="cb3-48" title="48">                    <span class="kw">for</span> (<span class="dt">int</span> k = <span class="dv">0</span>; k &lt; n; ++k)</a>
-<a class="sourceLine" id="cb3-49" title="49">                    {</a>
-<a class="sourceLine" id="cb3-50" title="50">                        <span class="kw">if</span> (i &lt; j &amp;&amp; j &lt; k)</a>
-<a class="sourceLine" id="cb3-51" title="51">                        {</a>
-<a class="sourceLine" id="cb3-52" title="52">                            <span class="kw">if</span> ((<span class="dt">long</span>)a[i] + a[j] + a[k] == <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb3-53" title="53">                            {</a>
-<a class="sourceLine" id="cb3-54" title="54">                                count++;</a>
-<a class="sourceLine" id="cb3-55" title="55">                            }</a>
-<a class="sourceLine" id="cb3-56" title="56">                        }</a>
-<a class="sourceLine" id="cb3-57" title="57">                    }</a>
-<a class="sourceLine" id="cb3-58" title="58">                }</a>
-<a class="sourceLine" id="cb3-59" title="59">            }</a>
-<a class="sourceLine" id="cb3-60" title="60">            <span class="kw">return</span> count;</a>
-<a class="sourceLine" id="cb3-61" title="61">        }</a>
-<a class="sourceLine" id="cb3-62" title="62">    }</a>
-<a class="sourceLine" id="cb3-63" title="63">}</a></code></pre></div>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_38
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 用暴力方法寻找数组中和为零的三元组。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">ThreeSum</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 输出所有和为零的三元组。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">输入数组。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PrintAll</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;</span> k<span class="token punctuation">)</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">{</span>
+                                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"{a[i]} + {a[j]} + {a[k]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 计算和为零的三元组的数量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">输入数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">Count</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;</span> k<span class="token punctuation">)</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">{</span>
+                                count<span class="token operator">++</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

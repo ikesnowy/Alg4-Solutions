@@ -140,86 +140,84 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.45</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.45 优惠券收集问题。 用和上一题相同的方式生成随机整数。 通过实验验证生成所有可能的整数值所需生成的随机数总量为 <span class="math inline">\(~NH_N\)</span>（调和级数）。</p>
-<h1 id="解答">解答</h1>
-<p>建立一个布尔数组，将每次随机出来的数作为下标，将相应位置的布尔值改为 true，每次随机都检查一遍这个数组是否都是 true。 <img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">45</span></a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">     * 1.4.45</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * 优惠券收集问题。</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 用和上一题相同的方式生成随机整数。</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 通过实验验证生成所有可能的整数值所需生成的随机数总量为 ~NHN。</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * （这里的 HN 中 N 是下标）</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-15" title="15">    {</a>
-<a class="sourceLine" id="cb1-16" title="16">        <span class="co">// HN 指的是调和级数</span></a>
-<a class="sourceLine" id="cb1-17" title="17">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-18" title="18">        {</a>
-<a class="sourceLine" id="cb1-19" title="19">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-20" title="20">            <span class="dt">int</span> N = <span class="dv">10000</span>;</a>
-<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">bool</span>[] a = <span class="kw">new</span> <span class="dt">bool</span>[N];</a>
-<a class="sourceLine" id="cb1-22" title="22">            <span class="dt">int</span> randomSize = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="dt">int</span> times = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-24" title="24">            <span class="kw">for</span> (times = <span class="dv">0</span>; times &lt; <span class="dv">20</span>; ++times)</a>
-<a class="sourceLine" id="cb1-25" title="25">            {</a>
-<a class="sourceLine" id="cb1-26" title="26">                <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
-<a class="sourceLine" id="cb1-27" title="27">                {</a>
-<a class="sourceLine" id="cb1-28" title="28">                    a[i] = <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb1-29" title="29">                }</a>
-<a class="sourceLine" id="cb1-30" title="30">                <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; <span class="kw">true</span>; ++i)</a>
-<a class="sourceLine" id="cb1-31" title="31">                {</a>
-<a class="sourceLine" id="cb1-32" title="32">                    <span class="dt">int</span> now = random.<span class="fu">Next</span>(N);</a>
-<a class="sourceLine" id="cb1-33" title="33">                    a[now] = <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-34" title="34">                    <span class="kw">if</span> (<span class="fu">IsAllGenerated</span>(a))</a>
-<a class="sourceLine" id="cb1-35" title="35">                    {</a>
-<a class="sourceLine" id="cb1-36" title="36">                        randomSize += i;</a>
-<a class="sourceLine" id="cb1-37" title="37">                        Console.<span class="fu">WriteLine</span>($<span class="st">&quot;生成{i}次后所有可能均出现过了&quot;</span>);</a>
-<a class="sourceLine" id="cb1-38" title="38">                        <span class="kw">break</span>;</a>
-<a class="sourceLine" id="cb1-39" title="39">                    }</a>
-<a class="sourceLine" id="cb1-40" title="40">                }</a>
-<a class="sourceLine" id="cb1-41" title="41">            }</a>
-<a class="sourceLine" id="cb1-42" title="42">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;</span><span class="sc">\n</span><span class="st">NHN={N * HarmonicSum(N)}，平均生成{randomSize / times}个数字后所有可能都出现&quot;</span>);</a>
-<a class="sourceLine" id="cb1-43" title="43">        }</a>
-<a class="sourceLine" id="cb1-44" title="44"></a>
-<a class="sourceLine" id="cb1-45" title="45">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-46" title="46">        <span class="co">/// 计算 N 阶调和级数的和。</span></a>
-<a class="sourceLine" id="cb1-47" title="47">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-48" title="48">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;N&quot;</span><span class="kw">&gt;</span><span class="co">调和级数的 N 值</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-49" title="49">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">N 阶调和级数的和。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-50" title="50">        <span class="kw">static</span> <span class="dt">double</span> <span class="fu">HarmonicSum</span>(<span class="dt">int</span> N)</a>
-<a class="sourceLine" id="cb1-51" title="51">        {</a>
-<a class="sourceLine" id="cb1-52" title="52">            <span class="dt">double</span> sum = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-53" title="53">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt;= N; ++i)</a>
-<a class="sourceLine" id="cb1-54" title="54">            {</a>
-<a class="sourceLine" id="cb1-55" title="55">                sum += <span class="fl">1.0</span> / i;</a>
-<a class="sourceLine" id="cb1-56" title="56">            }</a>
-<a class="sourceLine" id="cb1-57" title="57">            <span class="kw">return</span> sum;</a>
-<a class="sourceLine" id="cb1-58" title="58">        }</a>
-<a class="sourceLine" id="cb1-59" title="59"></a>
-<a class="sourceLine" id="cb1-60" title="60">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-61" title="61">        <span class="co">/// 检查所有数字是否都生成过了。</span></a>
-<a class="sourceLine" id="cb1-62" title="62">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-63" title="63">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">布尔数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-64" title="64">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">全都生成则返回 true，否则返回 false。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-65" title="65">        <span class="kw">static</span> <span class="dt">bool</span> <span class="fu">IsAllGenerated</span>(<span class="dt">bool</span>[] a)</a>
-<a class="sourceLine" id="cb1-66" title="66">        {</a>
-<a class="sourceLine" id="cb1-67" title="67">            <span class="kw">foreach</span> (<span class="dt">bool</span> i <span class="kw">in</span> a)</a>
-<a class="sourceLine" id="cb1-68" title="68">            {</a>
-<a class="sourceLine" id="cb1-69" title="69">                <span class="kw">if</span> (!i)</a>
-<a class="sourceLine" id="cb1-70" title="70">                    <span class="kw">return</span> <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb1-71" title="71">            }</a>
-<a class="sourceLine" id="cb1-72" title="72">            <span class="kw">return</span> <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-73" title="73">        }</a>
-<a class="sourceLine" id="cb1-74" title="74">    }</a>
-<a class="sourceLine" id="cb1-75" title="75">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.45<br>优惠券收集问题。<br>用和上一题相同的方式生成随机整数。<br>通过实验验证生成所有可能的整数值所需生成的随机数总量为 $~NH_N$（调和级数）。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>建立一个布尔数组，将每次随机出来的数作为下标，将相应位置的布尔值改为 true，每次随机都检查一遍这个数组是否都是 true。<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_45
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.4.45
+     * 
+     * 优惠券收集问题。
+     * 用和上一题相同的方式生成随机整数。
+     * 通过实验验证生成所有可能的整数值所需生成的随机数总量为 ~NHN。
+     * （这里的 HN 中 N 是下标）
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// HN 指的是调和级数</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
+            <span class="token keyword">bool</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">bool</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> randomSize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> times <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>times <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> times <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token operator">++</span>times<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">true</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">int</span> now <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    a<span class="token punctuation">[</span>now<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsAllGenerated</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        randomSize <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">;</span>
+                        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"生成{i}次后所有可能均出现过了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"\nNHN={N * HarmonicSum(N)}，平均生成{randomSize / times}个数字后所有可能都出现"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 计算 N 阶调和级数的和。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="N">调和级数的 N 值&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>N 阶调和级数的和。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">HarmonicSum</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                sum <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">/</span> i<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 检查所有数字是否都生成过了。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">布尔数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>全都生成则返回 true，否则返回 false。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">IsAllGenerated</span><span class="token punctuation">(</span><span class="token keyword">bool</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">bool</span> i <span class="token keyword">in</span> a<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>i<span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

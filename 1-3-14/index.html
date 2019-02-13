@@ -140,175 +140,172 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.3.14</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.3.14 编写一个类 ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象， 然后扩展实现， 使用调整数组的方法突破大小的限制。</p>
-<h1 id="解答">解答</h1>
-<p>对于 ResizingArrayQueueOfStrings 类，给出官方 JAVA 代码参考：<a href="http://algs4.cs.princeton.edu/13stacks/ResizingArrayQueue.java.html" target="_blank" rel="noopener">ResizingArrayQueue.java</a>。</p>
-<h1 id="代码">代码</h1>
-<h2 id="resizingarrayqueue-类">ResizingArrayQueue 类</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Collections</span>.<span class="fu">Generic</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4"></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">14</span></a>
-<a class="sourceLine" id="cb1-6" title="6">{</a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="kw">class</span> ResizingArrayQueueOfStrings&lt;Item&gt; : IEnumerable&lt;Item&gt;</a>
-<a class="sourceLine" id="cb1-8" title="8">    {</a>
-<a class="sourceLine" id="cb1-9" title="9">        <span class="kw">private</span> Item[] q;</a>
-<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">private</span> <span class="dt">int</span> count;</a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">private</span> <span class="dt">int</span> first;</a>
-<a class="sourceLine" id="cb1-12" title="12">        <span class="kw">private</span> <span class="dt">int</span> last;</a>
-<a class="sourceLine" id="cb1-13" title="13"></a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">public</span> <span class="fu">ResizingArrayQueueOfStrings</span>()</a>
-<a class="sourceLine" id="cb1-15" title="15">        {</a>
-<a class="sourceLine" id="cb1-16" title="16">            <span class="kw">this</span>.<span class="fu">q</span> = <span class="kw">new</span> Item[<span class="dv">2</span>];</a>
-<a class="sourceLine" id="cb1-17" title="17">            <span class="kw">this</span>.<span class="fu">count</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-18" title="18">            <span class="kw">this</span>.<span class="fu">first</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-19" title="19"></a>
-<a class="sourceLine" id="cb1-20" title="20">        }</a>
-<a class="sourceLine" id="cb1-21" title="21"></a>
-<a class="sourceLine" id="cb1-22" title="22">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsEmpty</span>()</a>
-<a class="sourceLine" id="cb1-23" title="23">        {</a>
-<a class="sourceLine" id="cb1-24" title="24">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">count</span> == <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-25" title="25">        }</a>
-<a class="sourceLine" id="cb1-26" title="26"></a>
-<a class="sourceLine" id="cb1-27" title="27">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Size</span>()</a>
-<a class="sourceLine" id="cb1-28" title="28">        {</a>
-<a class="sourceLine" id="cb1-29" title="29">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">count</span>;</a>
-<a class="sourceLine" id="cb1-30" title="30">        }</a>
-<a class="sourceLine" id="cb1-31" title="31"></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Resize</span>(<span class="dt">int</span> capacity)</a>
-<a class="sourceLine" id="cb1-33" title="33">        {</a>
-<a class="sourceLine" id="cb1-34" title="34">            <span class="kw">if</span> (capacity &lt; <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb1-35" title="35">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentException</span>(<span class="st">&quot;capacity should be above zero&quot;</span>);</a>
-<a class="sourceLine" id="cb1-36" title="36">            Item[] temp = <span class="kw">new</span> Item[capacity];</a>
-<a class="sourceLine" id="cb1-37" title="37">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; count; ++i)</a>
-<a class="sourceLine" id="cb1-38" title="38">            {</a>
-<a class="sourceLine" id="cb1-39" title="39">                temp[i] = <span class="kw">this</span>.<span class="fu">q</span>[(<span class="kw">this</span>.<span class="fu">first</span> + i) % <span class="kw">this</span>.<span class="fu">q</span>.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb1-40" title="40">            }</a>
-<a class="sourceLine" id="cb1-41" title="41"></a>
-<a class="sourceLine" id="cb1-42" title="42">            <span class="kw">this</span>.<span class="fu">q</span> = temp;</a>
-<a class="sourceLine" id="cb1-43" title="43">            <span class="kw">this</span>.<span class="fu">first</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-44" title="44">            <span class="kw">this</span>.<span class="fu">last</span> = <span class="kw">this</span>.<span class="fu">count</span>;</a>
-<a class="sourceLine" id="cb1-45" title="45">        }</a>
-<a class="sourceLine" id="cb1-46" title="46"></a>
-<a class="sourceLine" id="cb1-47" title="47">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Enqueue</span>(Item item)</a>
-<a class="sourceLine" id="cb1-48" title="48">        {</a>
-<a class="sourceLine" id="cb1-49" title="49">            <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">count</span> == <span class="kw">this</span>.<span class="fu">q</span>.<span class="fu">Length</span>)</a>
-<a class="sourceLine" id="cb1-50" title="50">            {</a>
-<a class="sourceLine" id="cb1-51" title="51">                <span class="fu">Resize</span>(<span class="kw">this</span>.<span class="fu">count</span> * <span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb1-52" title="52">            }</a>
-<a class="sourceLine" id="cb1-53" title="53"></a>
-<a class="sourceLine" id="cb1-54" title="54">            <span class="kw">this</span>.<span class="fu">q</span>[<span class="kw">this</span>.<span class="fu">last</span>] = item;</a>
-<a class="sourceLine" id="cb1-55" title="55">            <span class="kw">this</span>.<span class="fu">last</span>++;</a>
-<a class="sourceLine" id="cb1-56" title="56">            <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">last</span> == <span class="kw">this</span>.<span class="fu">q</span>.<span class="fu">Length</span>)</a>
-<a class="sourceLine" id="cb1-57" title="57">                <span class="kw">this</span>.<span class="fu">last</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-58" title="58">            <span class="kw">this</span>.<span class="fu">count</span>++;</a>
-<a class="sourceLine" id="cb1-59" title="59">        }</a>
-<a class="sourceLine" id="cb1-60" title="60"></a>
-<a class="sourceLine" id="cb1-61" title="61">        <span class="kw">public</span> Item <span class="fu">Dequeue</span>()</a>
-<a class="sourceLine" id="cb1-62" title="62">        {</a>
-<a class="sourceLine" id="cb1-63" title="63">            <span class="kw">if</span> (<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb1-64" title="64">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">InvalidOperationException</span>(<span class="st">&quot;Queue underflow&quot;</span>);</a>
-<a class="sourceLine" id="cb1-65" title="65">            Item item = <span class="kw">this</span>.<span class="fu">q</span>[first];</a>
-<a class="sourceLine" id="cb1-66" title="66">            <span class="kw">this</span>.<span class="fu">q</span>[first] = <span class="kw">default</span>(Item);</a>
-<a class="sourceLine" id="cb1-67" title="67">            <span class="kw">this</span>.<span class="fu">count</span>--;</a>
-<a class="sourceLine" id="cb1-68" title="68">            <span class="kw">this</span>.<span class="fu">first</span>++;</a>
-<a class="sourceLine" id="cb1-69" title="69">            <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">first</span> == <span class="kw">this</span>.<span class="fu">q</span>.<span class="fu">Length</span>)</a>
-<a class="sourceLine" id="cb1-70" title="70">                <span class="kw">this</span>.<span class="fu">first</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-71" title="71"></a>
-<a class="sourceLine" id="cb1-72" title="72">            <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">count</span> &gt; <span class="dv">0</span> &amp;&amp; <span class="kw">this</span>.<span class="fu">count</span> &lt;= <span class="kw">this</span>.<span class="fu">q</span>.<span class="fu">Length</span> / <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb1-73" title="73">                <span class="fu">Resize</span>(<span class="kw">this</span>.<span class="fu">q</span>.<span class="fu">Length</span> / <span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb1-74" title="74">            <span class="kw">return</span> item;</a>
-<a class="sourceLine" id="cb1-75" title="75">        }</a>
-<a class="sourceLine" id="cb1-76" title="76"></a>
-<a class="sourceLine" id="cb1-77" title="77">        <span class="kw">public</span> Item <span class="fu">Peek</span>()</a>
-<a class="sourceLine" id="cb1-78" title="78">        {</a>
-<a class="sourceLine" id="cb1-79" title="79">            <span class="kw">if</span> (<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb1-80" title="80">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">InvalidOperationException</span>(<span class="st">&quot;Queue underflow&quot;</span>);</a>
-<a class="sourceLine" id="cb1-81" title="81">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">q</span>[first];</a>
-<a class="sourceLine" id="cb1-82" title="82">        }</a>
-<a class="sourceLine" id="cb1-83" title="83"></a>
-<a class="sourceLine" id="cb1-84" title="84">        <span class="kw">public</span> IEnumerator&lt;Item&gt; <span class="fu">GetEnumerator</span>()</a>
-<a class="sourceLine" id="cb1-85" title="85">        {</a>
-<a class="sourceLine" id="cb1-86" title="86">            <span class="kw">return</span> <span class="kw">new</span> <span class="fu">QueueEnumerator</span>(<span class="kw">this</span>.<span class="fu">q</span>, <span class="kw">this</span>.<span class="fu">first</span>, <span class="kw">this</span>.<span class="fu">last</span>);</a>
-<a class="sourceLine" id="cb1-87" title="87">        }</a>
-<a class="sourceLine" id="cb1-88" title="88"></a>
-<a class="sourceLine" id="cb1-89" title="89">        IEnumerator IEnumerable.<span class="fu">GetEnumerator</span>()</a>
-<a class="sourceLine" id="cb1-90" title="90">        {</a>
-<a class="sourceLine" id="cb1-91" title="91">            <span class="kw">return</span> <span class="fu">GetEnumerator</span>();</a>
-<a class="sourceLine" id="cb1-92" title="92">        }</a>
-<a class="sourceLine" id="cb1-93" title="93"></a>
-<a class="sourceLine" id="cb1-94" title="94">        <span class="kw">private</span> <span class="kw">class</span> QueueEnumerator : IEnumerator&lt;Item&gt;</a>
-<a class="sourceLine" id="cb1-95" title="95">        {</a>
-<a class="sourceLine" id="cb1-96" title="96">            <span class="dt">int</span> current;</a>
-<a class="sourceLine" id="cb1-97" title="97">            <span class="dt">int</span> first;</a>
-<a class="sourceLine" id="cb1-98" title="98">            <span class="dt">int</span> last;</a>
-<a class="sourceLine" id="cb1-99" title="99">            Item[] q;</a>
-<a class="sourceLine" id="cb1-100" title="100"></a>
-<a class="sourceLine" id="cb1-101" title="101">            <span class="kw">public</span> <span class="fu">QueueEnumerator</span>(Item[] q, <span class="dt">int</span> first, <span class="dt">int</span> last)</a>
-<a class="sourceLine" id="cb1-102" title="102">            {</a>
-<a class="sourceLine" id="cb1-103" title="103">                <span class="kw">this</span>.<span class="fu">current</span> = first - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-104" title="104">                <span class="kw">this</span>.<span class="fu">first</span> = first;</a>
-<a class="sourceLine" id="cb1-105" title="105">                <span class="kw">this</span>.<span class="fu">last</span> = last;</a>
-<a class="sourceLine" id="cb1-106" title="106">                <span class="kw">this</span>.<span class="fu">q</span> = q;</a>
-<a class="sourceLine" id="cb1-107" title="107">            }</a>
-<a class="sourceLine" id="cb1-108" title="108"></a>
-<a class="sourceLine" id="cb1-109" title="109">            Item IEnumerator&lt;Item&gt;.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">q</span>[<span class="kw">this</span>.<span class="fu">current</span>];</a>
-<a class="sourceLine" id="cb1-110" title="110"></a>
-<a class="sourceLine" id="cb1-111" title="111">            <span class="dt">object</span> IEnumerator.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">q</span>[<span class="kw">this</span>.<span class="fu">current</span>];</a>
-<a class="sourceLine" id="cb1-112" title="112"></a>
-<a class="sourceLine" id="cb1-113" title="113">            <span class="dt">void</span> IDisposable.<span class="fu">Dispose</span>()</a>
-<a class="sourceLine" id="cb1-114" title="114">            {</a>
-<a class="sourceLine" id="cb1-115" title="115">                </a>
-<a class="sourceLine" id="cb1-116" title="116">            }</a>
-<a class="sourceLine" id="cb1-117" title="117"></a>
-<a class="sourceLine" id="cb1-118" title="118">            <span class="dt">bool</span> IEnumerator.<span class="fu">MoveNext</span>()</a>
-<a class="sourceLine" id="cb1-119" title="119">            {</a>
-<a class="sourceLine" id="cb1-120" title="120">                <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">current</span> == <span class="kw">this</span>.<span class="fu">last</span> - <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1-121" title="121">                    <span class="kw">return</span> <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb1-122" title="122">                <span class="kw">this</span>.<span class="fu">current</span>++;</a>
-<a class="sourceLine" id="cb1-123" title="123">                <span class="kw">return</span> <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-124" title="124">            }</a>
-<a class="sourceLine" id="cb1-125" title="125"></a>
-<a class="sourceLine" id="cb1-126" title="126">            <span class="dt">void</span> IEnumerator.<span class="fu">Reset</span>()</a>
-<a class="sourceLine" id="cb1-127" title="127">            {</a>
-<a class="sourceLine" id="cb1-128" title="128">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="kw">this</span>.<span class="fu">first</span> - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-129" title="129">            }</a>
-<a class="sourceLine" id="cb1-130" title="130">        }</a>
-<a class="sourceLine" id="cb1-131" title="131">    }</a>
-<a class="sourceLine" id="cb1-132" title="132">}</a></code></pre></div>
-<h2 id="program.cs">Program.cs</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">14</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">     * 1.3.14</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * 编写一个类 ResizingArrayQueueOfStrings，</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 使用定长数组实现队列的抽象，然后扩展实现，</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 使用调整数组的方法突破大小的限制。</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-13" title="13">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-14" title="14">    {</a>
-<a class="sourceLine" id="cb2-15" title="15">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-16" title="16">        {</a>
-<a class="sourceLine" id="cb2-17" title="17">            ResizingArrayQueueOfStrings&lt;<span class="dt">string</span>&gt; queue = <span class="kw">new</span> ResizingArrayQueueOfStrings&lt;<span class="dt">string</span>&gt;();</a>
-<a class="sourceLine" id="cb2-18" title="18">            <span class="dt">string</span>[] input = <span class="st">&quot;to be or not to - be - - that - - - is&quot;</span>.<span class="fu">Split</span>(<span class="ch">&#39; &#39;</span>);</a>
-<a class="sourceLine" id="cb2-19" title="19"></a>
-<a class="sourceLine" id="cb2-20" title="20">            <span class="kw">foreach</span> (<span class="dt">string</span> s <span class="kw">in</span> input)</a>
-<a class="sourceLine" id="cb2-21" title="21">            {</a>
-<a class="sourceLine" id="cb2-22" title="22">                <span class="kw">if</span> (!s.<span class="fu">Equals</span>(<span class="st">&quot;-&quot;</span>))</a>
-<a class="sourceLine" id="cb2-23" title="23">                    queue.<span class="fu">Enqueue</span>(s);</a>
-<a class="sourceLine" id="cb2-24" title="24">                <span class="kw">else</span> <span class="kw">if</span> (!queue.<span class="fu">IsEmpty</span>())</a>
-<a class="sourceLine" id="cb2-25" title="25">                    Console.<span class="fu">Write</span>(queue.<span class="fu">Dequeue</span>() + <span class="ch">&#39; &#39;</span>);</a>
-<a class="sourceLine" id="cb2-26" title="26">            }</a>
-<a class="sourceLine" id="cb2-27" title="27">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;(&quot;</span> + queue.<span class="fu">Size</span>() + <span class="st">&quot; left on queue)&quot;</span>);</a>
-<a class="sourceLine" id="cb2-28" title="28">        }</a>
-<a class="sourceLine" id="cb2-29" title="29">    }</a>
-<a class="sourceLine" id="cb2-30" title="30">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.14<br>编写一个类 ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象，<br>然后扩展实现， 使用调整数组的方法突破大小的限制。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对于 ResizingArrayQueueOfStrings 类，给出官方 JAVA 代码参考：<a href="http://algs4.cs.princeton.edu/13stacks/ResizingArrayQueue.java.html" target="_blank" rel="noopener">ResizingArrayQueue.java</a>。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="ResizingArrayQueue-类"><a href="#ResizingArrayQueue-类" class="headerlink" title="ResizingArrayQueue 类"></a>ResizingArrayQueue 类</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_14
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">ResizingArrayQueueOfStrings</span><span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token punctuation">:</span> IEnumerable<span class="token operator">&lt;</span>Item<span class="token operator">></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> Item<span class="token punctuation">[</span><span class="token punctuation">]</span> q<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> count<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> first<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> last<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">ResizingArrayQueueOfStrings</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>capacity <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"capacity should be above zero"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Item<span class="token punctuation">[</span><span class="token punctuation">]</span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                temp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>q <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Enqueue</span><span class="token punctuation">(</span>Item item<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> Item <span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidOperationException</span><span class="token punctuation">(</span><span class="token string">"Queue underflow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Item item <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">[</span>first<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">[</span>first<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">.</span>Length <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">)</span>
+                <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">.</span>Length <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> Item <span class="token function">Peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidOperationException</span><span class="token punctuation">(</span><span class="token string">"Queue underflow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">[</span>first<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">QueueEnumerator</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        IEnumerator IEnumerable<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">QueueEnumerator</span> <span class="token punctuation">:</span> IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> current<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> first<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> last<span class="token punctuation">;</span>
+            Item<span class="token punctuation">[</span><span class="token punctuation">]</span> q<span class="token punctuation">;</span>
+
+            <span class="token keyword">public</span> <span class="token function">QueueEnumerator</span><span class="token punctuation">(</span>Item<span class="token punctuation">[</span><span class="token punctuation">]</span> q<span class="token punctuation">,</span> <span class="token keyword">int</span> first<span class="token punctuation">,</span> <span class="token keyword">int</span> last<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> first <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">=</span> first<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> last<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>q <span class="token operator">=</span> q<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            Item IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span><span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">object</span> IEnumerator<span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>q<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">void</span> IDisposable<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">bool</span> IEnumerator<span class="token punctuation">.</span><span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">void</span> IEnumerator<span class="token punctuation">.</span><span class="token function">Reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>first <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Program-cs"><a href="#Program-cs" class="headerlink" title="Program.cs"></a>Program.cs</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_14
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.3.14
+     * 
+     * 编写一个类 ResizingArrayQueueOfStrings，
+     * 使用定长数组实现队列的抽象，然后扩展实现，
+     * 使用调整数组的方法突破大小的限制。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            ResizingArrayQueueOfStrings<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ResizingArrayQueueOfStrings</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input <span class="token operator">=</span> <span class="token string">"to be or not to - be - - that - - - is"</span><span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">string</span> s <span class="token keyword">in</span> input<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>s<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    queue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>queue<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>queue<span class="token punctuation">.</span><span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"("</span> <span class="token operator">+</span> queue<span class="token punctuation">.</span><span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" left on queue)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

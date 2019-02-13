@@ -140,258 +140,257 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.34</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.34 热还是冷。 你的目标是猜出 1 到 N 之间的一个秘密的整数。 每次猜完一个整数后，你会直到你的猜测距离该秘密整数是否相等（如果是则游戏结束）。 如果不相等，你会知道你的猜测相比上一次猜测距离秘密整数是比较热（接近），还是比较冷（远离）。 设计一个算法在 ~2lgN 之内找到这个秘密整数，然后设计一个算法在 ~1lgN 之内找到这个秘密整数。</p>
-<h1 id="解答">解答</h1>
-<p>第一种方案，类似于二分查找，先猜测左边界(lo)，再猜测右边界(hi)，如果边界值猜中的话直接返回，否则： 如果右边界比较热，那么左边界向右边界靠，lo=mid；否则，右边界向左边界靠，hi=mid。其中，mid = lo + (hi – lo)/2。 每次二分查找都要猜测两次，~2lgN。</p>
-<p>第二种方案，假设上次猜测值为 <span class="math inline">\(lastGuess\)</span>，本次即将要猜测的值为 <span class="math inline">\(nowGuess\)</span>，通过方程： <span class="math inline">\((lastGuess + nowGuess)/2 = (lo + hi)/2\)</span> 可以求得 <span class="math inline">\(nowGuess\)</span>，具体可以查看示意图： 数字是猜测顺序，黑色范围是猜测值的范围（<span class="math inline">\(lastGuess\)</span> 和 <span class="math inline">\(nowGuess\)</span>），绿色的是实际查找的范围（lo 和 hi）。</p>
-<p><img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<p>首先是 Game 类</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">34</span></a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/// 某次猜测的结果。</span></a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">enum</span> GuessResult</a>
-<a class="sourceLine" id="cb1-9" title="9">    {</a>
-<a class="sourceLine" id="cb1-10" title="10">        Hot = <span class="dv">1</span>,        <span class="co">// 比上次猜测更接近目标。</span></a>
-<a class="sourceLine" id="cb1-11" title="11">        Equal = <span class="dv">0</span>,      <span class="co">// 猜中目标。</span></a>
-<a class="sourceLine" id="cb1-12" title="12">        Cold = <span class="dv">-1</span>,      <span class="co">// 比上次猜测更远离目标。</span></a>
-<a class="sourceLine" id="cb1-13" title="13">        FirstGuess = <span class="dv">-2</span> <span class="co">// 第一次猜测。</span></a>
-<a class="sourceLine" id="cb1-14" title="14">    }</a>
-<a class="sourceLine" id="cb1-15" title="15"></a>
-<a class="sourceLine" id="cb1-16" title="16">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="co">/// 游戏类。</span></a>
-<a class="sourceLine" id="cb1-18" title="18">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-19" title="19">    <span class="kw">class</span> Game</a>
-<a class="sourceLine" id="cb1-20" title="20">    {</a>
-<a class="sourceLine" id="cb1-21" title="21">        <span class="kw">public</span> <span class="dt">int</span> N { <span class="kw">get</span>; }                       <span class="co">// 目标值的最大范围。</span></a>
-<a class="sourceLine" id="cb1-22" title="22">        <span class="kw">public</span> <span class="dt">int</span> SecretNumber { <span class="kw">get</span>; }            <span class="co">// 目标值。</span></a>
-<a class="sourceLine" id="cb1-23" title="23">        <span class="kw">public</span> <span class="dt">int</span> LastGuess { <span class="kw">get</span>; <span class="kw">private</span> <span class="kw">set</span>; }  <span class="co">// 上次猜测的值</span></a>
-<a class="sourceLine" id="cb1-24" title="24"></a>
-<a class="sourceLine" id="cb1-25" title="25">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-26" title="26">        <span class="co">/// 构造函数，新开一局游戏。</span></a>
-<a class="sourceLine" id="cb1-27" title="27">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-28" title="28">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;N&quot;</span><span class="kw">&gt;</span><span class="co">目标值的最大范围。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-29" title="29">        <span class="kw">public</span> <span class="fu">Game</span>(<span class="dt">int</span> N)</a>
-<a class="sourceLine" id="cb1-30" title="30">        {</a>
-<a class="sourceLine" id="cb1-31" title="31">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-32" title="32">            <span class="kw">this</span>.<span class="fu">N</span> = N;</a>
-<a class="sourceLine" id="cb1-33" title="33">            <span class="kw">this</span>.<span class="fu">SecretNumber</span> = random.<span class="fu">Next</span>(N - <span class="dv">1</span>) + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-34" title="34">            <span class="kw">this</span>.<span class="fu">LastGuess</span> = <span class="dv">-1</span>;</a>
-<a class="sourceLine" id="cb1-35" title="35">        }</a>
-<a class="sourceLine" id="cb1-36" title="36"></a>
-<a class="sourceLine" id="cb1-37" title="37">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-38" title="38">        <span class="co">/// 猜测，根据与上次相比更为接近还是远离目标值返回结果。</span></a>
-<a class="sourceLine" id="cb1-39" title="39">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;guess&quot;</span><span class="kw">&gt;</span><span class="co">本次的猜测值</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-41" title="41">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">接近或不变返回 Hot，远离则返回 Cold，猜中返回 Equal。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-42" title="42">        <span class="kw">public</span> GuessResult <span class="fu">Guess</span>(<span class="dt">int</span> guess)</a>
-<a class="sourceLine" id="cb1-43" title="43">        {</a>
-<a class="sourceLine" id="cb1-44" title="44">            <span class="kw">if</span> (guess == <span class="kw">this</span>.<span class="fu">SecretNumber</span>)</a>
-<a class="sourceLine" id="cb1-45" title="45">            {</a>
-<a class="sourceLine" id="cb1-46" title="46">                <span class="kw">return</span> GuessResult.<span class="fu">Equal</span>;</a>
-<a class="sourceLine" id="cb1-47" title="47">            }</a>
-<a class="sourceLine" id="cb1-48" title="48">            <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">LastGuess</span> == <span class="dv">-1</span>)</a>
-<a class="sourceLine" id="cb1-49" title="49">            {</a>
-<a class="sourceLine" id="cb1-50" title="50">                <span class="kw">this</span>.<span class="fu">LastGuess</span> = guess;</a>
-<a class="sourceLine" id="cb1-51" title="51">                <span class="kw">return</span> GuessResult.<span class="fu">FirstGuess</span>;</a>
-<a class="sourceLine" id="cb1-52" title="52">            }</a>
-<a class="sourceLine" id="cb1-53" title="53"></a>
-<a class="sourceLine" id="cb1-54" title="54">            <span class="dt">int</span> lastDiff = Math.<span class="fu">Abs</span>(<span class="kw">this</span>.<span class="fu">LastGuess</span> - <span class="kw">this</span>.<span class="fu">SecretNumber</span>);</a>
-<a class="sourceLine" id="cb1-55" title="55">            <span class="kw">this</span>.<span class="fu">LastGuess</span> = guess;</a>
-<a class="sourceLine" id="cb1-56" title="56">            <span class="dt">int</span> nowDiff = Math.<span class="fu">Abs</span>(guess - <span class="kw">this</span>.<span class="fu">SecretNumber</span>);</a>
-<a class="sourceLine" id="cb1-57" title="57">            <span class="kw">if</span> (nowDiff &gt; lastDiff)</a>
-<a class="sourceLine" id="cb1-58" title="58">            {</a>
-<a class="sourceLine" id="cb1-59" title="59">                <span class="kw">return</span> GuessResult.<span class="fu">Cold</span>;</a>
-<a class="sourceLine" id="cb1-60" title="60">            }</a>
-<a class="sourceLine" id="cb1-61" title="61">            <span class="kw">else</span></a>
-<a class="sourceLine" id="cb1-62" title="62">            {</a>
-<a class="sourceLine" id="cb1-63" title="63">                <span class="kw">return</span> GuessResult.<span class="fu">Hot</span>;</a>
-<a class="sourceLine" id="cb1-64" title="64">            }</a>
-<a class="sourceLine" id="cb1-65" title="65">        }</a>
-<a class="sourceLine" id="cb1-66" title="66"></a>
-<a class="sourceLine" id="cb1-67" title="67">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-68" title="68">        <span class="co">/// 重置游戏，清空上次猜测的记录。目标值和最大值都不变。</span></a>
-<a class="sourceLine" id="cb1-69" title="69">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-70" title="70">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Restart</span>()</a>
-<a class="sourceLine" id="cb1-71" title="71">        {</a>
-<a class="sourceLine" id="cb1-72" title="72">            <span class="kw">this</span>.<span class="fu">LastGuess</span> = <span class="dv">-1</span>;</a>
-<a class="sourceLine" id="cb1-73" title="73">        }</a>
-<a class="sourceLine" id="cb1-74" title="74">    }</a>
-<a class="sourceLine" id="cb1-75" title="75">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.34<br>热还是冷。<br>你的目标是猜出 1 到 N 之间的一个秘密的整数。<br>每次猜完一个整数后，你会直到你的猜测距离该秘密整数是否相等（如果是则游戏结束）。<br>如果不相等，你会知道你的猜测相比上一次猜测距离秘密整数是比较热（接近），还是比较冷（远离）。<br>设计一个算法在 ~2lgN 之内找到这个秘密整数，然后设计一个算法在 ~1lgN 之内找到这个秘密整数。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>第一种方案，类似于二分查找，先猜测左边界(lo)，再猜测右边界(hi)，如果边界值猜中的话直接返回，否则：<br>如果右边界比较热，那么左边界向右边界靠，lo=mid；否则，右边界向左边界靠，hi=mid。其中，mid = lo + (hi – lo)/2。<br>每次二分查找都要猜测两次，~2lgN。</p>
+<p>第二种方案，假设上次猜测值为 $lastGuess$，本次即将要猜测的值为 $nowGuess$，通过方程：<br>$(lastGuess + nowGuess)/2 = (lo + hi)/2$<br>可以求得 $nowGuess$，具体可以查看示意图：<br>数字是猜测顺序，黑色范围是猜测值的范围（$lastGuess$ 和 $nowGuess$），绿色的是实际查找的范围（lo 和 hi）。</p>
+<p><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>首先是 Game 类</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_34
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 某次猜测的结果。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">enum</span> GuessResult
+    <span class="token punctuation">{</span>
+        Hot <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">// 比上次猜测更接近目标。</span>
+        Equal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>      <span class="token comment" spellcheck="true">// 猜中目标。</span>
+        Cold <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>      <span class="token comment" spellcheck="true">// 比上次猜测更远离目标。</span>
+        FirstGuess <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">2</span> <span class="token comment" spellcheck="true">// 第一次猜测。</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 游戏类。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">class</span> <span class="token class-name">Game</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> N <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>                       <span class="token comment" spellcheck="true">// 目标值的最大范围。</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> SecretNumber <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>            <span class="token comment" spellcheck="true">// 目标值。</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> LastGuess <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// 上次猜测的值</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 构造函数，新开一局游戏。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="N">目标值的最大范围。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token function">Game</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">=</span> N<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>LastGuess <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 猜测，根据与上次相比更为接近还是远离目标值返回结果。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="guess">本次的猜测值&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>接近或不变返回 Hot，远离则返回 Cold，猜中返回 Equal。&lt;/returns></span>
+        <span class="token keyword">public</span> GuessResult <span class="token function">Guess</span><span class="token punctuation">(</span><span class="token keyword">int</span> guess<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>guess <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>SecretNumber<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> GuessResult<span class="token punctuation">.</span>Equal<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>LastGuess <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>LastGuess <span class="token operator">=</span> guess<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> GuessResult<span class="token punctuation">.</span>FirstGuess<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">int</span> lastDiff <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Abs</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>LastGuess <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>SecretNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>LastGuess <span class="token operator">=</span> guess<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> nowDiff <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Abs</span><span class="token punctuation">(</span>guess <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>SecretNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>nowDiff <span class="token operator">></span> lastDiff<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> GuessResult<span class="token punctuation">.</span>Cold<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> GuessResult<span class="token punctuation">.</span>Hot<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 重置游戏，清空上次猜测的记录。目标值和最大值都不变。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>LastGuess <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>之后是实际测试的方法：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">34</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">     * 1.4.34</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * 热还是冷。</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 你的目标是猜出 1 到 N 之间的一个秘密的整数。</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 每次猜完一个整数后，你会直到你的猜测距离该秘密整数是否相等（如果是则游戏结束）。</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 如果不相等，你会知道你的猜测相比上一次猜测距离秘密整数是比较热（接近），还是比较冷（远离）。</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * 设计一个算法在 ~2lgN 之内找到这个秘密整数，然后设计一个算法在 ~1lgN 之内找到这个秘密整数。</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-15" title="15">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-16" title="16">    {</a>
-<a class="sourceLine" id="cb2-17" title="17">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-18" title="18">        <span class="co">/// 某种方案的测试结果，包含猜测结果和尝试次数。</span></a>
-<a class="sourceLine" id="cb2-19" title="19">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-20" title="20">        <span class="kw">struct</span> TestResult</a>
-<a class="sourceLine" id="cb2-21" title="21">        {</a>
-<a class="sourceLine" id="cb2-22" title="22">            <span class="kw">public</span> <span class="dt">int</span> SecretNumber;<span class="co">// 猜测到的数字。</span></a>
-<a class="sourceLine" id="cb2-23" title="23">            <span class="kw">public</span> <span class="dt">int</span> TryTimes;<span class="co">// 尝试次数。</span></a>
-<a class="sourceLine" id="cb2-24" title="24">        }</a>
-<a class="sourceLine" id="cb2-25" title="25"></a>
-<a class="sourceLine" id="cb2-26" title="26">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-27" title="27">        {</a>
-<a class="sourceLine" id="cb2-28" title="28">            Game game = <span class="kw">new</span> <span class="fu">Game</span>(<span class="dv">1000</span>);</a>
-<a class="sourceLine" id="cb2-29" title="29">            TestResult A = <span class="fu">PlayGameA</span>(game);</a>
-<a class="sourceLine" id="cb2-30" title="30">            game.<span class="fu">Restart</span>();</a>
-<a class="sourceLine" id="cb2-31" title="31">            TestResult B = <span class="fu">PlayGameB</span>(game);</a>
-<a class="sourceLine" id="cb2-32" title="32"></a>
-<a class="sourceLine" id="cb2-33" title="33">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;SecretNumber:{game.SecretNumber}&quot;</span>);</a>
-<a class="sourceLine" id="cb2-34" title="34">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;TestResultA:&quot;</span>);</a>
-<a class="sourceLine" id="cb2-35" title="35">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;SecretNumber:{A.SecretNumber}, TryTimes:{A.TryTimes}&quot;</span>);</a>
-<a class="sourceLine" id="cb2-36" title="36">            Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb2-37" title="37">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;TestResultB:&quot;</span>);</a>
-<a class="sourceLine" id="cb2-38" title="38">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;SecretNumber:{B.SecretNumber}, TryTimes:{B.TryTimes}&quot;</span>);</a>
-<a class="sourceLine" id="cb2-39" title="39">        }</a>
-<a class="sourceLine" id="cb2-40" title="40"></a>
-<a class="sourceLine" id="cb2-41" title="41">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-42" title="42">        <span class="co">/// 方案一，用二分查找实现，需要猜测 2lgN 次。</span></a>
-<a class="sourceLine" id="cb2-43" title="43">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-44" title="44">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;game&quot;</span><span class="kw">&gt;</span><span class="co">用于猜测的游戏对象。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-45" title="45">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回测试结果，包含猜测结果和尝试次数。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-46" title="46">        <span class="kw">static</span> TestResult <span class="fu">PlayGameA</span>(Game game)</a>
-<a class="sourceLine" id="cb2-47" title="47">        {</a>
-<a class="sourceLine" id="cb2-48" title="48">            TestResult result;</a>
-<a class="sourceLine" id="cb2-49" title="49">            result.<span class="fu">TryTimes</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-50" title="50">            result.<span class="fu">SecretNumber</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-51" title="51">            GuessResult guessResult;</a>
-<a class="sourceLine" id="cb2-52" title="52"></a>
-<a class="sourceLine" id="cb2-53" title="53">            <span class="dt">int</span> hi = game.<span class="fu">N</span>;</a>
-<a class="sourceLine" id="cb2-54" title="54">            <span class="dt">int</span> lo = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-55" title="55"></a>
-<a class="sourceLine" id="cb2-56" title="56">            <span class="co">// 利用二分查找猜测，2lgN</span></a>
-<a class="sourceLine" id="cb2-57" title="57">            <span class="kw">while</span> (lo &lt;= hi)</a>
-<a class="sourceLine" id="cb2-58" title="58">            {</a>
-<a class="sourceLine" id="cb2-59" title="59">                <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb2-60" title="60"></a>
-<a class="sourceLine" id="cb2-61" title="61">                guessResult = game.<span class="fu">Guess</span>(lo);</a>
-<a class="sourceLine" id="cb2-62" title="62">                result.<span class="fu">TryTimes</span>++;</a>
-<a class="sourceLine" id="cb2-63" title="63">                <span class="kw">if</span> (guessResult == GuessResult.<span class="fu">Equal</span>)</a>
-<a class="sourceLine" id="cb2-64" title="64">                {</a>
-<a class="sourceLine" id="cb2-65" title="65">                    result.<span class="fu">SecretNumber</span> = lo;</a>
-<a class="sourceLine" id="cb2-66" title="66">                    <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-67" title="67">                }</a>
-<a class="sourceLine" id="cb2-68" title="68"></a>
-<a class="sourceLine" id="cb2-69" title="69">                guessResult = game.<span class="fu">Guess</span>(hi);</a>
-<a class="sourceLine" id="cb2-70" title="70">                result.<span class="fu">TryTimes</span>++;</a>
-<a class="sourceLine" id="cb2-71" title="71">                <span class="kw">if</span> (guessResult == GuessResult.<span class="fu">Equal</span>)</a>
-<a class="sourceLine" id="cb2-72" title="72">                {</a>
-<a class="sourceLine" id="cb2-73" title="73">                    result.<span class="fu">SecretNumber</span> = hi;</a>
-<a class="sourceLine" id="cb2-74" title="74">                    <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-75" title="75">                }</a>
-<a class="sourceLine" id="cb2-76" title="76">                <span class="kw">else</span> <span class="kw">if</span> (guessResult == GuessResult.<span class="fu">Hot</span>)</a>
-<a class="sourceLine" id="cb2-77" title="77">                {</a>
-<a class="sourceLine" id="cb2-78" title="78">                    lo = mid;</a>
-<a class="sourceLine" id="cb2-79" title="79">                }</a>
-<a class="sourceLine" id="cb2-80" title="80">                <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-81" title="81">                {</a>
-<a class="sourceLine" id="cb2-82" title="82">                    hi = mid;</a>
-<a class="sourceLine" id="cb2-83" title="83">                }</a>
-<a class="sourceLine" id="cb2-84" title="84">            }</a>
-<a class="sourceLine" id="cb2-85" title="85"></a>
-<a class="sourceLine" id="cb2-86" title="86">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-87" title="87">        }</a>
-<a class="sourceLine" id="cb2-88" title="88"></a>
-<a class="sourceLine" id="cb2-89" title="89">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-90" title="90">        <span class="co">/// 方案二，根据 (lastGuess + nowGuess)/2 = (lo + hi) / 2 确定每次猜测的值。</span></a>
-<a class="sourceLine" id="cb2-91" title="91">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-92" title="92">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;game&quot;</span><span class="kw">&gt;</span><span class="co">用于猜测的游戏对象。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-93" title="93">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回测试结果，包含猜测结果和尝试次数。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb2-94" title="94">        <span class="kw">static</span> TestResult <span class="fu">PlayGameB</span>(Game game)</a>
-<a class="sourceLine" id="cb2-95" title="95">        {</a>
-<a class="sourceLine" id="cb2-96" title="96">            TestResult result;</a>
-<a class="sourceLine" id="cb2-97" title="97">            result.<span class="fu">TryTimes</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-98" title="98">            result.<span class="fu">SecretNumber</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-99" title="99">            GuessResult guessResult;</a>
-<a class="sourceLine" id="cb2-100" title="100"></a>
-<a class="sourceLine" id="cb2-101" title="101">            <span class="dt">int</span> hi = game.<span class="fu">N</span>;</a>
-<a class="sourceLine" id="cb2-102" title="102">            <span class="dt">int</span> lo = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-103" title="103">            <span class="dt">bool</span> isRightSide = <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb2-104" title="104"></a>
-<a class="sourceLine" id="cb2-105" title="105">            <span class="co">// 第一次猜测</span></a>
-<a class="sourceLine" id="cb2-106" title="106">            guessResult = game.<span class="fu">Guess</span>(<span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb2-107" title="107">            result.<span class="fu">TryTimes</span>++;</a>
-<a class="sourceLine" id="cb2-108" title="108">            <span class="kw">if</span> (guessResult == GuessResult.<span class="fu">Equal</span>)</a>
-<a class="sourceLine" id="cb2-109" title="109">            {</a>
-<a class="sourceLine" id="cb2-110" title="110">                result.<span class="fu">SecretNumber</span> = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-111" title="111">                <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-112" title="112">            }</a>
-<a class="sourceLine" id="cb2-113" title="113"></a>
-<a class="sourceLine" id="cb2-114" title="114">            <span class="kw">while</span> (lo &lt; hi)</a>
-<a class="sourceLine" id="cb2-115" title="115">            {</a>
-<a class="sourceLine" id="cb2-116" title="116">                <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb2-117" title="117">                <span class="dt">int</span> nowGuess = (lo + hi) - game.<span class="fu">LastGuess</span>;</a>
-<a class="sourceLine" id="cb2-118" title="118"></a>
-<a class="sourceLine" id="cb2-119" title="119">                guessResult = game.<span class="fu">Guess</span>(nowGuess);</a>
-<a class="sourceLine" id="cb2-120" title="120">                result.<span class="fu">TryTimes</span>++;</a>
-<a class="sourceLine" id="cb2-121" title="121">                <span class="kw">if</span> (guessResult == GuessResult.<span class="fu">Equal</span>)</a>
-<a class="sourceLine" id="cb2-122" title="122">                {</a>
-<a class="sourceLine" id="cb2-123" title="123">                    result.<span class="fu">SecretNumber</span> = nowGuess;</a>
-<a class="sourceLine" id="cb2-124" title="124">                    <span class="kw">break</span>;</a>
-<a class="sourceLine" id="cb2-125" title="125">                }</a>
-<a class="sourceLine" id="cb2-126" title="126">                <span class="kw">else</span> <span class="kw">if</span> (guessResult == GuessResult.<span class="fu">Hot</span>)</a>
-<a class="sourceLine" id="cb2-127" title="127">                {</a>
-<a class="sourceLine" id="cb2-128" title="128">                    <span class="kw">if</span> (isRightSide)</a>
-<a class="sourceLine" id="cb2-129" title="129">                    {</a>
-<a class="sourceLine" id="cb2-130" title="130">                        lo = mid;</a>
-<a class="sourceLine" id="cb2-131" title="131">                    }</a>
-<a class="sourceLine" id="cb2-132" title="132">                    <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-133" title="133">                    {</a>
-<a class="sourceLine" id="cb2-134" title="134">                        hi = mid;</a>
-<a class="sourceLine" id="cb2-135" title="135">                    }</a>
-<a class="sourceLine" id="cb2-136" title="136">                }</a>
-<a class="sourceLine" id="cb2-137" title="137">                <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-138" title="138">                {</a>
-<a class="sourceLine" id="cb2-139" title="139">                    <span class="kw">if</span> (isRightSide)</a>
-<a class="sourceLine" id="cb2-140" title="140">                    {</a>
-<a class="sourceLine" id="cb2-141" title="141">                        hi = mid;</a>
-<a class="sourceLine" id="cb2-142" title="142">                    }</a>
-<a class="sourceLine" id="cb2-143" title="143">                    <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-144" title="144">                    {</a>
-<a class="sourceLine" id="cb2-145" title="145">                        lo = mid;</a>
-<a class="sourceLine" id="cb2-146" title="146">                    }</a>
-<a class="sourceLine" id="cb2-147" title="147">                }</a>
-<a class="sourceLine" id="cb2-148" title="148">                isRightSide = !isRightSide;</a>
-<a class="sourceLine" id="cb2-149" title="149">                <span class="kw">if</span> (hi - lo &lt;= <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-150" title="150">                {</a>
-<a class="sourceLine" id="cb2-151" title="151">                    <span class="kw">break</span>;</a>
-<a class="sourceLine" id="cb2-152" title="152">                }</a>
-<a class="sourceLine" id="cb2-153" title="153">            }</a>
-<a class="sourceLine" id="cb2-154" title="154">            <span class="kw">if</span> (game.<span class="fu">Guess</span>(lo) == GuessResult.<span class="fu">Equal</span>)</a>
-<a class="sourceLine" id="cb2-155" title="155">            {</a>
-<a class="sourceLine" id="cb2-156" title="156">                result.<span class="fu">TryTimes</span>++;</a>
-<a class="sourceLine" id="cb2-157" title="157">                result.<span class="fu">SecretNumber</span> = lo;</a>
-<a class="sourceLine" id="cb2-158" title="158">            }</a>
-<a class="sourceLine" id="cb2-159" title="159">            <span class="kw">else</span> <span class="kw">if</span> (game.<span class="fu">Guess</span>(hi) == GuessResult.<span class="fu">Equal</span>)</a>
-<a class="sourceLine" id="cb2-160" title="160">            {</a>
-<a class="sourceLine" id="cb2-161" title="161">                result.<span class="fu">TryTimes</span>++;</a>
-<a class="sourceLine" id="cb2-162" title="162">                result.<span class="fu">SecretNumber</span> = hi;</a>
-<a class="sourceLine" id="cb2-163" title="163">            }</a>
-<a class="sourceLine" id="cb2-164" title="164"></a>
-<a class="sourceLine" id="cb2-165" title="165">            <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb2-166" title="166">        }</a>
-<a class="sourceLine" id="cb2-167" title="167">    }</a>
-<a class="sourceLine" id="cb2-168" title="168">}</a></code></pre></div>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_34
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.4.34
+     * 
+     * 热还是冷。
+     * 你的目标是猜出 1 到 N 之间的一个秘密的整数。
+     * 每次猜完一个整数后，你会直到你的猜测距离该秘密整数是否相等（如果是则游戏结束）。
+     * 如果不相等，你会知道你的猜测相比上一次猜测距离秘密整数是比较热（接近），还是比较冷（远离）。
+     * 设计一个算法在 ~2lgN 之内找到这个秘密整数，然后设计一个算法在 ~1lgN 之内找到这个秘密整数。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 某种方案的测试结果，包含猜测结果和尝试次数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">struct</span> TestResult
+        <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> <span class="token keyword">int</span> SecretNumber<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 猜测到的数字。</span>
+            <span class="token keyword">public</span> <span class="token keyword">int</span> TryTimes<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 尝试次数。</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Game game <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Game</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            TestResult A <span class="token operator">=</span> <span class="token function">PlayGameA</span><span class="token punctuation">(</span>game<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            game<span class="token punctuation">.</span><span class="token function">Restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            TestResult B <span class="token operator">=</span> <span class="token function">PlayGameB</span><span class="token punctuation">(</span>game<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"SecretNumber:{game.SecretNumber}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"TestResultA:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"SecretNumber:{A.SecretNumber}, TryTimes:{A.TryTimes}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"TestResultB:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"SecretNumber:{B.SecretNumber}, TryTimes:{B.TryTimes}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 方案一，用二分查找实现，需要猜测 2lgN 次。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="game">用于猜测的游戏对象。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>返回测试结果，包含猜测结果和尝试次数。&lt;/returns></span>
+        <span class="token keyword">static</span> TestResult <span class="token function">PlayGameA</span><span class="token punctuation">(</span>Game game<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            TestResult result<span class="token punctuation">;</span>
+            result<span class="token punctuation">.</span>TryTimes <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            GuessResult guessResult<span class="token punctuation">;</span>
+
+            <span class="token keyword">int</span> hi <span class="token operator">=</span> game<span class="token punctuation">.</span>N<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> lo <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 利用二分查找猜测，2lgN</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;=</span> hi<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+                guessResult <span class="token operator">=</span> game<span class="token punctuation">.</span><span class="token function">Guess</span><span class="token punctuation">(</span>lo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                result<span class="token punctuation">.</span>TryTimes<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>guessResult <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Equal<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> lo<span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                guessResult <span class="token operator">=</span> game<span class="token punctuation">.</span><span class="token function">Guess</span><span class="token punctuation">(</span>hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                result<span class="token punctuation">.</span>TryTimes<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>guessResult <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Equal<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> hi<span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>guessResult <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Hot<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    lo <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    hi <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 方案二，根据 (lastGuess + nowGuess)/2 = (lo + hi) / 2 确定每次猜测的值。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="game">用于猜测的游戏对象。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>返回测试结果，包含猜测结果和尝试次数。&lt;/returns></span>
+        <span class="token keyword">static</span> TestResult <span class="token function">PlayGameB</span><span class="token punctuation">(</span>Game game<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            TestResult result<span class="token punctuation">;</span>
+            result<span class="token punctuation">.</span>TryTimes <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            GuessResult guessResult<span class="token punctuation">;</span>
+
+            <span class="token keyword">int</span> hi <span class="token operator">=</span> game<span class="token punctuation">.</span>N<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> lo <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">bool</span> isRightSide <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 第一次猜测</span>
+            guessResult <span class="token operator">=</span> game<span class="token punctuation">.</span><span class="token function">Guess</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            result<span class="token punctuation">.</span>TryTimes<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>guessResult <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Equal<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;</span> hi<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> nowGuess <span class="token operator">=</span> <span class="token punctuation">(</span>lo <span class="token operator">+</span> hi<span class="token punctuation">)</span> <span class="token operator">-</span> game<span class="token punctuation">.</span>LastGuess<span class="token punctuation">;</span>
+
+                guessResult <span class="token operator">=</span> game<span class="token punctuation">.</span><span class="token function">Guess</span><span class="token punctuation">(</span>nowGuess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                result<span class="token punctuation">.</span>TryTimes<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>guessResult <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Equal<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> nowGuess<span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>guessResult <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Hot<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>isRightSide<span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        lo <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">else</span>
+                    <span class="token punctuation">{</span>
+                        hi <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>isRightSide<span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        hi <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">else</span>
+                    <span class="token punctuation">{</span>
+                        lo <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                isRightSide <span class="token operator">=</span> <span class="token operator">!</span>isRightSide<span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>game<span class="token punctuation">.</span><span class="token function">Guess</span><span class="token punctuation">(</span>lo<span class="token punctuation">)</span> <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Equal<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                result<span class="token punctuation">.</span>TryTimes<span class="token operator">++</span><span class="token punctuation">;</span>
+                result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> lo<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>game<span class="token punctuation">.</span><span class="token function">Guess</span><span class="token punctuation">(</span>hi<span class="token punctuation">)</span> <span class="token operator">==</span> GuessResult<span class="token punctuation">.</span>Equal<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                result<span class="token punctuation">.</span>TryTimes<span class="token operator">++</span><span class="token punctuation">;</span>
+                result<span class="token punctuation">.</span>SecretNumber <span class="token operator">=</span> hi<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

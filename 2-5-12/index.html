@@ -140,69 +140,68 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.12</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.5.12 调度。 编写一段程序 SPT.java，从标准输入中读取任务的名称和所需的运行时间， 用 2.5.4.3 节所述的最短处理时间优先的原则打印出一份调度计划，使得任务完成的平均时间最小。</p>
-<h1 id="解答">解答</h1>
-<p>官方解答：https://algs4.cs.princeton.edu/25applications/SPT.java.html</p>
-<p>把任务按照处理时间升序排序即可。 建立 <code>Job</code> 类，保存任务的名称和处理时间，并实现了 <code>IConparable&lt;Job&gt;</code> 接口。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">class</span> Job : IComparable&lt;Job&gt;</a>
-<a class="sourceLine" id="cb1-2" title="2">{</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">public</span> <span class="dt">string</span> Name;</a>
-<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">public</span> <span class="dt">double</span> Time;</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">public</span> <span class="fu">Job</span>(<span class="dt">string</span> name, <span class="dt">double</span> time)</a>
-<a class="sourceLine" id="cb1-7" title="7">    {</a>
-<a class="sourceLine" id="cb1-8" title="8">        <span class="kw">this</span>.<span class="fu">Name</span> = name;</a>
-<a class="sourceLine" id="cb1-9" title="9">        <span class="kw">this</span>.<span class="fu">Time</span> = time;</a>
-<a class="sourceLine" id="cb1-10" title="10">    }</a>
-<a class="sourceLine" id="cb1-11" title="11"></a>
-<a class="sourceLine" id="cb1-12" title="12">    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">CompareTo</span>(Job other)</a>
-<a class="sourceLine" id="cb1-13" title="13">    {</a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">Time</span>.<span class="fu">CompareTo</span>(other.<span class="fu">Time</span>);</a>
-<a class="sourceLine" id="cb1-15" title="15">    }</a>
-<a class="sourceLine" id="cb1-16" title="16">}</a></code></pre></div>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">5.</span>_<span class="dv">12</span></a>
-<a class="sourceLine" id="cb2-4" title="4">{</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-6" title="6">    {</a>
-<a class="sourceLine" id="cb2-7" title="7">        <span class="kw">class</span> Job : IComparable&lt;Job&gt;</a>
-<a class="sourceLine" id="cb2-8" title="8">        {</a>
-<a class="sourceLine" id="cb2-9" title="9">            <span class="kw">public</span> <span class="dt">string</span> Name;</a>
-<a class="sourceLine" id="cb2-10" title="10">            <span class="kw">public</span> <span class="dt">double</span> Time;</a>
-<a class="sourceLine" id="cb2-11" title="11"></a>
-<a class="sourceLine" id="cb2-12" title="12">            <span class="kw">public</span> <span class="fu">Job</span>(<span class="dt">string</span> name, <span class="dt">double</span> time)</a>
-<a class="sourceLine" id="cb2-13" title="13">            {</a>
-<a class="sourceLine" id="cb2-14" title="14">                <span class="kw">this</span>.<span class="fu">Name</span> = name;</a>
-<a class="sourceLine" id="cb2-15" title="15">                <span class="kw">this</span>.<span class="fu">Time</span> = time;</a>
-<a class="sourceLine" id="cb2-16" title="16">            }</a>
-<a class="sourceLine" id="cb2-17" title="17"></a>
-<a class="sourceLine" id="cb2-18" title="18">            <span class="kw">public</span> <span class="dt">int</span> <span class="fu">CompareTo</span>(Job other)</a>
-<a class="sourceLine" id="cb2-19" title="19">            {</a>
-<a class="sourceLine" id="cb2-20" title="20">                <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">Time</span>.<span class="fu">CompareTo</span>(other.<span class="fu">Time</span>);</a>
-<a class="sourceLine" id="cb2-21" title="21">            }</a>
-<a class="sourceLine" id="cb2-22" title="22">        }</a>
-<a class="sourceLine" id="cb2-23" title="23"></a>
-<a class="sourceLine" id="cb2-24" title="24">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-25" title="25">        {</a>
-<a class="sourceLine" id="cb2-26" title="26">            <span class="co">// 官方解答：https://algs4.cs.princeton.edu/25applications/SPT.java.html</span></a>
-<a class="sourceLine" id="cb2-27" title="27">            <span class="dt">int</span> n = <span class="dt">int</span>.<span class="fu">Parse</span>(Console.<span class="fu">ReadLine</span>());</a>
-<a class="sourceLine" id="cb2-28" title="28">            Job[] jobs = <span class="kw">new</span> Job[n];</a>
-<a class="sourceLine" id="cb2-29" title="29">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb2-30" title="30">            {</a>
-<a class="sourceLine" id="cb2-31" title="31">                <span class="dt">string</span>[] input = Console.<span class="fu">ReadLine</span>().<span class="fu">Split</span>(<span class="ch">&#39; &#39;</span>);</a>
-<a class="sourceLine" id="cb2-32" title="32">                jobs[i] = <span class="kw">new</span> <span class="fu">Job</span>(input[<span class="dv">0</span>], <span class="dt">double</span>.<span class="fu">Parse</span>(input[<span class="dv">1</span>]));</a>
-<a class="sourceLine" id="cb2-33" title="33">            }</a>
-<a class="sourceLine" id="cb2-34" title="34">            Array.<span class="fu">Sort</span>(jobs);</a>
-<a class="sourceLine" id="cb2-35" title="35">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; jobs.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb2-36" title="36">            {</a>
-<a class="sourceLine" id="cb2-37" title="37">                Console.<span class="fu">WriteLine</span>(jobs[i].<span class="fu">Name</span> + <span class="st">&quot; &quot;</span> + jobs[i].<span class="fu">Time</span>);</a>
-<a class="sourceLine" id="cb2-38" title="38">            }</a>
-<a class="sourceLine" id="cb2-39" title="39">        }</a>
-<a class="sourceLine" id="cb2-40" title="40">    }</a>
-<a class="sourceLine" id="cb2-41" title="41">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.12<br>调度。<br>编写一段程序 SPT.java，从标准输入中读取任务的名称和所需的运行时间，<br>用 2.5.4.3 节所述的最短处理时间优先的原则打印出一份调度计划，使得任务完成的平均时间最小。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答：<a href="https://algs4.cs.princeton.edu/25applications/SPT.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/25applications/SPT.java.html</a></p>
+<p>把任务按照处理时间升序排序即可。<br>建立 <code>Job</code> 类，保存任务的名称和处理时间，并实现了 <code>IConparable&lt;Job&gt;</code> 接口。</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">Job</span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Job<span class="token operator">></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">string</span> Name<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> Time<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Job</span><span class="token punctuation">(</span><span class="token keyword">string</span> name<span class="token punctuation">,</span> <span class="token keyword">double</span> time<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>Name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>Time <span class="token operator">=</span> time<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>Job other<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Time<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>Time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_12
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">class</span> <span class="token class-name">Job</span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Job<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> <span class="token keyword">string</span> Name<span class="token punctuation">;</span>
+            <span class="token keyword">public</span> <span class="token keyword">double</span> Time<span class="token punctuation">;</span>
+
+            <span class="token keyword">public</span> <span class="token function">Job</span><span class="token punctuation">(</span><span class="token keyword">string</span> name<span class="token punctuation">,</span> <span class="token keyword">double</span> time<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>Name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>Time <span class="token operator">=</span> time<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>Job other<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Time<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>Time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 官方解答：https://algs4.cs.princeton.edu/25applications/SPT.java.html</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Job<span class="token punctuation">[</span><span class="token punctuation">]</span> jobs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Job</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input <span class="token operator">=</span> Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Job</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>jobs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> jobs<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Name <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

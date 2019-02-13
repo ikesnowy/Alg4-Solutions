@@ -140,203 +140,201 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.11</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.5.11 实现加权 quick-find 算法， 其中我们总是将较小的分量重命名为较大分量的标识符。 这种改变会对性能产生怎样的影响？</p>
-<h1 id="解答">解答</h1>
-<p>类似于加权 quick-union 的做法，新增一个 size[] 数组以记录各个根节点的大小。 每次合并时先比较一下两棵树的大小，再进行合并。 这样会略微减少赋值语句的执行次数，提升性能。</p>
-<h1 id="代码">代码</h1>
-<p>WeightedQuickFindUF.cs</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">5.</span>_<span class="dv">11</span></a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/// 用加权 QuickFind 算法实现的并查集。</span></a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">public</span> <span class="kw">class</span> WeightedQuickFindUF</a>
-<a class="sourceLine" id="cb1-9" title="9">    {</a>
-<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">private</span> <span class="dt">int</span>[] size; <span class="co">// 记录每个连通分量的大小。</span></a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">private</span> <span class="dt">int</span>[] id; <span class="co">// 记录每个结点的连通分量。</span></a>
-<a class="sourceLine" id="cb1-12" title="12">        <span class="kw">private</span> <span class="dt">int</span> count;<span class="co">// 连通分量总数。</span></a>
-<a class="sourceLine" id="cb1-13" title="13"></a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">public</span> <span class="dt">int</span> ArrayVisitCount { <span class="kw">get</span>; <span class="kw">private</span> <span class="kw">set</span>; } <span class="co">//记录数组访问的次数。</span></a>
-<a class="sourceLine" id="cb1-15" title="15"></a>
-<a class="sourceLine" id="cb1-16" title="16">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-17" title="17">        <span class="co">/// 新建一个使用加权 quick-find 实现的并查集。</span></a>
-<a class="sourceLine" id="cb1-18" title="18">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">并查集的大小。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-20" title="20">        <span class="kw">public</span> <span class="fu">WeightedQuickFindUF</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb1-21" title="21">        {</a>
-<a class="sourceLine" id="cb1-22" title="22">            <span class="kw">this</span>.<span class="fu">count</span> = n;</a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="kw">this</span>.<span class="fu">id</span> = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
-<a class="sourceLine" id="cb1-24" title="24">            <span class="kw">this</span>.<span class="fu">size</span> = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
-<a class="sourceLine" id="cb1-25" title="25">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
-<a class="sourceLine" id="cb1-26" title="26">            {</a>
-<a class="sourceLine" id="cb1-27" title="27">                <span class="kw">this</span>.<span class="fu">id</span>[i] = i;</a>
-<a class="sourceLine" id="cb1-28" title="28">                <span class="kw">this</span>.<span class="fu">size</span>[i] = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-29" title="29">            }</a>
-<a class="sourceLine" id="cb1-30" title="30">        }</a>
-<a class="sourceLine" id="cb1-31" title="31"></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-33" title="33">        <span class="co">/// 重置数组访问计数。</span></a>
-<a class="sourceLine" id="cb1-34" title="34">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-35" title="35">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">ResetArrayCount</span>()</a>
-<a class="sourceLine" id="cb1-36" title="36">        {</a>
-<a class="sourceLine" id="cb1-37" title="37">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-38" title="38">        }</a>
-<a class="sourceLine" id="cb1-39" title="39"></a>
-<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-41" title="41">        <span class="co">/// 表示并查集中连通分量的数量。</span></a>
-<a class="sourceLine" id="cb1-42" title="42">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-43" title="43">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回并查集中连通分量的数量。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-44" title="44">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Count</span>()</a>
-<a class="sourceLine" id="cb1-45" title="45">        {</a>
-<a class="sourceLine" id="cb1-46" title="46">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">count</span>;</a>
-<a class="sourceLine" id="cb1-47" title="47">        }</a>
-<a class="sourceLine" id="cb1-48" title="48">        </a>
-<a class="sourceLine" id="cb1-49" title="49">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-50" title="50">        <span class="co">/// 寻找 p 所在的连通分量。</span></a>
-<a class="sourceLine" id="cb1-51" title="51">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-52" title="52">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要寻找的结点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-53" title="53">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回 p 所在的连通分量。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-54" title="54">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Find</span>(<span class="dt">int</span> p)</a>
-<a class="sourceLine" id="cb1-55" title="55">        {</a>
-<a class="sourceLine" id="cb1-56" title="56">            <span class="fu">Validate</span>(p);</a>
-<a class="sourceLine" id="cb1-57" title="57">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span>++;</a>
-<a class="sourceLine" id="cb1-58" title="58">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">id</span>[p];</a>
-<a class="sourceLine" id="cb1-59" title="59">        }</a>
-<a class="sourceLine" id="cb1-60" title="60"></a>
-<a class="sourceLine" id="cb1-61" title="61">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-62" title="62">        <span class="co">/// 判断两个结点是否属于同一个连通分量。</span></a>
-<a class="sourceLine" id="cb1-63" title="63">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-64" title="64">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要判断的结点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-65" title="65">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;q&quot;</span><span class="kw">&gt;</span><span class="co">需要判断的另一个结点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-66" title="66">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">如果属于同一个连通分量则返回 true，否则返回 false。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-67" title="67">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsConnected</span>(<span class="dt">int</span> p, <span class="dt">int</span> q)</a>
-<a class="sourceLine" id="cb1-68" title="68">        {</a>
-<a class="sourceLine" id="cb1-69" title="69">            <span class="fu">Validate</span>(p);</a>
-<a class="sourceLine" id="cb1-70" title="70">            <span class="fu">Validate</span>(q);</a>
-<a class="sourceLine" id="cb1-71" title="71">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> += <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-72" title="72">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">id</span>[p] == <span class="kw">this</span>.<span class="fu">id</span>[q];</a>
-<a class="sourceLine" id="cb1-73" title="73">        }</a>
-<a class="sourceLine" id="cb1-74" title="74"></a>
-<a class="sourceLine" id="cb1-75" title="75">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-76" title="76">        <span class="co">/// 将两个结点所在的连通分量合并。</span></a>
-<a class="sourceLine" id="cb1-77" title="77">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-78" title="78">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要合并的结点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-79" title="79">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;q&quot;</span><span class="kw">&gt;</span><span class="co">需要合并的另一个结点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-80" title="80">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Union</span>(<span class="dt">int</span> p, <span class="dt">int</span> q)</a>
-<a class="sourceLine" id="cb1-81" title="81">        {</a>
-<a class="sourceLine" id="cb1-82" title="82">            <span class="fu">Validate</span>(p);</a>
-<a class="sourceLine" id="cb1-83" title="83">            <span class="fu">Validate</span>(q);</a>
-<a class="sourceLine" id="cb1-84" title="84">            <span class="dt">int</span> pID = <span class="kw">this</span>.<span class="fu">id</span>[p];</a>
-<a class="sourceLine" id="cb1-85" title="85">            <span class="dt">int</span> qID = <span class="kw">this</span>.<span class="fu">id</span>[q];</a>
-<a class="sourceLine" id="cb1-86" title="86">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> += <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-87" title="87"></a>
-<a class="sourceLine" id="cb1-88" title="88">            <span class="co">// 如果两个结点同属于一个连通分量，那么什么也不做。</span></a>
-<a class="sourceLine" id="cb1-89" title="89">            <span class="kw">if</span> (pID == qID)</a>
-<a class="sourceLine" id="cb1-90" title="90">            {</a>
-<a class="sourceLine" id="cb1-91" title="91">                <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb1-92" title="92">            }</a>
-<a class="sourceLine" id="cb1-93" title="93"></a>
-<a class="sourceLine" id="cb1-94" title="94">            <span class="co">// 判断较大的连通分量和较小的连通分量。</span></a>
-<a class="sourceLine" id="cb1-95" title="95">            <span class="dt">int</span> larger = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-96" title="96">            <span class="dt">int</span> smaller = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-97" title="97">            <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">size</span>[pID] &gt; <span class="kw">this</span>.<span class="fu">size</span>[qID])</a>
-<a class="sourceLine" id="cb1-98" title="98">            {</a>
-<a class="sourceLine" id="cb1-99" title="99">                larger = pID;</a>
-<a class="sourceLine" id="cb1-100" title="100">                smaller = qID;</a>
-<a class="sourceLine" id="cb1-101" title="101">                <span class="kw">this</span>.<span class="fu">size</span>[pID] += <span class="kw">this</span>.<span class="fu">size</span>[qID];</a>
-<a class="sourceLine" id="cb1-102" title="102">            }</a>
-<a class="sourceLine" id="cb1-103" title="103">            <span class="kw">else</span></a>
-<a class="sourceLine" id="cb1-104" title="104">            {</a>
-<a class="sourceLine" id="cb1-105" title="105">                larger = qID;</a>
-<a class="sourceLine" id="cb1-106" title="106">                smaller = pID;</a>
-<a class="sourceLine" id="cb1-107" title="107">                <span class="kw">this</span>.<span class="fu">size</span>[qID] += <span class="kw">this</span>.<span class="fu">size</span>[pID];</a>
-<a class="sourceLine" id="cb1-108" title="108">            }</a>
-<a class="sourceLine" id="cb1-109" title="109"></a>
-<a class="sourceLine" id="cb1-110" title="110">            <span class="co">// 将较小的连通分量连接到较大的连通分量上，</span></a>
-<a class="sourceLine" id="cb1-111" title="111">            <span class="co">// 这会减少赋值语句的执行次数，略微减少数组访问。</span></a>
-<a class="sourceLine" id="cb1-112" title="112">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">this</span>.<span class="fu">id</span>.<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb1-113" title="113">            {</a>
-<a class="sourceLine" id="cb1-114" title="114">                <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">id</span>[i] == smaller)</a>
-<a class="sourceLine" id="cb1-115" title="115">                {</a>
-<a class="sourceLine" id="cb1-116" title="116">                    <span class="kw">this</span>.<span class="fu">id</span>[i] = larger;</a>
-<a class="sourceLine" id="cb1-117" title="117">                    <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span>++;</a>
-<a class="sourceLine" id="cb1-118" title="118">                }</a>
-<a class="sourceLine" id="cb1-119" title="119">            }</a>
-<a class="sourceLine" id="cb1-120" title="120"></a>
-<a class="sourceLine" id="cb1-121" title="121">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> += <span class="kw">this</span>.<span class="fu">id</span>.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-122" title="122">            <span class="kw">this</span>.<span class="fu">count</span>--;</a>
-<a class="sourceLine" id="cb1-123" title="123">            <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb1-124" title="124">        }</a>
-<a class="sourceLine" id="cb1-125" title="125"></a>
-<a class="sourceLine" id="cb1-126" title="126">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-127" title="127">        <span class="co">/// 获得 id 数组。</span></a>
-<a class="sourceLine" id="cb1-128" title="128">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-129" title="129">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">id 数组。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-130" title="130">        <span class="kw">public</span> <span class="dt">int</span>[] <span class="fu">GetID</span>()</a>
-<a class="sourceLine" id="cb1-131" title="131">        {</a>
-<a class="sourceLine" id="cb1-132" title="132">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">id</span>;</a>
-<a class="sourceLine" id="cb1-133" title="133">        }</a>
-<a class="sourceLine" id="cb1-134" title="134"></a>
-<a class="sourceLine" id="cb1-135" title="135">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-136" title="136">        <span class="co">/// 验证输入的结点是否有效。</span></a>
-<a class="sourceLine" id="cb1-137" title="137">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-138" title="138">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要验证的结点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-139" title="139">        <span class="co">/// </span><span class="kw">&lt;exception</span><span class="ot"> cref=</span><span class="dt">&quot;ArgumentException&quot;</span><span class="kw">&gt;</span><span class="co">输入的 p 值无效。</span><span class="kw">&lt;/exception&gt;</span></a>
-<a class="sourceLine" id="cb1-140" title="140">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Validate</span>(<span class="dt">int</span> p)</a>
-<a class="sourceLine" id="cb1-141" title="141">        {</a>
-<a class="sourceLine" id="cb1-142" title="142">            <span class="dt">int</span> n = <span class="kw">this</span>.<span class="fu">id</span>.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-143" title="143">            <span class="kw">if</span> (p &lt; <span class="dv">0</span> || p &gt; n)</a>
-<a class="sourceLine" id="cb1-144" title="144">            {</a>
-<a class="sourceLine" id="cb1-145" title="145">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentException</span>(<span class="st">&quot;index &quot;</span> + p + <span class="st">&quot; is not between 0 and &quot;</span> + (n - <span class="dv">1</span>));</a>
-<a class="sourceLine" id="cb1-146" title="146">            }</a>
-<a class="sourceLine" id="cb1-147" title="147">        }</a>
-<a class="sourceLine" id="cb1-148" title="148">    }</a>
-<a class="sourceLine" id="cb1-149" title="149">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.11<br>实现加权 quick-find 算法，<br>其中我们总是将较小的分量重命名为较大分量的标识符。<br>这种改变会对性能产生怎样的影响？</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>类似于加权 quick-union 的做法，新增一个 size[] 数组以记录各个根节点的大小。<br>每次合并时先比较一下两棵树的大小，再进行合并。<br>这样会略微减少赋值语句的执行次数，提升性能。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>WeightedQuickFindUF.cs</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_11
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 用加权 QuickFind 算法实现的并查集。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WeightedQuickFindUF</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> size<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 记录每个连通分量的大小。</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> id<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 记录每个结点的连通分量。</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> count<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 连通分量总数。</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">int</span> ArrayVisitCount <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//记录数组访问的次数。</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 新建一个使用加权 quick-find 实现的并查集。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">并查集的大小。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token function">WeightedQuickFindUF</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> n<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 重置数组访问计数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">ResetArrayCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 表示并查集中连通分量的数量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>返回并查集中连通分量的数量。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 寻找 p 所在的连通分量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要寻找的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>返回 p 所在的连通分量。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Find</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">Validate</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 判断两个结点是否属于同一个连通分量。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要判断的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="q">需要判断的另一个结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>如果属于同一个连通分量则返回 true，否则返回 false。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsConnected</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">Validate</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Validate</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将两个结点所在的连通分量合并。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要合并的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="q">需要合并的另一个结点。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Union</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">Validate</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Validate</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> pID <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> qID <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 如果两个结点同属于一个连通分量，那么什么也不做。</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pID <span class="token operator">==</span> qID<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 判断较大的连通分量和较小的连通分量。</span>
+            <span class="token keyword">int</span> larger <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> smaller <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">[</span>pID<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">[</span>qID<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                larger <span class="token operator">=</span> pID<span class="token punctuation">;</span>
+                smaller <span class="token operator">=</span> qID<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">[</span>pID<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">[</span>qID<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                larger <span class="token operator">=</span> qID<span class="token punctuation">;</span>
+                smaller <span class="token operator">=</span> pID<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">[</span>qID<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">[</span>pID<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 将较小的连通分量连接到较大的连通分量上，</span>
+            <span class="token comment" spellcheck="true">// 这会减少赋值语句的执行次数，略微减少数组访问。</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> smaller<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> larger<span class="token punctuation">;</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 获得 id 数组。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>id 数组。&lt;/returns></span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetID</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 验证输入的结点是否有效。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要验证的结点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;exception cref="ArgumentException">输入的 p 值无效。&lt;/exception></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Validate</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> p <span class="token operator">></span> n<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"index "</span> <span class="token operator">+</span> p <span class="token operator">+</span> <span class="token string">" is not between 0 and "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Main 方法</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> UnionFind;</a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">5.</span>_<span class="dv">11</span></a>
-<a class="sourceLine" id="cb2-5" title="5">{</a>
-<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * 1.5.11</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 实现加权 quick-find 算法，其中我们总是将较小的分量重命名为较大分量的标识符。</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 这种改变会对性能产生怎样的影响？</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb2-13" title="13">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb2-14" title="14">    {</a>
-<a class="sourceLine" id="cb2-15" title="15">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb2-16" title="16">        {</a>
-<a class="sourceLine" id="cb2-17" title="17">            <span class="dt">char</span>[] split = { <span class="ch">&#39;\n&#39;</span>, <span class="ch">&#39;\r&#39;</span> };</a>
-<a class="sourceLine" id="cb2-18" title="18">            <span class="dt">string</span>[] input = TestCase.<span class="fu">Properties</span>.<span class="fu">Resources</span>.<span class="fu">mediumUF</span>.<span class="fu">Split</span>(split, StringSplitOptions.<span class="fu">RemoveEmptyEntries</span>);</a>
-<a class="sourceLine" id="cb2-19" title="19">            <span class="dt">int</span> size = <span class="dt">int</span>.<span class="fu">Parse</span>(input[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb2-20" title="20"></a>
-<a class="sourceLine" id="cb2-21" title="21">            QuickFindUF quickFind = <span class="kw">new</span> <span class="fu">QuickFindUF</span>(size);</a>
-<a class="sourceLine" id="cb2-22" title="22">            WeightedQuickFindUF weightedQuickFind = <span class="kw">new</span> <span class="fu">WeightedQuickFindUF</span>(size);</a>
-<a class="sourceLine" id="cb2-23" title="23"></a>
-<a class="sourceLine" id="cb2-24" title="24">            <span class="dt">int</span> p, q;</a>
-<a class="sourceLine" id="cb2-25" title="25">            <span class="dt">string</span>[] pair;</a>
-<a class="sourceLine" id="cb2-26" title="26">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; size; ++i)</a>
-<a class="sourceLine" id="cb2-27" title="27">            {</a>
-<a class="sourceLine" id="cb2-28" title="28">                pair = input[i].<span class="fu">Split</span>(<span class="ch">&#39; &#39;</span>);</a>
-<a class="sourceLine" id="cb2-29" title="29">                p = <span class="dt">int</span>.<span class="fu">Parse</span>(pair[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb2-30" title="30">                q = <span class="dt">int</span>.<span class="fu">Parse</span>(pair[<span class="dv">1</span>]);</a>
-<a class="sourceLine" id="cb2-31" title="31">                quickFind.<span class="fu">Union</span>(p, q);</a>
-<a class="sourceLine" id="cb2-32" title="32">                weightedQuickFind.<span class="fu">Union</span>(p, q);</a>
-<a class="sourceLine" id="cb2-33" title="33">            }</a>
-<a class="sourceLine" id="cb2-34" title="34"></a>
-<a class="sourceLine" id="cb2-35" title="35">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;quick-find: &quot;</span> + quickFind.<span class="fu">ArrayVisitCount</span>);</a>
-<a class="sourceLine" id="cb2-36" title="36">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;weighted quick-find: &quot;</span> + weightedQuickFind.<span class="fu">ArrayVisitCount</span>);</a>
-<a class="sourceLine" id="cb2-37" title="37">        }</a>
-<a class="sourceLine" id="cb2-38" title="38">    }</a>
-<a class="sourceLine" id="cb2-39" title="39">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> UnionFind<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_11
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.5.11
+     * 
+     * 实现加权 quick-find 算法，其中我们总是将较小的分量重命名为较大分量的标识符。
+     * 这种改变会对性能产生怎样的影响？
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> split <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">'\r'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input <span class="token operator">=</span> TestCase<span class="token punctuation">.</span>Properties<span class="token punctuation">.</span>Resources<span class="token punctuation">.</span>mediumUF<span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span>split<span class="token punctuation">,</span> StringSplitOptions<span class="token punctuation">.</span>RemoveEmptyEntries<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> size <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            QuickFindUF quickFind <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickFindUF</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            WeightedQuickFindUF weightedQuickFind <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeightedQuickFindUF</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">int</span> p<span class="token punctuation">,</span> q<span class="token punctuation">;</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> pair<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> size<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pair <span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                p <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                q <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>pair<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                quickFind<span class="token punctuation">.</span><span class="token function">Union</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                weightedQuickFind<span class="token punctuation">.</span><span class="token function">Union</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"quick-find: "</span> <span class="token operator">+</span> quickFind<span class="token punctuation">.</span>ArrayVisitCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"weighted quick-find: "</span> <span class="token operator">+</span> weightedQuickFind<span class="token punctuation">.</span>ArrayVisitCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
 
 		</div>
 	</div>

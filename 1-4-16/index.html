@@ -140,50 +140,47 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.16</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.16 最接近一对（一维）。 编写一个程序，给定一个含有 N 个 double 值的数组 a[]， 在其中找到一对最接近的值：两者之差（绝对值）最小的两个数。 程序在最坏情况下所需的运行时间应该是线性对数级别的。</p>
-<h1 id="解答">解答</h1>
-<p>先将数组从小到大排序，再遍历一遍即可得到差距最小的两个数。</p>
-<p>排序算法需要消耗 NlogN，具体见 MSDN：<a href="https://msdn.microsoft.com/zh-cn/library/6tf1f0bc(v=vs.110).aspx" target="_blank" rel="noopener">Array.Sort 方法 (Array)</a>。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">16</span></a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">     * 1.4.16</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * 最接近一对（一维）。</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 编写一个程序，给定一个含有 N 个 double 值的数组 a[]，</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 在其中找到一对最接近的值：两者之差（绝对值）最小的两个数。</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 程序在最坏情况下所需的运行时间应该是线性对数级别的。</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-15" title="15">    {</a>
-<a class="sourceLine" id="cb1-16" title="16">        <span class="co">//总运行时间： NlogN + N = NlogN </span></a>
-<a class="sourceLine" id="cb1-17" title="17">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-18" title="18">        {</a>
-<a class="sourceLine" id="cb1-19" title="19">            <span class="dt">double</span>[] a = <span class="kw">new</span> <span class="dt">double</span>[<span class="dv">5</span>] { <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>, <span class="dv">0</span> };</a>
-<a class="sourceLine" id="cb1-20" title="20">            Array.<span class="fu">Sort</span>(a);<span class="co">//Nlog(N) 具体见 https://msdn.microsoft.com/zh-cn/library/6tf1f0bc(v=vs.110).aspx 备注部分</span></a>
-<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">double</span> minDiff = <span class="dt">double</span>.<span class="fu">MaxValue</span>;</a>
-<a class="sourceLine" id="cb1-22" title="22">            <span class="dt">double</span> minA = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="dt">double</span> minB = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-24" title="24">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; a.<span class="fu">Length</span> - <span class="dv">1</span>; ++i)<span class="co">//N</span></a>
-<a class="sourceLine" id="cb1-25" title="25">            {</a>
-<a class="sourceLine" id="cb1-26" title="26">                <span class="kw">if</span> (a[i + <span class="dv">1</span>] - a[i] &lt; minDiff)</a>
-<a class="sourceLine" id="cb1-27" title="27">                {</a>
-<a class="sourceLine" id="cb1-28" title="28">                    minA = a[i];</a>
-<a class="sourceLine" id="cb1-29" title="29">                    minB = a[i + <span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb1-30" title="30">                    minDiff = a[i + <span class="dv">1</span>] - a[i];</a>
-<a class="sourceLine" id="cb1-31" title="31">                }</a>
-<a class="sourceLine" id="cb1-32" title="32">            }</a>
-<a class="sourceLine" id="cb1-33" title="33">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;Min Pair: {minA} {minB}, Min Value: {minDiff}&quot;</span>);</a>
-<a class="sourceLine" id="cb1-34" title="34">        }</a>
-<a class="sourceLine" id="cb1-35" title="35">    }</a>
-<a class="sourceLine" id="cb1-36" title="36">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://msdn.microsoft.com/zh-cn/library/6tf1f0bc(v=vs.110).aspx" target="_blank" rel="noopener">MSDN-Array.Sort 方法 (Array)</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.16<br>最接近一对（一维）。<br>编写一个程序，给定一个含有 N 个 double 值的数组 a[]， 在其中找到一对最接近的值：两者之差（绝对值）最小的两个数。<br>程序在最坏情况下所需的运行时间应该是线性对数级别的。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>先将数组从小到大排序，再遍历一遍即可得到差距最小的两个数。</p>
+<p>排序算法需要消耗 NlogN，具体见 MSDN：<a href="https://msdn.microsoft.com/zh-cn/library/6tf1f0bc(v=vs.110" target="_blank" rel="noopener">Array.Sort 方法 (Array)</a>.aspx)。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_16
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.4.16
+     * 
+     * 最接近一对（一维）。
+     * 编写一个程序，给定一个含有 N 个 double 值的数组 a[]，
+     * 在其中找到一对最接近的值：两者之差（绝对值）最小的两个数。
+     * 程序在最坏情况下所需的运行时间应该是线性对数级别的。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//总运行时间： NlogN + N = NlogN </span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//Nlog(N) 具体见 https://msdn.microsoft.com/zh-cn/library/6tf1f0bc(v=vs.110).aspx 备注部分</span>
+            <span class="token keyword">double</span> minDiff <span class="token operator">=</span> <span class="token keyword">double</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
+            <span class="token keyword">double</span> minA <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">double</span> minB <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//N</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> minDiff<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    minA <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    minB <span class="token operator">=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    minDiff <span class="token operator">=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"Min Pair: {minA} {minB}, Min Value: {minDiff}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://msdn.microsoft.com/zh-cn/library/6tf1f0bc(v=vs.110" target="_blank" rel="noopener">MSDN-Array.Sort 方法 (Array)</a>.aspx)</p>
 
 		</div>
 	</div>

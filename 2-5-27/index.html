@@ -140,33 +140,31 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.27</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.5.27 平行数组的排序。 在将平行数组排序时，可以将索引排序并返回一个 index[] 数组。 为 Insertion 添加一个 indirectSort 方法，接受一个 Comparable 的对象数组 a[] 作为参数， 但它不会将 a[] 中的元素重新排列，而是返回一个整型数组 index[] 使得 a[index[0]] 到 a[index[N-1]] 正好是升序的。</p>
-<h1 id="解答">解答</h1>
-<p>类似于索引排序的做法，访问数组都通过一层索引来间接实现。 首先创建一个数组 <code>index</code>，令 <code>index[i] = i</code>。 排序时的交换变成 <code>index</code> 数组中元素的交换， 读取元素时使用 <code>a[index[i]]</code> 而非 <code>a[i]</code> 。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 间接排序。</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;keys&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="kw">static</span> <span class="dt">int</span>[] IndirectSort&lt;T&gt;(T[] keys) where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb1-8" title="8">{</a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="dt">int</span> n = keys.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-10" title="10">    <span class="dt">int</span>[] index = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
-<a class="sourceLine" id="cb1-11" title="11">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-12" title="12">        index[i] = i;</a>
-<a class="sourceLine" id="cb1-13" title="13"></a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-15" title="15">        <span class="kw">for</span> (<span class="dt">int</span> j = i; j &gt; <span class="dv">0</span> &amp;&amp; keys[index[j]].<span class="fu">CompareTo</span>(keys[index[j - <span class="dv">1</span>]]) &lt; <span class="dv">0</span>; j--)</a>
-<a class="sourceLine" id="cb1-16" title="16">        {</a>
-<a class="sourceLine" id="cb1-17" title="17">            <span class="dt">int</span> temp = index[j];</a>
-<a class="sourceLine" id="cb1-18" title="18">            index[j] = index[j - <span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb1-19" title="19">            index[j - <span class="dv">1</span>] = temp;</a>
-<a class="sourceLine" id="cb1-20" title="20">        }</a>
-<a class="sourceLine" id="cb1-21" title="21">    <span class="kw">return</span> index;</a>
-<a class="sourceLine" id="cb1-22" title="22">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.27<br>平行数组的排序。<br>在将平行数组排序时，可以将索引排序并返回一个 index[] 数组。<br>为 Insertion 添加一个 indirectSort 方法，接受一个 Comparable 的对象数组 a[] 作为参数，<br>但它不会将 a[] 中的元素重新排列，而是返回一个整型数组 index[] 使得 a[index[0]] 到 a[index[N-1]] 正好是升序的。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>类似于索引排序的做法，访问数组都通过一层索引来间接实现。<br>首先创建一个数组 <code>index</code>，令 <code>index[i] = i</code>。<br>排序时的交换变成 <code>index</code> 数组中元素的交换，<br>读取元素时使用 <code>a[index[i]]</code> 而非 <code>a[i]</code> 。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
+<span class="token comment" spellcheck="true">/// 间接排序。</span>
+<span class="token comment" spellcheck="true">/// &lt;/summary></span>
+<span class="token comment" spellcheck="true">/// &lt;typeparam name="T">&lt;/typeparam></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="keys">&lt;/param></span>
+<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+<span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token generic-method function">IndirectSort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> keys<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> keys<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> index <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        index<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> keys<span class="token punctuation">[</span>index<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>keys<span class="token punctuation">[</span>index<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> temp <span class="token operator">=</span> index<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            index<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> index<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            index<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> index<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

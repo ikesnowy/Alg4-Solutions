@@ -140,147 +140,144 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.38</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.4.38 练习测试。 编写一个练习用例，用算法 2.6 中实现的优先队列的接口方法处理实际应用中可能出现的高难度或是极端情况。 例如，元素已经有序、元素全部逆序、元素全部相同或是所有元素只有两个值。</p>
-<h1 id="解答">解答</h1>
-<p>直接构造相应的数组测试即可。 测试结果如下： <img src="./1.png"></p>
-<p>最大堆来说顺序时会比较慢，因为每次插入都要一路上升到顶部。 逆序的时候则是删除比较慢，最后一个元素是最小的元素，交换后需要一路下沉到底部。 由于元素相同的时候我们选择不交换（<code>less(i, j)</code> 返回 <code>false</code>），较多的重复元素并不会影响性能。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">Linq</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Diagnostics</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">using</span> PriorityQueue;</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">4.</span>_<span class="dv">38</span></a>
-<a class="sourceLine" id="cb1-7" title="7">{</a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 2.4.38</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 练习测试。</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 编写一个练习用例，</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * 用算法 2.6 中实现的优先队列的接口方法处理实际应用中可能出现的高难度或是极端情况。</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">     * 例如，元素已经有序、元素全部逆序、元素全部相同或是所有元素只有两个值。</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-18" title="18">    {</a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">static</span> Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-20" title="20"></a>
-<a class="sourceLine" id="cb1-21" title="21">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-22" title="22">        {</a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="dt">int</span> n = <span class="dv">200000</span>;</a>
-<a class="sourceLine" id="cb1-24" title="24">            <span class="dt">int</span> repeatTimes = <span class="dv">5</span>;</a>
-<a class="sourceLine" id="cb1-25" title="25">            <span class="dt">int</span> doubleTimes = <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb1-26" title="26">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; doubleTimes; i++)</a>
-<a class="sourceLine" id="cb1-27" title="27">            {</a>
-<a class="sourceLine" id="cb1-28" title="28">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;n=&quot;</span> + n);</a>
-<a class="sourceLine" id="cb1-29" title="29">                <span class="co">// 升序数组</span></a>
-<a class="sourceLine" id="cb1-30" title="30">                <span class="dt">long</span> totalTime = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-31" title="31">                Console.<span class="fu">Write</span>(<span class="st">&quot;Ascending:</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-32" title="32">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; repeatTimes; j++)</a>
-<a class="sourceLine" id="cb1-33" title="33">                {</a>
-<a class="sourceLine" id="cb1-34" title="34">                    MaxPQ&lt;<span class="dt">int</span>&gt; pq = <span class="kw">new</span> MaxPQ&lt;<span class="dt">int</span>&gt;(n);</a>
-<a class="sourceLine" id="cb1-35" title="35">                    <span class="dt">int</span>[] data = <span class="fu">GetAscending</span>(n);</a>
-<a class="sourceLine" id="cb1-36" title="36">                    <span class="dt">long</span> time = <span class="fu">Test</span>(pq, data);</a>
-<a class="sourceLine" id="cb1-37" title="37">                    Console.<span class="fu">Write</span>(time + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-38" title="38">                    totalTime += time;</a>
-<a class="sourceLine" id="cb1-39" title="39">                }</a>
-<a class="sourceLine" id="cb1-40" title="40">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Average:&quot;</span> + totalTime / repeatTimes);</a>
-<a class="sourceLine" id="cb1-41" title="41">                <span class="co">// 降序数组</span></a>
-<a class="sourceLine" id="cb1-42" title="42">                totalTime = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-43" title="43">                Console.<span class="fu">Write</span>(<span class="st">&quot;Descending:</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-44" title="44">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; repeatTimes; j++)</a>
-<a class="sourceLine" id="cb1-45" title="45">                {</a>
-<a class="sourceLine" id="cb1-46" title="46">                    MaxPQ&lt;<span class="dt">int</span>&gt; pq = <span class="kw">new</span> MaxPQ&lt;<span class="dt">int</span>&gt;(n);</a>
-<a class="sourceLine" id="cb1-47" title="47">                    <span class="dt">int</span>[] data = <span class="fu">GetDescending</span>(n);</a>
-<a class="sourceLine" id="cb1-48" title="48">                    <span class="dt">long</span> time = <span class="fu">Test</span>(pq, data);</a>
-<a class="sourceLine" id="cb1-49" title="49">                    Console.<span class="fu">Write</span>(time + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-50" title="50">                    totalTime += time;</a>
-<a class="sourceLine" id="cb1-51" title="51">                }</a>
-<a class="sourceLine" id="cb1-52" title="52">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Average:&quot;</span> + totalTime / repeatTimes);</a>
-<a class="sourceLine" id="cb1-53" title="53">                <span class="co">// 全部元素相同</span></a>
-<a class="sourceLine" id="cb1-54" title="54">                totalTime = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-55" title="55">                Console.<span class="fu">Write</span>(<span class="st">&quot;All Same:</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-56" title="56">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; repeatTimes; j++)</a>
-<a class="sourceLine" id="cb1-57" title="57">                {</a>
-<a class="sourceLine" id="cb1-58" title="58">                    MaxPQ&lt;<span class="dt">int</span>&gt; pq = <span class="kw">new</span> MaxPQ&lt;<span class="dt">int</span>&gt;(n);</a>
-<a class="sourceLine" id="cb1-59" title="59">                    <span class="dt">int</span>[] data = <span class="fu">GetSame</span>(n, <span class="dv">17763</span>);</a>
-<a class="sourceLine" id="cb1-60" title="60">                    <span class="dt">long</span> time = <span class="fu">Test</span>(pq, data);</a>
-<a class="sourceLine" id="cb1-61" title="61">                    Console.<span class="fu">Write</span>(time + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-62" title="62">                    totalTime += time;</a>
-<a class="sourceLine" id="cb1-63" title="63">                }</a>
-<a class="sourceLine" id="cb1-64" title="64">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Average:&quot;</span> + totalTime / repeatTimes);</a>
-<a class="sourceLine" id="cb1-65" title="65">                <span class="co">// 只有两个值</span></a>
-<a class="sourceLine" id="cb1-66" title="66">                totalTime = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-67" title="67">                Console.<span class="fu">Write</span>(<span class="st">&quot;Binary Dist.:</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-68" title="68">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; repeatTimes; j++)</a>
-<a class="sourceLine" id="cb1-69" title="69">                {</a>
-<a class="sourceLine" id="cb1-70" title="70">                    MaxPQ&lt;<span class="dt">int</span>&gt; pq = <span class="kw">new</span> MaxPQ&lt;<span class="dt">int</span>&gt;(n);</a>
-<a class="sourceLine" id="cb1-71" title="71">                    <span class="dt">int</span>[] data = <span class="fu">GetBinary</span>(n, <span class="dv">15254</span>, <span class="dv">17763</span>);</a>
-<a class="sourceLine" id="cb1-72" title="72">                    <span class="dt">long</span> time = <span class="fu">Test</span>(pq, data);</a>
-<a class="sourceLine" id="cb1-73" title="73">                    Console.<span class="fu">Write</span>(time + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-74" title="74">                    totalTime += time;</a>
-<a class="sourceLine" id="cb1-75" title="75">                }</a>
-<a class="sourceLine" id="cb1-76" title="76">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Average:&quot;</span> + totalTime / repeatTimes);</a>
-<a class="sourceLine" id="cb1-77" title="77">                n *= <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-78" title="78">            }</a>
-<a class="sourceLine" id="cb1-79" title="79">        }</a>
-<a class="sourceLine" id="cb1-80" title="80"></a>
-<a class="sourceLine" id="cb1-81" title="81">        <span class="kw">static</span> <span class="dt">long</span> <span class="fu">Test</span>(MaxPQ&lt;<span class="dt">int</span>&gt; pq, <span class="dt">int</span>[] data)</a>
-<a class="sourceLine" id="cb1-82" title="82">        {</a>
-<a class="sourceLine" id="cb1-83" title="83">            Stopwatch sw = <span class="kw">new</span> <span class="fu">Stopwatch</span>();</a>
-<a class="sourceLine" id="cb1-84" title="84">            sw.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb1-85" title="85">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; data.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-86" title="86">            {</a>
-<a class="sourceLine" id="cb1-87" title="87">                pq.<span class="fu">Insert</span>(data[i]);</a>
-<a class="sourceLine" id="cb1-88" title="88">            }</a>
-<a class="sourceLine" id="cb1-89" title="89">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; data.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-90" title="90">            {</a>
-<a class="sourceLine" id="cb1-91" title="91">                pq.<span class="fu">DelMax</span>();</a>
-<a class="sourceLine" id="cb1-92" title="92">            }</a>
-<a class="sourceLine" id="cb1-93" title="93">            sw.<span class="fu">Stop</span>();</a>
-<a class="sourceLine" id="cb1-94" title="94">            <span class="kw">return</span> sw.<span class="fu">ElapsedMilliseconds</span>;</a>
-<a class="sourceLine" id="cb1-95" title="95">        }</a>
-<a class="sourceLine" id="cb1-96" title="96"></a>
-<a class="sourceLine" id="cb1-97" title="97">        <span class="kw">static</span> <span class="dt">int</span>[] <span class="fu">GetAscending</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb1-98" title="98">        {</a>
-<a class="sourceLine" id="cb1-99" title="99">            <span class="dt">int</span>[] ascending = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
-<a class="sourceLine" id="cb1-100" title="100">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-101" title="101">                ascending[i] = random.<span class="fu">Next</span>();</a>
-<a class="sourceLine" id="cb1-102" title="102">            Array.<span class="fu">Sort</span>(ascending);</a>
-<a class="sourceLine" id="cb1-103" title="103">            <span class="kw">return</span> ascending;</a>
-<a class="sourceLine" id="cb1-104" title="104">        }</a>
-<a class="sourceLine" id="cb1-105" title="105"></a>
-<a class="sourceLine" id="cb1-106" title="106">        <span class="kw">static</span> <span class="dt">int</span>[] <span class="fu">GetDescending</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb1-107" title="107">        {</a>
-<a class="sourceLine" id="cb1-108" title="108">            <span class="dt">int</span>[] descending = <span class="fu">GetAscending</span>(n);</a>
-<a class="sourceLine" id="cb1-109" title="109">            descending = descending.<span class="fu">Reverse</span>().<span class="fu">ToArray</span>();</a>
-<a class="sourceLine" id="cb1-110" title="110">            <span class="kw">return</span> descending;</a>
-<a class="sourceLine" id="cb1-111" title="111">        }</a>
-<a class="sourceLine" id="cb1-112" title="112"></a>
-<a class="sourceLine" id="cb1-113" title="113">        <span class="kw">static</span> <span class="dt">int</span>[] <span class="fu">GetSame</span>(<span class="dt">int</span> n, <span class="dt">int</span> v)</a>
-<a class="sourceLine" id="cb1-114" title="114">        {</a>
-<a class="sourceLine" id="cb1-115" title="115">            <span class="dt">int</span>[] same = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
-<a class="sourceLine" id="cb1-116" title="116">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-117" title="117">            {</a>
-<a class="sourceLine" id="cb1-118" title="118">                same[i] = v;</a>
-<a class="sourceLine" id="cb1-119" title="119">            }</a>
-<a class="sourceLine" id="cb1-120" title="120">            <span class="kw">return</span> same;</a>
-<a class="sourceLine" id="cb1-121" title="121">        }</a>
-<a class="sourceLine" id="cb1-122" title="122"></a>
-<a class="sourceLine" id="cb1-123" title="123">        <span class="kw">static</span> <span class="dt">int</span>[] <span class="fu">GetBinary</span>(<span class="dt">int</span> n, <span class="dt">int</span> a, <span class="dt">int</span> b)</a>
-<a class="sourceLine" id="cb1-124" title="124">        {</a>
-<a class="sourceLine" id="cb1-125" title="125">            <span class="dt">int</span>[] binary = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
-<a class="sourceLine" id="cb1-126" title="126">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-127" title="127">            {</a>
-<a class="sourceLine" id="cb1-128" title="128">                binary[i] = random.<span class="fu">NextDouble</span>() &gt; <span class="fl">0.5</span> ? a : b;</a>
-<a class="sourceLine" id="cb1-129" title="129">            }</a>
-<a class="sourceLine" id="cb1-130" title="130">            <span class="kw">return</span> binary;</a>
-<a class="sourceLine" id="cb1-131" title="131">        }</a>
-<a class="sourceLine" id="cb1-132" title="132">    }</a>
-<a class="sourceLine" id="cb1-133" title="133">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.38<br>练习测试。<br>编写一个练习用例，用算法 2.6 中实现的优先队列的接口方法处理实际应用中可能出现的高难度或是极端情况。<br>例如，元素已经有序、元素全部逆序、元素全部相同或是所有元素只有两个值。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>直接构造相应的数组测试即可。<br>测试结果如下：<br><img src="./1.png" alt=""></p>
+<p>最大堆来说顺序时会比较慢，因为每次插入都要一路上升到顶部。<br>逆序的时候则是删除比较慢，最后一个元素是最小的元素，交换后需要一路下沉到底部。<br>由于元素相同的时候我们选择不交换（<code>less(i, j)</code> 返回 <code>false</code>），较多的重复元素并不会影响性能。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Linq<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
+<span class="token keyword">using</span> PriorityQueue<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_38
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 2.4.38
+     * 
+     * 练习测试。
+     * 编写一个练习用例，
+     * 用算法 2.6 中实现的优先队列的接口方法处理实际应用中可能出现的高难度或是极端情况。
+     * 例如，元素已经有序、元素全部逆序、元素全部相同或是所有元素只有两个值。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">200000</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> repeatTimes <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> doubleTimes <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> doubleTimes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"n="</span> <span class="token operator">+</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 升序数组</span>
+                <span class="token keyword">long</span> totalTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"Ascending:\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> repeatTimes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    MaxPQ<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token function">GetAscending</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">long</span> time <span class="token operator">=</span> <span class="token function">Test</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>time <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    totalTime <span class="token operator">+</span><span class="token operator">=</span> time<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Average:"</span> <span class="token operator">+</span> totalTime <span class="token operator">/</span> repeatTimes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 降序数组</span>
+                totalTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"Descending:\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> repeatTimes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    MaxPQ<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token function">GetDescending</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">long</span> time <span class="token operator">=</span> <span class="token function">Test</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>time <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    totalTime <span class="token operator">+</span><span class="token operator">=</span> time<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Average:"</span> <span class="token operator">+</span> totalTime <span class="token operator">/</span> repeatTimes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 全部元素相同</span>
+                totalTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"All Same:\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> repeatTimes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    MaxPQ<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token function">GetSame</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">17763</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">long</span> time <span class="token operator">=</span> <span class="token function">Test</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>time <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    totalTime <span class="token operator">+</span><span class="token operator">=</span> time<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Average:"</span> <span class="token operator">+</span> totalTime <span class="token operator">/</span> repeatTimes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 只有两个值</span>
+                totalTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"Binary Dist.:\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> repeatTimes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    MaxPQ<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token function">GetBinary</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">15254</span><span class="token punctuation">,</span> <span class="token number">17763</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">long</span> time <span class="token operator">=</span> <span class="token function">Test</span><span class="token punctuation">(</span>pq<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>time <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    totalTime <span class="token operator">+</span><span class="token operator">=</span> time<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Average:"</span> <span class="token operator">+</span> totalTime <span class="token operator">/</span> repeatTimes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token function">Test</span><span class="token punctuation">(</span>MaxPQ<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Stopwatch sw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sw<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> data<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pq<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> data<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                pq<span class="token punctuation">.</span><span class="token function">DelMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            sw<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> sw<span class="token punctuation">.</span>ElapsedMilliseconds<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetAscending</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">ascending</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token keyword">ascending</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span><span class="token keyword">ascending</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">ascending</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetDescending</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">descending</span> <span class="token operator">=</span> <span class="token function">GetAscending</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">descending</span> <span class="token operator">=</span> <span class="token keyword">descending</span><span class="token punctuation">.</span><span class="token function">Reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">descending</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetSame</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> v<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> same <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                same<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> same<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetBinary</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> binary <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                binary<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0.5</span> <span class="token operator">?</span> a <span class="token punctuation">:</span> b<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> binary<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

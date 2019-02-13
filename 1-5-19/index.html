@@ -140,121 +140,118 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.19</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.5.19 动画。 编写一个 RandomGrid（请见练习 1.5.18）的用例， 和我们开发用例一样使用 UnionFind 来检查触点的连通性并在处理时用 StdDraw 将它们绘出。</p>
-<h1 id="解答">解答</h1>
-<p>最后绘出的图像： <img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<p>给出绘图部分的代码，窗体部分见 GitHub。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">Drawing</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Collections</span>.<span class="fu">Generic</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">using</span> System.<span class="fu">Windows</span>.<span class="fu">Forms</span>;</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">using</span> UnionFind;</a>
-<a class="sourceLine" id="cb1-6" title="6"></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">5.</span>_<span class="dv">19</span></a>
-<a class="sourceLine" id="cb1-8" title="8">{</a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 1.5.19</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 动画。</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * 编写一个 RandomGrid（请见练习 1.5.18）的用例，</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">     * 和我们开发用例一样使用 UnionFind 来检查触点的连通性并在处理时用 StdDraw 将它们绘出。</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="kw">static</span> <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-18" title="18">    {</a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">static</span> RandomBag&lt;Connection&gt; bag;</a>
-<a class="sourceLine" id="cb1-20" title="20">        <span class="kw">static</span> Graphics graphics;</a>
-<a class="sourceLine" id="cb1-21" title="21">        <span class="kw">static</span> TextBox logBox;</a>
-<a class="sourceLine" id="cb1-22" title="22">        <span class="kw">static</span> PointF[] points;</a>
-<a class="sourceLine" id="cb1-23" title="23">        <span class="kw">static</span> Timer timer;</a>
-<a class="sourceLine" id="cb1-24" title="24">        <span class="kw">static</span> List&lt;Connection&gt; connections;</a>
-<a class="sourceLine" id="cb1-25" title="25">        <span class="kw">static</span> <span class="dt">int</span> count = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-26" title="26"></a>
-<a class="sourceLine" id="cb1-27" title="27">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-28" title="28">        <span class="co">/// 应用程序的主入口点。</span></a>
-<a class="sourceLine" id="cb1-29" title="29">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-30" title="30">        [STAThread]</a>
-<a class="sourceLine" id="cb1-31" title="31">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>()</a>
-<a class="sourceLine" id="cb1-32" title="32">        {</a>
-<a class="sourceLine" id="cb1-33" title="33">            Application.<span class="fu">EnableVisualStyles</span>();</a>
-<a class="sourceLine" id="cb1-34" title="34">            Application.<span class="fu">SetCompatibleTextRenderingDefault</span>(<span class="kw">false</span>);</a>
-<a class="sourceLine" id="cb1-35" title="35">            Application.<span class="fu">Run</span>(<span class="kw">new</span> <span class="fu">Form1</span>());</a>
-<a class="sourceLine" id="cb1-36" title="36">        }</a>
-<a class="sourceLine" id="cb1-37" title="37"></a>
-<a class="sourceLine" id="cb1-38" title="38">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-39" title="39">        <span class="co">/// 绘制连接图像。</span></a>
-<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-41" title="41">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">矩阵边长。&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-42" title="42">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Draw</span>(<span class="dt">int</span> n, TextBox log, Log WinBox)</a>
-<a class="sourceLine" id="cb1-43" title="43">        {</a>
-<a class="sourceLine" id="cb1-44" title="44">            logBox = log;</a>
-<a class="sourceLine" id="cb1-45" title="45"></a>
-<a class="sourceLine" id="cb1-46" title="46">            <span class="co">// 生成路径。</span></a>
-<a class="sourceLine" id="cb1-47" title="47">            log.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">开始生成连接……&quot;</span>);</a>
-<a class="sourceLine" id="cb1-48" title="48">            bag = RandomGrid.<span class="fu">Generate</span>(n);</a>
-<a class="sourceLine" id="cb1-49" title="49">            log.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">生成连接完成&quot;</span>);</a>
-<a class="sourceLine" id="cb1-50" title="50"></a>
-<a class="sourceLine" id="cb1-51" title="51">            <span class="co">// 新建画布窗口。</span></a>
-<a class="sourceLine" id="cb1-52" title="52">            log.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">启动画布……&quot;</span>);</a>
-<a class="sourceLine" id="cb1-53" title="53">            Form2 matrix = <span class="kw">new</span> <span class="fu">Form2</span>();</a>
-<a class="sourceLine" id="cb1-54" title="54">            matrix.<span class="fu">StartPosition</span> = FormStartPosition.<span class="fu">Manual</span>;</a>
-<a class="sourceLine" id="cb1-55" title="55">            matrix.<span class="fu">Location</span> = <span class="kw">new</span> <span class="fu">Point</span>(WinBox.<span class="fu">Left</span> - matrix.<span class="fu">ClientRectangle</span>.<span class="fu">Width</span>, WinBox.<span class="fu">Top</span>);</a>
-<a class="sourceLine" id="cb1-56" title="56">            matrix.<span class="fu">Show</span>();</a>
-<a class="sourceLine" id="cb1-57" title="57">            log.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">画布已启动，开始绘图……&quot;</span>);</a>
-<a class="sourceLine" id="cb1-58" title="58">            graphics = matrix.<span class="fu">CreateGraphics</span>();</a>
-<a class="sourceLine" id="cb1-59" title="59"></a>
-<a class="sourceLine" id="cb1-60" title="60">            <span class="co">// 获取绘图区域。</span></a>
-<a class="sourceLine" id="cb1-61" title="61">            RectangleF rect = matrix.<span class="fu">ClientRectangle</span>;</a>
-<a class="sourceLine" id="cb1-62" title="62">            <span class="dt">float</span> unitX = rect.<span class="fu">Width</span> / (n + <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-63" title="63">            <span class="dt">float</span> unitY = rect.<span class="fu">Height</span> / (n + <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-64" title="64"></a>
-<a class="sourceLine" id="cb1-65" title="65">            <span class="co">// 绘制点。</span></a>
-<a class="sourceLine" id="cb1-66" title="66">            log.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">绘制点……&quot;</span>);</a>
-<a class="sourceLine" id="cb1-67" title="67">            points = <span class="kw">new</span> PointF[n * n];</a>
-<a class="sourceLine" id="cb1-68" title="68">            <span class="kw">for</span> (<span class="dt">int</span> row = <span class="dv">0</span>; row &lt; n; ++row)</a>
-<a class="sourceLine" id="cb1-69" title="69">            {</a>
-<a class="sourceLine" id="cb1-70" title="70">                <span class="kw">for</span> (<span class="dt">int</span> col = <span class="dv">0</span>; col &lt; n; ++col)</a>
-<a class="sourceLine" id="cb1-71" title="71">                {</a>
-<a class="sourceLine" id="cb1-72" title="72">                    points[row * n + col] = <span class="kw">new</span> <span class="fu">PointF</span>(unitX * (col + <span class="dv">1</span>), unitY * (row + <span class="dv">1</span>));</a>
-<a class="sourceLine" id="cb1-73" title="73">                    graphics.<span class="fu">FillEllipse</span>(Brushes.<span class="fu">Black</span>, unitX * (col + <span class="dv">1</span>), unitY * (row + <span class="dv">1</span>), <span class="dv">5</span>, <span class="dv">5</span>);</a>
-<a class="sourceLine" id="cb1-74" title="74">                }</a>
-<a class="sourceLine" id="cb1-75" title="75">            }</a>
-<a class="sourceLine" id="cb1-76" title="76">            log.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">绘制点完成&quot;</span>);</a>
-<a class="sourceLine" id="cb1-77" title="77"></a>
-<a class="sourceLine" id="cb1-78" title="78">            <span class="co">// 绘制连接。</span></a>
-<a class="sourceLine" id="cb1-79" title="79">            log.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">开始绘制连接……&quot;</span>);</a>
-<a class="sourceLine" id="cb1-80" title="80">            connections = <span class="kw">new</span> List&lt;Connection&gt;();</a>
-<a class="sourceLine" id="cb1-81" title="81">            <span class="kw">foreach</span> (Connection c <span class="kw">in</span> bag)</a>
-<a class="sourceLine" id="cb1-82" title="82">            {</a>
-<a class="sourceLine" id="cb1-83" title="83">                connections.<span class="fu">Add</span>(c);</a>
-<a class="sourceLine" id="cb1-84" title="84">            }</a>
-<a class="sourceLine" id="cb1-85" title="85">            timer = <span class="kw">new</span> Timer</a>
-<a class="sourceLine" id="cb1-86" title="86">            {</a>
-<a class="sourceLine" id="cb1-87" title="87">                Interval = <span class="dv">500</span></a>
-<a class="sourceLine" id="cb1-88" title="88">            };</a>
-<a class="sourceLine" id="cb1-89" title="89">            timer.<span class="fu">Tick</span> += DrawOneLine;</a>
-<a class="sourceLine" id="cb1-90" title="90">            timer.<span class="fu">Start</span>();              </a>
-<a class="sourceLine" id="cb1-91" title="91">        }</a>
-<a class="sourceLine" id="cb1-92" title="92"></a>
-<a class="sourceLine" id="cb1-93" title="93">        <span class="kw">private</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">DrawOneLine</span>(<span class="dt">object</span> sender, EventArgs e)</a>
-<a class="sourceLine" id="cb1-94" title="94">        {</a>
-<a class="sourceLine" id="cb1-95" title="95">            Connection c = connections[count];</a>
-<a class="sourceLine" id="cb1-96" title="96">            count++;</a>
-<a class="sourceLine" id="cb1-97" title="97">            graphics.<span class="fu">DrawLine</span>(Pens.<span class="fu">Black</span>, points[c.<span class="fu">P</span>], points[c.<span class="fu">Q</span>]);</a>
-<a class="sourceLine" id="cb1-98" title="98">            logBox.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">绘制&quot;</span> + <span class="st">&quot;(&quot;</span> + c.<span class="fu">P</span> + <span class="st">&quot;, &quot;</span> + c.<span class="fu">Q</span> + <span class="st">&quot;)&quot;</span>);</a>
-<a class="sourceLine" id="cb1-99" title="99">            <span class="kw">if</span> (count == bag.<span class="fu">Size</span>())</a>
-<a class="sourceLine" id="cb1-100" title="100">            {</a>
-<a class="sourceLine" id="cb1-101" title="101">                timer.<span class="fu">Stop</span>();</a>
-<a class="sourceLine" id="cb1-102" title="102">                logBox.<span class="fu">AppendText</span>(<span class="st">&quot;</span><span class="sc">\r\n</span><span class="st">绘制结束&quot;</span>);</a>
-<a class="sourceLine" id="cb1-103" title="103">                count = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-104" title="104">            }</a>
-<a class="sourceLine" id="cb1-105" title="105">        }</a>
-<a class="sourceLine" id="cb1-106" title="106">    }</a>
-<a class="sourceLine" id="cb1-107" title="107">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.19<br>动画。<br>编写一个 RandomGrid（请见练习 1.5.18）的用例，<br>和我们开发用例一样使用 UnionFind 来检查触点的连通性并在处理时用 StdDraw 将它们绘出。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>最后绘出的图像：<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>给出绘图部分的代码，窗体部分见 GitHub。</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Drawing<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Windows<span class="token punctuation">.</span>Forms<span class="token punctuation">;</span>
+<span class="token keyword">using</span> UnionFind<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_19
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.5.19
+     * 
+     * 动画。
+     * 编写一个 RandomGrid（请见练习 1.5.18）的用例，
+     * 和我们开发用例一样使用 UnionFind 来检查触点的连通性并在处理时用 StdDraw 将它们绘出。
+     * 
+     */</span>
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> RandomBag<span class="token operator">&lt;</span>Connection<span class="token operator">></span> bag<span class="token punctuation">;</span>
+        <span class="token keyword">static</span> Graphics graphics<span class="token punctuation">;</span>
+        <span class="token keyword">static</span> TextBox logBox<span class="token punctuation">;</span>
+        <span class="token keyword">static</span> PointF<span class="token punctuation">[</span><span class="token punctuation">]</span> points<span class="token punctuation">;</span>
+        <span class="token keyword">static</span> Timer timer<span class="token punctuation">;</span>
+        <span class="token keyword">static</span> List<span class="token operator">&lt;</span>Connection<span class="token operator">></span> connections<span class="token punctuation">;</span>
+        <span class="token keyword">static</span> <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 应用程序的主入口点。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token punctuation">[</span>STAThread<span class="token punctuation">]</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Application<span class="token punctuation">.</span><span class="token function">EnableVisualStyles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Application<span class="token punctuation">.</span><span class="token function">SetCompatibleTextRenderingDefault</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Application<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Form1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 绘制连接图像。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="n">矩阵边长。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> TextBox log<span class="token punctuation">,</span> Log WinBox<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            logBox <span class="token operator">=</span> log<span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 生成路径。</span>
+            log<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n开始生成连接……"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bag <span class="token operator">=</span> RandomGrid<span class="token punctuation">.</span><span class="token function">Generate</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n生成连接完成"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 新建画布窗口。</span>
+            log<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n启动画布……"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Form2 matrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Form2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            matrix<span class="token punctuation">.</span>StartPosition <span class="token operator">=</span> FormStartPosition<span class="token punctuation">.</span>Manual<span class="token punctuation">;</span>
+            matrix<span class="token punctuation">.</span>Location <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>WinBox<span class="token punctuation">.</span>Left <span class="token operator">-</span> matrix<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Width<span class="token punctuation">,</span> WinBox<span class="token punctuation">.</span>Top<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            matrix<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n画布已启动，开始绘图……"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics <span class="token operator">=</span> matrix<span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 获取绘图区域。</span>
+            RectangleF rect <span class="token operator">=</span> matrix<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">;</span>
+            <span class="token keyword">float</span> unitX <span class="token operator">=</span> rect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">float</span> unitY <span class="token operator">=</span> rect<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 绘制点。</span>
+            log<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n绘制点……"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            points <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">[</span>n <span class="token operator">*</span> n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>row<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>col<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    points<span class="token punctuation">[</span>row <span class="token operator">*</span> n <span class="token operator">+</span> col<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span>unitX <span class="token operator">*</span> <span class="token punctuation">(</span>col <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> unitY <span class="token operator">*</span> <span class="token punctuation">(</span>row <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    graphics<span class="token punctuation">.</span><span class="token function">FillEllipse</span><span class="token punctuation">(</span>Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> unitX <span class="token operator">*</span> <span class="token punctuation">(</span>col <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> unitY <span class="token operator">*</span> <span class="token punctuation">(</span>row <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            log<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n绘制点完成"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 绘制连接。</span>
+            log<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n开始绘制连接……"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            connections <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span>Connection<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span>Connection c <span class="token keyword">in</span> bag<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                connections<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Timer</span>
+            <span class="token punctuation">{</span>
+                Interval <span class="token operator">=</span> <span class="token number">500</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            timer<span class="token punctuation">.</span>Tick <span class="token operator">+</span><span class="token operator">=</span> DrawOneLine<span class="token punctuation">;</span>
+            timer<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">DrawOneLine</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> EventArgs e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Connection c <span class="token operator">=</span> connections<span class="token punctuation">[</span>count<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> points<span class="token punctuation">[</span>c<span class="token punctuation">.</span>P<span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span>c<span class="token punctuation">.</span>Q<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            logBox<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n绘制"</span> <span class="token operator">+</span> <span class="token string">"("</span> <span class="token operator">+</span> c<span class="token punctuation">.</span>P <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> c<span class="token punctuation">.</span>Q <span class="token operator">+</span> <span class="token string">")"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> bag<span class="token punctuation">.</span><span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                timer<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                logBox<span class="token punctuation">.</span><span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token string">"\r\n绘制结束"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
 
 		</div>
 	</div>

@@ -140,69 +140,67 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.44</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.44 生日问题。 编写一个程序，从命令行接受一个整数 N 作为参数并使用 StdRandom.uniform() 生成一系列 0 到 N-1 之间的随机整数。 通过实验验证产生第一个重复的随机数之前生成的整数数量为 ~√(πN/2)。</p>
-<h1 id="解答">解答</h1>
-<p>每生成一个随机数都和之前生成过的随机数相比较。 <img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">44</span></a>
-<a class="sourceLine" id="cb1-4" title="4">{</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">     * 1.4.44</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * 生日问题。</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 编写一个程序，</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 从命令行接受一个整数 N 作为参数并使用 StdRandom.uniform() 生成一系列 0 到 N-1 之间的随机整数。</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 通过实验验证产生第一个重复的随机数之前生成的整数数量为 ~√(πN/2)。</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-15" title="15">    {</a>
-<a class="sourceLine" id="cb1-16" title="16">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-17" title="17">        {</a>
-<a class="sourceLine" id="cb1-18" title="18">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-19" title="19">            <span class="dt">int</span> N = <span class="dv">10000</span>;</a>
-<a class="sourceLine" id="cb1-20" title="20">            <span class="dt">int</span>[] a = <span class="kw">new</span> <span class="dt">int</span>[N];</a>
-<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">int</span> dupNum = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-22" title="22">            <span class="dt">int</span> times = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="kw">for</span> (times = <span class="dv">0</span>; times &lt; <span class="dv">500</span>; ++times)</a>
-<a class="sourceLine" id="cb1-24" title="24">            {</a>
-<a class="sourceLine" id="cb1-25" title="25">                <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
-<a class="sourceLine" id="cb1-26" title="26">                {</a>
-<a class="sourceLine" id="cb1-27" title="27">                    a[i] = random.<span class="fu">Next</span>(N);</a>
-<a class="sourceLine" id="cb1-28" title="28">                    <span class="kw">if</span> (<span class="fu">IsDuplicated</span>(a, i))</a>
-<a class="sourceLine" id="cb1-29" title="29">                    {</a>
-<a class="sourceLine" id="cb1-30" title="30">                        dupNum += i;</a>
-<a class="sourceLine" id="cb1-31" title="31">                        Console.<span class="fu">WriteLine</span>($<span class="st">&quot;生成{i + 1}个数字后发生重复&quot;</span>);</a>
-<a class="sourceLine" id="cb1-32" title="32">                        <span class="kw">break</span>;</a>
-<a class="sourceLine" id="cb1-33" title="33">                    }</a>
-<a class="sourceLine" id="cb1-34" title="34">                }</a>
-<a class="sourceLine" id="cb1-35" title="35">            }</a>
-<a class="sourceLine" id="cb1-36" title="36">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;√(πN/2)={Math.Sqrt(Math.PI * N / 2.0)}，平均生成{dupNum / times}个数字后出现重复&quot;</span>);</a>
-<a class="sourceLine" id="cb1-37" title="37">        }</a>
-<a class="sourceLine" id="cb1-38" title="38"></a>
-<a class="sourceLine" id="cb1-39" title="39">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// 检查是否有重复的数字出现。</span></a>
-<a class="sourceLine" id="cb1-41" title="41">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-42" title="42">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要检查的数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-43" title="43">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;i&quot;</span><span class="kw">&gt;</span><span class="co">当前加入数组元素的下标。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-44" title="44">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">有重复则返回 true，否则返回 false。</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-45" title="45">        <span class="kw">static</span> <span class="dt">bool</span> <span class="fu">IsDuplicated</span>(<span class="dt">int</span>[] a, <span class="dt">int</span> i)</a>
-<a class="sourceLine" id="cb1-46" title="46">        {</a>
-<a class="sourceLine" id="cb1-47" title="47">            <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i; ++j)</a>
-<a class="sourceLine" id="cb1-48" title="48">            {</a>
-<a class="sourceLine" id="cb1-49" title="49">                <span class="kw">if</span> (a[j] == a[i])</a>
-<a class="sourceLine" id="cb1-50" title="50">                {</a>
-<a class="sourceLine" id="cb1-51" title="51">                    <span class="kw">return</span> <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-52" title="52">                }</a>
-<a class="sourceLine" id="cb1-53" title="53">            }</a>
-<a class="sourceLine" id="cb1-54" title="54">            <span class="kw">return</span> <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb1-55" title="55">        }</a>
-<a class="sourceLine" id="cb1-56" title="56"></a>
-<a class="sourceLine" id="cb1-57" title="57">    }</a>
-<a class="sourceLine" id="cb1-58" title="58">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.44<br>生日问题。<br>编写一个程序，从命令行接受一个整数 N 作为参数并使用 StdRandom.uniform() 生成一系列 0 到 N-1 之间的随机整数。<br>通过实验验证产生第一个重复的随机数之前生成的整数数量为 ~√(πN/2)。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>每生成一个随机数都和之前生成过的随机数相比较。<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_44
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 1.4.44
+     * 
+     * 生日问题。
+     * 编写一个程序，
+     * 从命令行接受一个整数 N 作为参数并使用 StdRandom.uniform() 生成一系列 0 到 N-1 之间的随机整数。
+     * 通过实验验证产生第一个重复的随机数之前生成的整数数量为 ~√(πN/2)。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> dupNum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> times <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>times <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> times <span class="token operator">&lt;</span> <span class="token number">500</span><span class="token punctuation">;</span> <span class="token operator">++</span>times<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsDuplicated</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        dupNum <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">;</span>
+                        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"生成{i + 1}个数字后发生重复"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">break</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"√(πN/2)={Math.Sqrt(Math.PI * N / 2.0)}，平均生成{dupNum / times}个数字后出现重复"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 检查是否有重复的数字出现。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要检查的数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="i">当前加入数组元素的下标。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;returns>有重复则返回 true，否则返回 false。&lt;/returns></span>
+        <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">IsDuplicated</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

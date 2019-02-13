@@ -140,128 +140,127 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.2.9</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.2.9 在库函数中使用 aux[] 这样的静态数组时不妥当的， 因为可能会有多个程序同时使用这个类。 实现一个不用静态数组的 Merge 类， 但也不要将 aux[] 变为 merge() 的局部变量（请见本书的答疑部分）。 提示：可以将辅助数组作为参数传递给递归的 sort() 方法。</p>
-<h1 id="解答">解答</h1>
-<p>官方给出的归并排序实现中在 Sort 方法里初始化了 aux 数组。 源码见：<a href="https://algs4.cs.princeton.edu/22mergesort/Merge.java.html" class="uri" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/22mergesort/Merge.java.html</a></p>
-<p>C#实现和官方的实现非常类似， 首先定义只接受一个参数的<strong>公开</strong> Sort 方法，在这个方法里面初始化 aux 数组。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 利用归并排序将数组按升序排序。</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">数组元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">待排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">public</span> <span class="kw">override</span> <span class="dt">void</span> Sort&lt;T&gt;(T[] a)</a>
-<a class="sourceLine" id="cb1-7" title="7">{</a>
-<a class="sourceLine" id="cb1-8" title="8">    T[] aux = <span class="kw">new</span> T[a.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="fu">Sort</span>(a, aux, <span class="dv">0</span>, a.<span class="fu">Length</span> - <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-10" title="10">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.9<br>在库函数中使用 aux[] 这样的静态数组时不妥当的，<br>因为可能会有多个程序同时使用这个类。<br>实现一个不用静态数组的 Merge 类，<br>但也不要将 aux[] 变为 merge() 的局部变量（请见本书的答疑部分）。<br>提示：可以将辅助数组作为参数传递给递归的 sort() 方法。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方给出的归并排序实现中在 Sort 方法里初始化了 aux 数组。<br>源码见：<a href="https://algs4.cs.princeton.edu/22mergesort/Merge.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/22mergesort/Merge.java.html</a></p>
+<p>C#实现和官方的实现非常类似，<br>首先定义只接受一个参数的<strong>公开</strong> Sort 方法，在这个方法里面初始化 aux 数组。</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
+<span class="token comment" spellcheck="true">/// 利用归并排序将数组按升序排序。</span>
+<span class="token comment" spellcheck="true">/// &lt;/summary></span>
+<span class="token comment" spellcheck="true">/// &lt;typeparam name="T">数组元素类型。&lt;/typeparam></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="a">待排序的数组。&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    T<span class="token punctuation">[</span><span class="token punctuation">]</span> aux <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">T</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后建立一个<strong>私有</strong>的递归 Sort 方法做实际的排序操作。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="co">/// 自顶向下地对数组指定范围内进行归并排序，需要辅助数组。</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">原数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;aux&quot;</span><span class="kw">&gt;</span><span class="co">辅助数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">排序范围起点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">排序范围终点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="kw">private</span> <span class="dt">void</span> Sort&lt;T&gt;(T[] a, T[] aux, <span class="dt">int</span> lo, <span class="dt">int</span> hi) where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb2-10" title="10">{</a>
-<a class="sourceLine" id="cb2-11" title="11">    <span class="kw">if</span> (hi &lt;= lo)</a>
-<a class="sourceLine" id="cb2-12" title="12">        <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb2-13" title="13">    <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb2-14" title="14">    <span class="fu">Sort</span>(a, aux, lo, mid);</a>
-<a class="sourceLine" id="cb2-15" title="15">    <span class="fu">Sort</span>(a, aux, mid + <span class="dv">1</span>, hi);</a>
-<a class="sourceLine" id="cb2-16" title="16">    <span class="fu">Merge</span>(a, aux, lo, mid, hi);</a>
-<a class="sourceLine" id="cb2-17" title="17">}</a></code></pre></div>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">namespace</span> Merge</a>
-<a class="sourceLine" id="cb3-4" title="4">{</a>
-<a class="sourceLine" id="cb3-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-6" title="6">    <span class="co">/// 归并排序类。</span></a>
-<a class="sourceLine" id="cb3-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-8" title="8">    <span class="kw">public</span> <span class="kw">class</span> MergeSort : BaseSort</a>
-<a class="sourceLine" id="cb3-9" title="9">    {</a>
-<a class="sourceLine" id="cb3-10" title="10">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-11" title="11">        <span class="co">/// 默认构造函数。</span></a>
-<a class="sourceLine" id="cb3-12" title="12">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-13" title="13">        <span class="kw">public</span> <span class="fu">MergeSort</span>() { }</a>
-<a class="sourceLine" id="cb3-14" title="14"></a>
-<a class="sourceLine" id="cb3-15" title="15">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-16" title="16">        <span class="co">/// 利用归并排序将数组按升序排序。</span></a>
-<a class="sourceLine" id="cb3-17" title="17">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-18" title="18">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">数组元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb3-19" title="19">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">待排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-20" title="20">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">void</span> Sort&lt;T&gt;(T[] a)</a>
-<a class="sourceLine" id="cb3-21" title="21">        {</a>
-<a class="sourceLine" id="cb3-22" title="22">            T[] aux = <span class="kw">new</span> T[a.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb3-23" title="23">            <span class="fu">Sort</span>(a, aux, <span class="dv">0</span>, a.<span class="fu">Length</span> - <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb3-24" title="24">        }</a>
-<a class="sourceLine" id="cb3-25" title="25"></a>
-<a class="sourceLine" id="cb3-26" title="26">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-27" title="27">        <span class="co">/// 自顶向下地对数组指定范围内进行归并排序，需要辅助数组。</span></a>
-<a class="sourceLine" id="cb3-28" title="28">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-29" title="29">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb3-30" title="30">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">原数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-31" title="31">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;aux&quot;</span><span class="kw">&gt;</span><span class="co">辅助数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-32" title="32">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">排序范围起点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-33" title="33">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">排序范围终点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-34" title="34">        <span class="kw">private</span> <span class="dt">void</span> Sort&lt;T&gt;(T[] a, T[] aux, <span class="dt">int</span> lo, <span class="dt">int</span> hi) where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb3-35" title="35">        {</a>
-<a class="sourceLine" id="cb3-36" title="36">            <span class="kw">if</span> (hi &lt;= lo)</a>
-<a class="sourceLine" id="cb3-37" title="37">                <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb3-38" title="38">            <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb3-39" title="39">            <span class="fu">Sort</span>(a, aux, lo, mid);</a>
-<a class="sourceLine" id="cb3-40" title="40">            <span class="fu">Sort</span>(a, aux, mid + <span class="dv">1</span>, hi);</a>
-<a class="sourceLine" id="cb3-41" title="41">            <span class="fu">Merge</span>(a, aux, lo, mid, hi);</a>
-<a class="sourceLine" id="cb3-42" title="42">        }</a>
-<a class="sourceLine" id="cb3-43" title="43"></a>
-<a class="sourceLine" id="cb3-44" title="44">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb3-45" title="45">        <span class="co">/// 将指定范围内的元素归并。</span></a>
-<a class="sourceLine" id="cb3-46" title="46">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb3-47" title="47">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">数组元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb3-48" title="48">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">原数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-49" title="49">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;aux&quot;</span><span class="kw">&gt;</span><span class="co">辅助数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-50" title="50">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">范围起点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-51" title="51">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;mid&quot;</span><span class="kw">&gt;</span><span class="co">范围中点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-52" title="52">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">范围终点。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb3-53" title="53">        <span class="kw">private</span> <span class="dt">void</span> Merge&lt;T&gt;(T[] a, T[] aux, <span class="dt">int</span> lo, <span class="dt">int</span> mid, <span class="dt">int</span> hi) where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb3-54" title="54">        {</a>
-<a class="sourceLine" id="cb3-55" title="55">            <span class="kw">for</span> (<span class="dt">int</span> k = lo; k &lt;= hi; k++)</a>
-<a class="sourceLine" id="cb3-56" title="56">            {</a>
-<a class="sourceLine" id="cb3-57" title="57">                aux[k] = a[k];</a>
-<a class="sourceLine" id="cb3-58" title="58">            }</a>
-<a class="sourceLine" id="cb3-59" title="59"></a>
-<a class="sourceLine" id="cb3-60" title="60">            <span class="dt">int</span> i = lo, j = mid + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb3-61" title="61">            <span class="kw">for</span> (<span class="dt">int</span> k = lo; k &lt;= hi; k++)</a>
-<a class="sourceLine" id="cb3-62" title="62">            {</a>
-<a class="sourceLine" id="cb3-63" title="63">                <span class="kw">if</span> (i &gt; mid)</a>
-<a class="sourceLine" id="cb3-64" title="64">                {</a>
-<a class="sourceLine" id="cb3-65" title="65">                    a[k] = aux[j];</a>
-<a class="sourceLine" id="cb3-66" title="66">                    j++;</a>
-<a class="sourceLine" id="cb3-67" title="67">                }</a>
-<a class="sourceLine" id="cb3-68" title="68">                <span class="kw">else</span> <span class="kw">if</span> (j &gt; hi)</a>
-<a class="sourceLine" id="cb3-69" title="69">                {</a>
-<a class="sourceLine" id="cb3-70" title="70">                    a[k] = aux[i];</a>
-<a class="sourceLine" id="cb3-71" title="71">                    i++;</a>
-<a class="sourceLine" id="cb3-72" title="72">                }</a>
-<a class="sourceLine" id="cb3-73" title="73">                <span class="kw">else</span> <span class="kw">if</span> (<span class="fu">Less</span>(aux[j], aux[i]))</a>
-<a class="sourceLine" id="cb3-74" title="74">                {</a>
-<a class="sourceLine" id="cb3-75" title="75">                    a[k] = aux[j];</a>
-<a class="sourceLine" id="cb3-76" title="76">                    j++;</a>
-<a class="sourceLine" id="cb3-77" title="77">                }</a>
-<a class="sourceLine" id="cb3-78" title="78">                <span class="kw">else</span></a>
-<a class="sourceLine" id="cb3-79" title="79">                {</a>
-<a class="sourceLine" id="cb3-80" title="80">                    a[k] = aux[i];</a>
-<a class="sourceLine" id="cb3-81" title="81">                    i++;</a>
-<a class="sourceLine" id="cb3-82" title="82">                }</a>
-<a class="sourceLine" id="cb3-83" title="83">            }</a>
-<a class="sourceLine" id="cb3-84" title="84">        }</a>
-<a class="sourceLine" id="cb3-85" title="85">    }</a>
-<a class="sourceLine" id="cb3-86" title="86">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2/Merge" target="_blank" rel="noopener">Merge 库</a></p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
+<span class="token comment" spellcheck="true">/// 自顶向下地对数组指定范围内进行归并排序，需要辅助数组。</span>
+<span class="token comment" spellcheck="true">/// &lt;/summary></span>
+<span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的元素类型。&lt;/typeparam></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="a">原数组。&lt;/param></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="aux">辅助数组。&lt;/param></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="lo">排序范围起点。&lt;/param></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="hi">排序范围终点。&lt;/param></span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token punctuation">]</span> aux<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">&lt;=</span> lo<span class="token punctuation">)</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Merge</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> Merge
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 归并排序类。</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MergeSort</span> <span class="token punctuation">:</span> BaseSort
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token function">MergeSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 利用归并排序将数组按升序排序。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">数组元素类型。&lt;/typeparam></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">待排序的数组。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            T<span class="token punctuation">[</span><span class="token punctuation">]</span> aux <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">T</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 自顶向下地对数组指定范围内进行归并排序，需要辅助数组。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的元素类型。&lt;/typeparam></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">原数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="aux">辅助数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="lo">排序范围起点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="hi">排序范围终点。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token punctuation">]</span> aux<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">&lt;=</span> lo<span class="token punctuation">)</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Merge</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> aux<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 将指定范围内的元素归并。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">数组元素类型。&lt;/typeparam></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="a">原数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="aux">辅助数组。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="lo">范围起点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="mid">范围中点。&lt;/param></span>
+        <span class="token comment" spellcheck="true">/// &lt;param name="hi">范围终点。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token generic-method function">Merge<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token punctuation">]</span> aux<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> mid<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> lo<span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> hi<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                aux<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">int</span> i <span class="token operator">=</span> lo<span class="token punctuation">,</span> j <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> lo<span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> hi<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> mid<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    a<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> aux<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    j<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> hi<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    a<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> aux<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    i<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>aux<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> aux<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    a<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> aux<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    j<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    a<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> aux<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    i<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2/Merge" target="_blank" rel="noopener">Merge 库</a></p>
 
 		</div>
 	</div>

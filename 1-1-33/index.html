@@ -140,218 +140,216 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.33</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.1.33 矩阵库。 编写一个 Matrix 库并实现以下 API</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.33<br>矩阵库。<br>编写一个 Matrix 库并实现以下 API</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">public class Matrix</th>
-<th style="text-align: center;">功能</th>
+<tr>
+<th style="text-align:center">public class Matrix</th>
+<th style="text-align:center">功能</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">static double dot(double[] x, double[] y)</td>
-<td style="text-align: center;">实现向量点乘</td>
+<tr>
+<td style="text-align:center">static double dot(double[] x, double[] y)</td>
+<td style="text-align:center">实现向量点乘</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">static double[][] mult(double[][] a, double[][] b)</td>
-<td style="text-align: center;">矩阵与矩阵相乘</td>
+<tr>
+<td style="text-align:center">static double[][] mult(double[][] a, double[][] b)</td>
+<td style="text-align:center">矩阵与矩阵相乘</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">static double[][] transpose(double[][] a)</td>
-<td style="text-align: center;">矩阵转置</td>
+<tr>
+<td style="text-align:center">static double[][] transpose(double[][] a)</td>
+<td style="text-align:center">矩阵转置</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">static double[] mult(double[][] a, double[] x)</td>
-<td style="text-align: center;">矩阵与向量相乘</td>
+<tr>
+<td style="text-align:center">static double[] mult(double[][] a, double[] x)</td>
+<td style="text-align:center">矩阵与向量相乘</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">static double[] mult(double[] y, double[][] a)</td>
-<td style="text-align: center;">向量与矩阵相乘</td>
+<tr>
+<td style="text-align:center">static double[] mult(double[] y, double[][] a)</td>
+<td style="text-align:center">向量与矩阵相乘</td>
 </tr>
 </tbody>
 </table>
 <p>编写一个测试用例，从标准输入读取矩阵并测试所有方法。</p>
-<h1 id="解答">解答</h1>
-<p>这里矩阵使用交错数组实现（方便取行向量），不是普通的二维数组。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里矩阵使用交错数组实现（方便取行向量），不是普通的二维数组。</p>
 <p>矩阵和矩阵、矩阵和向量、向量和矩阵都使用行向量点乘列向量的方式计算。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="kw">class</span> Matrix</a>
-<a class="sourceLine" id="cb1-2" title="2">{</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4">    <span class="co">/// 计算两个向量的点积</span></a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;x&quot;</span><span class="kw">&gt;</span><span class="co">需要点乘的向量</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;y&quot;</span><span class="kw">&gt;</span><span class="co">需要点乘的另一个向量</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回点乘的结果</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="co">/// </span><span class="kw">&lt;exception</span><span class="ot"> cref=</span><span class="dt">&quot;FormatException&quot;</span><span class="kw">&gt;&lt;/exception&gt;</span></a>
-<a class="sourceLine" id="cb1-10" title="10">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">Dot</span>(<span class="dt">double</span>[] x, <span class="dt">double</span>[] y)</a>
-<a class="sourceLine" id="cb1-11" title="11">    {</a>
-<a class="sourceLine" id="cb1-12" title="12">        <span class="co">//确保两向量等长</span></a>
-<a class="sourceLine" id="cb1-13" title="13">        <span class="kw">if</span> (x.<span class="fu">Length</span> != y.<span class="fu">Length</span>)</a>
-<a class="sourceLine" id="cb1-14" title="14">        {</a>
-<a class="sourceLine" id="cb1-15" title="15">            <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">FormatException</span>(<span class="st">&quot;the length of two vectors must be equal&quot;</span>);</a>
-<a class="sourceLine" id="cb1-16" title="16">        }</a>
-<a class="sourceLine" id="cb1-17" title="17"></a>
-<a class="sourceLine" id="cb1-18" title="18">        <span class="co">//点乘</span></a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="dt">double</span> result = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-20" title="20">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; x.<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb1-21" title="21">        {</a>
-<a class="sourceLine" id="cb1-22" title="22">            result += x[i] * y[i];</a>
-<a class="sourceLine" id="cb1-23" title="23">        }</a>
-<a class="sourceLine" id="cb1-24" title="24"></a>
-<a class="sourceLine" id="cb1-25" title="25">        <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb1-26" title="26">    }</a>
-<a class="sourceLine" id="cb1-27" title="27"></a>
-<a class="sourceLine" id="cb1-28" title="28">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-29" title="29">    <span class="co">/// 计算两个矩阵相乘的结果，返回一个矩阵</span></a>
-<a class="sourceLine" id="cb1-30" title="30">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-31" title="31">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">用交错数组表示的 m * p 矩阵</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-32" title="32">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">用交错数组表示的 p * n 矩阵</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-33" title="33">    <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回 m * n 的矩阵</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-34" title="34">    <span class="co">/// </span><span class="kw">&lt;exception</span><span class="ot"> cref=</span><span class="dt">&quot;FormatException&quot;</span><span class="kw">&gt;&lt;/exception&gt;</span></a>
-<a class="sourceLine" id="cb1-35" title="35">    <span class="co">/// </span><span class="kw">&lt;example&gt;</span></a>
-<a class="sourceLine" id="cb1-36" title="36">    <span class="co">///     a = {(1,2,3),(4,5,6)}</span></a>
-<a class="sourceLine" id="cb1-37" title="37">    <span class="co">///     b = {(1,4),(2,5),(3,6)}</span></a>
-<a class="sourceLine" id="cb1-38" title="38">    <span class="co">///     Mult(a, b) = {(14,32),(32,77)}</span></a>
-<a class="sourceLine" id="cb1-39" title="39">    <span class="co">/// </span><span class="kw">&lt;/example&gt;</span></a>
-<a class="sourceLine" id="cb1-40" title="40">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span>[][] <span class="fu">Mult</span>(<span class="dt">double</span>[][] a, <span class="dt">double</span>[][] b)</a>
-<a class="sourceLine" id="cb1-41" title="41">    {</a>
-<a class="sourceLine" id="cb1-42" title="42">        <span class="kw">if</span> (a[<span class="dv">0</span>].<span class="fu">Length</span> != b.<span class="fu">GetLength</span>(<span class="dv">0</span>))</a>
-<a class="sourceLine" id="cb1-43" title="43">        {</a>
-<a class="sourceLine" id="cb1-44" title="44">            <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">FormatException</span>(<span class="st">&quot;a&#39;s column number must be equal to b&#39;s row number&quot;</span>);</a>
-<a class="sourceLine" id="cb1-45" title="45">        }</a>
-<a class="sourceLine" id="cb1-46" title="46"></a>
-<a class="sourceLine" id="cb1-47" title="47">        <span class="dt">int</span> m = a.<span class="fu">GetLength</span>(<span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-48" title="48">        <span class="dt">int</span> n = b[<span class="dv">0</span>].<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-49" title="49">        <span class="dt">int</span> p = a[<span class="dv">0</span>].<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-50" title="50"></a>
-<a class="sourceLine" id="cb1-51" title="51">        <span class="dt">double</span>[][] result = <span class="kw">new</span> <span class="dt">double</span>[m][];</a>
-<a class="sourceLine" id="cb1-52" title="52"></a>
-<a class="sourceLine" id="cb1-53" title="53">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; ++i)</a>
-<a class="sourceLine" id="cb1-54" title="54">        {</a>
-<a class="sourceLine" id="cb1-55" title="55">            <span class="dt">double</span>[] resultrow = <span class="kw">new</span> <span class="dt">double</span>[n];</a>
-<a class="sourceLine" id="cb1-56" title="56">            <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; n; ++j)</a>
-<a class="sourceLine" id="cb1-57" title="57">            {</a>
-<a class="sourceLine" id="cb1-58" title="58">                <span class="co">//result[i][j] = 行向量 a[i] 与列向量 b[j] 的点积</span></a>
-<a class="sourceLine" id="cb1-59" title="59">                <span class="dt">double</span>[] row = a[i];</a>
-<a class="sourceLine" id="cb1-60" title="60">                <span class="dt">double</span>[] col = <span class="kw">new</span> <span class="dt">double</span>[p];</a>
-<a class="sourceLine" id="cb1-61" title="61">                <span class="co">//取得列向量</span></a>
-<a class="sourceLine" id="cb1-62" title="62">                <span class="kw">for</span> (<span class="dt">int</span> k = <span class="dv">0</span>; k &lt; p; ++k)</a>
-<a class="sourceLine" id="cb1-63" title="63">                {</a>
-<a class="sourceLine" id="cb1-64" title="64">                    col[k] = b[k][j];</a>
-<a class="sourceLine" id="cb1-65" title="65">                }</a>
-<a class="sourceLine" id="cb1-66" title="66">                <span class="co">//点积</span></a>
-<a class="sourceLine" id="cb1-67" title="67">                resultrow[j] = <span class="fu">Dot</span>(row, col);</a>
-<a class="sourceLine" id="cb1-68" title="68">            }</a>
-<a class="sourceLine" id="cb1-69" title="69">            result[i] = resultrow;</a>
-<a class="sourceLine" id="cb1-70" title="70">        }</a>
-<a class="sourceLine" id="cb1-71" title="71">        <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb1-72" title="72">    }</a>
-<a class="sourceLine" id="cb1-73" title="73"></a>
-<a class="sourceLine" id="cb1-74" title="74">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-75" title="75">    <span class="co">/// 将一个矩阵转置</span></a>
-<a class="sourceLine" id="cb1-76" title="76">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-77" title="77">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">待转置的矩阵</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-78" title="78">    <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回转置后的数组</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-79" title="79">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span>[][] <span class="fu">Transpose</span>(<span class="dt">double</span>[][] a)</a>
-<a class="sourceLine" id="cb1-80" title="80">    {</a>
-<a class="sourceLine" id="cb1-81" title="81">        <span class="dt">double</span>[][] trans = <span class="kw">new</span> <span class="dt">double</span>[a[<span class="dv">0</span>].<span class="fu">Length</span>][];</a>
-<a class="sourceLine" id="cb1-82" title="82">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; a[<span class="dv">0</span>].<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb1-83" title="83">        {</a>
-<a class="sourceLine" id="cb1-84" title="84">            <span class="dt">double</span>[] row = <span class="kw">new</span> <span class="dt">double</span>[a.<span class="fu">GetLength</span>(<span class="dv">0</span>)];</a>
-<a class="sourceLine" id="cb1-85" title="85">            <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; a.<span class="fu">GetLength</span>(<span class="dv">0</span>); ++j)</a>
-<a class="sourceLine" id="cb1-86" title="86">            {</a>
-<a class="sourceLine" id="cb1-87" title="87">                row[j] = a[j][i];</a>
-<a class="sourceLine" id="cb1-88" title="88">            }</a>
-<a class="sourceLine" id="cb1-89" title="89">            trans[i] = row;</a>
-<a class="sourceLine" id="cb1-90" title="90">        }</a>
-<a class="sourceLine" id="cb1-91" title="91">        <span class="kw">return</span> trans;</a>
-<a class="sourceLine" id="cb1-92" title="92">    }</a>
-<a class="sourceLine" id="cb1-93" title="93"></a>
-<a class="sourceLine" id="cb1-94" title="94">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-95" title="95">    <span class="co">/// 计算矩阵与向量的乘积</span></a>
-<a class="sourceLine" id="cb1-96" title="96">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-97" title="97">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">左乘的矩阵</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-98" title="98">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;x&quot;</span><span class="kw">&gt;</span><span class="co">列向量</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-99" title="99">    <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回一个向量</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-100" title="100">    <span class="co">/// </span><span class="kw">&lt;exception</span><span class="ot"> cref=</span><span class="dt">&quot;FormatException&quot;</span><span class="kw">&gt;&lt;/exception&gt;</span></a>
-<a class="sourceLine" id="cb1-101" title="101">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span>[] <span class="fu">Mult</span>(<span class="dt">double</span>[][] a, <span class="dt">double</span>[] x)</a>
-<a class="sourceLine" id="cb1-102" title="102">    {</a>
-<a class="sourceLine" id="cb1-103" title="103">        <span class="kw">if</span> (a[<span class="dv">0</span>].<span class="fu">Length</span> != x.<span class="fu">Length</span>)</a>
-<a class="sourceLine" id="cb1-104" title="104">        {</a>
-<a class="sourceLine" id="cb1-105" title="105">            <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">FormatException</span>(<span class="st">&quot;a&#39;s column number must be equal to x&#39;s length&quot;</span>);</a>
-<a class="sourceLine" id="cb1-106" title="106">        }</a>
-<a class="sourceLine" id="cb1-107" title="107"></a>
-<a class="sourceLine" id="cb1-108" title="108">        <span class="dt">double</span>[] result = <span class="kw">new</span> <span class="dt">double</span>[a.<span class="fu">GetLength</span>(<span class="dv">0</span>)];</a>
-<a class="sourceLine" id="cb1-109" title="109"></a>
-<a class="sourceLine" id="cb1-110" title="110">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; a.<span class="fu">GetLength</span>(<span class="dv">0</span>); ++i)</a>
-<a class="sourceLine" id="cb1-111" title="111">        {</a>
-<a class="sourceLine" id="cb1-112" title="112">            result[i] = <span class="fu">Dot</span>(a[i], x);</a>
-<a class="sourceLine" id="cb1-113" title="113">        }</a>
-<a class="sourceLine" id="cb1-114" title="114"></a>
-<a class="sourceLine" id="cb1-115" title="115">        <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb1-116" title="116">    }</a>
-<a class="sourceLine" id="cb1-117" title="117"></a>
-<a class="sourceLine" id="cb1-118" title="118">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-119" title="119">    <span class="co">/// 计算向量与矩阵的乘积</span></a>
-<a class="sourceLine" id="cb1-120" title="120">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-121" title="121">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;x&quot;</span><span class="kw">&gt;</span><span class="co">行向量</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-122" title="122">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">矩阵</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-123" title="123">    <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回一个向量</span><span class="kw">&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-124" title="124">    <span class="co">/// </span><span class="kw">&lt;exception</span><span class="ot"> cref=</span><span class="dt">&quot;FormatException&quot;</span><span class="kw">&gt;&lt;/exception&gt;</span></a>
-<a class="sourceLine" id="cb1-125" title="125">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span>[] <span class="fu">Mult</span>(<span class="dt">double</span>[] x, <span class="dt">double</span>[][] a)</a>
-<a class="sourceLine" id="cb1-126" title="126">    {</a>
-<a class="sourceLine" id="cb1-127" title="127">        <span class="kw">if</span> (a.<span class="fu">GetLength</span>(<span class="dv">0</span>) != x.<span class="fu">Length</span>)</a>
-<a class="sourceLine" id="cb1-128" title="128">        {</a>
-<a class="sourceLine" id="cb1-129" title="129">            <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">FormatException</span>(<span class="st">&quot;a&#39;s column number must be equal to x&#39;s length&quot;</span>);</a>
-<a class="sourceLine" id="cb1-130" title="130">        }</a>
-<a class="sourceLine" id="cb1-131" title="131"></a>
-<a class="sourceLine" id="cb1-132" title="132">        <span class="dt">double</span>[] result = <span class="kw">new</span> <span class="dt">double</span>[a[<span class="dv">0</span>].<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb1-133" title="133"></a>
-<a class="sourceLine" id="cb1-134" title="134">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; a[<span class="dv">0</span>].<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb1-135" title="135">        {</a>
-<a class="sourceLine" id="cb1-136" title="136">            <span class="dt">double</span>[] colVector = <span class="kw">new</span> <span class="dt">double</span>[a.<span class="fu">GetLength</span>(<span class="dv">0</span>)];</a>
-<a class="sourceLine" id="cb1-137" title="137">            <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; colVector.<span class="fu">Length</span>; ++j)</a>
-<a class="sourceLine" id="cb1-138" title="138">            {</a>
-<a class="sourceLine" id="cb1-139" title="139">                colVector[j] = a[j][i];</a>
-<a class="sourceLine" id="cb1-140" title="140">            }</a>
-<a class="sourceLine" id="cb1-141" title="141">            result[i] = <span class="fu">Dot</span>(x, colVector);</a>
-<a class="sourceLine" id="cb1-142" title="142">        }</a>
-<a class="sourceLine" id="cb1-143" title="143"></a>
-<a class="sourceLine" id="cb1-144" title="144">        <span class="kw">return</span> result;</a>
-<a class="sourceLine" id="cb1-145" title="145">    }</a>
-<a class="sourceLine" id="cb1-146" title="146"></a>
-<a class="sourceLine" id="cb1-147" title="147">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-148" title="148">    <span class="co">/// 在控制台上输出矩阵</span></a>
-<a class="sourceLine" id="cb1-149" title="149">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-150" title="150">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要输出的矩阵</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-151" title="151">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">PrintMatrix</span>(<span class="dt">double</span>[][] a)</a>
-<a class="sourceLine" id="cb1-152" title="152">    {</a>
-<a class="sourceLine" id="cb1-153" title="153">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; a.<span class="fu">GetLength</span>(<span class="dv">0</span>); ++i)</a>
-<a class="sourceLine" id="cb1-154" title="154">        {</a>
-<a class="sourceLine" id="cb1-155" title="155">            <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; a[i].<span class="fu">Length</span>; ++j)</a>
-<a class="sourceLine" id="cb1-156" title="156">            {</a>
-<a class="sourceLine" id="cb1-157" title="157">                Console.<span class="fu">Write</span>($<span class="st">&quot;</span><span class="sc">\t</span><span class="st">{a[i][j]}&quot;</span>);</a>
-<a class="sourceLine" id="cb1-158" title="158">            }</a>
-<a class="sourceLine" id="cb1-159" title="159">            Console.<span class="fu">Write</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-160" title="160">        }</a>
-<a class="sourceLine" id="cb1-161" title="161">    }</a>
-<a class="sourceLine" id="cb1-162" title="162"></a>
-<a class="sourceLine" id="cb1-163" title="163">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-164" title="164">    <span class="co">/// 在控制台上输出一行向量</span></a>
-<a class="sourceLine" id="cb1-165" title="165">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-166" title="166">    <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要输出的向量</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-167" title="167">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">PrintVector</span>(<span class="dt">double</span>[] a)</a>
-<a class="sourceLine" id="cb1-168" title="168">    {</a>
-<a class="sourceLine" id="cb1-169" title="169">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; a.<span class="fu">Length</span>; ++i)</a>
-<a class="sourceLine" id="cb1-170" title="170">        {</a>
-<a class="sourceLine" id="cb1-171" title="171">            Console.<span class="fu">Write</span>($<span class="st">&quot;</span><span class="sc">\t</span><span class="st">{a[i]}&quot;</span>);</a>
-<a class="sourceLine" id="cb1-172" title="172">        }</a>
-<a class="sourceLine" id="cb1-173" title="173">        Console.<span class="fu">Write</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb1-174" title="174">    }</a>
-<a class="sourceLine" id="cb1-175" title="175">}</a></code></pre></div>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Matrix</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 计算两个向量的点积</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="x">需要点乘的向量&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="y">需要点乘的另一个向量&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;returns>返回点乘的结果&lt;/returns></span>
+    <span class="token comment" spellcheck="true">/// &lt;exception cref="FormatException">&lt;/exception></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Dot</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> x<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> y<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//确保两向量等长</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>Length <span class="token operator">!=</span> y<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FormatException</span><span class="token punctuation">(</span><span class="token string">"the length of two vectors must be equal"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//点乘</span>
+        <span class="token keyword">double</span> result <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> x<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            result <span class="token operator">+</span><span class="token operator">=</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 计算两个矩阵相乘的结果，返回一个矩阵</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="a">用交错数组表示的 m * p 矩阵&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="b">用交错数组表示的 p * n 矩阵&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;returns>返回 m * n 的矩阵&lt;/returns></span>
+    <span class="token comment" spellcheck="true">/// &lt;exception cref="FormatException">&lt;/exception></span>
+    <span class="token comment" spellcheck="true">/// &lt;example></span>
+    <span class="token comment" spellcheck="true">///     a = {(1,2,3),(4,5,6)}</span>
+    <span class="token comment" spellcheck="true">///     b = {(1,4),(2,5),(3,6)}</span>
+    <span class="token comment" spellcheck="true">///     Mult(a, b) = {(14,32),(32,77)}</span>
+    <span class="token comment" spellcheck="true">/// &lt;/example></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">Mult</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length <span class="token operator">!=</span> b<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FormatException</span><span class="token punctuation">(</span><span class="token string">"a's column number must be equal to b's row number"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">int</span> m <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> p <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+
+        <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> resultrow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//result[i][j] = 行向量 a[i] 与列向量 b[j] 的点积</span>
+                <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> row <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> col <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//取得列向量</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> p<span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    col<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment" spellcheck="true">//点积</span>
+                resultrow<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">Dot</span><span class="token punctuation">(</span>row<span class="token punctuation">,</span> col<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> resultrow<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 将一个矩阵转置</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="a">待转置的矩阵&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;returns>返回转置后的数组&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">Transpose</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> trans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> row <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                row<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            trans<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> row<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> trans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 计算矩阵与向量的乘积</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="a">左乘的矩阵&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="x">列向量&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;returns>返回一个向量&lt;/returns></span>
+    <span class="token comment" spellcheck="true">/// &lt;exception cref="FormatException">&lt;/exception></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">Mult</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> x<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length <span class="token operator">!=</span> x<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FormatException</span><span class="token punctuation">(</span><span class="token string">"a's column number must be equal to x's length"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">Dot</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 计算向量与矩阵的乘积</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="x">行向量&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="a">矩阵&lt;/param></span>
+    <span class="token comment" spellcheck="true">/// &lt;returns>返回一个向量&lt;/returns></span>
+    <span class="token comment" spellcheck="true">/// &lt;exception cref="FormatException">&lt;/exception></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">Mult</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> x<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">!=</span> x<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FormatException</span><span class="token punctuation">(</span><span class="token string">"a's column number must be equal to x's length"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> colVector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> colVector<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                colVector<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">Dot</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> colVector<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 在控制台上输出矩阵</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="a">需要输出的矩阵&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PrintMatrix</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">"\t{a[i][j]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/// &lt;summary></span>
+    <span class="token comment" spellcheck="true">/// 在控制台上输出一行向量</span>
+    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+    <span class="token comment" spellcheck="true">/// &lt;param name="a">需要输出的向量&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PrintVector</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">"\t{a[i]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

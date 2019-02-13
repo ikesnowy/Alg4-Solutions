@@ -140,87 +140,84 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.11</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.5.11 描述排序结果的一种方法是创建一个保存 0 到 a.length - 1 的排列 p[]， 使得 p[i] 的值为 a[i] 元素的最终位置。 用这种方法描述插入排序、选择排序、希尔排序、归并排序、快速排序和堆排序 对一个含有 7 个相同元素的数组的排序结果。</p>
-<h1 id="解答">解答</h1>
-<p>结果如下，其中快速排序去掉了一开始打乱数组的步骤： <img src="./1.png"></p>
-<p>只有快速排序和堆排序会进行交换，剩下四种排序都不会进行交换。 插入排序在排序元素完全相同的数组时只会进行一次遍历，不会交换。 选择排序第 <code>i</code> 次找到的最小值就是 <code>a[i]</code> ，只会让 <code>a[i]</code> 和 <code>a[i]</code> 交换，不会影响顺序。 希尔排序和插入排序类似，每轮排序都不会进行交换。 归并排序是稳定的，就本例而言，只会从左到右依次归并，不会发生顺序变化。 快速排序在遇到相同元素时会交换，因此顺序会发生变化，且每次都是对半切分。 堆排序在删除最大元素时会将第一个元素和最后一个元素交换，使元素顺序发生变化。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> SortApplication;</a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">5.</span>_<span class="dv">11</span></a>
-<a class="sourceLine" id="cb1-5" title="5">{</a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-7" title="7">    {</a>
-<a class="sourceLine" id="cb1-8" title="8">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-9" title="9">        <span class="co">/// 用来排序的元素，记录有自己的初始下标。</span></a>
-<a class="sourceLine" id="cb1-10" title="10">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb1-12" title="12">        <span class="kw">class</span> Item&lt;T&gt; : IComparable&lt;Item&lt;T&gt;&gt; where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb1-13" title="13">        {</a>
-<a class="sourceLine" id="cb1-14" title="14">            <span class="kw">public</span> <span class="dt">int</span> Index;</a>
-<a class="sourceLine" id="cb1-15" title="15">            <span class="kw">public</span> T Key;</a>
-<a class="sourceLine" id="cb1-16" title="16"></a>
-<a class="sourceLine" id="cb1-17" title="17">            <span class="kw">public</span> <span class="fu">Item</span>(<span class="dt">int</span> index, T key)</a>
-<a class="sourceLine" id="cb1-18" title="18">            {</a>
-<a class="sourceLine" id="cb1-19" title="19">                <span class="kw">this</span>.<span class="fu">Index</span> = index;</a>
-<a class="sourceLine" id="cb1-20" title="20">                <span class="kw">this</span>.<span class="fu">Key</span> = key;</a>
-<a class="sourceLine" id="cb1-21" title="21">            }</a>
-<a class="sourceLine" id="cb1-22" title="22"></a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="kw">public</span> <span class="dt">int</span> <span class="fu">CompareTo</span>(Item&lt;T&gt; other)</a>
-<a class="sourceLine" id="cb1-24" title="24">            {</a>
-<a class="sourceLine" id="cb1-25" title="25">                <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">Key</span>.<span class="fu">CompareTo</span>(other.<span class="fu">Key</span>);</a>
-<a class="sourceLine" id="cb1-26" title="26">            }</a>
-<a class="sourceLine" id="cb1-27" title="27">        }</a>
-<a class="sourceLine" id="cb1-28" title="28"></a>
-<a class="sourceLine" id="cb1-29" title="29">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-30" title="30">        {</a>
-<a class="sourceLine" id="cb1-31" title="31">            <span class="co">// 插入排序</span></a>
-<a class="sourceLine" id="cb1-32" title="32">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort&quot;</span>);</a>
-<a class="sourceLine" id="cb1-33" title="33">            <span class="fu">Test</span>(<span class="kw">new</span> <span class="fu">InsertionSort</span>(), <span class="dv">7</span>, <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-34" title="34">            <span class="co">// 选择排序</span></a>
-<a class="sourceLine" id="cb1-35" title="35">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort&quot;</span>);</a>
-<a class="sourceLine" id="cb1-36" title="36">            <span class="fu">Test</span>(<span class="kw">new</span> <span class="fu">SelectionSort</span>(), <span class="dv">7</span>, <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-37" title="37">            <span class="co">// 希尔排序</span></a>
-<a class="sourceLine" id="cb1-38" title="38">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort&quot;</span>);</a>
-<a class="sourceLine" id="cb1-39" title="39">            <span class="fu">Test</span>(<span class="kw">new</span> <span class="fu">ShellSort</span>(), <span class="dv">7</span>, <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-40" title="40">            <span class="co">// 归并排序</span></a>
-<a class="sourceLine" id="cb1-41" title="41">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Merge Sort&quot;</span>);</a>
-<a class="sourceLine" id="cb1-42" title="42">            <span class="fu">Test</span>(<span class="kw">new</span> <span class="fu">MergeSort</span>(), <span class="dv">7</span>, <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-43" title="43">            <span class="co">// 快速排序</span></a>
-<a class="sourceLine" id="cb1-44" title="44">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Quick Sort&quot;</span>);</a>
-<a class="sourceLine" id="cb1-45" title="45">            QuickSortAnalyze quick = <span class="kw">new</span> QuickSortAnalyze</a>
-<a class="sourceLine" id="cb1-46" title="46">            {</a>
-<a class="sourceLine" id="cb1-47" title="47">                NeedShuffle = <span class="kw">false</span>,</a>
-<a class="sourceLine" id="cb1-48" title="48">                NeedPath = <span class="kw">false</span></a>
-<a class="sourceLine" id="cb1-49" title="49">            };</a>
-<a class="sourceLine" id="cb1-50" title="50">            <span class="fu">Test</span>(quick, <span class="dv">7</span>, <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-51" title="51">            <span class="co">// 堆排序</span></a>
-<a class="sourceLine" id="cb1-52" title="52">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Heap Sort&quot;</span>);</a>
-<a class="sourceLine" id="cb1-53" title="53">            Item&lt;<span class="dt">int</span>&gt;[] array = <span class="kw">new</span> Item&lt;<span class="dt">int</span>&gt;[<span class="dv">7</span>];</a>
-<a class="sourceLine" id="cb1-54" title="54">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">7</span>; i++)</a>
-<a class="sourceLine" id="cb1-55" title="55">                array[i] = <span class="kw">new</span> Item&lt;<span class="dt">int</span>&gt;(i, <span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-56" title="56">            Heap.<span class="fu">Sort</span>(array);</a>
-<a class="sourceLine" id="cb1-57" title="57">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">7</span>; i++)</a>
-<a class="sourceLine" id="cb1-58" title="58">                Console.<span class="fu">Write</span>(array[i].<span class="fu">Index</span> + <span class="st">&quot; &quot;</span>);</a>
-<a class="sourceLine" id="cb1-59" title="59">            Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb1-60" title="60">        }</a>
-<a class="sourceLine" id="cb1-61" title="61"></a>
-<a class="sourceLine" id="cb1-62" title="62">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Test</span>(BaseSort sort, <span class="dt">int</span> n, <span class="dt">int</span> constant)</a>
-<a class="sourceLine" id="cb1-63" title="63">        {</a>
-<a class="sourceLine" id="cb1-64" title="64">            Item&lt;<span class="dt">int</span>&gt;[] array = <span class="kw">new</span> Item&lt;<span class="dt">int</span>&gt;[n];</a>
-<a class="sourceLine" id="cb1-65" title="65">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-66" title="66">                array[i] = <span class="kw">new</span> Item&lt;<span class="dt">int</span>&gt;(i, constant);</a>
-<a class="sourceLine" id="cb1-67" title="67">            sort.<span class="fu">Sort</span>(array);</a>
-<a class="sourceLine" id="cb1-68" title="68">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-69" title="69">                Console.<span class="fu">Write</span>(array[i].<span class="fu">Index</span> + <span class="st">&quot; &quot;</span>);</a>
-<a class="sourceLine" id="cb1-70" title="70">            Console.<span class="fu">WriteLine</span>();</a>
-<a class="sourceLine" id="cb1-71" title="71">        }</a>
-<a class="sourceLine" id="cb1-72" title="72">    }</a>
-<a class="sourceLine" id="cb1-73" title="73">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.11<br>描述排序结果的一种方法是创建一个保存 0 到 a.length - 1 的排列 p[]，<br>使得 p[i] 的值为 a[i] 元素的最终位置。<br>用这种方法描述插入排序、选择排序、希尔排序、归并排序、快速排序和堆排序<br>对一个含有 7 个相同元素的数组的排序结果。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>结果如下，其中快速排序去掉了一开始打乱数组的步骤：<br><img src="./1.png" alt=""></p>
+<p>只有快速排序和堆排序会进行交换，剩下四种排序都不会进行交换。<br>插入排序在排序元素完全相同的数组时只会进行一次遍历，不会交换。<br>选择排序第 <code>i</code> 次找到的最小值就是 <code>a[i]</code> ，只会让 <code>a[i]</code> 和 <code>a[i]</code> 交换，不会影响顺序。<br>希尔排序和插入排序类似，每轮排序都不会进行交换。<br>归并排序是稳定的，就本例而言，只会从左到右依次归并，不会发生顺序变化。<br>快速排序在遇到相同元素时会交换，因此顺序会发生变化，且每次都是对半切分。<br>堆排序在删除最大元素时会将第一个元素和最后一个元素交换，使元素顺序发生变化。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> SortApplication<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_11
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 用来排序的元素，记录有自己的初始下标。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">&lt;/typeparam></span>
+        <span class="token keyword">class</span> <span class="token class-name">Item</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Item<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">></span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> <span class="token keyword">int</span> Index<span class="token punctuation">;</span>
+            <span class="token keyword">public</span> T Key<span class="token punctuation">;</span>
+
+            <span class="token keyword">public</span> <span class="token function">Item</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> T key<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>Index <span class="token operator">=</span> index<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>Key <span class="token operator">=</span> key<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>Item<span class="token operator">&lt;</span>T<span class="token operator">></span> other<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 插入排序</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 选择排序</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 希尔排序</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 归并排序</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Merge Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Test</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MergeSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 快速排序</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Quick Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            QuickSortAnalyze quick <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickSortAnalyze</span>
+            <span class="token punctuation">{</span>
+                NeedShuffle <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">,</span>
+                NeedPath <span class="token operator">=</span> <span class="token keyword">false</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token function">Test</span><span class="token punctuation">(</span>quick<span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 堆排序</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Heap Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Item<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">7</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Heap<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">7</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Index <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Test</span><span class="token punctuation">(</span>BaseSort sort<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> constant<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Item<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> constant<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sort<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Index <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
 
 		</div>
 	</div>

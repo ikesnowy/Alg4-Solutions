@@ -140,32 +140,30 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.14</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.1.14 编写一个静态方法lg()，接受一个整型参数N，返回不大于log2(N)的最大整数。</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.14<br>编写一个静态方法lg()，接受一个整型参数N，返回不大于log2(N)的最大整数。</p>
 <p>不要使用 Math 库。</p>
-<h1 id="解答">解答</h1>
-<p>简单使用 log 的定义逼近即可。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-2" title="2">{</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="dt">int</span> N = <span class="dv">9</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;{ lg(N)}&quot;</span>);</a>
-<a class="sourceLine" id="cb1-5" title="5">}</a>
-<a class="sourceLine" id="cb1-6" title="6"></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">//利用循环逼近 N，得到 log2(N) 的值</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="kw">static</span> <span class="dt">int</span> <span class="fu">lg</span>(<span class="dt">int</span> N)</a>
-<a class="sourceLine" id="cb1-9" title="9">{</a>
-<a class="sourceLine" id="cb1-10" title="10">    <span class="dt">int</span> baseNumber = <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-11" title="11">    <span class="dt">int</span> pow = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-12" title="12">    <span class="dt">int</span> sum = <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-13" title="13"></a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">for</span> (pow = <span class="dv">1</span>; sum &lt; N; ++pow)</a>
-<a class="sourceLine" id="cb1-15" title="15">    {</a>
-<a class="sourceLine" id="cb1-16" title="16">        sum *= baseNumber;</a>
-<a class="sourceLine" id="cb1-17" title="17">    }</a>
-<a class="sourceLine" id="cb1-18" title="18"></a>
-<a class="sourceLine" id="cb1-19" title="19">    <span class="kw">return</span> pow - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-20" title="20">}</a></code></pre></div>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>简单使用 log 的定义逼近即可。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"{ lg(N)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//利用循环逼近 N，得到 log2(N) 的值</span>
+<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">lg</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> baseNumber <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> pow <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>pow <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> sum <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>pow<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        sum <span class="token operator">*</span><span class="token operator">=</span> baseNumber<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> pow <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

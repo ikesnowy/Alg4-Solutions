@@ -140,36 +140,34 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.28</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.5.28 按文件名排序。 编写一个 FileSorter 程序，从命令行接受一个目录名并打印出按照文件名排序后的所有文件。 提示：使用 File 数据类型。</p>
-<h1 id="解答">解答</h1>
-<p>官方解答：https://algs4.cs.princeton.edu/25applications/FileSorter.java.html</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.28<br>按文件名排序。<br>编写一个 FileSorter 程序，从命令行接受一个目录名并打印出按照文件名排序后的所有文件。<br>提示：使用 File 数据类型。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答：<a href="https://algs4.cs.princeton.edu/25applications/FileSorter.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/25applications/FileSorter.java.html</a></p>
 <p>先获得目录里的所有文件名，然后排序输出即可。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">IO</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">5.</span>_<span class="dv">28</span></a>
-<a class="sourceLine" id="cb1-5" title="5">{</a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-7" title="7">    {</a>
-<a class="sourceLine" id="cb1-8" title="8">        <span class="co">// 官方解答：https://algs4.cs.princeton.edu/25applications/FileSorter.java.html</span></a>
-<a class="sourceLine" id="cb1-9" title="9">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-10" title="10">        {</a>
-<a class="sourceLine" id="cb1-11" title="11">            <span class="co">// 输入 ./ 获得当前目录文件。</span></a>
-<a class="sourceLine" id="cb1-12" title="12">            <span class="dt">string</span> directoryName = Console.<span class="fu">ReadLine</span>();</a>
-<a class="sourceLine" id="cb1-13" title="13">            <span class="kw">if</span> (!Directory.<span class="fu">Exists</span>(directoryName))</a>
-<a class="sourceLine" id="cb1-14" title="14">            {</a>
-<a class="sourceLine" id="cb1-15" title="15">                Console.<span class="fu">WriteLine</span>(directoryName + <span class="st">&quot; doesn&#39;t exist or isn&#39;t a directory&quot;</span>);</a>
-<a class="sourceLine" id="cb1-16" title="16">                <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb1-17" title="17">            }</a>
-<a class="sourceLine" id="cb1-18" title="18">            <span class="dt">string</span>[] directoryFiles = Directory.<span class="fu">GetFiles</span>(directoryName);</a>
-<a class="sourceLine" id="cb1-19" title="19">            Array.<span class="fu">Sort</span>(directoryFiles);</a>
-<a class="sourceLine" id="cb1-20" title="20">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; directoryFiles.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-21" title="21">                Console.<span class="fu">WriteLine</span>(directoryFiles[i]);</a>
-<a class="sourceLine" id="cb1-22" title="22">        }</a>
-<a class="sourceLine" id="cb1-23" title="23">    }</a>
-<a class="sourceLine" id="cb1-24" title="24">}</a></code></pre></div>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>IO<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_28
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 官方解答：https://algs4.cs.princeton.edu/25applications/FileSorter.java.html</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 输入 ./ 获得当前目录文件。</span>
+            <span class="token keyword">string</span> directoryName <span class="token operator">=</span> Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Directory<span class="token punctuation">.</span><span class="token function">Exists</span><span class="token punctuation">(</span>directoryName<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>directoryName <span class="token operator">+</span> <span class="token string">" doesn't exist or isn't a directory"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> directoryFiles <span class="token operator">=</span> Directory<span class="token punctuation">.</span><span class="token function">GetFiles</span><span class="token punctuation">(</span>directoryName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>directoryFiles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> directoryFiles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>directoryFiles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

@@ -140,188 +140,187 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.17</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.1.17 动画。 修改插入排序和选择排序的代码，使之将数组内容绘制成正文中所示的棒状图。在每一轮排序后重绘图片来产生动画效果，并以一张“有序”的图片作为结束，即所有的圆棒均已按照高度有序排列。 提示：使用类似于正文中的用例来随机生成 Double 值，在排序代码的适当位置调用 show() 方法，并在 show() 方法中清理画布并绘制棒状图。</p>
-<h1 id="解答">解答</h1>
-<p>选择排序： <img src="./1.gif"> 插入排序： <img src="./2.gif"></p>
-<h1 id="代码">代码</h1>
-<p>使用一个 timer 按一定时间重绘数组，排序算法里面一次循环后等待一段时间再进行下一次循环。（这并不是一个很好的方法，但对于演示来说足够了） 这里排序算法是另开线程运行的，防止 Sleep 的时候让程序无响应。 选择排序：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">Drawing</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Windows</span>.<span class="fu">Forms</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">using</span> System.<span class="fu">Threading</span>;</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">17</span></a>
-<a class="sourceLine" id="cb1-7" title="7">{</a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">public</span> <span class="kw">partial</span> <span class="kw">class</span> Form2 : Form</a>
-<a class="sourceLine" id="cb1-9" title="9">    {</a>
-<a class="sourceLine" id="cb1-10" title="10">        <span class="dt">double</span>[] randomDoubles;</a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">public</span> <span class="fu">Form2</span>(<span class="dt">int</span> N)</a>
-<a class="sourceLine" id="cb1-12" title="12">        {</a>
-<a class="sourceLine" id="cb1-13" title="13">            <span class="fu">InitializeComponent</span>();</a>
-<a class="sourceLine" id="cb1-14" title="14">            <span class="kw">this</span>.<span class="fu">randomDoubles</span> = <span class="kw">new</span> <span class="dt">double</span>[N];</a>
-<a class="sourceLine" id="cb1-15" title="15">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb1-16" title="16">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; i++)</a>
-<a class="sourceLine" id="cb1-17" title="17">            {</a>
-<a class="sourceLine" id="cb1-18" title="18">                <span class="kw">this</span>.<span class="fu">randomDoubles</span>[i] = random.<span class="fu">NextDouble</span>() * <span class="fl">0.8</span> + <span class="fl">0.2</span>;</a>
-<a class="sourceLine" id="cb1-19" title="19">            }</a>
-<a class="sourceLine" id="cb1-20" title="20">            <span class="fu">drawPanel</span>();</a>
-<a class="sourceLine" id="cb1-21" title="21"></a>
-<a class="sourceLine" id="cb1-22" title="22">            <span class="kw">this</span>.<span class="fu">timer1</span>.<span class="fu">Interval</span> = <span class="dv">60</span>;</a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="kw">this</span>.<span class="fu">timer1</span>.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb1-24" title="24"></a>
-<a class="sourceLine" id="cb1-25" title="25">            Thread thread = <span class="kw">new</span> <span class="fu">Thread</span>(<span class="kw">new</span> <span class="fu">ThreadStart</span>(<span class="kw">this</span>.<span class="fu">SelectionSort</span>));</a>
-<a class="sourceLine" id="cb1-26" title="26">            thread.<span class="fu">IsBackground</span> = <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb1-27" title="27">            thread.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb1-28" title="28">        }</a>
-<a class="sourceLine" id="cb1-29" title="29"></a>
-<a class="sourceLine" id="cb1-30" title="30">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-31" title="31">        <span class="co">/// 选择排序。</span></a>
-<a class="sourceLine" id="cb1-32" title="32">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-33" title="33">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">SelectionSort</span>()</a>
-<a class="sourceLine" id="cb1-34" title="34">        {</a>
-<a class="sourceLine" id="cb1-35" title="35">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-36" title="36">            {</a>
-<a class="sourceLine" id="cb1-37" title="37">                <span class="dt">int</span> min = i;</a>
-<a class="sourceLine" id="cb1-38" title="38">                <span class="kw">for</span> (<span class="dt">int</span> j = i; j &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>; j++)</a>
-<a class="sourceLine" id="cb1-39" title="39">                {</a>
-<a class="sourceLine" id="cb1-40" title="40">                    <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">randomDoubles</span>[min] &gt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>[j])</a>
-<a class="sourceLine" id="cb1-41" title="41">                    {</a>
-<a class="sourceLine" id="cb1-42" title="42">                        min = j;</a>
-<a class="sourceLine" id="cb1-43" title="43">                    }</a>
-<a class="sourceLine" id="cb1-44" title="44">                }</a>
-<a class="sourceLine" id="cb1-45" title="45">                <span class="dt">double</span> temp = <span class="kw">this</span>.<span class="fu">randomDoubles</span>[i];</a>
-<a class="sourceLine" id="cb1-46" title="46">                <span class="kw">this</span>.<span class="fu">randomDoubles</span>[i] = <span class="kw">this</span>.<span class="fu">randomDoubles</span>[min];</a>
-<a class="sourceLine" id="cb1-47" title="47">                <span class="kw">this</span>.<span class="fu">randomDoubles</span>[min] = temp;</a>
-<a class="sourceLine" id="cb1-48" title="48">                Thread.<span class="fu">Sleep</span>(<span class="dv">1000</span>);</a>
-<a class="sourceLine" id="cb1-49" title="49">            }</a>
-<a class="sourceLine" id="cb1-50" title="50">        }</a>
-<a class="sourceLine" id="cb1-51" title="51"></a>
-<a class="sourceLine" id="cb1-52" title="52">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-53" title="53">        <span class="co">/// 在屏幕上用柱形图绘制数组。</span></a>
-<a class="sourceLine" id="cb1-54" title="54">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-55" title="55">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">drawPanel</span>()</a>
-<a class="sourceLine" id="cb1-56" title="56">        {</a>
-<a class="sourceLine" id="cb1-57" title="57">            Graphics graphics = <span class="kw">this</span>.<span class="fu">CreateGraphics</span>();</a>
-<a class="sourceLine" id="cb1-58" title="58">            graphics.<span class="fu">Clear</span>(<span class="kw">this</span>.<span class="fu">BackColor</span>);</a>
-<a class="sourceLine" id="cb1-59" title="59">            graphics.<span class="fu">TranslateTransform</span>(<span class="dv">0</span>, <span class="kw">this</span>.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-60" title="60">            graphics.<span class="fu">ScaleTransform</span>(<span class="dv">1</span>, <span class="dv">-1</span>);</a>
-<a class="sourceLine" id="cb1-61" title="61">            Rectangle clientRect = <span class="kw">this</span>.<span class="fu">ClientRectangle</span>;</a>
-<a class="sourceLine" id="cb1-62" title="62">            Rectangle drawRect = <span class="kw">new</span> <span class="fu">Rectangle</span>(clientRect.<span class="fu">X</span> + <span class="dv">10</span>, clientRect.<span class="fu">Y</span> + <span class="dv">10</span>, clientRect.<span class="fu">Width</span> - <span class="dv">10</span>, clientRect.<span class="fu">Height</span> - <span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb1-63" title="63"></a>
-<a class="sourceLine" id="cb1-64" title="64">            PointF[] barX = <span class="kw">new</span> PointF[<span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb1-65" title="65">            <span class="dt">float</span> unitX = (<span class="dt">float</span>)drawRect.<span class="fu">Width</span> / <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-66" title="66">            unitX -= <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb1-67" title="67"></a>
-<a class="sourceLine" id="cb1-68" title="68">            barX[<span class="dv">0</span>] = <span class="kw">new</span> <span class="fu">PointF</span>(<span class="dv">4</span>, drawRect.<span class="fu">Top</span>);</a>
-<a class="sourceLine" id="cb1-69" title="69">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-70" title="70">            {</a>
-<a class="sourceLine" id="cb1-71" title="71">                barX[i] = <span class="kw">new</span> <span class="fu">PointF</span>(<span class="dv">2</span> + unitX + barX[i - <span class="dv">1</span>].<span class="fu">X</span>, drawRect.<span class="fu">Top</span>);</a>
-<a class="sourceLine" id="cb1-72" title="72">            }</a>
-<a class="sourceLine" id="cb1-73" title="73"></a>
-<a class="sourceLine" id="cb1-74" title="74">            RectangleF[] bars = <span class="kw">new</span> RectangleF[<span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb1-75" title="75">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-76" title="76">            {</a>
-<a class="sourceLine" id="cb1-77" title="77">                SizeF size = <span class="kw">new</span> <span class="fu">SizeF</span>(unitX, (<span class="dt">float</span>)<span class="kw">this</span>.<span class="fu">randomDoubles</span>[i] * drawRect.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-78" title="78">                bars[i] = <span class="kw">new</span> <span class="fu">RectangleF</span>(barX[i], size);</a>
-<a class="sourceLine" id="cb1-79" title="79">            }</a>
-<a class="sourceLine" id="cb1-80" title="80"></a>
-<a class="sourceLine" id="cb1-81" title="81">            graphics.<span class="fu">FillRectangles</span>(Brushes.<span class="fu">Black</span>, bars);</a>
-<a class="sourceLine" id="cb1-82" title="82">            graphics.<span class="fu">Dispose</span>();</a>
-<a class="sourceLine" id="cb1-83" title="83">        }</a>
-<a class="sourceLine" id="cb1-84" title="84"></a>
-<a class="sourceLine" id="cb1-85" title="85">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">timer1_Tick</span>(<span class="dt">object</span> sender, EventArgs e)</a>
-<a class="sourceLine" id="cb1-86" title="86">        {</a>
-<a class="sourceLine" id="cb1-87" title="87">            <span class="fu">drawPanel</span>();</a>
-<a class="sourceLine" id="cb1-88" title="88">        }</a>
-<a class="sourceLine" id="cb1-89" title="89">    }</a>
-<a class="sourceLine" id="cb1-90" title="90">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.17<br>动画。<br>修改插入排序和选择排序的代码，使之将数组内容绘制成正文中所示的棒状图。在每一轮排序后重绘图片来产生动画效果，并以一张“有序”的图片作为结束，即所有的圆棒均已按照高度有序排列。<br>提示：使用类似于正文中的用例来随机生成 Double 值，在排序代码的适当位置调用 show() 方法，并在 show() 方法中清理画布并绘制棒状图。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>选择排序：<br><img src="./1.gif" alt=""><br>插入排序：<br><img src="./2.gif" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>使用一个 timer 按一定时间重绘数组，排序算法里面一次循环后等待一段时间再进行下一次循环。（这并不是一个很好的方法，但对于演示来说足够了）<br>这里排序算法是另开线程运行的，防止 Sleep 的时候让程序无响应。<br>选择排序：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Drawing<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Windows<span class="token punctuation">.</span>Forms<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Threading<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_17
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">partial</span> <span class="token keyword">class</span> <span class="token class-name">Form2</span> <span class="token punctuation">:</span> Form
+    <span class="token punctuation">{</span>
+        <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> randomDoubles<span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token function">Form2</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">InitializeComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.8</span> <span class="token operator">+</span> <span class="token number">0.2</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token function">drawPanel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>timer1<span class="token punctuation">.</span>Interval <span class="token operator">=</span> <span class="token number">60</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>timer1<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Thread thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ThreadStart</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>SelectionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            thread<span class="token punctuation">.</span>IsBackground <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+            thread<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 选择排序。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> min <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>min<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        min <span class="token operator">=</span> j<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">double</span> temp <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>min<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>min<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+                Thread<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 在屏幕上用柱形图绘制数组。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawPanel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Graphics graphics <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>BackColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Rectangle clientRect <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">;</span>
+            Rectangle drawRect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span>clientRect<span class="token punctuation">.</span>X <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">,</span> clientRect<span class="token punctuation">.</span>Y <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">,</span> clientRect<span class="token punctuation">.</span>Width <span class="token operator">-</span> <span class="token number">10</span><span class="token punctuation">,</span> clientRect<span class="token punctuation">.</span>Height <span class="token operator">-</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            PointF<span class="token punctuation">[</span><span class="token punctuation">]</span> barX <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">float</span> unitX <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>drawRect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+            unitX <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+            barX<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> drawRect<span class="token punctuation">.</span>Top<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                barX<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">+</span> unitX <span class="token operator">+</span> barX<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>X<span class="token punctuation">,</span> drawRect<span class="token punctuation">.</span>Top<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            RectangleF<span class="token punctuation">[</span><span class="token punctuation">]</span> bars <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RectangleF</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                SizeF size <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SizeF</span><span class="token punctuation">(</span>unitX<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> drawRect<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                bars<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RectangleF</span><span class="token punctuation">(</span>barX<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            graphics<span class="token punctuation">.</span><span class="token function">FillRectangles</span><span class="token punctuation">(</span>Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> bars<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">timer1_Tick</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> EventArgs e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">drawPanel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>插入排序：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> System.<span class="fu">Drawing</span>;</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">using</span> System.<span class="fu">Windows</span>.<span class="fu">Forms</span>;</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw">using</span> System.<span class="fu">Threading</span>;</a>
-<a class="sourceLine" id="cb2-5" title="5"></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">17</span></a>
-<a class="sourceLine" id="cb2-7" title="7">{</a>
-<a class="sourceLine" id="cb2-8" title="8">    <span class="kw">public</span> <span class="kw">partial</span> <span class="kw">class</span> Form3 : Form</a>
-<a class="sourceLine" id="cb2-9" title="9">    {</a>
-<a class="sourceLine" id="cb2-10" title="10">        <span class="dt">double</span>[] randomDoubles;</a>
-<a class="sourceLine" id="cb2-11" title="11">        <span class="kw">public</span> <span class="fu">Form3</span>(<span class="dt">int</span> N)</a>
-<a class="sourceLine" id="cb2-12" title="12">        {</a>
-<a class="sourceLine" id="cb2-13" title="13">            <span class="fu">InitializeComponent</span>();</a>
-<a class="sourceLine" id="cb2-14" title="14">            <span class="kw">this</span>.<span class="fu">randomDoubles</span> = <span class="kw">new</span> <span class="dt">double</span>[N];</a>
-<a class="sourceLine" id="cb2-15" title="15">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
-<a class="sourceLine" id="cb2-16" title="16">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; i++)</a>
-<a class="sourceLine" id="cb2-17" title="17">            {</a>
-<a class="sourceLine" id="cb2-18" title="18">                <span class="kw">this</span>.<span class="fu">randomDoubles</span>[i] = random.<span class="fu">NextDouble</span>() * <span class="fl">0.8</span> + <span class="fl">0.2</span>;</a>
-<a class="sourceLine" id="cb2-19" title="19">            }</a>
-<a class="sourceLine" id="cb2-20" title="20">            <span class="fu">drawPanel</span>();</a>
-<a class="sourceLine" id="cb2-21" title="21"></a>
-<a class="sourceLine" id="cb2-22" title="22">            <span class="kw">this</span>.<span class="fu">timer1</span>.<span class="fu">Interval</span> = <span class="dv">60</span>;</a>
-<a class="sourceLine" id="cb2-23" title="23">            <span class="kw">this</span>.<span class="fu">timer1</span>.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb2-24" title="24"></a>
-<a class="sourceLine" id="cb2-25" title="25">            Thread thread = <span class="kw">new</span> <span class="fu">Thread</span>(<span class="kw">new</span> <span class="fu">ThreadStart</span>(<span class="kw">this</span>.<span class="fu">InsertionSort</span>));</a>
-<a class="sourceLine" id="cb2-26" title="26">            thread.<span class="fu">IsBackground</span> = <span class="kw">true</span>;</a>
-<a class="sourceLine" id="cb2-27" title="27">            thread.<span class="fu">Start</span>();</a>
-<a class="sourceLine" id="cb2-28" title="28">        }</a>
-<a class="sourceLine" id="cb2-29" title="29"></a>
-<a class="sourceLine" id="cb2-30" title="30">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-31" title="31">        <span class="co">/// 插入排序。</span></a>
-<a class="sourceLine" id="cb2-32" title="32">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-33" title="33">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">InsertionSort</span>()</a>
-<a class="sourceLine" id="cb2-34" title="34">        {</a>
-<a class="sourceLine" id="cb2-35" title="35">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb2-36" title="36">            {</a>
-<a class="sourceLine" id="cb2-37" title="37">                <span class="kw">for</span> (<span class="dt">int</span> j = i; j &gt; <span class="dv">0</span> &amp;&amp; <span class="kw">this</span>.<span class="fu">randomDoubles</span>[j] &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>[j - <span class="dv">1</span>]; j--)</a>
-<a class="sourceLine" id="cb2-38" title="38">                {</a>
-<a class="sourceLine" id="cb2-39" title="39">                    <span class="dt">double</span> temp = <span class="kw">this</span>.<span class="fu">randomDoubles</span>[j];</a>
-<a class="sourceLine" id="cb2-40" title="40">                    <span class="kw">this</span>.<span class="fu">randomDoubles</span>[j] = <span class="kw">this</span>.<span class="fu">randomDoubles</span>[j - <span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb2-41" title="41">                    <span class="kw">this</span>.<span class="fu">randomDoubles</span>[j - <span class="dv">1</span>] = temp;</a>
-<a class="sourceLine" id="cb2-42" title="42">                    Thread.<span class="fu">Sleep</span>(<span class="dv">500</span>);</a>
-<a class="sourceLine" id="cb2-43" title="43">                }</a>
-<a class="sourceLine" id="cb2-44" title="44">            }</a>
-<a class="sourceLine" id="cb2-45" title="45">        }</a>
-<a class="sourceLine" id="cb2-46" title="46"></a>
-<a class="sourceLine" id="cb2-47" title="47">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-48" title="48">        <span class="co">/// 在屏幕上用柱形图绘制数组。</span></a>
-<a class="sourceLine" id="cb2-49" title="49">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-50" title="50">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">drawPanel</span>()</a>
-<a class="sourceLine" id="cb2-51" title="51">        {</a>
-<a class="sourceLine" id="cb2-52" title="52">            Graphics graphics = <span class="kw">this</span>.<span class="fu">CreateGraphics</span>();</a>
-<a class="sourceLine" id="cb2-53" title="53">            graphics.<span class="fu">Clear</span>(<span class="kw">this</span>.<span class="fu">BackColor</span>);</a>
-<a class="sourceLine" id="cb2-54" title="54">            graphics.<span class="fu">TranslateTransform</span>(<span class="dv">0</span>, <span class="kw">this</span>.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb2-55" title="55">            graphics.<span class="fu">ScaleTransform</span>(<span class="dv">1</span>, <span class="dv">-1</span>);</a>
-<a class="sourceLine" id="cb2-56" title="56">            Rectangle clientRect = <span class="kw">this</span>.<span class="fu">ClientRectangle</span>;</a>
-<a class="sourceLine" id="cb2-57" title="57">            Rectangle drawRect = <span class="kw">new</span> <span class="fu">Rectangle</span>(clientRect.<span class="fu">X</span> + <span class="dv">10</span>, clientRect.<span class="fu">Y</span> + <span class="dv">10</span>, clientRect.<span class="fu">Width</span> - <span class="dv">10</span>, clientRect.<span class="fu">Height</span> - <span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb2-58" title="58"></a>
-<a class="sourceLine" id="cb2-59" title="59">            PointF[] barX = <span class="kw">new</span> PointF[<span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb2-60" title="60">            <span class="dt">float</span> unitX = (<span class="dt">float</span>)drawRect.<span class="fu">Width</span> / <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb2-61" title="61">            unitX -= <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb2-62" title="62"></a>
-<a class="sourceLine" id="cb2-63" title="63">            barX[<span class="dv">0</span>] = <span class="kw">new</span> <span class="fu">PointF</span>(<span class="dv">4</span>, drawRect.<span class="fu">Top</span>);</a>
-<a class="sourceLine" id="cb2-64" title="64">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb2-65" title="65">            {</a>
-<a class="sourceLine" id="cb2-66" title="66">                barX[i] = <span class="kw">new</span> <span class="fu">PointF</span>(<span class="dv">2</span> + unitX + barX[i - <span class="dv">1</span>].<span class="fu">X</span>, drawRect.<span class="fu">Top</span>);</a>
-<a class="sourceLine" id="cb2-67" title="67">            }</a>
-<a class="sourceLine" id="cb2-68" title="68"></a>
-<a class="sourceLine" id="cb2-69" title="69">            RectangleF[] bars = <span class="kw">new</span> RectangleF[<span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb2-70" title="70">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">this</span>.<span class="fu">randomDoubles</span>.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb2-71" title="71">            {</a>
-<a class="sourceLine" id="cb2-72" title="72">                SizeF size = <span class="kw">new</span> <span class="fu">SizeF</span>(unitX, (<span class="dt">float</span>)<span class="kw">this</span>.<span class="fu">randomDoubles</span>[i] * drawRect.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb2-73" title="73">                bars[i] = <span class="kw">new</span> <span class="fu">RectangleF</span>(barX[i], size);</a>
-<a class="sourceLine" id="cb2-74" title="74">            }</a>
-<a class="sourceLine" id="cb2-75" title="75"></a>
-<a class="sourceLine" id="cb2-76" title="76">            graphics.<span class="fu">FillRectangles</span>(Brushes.<span class="fu">Black</span>, bars);</a>
-<a class="sourceLine" id="cb2-77" title="77">            graphics.<span class="fu">Dispose</span>();</a>
-<a class="sourceLine" id="cb2-78" title="78">        }</a>
-<a class="sourceLine" id="cb2-79" title="79"></a>
-<a class="sourceLine" id="cb2-80" title="80">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">timer1_Tick</span>(<span class="dt">object</span> sender, EventArgs e)</a>
-<a class="sourceLine" id="cb2-81" title="81">        {</a>
-<a class="sourceLine" id="cb2-82" title="82">            <span class="fu">drawPanel</span>();</a>
-<a class="sourceLine" id="cb2-83" title="83">        }</a>
-<a class="sourceLine" id="cb2-84" title="84">    }</a>
-<a class="sourceLine" id="cb2-85" title="85">}</a></code></pre></div>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Drawing<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Windows<span class="token punctuation">.</span>Forms<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Threading<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_17
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">partial</span> <span class="token keyword">class</span> <span class="token class-name">Form3</span> <span class="token punctuation">:</span> Form
+    <span class="token punctuation">{</span>
+        <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> randomDoubles<span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token function">Form3</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">InitializeComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.8</span> <span class="token operator">+</span> <span class="token number">0.2</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token function">drawPanel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>timer1<span class="token punctuation">.</span>Interval <span class="token operator">=</span> <span class="token number">60</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>timer1<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Thread thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ThreadStart</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>InsertionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            thread<span class="token punctuation">.</span>IsBackground <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+            thread<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 插入排序。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">double</span> temp <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+                    Thread<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/// &lt;summary></span>
+        <span class="token comment" spellcheck="true">/// 在屏幕上用柱形图绘制数组。</span>
+        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawPanel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Graphics graphics <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>BackColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Rectangle clientRect <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">;</span>
+            Rectangle drawRect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span>clientRect<span class="token punctuation">.</span>X <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">,</span> clientRect<span class="token punctuation">.</span>Y <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">,</span> clientRect<span class="token punctuation">.</span>Width <span class="token operator">-</span> <span class="token number">10</span><span class="token punctuation">,</span> clientRect<span class="token punctuation">.</span>Height <span class="token operator">-</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            PointF<span class="token punctuation">[</span><span class="token punctuation">]</span> barX <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">float</span> unitX <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>drawRect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+            unitX <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+            barX<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> drawRect<span class="token punctuation">.</span>Top<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                barX<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">+</span> unitX <span class="token operator">+</span> barX<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>X<span class="token punctuation">,</span> drawRect<span class="token punctuation">.</span>Top<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            RectangleF<span class="token punctuation">[</span><span class="token punctuation">]</span> bars <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RectangleF</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                SizeF size <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SizeF</span><span class="token punctuation">(</span>unitX<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>randomDoubles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> drawRect<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                bars<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RectangleF</span><span class="token punctuation">(</span>barX<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            graphics<span class="token punctuation">.</span><span class="token function">FillRectangles</span><span class="token punctuation">(</span>Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> bars<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">timer1_Tick</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> EventArgs e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">drawPanel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>

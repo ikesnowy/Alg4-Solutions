@@ -140,50 +140,47 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.23</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.5.23 选择的取样：实验使用取样来改进 select() 函数的想法。 提示：使用中位数可能并不总是有效。</p>
-<h1 id="解答">解答</h1>
-<p>这里我们使用 Floyd-Rivest 算法进行优化，大致思想是： 我们期望第 $ k $ 大的元素位于 <code>a[k]</code> 附近，因此优先对 <code>a[k]</code> 附近的区域进行选择。 每次切分时枢轴都选择 <code>a[k]</code>，先递归对样本区域选择，再对整个数组进行选择。</p>
-<p>运行示意图： <img src="./1.gif"></p>
-<p>测试结果： <img src="./2.png"></p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// Floyd–Rivest 方法优化，令 a[k] 变成第 k 小的元素。</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">序号</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="kw">static</span> T Select&lt;T&gt;(T[] a, <span class="dt">int</span> lo, <span class="dt">int</span> hi, <span class="dt">int</span> k) where T : IComparable&lt;T&gt;</a>
-<a class="sourceLine" id="cb1-9" title="9">{</a>
-<a class="sourceLine" id="cb1-10" title="10">    <span class="kw">if</span> (k &lt; <span class="dv">0</span> || k &gt; a.<span class="fu">Length</span>)</a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">IndexOutOfRangeException</span>(<span class="st">&quot;Select elements out of bounds&quot;</span>);          </a>
-<a class="sourceLine" id="cb1-12" title="12">    <span class="kw">while</span> (hi &gt; lo)</a>
-<a class="sourceLine" id="cb1-13" title="13">    {</a>
-<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">if</span> (hi - lo &gt; <span class="dv">600</span>)</a>
-<a class="sourceLine" id="cb1-15" title="15">        {</a>
-<a class="sourceLine" id="cb1-16" title="16">            <span class="dt">int</span> n = hi - lo + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-17" title="17">            <span class="dt">int</span> i = k - lo + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-18" title="18">            <span class="dt">int</span> z = (<span class="dt">int</span>)Math.<span class="fu">Log</span>(n);</a>
-<a class="sourceLine" id="cb1-19" title="19">            <span class="dt">int</span> s = (<span class="dt">int</span>)(Math.<span class="fu">Exp</span>(<span class="dv">2</span> * z / <span class="dv">3</span>) / <span class="dv">2</span>);</a>
-<a class="sourceLine" id="cb1-20" title="20">            <span class="dt">int</span> sd = (<span class="dt">int</span>)Math.<span class="fu">Sqrt</span>(z * s * (n - s) / n) * Math.<span class="fu">Sign</span>(i - n / <span class="dv">2</span>) / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">int</span> newLo = Math.<span class="fu">Max</span>(lo, k - i * s / n + sd);</a>
-<a class="sourceLine" id="cb1-22" title="22">            <span class="dt">int</span> newHi = Math.<span class="fu">Min</span>(hi, k + (n - i) * s / n + sd);</a>
-<a class="sourceLine" id="cb1-23" title="23">            <span class="fu">Select</span>(a, newLo, newHi, k);</a>
-<a class="sourceLine" id="cb1-24" title="24">        }</a>
-<a class="sourceLine" id="cb1-25" title="25">        <span class="fu">Exch</span>(a, lo, k);</a>
-<a class="sourceLine" id="cb1-26" title="26">        <span class="dt">int</span> j = <span class="fu">Partition</span>(a, lo, hi);</a>
-<a class="sourceLine" id="cb1-27" title="27">        <span class="kw">if</span> (j &gt; k)</a>
-<a class="sourceLine" id="cb1-28" title="28">            hi = j - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-29" title="29">        <span class="kw">else</span> <span class="kw">if</span> (j &lt; k)</a>
-<a class="sourceLine" id="cb1-30" title="30">            lo = j + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-31" title="31">        <span class="kw">else</span></a>
-<a class="sourceLine" id="cb1-32" title="32">            <span class="kw">return</span> a[j];</a>
-<a class="sourceLine" id="cb1-33" title="33">    }</a>
-<a class="sourceLine" id="cb1-34" title="34">    <span class="kw">return</span> a[lo];</a>
-<a class="sourceLine" id="cb1-35" title="35">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://en.wikipedia.org/wiki/Floyd–Rivest_algorithm" target="_blank" rel="noopener">Floyd–Rivest algorithm - Wikipedia</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.23<br>选择的取样：实验使用取样来改进 select() 函数的想法。<br>提示：使用中位数可能并不总是有效。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里我们使用 Floyd-Rivest 算法进行优化，大致思想是：<br>我们期望第 $ k $ 大的元素位于 <code>a[k]</code> 附近，因此优先对 <code>a[k]</code> 附近的区域进行选择。<br>每次切分时枢轴都选择 <code>a[k]</code>，先递归对样本区域选择，再对整个数组进行选择。</p>
+<p>运行示意图：<br><img src="./1.gif" alt=""></p>
+<p>测试结果：<br><img src="./2.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
+<span class="token comment" spellcheck="true">/// Floyd–Rivest 方法优化，令 a[k] 变成第 k 小的元素。</span>
+<span class="token comment" spellcheck="true">/// &lt;/summary></span>
+<span class="token comment" spellcheck="true">/// &lt;typeparam name="T">元素类型。&lt;/typeparam></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="a">需要排序的数组。&lt;/param></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="k">序号&lt;/param></span>
+<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+<span class="token keyword">static</span> T <span class="token generic-method function">Select<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> k <span class="token operator">></span> a<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IndexOutOfRangeException</span><span class="token punctuation">(</span><span class="token string">"Select elements out of bounds"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>hi <span class="token operator">></span> lo<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo <span class="token operator">></span> <span class="token number">600</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> n <span class="token operator">=</span> hi <span class="token operator">-</span> lo <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> k <span class="token operator">-</span> lo <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> z <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> s <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">Exp</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> z <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> sd <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Sqrt</span><span class="token punctuation">(</span>z <span class="token operator">*</span> s <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">/</span> n<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Sign</span><span class="token punctuation">(</span>i <span class="token operator">-</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> newLo <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Max</span><span class="token punctuation">(</span>lo<span class="token punctuation">,</span> k <span class="token operator">-</span> i <span class="token operator">*</span> s <span class="token operator">/</span> n <span class="token operator">+</span> sd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> newHi <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Min</span><span class="token punctuation">(</span>hi<span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> i<span class="token punctuation">)</span> <span class="token operator">*</span> s <span class="token operator">/</span> n <span class="token operator">+</span> sd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Select</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> newLo<span class="token punctuation">,</span> newHi<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token function">Partition</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> k<span class="token punctuation">)</span>
+            hi <span class="token operator">=</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> k<span class="token punctuation">)</span>
+            lo <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            <span class="token keyword">return</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://en.wikipedia.org/wiki/Floyd–Rivest_algorithm" target="_blank" rel="noopener">Floyd–Rivest algorithm - Wikipedia</a></p>
 
 		</div>
 	</div>

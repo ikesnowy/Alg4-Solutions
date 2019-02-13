@@ -140,88 +140,85 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.30</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.1.30 几何级数递增序列。 通过实验找到一个 t，使得对于大小为 N=10^6 的任意随机数组， 使用递增序列 1, [t], [t^2], [t^3], [t^4], ... 的希尔排序的运行时间最短。 给出你能找到的三个最佳 t 值以及相应的递增序列。 以下练习描述的是各种用于评估排序算法的测试用例。 它们的作用是用随机数据帮助你增进对性能特性的理解。 随着命令行指定的实验测试的增大， 可以和 SortCompare 一样在它们中使用 time() 函数来得到更精确的结果。 在以后的几节中我们会使用这些练习来评估更为复杂的算法。</p>
-<h1 id="解答">解答</h1>
-<p>2，3，4 t 越大的话，按照这个递增序列，10^6 次能够满足的 h 也就越少。 <img src="./1.png"></p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Sort;</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Diagnostics</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4"></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">30</span></a>
-<a class="sourceLine" id="cb1-6" title="6">{</a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * 2.1.30</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 几何级数递增序列。</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 通过实验找到一个 t，使得对于大小为 N=10^6 的任意随机数组，</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 使用递增序列 1, [t], [t^2], [t^3], [t^4], ... 的希尔排序的运行时间最短。</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * 给出你能找到的三个最佳 t 值以及相应的递增序列。</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">     * 以下练习描述的是各种用于评估排序算法的测试用例。</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">     * 它们的作用是用随机数据帮助你增进对性能特性的理解。</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">     * 随着命令行指定的实验测试的增大，</span></a>
-<a class="sourceLine" id="cb1-17" title="17"><span class="co">     * 可以和 SortCompare 一样在它们中使用 time() 函数来得到更精确的结果。</span></a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="co">     * 在以后的几节中我们会使用这些练习来评估更为复杂的算法。</span></a>
-<a class="sourceLine" id="cb1-19" title="19"><span class="co">     * </span></a>
-<a class="sourceLine" id="cb1-20" title="20"><span class="co">     */</span></a>
-<a class="sourceLine" id="cb1-21" title="21">    <span class="kw">class</span> Program</a>
-<a class="sourceLine" id="cb1-22" title="22">    {</a>
-<a class="sourceLine" id="cb1-23" title="23">        <span class="co">// t = 2, 3, 4</span></a>
-<a class="sourceLine" id="cb1-24" title="24">        <span class="co">// t 大于 10 之后，由于每次排序 h 缩减的太快，</span></a>
-<a class="sourceLine" id="cb1-25" title="25">        <span class="co">// 时间会越来越近似于直接插入排序。</span></a>
-<a class="sourceLine" id="cb1-26" title="26">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb1-27" title="27">        {</a>
-<a class="sourceLine" id="cb1-28" title="28">            <span class="dt">int</span>[] array = SortCompare.<span class="fu">GetRandomArrayInt</span>(<span class="dv">1000000</span>);</a>
-<a class="sourceLine" id="cb1-29" title="29">            <span class="dt">int</span>[] array2 = <span class="kw">new</span> <span class="dt">int</span>[array.<span class="fu">Length</span>];</a>
-<a class="sourceLine" id="cb1-30" title="30">            array.<span class="fu">CopyTo</span>(array2, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-31" title="31">            Stopwatch timer = <span class="kw">new</span> <span class="fu">Stopwatch</span>();</a>
-<a class="sourceLine" id="cb1-32" title="32"></a>
-<a class="sourceLine" id="cb1-33" title="33">            <span class="dt">long</span>[] bestTimes = <span class="kw">new</span> <span class="dt">long</span>[<span class="dv">3</span>];</a>
-<a class="sourceLine" id="cb1-34" title="34">            <span class="dt">long</span>[] bestTs = <span class="kw">new</span> <span class="dt">long</span>[<span class="dv">3</span>];</a>
-<a class="sourceLine" id="cb1-35" title="35">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; bestTimes.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-36" title="36">            {</a>
-<a class="sourceLine" id="cb1-37" title="37">                bestTimes[i] = <span class="dt">long</span>.<span class="fu">MaxValue</span>;</a>
-<a class="sourceLine" id="cb1-38" title="38">                bestTs[i] = <span class="dt">int</span>.<span class="fu">MaxValue</span>;</a>
-<a class="sourceLine" id="cb1-39" title="39">            }</a>
-<a class="sourceLine" id="cb1-40" title="40"></a>
-<a class="sourceLine" id="cb1-41" title="41">            <span class="dt">long</span> nowTime = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-42" title="42">            ShellSort shellSort = <span class="kw">new</span> <span class="fu">ShellSort</span>();</a>
-<a class="sourceLine" id="cb1-43" title="43"></a>
-<a class="sourceLine" id="cb1-44" title="44">            <span class="kw">for</span> (<span class="dt">int</span> t = <span class="dv">2</span>; t &lt;= <span class="dv">1000000</span>; t++)</a>
-<a class="sourceLine" id="cb1-45" title="45">            {</a>
-<a class="sourceLine" id="cb1-46" title="46">                Console.<span class="fu">WriteLine</span>(t);</a>
-<a class="sourceLine" id="cb1-47" title="47">                </a>
-<a class="sourceLine" id="cb1-48" title="48">                timer.<span class="fu">Restart</span>();</a>
-<a class="sourceLine" id="cb1-49" title="49">                shellSort.<span class="fu">Sort</span>(array, t);</a>
-<a class="sourceLine" id="cb1-50" title="50">                nowTime = timer.<span class="fu">ElapsedMilliseconds</span>;</a>
-<a class="sourceLine" id="cb1-51" title="51">                timer.<span class="fu">Stop</span>();</a>
-<a class="sourceLine" id="cb1-52" title="52">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Elapsed Time:&quot;</span> + nowTime);</a>
-<a class="sourceLine" id="cb1-53" title="53">                <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; bestTimes.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-54" title="54">                {</a>
-<a class="sourceLine" id="cb1-55" title="55">                    Console.<span class="fu">Write</span>(<span class="st">&quot;t:&quot;</span> + bestTs[i]);</a>
-<a class="sourceLine" id="cb1-56" title="56">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t</span><span class="st">Time:&quot;</span> + bestTimes[i]);</a>
-<a class="sourceLine" id="cb1-57" title="57">                }</a>
-<a class="sourceLine" id="cb1-58" title="58">                <span class="kw">if</span> (bestTimes[<span class="dv">2</span>] &gt; nowTime)</a>
-<a class="sourceLine" id="cb1-59" title="59">                {</a>
-<a class="sourceLine" id="cb1-60" title="60">                    bestTimes[<span class="dv">2</span>] = nowTime;</a>
-<a class="sourceLine" id="cb1-61" title="61">                    bestTs[<span class="dv">2</span>] = t;</a>
-<a class="sourceLine" id="cb1-62" title="62">                    Array.<span class="fu">Sort</span>(bestTimes, bestTs);</a>
-<a class="sourceLine" id="cb1-63" title="63">                }</a>
-<a class="sourceLine" id="cb1-64" title="64"></a>
-<a class="sourceLine" id="cb1-65" title="65">                array2.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-66" title="66">            }</a>
-<a class="sourceLine" id="cb1-67" title="67"></a>
-<a class="sourceLine" id="cb1-68" title="68">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; bestTimes.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb1-69" title="69">            {</a>
-<a class="sourceLine" id="cb1-70" title="70">                Console.<span class="fu">Write</span>(<span class="st">&quot;t:&quot;</span> + bestTs[i]);</a>
-<a class="sourceLine" id="cb1-71" title="71">                Console.<span class="fu">Write</span>(<span class="st">&quot;</span><span class="sc">\t</span><span class="st">Time:&quot;</span> + bestTimes[i]);</a>
-<a class="sourceLine" id="cb1-72" title="72">            }</a>
-<a class="sourceLine" id="cb1-73" title="73">        }</a>
-<a class="sourceLine" id="cb1-74" title="74">    }</a>
-<a class="sourceLine" id="cb1-75" title="75">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.30<br>几何级数递增序列。<br>通过实验找到一个 t，使得对于大小为 N=10^6 的任意随机数组，<br>使用递增序列 1, [t], [t^2], [t^3], [t^4], … 的希尔排序的运行时间最短。<br>给出你能找到的三个最佳 t 值以及相应的递增序列。<br>以下练习描述的是各种用于评估排序算法的测试用例。<br>它们的作用是用随机数据帮助你增进对性能特性的理解。<br>随着命令行指定的实验测试的增大，<br>可以和 SortCompare 一样在它们中使用 time() 函数来得到更精确的结果。<br>在以后的几节中我们会使用这些练习来评估更为复杂的算法。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>2，3，4<br>t 越大的话，按照这个递增序列，10^6 次能够满足的 h 也就越少。<br><img src="./1.png" alt=""></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token keyword">using</span> Sort<span class="token punctuation">;</span>
+<span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_30
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+     * 2.1.30
+     * 
+     * 几何级数递增序列。
+     * 通过实验找到一个 t，使得对于大小为 N=10^6 的任意随机数组，
+     * 使用递增序列 1, [t], [t^2], [t^3], [t^4], ... 的希尔排序的运行时间最短。
+     * 给出你能找到的三个最佳 t 值以及相应的递增序列。
+     * 以下练习描述的是各种用于评估排序算法的测试用例。
+     * 它们的作用是用随机数据帮助你增进对性能特性的理解。
+     * 随着命令行指定的实验测试的增大，
+     * 可以和 SortCompare 一样在它们中使用 time() 函数来得到更精确的结果。
+     * 在以后的几节中我们会使用这些练习来评估更为复杂的算法。
+     * 
+     */</span>
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// t = 2, 3, 4</span>
+        <span class="token comment" spellcheck="true">// t 大于 10 之后，由于每次排序 h 缩减的太快，</span>
+        <span class="token comment" spellcheck="true">// 时间会越来越近似于直接插入排序。</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetRandomArrayInt</span><span class="token punctuation">(</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>array<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            array<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array2<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Stopwatch timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">long</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bestTimes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">long</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">long</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bestTs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">long</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> bestTimes<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                bestTimes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">long</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
+                bestTs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">long</span> nowTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            ShellSort shellSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> t <span class="token operator">&lt;=</span> <span class="token number">1000000</span><span class="token punctuation">;</span> t<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                timer<span class="token punctuation">.</span><span class="token function">Restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                shellSort<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                nowTime <span class="token operator">=</span> timer<span class="token punctuation">.</span>ElapsedMilliseconds<span class="token punctuation">;</span>
+                timer<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Elapsed Time:"</span> <span class="token operator">+</span> nowTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> bestTimes<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"t:"</span> <span class="token operator">+</span> bestTs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\tTime:"</span> <span class="token operator">+</span> bestTimes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>bestTimes<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">></span> nowTime<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    bestTimes<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> nowTime<span class="token punctuation">;</span>
+                    bestTs<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span>
+                    Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>bestTimes<span class="token punctuation">,</span> bestTs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                array2<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> bestTimes<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"t:"</span> <span class="token operator">+</span> bestTs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"\tTime:"</span> <span class="token operator">+</span> bestTimes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
 
 		</div>
 	</div>

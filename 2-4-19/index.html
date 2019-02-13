@@ -140,37 +140,35 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.19</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.4.19 实现 MaxPQ 的一个构造函数，接受一个数组作为参数。 使用正文 2.4.5.1 节中所述的自底向上的方法构造堆。</p>
-<h1 id="解答">解答</h1>
-<p>官方实现已经包含了这部分的代码，见：https://algs4.cs.princeton.edu/24pq/MaxPQ.java.html 相应的构造函数（Java）</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="fu">MaxPQ</span>(<span class="bu">Key</span>[] keys) {</a>
-<a class="sourceLine" id="cb1-2" title="2">    n = keys.<span class="fu">length</span>;</a>
-<a class="sourceLine" id="cb1-3" title="3">    pq = (<span class="bu">Key</span>[]) <span class="kw">new</span> <span class="bu">Object</span>[keys.<span class="fu">length</span> + <span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
-<a class="sourceLine" id="cb1-5" title="5">        pq[i+<span class="dv">1</span>] = keys[i];</a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">for</span> (<span class="dt">int</span> k = n/<span class="dv">2</span>; k &gt;= <span class="dv">1</span>; k--)</a>
-<a class="sourceLine" id="cb1-7" title="7">        <span class="fu">sink</span>(k);</a>
-<a class="sourceLine" id="cb1-8" title="8">    assert <span class="fu">isMaxHeap</span>();</a>
-<a class="sourceLine" id="cb1-9" title="9">}</a></code></pre></div>
-<h1 id="代码">代码</h1>
-<p>构造函数（C#）</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="co">/// 从已有元素建立一个最大堆。（O(n)）</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;keys&quot;</span><span class="kw">&gt;</span><span class="co">已有元素。</span><span class="kw">&lt;/param&gt;</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">public</span> <span class="fu">MaxPQ</span>(Key[] keys)</a>
-<a class="sourceLine" id="cb2-6" title="6">{</a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="kw">this</span>.<span class="fu">n</span> = keys.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb2-8" title="8">    <span class="kw">this</span>.<span class="fu">pq</span> = <span class="kw">new</span> Key[keys.<span class="fu">Length</span> + <span class="dv">1</span>];</a>
-<a class="sourceLine" id="cb2-9" title="9">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; keys.<span class="fu">Length</span>; i++)</a>
-<a class="sourceLine" id="cb2-10" title="10">        <span class="kw">this</span>.<span class="fu">pq</span>[i + <span class="dv">1</span>] = keys[i];</a>
-<a class="sourceLine" id="cb2-11" title="11">    <span class="kw">for</span> (<span class="dt">int</span> k = <span class="kw">this</span>.<span class="fu">n</span> / <span class="dv">2</span>; k &gt;= <span class="dv">1</span>; k--)</a>
-<a class="sourceLine" id="cb2-12" title="12">        <span class="fu">Sink</span>(k);</a>
-<a class="sourceLine" id="cb2-13" title="13">    Debug.<span class="fu">Assert</span>(<span class="fu">IsMaxHeap</span>());</a>
-<a class="sourceLine" id="cb2-14" title="14">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.19<br>实现 MaxPQ 的一个构造函数，接受一个数组作为参数。<br>使用正文 2.4.5.1 节中所述的自底向上的方法构造堆。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现已经包含了这部分的代码，见：<a href="https://algs4.cs.princeton.edu/24pq/MaxPQ.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/24pq/MaxPQ.java.html</a><br>相应的构造函数（Java）</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">MaxPQ</span><span class="token punctuation">(</span>Key<span class="token punctuation">[</span><span class="token punctuation">]</span> keys<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    n <span class="token operator">=</span> keys<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    pq <span class="token operator">=</span> <span class="token punctuation">(</span>Key<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>keys<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        pq<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span> k <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">;</span> k<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token function">sink</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">assert</span> <span class="token function">isMaxHeap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>构造函数（C#）</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
+<span class="token comment" spellcheck="true">/// 从已有元素建立一个最大堆。（O(n)）</span>
+<span class="token comment" spellcheck="true">/// &lt;/summary></span>
+<span class="token comment" spellcheck="true">/// &lt;param name="keys">已有元素。&lt;/param></span>
+<span class="token keyword">public</span> <span class="token function">MaxPQ</span><span class="token punctuation">(</span>Key<span class="token punctuation">[</span><span class="token punctuation">]</span> keys<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">=</span> keys<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Key</span><span class="token punctuation">[</span>keys<span class="token punctuation">.</span>Length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> keys<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> k <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">;</span> k<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token function">Sink</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Debug<span class="token punctuation">.</span><span class="token function">Assert</span><span class="token punctuation">(</span><span class="token function">IsMaxHeap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

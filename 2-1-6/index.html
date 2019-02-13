@@ -140,10 +140,8 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.6</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>2.1.6 在所有主键都相同时，选择排序和插入排序谁更快？</p>
-<h1 id="解答">解答</h1>
-<p>插入排序更快。 选择排序无论如何都需要 <span class="math inline">\(n + (n-1) + (n-2) + … + 1 = \frac{n^2}{2}\)</span> 次比较。 插入排序在这种情况下只需要 n 次比较。（所有主键相同 = 数组已排序）</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.6<br>在所有主键都相同时，选择排序和插入排序谁更快？</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>插入排序更快。<br>选择排序无论如何都需要 $n + (n-1) + (n-2) + …  + 1 = \frac{n^2}{2}$ 次比较。<br>插入排序在这种情况下只需要 n 次比较。（所有主键相同 = 数组已排序）</p>
 
 		</div>
 	</div>
@@ -224,7 +222,24 @@ function dismissSearchResultModal() {
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-121852990-1', 'auto');
         ga('send', 'pageview');
-        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
         
         
     </body>

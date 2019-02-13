@@ -29,10 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;3.1.3 开发一个符号表的实现 OrderedSequentialSearchST， 使用有序链表来实现我们的有序符号表 API。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;基于无序链表的官方实现：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.3&lt;br&gt;开发一个符号表的实现 OrderedSequentialSearchST，&lt;br&gt;使用有序链表来实现我们的有序符号表
         
       
     
@@ -56,10 +53,8 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;3.1.2 开发一个符号表的实现 ArrayST，使用（无序）数组来实现我们的基本 API。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;官方解答：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.2&lt;br&gt;开发一个符号表的实现 ArrayST，使用（无序）数组来实现我们的基本 API。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -83,11 +78,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;3.1.1 编写一段程序，创建一张符号表并建立字母成绩和数值分数的对应关系，如下表所示。从标准输入读取一系列字母成绩，计算并打印 GPA（字母成绩对应的分数的平均值）。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.1&lt;br&gt;编写一段程序，创建一张符号表并建立字母成绩和数值分数的对应关系，如下表所示。从标准输入读取一系列字母成绩，计算并打印
         
       
     
@@ -111,8 +102,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.33 随机交易。 开发一个接受参数 N 的生成器， 根据你能想到的任意假设条件生成 N 个随机的 Transaction 对象（请见练习 2.1.21 和 2.1.22）。 对于
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.33&lt;br&gt;随机交易。&lt;br&gt;开发一个接受参数 N 的生成器，&lt;br&gt;根据你能想到的任意假设条件生成 N 个随机的
         
       
     
@@ -136,8 +126,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.32 8 字谜题。 8 字谜题是 S.Loyd 于 19 世纪 70 年代发明的一个游戏。 游戏需要一个三乘三的九宫格，其中八格填上了 1 到 8 这 8 个数字，一格空着。 你的目标就是将所有的格子排序。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.32&lt;br&gt;8 字谜题。&lt;br&gt;8 字谜题是 S.Loyd 于 19 世纪 70
         
       
     
@@ -161,8 +150,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.31 重复元素。 编写一段程序，接受命令行参数 M、N 和 T，然后使用正文中的代码进行 T 遍实验： 生成 N 个 0 到 M-1 间的 int 值并计算重复值的个数。 令
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.31&lt;br&gt;重复元素。&lt;br&gt;编写一段程序，接受命令行参数 M、N 和 T，然后使用正文中的代码进行 T 遍实验：&lt;br&gt;生成 N
         
       
     
@@ -186,10 +174,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.30 Boerner 定理。 真假判断：如果你先将一个矩阵的每一列排序， 再将矩阵的每一行排序，所有的列仍然是有序的。 证明你的结论。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;不妨按照升序排序，$
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.30&lt;br&gt;Boerner
         
       
     
@@ -213,8 +198,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.29 按大小和最后修改日期将文件排序。 为 File 数据类型编写比较器， 使之能够将文件按照大小、文件名或最后修改日期将文件升序或者降序排列。 在程序 LS
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.29&lt;br&gt;按大小和最后修改日期将文件排序。&lt;br&gt;为 File
         
       
     
@@ -238,9 +222,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.28 按文件名排序。 编写一个 FileSorter 程序，从命令行接受一个目录名并打印出按照文件名排序后的所有文件。 提示：使用 File 数据类型。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.28&lt;br&gt;按文件名排序。&lt;br&gt;编写一个 FileSorter
         
       
     
@@ -264,8 +246,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.27 平行数组的排序。 在将平行数组排序时，可以将索引排序并返回一个 index[] 数组。 为 Insertion 添加一个 indirectSort 方法，接受一个 Comparable 的对象数组 a[] 作为参数，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.27&lt;br&gt;平行数组的排序。&lt;br&gt;在将平行数组排序时，可以将索引排序并返回一个 index[] 数组。&lt;br&gt;为
         
       
     
@@ -289,8 +270,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.26 简单多边形。 给定平面上的 N 个点，用它们画出一个多边形。 提示：找到 y 坐标最小的点 p，在有多个最小 y 坐标的点时取 x 坐标最小者， 然后将其他点按照以 p
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.26&lt;br&gt;简单多边形。&lt;br&gt;给定平面上的 N 个点，用它们画出一个多边形。&lt;br&gt;提示：找到 y 坐标最小的点
         
       
     
@@ -314,8 +294,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.25 平面上的点。 为表 1.2.3 的 Point2D 类型编写三个静态的比较器， 一个按照 x 坐标比较，一个按照 y 坐标比较，一个按照点到原点的距离进行比较。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.25&lt;br&gt;平面上的点。&lt;br&gt;为表 1.2.3 的 Point2D 类型编写三个静态的比较器，&lt;br&gt;一个按照 x
         
       
     
@@ -339,8 +318,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.24 稳定的优先队列。 实现一个稳定的优先队列（将重复的元素按照它们被插入的顺序返回）。&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.24&lt;br&gt;稳定的优先队列。&lt;br&gt;实现一个稳定的优先队列（将重复的元素按照它们被插入的顺序返回）。&lt;/p&gt;
 &lt;h1
         
       
@@ -365,10 +343,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.23 选择的取样：实验使用取样来改进 select() 函数的想法。 提示：使用中位数可能并不总是有效。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;这里我们使用 Floyd-Rivest
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.23&lt;br&gt;选择的取样：实验使用取样来改进 select()
         
       
     
@@ -392,8 +367,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.22 股票交易。 投资者堆一只股票的买卖交易都发布在电子交易市场中。 他们会指定最高买入价和最低卖出价，以及在该价位买卖的笔数。 编写一段程序，用优先队列来匹配买家和卖家并用模拟数据进行测试。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -417,9 +391,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.21 多维排序。 编写一个 Vector 数据类型并将 d 维整型向量排序。 排序方法是先按照一维数字排序，一维数字相同的向量则按照二维数字排序， 再相同的向量则按照三维数字排序，如此这般。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.21&lt;br&gt;多维排序。&lt;br&gt;编写一个 Vector 数据类型并将 d
         
       
     
@@ -443,9 +415,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.20 空闲时间。 假设有一台计算机能够并行处理 N 个任务。 编写一段程序并给定一系列任务的起始时间和结束时间， 找出这台机器最长的空闲时间和最长的繁忙时间。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.20&lt;br&gt;空闲时间。&lt;br&gt;假设有一台计算机能够并行处理 N
         
       
     
@@ -469,9 +439,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.19 Kendall tau 距离。 编写一段程序 KendallTau.java ， 在线性对数时间内计算两组排列之间的 Kendall tau 距离。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.19&lt;br&gt;Kendall tau 距离。&lt;br&gt;编写一段程序 KendallTau.java
         
       
     
@@ -495,9 +463,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.18 强制稳定。 编写一段能够将任意排序方法变得稳定的封装代码， 创建一种新的数据类型作为键，将键的原始索引保存在其中， 并在调用 sort() 之后再恢复原始的键。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -521,8 +487,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.17 检测稳定性。 扩展练习 2.1.16 中的 check() 方法，对指定数组调用 sort()， 如果排序结果是稳定的则返回 true，否则返回 false。 不要假设 sort() 只会使用 exch()
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.17&lt;br&gt;检测稳定性。&lt;br&gt;扩展练习 2.1.16 中的 check() 方法，对指定数组调用
         
       
     
@@ -546,8 +511,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.16 公正的选举。 为了避免对名字排在字母表靠后的候选人的偏见， 加州在 2003 年的州长选举中将所有候选人按照以下字母顺序排列： R W Q O J M V A H B S G Z X N T C I E K U P
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.16&lt;br&gt;公正的选举。&lt;br&gt;为了避免对名字排在字母表靠后的候选人的偏见，&lt;br&gt;加州在 2003
         
       
     
@@ -571,8 +535,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.15 垃圾邮件大战。 在非法垃圾邮件之战的伊始， 你有一大串来自各个域名（也就是电子邮件地址中@符号后面的部分）的电子邮件地址。 为了更好的伪造回信地址，你应该总是从相同的域中向目标用户发送邮件。 例如，从 &lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -596,8 +559,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.14 逆域名排序。 为域名编写一个数据类型 Domain 并为它实现一个 compareTo() 方法，使之能够按照逆向的域名排序。 例如，域名 cs.princeton.edu 的逆是 edu.princeton.cs。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.14&lt;br&gt;逆域名排序。&lt;br&gt;为域名编写一个数据类型 Domain 并为它实现一个 compareTo()
         
       
     
@@ -621,8 +583,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.13 负载均衡。 编写一段程序 LPT.java，接受一个整数 M 作为命令行参数， 从标准输入中读取任务的名称和所需的运行时间， 用 2.5.4.3 所述的最长处理时间优先原则打印出一份调度计划， 将所有任务分配给 M
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.13&lt;br&gt;负载均衡。&lt;br&gt;编写一段程序 LPT.java，接受一个整数 M
         
       
     
@@ -646,9 +607,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.12 调度。 编写一段程序 SPT.java，从标准输入中读取任务的名称和所需的运行时间， 用 2.5.4.3 节所述的最短处理时间优先的原则打印出一份调度计划，使得任务完成的平均时间最小。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.12&lt;br&gt;调度。&lt;br&gt;编写一段程序 SPT.java，从标准输入中读取任务的名称和所需的运行时间，&lt;br&gt;用 2.5.4.3
         
       
     
@@ -672,8 +631,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.11 描述排序结果的一种方法是创建一个保存 0 到 a.length - 1 的排列 p[]， 使得 p[i] 的值为 a[i] 元素的最终位置。 用这种方法描述插入排序、选择排序、希尔排序、归并排序、快速排序和堆排序
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.11&lt;br&gt;描述排序结果的一种方法是创建一个保存 0 到 a.length - 1 的排列 p[]，&lt;br&gt;使得 p[i] 的值为
         
       
     
@@ -697,8 +655,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.10 创建一个数据类型 Version 来表示软件的版本，例如 155.1.1、155.10.1、155.10.2。 为它实现 Comparable 接口，其中 115.1.1 的版本低于
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.10&lt;br&gt;创建一个数据类型 Version 来表示软件的版本，例如
         
       
     
@@ -722,10 +679,8 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.9 为将右侧所示的数据排序编写一个新的数据类型。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;右侧给出的是道琼斯指数，官方数据（右键另存为）：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.9&lt;br&gt;为将右侧所示的数据排序编写一个新的数据类型。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -749,9 +704,7 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.8 编写一段程序 Frequency， 从标准输入读取一列字符串并按照字符串出现频率由高到低的顺序打印出每个字符串及其出现次数。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.8&lt;br&gt;编写一段程序
         
       
     
@@ -775,10 +728,8 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.7 用 select() 找出 N 个元素中的最小值平均大约需要多少次比较？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;参考书中给出的快速排序性能分析方法（中文版 P186，英文版
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.7&lt;br&gt;用 select() 找出 N 个元素中的最小值平均大约需要多少次比较？&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -802,9 +753,8 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.6 用递归实现 select()。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.6&lt;br&gt;用递归实现 select()。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -828,12 +778,8 @@
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.5 说明为何选择排序是不稳定的？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;因为选择排序会交换&lt;strong&gt;不相邻&lt;/strong&gt;的元素。 例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;B1 B2 A
-A
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.5&lt;br&gt;说明为何选择排序是不稳定的？&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -857,9 +803,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.4 实现一个方法 String[] dedup(String[] a)， 返回一个有序的 a[]，并删去其中的重复元素。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.4&lt;br&gt;实现一个方法 String[] dedup(String[] a)，&lt;br&gt;返回一个有序的
         
       
     
@@ -883,9 +827,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.3 找出下面这段账户余额 Balance 类的实现代码的错误。 为什么 compareTo() 方法对 Comparable 接口的实现有缺陷？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.3&lt;br&gt;找出下面这段账户余额 Balance 类的实现代码的错误。&lt;br&gt;为什么 compareTo() 方法对
         
       
     
@@ -909,8 +851,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.2 编写一段程序，从标准输入读入一列单词并打印出其中所有由两个单词组成的组合词。 例如，如果输入的单词为 after、thought 和 afterthought，那么 afterthought
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.2&lt;br&gt;编写一段程序，从标准输入读入一列单词并打印出其中所有由两个单词组成的组合词。&lt;br&gt;例如，如果输入的单词为
         
       
     
@@ -934,9 +875,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.5.1 在下面这段 String 类型的 compareTo() 方法的实现中，第三行对提高运行效率有何帮助？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.5.1&lt;br&gt;在下面这段 String 类型的 compareTo() 方法的实现中，第三行对提高运行效率有何帮助？&lt;/p&gt;
+&lt;pre
         
       
     
@@ -960,8 +900,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.42 堆的前序表示。 用前序法而非级别表示一棵堆有序的树，并基于此实现堆排序。 对于 N=10&lt;sup&gt;3、10&lt;/sup&gt;6 和 10^9 大小的随机不重复数组，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.42&lt;br&gt;堆的前序表示。&lt;br&gt;用前序法而非级别表示一棵堆有序的树，并基于此实现堆排序。&lt;br&gt;对于 N=10^3、10^6 和
         
       
     
@@ -985,8 +924,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.41 Multiway 堆。 根据正文中的描述实现基于完全堆有序的三叉树和四叉树的堆排序。 对于 N=10&lt;sup&gt;3、10&lt;/sup&gt;6 和 10^9 大小的随机不重复数组，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.41&lt;br&gt;Multiway 堆。&lt;br&gt;根据正文中的描述实现基于完全堆有序的三叉树和四叉树的堆排序。&lt;br&gt;对于
         
       
     
@@ -1010,8 +948,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.40 Floyd 方法。 根据正文中 Floyd 的先沉后浮思想实现堆排序。 对于 N=10&lt;sup&gt;3、10&lt;/sup&gt;6 和 10^9 大小的随机不重复数组，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.40&lt;br&gt;Floyd 方法。&lt;br&gt;根据正文中 Floyd 的先沉后浮思想实现堆排序。&lt;br&gt;对于 N=10^3、10^6 和
         
       
     
@@ -1035,10 +972,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.39&lt;/p&gt;
-&lt;p&gt;构造函数的代价。 对于 N=10&lt;sup&gt;3、10&lt;/sup&gt;6 和 10^9，根据经验判断堆排序时构造堆所占总耗时的比例。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.39&lt;/p&gt;
+&lt;p&gt;构造函数的代价。&lt;br&gt;对于 N=10^3、10^6 和
         
       
     
@@ -1062,9 +997,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.38 练习测试。 编写一个练习用例，用算法 2.6 中实现的优先队列的接口方法处理实际应用中可能出现的高难度或是极端情况。 例如，元素已经有序、元素全部逆序、元素全部相同或是所有元素只有两个值。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.38&lt;br&gt;练习测试。&lt;br&gt;编写一个练习用例，用算法 2.6
         
       
     
@@ -1088,8 +1021,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.37 性能测试Ⅱ。 编写一个性能测试用例，用插入元素操作填满一个优先队列， 然后在一秒钟之内尽可能多地连续反复调用删除最大元素和插入元素的操作。 用一列随机的长短不同的元素多次重复以上过程，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -1113,8 +1045,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.36 性能测试Ⅰ。 编写一个性能测试用例，用插入元素操作填满一个优先队列， 然后用删除最大元素操作删去一半元素，再用插入元素操作填满优先队列， 再用删除最大元素操作删去所有元素。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -1138,8 +1069,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.35 离散概率分布的取样。 编写一个 Sample 类，其构造函数接受一个 double 类型的数组 p[] 作为参数并支持以下操作： random()——返回任意索引 i 及其概率 p[i]/T（T 是 p[]
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.35&lt;br&gt;离散概率分布的取样。&lt;br&gt;编写一个 Sample 类，其构造函数接受一个 double 类型的数组 p[]
         
       
     
@@ -1163,9 +1093,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.34 索引优先队列的实现（附加操作）。 向练习 2.4.33 的实现中添加 minIndex()、change() 和 delete() 方法。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.34&lt;br&gt;索引优先队列的实现（附加操作）。&lt;br&gt;向练习 2.4.33 的实现中添加 minIndex()、change() 和
         
       
     
@@ -1189,8 +1117,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.33 索引优先队列的实现。 按照 2.4.4.6 节的描述修改算法 2.6 来实现索引优先队列 API 中的基本操作： 使用 pq[] 保存索引，添加一个数组 keys[] 来保存元素， 再添加一个数组 qp[] 来保存
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.33&lt;br&gt;索引优先队列的实现。&lt;br&gt;按照 2.4.4.6 节的描述修改算法 2.6 来实现索引优先队列 API
         
       
     
@@ -1214,9 +1141,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.32 下界。 请证明，不存在一个基于比较的对 MinPQ 的 API 的实现 能够使得插入元素和删除最小元素的操作都保证只使用 ~NloglogN 次比较。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.32&lt;br&gt;下界。&lt;br&gt;请证明，不存在一个基于比较的对 MinPQ 的 API
         
       
     
@@ -1240,8 +1165,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.31 快速插入。 用基于比较的方式实现 MinPQ 的 API， 使得插入元素需要 ~loglogN 次比较，删除最小元素需要 ~2logN 次比较。 提示：在 swim()
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.31&lt;br&gt;快速插入。&lt;br&gt;用基于比较的方式实现 MinPQ 的 API，&lt;br&gt;使得插入元素需要 ~loglogN
         
       
     
@@ -1265,9 +1189,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.30 动态中位数查找。 设计一个数据类型，支持在对数时间内插入元素， 常数时间内找到中位数并在对数时间内删除中位数。 提示：用一个面向最大元素的堆再用一个面向最小元素的堆。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -1291,8 +1213,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.29 同时面向最大和最小元素的优先队列。 设计一个数据类型，支持如下操作： 插入元素、删除最大元素、删除最小元素（所需时间均为对数级别）， 以及找到最大元素、找到最小元素（所需时间均为常数级别）。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -1316,8 +1237,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.28 选择过滤。 编写一个 TopM 的用例，从标准输入读入坐标 (x, y, z)， 从命令行得到值 M，然后打印出距离原点的欧几里得距离最小的 M 个点。 在 N=10^8 且 M=10^4
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.28&lt;br&gt;选择过滤。&lt;br&gt;编写一个 TopM 的用例，从标准输入读入坐标 (x, y, z)，&lt;br&gt;从命令行得到值
         
       
     
@@ -1341,10 +1261,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.27 找出最小元素。 在 MaxPQ 中加入一个 min() 方法。 你的实现所需的时间和空间都应该是常数。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;官网有解答，只要在 MaxPQ
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.27&lt;br&gt;找出最小元素。&lt;br&gt;在 MaxPQ 中加入一个 min()
         
       
     
@@ -1368,9 +1285,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.26 无需交换的堆。 因为 sink() 和 swim() 中都用到了初级函数 exch()，所以所有元素都被多加载并存储了一次。 回避这种低效的方式，用插入排序给出新的实现（请见练习 2.1.25）。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.26&lt;br&gt;无需交换的堆。&lt;br&gt;因为 sink() 和 swim() 中都用到了初级函数
         
       
     
@@ -1394,8 +1309,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.25 计算数论。 编写程序 CubeSum.java，在不使用额外空间的条件下， 按大小顺序打印所有 a&lt;sup&gt;3+b&lt;/sup&gt;3 的结果，其中 a 和 b 为 0 至 N 之间所有的整数。 也就是说，不要全部计算
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.25&lt;br&gt;计算数论。&lt;br&gt;编写程序 CubeSum.java，在不使用额外空间的条件下，&lt;br&gt;按大小顺序打印所有
         
       
     
@@ -1419,8 +1333,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.24 使用链接的优先队列。 用堆排序的二叉树实现一个优先队列，但使用链表结构代替数组。 每个结点都需要三个链接：两个向下，一个向上。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -1444,8 +1357,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.23 Multiway 的堆。 只考虑比较的成本且假设找到 t 个元素中的最大者需要 t 次比较， 在堆排序中使用 t 向堆的情况下找出使比较次数 NlogN 的系数最小的 t 值。 首先，假设使用的是一个简单通用的
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.23&lt;br&gt;Multiway 的堆。&lt;br&gt;只考虑比较的成本且假设找到 t 个元素中的最大者需要 t
         
       
     
@@ -1469,9 +1381,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.22 调整数组大小。 在 MaxPQ 中加入调整数组大小的代码， 并和命题 Q 一样证明对于一般性长度为 N 的队列其数组访问的上限。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.22&lt;br&gt;调整数组大小。&lt;br&gt;在 MaxPQ 中加入调整数组大小的代码，&lt;br&gt;并和命题 Q 一样证明对于一般性长度为 N
         
       
     
@@ -1495,8 +1405,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.21 基础数据结构。 说明如何使用优先队列实现第一章中的栈、队列和随机队列这几种数据结构。&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.21&lt;br&gt;基础数据结构。&lt;br&gt;说明如何使用优先队列实现第一章中的栈、队列和随机队列这几种数据结构。&lt;/p&gt;
 &lt;h1
         
       
@@ -1521,9 +1430,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.20 证明：基于下沉的堆构造方法使用的比较次数小于 2N，交换次数小于 N。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.20&lt;br&gt;证明：基于下沉的堆构造方法使用的比较次数小于 2N，交换次数小于 N。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -1547,9 +1455,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.19 实现 MaxPQ 的一个构造函数，接受一个数组作为参数。 使用正文 2.4.5.1 节中所述的自底向上的方法构造堆。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.19&lt;br&gt;实现 MaxPQ 的一个构造函数，接受一个数组作为参数。&lt;br&gt;使用正文 2.4.5.1
         
       
     
@@ -1573,8 +1479,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.18 在 MaxPQ 中，如果一个用例使用 insert() 插入了一个比队列中的所有元素都大的新元素，随后立即调用 delMax()。 假设没有重复元素，此时的堆和进行这些操作之前的堆完全相同吗？ 进行两次
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.18&lt;br&gt;在 MaxPQ 中，如果一个用例使用 insert() 插入了一个比队列中的所有元素都大的新元素，随后立即调用
         
       
     
@@ -1598,9 +1503,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.17 证明：构造大小为 k 的面向对象最小元素的优先队列， 然后进行 N-k 次替换最小元素操作（删除最小元素后再插入元素）后， N 个元素中的前 k 大元素均会留在优先队列中。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.17&lt;br&gt;证明：构造大小为 k 的面向对象最小元素的优先队列，&lt;br&gt;然后进行 N-k
         
       
     
@@ -1624,9 +1527,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.16 对于 N=32，构造数组使得堆排序使用的比较次数最多以及最少。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.16&lt;br&gt;对于 N=32，构造数组使得堆排序使用的比较次数最多以及最少。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -1650,10 +1552,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.15 设计一个程序，在线性时间内检测数组 pq[] 是否是一个面向最小元素的堆。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;MinPQ
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.15&lt;br&gt;设计一个程序，在线性时间内检测数组 pq[] 是否是一个面向最小元素的堆。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -1677,9 +1577,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.14 对于没有重复元素的大小为 N 的堆，一次删除最大元素的操作中最少要交换几个元素？ 构造一个能够达到这个交换次数的大小为 15 的堆。 连续两次删除最大元素呢？三次呢？&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.14&lt;br&gt;对于没有重复元素的大小为 N
         
       
     
@@ -1703,10 +1601,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.13 想办法在 sink() 中避免检查 j&amp;lt;N。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;在官方实现的基础上直接删除 &lt;code&gt;j&amp;lt;N&lt;/code&gt; 语句，随后在
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.13&lt;br&gt;想办法在 sink() 中避免检查 j&amp;lt;N。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -1730,9 +1626,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.12 如果你的应用场景中大量的找出最大元素的操作，但插入元素和删除最大元素操作相对较少， 哪种优先队列的实现方法更有效：堆、无序数组、有序数组？&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -1756,9 +1650,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.11 如果你的应用中有大量插入元素的操作，但只有若干删除最大元素的操作， 哪种优先队列的实现方法更有效：堆、无序数组、有序数组？&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -1782,9 +1674,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.10 假设我们不想浪费堆排序的数组 pq[] 中的那个位置， 将最大元素放在 pq[0]，它的子结点放在 pq[1] 和 pq[2]，以此类推。 pq[k] 的父结点和子结点在哪里？&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.10&lt;br&gt;假设我们不想浪费堆排序的数组 pq[] 中的那个位置，&lt;br&gt;将最大元素放在 pq[0]，它的子结点放在 pq[1]
         
       
     
@@ -1808,10 +1698,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.9 给出 A B C D E 五个元素可能构造出来的所有堆， 然后给出 A A A B B 这五个元素可能构造出来的所有堆。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;首先 A B C D E
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.9&lt;br&gt;给出 A B C D E 五个元素可能构造出来的所有堆，&lt;br&gt;然后给出 A A A B B
         
       
     
@@ -1835,10 +1722,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.8 回答上一道练习中第 k 小元素的可能和不可能的位置。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;不难看出第 k 大元素只可能出现在深度＜k 的位置（$ k 2$） 即位置小于 $ 2^k - 1, (k
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.8&lt;br&gt;回答上一道练习中第 k 小元素的可能和不可能的位置。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -1862,8 +1747,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.7 在堆中，最大的元素一定在位置 1 上，第二大的元素一定在位置 2 或者 3 上。 对于一个大小为 31 的堆， 给出第 k 大的元素可能出现的位置和不可能出现的位置， 其中
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.7&lt;br&gt;在堆中，最大的元素一定在位置 1 上，第二大的元素一定在位置 2 或者 3 上。&lt;br&gt;对于一个大小为 31
         
       
     
@@ -1887,8 +1771,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.6 按照练习 2.4.1 的规则， 用序列 &lt;code&gt;P R I O * R * * I * T * Y * * * Q U E * * * U * E&lt;/code&gt; 操作一个初始空间为空的面向最大元素的堆，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.6&lt;br&gt;按照练习 2.4.1 的规则，&lt;br&gt;用序列 &lt;code&gt;P R I O * R * * I * T * Y * * *
         
       
     
@@ -1912,10 +1795,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.5 将 E A S Y Q U E S T I O N 顺序插入一个面向最大元素的堆中，给出结果。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.5&lt;br&gt;将 E A S Y Q U E S T I O N 顺序插入一个面向最大元素的堆中，给出结果。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -1939,10 +1820,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.4 一个按降序排列的数组也是一个面向最大元素的堆吗？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;是的。 例如这个数组：9 8 7 6 5，画成二叉堆如下： &lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.4&lt;br&gt;一个按降序排列的数组也是一个面向最大元素的堆吗？&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -1966,9 +1845,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.3 用以下数据结构实现优先队列，支持插入元素和删除最大元素操作： 无序数组、有序数组、无序链表和链表。 将你的 4 种实现中每种操作在最坏情况下的运行时间上下限制成一张表格。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.3&lt;br&gt;用以下数据结构实现优先队列，支持插入元素和删除最大元素操作：&lt;br&gt;无序数组、有序数组、无序链表和链表。&lt;br&gt;将你的
         
       
     
@@ -1992,9 +1869,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.2 分析以下说法： 要实现在常数时间找到最大元素， 为何不用一个栈或者队列， 然后记录已插入的最大元素并在找出最大元素时返回它的值。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -2018,8 +1893,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.4.1 用序列 P R I O * R * * I * T * Y * * * Q U E * * * U * E （字母表示插入元素，星号表示删除最大元素） 操作一个初始为空的优先队列。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.4.1&lt;br&gt;用序列 P R I O &lt;em&gt; R &lt;/em&gt; &lt;em&gt; I &lt;/em&gt; T &lt;em&gt; Y &lt;/em&gt; &lt;em&gt;
         
       
     
@@ -2043,8 +1917,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.31 运行时间直方图。 编写一个程序，接受命令行参数 N 和 T， 用快速排序对大小为 N 的随机浮点数数组进行 T 次排序， 并将所有运行时间绘制成直方图。 令 N=10&lt;sup&gt;3、10&lt;/sup&gt;4、10^5 和
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.31&lt;br&gt;运行时间直方图。&lt;br&gt;编写一个程序，接受命令行参数 N 和 T，&lt;br&gt;用快速排序对大小为 N 的随机浮点数数组进行
         
       
     
@@ -2068,9 +1941,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.30 极端情况。 用初始随机化和非初始随机化的快速排序测试练习 2.1.35 和练习 2.1.36 中描述的大型非随机数组。 在将这些大数组排序时，乱序对快速排序的性能有何影响？&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.30&lt;br&gt;极端情况。&lt;br&gt;用初始随机化和非初始随机化的快速排序测试练习 2.1.35 和练习 2.1.36
         
       
     
@@ -2094,8 +1965,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.29 随机化。 用经验性的研究对比随机选择切分元素和正文所述的一开始就将数组随机化这两种策略的效果。 在子数组大小为 M 时进行切换， 将大小为 N 的不重复数组排序，其中 M=10、20 和
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -2119,8 +1989,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.28 递归深度。 用经验性的研究估计切换阈值为 M 的快速排序在将大小为 N 的不重复数组排序时的平均递归深度， 其中 M=10、20 和 50，N=10&lt;sup&gt;3、10&lt;/sup&gt;4、10^5 和
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.28&lt;br&gt;递归深度。&lt;br&gt;用经验性的研究估计切换阈值为 M 的快速排序在将大小为 N
         
       
     
@@ -2144,8 +2013,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.27 忽略小数组。 用实验对比以下处理小数组的方法和练习 2.3.25 的处理方法的效果： 在快速排序中直接忽略小数组，仅在快速排序结束后运行一次插入排序。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.27&lt;br&gt;忽略小数组。&lt;br&gt;用实验对比以下处理小数组的方法和练习 2.3.25
         
       
     
@@ -2169,8 +2037,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.26 子数组的大小。 编写一个程序，在快速排序处理大小为 N 的数组的过程中， 当子数组的大小小于 M 时，排序方法需要切换为插入排序。 将子数组的大小绘制成直方图。 用 N=10^5，M=10、20 和 50
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.26&lt;br&gt;子数组的大小。&lt;br&gt;编写一个程序，在快速排序处理大小为 N 的数组的过程中，&lt;br&gt;当子数组的大小小于 M
         
       
     
@@ -2194,8 +2061,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.25 切换到插入排序。 实现一个快速排序，在子数组元素少于 M 时切换到插入排序。 用快速排序处理大小 N 分别为 10&lt;sup&gt;3、10&lt;/sup&gt;4、10^5 和 10^6 的随机数组，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.25&lt;br&gt;切换到插入排序。&lt;br&gt;实现一个快速排序，在子数组元素少于 M 时切换到插入排序。&lt;br&gt;用快速排序处理大小 N
         
       
     
@@ -2219,8 +2085,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.24 取样排序。（W.Frazer，A.McKellar） 实现一个快速排序，取样大小为 2^k-1。 首先将取样得到的元素排序，然后在递归函数中使用样品的中位数切分。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.24&lt;br&gt;取样排序。（W.Frazer，A.McKellar）&lt;br&gt;实现一个快速排序，取样大小为
         
       
     
@@ -2244,8 +2109,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;Java 的排序库函数。 在练习 2.3.22 的代码中使用 Tukey&#39;s ninther 方法来找出切分元素——选择三组， 每组三个元素，分别取三组元素的中位数，然后取三个中位数的中位数作为切分元素，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;Java 的排序库函数。&lt;br&gt;在练习 2.3.22 的代码中使用 Tukey’s ninther
         
       
     
@@ -2269,8 +2133,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.22 快速三向切分。（J.Bently，D.McIlroy） 用将重复元素放置于子数组两端的方式实现一个信息量最优的排序算法。 使用两个索引 p 和 q，使得 a[lo...p-1] 和 a[q+1..hi] 的元素都和
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -2294,8 +2157,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.21 将重复元素排序的比较次数的下界。 完成命题 M 的证明的第一部分。 参考命题 I 的证明并注意当有 $ k $ 个主键值时所有元素存在 $ N!/f_1!f_2!...f_k!$ 种不同的排列， 其中第 $ i $
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.21&lt;br&gt;将重复元素排序的比较次数的下界。&lt;br&gt;完成命题 M 的证明的第一部分。&lt;br&gt;参考命题 I 的证明并注意当有 $ k
         
       
     
@@ -2319,9 +2181,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.20 非递归的快速排序。 实现一个非递归的快速排序，使用一个循环来将弹出栈的子数组切分并将结果子数组重新压入栈。 注意：先将较大的子数组压入栈，这样就可以保证栈最多只会有 lgN 个元素。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -2345,8 +2205,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.19 五取样切分。 实现一种基于随机抽取子数组中 5 个元素并取中位数进行切分的快速排序。 将取样元素放在数组的一侧以保证只有中位数元素参与了切分。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.19&lt;br&gt;五取样切分。&lt;br&gt;实现一种基于随机抽取子数组中 5
         
       
     
@@ -2370,9 +2229,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.18 三取样切分。 为快速排序实现正文所述的三取样切分（参见 2.3.3.2 节）。运行双倍测试来确认这项改动的效果。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.18&lt;br&gt;三取样切分。&lt;br&gt;为快速排序实现正文所述的三取样切分（参见 2.3.3.2
         
       
     
@@ -2396,9 +2253,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.17&lt;/p&gt;
-&lt;p&gt;哨兵。 修改算法 2.5，去掉内循环 while 中的边界检查。 由于切分元素本身就是一个哨兵（v 不可能小于 a[lo]），左侧边界检查是多余的。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.17&lt;/p&gt;
+&lt;p&gt;哨兵。&lt;br&gt;修改算法 2.5，去掉内循环 while 中的边界检查。&lt;br&gt;由于切分元素本身就是一个哨兵（v
         
       
     
@@ -2422,8 +2278,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.16 最佳情况。 编写一段程序来生成使算法 2.5 中的 sort() 方法表现最佳的数组（无重复元素）： 数组大小为 N 且不包含重复元素，每次切分后两个子数组的大小最多差 1 （子数组的大小与含有 N
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.16&lt;br&gt;最佳情况。&lt;br&gt;编写一段程序来生成使算法 2.5 中的 sort()
         
       
     
@@ -2447,8 +2302,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.15 螺丝和螺帽。（G.J.E.Rawlins） 假设有 N 个螺丝和 N 个螺帽混在一堆，你需要快速将它们配对。 一个螺丝只会匹配一个螺帽，一个螺帽也只会匹配一个螺丝。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.15&lt;br&gt;螺丝和螺帽。（G.J.E.Rawlins）&lt;br&gt;假设有 N 个螺丝和 N
         
       
     
@@ -2472,9 +2326,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.14 证明在用快速排序处理大小为 N 的不重复数组时， 比较第 i 大和第 j 大元素的概率为 2/(j - i + 1)，并用该结论证明命题 K。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.14&lt;br&gt;证明在用快速排序处理大小为 N 的不重复数组时，&lt;br&gt;比较第 i 大和第 j 大元素的概率为 2/(j - i +
         
       
     
@@ -2498,9 +2350,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.13 在最佳、平均和最坏情况下，快速排序的递归深度分别是多少？ 这决定了系统为了追踪递归调用所需的栈的大小。 在最坏情况下保证递归深度为数组大小的对数级的方法请见练习 2.3.20。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -2524,10 +2374,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.12 按照代码所示轨迹的格式给出信息量最佳的快速排序第一次是如何切分 数组 B A B A B A B A C A D A B R A 的。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.12&lt;br&gt;按照代码所示轨迹的格式给出信息量最佳的快速排序第一次是如何切分&lt;br&gt;数组 B A B A B A B A C A D
         
       
     
@@ -2551,9 +2398,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.11 假如在遇到和切分元素重复的元素时我们继续扫描数组而不是停下来， 证明使用这种方法的快速排序在处理只有若干种元素值的数组时运行时间是平方级别的。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -2577,8 +2422,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.10 Chebyshev 不等式表明，一个随机变量的标准差距离均值大于 k 的概率小于 1/k^2 。 对于 N=100 万，用 Chebyshev 不等式计算快速排序所使用的比较次数大于 1000
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.10&lt;br&gt;Chebyshev 不等式表明，一个随机变量的标准差距离均值大于 k 的概率小于 1/k^2 。&lt;br&gt;对于
         
       
     
@@ -2602,10 +2446,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.9 请说明 Quick.sort() 在处理只有两种主键值时的行为，以及在处理只有三种主键值的数组时的行为。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;切分时，枢轴左侧都是小于（或等于）枢轴的，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.9&lt;br&gt;请说明 Quick.sort() 在处理只有两种主键值时的行为，以及在处理只有三种主键值的数组时的行为。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -2629,10 +2471,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.8 Quick.sort() 在处理 N 个全部重复的元素时大约需要多少次比较？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;每次切分都会把数组平分，共切分 logN 次（二分法），每次切分比较 N 次（i
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.8&lt;br&gt;Quick.sort() 在处理 N 个全部重复的元素时大约需要多少次比较？ &lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -2656,9 +2496,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.7 在使用快速排序将 N 个不重复的元素排序时， 计算大小为 0、1 和 2 的子数组的数量。如果你喜欢数学，请推导； 如果你不喜欢，请做一些实验并提出猜想。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.7&lt;br&gt;在使用快速排序将 N 个不重复的元素排序时，&lt;br&gt;计算大小为 0、1 和 2
         
       
     
@@ -2682,9 +2520,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.6 编写一段代码来计算 $ C_N $ 的准确值， 在 $ N=100、1000 $ 和 $10 000 $ 的情况下比较准确值和估计值 $ 2NlnN $ 的差距。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.6&lt;br&gt;编写一段代码来计算 $ C_N $ 的准确值，&lt;br&gt;在 $ N=100、1000 $ 和  $10 000 $
         
       
     
@@ -2708,9 +2544,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.5 给出一段代码将已知只有两种主键值的数组排序。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.5&lt;br&gt;给出一段代码将已知只有两种主键值的数组排序。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -2734,9 +2569,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.4 假如跳过开头打乱数组的操作， 给出六个含有 10 个元素的数组， 使得 Quick.sort() 所需的比较次数达到最坏情况。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.4&lt;br&gt;假如跳过开头打乱数组的操作，&lt;br&gt;给出六个含有 10 个元素的数组，&lt;br&gt;使得 Quick.sort()
         
       
     
@@ -2760,10 +2593,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.3 对于长度为 N 的数组，在 Quick.sort() 执行时，其最大元素最多会被交换多少次？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;N / 2 在快速排序中，一个元素要被交换，有以下两种情况
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.3&lt;br&gt;对于长度为 N 的数组，在 Quick.sort() 执行时，其最大元素最多会被交换多少次？&lt;/p&gt;
+&lt;h1
         
       
     
@@ -2787,9 +2618,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.2 按照本节中快速排序所示轨迹的格式给出快速排序是如何将数组 E A S Y Q U E S T I O N 排序的（出于练习的目的，可以忽略开头打乱数组的部分）。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.2&lt;br&gt;按照本节中快速排序所示轨迹的格式给出快速排序是如何将数组 E A S Y Q U E S T I O N
         
       
     
@@ -2813,10 +2642,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.3.1 按照 Partition() 方法的轨迹的格式给出该方法是如何切分数组 E A S Y Q U E S T I O N的。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.3.1&lt;br&gt;按照 Partition() 方法的轨迹的格式给出该方法是如何切分数组 E A S Y Q U E S T I O
         
       
     
@@ -2840,8 +2666,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.29 自然的归并排序。 对于 N=10&lt;sup&gt;3、10&lt;/sup&gt;6 和 10^9，类型为 Long 的随机主键数组，根据经验给出自然的归并排序（请见练习 2.2.16）所需要的遍数。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.29&lt;br&gt;自然的归并排序。&lt;br&gt;对于 N=10^3、10^6 和 10^9，类型为 Long
         
       
     
@@ -2865,9 +2690,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.28 自顶向下和自底向上。 对于 N=10&lt;sup&gt;3、10&lt;/sup&gt;4、10^5 和 10^6， 使用 SortCompare 比较自顶向下和自底向上的归并排序的性能。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.28&lt;br&gt;自顶向下和自底向上。&lt;br&gt;对于 N=10^3、10^4、10^5 和 10^6，&lt;br&gt;使用 SortCompare
         
       
     
@@ -2891,9 +2714,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.27 子数组长度。 用归并将大型随机数组排序， 根据经验用 N （某次归并时两个子数组的长度之和）的函数估计当一个子数组用尽时另一个子数组的平均长度。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.27&lt;br&gt;子数组长度。&lt;br&gt;用归并将大型随机数组排序，&lt;br&gt;根据经验用 N
         
       
     
@@ -2917,9 +2738,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.26 创建数组。 使用 SortCompare 粗略比较在你的计算机上在 merge() 中和在 sort() 中创建 aux[] 的性能差异。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.26&lt;br&gt;创建数组。&lt;br&gt;使用 SortCompare 粗略比较在你的计算机上在 merge() 中和在 sort() 中创建
         
       
     
@@ -2943,10 +2762,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.25 多向归并排序。 实现一个 k 向（相对双向而言）归并排序程序。 分析你的算法，估计最佳的 k 值并通过实验验证猜想。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;事实上 k
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.25&lt;br&gt;多向归并排序。&lt;br&gt;实现一个 k 向（相对双向而言）归并排序程序。 分析你的算法，估计最佳的 k
         
       
     
@@ -2970,8 +2786,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.24 改进的有序测试。 在实验中用大型随机数组评估练习 2.2.8 所做的修改的效果。 根据经验用 N（被排序的原始数组的大小）的函数描述条件语句 （&lt;code&gt;a[mid] &amp;lt;= a[mid +
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.24&lt;br&gt;改进的有序测试。&lt;br&gt;在实验中用大型随机数组评估练习 2.2.8 所做的修改的效果。&lt;br&gt;根据经验用
         
       
     
@@ -2995,8 +2810,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.23 改进。 用实验评估正文中所提到的归并排序的三项改进（请见练习 2.2.11）的效果， 并比较正文中实现的归并排序和练习 2.2.10 所实现的归并排序之间的性能。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.23&lt;br&gt;改进。&lt;br&gt;用实验评估正文中所提到的归并排序的三项改进（请见练习
         
       
     
@@ -3020,10 +2834,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.22 三向归并排序。 假设每次我们是把数组分成三个部分而不是两个部分并将它们分别排序。 然后进行三向归并。 这种算法的运行时间的增长数量级是多少。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.22&lt;br&gt;三向归并排序。&lt;br&gt;假设每次我们是把数组分成三个部分而不是两个部分并将它们分别排序。&lt;br&gt;然后进行三向归并。
         
       
     
@@ -3047,9 +2858,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.21 一式三份。 给定三个列表， 每个列表中包含 N 个名字， 编写一个线性对数级别的算法来判定三分列表中是否含有公共的名字， 如果有，返回第一个被找到的这种名字。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.21&lt;br&gt;一式三份。&lt;br&gt;给定三个列表，&lt;br&gt;每个列表中包含 N
         
       
     
@@ -3073,9 +2882,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.20 间接排序。 编写一个不改变数组的归并排序， 它返回一个 int[] 数组 perm，其中 perm[i] 的值是原数组中第 i 小的元素的位置。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.20&lt;br&gt;间接排序。&lt;br&gt;编写一个不改变数组的归并排序，&lt;br&gt;它返回一个 int[] 数组 perm，其中 perm[i]
         
       
     
@@ -3099,9 +2906,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.19 倒置。 编写一个线性对数级别的算法统计给定数组中“倒置”数量 （即插入排序所需的交换次数，请见 2.1 节）。 这个数量和 Kendall tau 距离有关，请见 2.5 节。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.19&lt;br&gt;倒置。&lt;br&gt;编写一个线性对数级别的算法统计给定数组中“倒置”数量&lt;br&gt;（即插入排序所需的交换次数，请见 2.1
         
       
     
@@ -3125,10 +2930,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.18 打乱链表。 实现一个分治算法， 使用线性对数级别的时间和对数级别的额外空间随机打乱一条链表。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;可以在用归并排序的方法做。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -3152,10 +2954,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.17 链表排序。 实现对链表的自然排序 （这是将链表排序的最好方法， 因为它不需要额外的空间且运行时间是线性对数级别的）。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;排序方式和 2.2.16
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -3179,8 +2978,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.16 自然的归并排序。 编写一个自底向上的归并排序， 当需要将两个子数组排序时能够利用数组中已经有序的部分。 首先找到一个有序的子数组 （移动指针直到当前元素比上一个元素小为止）， 然后再找出另一个并将它们归并。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -3204,8 +3002,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.15 自底向上的有序队列归并排序。 用下面的方法编写一个自底向上的归并排序： 给定 N 个元素，创建 N 个队列，每个队列包含其中一个元素。 创建一个由这 N 个队列组成的队列， 然后不断用练习 2.2.14
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.15&lt;br&gt;自底向上的有序队列归并排序。&lt;br&gt;用下面的方法编写一个自底向上的归并排序：&lt;br&gt;给定 N 个元素，创建 N
         
       
     
@@ -3229,8 +3026,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.14 归并有序的队列。 编写一个静态方法，将两个有序的队列作为参数，返回一个归并后的有序队列。&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.14&lt;br&gt;归并有序的队列。&lt;br&gt;编写一个静态方法，将两个有序的队列作为参数，返回一个归并后的有序队列。&lt;/p&gt;
 &lt;h1
         
       
@@ -3255,8 +3051,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.13 平均情况的下限。 请证明任意基于比较的排序算法的预期比较次数至少为 ~NlogN （假设输入元素的所有排列的出现概率是均等的）。 提示： 比较次数至少是比较树的外部路径的长度 （根结点到叶子结点的路径长度之和），
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.13&lt;br&gt;平均情况的下限。&lt;br&gt;请证明任意基于比较的排序算法的预期比较次数至少为
         
       
     
@@ -3280,8 +3075,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.12 次线性的额外空间。 用大小 M 的数组分为 N/M 块（简单起见，设 M 是 N 的约数）。 实现一个归并方法，使之所需的额外空间减少到 max(M, N/M)：
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.12&lt;br&gt;次线性的额外空间。&lt;br&gt;用大小 M 的数组分为 N/M 块（简单起见，设 M 是 N
         
       
     
@@ -3305,10 +3099,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.11 改进。 实现 2.2.2 节所述的对归并排序的三项改进： 加快小数组的排序速度， 检测数组是否已经有序以及通过在递归中交换参数来避免复制。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;官方实现见：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.11&lt;br&gt;改进。&lt;br&gt;实现 2.2.2
         
       
     
@@ -3332,8 +3123,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.10 快速归并。 实现一个 merge() 方法， 按降序将 a[] 的后半部分复制到 aux[]， 然后将其归并回 a[] 中。 这样就可以去掉内循环中检测某半边是否用尽的代码。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.10&lt;br&gt;快速归并。&lt;br&gt;实现一个 merge() 方法，&lt;br&gt;按降序将 a[] 的后半部分复制到 aux[]，
         
       
     
@@ -3357,8 +3147,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.9 在库函数中使用 aux[] 这样的静态数组时不妥当的， 因为可能会有多个程序同时使用这个类。 实现一个不用静态数组的 Merge 类， 但也不要将 aux[] 变为 merge() 的局部变量（请见本书的答疑部分）。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.9&lt;br&gt;在库函数中使用 aux[]
         
       
     
@@ -3382,9 +3171,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.8 假设将算法 2.4 修改为： 只要 a[mid] &amp;lt;= a[mid+1] 就不调用 merge() 方法， 请证明用归并排序处理一个已经有序的数组所需的比较次数是线性级别的。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.8&lt;br&gt;假设将算法 2.4 修改为： 只要 a[mid] &amp;lt;= a[mid+1] 就不调用 merge()
         
       
     
@@ -3408,10 +3195,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.7 证明归并排序的比较次数是单调递增的（即对于 N&amp;gt;0，C(N+1)&amp;gt;C(N)）。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;根据书本给出的命题 G 和命题 H（中文版 P173/176，英文版
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.7&lt;br&gt;证明归并排序的比较次数是单调递增的（即对于 N&amp;gt;0，C(N+1)&amp;gt;C(N)）。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -3435,9 +3220,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.6 编写一个程序来计算自顶向下和自底向上的归并排序访问数组的准确次数。 使用这个程序将 N=1 至 512 的结果绘成曲线图，并将其和上限 6NlgN 相比较。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.6&lt;br&gt;编写一个程序来计算自顶向下和自底向上的归并排序访问数组的准确次数。&lt;br&gt;使用这个程序将 N=1 至 512
         
       
     
@@ -3461,11 +3244,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.5 当输入数组的大小 N=39 时， 给出自顶向下和自底向上的归并排序中各次归并子数组的大小及顺序。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;每次归并子数组的大小和顺序如下：&lt;/p&gt;
-&lt;p&gt;自顶向下
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.5&lt;br&gt;当输入数组的大小 N=39 时，&lt;br&gt;给出自顶向下和自底向上的归并排序中各次归并子数组的大小及顺序。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -3489,9 +3269,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.4 是否当且仅当两个输入的子数组都有序时原地归并的抽象方法才能得到正确的结果？ 证明你的结论，或者给出一个反例。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -3515,10 +3293,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.3 用自底向上的归并排序解答练习 2.2.2&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.3&lt;br&gt;用自底向上的归并排序解答练习 2.2.2&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -3542,10 +3318,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.2 按照算法 2.4 所示轨迹的格式给出自顶向下的归并排序是如何将数组 E A S Y Q U E S T I O N 排序的。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.2&lt;br&gt;按照算法 2.4 所示轨迹的格式给出自顶向下的归并排序是如何将数组 E A S Y Q U E S T I O N
         
       
     
@@ -3569,10 +3342,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.2.1 按照本书开头所示轨迹的格式给出原地归并排序的抽象 merge() 方法是如何将数组 A E Q S U Y E I N O S T 排序的。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.2.1&lt;br&gt;按照本书开头所示轨迹的格式给出原地归并排序的抽象 merge() 方法是如何将数组 A E Q S U Y E I N
         
       
     
@@ -3596,9 +3366,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.38 不同类型的元素。编写一个测试用例，生成由多种数据类型元素组成的数组，元素的主键值随机，包括：&lt;/p&gt;
-&lt;p&gt;每个元素的主键均为 String 类型（至少长 10 个字符），并含有一个 double 值。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.38&lt;br&gt;不同类型的元素。编写一个测试用例，生成由多种数据类型元素组成的数组，元素的主键值随机，包括：
         
       
     
@@ -3622,9 +3390,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.37 部分有序。编写一个测试用例，生成部分有序数组，包括：&lt;/p&gt;
-&lt;p&gt;95% 有序，其余部分为随机值。 所有元素和它们的正确位置的距离都不超过 10。 5%
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.37&lt;br&gt;部分有序。编写一个测试用例，生成部分有序数组，包括： &lt;/p&gt;
+&lt;p&gt;95%
         
       
     
@@ -3648,9 +3415,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.36 不均匀的数据。编写一个测试用例，生成不均匀的测试数据，包括：&lt;/p&gt;
-&lt;p&gt;一半数据是 0，一半数据是 1 一半数据是 0，1/4 是 1，1/4 是 2，以此类推 一半数据是 0，一半是随机 int
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.36&lt;br&gt;不均匀的数据。编写一个测试用例，生成不均匀的测试数据，包括： &lt;/p&gt;
+&lt;p&gt;一半数据是 0，一半数据是
         
       
     
@@ -3674,9 +3440,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.35 不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括：&lt;/p&gt;
-&lt;p&gt;高斯分布 泊松分布 几何分布 离散分布（一种特殊情况见练习
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.35&lt;br&gt;不均匀的概率分布。编写一个测试用例，使用非均匀分布的概率来生成随机排列的数据，包括：
         
       
     
@@ -3700,8 +3464,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.34 罕见情况。 编写一个测试用例， 调用 sort() 方法对实际应用中可能出现困难或极端情况的数组进行排序。 比如，数组可能已经是有序的，或是逆序的， 数组中的所有主键相同，数组的主键只有两种值，大小是 0 或
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.34&lt;br&gt;罕见情况。&lt;br&gt;编写一个测试用例，&lt;br&gt;调用 sort()
         
       
     
@@ -3725,8 +3488,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.33 分布图。 对于你为练习 2.1.33 给出的测试用例， 在一个无穷循环中调用 sort() 方法将由第三个命令行参数指定大小的数组排序， 记录每次排序的用时并使用 StdDraw 在图上画出所有平均运行时间，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.33&lt;br&gt;分布图。&lt;br&gt;对于你为练习 2.1.33 给出的测试用例，&lt;br&gt;在一个无穷循环中调用 sort()
         
       
     
@@ -3750,9 +3512,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.32 运行时间曲线图。 编写一个测试用例， 使用 StdDraw 在各种不同规模的随机输入下将算法的平均运行时间绘制成一张曲线图。 可能需要添加一两个命令行参数，请尽量设计一个实用的工具。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.32&lt;br&gt;运行时间曲线图。&lt;br&gt;编写一个测试用例，&lt;br&gt;使用 StdDraw
         
       
     
@@ -3776,8 +3536,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.31 双倍测试。 编写一个能够对排序算法进行双倍测试的用例。 数组规模 N 的起始值为 1000，排序后打印 N、估计排序用时、实际排序用时以及在 N 倍增之后两次用时的比例。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.31&lt;br&gt;双倍测试。&lt;br&gt;编写一个能够对排序算法进行双倍测试的用例。&lt;br&gt;数组规模 N 的起始值为 1000，排序后打印
         
       
     
@@ -3801,8 +3560,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.30 几何级数递增序列。 通过实验找到一个 t，使得对于大小为 N=10^6 的任意随机数组， 使用递增序列 1, [t], [t^2], [t^3], [t^4], ... 的希尔排序的运行时间最短。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.30&lt;br&gt;几何级数递增序列。&lt;br&gt;通过实验找到一个 t，使得对于大小为 N=10^6 的任意随机数组，&lt;br&gt;使用递增序列
         
       
     
@@ -3826,8 +3584,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.29 希尔排序的递增序列。 通过实验比较算法 2.3 中所使用的递增序列和递增序列 1, 5, 19, 41, 109, 209, 505, 929, 2161, 3905, 8929, 16001, 36289,
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.29&lt;br&gt;希尔排序的递增序列。&lt;br&gt;通过实验比较算法 2.3 中所使用的递增序列和递增序列&lt;br&gt;1, 5, 19, 41,
         
       
     
@@ -3851,9 +3608,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.28 相等的主键。 对于主键仅可能取两种值的数组， 评估和验证插入排序和选择排序的性能， 假设两种主键值出现的概率相同。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -3877,9 +3632,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.27 希尔排序的用时是次平方级的。 在你的计算机上用 SortCompare 比较希尔排序和插入排序以及选择排序。 测试数组的大小按照 2 的幂次递增，从 128 开始。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.27&lt;br&gt;希尔排序的用时是次平方级的。&lt;br&gt;在你的计算机上用 SortCompare
         
       
     
@@ -3903,9 +3656,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.26 原始数据类型。 编写一个能够处理 int 值的插入排序的新版本， 比较它和正文中所给出的实现（能够隐式地用自动装箱和拆箱转换 Integer 值并排序）的性能。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.26&lt;br&gt;原始数据类型。&lt;br&gt;编写一个能够处理 int
         
       
     
@@ -3929,9 +3680,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.25 不需要交换的插入排序。 在插入排序的实现中使较大元素右移一位只需要访问一次数组（而不用使用 exch()）。 使用 SortCompare 来评估这种做法的效果。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.25&lt;br&gt;不需要交换的插入排序。&lt;br&gt;在插入排序的实现中使较大元素右移一位只需要访问一次数组（而不用使用
         
       
     
@@ -3955,8 +3704,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.24 插入排序的哨兵。 在插入排序的实现中先找出最小的元素并将其置于数组的最左边， 这样就能去掉内循环的判断条件 j&amp;gt;0。 使用 SortCompare 来评估这种做法的效果。 注意：
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.24&lt;br&gt;插入排序的哨兵。&lt;br&gt;在插入排序的实现中先找出最小的元素并将其置于数组的最左边，&lt;br&gt;这样就能去掉内循环的判断条件
         
       
     
@@ -3980,10 +3728,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.23 纸牌排序。 请几位朋友分别将一副扑克牌排序（见练习2.1.13）。 仔细观察并记录他们所使用的方法。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;方法多种多样。 首先是冒泡，见习题 2.1.13
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -4007,9 +3752,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.22 交易排序测试用例。 编写一个 SortTransaction 类，在静态方法 main() 中从标准输入读取一系列交易， 将它们排序并在标准输出中打印结果。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.22&lt;br&gt;交易排序测试用例。&lt;br&gt;编写一个 SortTransaction 类，在静态方法 main()
         
       
     
@@ -4033,9 +3776,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.21 可比较的交易。 用我们的 Date 类（请见 2.1.1.4 节）作为模板扩展你的 Transaction 类（请见练习 1.2.13）， 实现 Comparable 接口，使交易能够按照金额排序。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.21&lt;br&gt;可比较的交易。&lt;br&gt;用我们的 Date 类（请见 2.1.1.4 节）作为模板扩展你的 Transaction
         
       
     
@@ -4059,10 +3800,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.20 希尔排序的最好情况。 最好情况是什么？ 证明你的结论。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;由于每次 h
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.20&lt;br&gt;希尔排序的最好情况。&lt;br&gt;最好情况是什么？&lt;br&gt;证明你的结论。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -4086,9 +3825,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.19 希尔排序的最坏情况。 用 1 到 100 构造一个含有 100 个元素的数组并用希尔排序和递增序列 1 4 13 40 对其排序，使比较次数尽可能多。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.19&lt;br&gt;希尔排序的最坏情况。&lt;br&gt;用 1 到 100 构造一个含有 100 个元素的数组并用希尔排序和递增序列 1 4 13
         
       
     
@@ -4112,8 +3849,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.18 可视轨迹。 修改你为上一题给出的解答，为插入排序和选择排序生成和正文中类似的可视轨迹。 提示：使用 setYscale() 函数是一个明智的选择。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.18&lt;br&gt;可视轨迹。&lt;br&gt;修改你为上一题给出的解答，为插入排序和选择排序生成和正文中类似的可视轨迹。&lt;br&gt;提示：使用
         
       
     
@@ -4137,8 +3873,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.17 动画。 修改插入排序和选择排序的代码，使之将数组内容绘制成正文中所示的棒状图。在每一轮排序后重绘图片来产生动画效果，并以一张“有序”的图片作为结束，即所有的圆棒均已按照高度有序排列。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -4162,8 +3897,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.16 验证。 编写一个 check() 方法，调用 sort() 对任意数组排序。 如果排序成功而且数组中的所有对象均没有被修改则返回 true，否则返回 false。 不要假设 sort() 只能通过 exch()
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.16&lt;br&gt;验证。&lt;br&gt;编写一个 check() 方法，调用 sort()
         
       
     
@@ -4187,8 +3921,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.15 昂贵的交换。 一家货运公司的一位职工得到了一项任务，需要将若干大货箱按照发货时间摆放。 比较发货时间很容易（对照标签即可），但将两个货箱交换位置则很困难（移动麻烦）。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -4212,9 +3945,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.14 出列顺序。 说说你会如何将一副扑克牌排序， 限制条件是只能查看最上面的两张牌，交换最上面的两张牌，或是将最上面的一张牌放到这摞牌的最下面。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -4238,9 +3969,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.13 纸牌排序。 说说你会如何将一副扑克牌按花色排序（花色排序是黑桃、红桃、梅花和方片）， 限制条件是所有牌都是背面朝上排成一列，而你一次只能翻看两张牌或者交换两张牌（保持背面朝上）。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -4264,9 +3993,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.12 令希尔排序打印出递增序列的每个元素所带来的比较次数和数组大小的比值。 编写一个测试用例对随机 Double 数组进行希尔排序， 验证该值是一个小常数，数组大小按照 10 的幂次递增，不小于 100。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.12&lt;br&gt;令希尔排序打印出递增序列的每个元素所带来的比较次数和数组大小的比值。&lt;br&gt;编写一个测试用例对随机 Double
         
       
     
@@ -4290,10 +4017,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.11 将希尔排序中实时计算递增序列改为预先计算并存储在一个数组中。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;希尔排序的官方实现：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.11&lt;br&gt;将希尔排序中实时计算递增序列改为预先计算并存储在一个数组中。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -4317,10 +4042,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.10 在希尔排序中为什么在实现 h 有序时不使用选择排序？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;对于部分有序的数组，插入排序比选择排序快。 这个结论可以在中文版 P158， 英文版 P252
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.10&lt;br&gt;在希尔排序中为什么在实现 h 有序时不使用选择排序？&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -4344,10 +4067,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.9 按照算法 2.3 所示轨迹的格式给出希尔排序是如何将数组 E A S Y S H E L L S O R T Q U E S T I O N 排序的。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.9&lt;br&gt;按照算法 2.3 所示轨迹的格式给出希尔排序是如何将数组&lt;br&gt; E A S Y S H E L L S O R T Q
         
       
     
@@ -4371,10 +4091,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.8 假设元素只可能有三种值， 使用插入排序处理这样一个随机数组的运行时间是线性的还是平方级别的？ 或是介于两者之间？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;平方级别。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -4398,9 +4115,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.7 对于逆序数组，选择排序和插入排序谁更快？&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.7&lt;br&gt;对于逆序数组，选择排序和插入排序谁更快？&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -4424,10 +4140,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.6 在所有主键都相同时，选择排序和插入排序谁更快？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;插入排序更快。 选择排序无论如何都需要 &lt;span class=&quot;math inline&quot;&gt;\(n +
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.6&lt;br&gt;在所有主键都相同时，选择排序和插入排序谁更快？&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -4451,11 +4165,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.5 构造一个含有 N 个元素的数组， 使插入排序（算法 2.2）运行过程中内循环（for）的两个判断结果总是假。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;条件是：&lt;/p&gt;
-&lt;div
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.5&lt;br&gt;构造一个含有 N 个元素的数组，&lt;br&gt;使插入排序（算法
         
       
     
@@ -4479,10 +4189,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.4 按照算法 2.2 所示轨迹的格式给出插入排序是如何将数组 E A S Y Q U E S T I O N 排序的。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.4&lt;br&gt;按照算法 2.2 所示轨迹的格式给出插入排序是如何将数组 E A S Y Q U E S T I O N
         
       
     
@@ -4506,9 +4213,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.3 构造一个含有 N 个元素的数组， 使选择排序（算法 2.1）运行过程中 a[j] &amp;lt; a[min] （由此 min 会不断更新）成功的次数最大。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.3&lt;br&gt;构造一个含有 N 个元素的数组，&lt;br&gt;使选择排序（算法 2.1）运行过程中 a[j] &amp;lt;
         
       
     
@@ -4532,10 +4237,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.2 在选择排序中，一个元素最多可能会被交换多少次？平均可能会被交换多少次？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;最多会被交换 n 次，只要将一个有序数列循环右移一位就可以构造这样的情况。 例如：
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.2&lt;br&gt;在选择排序中，一个元素最多可能会被交换多少次？平均可能会被交换多少次？&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -4559,10 +4262,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;2.1.1 按照算法 2.1 所示轨迹的格式给出选择排序是如何将数组 E A S Y Q U E S T I O N 排序的。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;&lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;2.1.1&lt;br&gt;按照算法 2.1 所示轨迹的格式给出选择排序是如何将数组 E A S Y Q U E S T I O N
         
       
     
@@ -4586,8 +4286,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.26 Erdös-Renyi 模型的均摊成本图像。 开发一个用例，从命令行接受一个 int 值 N， 在 0 到 N-1 之间产生随机整数对， 调用 connected() 判断它们是否相连， 如果不是则用 union()
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.26&lt;br&gt;Erdös-Renyi 模型的均摊成本图像。&lt;br&gt;开发一个用例，从命令行接受一个 int 值 N，&lt;br&gt;在 0 到
         
       
     
@@ -4611,8 +4310,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.25 随机网格的倍率测试。 开发一个性能测试用例，从命令行接受一个 int 值 T 并进行 T 次以下实验： 使用练习 1.5.18 的用例生成一个 N×N 的随机网格， 所有连接的方向随机且排列随机。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.25&lt;br&gt;随机网格的倍率测试。&lt;br&gt;开发一个性能测试用例，从命令行接受一个 int 值 T 并进行 T
         
       
     
@@ -4636,8 +4334,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.24 适用于 Erdös-Renyi 模型的快速算法。 在练习1.5.23 的测试中增加加权 quick-union 算法和使用路径压缩的加权 quick-union 算法。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.24&lt;br&gt;适用于 Erdös-Renyi 模型的快速算法。&lt;br&gt;在练习1.5.23 的测试中增加加权 quick-union
         
       
     
@@ -4661,8 +4358,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.23 在 Erdös-Renyi 模型下比较 quick-find 算法和 quick-union 算法。 开发一个性能测试用例， 从命令行接受一个 int 值 T 并进行 T 次以下实验： 使用练习 1.5.17
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.23&lt;br&gt;在 Erdös-Renyi 模型下比较 quick-find 算法和 quick-union
         
       
     
@@ -4686,8 +4382,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.22 Erdös-Renyi 的倍率实验。 开发一个性能测试用例，从命令行接受一个 int 值 T 并进行 T 次以下实验： 使用练习 1.5.17 的用例生成随机连接， 和我们的开发用例一样使用 UnionFind
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.22&lt;br&gt;Erdös-Renyi 的倍率实验。&lt;br&gt;开发一个性能测试用例，从命令行接受一个 int 值 T 并进行 T
         
       
     
@@ -4711,9 +4406,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.21 Erdös-Renyi 模型。 使用练习 1.5.17 的用例验证这个猜想： 得到单个连通分量所需生成的整数对数量为 ~1/2NlnN。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.21&lt;br&gt;Erdös-Renyi 模型。&lt;br&gt;使用练习 1.5.17
         
       
     
@@ -4737,8 +4430,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.20 动态生长。 使用链表或大小可变的数组实现加权 quick-union 算法， 去掉需要预先知道对象数量的限制。 为 API 添加一个新方法 newSite()， 它应该返回一个类型为 int
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.20&lt;br&gt;动态生长。&lt;br&gt;使用链表或大小可变的数组实现加权 quick-union
         
       
     
@@ -4762,9 +4454,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.19 动画。 编写一个 RandomGrid（请见练习 1.5.18）的用例， 和我们开发用例一样使用 UnionFind 来检查触点的连通性并在处理时用 StdDraw 将它们绘出。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.19&lt;br&gt;动画。&lt;br&gt;编写一个 RandomGrid（请见练习 1.5.18）的用例，&lt;br&gt;和我们开发用例一样使用
         
       
     
@@ -4788,8 +4478,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.18 随机网格生成器。 编写一个程序 RandomGrid，从命令行接受一个 int 值 N， 生成一个 N×N 的网格中的所有连接。 它们的排列随机且方向随机（即 (p q) 和 (q p) 出现的可能性是相等的），
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt; 1.5.18&lt;br&gt;随机网格生成器。&lt;br&gt;编写一个程序 RandomGrid，从命令行接受一个 int 值 N，&lt;br&gt;生成一个
         
       
     
@@ -4813,8 +4502,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.17 随机链接。 设计 UF 的一个用例 ErdosRenyi， 从命令行接受一个整数 N， 在 0 到 N-1 之间产生随机整数对，调用 connected() 判断它们是否相连， 如果不是则调用 union()
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.17&lt;br&gt;随机链接。&lt;br&gt;设计 UF 的一个用例 ErdosRenyi， 从命令行接受一个整数 N，&lt;br&gt;在 0 到 N-1
         
       
     
@@ -4838,10 +4526,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.16 均摊成本的图像。 修改你为练习 1.5.7 给出的实现，绘出如正文所示的均摊成本的图像。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;给出绘图结果样例： &lt;img
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.16&lt;br&gt;均摊成本的图像。&lt;br&gt;修改你为练习 1.5.7 给出的实现，绘出如正文所示的均摊成本的图像。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -4865,9 +4551,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.15 二项树。 请证明，对于加权 quick-union 算法， 在最坏情况下树中的每一层的结点数均为二项式系数。 在这种情况下，计算含有 N=2^n 个节点的树中节点的平均深度。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.15&lt;br&gt;二项树。&lt;br&gt;请证明，对于加权 quick-union
         
       
     
@@ -4891,8 +4575,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.14 根据高度加权的 quick-union 算法。 给出 UF 的一个实现， 使用和加权 quick-union 算法相同的策略， 但记录的是树的高度并总是将较矮的树连接到较高的树上。 用算法证明 N
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.14&lt;br&gt;根据高度加权的 quick-union 算法。&lt;br&gt;给出 UF 的一个实现，&lt;br&gt;使用和加权
         
       
     
@@ -4916,8 +4599,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.13 使用路径压缩的加权 quick-union 算法。 修改加权 quick-union 算法（算法 1.5）， 实现如练习 1.5.12 所述的路径压缩。 给出一列输入，使该方法能产生一棵高度为 4 的树。 注意：
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.13&lt;br&gt;使用路径压缩的加权 quick-union 算法。&lt;br&gt;修改加权 quick-union 算法（算法
         
       
     
@@ -4941,8 +4623,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.12 使用路径压缩的 quick-union 算法。 根据路径压缩修改 quick-union 算法（请见 1.5.2.3 节）， 在 find() 方法中添加一个循环来将从 p 到根节点的路径上的每个触点都连接到根节点。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.12&lt;br&gt;使用路径压缩的 quick-union 算法。&lt;br&gt;根据路径压缩修改 quick-union 算法（请见
         
       
     
@@ -4966,10 +4647,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.11 实现加权 quick-find 算法， 其中我们总是将较小的分量重命名为较大分量的标识符。 这种改变会对性能产生怎样的影响？&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;类似于加权
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.11&lt;br&gt;实现加权 quick-find
         
       
     
@@ -4993,8 +4671,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.10 在加权 quick-union 算法中， 假设我们将 id[find(p)] 的值设为 q 而非 id[find[q]]， 所得的算法是正确的吗？
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.10&lt;br&gt;在加权 quick-union 算法中，&lt;br&gt;假设我们将 id[find(p)] 的值设为 q 而非
         
       
     
@@ -5018,9 +4695,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.9 画出下面的 id[] 数组所对应的树。 这可能是加权 quick-union 算法得到的结果吗？ 解释为什么不可能，或者给出能够得到该数组的一系列操作。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.9&lt;br&gt;画出下面的 id[] 数组所对应的树。&lt;br&gt;这可能是加权 quick-union
         
       
     
@@ -5044,9 +4719,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.8 用一个反例证明 quick-find 算法中的 union() 方法的以下直观实现是错误的：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.8&lt;br&gt;用一个反例证明 quick-find 算法中的 union() 方法的以下直观实现是错误的：&lt;/p&gt;
+&lt;pre
         
       
     
@@ -5070,9 +4744,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.7 分别为 quick-find 算法和 quick-union 算法实现 &lt;code&gt;QuickFindUF&lt;/code&gt;类和  &lt;code&gt;QuickUnionUF&lt;/code&gt; 类。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.7&lt;br&gt;分别为 quick-find 算法和 quick-union 算法实现
         
       
     
@@ -5096,10 +4768,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.6 使用加权 quick-union 算法完成练习 1.5.5 。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;加权 quick-union 算法最多只需要 $lgN $次迭代就可以完成一次 union()。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt; 1.5.6&lt;br&gt;使用加权 quick-union 算法完成练习 1.5.5 。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -5123,8 +4793,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.5 在一台每秒能够处理 10^9 条指令的计算机上， 估计 quick-find 算法解决含有 10^9 个触点和 10^6 条连接的动态连通性问题所需的最短时间（以天记）。 假设内循环 for 的每一次迭代需要执行 10
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.5&lt;br&gt;在一台每秒能够处理 10^9 条指令的计算机上，&lt;br&gt;估计 quick-find 算法解决含有 10^9 个触点和
         
       
     
@@ -5148,9 +4817,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.4 在正文的加权 quick-union 算法示例中， 对于输入的每一对整数（包括对照输入和最坏情况下的输入）， 给出 id[] 和 sz[] 数组的内容以及访问数组的次数。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.4&lt;br&gt;在正文的加权 quick-union
         
       
     
@@ -5174,10 +4841,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.3 使用加权 quick-union 算法（请见算法 1.5）完成练习 1.5.1 。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;加权 quick-union 的官方实现：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.3&lt;br&gt;使用加权 quick-union 算法（请见算法 1.5）完成练习 1.5.1 。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -5201,9 +4866,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.2 使用 quick-union 算法（请见 1.5.2.3 节代码框）完成练习 1.5.1。 另外，在处理完输入的每对整数之后画出 id[] 数组表示的森林。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.2&lt;br&gt;使用 quick-union 算法（请见 1.5.2.3 节代码框）完成练习
         
       
     
@@ -5227,9 +4890,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.5.1 使用 quick-find 算法处理序列 9-0 3-4 5-8 7-2 2-1 5-7 0-3 4-2 。 对于输入的每一对整数，给出 id[] 数组的内容和访问数组的次数。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.5.1&lt;br&gt;使用 quick-find 算法处理序列 9-0 3-4 5-8 7-2 2-1 5-7 0-3 4-2
         
       
     
@@ -5253,8 +4914,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.45 优惠券收集问题。 用和上一题相同的方式生成随机整数。 通过实验验证生成所有可能的整数值所需生成的随机数总量为 &lt;span class=&quot;math
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -5278,8 +4938,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.44 生日问题。 编写一个程序，从命令行接受一个整数 N 作为参数并使用 StdRandom.uniform() 生成一系列 0 到 N-1 之间的随机整数。 通过实验验证产生第一个重复的随机数之前生成的整数数量为
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.44&lt;br&gt;生日问题。&lt;br&gt;编写一个程序，从命令行接受一个整数 N 作为参数并使用 StdRandom.uniform()
         
       
     
@@ -5303,8 +4962,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.43 大小可变的数组与链表。 通过实验验证对于栈来说基于大小可变的数组的实现快于基于链表的实现的猜想（请见练习 1.4.35 和练习 1.4.36）。 为此实现另一个版本的
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.43&lt;br&gt;大小可变的数组与链表。&lt;br&gt;通过实验验证对于栈来说基于大小可变的数组的实现快于基于链表的实现的猜想（请见练习
         
       
     
@@ -5328,8 +4986,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.42 问题规模。 设在你的计算机上用 TwoSumFast、TwoSum、ThreeSumFast 以及 ThreeSum 能够处理的问题规模为 2^P × 10^3 个整数。 使用 DoublingRatio 估计 P
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.42&lt;br&gt;问题规模。&lt;br&gt;设在你的计算机上用 TwoSumFast、TwoSum、ThreeSumFast 以及
         
       
     
@@ -5353,8 +5010,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.41 运行时间。 使用 DoublingRatio 估计在你的计算机上用 TwoSumFast、TwoSum、ThreeSumFast 以及 ThreeSum 处理一个含有 100
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.41&lt;br&gt;运行时间。&lt;br&gt;使用 DoublingRatio 估计在你的计算机上用
         
       
     
@@ -5378,8 +5034,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.40 随机输入下的 3-sum 问题。 猜测找出 N 个随机 int 值中和为 0 的整数三元组的数量所需的时间并验证你的猜想。 如果你擅长数学分析，请为此问题给出一个合适的数学模型， 其中所有值均匀的分布在 -M 和 M
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.40&lt;br&gt;随机输入下的 3-sum 问题。&lt;br&gt;猜测找出 N 个随机 int 值中和为 0
         
       
     
@@ -5403,8 +5058,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.39 改进倍率测试的精度。 修改 DoublingRatio，使它接受另一个命令行参数来指定对于每个 N 值调用 timeTrial() 方法的次数。 用程序对每个 N 执行 10、100 和 1000
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.39&lt;br&gt;改进倍率测试的精度。&lt;br&gt;修改 DoublingRatio，使它接受另一个命令行参数来指定对于每个 N 值调用
         
       
     
@@ -5428,9 +5082,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.38 3-sum 的初级算法的实现。 通过实验评估以下 ThreeSum 内循环的实现性能。&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.38&lt;br&gt;3-sum 的初级算法的实现。&lt;br&gt;通过实验评估以下 ThreeSum 内循环的实现性能。&lt;/p&gt;
+&lt;pre
         
       
     
@@ -5454,8 +5107,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.37 自动装箱的性能代价。 通过实验在你的计算机上计算使用自动装箱所付出的性能代价。 实现一个 FixedCapacityStackOfInts，并使用类似 DoublingRatio 的用例比较它和泛型
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.37&lt;br&gt;自动装箱的性能代价。&lt;br&gt;通过实验在你的计算机上计算使用自动装箱所付出的性能代价。&lt;br&gt;实现一个
         
       
     
@@ -5479,11 +5131,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.36 下压栈的空间成本。 解释下表中的数据，它显示了各种下压栈实现的一般空间成本， 其中链表的结点为一个静态的嵌套类，从而避免非静态嵌套类的开销。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -5508,8 +5156,7 @@ A
         
         
           &lt;p&gt;如果你在使用本站的过程中发现了错误，或者有更好的改进和建议，欢迎向我提交反馈。这里提供了两种提交反馈的方式。&lt;/p&gt;
-&lt;h2 id=&quot;github-issue推荐&quot;&gt;GitHub Issue（推荐）&lt;/h2&gt;
-&lt;p&gt;1. 点击本页底部的 GitHub
+&lt;h2 id=&quot;GitHub-Issue（推荐）&quot;&gt;&lt;a href=&quot;#GitHub-Issue（推荐）&quot; class=&quot;headerlink&quot;
         
       
     
@@ -5534,8 +5181,7 @@ A
         
         
           &lt;p&gt;本文将介绍如何下载题解项目并运行代码，在开始之前，请确保你的电脑上已经安装了 Visual Studio 2015（及以上版本）并启用了 .NET Framework 4.7。&lt;/p&gt;
-&lt;h1 id=&quot;下载全部代码&quot;&gt;下载全部代码&lt;/h1&gt;
-&lt;p&gt;1. 点击&lt;a
+&lt;h1 id=&quot;下载全部代码&quot;&gt;&lt;a href=&quot;#下载全部代码&quot;
         
       
     
@@ -5559,8 +5205,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.35 下压栈的时间成本。 解释下表中的数据，它显示了各种下压栈的实现的一般时间成本， 其中成本模型会同时记录数据引用的数量
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -5584,8 +5229,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.34 热还是冷。 你的目标是猜出 1 到 N 之间的一个秘密的整数。 每次猜完一个整数后，你会直到你的猜测距离该秘密整数是否相等（如果是则游戏结束）。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.34&lt;br&gt;热还是冷。&lt;br&gt;你的目标是猜出 1 到 N
         
       
     
@@ -5609,8 +5253,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.33 32位计算机中的内存需求。 给出 32 位计算机中 Integer、Date、Counter、int[]、double[]、double[][]、String、Node 和 Stack（链表表示）对象所需的内存，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.33&lt;br&gt;32位计算机中的内存需求。&lt;br&gt;给出 32 位计算机中
         
       
     
@@ -5634,9 +5277,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.32 均摊分析。 请证明， 对一个基于大小可变的数组实现的空栈的 M 次操作访问数组的次数和 M 成正比。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.32&lt;br&gt;均摊分析。&lt;br&gt;请证明，&lt;br&gt;对一个基于大小可变的数组实现的空栈的 M 次操作访问数组的次数和 M
         
       
     
@@ -5660,10 +5301,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.31 三个栈实现的双向队列。 使用三个栈实现一个双向队列， 使得双向队列的每个操作所需的栈操作均摊之后为一个常数。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;三个栈分别命名为左中右。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -5687,9 +5325,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.30 一个栈和一个 steque 实现的双向队列。 使用一个栈和一个 steque 实现一个双向队列（请见练习 1.3.32）， 使得双向队列的每个操作所需的栈和 steque 操作均摊后为一个常数。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.30&lt;br&gt;一个栈和一个 steque 实现的双向队列。&lt;br&gt;使用一个栈和一个 steque 实现一个双向队列（请见练习
         
       
     
@@ -5713,9 +5349,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.29 两个栈实现的 steque。 用两个栈实现一个 steque（请见练习 1.3.32）， 使得每个 steque 操作所需的栈操作均摊后为一个常数。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.29&lt;br&gt;两个栈实现的 steque。&lt;br&gt;用两个栈实现一个 steque（请见练习 1.3.32），&lt;br&gt;使得每个
         
       
     
@@ -5739,8 +5373,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.28 一个队列实现的栈。 使用一个队列实现一个栈， 使得每个栈操作所需的队列操作数量为线性级别。&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.28&lt;br&gt;一个队列实现的栈。&lt;br&gt;使用一个队列实现一个栈，&lt;br&gt;使得每个栈操作所需的队列操作数量为线性级别。&lt;/p&gt;
 &lt;h1
         
       
@@ -5765,8 +5398,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.27 两个栈实现的队列。 用两个栈实现一个队列，使得每个队列操作所需要的堆栈操作均摊后为一个常数。&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.27&lt;br&gt;两个栈实现的队列。&lt;br&gt;用两个栈实现一个队列，使得每个队列操作所需要的堆栈操作均摊后为一个常数。&lt;/p&gt;
 &lt;h1
         
       
@@ -5791,9 +5423,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.26 三点共线。 假设有一个算法，接受平面上的 N 个点并能够返回在同一直线上的三个点的组数。 证明你能够用这个算法解决 3-sum 问题。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.26&lt;br&gt;三点共线。&lt;br&gt;假设有一个算法，接受平面上的 N
         
       
     
@@ -5817,8 +5447,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.25 扔两个鸡蛋。 和上一题相同的问题，但现在假设你只有两个鸡蛋，而你的成本模型则是扔鸡蛋的次数。 设计一种策略，最多扔 2√(N) 次鸡蛋即可判断出 F 的值， 然后想办法把这个成本降低到 ~c√(F) 次。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -5842,8 +5471,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.24 扔鸡蛋。 假设你面前有一栋 N 层的大楼和许多鸡蛋， 假设将鸡蛋从 F 层或者更高的地方扔下鸡蛋才会摔碎，否则则不会。 首先，设计一种策略来确定 F 的值，其中扔 ~ lgN 次鸡蛋后摔碎的鸡蛋数量为 ~ lgN。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.24&lt;br&gt;扔鸡蛋。&lt;br&gt;假设你面前有一栋 N 层的大楼和许多鸡蛋， 假设将鸡蛋从 F
         
       
     
@@ -5867,8 +5495,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.23 分数的二分查找。 设计一个算法，使用对数级别的比较次数找出有理数 &lt;span class=&quot;math inline&quot;&gt;\(p/q\)&lt;/span&gt;，其中 &lt;span class=&quot;math
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.23&lt;br&gt;分数的二分查找。&lt;br&gt;设计一个算法，使用对数级别的比较次数找出有理数 $p/q$，其中
         
       
     
@@ -5892,8 +5519,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.22 仅用加减实现的二分查找（Mihai Patrascu）。 编写一个程序，给定一个含有 N 个不同 int 值的按照升序排列的数组，判断它是否含有给定的整数。 只能使用加法和减法以及常数的额外内存空间。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.22&lt;br&gt;仅用加减实现的二分查找（Mihai Patrascu）。&lt;br&gt;编写一个程序，给定一个含有 N 个不同 int
         
       
     
@@ -5917,9 +5543,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.21 无重复值之中的二分查找。 用二分查找实现 StaticSETofInts （参见表 1.2.15）， 保证 contains() 的运行时间为 ~lgR，其中 R 为参数数组中不同整数的数量。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.21&lt;br&gt;无重复值之中的二分查找。&lt;br&gt;用二分查找实现 StaticSETofInts （参见表 1.2.15），&lt;br&gt;保证
         
       
     
@@ -5943,8 +5567,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.20 双调查找。 如果一个数组中的所有元素是先递增后递减的，则称这个数组为双调的。 编写一个程序，给定一个含有 N 个不同 int 值的双调数组，判断它是否含有给定的整数。 程序在最坏情况下所需的比较次数为
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.20&lt;br&gt;双调查找。&lt;br&gt;如果一个数组中的所有元素是先递增后递减的，则称这个数组为双调的。&lt;br&gt;编写一个程序，给定一个含有
         
       
     
@@ -5968,8 +5591,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.19 矩阵的局部最小元素。 给定一个含有 N^2 个不同整数的 N×N 数组 a[]。 设计一个运送时间和 N 成正比的算法来找出一个局部最小元素： 满足 a[i][j] &amp;lt; a[i+1][j]、a[i][j]
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.19&lt;br&gt;矩阵的局部最小元素。 给定一个含有 N^2 个不同整数的 N×N 数组 a[]。&lt;br&gt;设计一个运送时间和 N
         
       
     
@@ -5993,8 +5615,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.18 数组的局部最小元素。 编写一个程序，给定一个含有 N 个不同整数的数组，找到一个局部最小元素： 满足 a[i] &amp;lt; a[i-1]，且 a[i] &amp;lt; a[i+1] 的索引 i。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.18&lt;br&gt;数组的局部最小元素。&lt;br&gt;编写一个程序，给定一个含有 N 个不同整数的数组，找到一个局部最小元素： 满足 a[i]
         
       
     
@@ -6018,8 +5639,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.17 最遥远的一对（一维）。 编写一个程序，给定一个含有 N 个 double 值的数组 a[]， 在其中找到一对最遥远的值：两者之差（绝对值）最大的两个数。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.17&lt;br&gt;最遥远的一对（一维）。&lt;br&gt;编写一个程序，给定一个含有 N 个 double 值的数组 a[]，
         
       
     
@@ -6043,8 +5663,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.16 最接近一对（一维）。 编写一个程序，给定一个含有 N 个 double 值的数组 a[]， 在其中找到一对最接近的值：两者之差（绝对值）最小的两个数。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.16&lt;br&gt;最接近一对（一维）。&lt;br&gt;编写一个程序，给定一个含有 N 个 double 值的数组 a[]，
         
       
     
@@ -6068,8 +5687,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.15 快速 3-sum。 作为热身，使用一个线性级别的算法 （而非基于二分查找的线性对数级别的算法） 实现 TwoSumFaster 来计算已排序的数组中和为 0 的整数对的数量。 用相同的思想为 3-sum
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.15&lt;br&gt;快速 3-sum。&lt;br&gt;作为热身，使用一个线性级别的算法 （而非基于二分查找的线性对数级别的算法） 实现
         
       
     
@@ -6093,11 +5711,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.14 4-sum。 为 4-sum 设计一个算法。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;这里给出暴力方法，将最内侧循环换成二分查找即为优化版本。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.14&lt;br&gt;4-sum。&lt;br&gt;为 4-sum 设计一个算法。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -6121,8 +5736,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.13 根据正文中的假设分别给出表示以下数据类型的一个对象所需的内存量： a. Accumulator b. Transaction c. FixedCapacityStackOfStrings，其容量为 C 且含有 N
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.13&lt;br&gt;根据正文中的假设分别给出表示以下数据类型的一个对象所需的内存量：&lt;br&gt;a. Accumulator&lt;br&gt;b.
         
       
     
@@ -6146,9 +5760,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.12 编写一个程序， 有序打印给定的两个有序数组（含有 N 个 int 值） 中的所有公共元素， 程序在最坏情况下所需的运行时间应该和 N 成正比。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.12&lt;br&gt;编写一个程序，&lt;br&gt;有序打印给定的两个有序数组（含有 N 个 int 值） 中的所有公共元素，
         
       
     
@@ -6172,9 +5784,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.11 为 StaticSETofInts （请见表 1.2.15） 添加一个实例方法 howMany()， 找出给定键的出现次数且在最坏情况下所需的运行时间应该和 log(N) 成正比。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.11&lt;br&gt;为 StaticSETofInts （请见表 1.2.15） 添加一个实例方法
         
       
     
@@ -6198,9 +5808,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.10 修改二分查找算法，使之总是返回和被查找的键匹配的索引最小的元素。 （但仍能够保证对数级别的运行时间）&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -6224,9 +5832,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.9 已知由倍率实验可得某个程序的时间倍率为 2^b 且问题规模为 N0 时程序运行时间为 T， 给出一个公式预测该程序在处理规模为 N 的问题时所需的运行时间。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.9&lt;br&gt;已知由倍率实验可得某个程序的时间倍率为 2^b 且问题规模为 N0 时程序运行时间为 T，
         
       
     
@@ -6250,9 +5856,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.8 编写一个程序，计算输入文件中相等的整数对的数量。 如果你的第一个程序是平方级别的， 请继续思考并用 Array.sort() 给出一个线性对数级别的解答。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.8&lt;br&gt;编写一个程序，计算输入文件中相等的整数对的数量。&lt;br&gt;如果你的第一个程序是平方级别的， 请继续思考并用
         
       
     
@@ -6276,10 +5880,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.7 以统计涉及输入数字的算数操作（和比较）的成本模型分析 ThreeSum。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;最外层循环进行了 N 次比较。 次外层循环进行了 N^2 次比较。 最里层循环进行了
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.7&lt;br&gt;以统计涉及输入数字的算数操作（和比较）的成本模型分析 ThreeSum。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -6303,9 +5905,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.6 给出以下代码段的运行时间的增长数量级（作为 N 的函数）。 a.&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.6&lt;br&gt;给出以下代码段的运行时间的增长数量级（作为 N 的函数）。&lt;br&gt;a.&lt;/p&gt;
+&lt;pre
         
       
     
@@ -6329,8 +5930,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.5 给出下面这些量的近似： a. &lt;span class=&quot;math inline&quot;&gt;\(N + 1\)&lt;/span&gt; b. &lt;span class=&quot;math inline&quot;&gt;\(1 + 1/N\)&lt;/span&gt; c.
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.5&lt;br&gt;给出下面这些量的近似：&lt;br&gt;a. $N + 1$&lt;br&gt;b. $1 + 1/N$&lt;br&gt;c. $(1 + 1/N)(1
         
       
     
@@ -6354,11 +5954,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.4 参照表 1.4.4 为 TwoSum 建立一张类似的表格。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;figure&gt;
-&lt;img src=&quot;./code.png&quot;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.4&lt;br&gt;参照表 1.4.4 为 TwoSum 建立一张类似的表格。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -6382,9 +5979,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.3 修改 DoublingTest，使用 StdDraw 产生类似于正文中的标准图像和对数图像， 根据需要调整比例使图像总能够充满窗口的大部分区域。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.3&lt;br&gt;修改 DoublingTest，使用 StdDraw
         
       
     
@@ -6408,10 +6003,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.2 修改 ThreeSum，正确处理两个较大 int 值相加可能溢出的情况。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;将 a[i] + a[j] + a[k] 改为 (long)a[i] + a[j] +
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.2&lt;br&gt;修改 ThreeSum，正确处理两个较大 int 值相加可能溢出的情况。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -6435,11 +6028,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.4.1 证明从 N 个数中取三个整数的不同组合总数为 N(N - 1)(N - 2) / 6。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;即为证明组合计算公式：&lt;/p&gt;
-&lt;p&gt;$ C(N, 3)
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.4.1&lt;br&gt;证明从 N 个数中取三个整数的不同组合总数为 N(N - 1)(N - 2) / 6。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -6463,8 +6053,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.50 快速出错的迭代器。 修改 Stack 的迭代器代码，确保一旦用例在迭代器中（通过 push() 或 pop() 操作）修改集合数据就抛出一个
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.50&lt;br&gt;快速出错的迭代器。&lt;br&gt;修改 Stack 的迭代器代码，确保一旦用例在迭代器中（通过 push() 或 pop()
         
       
     
@@ -6488,10 +6077,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.49 栈与队列。 用有限个栈实现一个队列， 保证每个队列操作（在最坏情况下）都只需要常数次的栈操作。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;那么这里就使用六个栈来解决这个问题。 这个算法来自于&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.49&lt;br&gt;栈与队列。&lt;br&gt;用有限个栈实现一个队列，&lt;br&gt;保证每个队列操作（在最坏情况下）都只需要常数次的栈操作。
         
       
     
@@ -6515,9 +6101,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.48 双向队列与栈。 用一个双向队列实现两个栈，保证每个栈操作只需要常数次的双向队列操作。 （请见练习 1.3.33）&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.48&lt;br&gt;双向队列与栈。&lt;br&gt;用一个双向队列实现两个栈，保证每个栈操作只需要常数次的双向队列操作。&lt;br&gt;（请见练习
         
       
     
@@ -6541,9 +6125,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.47 可连接的队列、栈或 steque。 为队列、栈或 steque（见练习 1.3.32）添加一个能够（破坏性地）链接两个同类对象的额外操作 catenation。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.47&lt;br&gt;可连接的队列、栈或 steque。&lt;br&gt;为队列、栈或 steque（见练习
         
       
     
@@ -6567,8 +6149,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.46 栈的可生成性问题中禁止出现的排列。 若三元组 (a, b, c) 中 a&amp;lt;b&amp;lt;c 且 c 最先被弹出，a 第二，b 第三 （c 和 a 以及 a 和 b 之间可以间隔其他整数），
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.46&lt;br&gt;栈的可生成性问题中禁止出现的排列。&lt;br&gt;若三元组 (a, b, c) 中 a&amp;lt;b&amp;lt;c 且 c
         
       
     
@@ -6592,8 +6173,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.45 栈的可生成性。 假设我们的栈测试用例会进行一系列的入栈和出栈操作， 序列中的整数 0, 1, ... , N - 1 （按此先后顺序排列）表示入栈操作，N个减号表示出栈操作。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.45&lt;br&gt;栈的可生成性。&lt;br&gt;假设我们的栈测试用例会进行一系列的入栈和出栈操作， 序列中的整数 0, 1, … , N - 1
         
       
     
@@ -6617,12 +6197,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.44 文本编辑器的缓冲区。 为文本编辑器的缓冲区设计一种数据类型并实现下表中的 API。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&quot;header&quot;&gt;
-&lt;th style=&quot;text-align:
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.44&lt;br&gt;文本编辑器的缓冲区。&lt;br&gt;为文本编辑器的缓冲区设计一种数据类型并实现下表中的
         
       
     
@@ -6646,9 +6221,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.43 文件列表。 文件夹就是一列文件和文件夹的列表。 编写一个程序，从命令行接受一个文件夹名作为参数， 打印出该文件夹下的所有文件并用递归的方式在所有子文件夹的名下（缩进）列出其下的所有文件。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -6672,11 +6245,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.42 复制栈。 为基于链表实现的栈编写一个新的构造函数，使以下代码&lt;/p&gt;
-&lt;p&gt;Stack t = new Stack(s);&lt;/p&gt;
-&lt;p&gt;得到的 t 指向栈 s 的一个新的独立的副本。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.42&lt;br&gt;复制栈。&lt;br&gt;为基于链表实现的栈编写一个新的构造函数，使以下代码 &lt;/p&gt;
+&lt;p&gt;Stack t = new
         
       
     
@@ -6700,9 +6270,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.41 复制队列。 编写一个新的构造函数，使以下代码：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.41&lt;br&gt;复制队列。&lt;br&gt;编写一个新的构造函数，使以下代码： &lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -6726,8 +6295,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.40 前移编码。 从标准输入读取一串字符，使用链表保存这些字符并删除重复字符。 当你读取了一个从未见过的字符时，将它插入表头。 当你读取了一个重复的字符时，将它从链表中删去并再次插入表头。 将你的程序命名为
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -6751,8 +6319,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.39 环形缓冲区。 环形缓冲区，又称为环形队列，是一种定长为 N 的先进先出的数据结构。 它在进程间的异步数据传输或记录日志文件时十分有用。 当缓冲区为空时，消费者会在数据存入缓冲区前等待；
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.39&lt;br&gt;环形缓冲区。&lt;br&gt;环形缓冲区，又称为环形队列，是一种定长为 N
         
       
     
@@ -6776,12 +6343,11 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.38 删除第 k 个元素。 实现一个类并支持下表的 API：&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.38&lt;br&gt;删除第 k 个元素。&lt;br&gt;实现一个类并支持下表的 API：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
-&lt;tr class=&quot;header&quot;&gt;
-&lt;th style=&quot;text-align:
+&lt;tr&gt;
+&lt;th
         
       
     
@@ -6805,8 +6371,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.37 Josephus 问题。 在这个古老的问题中，N 个身陷绝境的人一致同意通过以下方式减少生存人数。 他们围坐成一圈（位置记作 0 到 N-1）并从第一个人开始报数， 报到 M 的人会被杀死，直到最后一个人留下来。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.37&lt;br&gt;Josephus 问题。&lt;br&gt;在这个古老的问题中，N
         
       
     
@@ -6830,10 +6395,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.36 随机迭代器。 为上一题中的 &lt;code&gt;RandomQueue&amp;lt;Card&amp;gt;&lt;/code&gt; 编写一个迭代器，随机返回队列中的所有元素。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;实现方法和
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.36&lt;br&gt;随机迭代器。&lt;br&gt;为上一题中的 &lt;code&gt;RandomQueue&amp;lt;Card&amp;gt;&lt;/code&gt;
         
       
     
@@ -6857,12 +6419,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.35 随机队列。 随机队列能够存储一组元素并支持下表中的 API。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&quot;header&quot;&gt;
-&lt;th style=&quot;text-align:
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.35&lt;br&gt;随机队列。&lt;br&gt;随机队列能够存储一组元素并支持下表中的
         
       
     
@@ -6886,12 +6443,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.34 随机背包。 随机背包能够存储一组元素并支持下表中的 API：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&quot;header&quot;&gt;
-&lt;th style=&quot;text-align:
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.34&lt;br&gt;随机背包。&lt;br&gt;随机背包能够存储一组元素并支持下表中的
         
       
     
@@ -6915,11 +6467,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.33 Deque。 一个双向队列（或称 deque）和栈或队列类似， 但它同时支持在两端添加或删除元素。 Deque 能够存储一组元素并支持下表中的 API：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.33&lt;br&gt;Deque。&lt;br&gt;一个双向队列（或称
         
       
     
@@ -6943,9 +6491,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.32 Steque 一个以栈为目标的队列（或称 steque）， 是一种支持 push、pop 和 enqueue 操作的数据类型。 为这种抽象数据类定义一份 API 并给出一份基于链表的实现。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.32&lt;br&gt;Steque&lt;br&gt;一个以栈为目标的队列（或称 steque），&lt;br&gt;是一种支持 push、pop 和
         
       
     
@@ -6969,8 +6515,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.31 实现一个嵌套类 DoubleNode 用来构造双向链表， 其中每个结点都含有一个指向前驱元素的应用和一项指向后续元素的引用（如果不存在则为 null）。 为以下任务实现若干静态方法： 在表头插入结点。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.31&lt;br&gt;实现一个嵌套类 DoubleNode
         
       
     
@@ -6994,8 +6539,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.30 编写一个函数，接受一条链表的首结点作为参数， （破坏性地）将链表反转并返回链表的首结点。&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.30&lt;br&gt;编写一个函数，接受一条链表的首结点作为参数，&lt;br&gt;（破坏性地）将链表反转并返回链表的首结点。&lt;/p&gt;
 &lt;h1
         
       
@@ -7020,9 +6564,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.29 用环形链表实现 Queue。 环形链表也是一条链表，只是没有任何结点的链接为空，且只要链表非空则 last.next 的值为 first。 只能使用一个 Node 类型的实例变量（last）。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.29&lt;br&gt;用环形链表实现 Queue。&lt;br&gt;环形链表也是一条链表，只是没有任何结点的链接为空，且只要链表非空则
         
       
     
@@ -7046,11 +6588,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.28 用递归方法解答上一道练习。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;其实链表本身就是一个递归结构，链表的定义可以用递归的方式表示：&lt;/p&gt;
-&lt;p&gt;链表 = 头结点A + 链表B = 头结点A +
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.28&lt;br&gt;用递归方法解答上一道练习。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -7074,9 +6613,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.27 编写一个方法 max()，接受一条链表的首结点作为参数，返回链表中键最大的节点的值。 假设所有键均为正整数，如果链表为空则返回 0。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.27&lt;br&gt;编写一个方法
         
       
     
@@ -7100,9 +6637,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.26 编写一个方法 remove()， 接受一条链表和一个字符串 key 作为参数， 删除链表中所有 item 域为 key 的结点。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.26&lt;br&gt;编写一个方法 remove()，&lt;br&gt;接受一条链表和一个字符串 key 作为参数，&lt;br&gt;删除链表中所有 item
         
       
     
@@ -7126,9 +6661,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.25 编写一个方法 insertAfter()，接受两个链表结点作为参数， 将第二个结点插入链表并使之成为第一个结点的后续结点 （如果两个参数为空则什么也不做）。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.25&lt;br&gt;编写一个方法 insertAfter()，接受两个链表结点作为参数，
         
       
     
@@ -7152,10 +6685,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.24 编写一个方法 removeAfter()，接受一个链表结点作为参数并删除该结点的后续结点。 （如果参数结点的后续结点为空则什么也不做）&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;直接把该节点的
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.24&lt;br&gt;编写一个方法
         
       
     
@@ -7179,9 +6709,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.23 为什么下面这段代码和上一题中的代码效果不同？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.23&lt;br&gt;为什么下面这段代码和上一题中的代码效果不同？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -7205,9 +6734,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.22 假设 x 是一条链表中的某个结点，下面这段代码做了什么？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.22&lt;br&gt;假设 x 是一条链表中的某个结点，下面这段代码做了什么？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -7231,9 +6759,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.21 编写一个方法 find()，接受一条链表和一个字符串 key 作为参数。 如果链表中的某个结点的 item 域的值为 key，则方法返回 true，否则返回 false。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.21&lt;br&gt;编写一个方法 find()，接受一条链表和一个字符串 key 作为参数。&lt;br&gt;如果链表中的某个结点的 item
         
       
     
@@ -7257,10 +6783,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.20 编写一个方法 delete()，接受一个 int 参数 k，删除链表的第 k 个元素（如果它存在的话）。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;和上一题类似，只不过这次让 Cur 移动 k – 1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.20&lt;br&gt;编写一个方法 delete()，接受一个 int 参数 k，删除链表的第 k
         
       
     
@@ -7284,10 +6807,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.19 给出一段代码，删除链表的尾结点，其中链表的首结点为 first。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;建立一个结点引用 Cur，让它移动到尾结点的前一个结点，让那个结点的 next 变为
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.19&lt;br&gt;给出一段代码，删除链表的尾结点，其中链表的首结点为 first。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -7311,9 +6832,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.18 假设 x 是一条链表的某个结点且不是尾结点。 下面这条语句的效果是什么？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.18&lt;br&gt;假设 x 是一条链表的某个结点且不是尾结点。&lt;br&gt;下面这条语句的效果是什么？&lt;/p&gt;
+&lt;pre
         
       
     
@@ -7337,11 +6857,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.17 为 Transaction 类完成练习 1.3.16。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;和前一题类似，按行读取输入再调用相应构造函数就可以了。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.17&lt;br&gt;为 Transaction 类完成练习 1.3.16。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -7365,8 +6882,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.16 使用 1.3.1.5 节中的 readInts() 作为模板为 Date 编写一个静态方法 readDates()， 从标准输入中读取由练习 1.2.19
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.16&lt;br&gt;使用 1.3.1.5 节中的 readInts() 作为模板为 Date 编写一个静态方法
         
       
     
@@ -7390,9 +6906,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.15 编写一个 Queue 的用例， 接受一个命令行参数 k 并打印出标准输入中的倒数第 k 个字符串 （假设标准输入中至少有 k 个字符串）。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.15&lt;br&gt;编写一个 Queue 的用例，&lt;br&gt;接受一个命令行参数 k 并打印出标准输入中的倒数第 k 个字符串
         
       
     
@@ -7416,10 +6930,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.14 编写一个类 ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象， 然后扩展实现， 使用调整数组的方法突破大小的限制。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;对于
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.14&lt;br&gt;编写一个类 ResizingArrayQueueOfStrings，使用定长数组实现队列的抽象，&lt;br&gt;然后扩展实现，
         
       
     
@@ -7443,10 +6954,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.13 假设某个用例程序会进行一系列入列和出列的混合队列操作。 入列操作会将整数 0 到 9 按顺序插入队列； 出列操作会打印出返回值。 下面哪种序列是不可能产生的？&lt;/p&gt;
-&lt;ol type=&quot;a&quot;&gt;
-&lt;li&gt;0 1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.13&lt;br&gt;假设某个用例程序会进行一系列入列和出列的混合队列操作。&lt;br&gt;入列操作会将整数 0 到 9
         
       
     
@@ -7470,8 +6978,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.12 编写一个可迭代的 Stack 用例，它含有一个静态的 CopyTo() 方法，接受一个字符串的栈作为参数并返回该栈的一个副本。 注意：这种能力是迭代器价值的一个重要体现，因为有了它我们无需改变基本 API
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.12&lt;br&gt;编写一个可迭代的 Stack 用例，它含有一个静态的 CopyTo()
         
       
     
@@ -7495,9 +7002,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.11 编写一段程序 EvaluatePostfix，从标准输入中得到一个后序表达式，求值并打印结果 （将上一题的程序中得到的输出用管道传递给这一段程序可以得到和 Evaluate 相同的行为）。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.11&lt;br&gt;编写一段程序
         
       
     
@@ -7521,10 +7026,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.10 编写一个过滤器 InfixToPostfix，将算术表达式由中序表达式转为后序表达式。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;官方 JAVA 代码：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.10&lt;br&gt;编写一个过滤器 InfixToPostfix，将算术表达式由中序表达式转为后序表达式。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -7548,8 +7051,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.9 编写一段程序，从标准输入得到一个缺少左括号的表达式并打印出补全括号之后的中序表达式。 例如，给定输入： &lt;code&gt;1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )&lt;/code&gt; 你的程序应该输出：
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -7573,9 +7075,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.8 给定以下输入，给出 DoublingStackOfStrings 的数组的内容和大小。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;it was - the best - of times - - - it was - the -
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.8&lt;br&gt;给定以下输入，给出 DoublingStackOfStrings 的数组的内容和大小。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;it
         
       
     
@@ -7599,10 +7100,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.7 为 Stack 添加一个方法 peek()， 返回栈中最近添加的元素（而不弹出它）。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;链表实现的话就是返回第一个结点 first 的 item
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.7&lt;br&gt;为 Stack 添加一个方法 peek()， 返回栈中最近添加的元素（而不弹出它）。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -7626,9 +7125,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.6 下面这段代码对队列 q 进行了什么操作？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.6&lt;br&gt;下面这段代码对队列 q 进行了什么操作？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -7652,9 +7150,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.5 当 N 为 50 时下面这段代码会打印什么？ 从较高的抽象层次描述给定正整数 N 时这段代码的行为。&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.5&lt;br&gt;当 N 为 50 时下面这段代码会打印什么？&lt;br&gt;从较高的抽象层次描述给定正整数 N
         
       
     
@@ -7678,9 +7174,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.4 编写一个 Stack 的用例 Parentheses，从标准输入中读取一个文本流并使用栈判定其中的括号是否配对完整。&lt;/p&gt;
-&lt;p&gt;例如，对于 &lt;code&gt;[()]{}{[()()]()}&lt;/code&gt; 程序应该打印
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.4&lt;br&gt;编写一个 Stack 的用例
         
       
     
@@ -7704,10 +7198,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.3 假设某个用例程序会进行一系列入栈和出栈操作的混合栈操作。 入栈操作会将整数 0 到 9 按顺序压入栈；出栈操作会打印出返回值。 下面那种序列是不可能产生的？&lt;/p&gt;
-&lt;ol type=&quot;1&quot;&gt;
-&lt;li&gt;4 3 2
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.3&lt;br&gt;假设某个用例程序会进行一系列入栈和出栈操作的混合栈操作。&lt;br&gt;入栈操作会将整数 0 到 9
         
       
     
@@ -7731,9 +7222,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.2 给定以下输入，java Stack 的输出会是什么？&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;it was - the best - of times - - - it was - the -
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.2&lt;br&gt;给定以下输入，java Stack 的输出会是什么？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;it was - the best
         
       
     
@@ -7757,10 +7247,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.3.1 为 FixedCapacityStackOfStrings 添加一个方法 isFull()。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;首先是 FixedCapacityStackOfStrings
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.3.1&lt;br&gt;为 FixedCapacityStackOfStrings 添加一个方法 isFull()。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -7784,8 +7272,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.19 字符串解析。 为你在练习 1.2.13 中实现的 Date 和 Transaction 类型编写能够解析字符串数据的构造函数。 它接受一个 String
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.19&lt;br&gt;字符串解析。&lt;br&gt;为你在练习 1.2.13 中实现的 Date 和 Transaction
         
       
     
@@ -7809,9 +7296,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.18 累加器的方法。 以下代码为 Accumulator 类添加了 var() 和 stddev() 方法， 它们计算了 addDataValue() 方法的参数的方差和标准差，验证这段代码：&lt;/p&gt;
-&lt;div
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.18&lt;br&gt;累加器的方法。&lt;br&gt;以下代码为 Accumulator 类添加了 var() 和 stddev()
         
       
     
@@ -7835,10 +7320,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.17 有理数实现的健壮性。 在 Rational （请见练习 1.2.16）的开发中使用断言来防止溢出。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;在 C# 中使用 checked
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.17&lt;br&gt;有理数实现的健壮性。&lt;br&gt;在 Rational （请见练习
         
       
     
@@ -7862,9 +7344,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.16 有理数。 为有理数实现一个不可变数据类型 Rational，支持加减乘除操作。&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.16&lt;br&gt;有理数。&lt;br&gt;为有理数实现一个不可变数据类型 Rational，支持加减乘除操作。&lt;/p&gt;
+&lt;pre
         
       
     
@@ -7888,10 +7369,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.15 文件输入。 基于 String 的 split() 方法实现 In 中的静态方法 readInts()。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;这里我们基于 File.ReadAllLines()
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.15&lt;br&gt;文件输入。&lt;br&gt;基于 String 的 split() 方法实现 In 中的静态方法
         
       
     
@@ -7915,9 +7393,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.14 用我们对 Date 中的 equals() 方法的实现（请见 1.2.5.8 节中的 Date 代码框）作为模板， 实现 Transaction 中的 equals() 方法。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.14&lt;br&gt;用我们对 Date 中的 equals() 方法的实现（请见 1.2.5.8 节中的 Date 代码框）作为模板，
         
       
     
@@ -7941,11 +7417,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.13 用我们对 Date 的实现（请见表 1.2.12）作为模板实现 Transaction 类型。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;直接实现即可。&lt;/p&gt;
-&lt;p&gt;JAVA 版本可以参考：&lt;a
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.13&lt;br&gt;用我们对 Date 的实现（请见表 1.2.12）作为模板实现 Transaction 类型。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -7969,8 +7442,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.12 为 SmartDate 添加一个方法 dayOfTheWeek()， 为日期中每周的日返回 Monday、Tuesday、Wednesday、Thursday、Friday、Saturday 或 Sunday
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.12&lt;br&gt;为 SmartDate 添加一个方法 dayOfTheWeek()，&lt;br&gt;为日期中每周的日返回
         
       
     
@@ -7994,8 +7466,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.11 根据 Date 的 API 实现一个 SmartDate 类型，在日期非法时抛出一个异常。&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.11&lt;br&gt;根据 Date 的 API 实现一个 SmartDate 类型，在日期非法时抛出一个异常。&lt;/p&gt;
 &lt;h1
         
       
@@ -8020,8 +7491,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.10 编写一个类 VisualCounter，支持加一和减一操作。 它的构造函数接受两个参数 N 和 max，其中 N 指定了操作的最大次数， max 指定了计数器的最大绝对值。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.10&lt;br&gt;编写一个类 VisualCounter，支持加一和减一操作。&lt;br&gt;它的构造函数接受两个参数 N 和 max，其中 N
         
       
     
@@ -8045,8 +7515,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.9 修改 BinarySearch（请见 1.1.10.1 节中的二分查找代码）， 使用 Counter 统计在有查找中被检查的键的总数并在查找全部结束后打印该值。 提示：在 main() 中创建一个 Counter
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.9&lt;br&gt;修改 BinarySearch（请见 1.1.10.1 节中的二分查找代码），&lt;br&gt;使用 Counter
         
       
     
@@ -8070,9 +7539,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.8 设 a[] 和 b[] 均为长数百万的整型数组。以下代码的作用是什么？有效吗？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.8&lt;br&gt;设 a[] 和 b[] 均为长数百万的整型数组。以下代码的作用是什么？有效吗？&lt;/p&gt;
+&lt;pre
         
       
     
@@ -8096,9 +7564,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.7 以下递归函数的返回值是什么？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.7&lt;br&gt;以下递归函数的返回值是什么？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -8122,8 +7589,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.6 如果字符串 s 中的字符循环移动任意位置之后能够得到另一个字符串 t， 那么 s 就被称为 t 的回环变位（circular rotation）。 例如，ACTGACG 就是 TGACGAC 的一个回环变位，反之亦然。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.6&lt;br&gt;如果字符串 s 中的字符循环移动任意位置之后能够得到另一个字符串 t， 那么 s 就被称为 t
         
       
     
@@ -8147,9 +7613,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.5 以下这段代码会打印出什么？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.5&lt;br&gt;以下这段代码会打印出什么？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -8173,9 +7638,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.4 以下这段代码会打印出什么？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.4&lt;br&gt;以下这段代码会打印出什么？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -8199,8 +7663,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.3 编写一个 Interval2D 的用例，从命令行接受参数 N、min 和 max。 生成 N 个随机的 2D 间隔，其宽和高均匀的分布在单位正方形中的 min 和 max 之间。 用 StdDraw
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.3&lt;br&gt;编写一个 Interval2D 的用例，从命令行接受参数 N、min 和 max。&lt;br&gt;生成 N 个随机的 2D
         
       
     
@@ -8224,9 +7687,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.2 编写一个 Interval1D 的用例，从命令行接受一个整数 N。 从标准输入中读取 N 个间隔（每个间隔由一对 double 值定义）并打印出所有相交的间隔对。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.2&lt;br&gt;编写一个 Interval1D 的用例，从命令行接受一个整数 N。&lt;br&gt;从标准输入中读取 N 个间隔（每个间隔由一对
         
       
     
@@ -8250,10 +7711,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.2.1 编写一个 Point2D 的用例，从命令行接受一个整数 N。 在单位正方形中生成 N 个随机点，然后计算两点之间的最近距离。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;这里自己实现了一个 Point2D
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.2.1&lt;br&gt;编写一个 Point2D 的用例，从命令行接受一个整数 N。&lt;br&gt;在单位正方形中生成 N
         
       
     
@@ -8277,8 +7735,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.39 随机匹配。 编写一个使用 BinarySearch 的程序， 它从命令行接受一个整型参数 T， 并会分别针对 N = 10&lt;sup&gt;3、10&lt;/sup&gt;4、10^5 和 10^6 将以下实验运行 T 遍：
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.39&lt;br&gt;随机匹配。&lt;br&gt;编写一个使用 BinarySearch 的程序，&lt;br&gt;它从命令行接受一个整型参数
         
       
     
@@ -8302,9 +7759,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.38 二分查找与暴力查找。&lt;/p&gt;
-&lt;p&gt;根据 1.1.10.4 节给出的暴力查找法编写一个程序 BruteForceSearch， 在你的计算机上比较它和 BinarySearch 处理 largeW.txt 和
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.38&lt;br&gt;二分查找与暴力查找。&lt;/p&gt;
+&lt;p&gt;根据 1.1.10.4 节给出的暴力查找法编写一个程序
         
       
     
@@ -8328,8 +7784,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.37 糟糕的打乱。 假设在我们的乱序代码中你选择的是一个 0 到 N - 1 而非 i 到 N - 1 之间的随机整数。 证明得到的结果并非均匀地分布在 N! 种可能性之间。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.37&lt;br&gt;糟糕的打乱。&lt;br&gt;假设在我们的乱序代码中你选择的是一个 0 到 N - 1 而非 i 到 N - 1
         
       
     
@@ -8353,8 +7808,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.37 乱序检查。 通过实验检查表 1.1.10 中的乱序代码是否能够产生预期的效果。 编写一个程序 ShuttleTest， 接受命令行参数 M 和 N， 将大小为 M 的数组打乱 N
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.37&lt;br&gt;乱序检查。&lt;br&gt;通过实验检查表 1.1.10 中的乱序代码是否能够产生预期的效果。&lt;br&gt;编写一个程序
         
       
     
@@ -8378,9 +7832,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.35 模拟掷骰子。 以下代码能够计算每种两个骰子之和的准确概率分布：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.35&lt;br&gt;模拟掷骰子。&lt;br&gt;以下代码能够计算每种两个骰子之和的准确概率分布：&lt;/p&gt;
+&lt;pre
         
       
     
@@ -8404,8 +7857,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.34 过滤。 以下那些任务需要（在数组中，比如）保存标准输入中的所有值？ 那些可以被实现为一个过滤器且仅使用固定数量的变量和固定大小的数组（和 N 无关）？ 每个问题中，输入都是来自于标准输入且含有 N 个 0 到 1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
     
@@ -8429,12 +7881,11 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.33 矩阵库。 编写一个 Matrix 库并实现以下 API&lt;/p&gt;
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.33&lt;br&gt;矩阵库。&lt;br&gt;编写一个 Matrix 库并实现以下 API&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
-&lt;tr class=&quot;header&quot;&gt;
-&lt;th style=&quot;text-align:
+&lt;tr&gt;
+&lt;th
         
       
     
@@ -8458,8 +7909,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.32 直方图。 假设标准输入流中含有一系列 double 值。 编写一段程序，从命令行接受一个整数 N 和两个 double 值 l 和 r。 将 (l, r) 分为 N 段并使用 StdDraw
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.32&lt;br&gt;直方图。&lt;br&gt;假设标准输入流中含有一系列 double 值。&lt;br&gt;编写一段程序，从命令行接受一个整数 N 和两个
         
       
     
@@ -8483,8 +7933,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.31 随机连接。 编写一段程序，从命令行接受一个整数 N 和 double 值 p （0 到 1 之间）作为参数， 在一个圆上画出大小为 0.05 且间距相等的 N 个点， 然后将每对点按照概率 p
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.31&lt;br&gt;随机连接。&lt;br&gt;编写一段程序，从命令行接受一个整数 N 和 double 值 p （0 到 1
         
       
     
@@ -8508,9 +7957,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.30 数组练习。 编写一段程序，创建一个 N×N 的布尔数组 a[][]。 其中当 i 和 j 互质时（没有相同的因子），a[i][j] 为 true，否则为 false。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.30&lt;br&gt;数组练习。&lt;br&gt;编写一段程序，创建一个 N×N 的布尔数组 a[][]。&lt;br&gt;其中当 i 和 j
         
       
     
@@ -8534,8 +7981,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.29 等值键。 为 BinarySearch 类添加一个静态方法 rank()， 它接受一个键和一个整型有序数组（可能存在重复值）作为参数 并返回数组中小于该键的元素数量， 以及一个类似的方法 count()
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.29&lt;br&gt;等值键。&lt;br&gt;为 BinarySearch 类添加一个静态方法
         
       
     
@@ -8559,10 +8005,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.28 删除重复元素。 修改 BinarySearch 类中的测试用例来删去排序之后白名单中的所有重复元素。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;实现方法有很多，这里是使用一个 HashSet
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.28&lt;br&gt;删除重复元素。&lt;br&gt;修改 BinarySearch
         
       
     
@@ -8586,9 +8029,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.27 二项分布。 估计用以下代码计算 binomial(100, 50, 0.25) 将会产生的递归调用次数：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.27&lt;br&gt;二项分布。&lt;br&gt;估计用以下代码计算 binomial(100, 50, 0.25)
         
       
     
@@ -8612,9 +8053,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.26 将三个数字排序。 假设 a、b、c 和 t 都是同一种原始数字类型的变量。 证明如下代码能够将 a、b、c 按照升序排列。&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.26&lt;br&gt;将三个数字排序。&lt;br&gt;假设 a、b、c 和 t 都是同一种原始数字类型的变量。&lt;br&gt;证明如下代码能够将 a、b、c
         
       
     
@@ -8638,10 +8077,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.25 用数学归纳法证明欧几里得算法能够计算出任意一对非负整数 p 和 q 的最大公约数。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;已知：$ a,b $ 皆为正整数，且 $ a&amp;gt;b &lt;span
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.25&lt;br&gt;用数学归纳法证明欧几里得算法能够计算出任意一对非负整数 p 和 q 的最大公约数。&lt;/p&gt;
+&lt;h1
         
       
     
@@ -8665,8 +8102,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.24 给出使用欧几里得算法计算 105 和 24 的最大公约数的过程中得到的一系列 p 和 q 的值。 扩展该算法中的代码得到一个程序 Euclid， 从命令行接受两个参数，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.24&lt;br&gt;给出使用欧几里得算法计算 105 和 24 的最大公约数的过程中得到的一系列 p 和 q
         
       
     
@@ -8690,10 +8126,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.23 为 BinarySearch 的测试用例添加一个参数：&lt;/p&gt;
-&lt;p&gt;&#39;+&#39; 打印出标准输入中不在白名单上的值； &#39;-&#39; 则打印出标准输入中在白名单上的值。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.23&lt;br&gt;为 BinarySearch 的测试用例添加一个参数： &lt;/p&gt;
+&lt;p&gt;‘+’
         
       
     
@@ -8717,9 +8151,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.22 使用 1.1.6.4 节中的 rank() 递归方法重新实现 BinarySearch 并跟踪该方法的调用。&lt;/p&gt;
-&lt;p&gt;每当该方法被调用时，打印出它的参数 lo 和 hi 并按照递归的深度缩进。
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.22&lt;br&gt;使用 1.1.6.4 节中的 rank() 递归方法重新实现 BinarySearch 并跟踪该方法的调用。
         
       
     
@@ -8743,8 +8175,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.21 编写一段程序，从标准输入按行读取数据，其中每行都包含一个名字和两个整数。 然后用 printf() 打印一张表格， 每行的若干列数据包含名字、两个整数和第一个整数除以第二个整数的结果，
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.21&lt;br&gt;编写一段程序，从标准输入按行读取数据，其中每行都包含一个名字和两个整数。&lt;br&gt;然后用 printf()
         
       
     
@@ -8768,11 +8199,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.20 编写一个递归的静态方法计算 ln(N!) 的值。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;根据对数的性质可以得到：&lt;/p&gt;
-&lt;p&gt;ln(N!) = ln(N) + ln(N – 1) + ln(N
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.20&lt;br&gt;编写一个递归的静态方法计算 ln(N!) 的值。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -8796,9 +8224,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.19 在计算机上运行以下程序：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.19&lt;br&gt;在计算机上运行以下程序：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -8822,9 +8249,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.18 请看以下递归函数：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.18&lt;br&gt;请看以下递归函数：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-java&quot;&gt;&lt;code
         
       
     
@@ -8848,9 +8274,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.17 找出以下递归函数的问题：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.17&lt;br&gt;找出以下递归函数的问题：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -8874,9 +8299,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.16 给出 exR1(6) 的返回值。&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.16&lt;br&gt;给出 exR1(6) 的返回值。&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -8900,8 +8324,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.15 编写一个静态方法 histogram()， 接受一个整型数组 a[] 和一个整数 M 作为参数并返回一个大小为 M 的数组， 其中第 i 个元素的值为整数 i 在参数数组中出现的次数。 如果 a[] 中的值均在 0
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.15&lt;br&gt;编写一个静态方法 histogram()，&lt;br&gt;接受一个整型数组 a[] 和一个整数 M 作为参数并返回一个大小为
         
       
     
@@ -8925,11 +8348,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.14 编写一个静态方法lg()，接受一个整型参数N，返回不大于log2(N)的最大整数。&lt;/p&gt;
-&lt;p&gt;不要使用 Math 库。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;简单使用 log
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.14&lt;br&gt;编写一个静态方法lg()，接受一个整型参数N，返回不大于log2(N)的最大整数。&lt;/p&gt;
+&lt;p&gt;不要使用 Math
         
       
     
@@ -8953,11 +8373,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.13 编写一段代码，打印出一个 M 行 N 列的二维数组的转置。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;转置输出只需要在二重循环的时候将行、列输出顺序取反即可。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.13&lt;br&gt;编写一段代码，打印出一个 M 行 N 列的二维数组的转置。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a href=&quot;#解答&quot;
         
       
     
@@ -8981,9 +8398,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.12 以下代码段会打印出什么结果？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.12&lt;br&gt;以下代码段会打印出什么结果？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -9007,10 +8423,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.11 编写一段代码，打印出一个二维布尔数组的内容。 其中，使用 * 表示真，空格表示假，打印出行号和列号。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;注意，二维数组 bool[M, N] 代表 M 行 N
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.11&lt;br&gt;编写一段代码，打印出一个二维布尔数组的内容。&lt;br&gt;其中，使用 *
         
       
     
@@ -9034,9 +8447,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.10 下面这段代码有什么问题？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.10&lt;br&gt;下面这段代码有什么问题？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -9060,11 +8472,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.9 编写一段代码，将一个正整数N用二进制表示并转换为一个 String 类型的值 s。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;有两种方法，要么直接调用库函数，要么用书中给出的代码转换。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.9&lt;br&gt;编写一段代码，将一个正整数N用二进制表示并转换为一个 String 类型的值 s。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
         
       
     
@@ -9088,9 +8497,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.8 下列语句会打印出什么结果？给出解释。&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.8&lt;br&gt;下列语句会打印出什么结果？给出解释。&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -9114,9 +8522,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.7 分别给出以下代码段打印出的值。&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.7&lt;br&gt;分别给出以下代码段打印出的值。&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -9140,9 +8547,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.6 下面这段程序会打印出什么？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.6&lt;br&gt;下面这段程序会打印出什么？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -9166,9 +8572,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.5 编写一段程序， 如果 double 类型的变量 x 和 y 都严格位于 0 和 1 之间则打印 true 否则打印 false。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.5&lt;br&gt;编写一段程序，&lt;br&gt;如果 double 类型的变量 x 和 y 都严格位于 0 和 1 之间则打印
         
       
     
@@ -9192,9 +8596,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.4 下列语句各有什么问题（如果有的话）？&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.4&lt;br&gt;下列语句各有什么问题（如果有的话）？&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -9218,11 +8621,7 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.3 编写一个程序，从命令行获取三个整数参数。 如果它们都相等则打印 equal， 否则打印 not equal。&lt;/p&gt;
-&lt;h1 id=&quot;解答&quot;&gt;解答&lt;/h1&gt;
-&lt;p&gt;简单的 if 判断即可。&lt;/p&gt;
-&lt;h1
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.3&lt;br&gt;编写一个程序，从命令行获取三个整数参数。&lt;br&gt;如果它们都相等则打印 equal， 否则打印 not
         
       
     
@@ -9246,9 +8645,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.2 给出以下表达式的类型和值：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.2&lt;br&gt;给出以下表达式的类型和值：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     
@@ -9272,9 +8670,8 @@ A
       
         
         
-          &lt;h1 id=&quot;题目&quot;&gt;题目&lt;/h1&gt;
-&lt;p&gt;1.1.1 给出以下表达式的值：&lt;/p&gt;
-&lt;div class=&quot;sourceCode&quot; id=&quot;cb1&quot;&gt;&lt;pre class=&quot;sourceCode java&quot;&gt;&lt;code class=&quot;sourceCode
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;1.1.1&lt;br&gt; 给出以下表达式的值：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
         
       
     

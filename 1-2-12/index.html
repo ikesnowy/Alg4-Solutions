@@ -140,35 +140,32 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.2.12</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.2.12 为 SmartDate 添加一个方法 dayOfTheWeek()， 为日期中每周的日返回 Monday、Tuesday、Wednesday、Thursday、Friday、Saturday 或 Sunday 中的适当值。 你可以假定时间是 21 世纪。</p>
-<h1 id="解答">解答</h1>
-<p>这里使用蔡勒公式来推算星期。</p>
-<p>参考：http://www.cnblogs.com/mq0036/p/3534314.html</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 计算当前日期是星期几，返回对应的星期名称。</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">public</span> <span class="dt">string</span> <span class="fu">DayOfTheWeek</span>()</a>
-<a class="sourceLine" id="cb1-6" title="6">{</a>
-<a class="sourceLine" id="cb1-7" title="7">    <span class="dt">int</span> d = <span class="kw">this</span>.<span class="fu">Day</span>;</a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="dt">int</span> m = <span class="kw">this</span>.<span class="fu">Month</span>;</a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="dt">int</span> y = <span class="kw">this</span>.<span class="fu">Year</span>;</a>
-<a class="sourceLine" id="cb1-10" title="10"></a>
-<a class="sourceLine" id="cb1-11" title="11">    <span class="kw">if</span> (m &lt; <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb1-12" title="12">    {</a>
-<a class="sourceLine" id="cb1-13" title="13">        m += <span class="dv">12</span>;</a>
-<a class="sourceLine" id="cb1-14" title="14">        y--;</a>
-<a class="sourceLine" id="cb1-15" title="15">    }</a>
-<a class="sourceLine" id="cb1-16" title="16"></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="co">//使用蔡勒公式计算，参见 http://www.cnblogs.com/mq0036/p/3534314.html</span></a>
-<a class="sourceLine" id="cb1-18" title="18">    <span class="dt">int</span> w = (d + <span class="dv">2</span> * m + <span class="dv">3</span> * (m + <span class="dv">1</span>) / <span class="dv">5</span> + y + y / <span class="dv">4</span> - y / <span class="dv">100</span> + y / <span class="dv">400</span>) % <span class="dv">7</span>;</a>
-<a class="sourceLine" id="cb1-19" title="19"></a>
-<a class="sourceLine" id="cb1-20" title="20">    <span class="kw">return</span> dayOfWeek[w];</a>
-<a class="sourceLine" id="cb1-21" title="21">}</a></code></pre></div>
-<h1 id="另请参阅">另请参阅</h1>
-<p><a href="https://zh.wikipedia.org/wiki/蔡勒公式" target="_blank" rel="noopener">蔡勒公式-维基百科</a></p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.12<br>为 SmartDate 添加一个方法 dayOfTheWeek()，<br>为日期中每周的日返回 Monday、Tuesday、Wednesday、Thursday、Friday、Saturday 或 Sunday 中的适当值。<br>你可以假定时间是 21 世纪。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里使用蔡勒公式来推算星期。</p>
+<p>参考：<a href="http://www.cnblogs.com/mq0036/p/3534314.html" target="_blank" rel="noopener">http://www.cnblogs.com/mq0036/p/3534314.html</a></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
+<span class="token comment" spellcheck="true">/// 计算当前日期是星期几，返回对应的星期名称。</span>
+<span class="token comment" spellcheck="true">/// &lt;/summary></span>
+<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
+<span class="token keyword">public</span> <span class="token keyword">string</span> <span class="token function">DayOfTheWeek</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> d <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Day<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> m <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Month<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Year<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>m <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        m <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+        y<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//使用蔡勒公式计算，参见 http://www.cnblogs.com/mq0036/p/3534314.html</span>
+    <span class="token keyword">int</span> w <span class="token operator">=</span> <span class="token punctuation">(</span>d <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> m <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">5</span> <span class="token operator">+</span> y <span class="token operator">+</span> y <span class="token operator">/</span> <span class="token number">4</span> <span class="token operator">-</span> y <span class="token operator">/</span> <span class="token number">100</span> <span class="token operator">+</span> y <span class="token operator">/</span> <span class="token number">400</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">7</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> dayOfWeek<span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://zh.wikipedia.org/wiki/蔡勒公式" target="_blank" rel="noopener">蔡勒公式-维基百科</a></p>
 
 		</div>
 	</div>

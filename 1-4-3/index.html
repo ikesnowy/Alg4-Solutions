@@ -140,93 +140,91 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.3</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目">题目</h1>
-<p>1.4.3 修改 DoublingTest，使用 StdDraw 产生类似于正文中的标准图像和对数图像， 根据需要调整比例使图像总能够充满窗口的大部分区域。</p>
-<h1 id="解答">解答</h1>
-<p>见代码，这里贴出绘图函数，窗体只是在得到测试结果之后简单调用以下这两个函数。</p>
-<h1 id="代码">代码</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">PaintLinear</span>(<span class="dt">double</span>[] testResult)</a>
-<a class="sourceLine" id="cb1-2" title="2">{</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="co">//新建一个绘图窗口</span></a>
-<a class="sourceLine" id="cb1-4" title="4">    Form2 linear = <span class="kw">new</span> <span class="fu">Form2</span>();</a>
-<a class="sourceLine" id="cb1-5" title="5">    linear.<span class="fu">Show</span>();</a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="co">//新建画布</span></a>
-<a class="sourceLine" id="cb1-7" title="7">    Graphics canvas = linear.<span class="fu">CreateGraphics</span>();</a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="co">//获取窗口区域</span></a>
-<a class="sourceLine" id="cb1-9" title="9">    Rectangle rect = linear.<span class="fu">ClientRectangle</span>;</a>
-<a class="sourceLine" id="cb1-10" title="10">    <span class="co">//计算单位长度（十等分）</span></a>
-<a class="sourceLine" id="cb1-11" title="11">    <span class="dt">int</span> unitY = rect.<span class="fu">Height</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-12" title="12">    <span class="dt">int</span> unitX = rect.<span class="fu">Width</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-13" title="13">    <span class="co">//获取中心区域（上下左右增加 10% 的内补）</span></a>
-<a class="sourceLine" id="cb1-14" title="14">    Rectangle center = <span class="kw">new</span> <span class="fu">Rectangle</span>(rect.<span class="fu">X</span> + unitX, rect.<span class="fu">Y</span> + unitY, unitX * <span class="dv">8</span>, unitY * <span class="dv">8</span>);</a>
-<a class="sourceLine" id="cb1-15" title="15">    <span class="co">//绘制坐标系</span></a>
-<a class="sourceLine" id="cb1-16" title="16">    canvas.<span class="fu">DrawLine</span>(Pens.<span class="fu">Black</span>, center.<span class="fu">X</span>, center.<span class="fu">Y</span>, center.<span class="fu">X</span>, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-17" title="17">    canvas.<span class="fu">DrawLine</span>(Pens.<span class="fu">Black</span>, center.<span class="fu">X</span>, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>, center.<span class="fu">X</span> + center.<span class="fu">Width</span>, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-18" title="18">    <span class="co">//对 X 轴 10 等分，对 Y 轴 10 等分</span></a>
-<a class="sourceLine" id="cb1-19" title="19">    <span class="dt">int</span> xaxisUnit = center.<span class="fu">Width</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-20" title="20">    <span class="dt">int</span> yaxisUnit = center.<span class="fu">Height</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-21" title="21">    <span class="co">//标记 X 轴坐标值</span></a>
-<a class="sourceLine" id="cb1-22" title="22">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt;= <span class="dv">8</span>; i += i)</a>
-<a class="sourceLine" id="cb1-23" title="23">    {</a>
-<a class="sourceLine" id="cb1-24" title="24">        canvas.<span class="fu">DrawString</span>(i + <span class="st">&quot;N&quot;</span>, linear.<span class="fu">Font</span>, Brushes.<span class="fu">Black</span>, center.<span class="fu">X</span> + i * xaxisUnit, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-25" title="25">    }</a>
-<a class="sourceLine" id="cb1-26" title="26">    <span class="co">//反转坐标系</span></a>
-<a class="sourceLine" id="cb1-27" title="27">    canvas.<span class="fu">TranslateTransform</span>(<span class="dv">0</span>, linear.<span class="fu">ClientRectangle</span>.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-28" title="28">    canvas.<span class="fu">ScaleTransform</span>(<span class="dv">1</span>, <span class="dv">-1</span>);</a>
-<a class="sourceLine" id="cb1-29" title="29">    <span class="co">//计算单位长度</span></a>
-<a class="sourceLine" id="cb1-30" title="30">    <span class="dt">double</span> Unit = center.<span class="fu">Height</span> / testResult[<span class="dv">3</span>];</a>
-<a class="sourceLine" id="cb1-31" title="31">    <span class="co">//标记</span></a>
-<a class="sourceLine" id="cb1-32" title="32">    PointF[] result = <span class="kw">new</span> PointF[<span class="dv">4</span>];</a>
-<a class="sourceLine" id="cb1-33" title="33">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>, j = <span class="dv">1</span>; i &lt; <span class="dv">4</span> &amp;&amp; j &lt;= <span class="dv">8</span>; ++i, j += j)</a>
-<a class="sourceLine" id="cb1-34" title="34">    {</a>
-<a class="sourceLine" id="cb1-35" title="35">        result[i] = <span class="kw">new</span> <span class="fu">PointF</span>(center.<span class="fu">X</span> + j * xaxisUnit, (<span class="dt">float</span>)(center.<span class="fu">Y</span> + Unit * testResult[i]));</a>
-<a class="sourceLine" id="cb1-36" title="36">    }</a>
-<a class="sourceLine" id="cb1-37" title="37">    <span class="co">//链接</span></a>
-<a class="sourceLine" id="cb1-38" title="38">    canvas.<span class="fu">DrawLines</span>(Pens.<span class="fu">Black</span>, result);</a>
-<a class="sourceLine" id="cb1-39" title="39"></a>
-<a class="sourceLine" id="cb1-40" title="40">    canvas.<span class="fu">Dispose</span>();</a>
-<a class="sourceLine" id="cb1-41" title="41">}</a>
-<a class="sourceLine" id="cb1-42" title="42"></a>
-<a class="sourceLine" id="cb1-43" title="43"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">PaintLogarithm</span>(<span class="dt">double</span>[] testResult)</a>
-<a class="sourceLine" id="cb1-44" title="44">{</a>
-<a class="sourceLine" id="cb1-45" title="45">    <span class="co">//新建一个绘图窗口</span></a>
-<a class="sourceLine" id="cb1-46" title="46">    Form2 log = <span class="kw">new</span> <span class="fu">Form2</span>();</a>
-<a class="sourceLine" id="cb1-47" title="47">    log.<span class="fu">Show</span>();</a>
-<a class="sourceLine" id="cb1-48" title="48">    <span class="co">//新建画布</span></a>
-<a class="sourceLine" id="cb1-49" title="49">    Graphics canvas = log.<span class="fu">CreateGraphics</span>();</a>
-<a class="sourceLine" id="cb1-50" title="50">    <span class="co">//获取窗口区域</span></a>
-<a class="sourceLine" id="cb1-51" title="51">    Rectangle rect = log.<span class="fu">ClientRectangle</span>;</a>
-<a class="sourceLine" id="cb1-52" title="52">    <span class="co">//计算单位长度（十等分）</span></a>
-<a class="sourceLine" id="cb1-53" title="53">    <span class="dt">int</span> unitY = rect.<span class="fu">Height</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-54" title="54">    <span class="dt">int</span> unitX = rect.<span class="fu">Width</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-55" title="55">    <span class="co">//获取中心区域（上下左右增加 10% 的内补）</span></a>
-<a class="sourceLine" id="cb1-56" title="56">    Rectangle center = <span class="kw">new</span> <span class="fu">Rectangle</span>(rect.<span class="fu">X</span> + unitX, rect.<span class="fu">Y</span> + unitY, unitX * <span class="dv">8</span>, unitY * <span class="dv">8</span>);</a>
-<a class="sourceLine" id="cb1-57" title="57">    <span class="co">//绘制坐标系</span></a>
-<a class="sourceLine" id="cb1-58" title="58">    canvas.<span class="fu">DrawLine</span>(Pens.<span class="fu">Black</span>, center.<span class="fu">X</span>, center.<span class="fu">Y</span>, center.<span class="fu">X</span>, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-59" title="59">    canvas.<span class="fu">DrawLine</span>(Pens.<span class="fu">Black</span>, center.<span class="fu">X</span>, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>, center.<span class="fu">X</span> + center.<span class="fu">Width</span>, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-60" title="60">    <span class="co">//对 X 轴 10 等分，对 Y 轴 10 等分</span></a>
-<a class="sourceLine" id="cb1-61" title="61">    <span class="dt">int</span> xaxisUnit = center.<span class="fu">Width</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-62" title="62">    <span class="dt">int</span> yaxisUnit = center.<span class="fu">Height</span> / <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb1-63" title="63">    <span class="co">//标记 X 轴坐标值</span></a>
-<a class="sourceLine" id="cb1-64" title="64">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt;= <span class="dv">8</span>; i += i)</a>
-<a class="sourceLine" id="cb1-65" title="65">    {</a>
-<a class="sourceLine" id="cb1-66" title="66">        canvas.<span class="fu">DrawString</span>(i + <span class="st">&quot;N&quot;</span>, log.<span class="fu">Font</span>, Brushes.<span class="fu">Black</span>, center.<span class="fu">X</span> + i * xaxisUnit, center.<span class="fu">Y</span> + center.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-67" title="67">    }</a>
-<a class="sourceLine" id="cb1-68" title="68">    <span class="co">//反转坐标系</span></a>
-<a class="sourceLine" id="cb1-69" title="69">    canvas.<span class="fu">TranslateTransform</span>(<span class="dv">0</span>, log.<span class="fu">ClientRectangle</span>.<span class="fu">Height</span>);</a>
-<a class="sourceLine" id="cb1-70" title="70">    canvas.<span class="fu">ScaleTransform</span>(<span class="dv">1</span>, <span class="dv">-1</span>);</a>
-<a class="sourceLine" id="cb1-71" title="71">    <span class="co">//计算单位长度</span></a>
-<a class="sourceLine" id="cb1-72" title="72">    <span class="dt">double</span> Unit = center.<span class="fu">Height</span> / testResult[<span class="dv">3</span>];</a>
-<a class="sourceLine" id="cb1-73" title="73">    <span class="co">//标记</span></a>
-<a class="sourceLine" id="cb1-74" title="74">    PointF[] result = <span class="kw">new</span> PointF[<span class="dv">4</span>];</a>
-<a class="sourceLine" id="cb1-75" title="75">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>, j = <span class="dv">1</span>; i &lt; <span class="dv">4</span> &amp;&amp; j &lt;= <span class="dv">8</span>; ++i, j += j)</a>
-<a class="sourceLine" id="cb1-76" title="76">    {</a>
-<a class="sourceLine" id="cb1-77" title="77">        result[i] = <span class="kw">new</span> <span class="fu">PointF</span>(center.<span class="fu">X</span> + j * xaxisUnit, (<span class="dt">float</span>)(center.<span class="fu">Y</span> + Unit * testResult[i]));</a>
-<a class="sourceLine" id="cb1-78" title="78">    }</a>
-<a class="sourceLine" id="cb1-79" title="79">    <span class="co">//链接</span></a>
-<a class="sourceLine" id="cb1-80" title="80">    canvas.<span class="fu">DrawLines</span>(Pens.<span class="fu">Black</span>, result);</a>
-<a class="sourceLine" id="cb1-81" title="81">    canvas.<span class="fu">Dispose</span>();</a>
-<a class="sourceLine" id="cb1-82" title="82">}</a></code></pre></div>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.3<br>修改 DoublingTest，使用 StdDraw 产生类似于正文中的标准图像和对数图像，<br>根据需要调整比例使图像总能够充满窗口的大部分区域。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>见代码，这里贴出绘图函数，窗体只是在得到测试结果之后简单调用以下这两个函数。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PaintLinear</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testResult<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//新建一个绘图窗口</span>
+    Form2 linear <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Form2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    linear<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//新建画布</span>
+    Graphics canvas <span class="token operator">=</span> linear<span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取窗口区域</span>
+    Rectangle rect <span class="token operator">=</span> linear<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度（十等分）</span>
+    <span class="token keyword">int</span> unitY <span class="token operator">=</span> rect<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> unitX <span class="token operator">=</span> rect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取中心区域（上下左右增加 10% 的内补）</span>
+    Rectangle center <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>X <span class="token operator">+</span> unitX<span class="token punctuation">,</span> rect<span class="token punctuation">.</span>Y <span class="token operator">+</span> unitY<span class="token punctuation">,</span> unitX <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">,</span> unitY <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//绘制坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> center<span class="token punctuation">.</span>Width<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//对 X 轴 10 等分，对 Y 轴 10 等分</span>
+    <span class="token keyword">int</span> xaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> yaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记 X 轴坐标值</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        canvas<span class="token punctuation">.</span><span class="token function">DrawString</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">"N"</span><span class="token punctuation">,</span> linear<span class="token punctuation">.</span>Font<span class="token punctuation">,</span> Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> i <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//反转坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> linear<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度</span>
+    <span class="token keyword">double</span> Unit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> testResult<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记</span>
+    PointF<span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> j <span class="token operator">+</span><span class="token operator">=</span> j<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>X <span class="token operator">+</span> j <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>Y <span class="token operator">+</span> Unit <span class="token operator">*</span> testResult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//链接</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLines</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    canvas<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PaintLogarithm</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testResult<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//新建一个绘图窗口</span>
+    Form2 log <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Form2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    log<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//新建画布</span>
+    Graphics canvas <span class="token operator">=</span> log<span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取窗口区域</span>
+    Rectangle rect <span class="token operator">=</span> log<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度（十等分）</span>
+    <span class="token keyword">int</span> unitY <span class="token operator">=</span> rect<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> unitX <span class="token operator">=</span> rect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取中心区域（上下左右增加 10% 的内补）</span>
+    Rectangle center <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>X <span class="token operator">+</span> unitX<span class="token punctuation">,</span> rect<span class="token punctuation">.</span>Y <span class="token operator">+</span> unitY<span class="token punctuation">,</span> unitX <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">,</span> unitY <span class="token operator">*</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//绘制坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> center<span class="token punctuation">.</span>Width<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//对 X 轴 10 等分，对 Y 轴 10 等分</span>
+    <span class="token keyword">int</span> xaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> yaxisUnit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记 X 轴坐标值</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        canvas<span class="token punctuation">.</span><span class="token function">DrawString</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">"N"</span><span class="token punctuation">,</span> log<span class="token punctuation">.</span>Font<span class="token punctuation">,</span> Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> center<span class="token punctuation">.</span>X <span class="token operator">+</span> i <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> center<span class="token punctuation">.</span>Y <span class="token operator">+</span> center<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//反转坐标系</span>
+    canvas<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> log<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//计算单位长度</span>
+    <span class="token keyword">double</span> Unit <span class="token operator">=</span> center<span class="token punctuation">.</span>Height <span class="token operator">/</span> testResult<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//标记</span>
+    PointF<span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> <span class="token number">8</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> j <span class="token operator">+</span><span class="token operator">=</span> j<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PointF</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>X <span class="token operator">+</span> j <span class="token operator">*</span> xaxisUnit<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token punctuation">(</span>center<span class="token punctuation">.</span>Y <span class="token operator">+</span> Unit <span class="token operator">*</span> testResult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//链接</span>
+    canvas<span class="token punctuation">.</span><span class="token function">DrawLines</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 		</div>
 	</div>
