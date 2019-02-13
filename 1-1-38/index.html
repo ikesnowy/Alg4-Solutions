@@ -140,84 +140,87 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.38</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.38<br>二分查找与暴力查找。</p>
-<p>根据 1.1.10.4 节给出的暴力查找法编写一个程序 BruteForceSearch，<br>在你的计算机上比较它和 BinarySearch 处理 largeW.txt 和 largeT.txt 所需的时间。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>为了使差距比较明显，故意取了比较靠后的数字。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> largeWString <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllLines</span><span class="token punctuation">(</span><span class="token string">"largeW.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> largeW <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>largeWString<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> largeW<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        largeW<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>largeWString<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    Stopwatch timer <span class="token operator">=</span> Stopwatch<span class="token punctuation">.</span><span class="token function">StartNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">BruteForceSearch</span><span class="token punctuation">(</span><span class="token number">111111</span><span class="token punctuation">,</span> largeW<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"BruteForceSearch: {timer.ElapsedMilliseconds} ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    timer<span class="token punctuation">.</span><span class="token function">Restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">rank</span><span class="token punctuation">(</span><span class="token number">111111</span><span class="token punctuation">,</span> largeW<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"BinarySearch: {timer.ElapsedMilliseconds} ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> largeTString <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllLines</span><span class="token punctuation">(</span><span class="token string">"largeT.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> largeT <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>largeTString<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> largeW<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        largeT<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>largeTString<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    timer<span class="token punctuation">.</span><span class="token function">Restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">BruteForceSearch</span><span class="token punctuation">(</span><span class="token number">111111</span><span class="token punctuation">,</span> largeT<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"BruteForceSearch: {timer.ElapsedMilliseconds} ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    timer<span class="token punctuation">.</span><span class="token function">Restart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">rank</span><span class="token punctuation">(</span><span class="token number">111111</span><span class="token punctuation">,</span> largeT<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"BinarySearch: {timer.ElapsedMilliseconds} ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">//暴力查找</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">BruteForceSearch</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> key<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> i<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">//重载方法，用于启动二分查找</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">rank</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token function">rank</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">//二分查找</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">rank</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">,</span> <span class="token keyword">int</span> number<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>lo <span class="token operator">></span> hi<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">&lt;</span> a<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">rank</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> number <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">></span> a<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">rank</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> a<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> hi<span class="token punctuation">,</span> number <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> mid<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="http://algs4.cs.princeton.edu/11model/largeW.txt" target="_blank" rel="noopener">LargeW.txt</a><br><a href="http://algs4.cs.princeton.edu/11model/largeT.txt" target="_blank" rel="noopener">LargeT.txt</a></p>
+			<h1 id="题目">题目</h1>
+<p>1.1.38 二分查找与暴力查找。</p>
+<p>根据 1.1.10.4 节给出的暴力查找法编写一个程序 BruteForceSearch， 在你的计算机上比较它和 BinarySearch 处理 largeW.txt 和 largeT.txt 所需的时间。</p>
+<h1 id="解答">解答</h1>
+<p>为了使差距比较明显，故意取了比较靠后的数字。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="dt">string</span>[] largeWString = File.<span class="fu">ReadAllLines</span>(<span class="st">&quot;largeW.txt&quot;</span>);</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="dt">int</span>[] largeW = <span class="kw">new</span> <span class="dt">int</span>[largeWString.<span class="fu">Length</span>];</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; largeW.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-6" title="6">    {</a>
+<a class="sourceLine" id="cb1-7" title="7">        largeW[i] = <span class="dt">int</span>.<span class="fu">Parse</span>(largeWString[i]);</a>
+<a class="sourceLine" id="cb1-8" title="8">    }</a>
+<a class="sourceLine" id="cb1-9" title="9">    Stopwatch timer = Stopwatch.<span class="fu">StartNew</span>();</a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="fu">BruteForceSearch</span>(<span class="dv">111111</span>, largeW);</a>
+<a class="sourceLine" id="cb1-11" title="11">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;BruteForceSearch: {timer.ElapsedMilliseconds} ms&quot;</span>);</a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">    timer.<span class="fu">Restart</span>();</a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="fu">rank</span>(<span class="dv">111111</span>, largeW);</a>
+<a class="sourceLine" id="cb1-15" title="15">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;BinarySearch: {timer.ElapsedMilliseconds} ms&quot;</span>);</a>
+<a class="sourceLine" id="cb1-16" title="16"></a>
+<a class="sourceLine" id="cb1-17" title="17">    <span class="dt">string</span>[] largeTString = File.<span class="fu">ReadAllLines</span>(<span class="st">&quot;largeT.txt&quot;</span>);</a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="dt">int</span>[] largeT = <span class="kw">new</span> <span class="dt">int</span>[largeTString.<span class="fu">Length</span>];</a>
+<a class="sourceLine" id="cb1-19" title="19">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; largeW.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-20" title="20">    {</a>
+<a class="sourceLine" id="cb1-21" title="21">        largeT[i] = <span class="dt">int</span>.<span class="fu">Parse</span>(largeTString[i]);</a>
+<a class="sourceLine" id="cb1-22" title="22">    }</a>
+<a class="sourceLine" id="cb1-23" title="23"></a>
+<a class="sourceLine" id="cb1-24" title="24">    timer.<span class="fu">Restart</span>();</a>
+<a class="sourceLine" id="cb1-25" title="25">    <span class="fu">BruteForceSearch</span>(<span class="dv">111111</span>, largeT);</a>
+<a class="sourceLine" id="cb1-26" title="26">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;BruteForceSearch: {timer.ElapsedMilliseconds} ms&quot;</span>);</a>
+<a class="sourceLine" id="cb1-27" title="27"></a>
+<a class="sourceLine" id="cb1-28" title="28">    timer.<span class="fu">Restart</span>();</a>
+<a class="sourceLine" id="cb1-29" title="29">    <span class="fu">rank</span>(<span class="dv">111111</span>, largeT);</a>
+<a class="sourceLine" id="cb1-30" title="30">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;BinarySearch: {timer.ElapsedMilliseconds} ms&quot;</span>);</a>
+<a class="sourceLine" id="cb1-31" title="31">}</a>
+<a class="sourceLine" id="cb1-32" title="32"></a>
+<a class="sourceLine" id="cb1-33" title="33"><span class="co">//暴力查找</span></a>
+<a class="sourceLine" id="cb1-34" title="34"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">BruteForceSearch</span>(<span class="dt">int</span> key, <span class="dt">int</span>[] a)</a>
+<a class="sourceLine" id="cb1-35" title="35">{</a>
+<a class="sourceLine" id="cb1-36" title="36">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; a.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-37" title="37">    {</a>
+<a class="sourceLine" id="cb1-38" title="38">        <span class="kw">if</span> (a[i] == key)</a>
+<a class="sourceLine" id="cb1-39" title="39">            <span class="kw">return</span> i;</a>
+<a class="sourceLine" id="cb1-40" title="40">    }</a>
+<a class="sourceLine" id="cb1-41" title="41"></a>
+<a class="sourceLine" id="cb1-42" title="42">    <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-43" title="43">}</a>
+<a class="sourceLine" id="cb1-44" title="44"></a>
+<a class="sourceLine" id="cb1-45" title="45"><span class="co">//重载方法，用于启动二分查找</span></a>
+<a class="sourceLine" id="cb1-46" title="46"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">rank</span>(<span class="dt">int</span> key, <span class="dt">int</span>[] a)</a>
+<a class="sourceLine" id="cb1-47" title="47">{</a>
+<a class="sourceLine" id="cb1-48" title="48">    <span class="kw">return</span> <span class="fu">rank</span>(key, a, <span class="dv">0</span>, a.<span class="fu">Length</span> - <span class="dv">1</span>, <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-49" title="49">}</a>
+<a class="sourceLine" id="cb1-50" title="50"></a>
+<a class="sourceLine" id="cb1-51" title="51"><span class="co">//二分查找</span></a>
+<a class="sourceLine" id="cb1-52" title="52"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">rank</span>(<span class="dt">int</span> key, <span class="dt">int</span>[] a, <span class="dt">int</span> lo, <span class="dt">int</span> hi, <span class="dt">int</span> number)</a>
+<a class="sourceLine" id="cb1-53" title="53">{</a>
+<a class="sourceLine" id="cb1-54" title="54">    <span class="kw">if</span> (lo &gt; hi)</a>
+<a class="sourceLine" id="cb1-55" title="55">    {</a>
+<a class="sourceLine" id="cb1-56" title="56">        <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-57" title="57">    }</a>
+<a class="sourceLine" id="cb1-58" title="58"></a>
+<a class="sourceLine" id="cb1-59" title="59">    <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-60" title="60"></a>
+<a class="sourceLine" id="cb1-61" title="61">    <span class="kw">if</span> (key &lt; a[mid])</a>
+<a class="sourceLine" id="cb1-62" title="62">    {</a>
+<a class="sourceLine" id="cb1-63" title="63">        <span class="kw">return</span> <span class="fu">rank</span>(key, a, lo, mid - <span class="dv">1</span>, number + <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-64" title="64">    }</a>
+<a class="sourceLine" id="cb1-65" title="65">    <span class="kw">else</span> <span class="kw">if</span> (key &gt; a[mid])</a>
+<a class="sourceLine" id="cb1-66" title="66">    {</a>
+<a class="sourceLine" id="cb1-67" title="67">        <span class="kw">return</span> <span class="fu">rank</span>(key, a, mid + <span class="dv">1</span>, hi, number + <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-68" title="68">    }</a>
+<a class="sourceLine" id="cb1-69" title="69">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-70" title="70">    {</a>
+<a class="sourceLine" id="cb1-71" title="71">        <span class="kw">return</span> mid;</a>
+<a class="sourceLine" id="cb1-72" title="72">    }</a>
+<a class="sourceLine" id="cb1-73" title="73">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="http://algs4.cs.princeton.edu/11model/largeW.txt" target="_blank" rel="noopener">LargeW.txt</a> <a href="http://algs4.cs.princeton.edu/11model/largeT.txt" target="_blank" rel="noopener">LargeT.txt</a></p>
 
 		</div>
 	</div>

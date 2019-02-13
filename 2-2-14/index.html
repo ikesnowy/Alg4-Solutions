@@ -140,34 +140,36 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.2.14</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.14<br>归并有序的队列。<br>编写一个静态方法，将两个有序的队列作为参数，返回一个归并后的有序队列。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>比较两个有序队列的第一个元素，取较小的一个出队并放入额外建立的队列中。<br>重复上述步骤直到两个队列都为空。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 归并两个有序队列。输入队列将被清空。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;typeparam name="T">有序队列的元素类型。&lt;/typeparam></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="a">需要归并的队列。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="b">需要归并的队列。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>归并后的新队列。&lt;/returns></span>
-<span class="token keyword">static</span> Queue<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token generic-method function">Merge<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>Queue<span class="token operator">&lt;</span>T<span class="token operator">></span> a<span class="token punctuation">,</span> Queue<span class="token operator">&lt;</span>T<span class="token operator">></span> b<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    Queue<span class="token operator">&lt;</span>T<span class="token operator">></span> sortedQueue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Queue</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>a<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>b<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">Peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">Peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            sortedQueue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span>
-            sortedQueue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>a<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        sortedQueue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>b<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        sortedQueue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> sortedQueue<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>2.2.14 归并有序的队列。 编写一个静态方法，将两个有序的队列作为参数，返回一个归并后的有序队列。</p>
+<h1 id="解答">解答</h1>
+<p>比较两个有序队列的第一个元素，取较小的一个出队并放入额外建立的队列中。 重复上述步骤直到两个队列都为空。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 归并两个有序队列。输入队列将被清空。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">有序队列的元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要归并的队列。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">需要归并的队列。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">归并后的新队列。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="kw">static</span> Queue&lt;T&gt; Merge&lt;T&gt;(Queue&lt;T&gt; a, Queue&lt;T&gt; b) where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb1-9" title="9">{</a>
+<a class="sourceLine" id="cb1-10" title="10">    Queue&lt;T&gt; sortedQueue = <span class="kw">new</span> Queue&lt;T&gt;();</a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="kw">while</span> (!a.<span class="fu">IsEmpty</span>() &amp;&amp; !b.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb1-12" title="12">    {</a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="kw">if</span> (a.<span class="fu">Peek</span>().<span class="fu">CompareTo</span>(b.<span class="fu">Peek</span>()) &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-14" title="14">            sortedQueue.<span class="fu">Enqueue</span>(a.<span class="fu">Dequeue</span>());</a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-16" title="16">            sortedQueue.<span class="fu">Enqueue</span>(b.<span class="fu">Dequeue</span>());</a>
+<a class="sourceLine" id="cb1-17" title="17">    }</a>
+<a class="sourceLine" id="cb1-18" title="18"></a>
+<a class="sourceLine" id="cb1-19" title="19">    <span class="kw">while</span> (!a.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb1-20" title="20">        sortedQueue.<span class="fu">Enqueue</span>(a.<span class="fu">Dequeue</span>());</a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="kw">while</span> (!b.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb1-22" title="22">        sortedQueue.<span class="fu">Enqueue</span>(b.<span class="fu">Dequeue</span>());</a>
+<a class="sourceLine" id="cb1-23" title="23"></a>
+<a class="sourceLine" id="cb1-24" title="24">    <span class="kw">return</span> sortedQueue;</a>
+<a class="sourceLine" id="cb1-25" title="25">}</a></code></pre></div>
 
 		</div>
 	</div>

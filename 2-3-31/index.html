@@ -140,123 +140,126 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.3.31</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.31<br>运行时间直方图。<br>编写一个程序，接受命令行参数 N 和 T，<br>用快速排序对大小为 N 的随机浮点数数组进行 T 次排序，<br>并将所有运行时间绘制成直方图。<br>令 N=10^3、10^4、10^5 和 10^6，<br>为了使曲线更平滑，T 值越大越好。<br>这个练习最关键的地方在于找到适当的比例绘制出实验结果。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>以下所有结果 T=70<br>N=1000<br><img src="./1.png" alt=""><br>N=10000<br><img src="./2.png" alt=""><br>N=100000<br><img src="./3.png" alt=""><br>N=1000000<br><img src="./4.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>ComponentModel<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Drawing<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Linq<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Windows<span class="token punctuation">.</span>Forms<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Quick<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_31
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">partial</span> <span class="token keyword">class</span> <span class="token class-name">Form2</span> <span class="token punctuation">:</span> Form
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> N<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> T<span class="token punctuation">;</span>
-
-        <span class="token keyword">public</span> <span class="token function">Form2</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">InitializeComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">=</span> n<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>T <span class="token operator">=</span> t<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 启动页面时启动后台测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sender">&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="e">&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Form2_Shown</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> EventArgs e<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>Text <span class="token operator">=</span> <span class="token string">"正在绘图"</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>backgroundWorker1<span class="token punctuation">.</span><span class="token function">RunWorkerAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 后台测试方法。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sender">&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="e">&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backgroundWorker1_DoWork</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> DoWorkEventArgs e<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            BackgroundWorker worker <span class="token operator">=</span> sender <span class="token keyword">as</span> BackgroundWorker<span class="token punctuation">;</span>
-            QuickSort quick <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">double</span> percentPerTrial <span class="token operator">=</span> <span class="token number">100.0</span> <span class="token operator">/</span> <span class="token keyword">this</span><span class="token punctuation">.</span>T<span class="token punctuation">;</span>
-            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> totalTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>T<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>T<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetRandomArrayDouble</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                totalTime<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>quick<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                worker<span class="token punctuation">.</span><span class="token function">ReportProgress</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>percentPerTrial <span class="token operator">*</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            e<span class="token punctuation">.</span>Result <span class="token operator">=</span> totalTime<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 更新后台进度方法。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sender">&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="e">&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backgroundWorker1_ProgressChanged</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> ProgressChangedEventArgs e<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>Text <span class="token operator">=</span> <span class="token string">"正在测试，已完成 "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>ProgressPercentage <span class="token operator">+</span> <span class="token string">" %"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 测试完毕，进行绘图的方法。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sender">&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="e">&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backgroundWorker1_RunWorkerCompleted</span><span class="token punctuation">(</span><span class="token keyword">object</span> sender<span class="token punctuation">,</span> RunWorkerCompletedEventArgs e<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>Error <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                MessageBox<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>Error<span class="token punctuation">.</span>Message<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token comment" spellcheck="true">//新建画布</span>
-            Graphics graphics <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">//翻转默认坐标系</span>
-            graphics<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            graphics<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> counts <span class="token operator">=</span> e<span class="token punctuation">.</span>Result <span class="token keyword">as</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">//获取最大值</span>
-            <span class="token keyword">double</span> max <span class="token operator">=</span> counts<span class="token punctuation">.</span><span class="token function">Max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//计算间距</span>
-            <span class="token keyword">double</span> unit <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">3.0</span> <span class="token operator">*</span> counts<span class="token punctuation">.</span>Length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">double</span> marginTop <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//计算直方图的矩形</span>
-            Rectangle<span class="token punctuation">[</span><span class="token punctuation">]</span> rects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">[</span>counts<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            rects<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>X <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>unit<span class="token punctuation">;</span>
-            rects<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            rects<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Width <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> unit<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            rects<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Height <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>counts<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span> max<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Height <span class="token operator">-</span> marginTop<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> counts<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                rects<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>X <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>rects<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>X <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> unit<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                rects<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-                rects<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Width <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> unit<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                rects<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Height <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>counts<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token punctuation">(</span>max <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>Height <span class="token operator">-</span> marginTop<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token comment" spellcheck="true">//绘图</span>
-            graphics<span class="token punctuation">.</span><span class="token function">FillRectangles</span><span class="token punctuation">(</span>Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> rects<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">//释放资源</span>
-            graphics<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">this</span><span class="token punctuation">.</span>Text <span class="token operator">=</span> <span class="token string">"绘图结果，最高耗时："</span> <span class="token operator">+</span> counts<span class="token punctuation">.</span><span class="token function">Max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 最低耗时："</span> <span class="token operator">+</span> counts<span class="token punctuation">.</span><span class="token function">Min</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/backgroundworker-component" target="_blank" rel="noopener">BackgroundWorker 组件 | Microsoft Docs</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.3.31 运行时间直方图。 编写一个程序，接受命令行参数 N 和 T， 用快速排序对大小为 N 的随机浮点数数组进行 T 次排序， 并将所有运行时间绘制成直方图。 令 N=10<sup>3、10</sup>4、10^5 和 10^6， 为了使曲线更平滑，T 值越大越好。 这个练习最关键的地方在于找到适当的比例绘制出实验结果。</p>
+<h1 id="解答">解答</h1>
+<p>以下所有结果 T=70 N=1000 <img src="./1.png"> N=10000 <img src="./2.png"> N=100000 <img src="./3.png"> N=1000000 <img src="./4.png"></p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">ComponentModel</span>;</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Drawing</span>;</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">using</span> System.<span class="fu">Linq</span>;</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">using</span> System.<span class="fu">Windows</span>.<span class="fu">Forms</span>;</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">using</span> Quick;</a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">3.</span>_<span class="dv">31</span></a>
+<a class="sourceLine" id="cb1-9" title="9">{</a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="kw">public</span> <span class="kw">partial</span> <span class="kw">class</span> Form2 : Form</a>
+<a class="sourceLine" id="cb1-11" title="11">    {</a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="kw">private</span> <span class="dt">int</span> N;</a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="kw">private</span> <span class="dt">int</span> T;</a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="kw">public</span> <span class="fu">Form2</span>(<span class="dt">int</span> n, <span class="dt">int</span> t)</a>
+<a class="sourceLine" id="cb1-16" title="16">        {</a>
+<a class="sourceLine" id="cb1-17" title="17">            <span class="fu">InitializeComponent</span>();</a>
+<a class="sourceLine" id="cb1-18" title="18">            <span class="kw">this</span>.<span class="fu">N</span> = n;</a>
+<a class="sourceLine" id="cb1-19" title="19">            <span class="kw">this</span>.<span class="fu">T</span> = t;</a>
+<a class="sourceLine" id="cb1-20" title="20">        }</a>
+<a class="sourceLine" id="cb1-21" title="21"></a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-23" title="23">        <span class="co">/// 启动页面时启动后台测试。</span></a>
+<a class="sourceLine" id="cb1-24" title="24">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sender&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-26" title="26">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;e&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Form2_Shown</span>(<span class="dt">object</span> sender, EventArgs e)</a>
+<a class="sourceLine" id="cb1-28" title="28">        {</a>
+<a class="sourceLine" id="cb1-29" title="29">            <span class="kw">this</span>.<span class="fu">Text</span> = <span class="st">&quot;正在绘图&quot;</span>;</a>
+<a class="sourceLine" id="cb1-30" title="30">            <span class="kw">this</span>.<span class="fu">backgroundWorker1</span>.<span class="fu">RunWorkerAsync</span>();</a>
+<a class="sourceLine" id="cb1-31" title="31">        }</a>
+<a class="sourceLine" id="cb1-32" title="32"></a>
+<a class="sourceLine" id="cb1-33" title="33">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-34" title="34">        <span class="co">/// 后台测试方法。</span></a>
+<a class="sourceLine" id="cb1-35" title="35">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-36" title="36">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sender&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-37" title="37">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;e&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-38" title="38">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">backgroundWorker1_DoWork</span>(<span class="dt">object</span> sender, DoWorkEventArgs e)</a>
+<a class="sourceLine" id="cb1-39" title="39">        {</a>
+<a class="sourceLine" id="cb1-40" title="40">            BackgroundWorker worker = sender <span class="kw">as</span> BackgroundWorker;</a>
+<a class="sourceLine" id="cb1-41" title="41">            QuickSort quick = <span class="kw">new</span> <span class="fu">QuickSort</span>();</a>
+<a class="sourceLine" id="cb1-42" title="42"></a>
+<a class="sourceLine" id="cb1-43" title="43">            <span class="dt">double</span> percentPerTrial = <span class="fl">100.0</span> / <span class="kw">this</span>.<span class="fu">T</span>;</a>
+<a class="sourceLine" id="cb1-44" title="44">            <span class="dt">double</span>[] totalTime = <span class="kw">new</span> <span class="dt">double</span>[<span class="kw">this</span>.<span class="fu">T</span>];</a>
+<a class="sourceLine" id="cb1-45" title="45">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">this</span>.<span class="fu">T</span>; i++)</a>
+<a class="sourceLine" id="cb1-46" title="46">            {</a>
+<a class="sourceLine" id="cb1-47" title="47">                <span class="dt">double</span>[] data = SortCompare.<span class="fu">GetRandomArrayDouble</span>(<span class="kw">this</span>.<span class="fu">N</span>);</a>
+<a class="sourceLine" id="cb1-48" title="48">                totalTime[i] = SortCompare.<span class="fu">Time</span>(quick, data);</a>
+<a class="sourceLine" id="cb1-49" title="49">                worker.<span class="fu">ReportProgress</span>((<span class="dt">int</span>)(percentPerTrial * i));</a>
+<a class="sourceLine" id="cb1-50" title="50">            }</a>
+<a class="sourceLine" id="cb1-51" title="51"></a>
+<a class="sourceLine" id="cb1-52" title="52">            e.<span class="fu">Result</span> = totalTime;</a>
+<a class="sourceLine" id="cb1-53" title="53">        }</a>
+<a class="sourceLine" id="cb1-54" title="54"></a>
+<a class="sourceLine" id="cb1-55" title="55">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-56" title="56">        <span class="co">/// 更新后台进度方法。</span></a>
+<a class="sourceLine" id="cb1-57" title="57">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-58" title="58">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sender&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-59" title="59">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;e&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-60" title="60">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">backgroundWorker1_ProgressChanged</span>(<span class="dt">object</span> sender, ProgressChangedEventArgs e)</a>
+<a class="sourceLine" id="cb1-61" title="61">        {</a>
+<a class="sourceLine" id="cb1-62" title="62">            <span class="kw">this</span>.<span class="fu">Text</span> = <span class="st">&quot;正在测试，已完成 &quot;</span> + e.<span class="fu">ProgressPercentage</span> + <span class="st">&quot; %&quot;</span>;</a>
+<a class="sourceLine" id="cb1-63" title="63">        }</a>
+<a class="sourceLine" id="cb1-64" title="64"></a>
+<a class="sourceLine" id="cb1-65" title="65">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-66" title="66">        <span class="co">/// 测试完毕，进行绘图的方法。</span></a>
+<a class="sourceLine" id="cb1-67" title="67">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-68" title="68">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sender&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-69" title="69">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;e&quot;</span><span class="kw">&gt;&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-70" title="70">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">backgroundWorker1_RunWorkerCompleted</span>(<span class="dt">object</span> sender, RunWorkerCompletedEventArgs e)</a>
+<a class="sourceLine" id="cb1-71" title="71">        {</a>
+<a class="sourceLine" id="cb1-72" title="72">            <span class="kw">if</span> (e.<span class="fu">Error</span> != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb1-73" title="73">            {</a>
+<a class="sourceLine" id="cb1-74" title="74">                MessageBox.<span class="fu">Show</span>(e.<span class="fu">Error</span>.<span class="fu">Message</span>);</a>
+<a class="sourceLine" id="cb1-75" title="75">            }</a>
+<a class="sourceLine" id="cb1-76" title="76">            <span class="co">//新建画布</span></a>
+<a class="sourceLine" id="cb1-77" title="77">            Graphics graphics = <span class="kw">this</span>.<span class="fu">CreateGraphics</span>();</a>
+<a class="sourceLine" id="cb1-78" title="78"></a>
+<a class="sourceLine" id="cb1-79" title="79">            <span class="co">//翻转默认坐标系</span></a>
+<a class="sourceLine" id="cb1-80" title="80">            graphics.<span class="fu">TranslateTransform</span>(<span class="dv">0</span>, <span class="kw">this</span>.<span class="fu">Height</span>);</a>
+<a class="sourceLine" id="cb1-81" title="81">            graphics.<span class="fu">ScaleTransform</span>(<span class="dv">1</span>, <span class="dv">-1</span>);</a>
+<a class="sourceLine" id="cb1-82" title="82"></a>
+<a class="sourceLine" id="cb1-83" title="83">            <span class="dt">double</span>[] counts = e.<span class="fu">Result</span> <span class="kw">as</span> <span class="dt">double</span>[];</a>
+<a class="sourceLine" id="cb1-84" title="84"></a>
+<a class="sourceLine" id="cb1-85" title="85">            <span class="co">//获取最大值</span></a>
+<a class="sourceLine" id="cb1-86" title="86">            <span class="dt">double</span> max = counts.<span class="fu">Max</span>();</a>
+<a class="sourceLine" id="cb1-87" title="87">            <span class="co">//计算间距</span></a>
+<a class="sourceLine" id="cb1-88" title="88">            <span class="dt">double</span> unit = <span class="kw">this</span>.<span class="fu">Width</span> / (<span class="fl">3.0</span> * counts.<span class="fu">Length</span> + <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-89" title="89">            <span class="dt">double</span> marginTop = <span class="dv">100</span>;</a>
+<a class="sourceLine" id="cb1-90" title="90">            <span class="co">//计算直方图的矩形</span></a>
+<a class="sourceLine" id="cb1-91" title="91">            Rectangle[] rects = <span class="kw">new</span> Rectangle[counts.<span class="fu">Length</span>];</a>
+<a class="sourceLine" id="cb1-92" title="92">            rects[<span class="dv">0</span>].<span class="fu">X</span> = (<span class="dt">int</span>)unit;</a>
+<a class="sourceLine" id="cb1-93" title="93">            rects[<span class="dv">0</span>].<span class="fu">Y</span> = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-94" title="94">            rects[<span class="dv">0</span>].<span class="fu">Width</span> = (<span class="dt">int</span>)(<span class="dv">2</span> * unit);</a>
+<a class="sourceLine" id="cb1-95" title="95">            rects[<span class="dv">0</span>].<span class="fu">Height</span> = (<span class="dt">int</span>)((counts[<span class="dv">0</span>] / max) * (<span class="kw">this</span>.<span class="fu">Height</span> - marginTop));</a>
+<a class="sourceLine" id="cb1-96" title="96">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; counts.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-97" title="97">            {</a>
+<a class="sourceLine" id="cb1-98" title="98">                rects[i].<span class="fu">X</span> = (<span class="dt">int</span>)(rects[i - <span class="dv">1</span>].<span class="fu">X</span> + <span class="dv">3</span> * unit);</a>
+<a class="sourceLine" id="cb1-99" title="99">                rects[i].<span class="fu">Y</span> = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-100" title="100">                rects[i].<span class="fu">Width</span> = (<span class="dt">int</span>)(<span class="dv">2</span> * unit);</a>
+<a class="sourceLine" id="cb1-101" title="101">                rects[i].<span class="fu">Height</span> = (<span class="dt">int</span>)((counts[i] / (max + <span class="dv">1</span>)) * (<span class="kw">this</span>.<span class="fu">Height</span> - marginTop));</a>
+<a class="sourceLine" id="cb1-102" title="102">            }</a>
+<a class="sourceLine" id="cb1-103" title="103"></a>
+<a class="sourceLine" id="cb1-104" title="104">            <span class="co">//绘图</span></a>
+<a class="sourceLine" id="cb1-105" title="105">            graphics.<span class="fu">FillRectangles</span>(Brushes.<span class="fu">Black</span>, rects);</a>
+<a class="sourceLine" id="cb1-106" title="106"></a>
+<a class="sourceLine" id="cb1-107" title="107">            <span class="co">//释放资源</span></a>
+<a class="sourceLine" id="cb1-108" title="108">            graphics.<span class="fu">Dispose</span>();</a>
+<a class="sourceLine" id="cb1-109" title="109"></a>
+<a class="sourceLine" id="cb1-110" title="110">            <span class="kw">this</span>.<span class="fu">Text</span> = <span class="st">&quot;绘图结果，最高耗时：&quot;</span> + counts.<span class="fu">Max</span>() + <span class="st">&quot; 最低耗时：&quot;</span> + counts.<span class="fu">Min</span>();</a>
+<a class="sourceLine" id="cb1-111" title="111">        }</a>
+<a class="sourceLine" id="cb1-112" title="112">    }</a>
+<a class="sourceLine" id="cb1-113" title="113">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/controls/backgroundworker-component" target="_blank" rel="noopener">BackgroundWorker 组件 | Microsoft Docs</a> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
 
 		</div>
 	</div>

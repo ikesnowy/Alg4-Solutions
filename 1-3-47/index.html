@@ -140,82 +140,85 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.3.47</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.47<br>可连接的队列、栈或 steque。<br>为队列、栈或 steque（见练习 1.3.32）添加一个能够（破坏性地）链接两个同类对象的额外操作 catenation。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里用的都是链式结构，头尾相接即可。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 在当前队列之后附加一个队列。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="q1">需要被附加的队列。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="q2">需要附加的队列（将被删除）。&lt;/param></span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> Queue<span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token function">Catenation</span><span class="token punctuation">(</span>Queue<span class="token operator">&lt;</span>Item<span class="token operator">></span> q1<span class="token punctuation">,</span> Queue<span class="token operator">&lt;</span>Item<span class="token operator">></span> q2<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>q1<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        q1<span class="token punctuation">.</span>first <span class="token operator">=</span> q2<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
-        q1<span class="token punctuation">.</span>last <span class="token operator">=</span> q2<span class="token punctuation">.</span>last<span class="token punctuation">;</span>
-        q1<span class="token punctuation">.</span>count <span class="token operator">=</span> q2<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span>
-    <span class="token punctuation">{</span>
-        q1<span class="token punctuation">.</span>last<span class="token punctuation">.</span>next <span class="token operator">=</span> q2<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
-        q1<span class="token punctuation">.</span>last <span class="token operator">=</span> q2<span class="token punctuation">.</span>last<span class="token punctuation">;</span>
-        q1<span class="token punctuation">.</span>count <span class="token operator">+</span><span class="token operator">=</span> q2<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    q2 <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> q1<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 将两个栈连接。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="s1">第一个栈。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="s2">第二个栈（将被删除）。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> Stack<span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token function">Catenation</span><span class="token punctuation">(</span>Stack<span class="token operator">&lt;</span>Item<span class="token operator">></span> s1<span class="token punctuation">,</span> Stack<span class="token operator">&lt;</span>Item<span class="token operator">></span> s2<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>s1<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        s1<span class="token punctuation">.</span>first <span class="token operator">=</span> s2<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
-        s1<span class="token punctuation">.</span>count <span class="token operator">=</span> s2<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span>
-    <span class="token punctuation">{</span>
-        Node<span class="token operator">&lt;</span>Item<span class="token operator">></span> last <span class="token operator">=</span> s1<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>last<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            last <span class="token operator">=</span> last<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        last<span class="token punctuation">.</span>next <span class="token operator">=</span> s2<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
-        s1<span class="token punctuation">.</span>count <span class="token operator">+</span><span class="token operator">=</span> s2<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    s2 <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> s1<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Steque"><a href="#Steque" class="headerlink" title="Steque"></a>Steque</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 将两个 Steque 连接。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="s1">第一个 Steque &lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="s2">第二个 Steque （将被删除）&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> Steque<span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token function">Catenation</span><span class="token punctuation">(</span>Steque<span class="token operator">&lt;</span>Item<span class="token operator">></span> s1<span class="token punctuation">,</span> Steque<span class="token operator">&lt;</span>Item<span class="token operator">></span> s2<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>s1<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        s1<span class="token punctuation">.</span>first <span class="token operator">=</span> s2<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
-        s1<span class="token punctuation">.</span>last <span class="token operator">=</span> s2<span class="token punctuation">.</span>last<span class="token punctuation">;</span>
-        s1<span class="token punctuation">.</span>count <span class="token operator">=</span> s2<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span>
-    <span class="token punctuation">{</span>
-        s1<span class="token punctuation">.</span>last<span class="token punctuation">.</span>next <span class="token operator">=</span> s2<span class="token punctuation">.</span>first<span class="token punctuation">;</span>
-        s1<span class="token punctuation">.</span>count <span class="token operator">+</span><span class="token operator">=</span> s2<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    s2 <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> s1<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.3.47 可连接的队列、栈或 steque。 为队列、栈或 steque（见练习 1.3.32）添加一个能够（破坏性地）链接两个同类对象的额外操作 catenation。</p>
+<h1 id="解答">解答</h1>
+<p>这里用的都是链式结构，头尾相接即可。</p>
+<h1 id="代码">代码</h1>
+<h2 id="queue">Queue</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 在当前队列之后附加一个队列。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;q1&quot;</span><span class="kw">&gt;</span><span class="co">需要被附加的队列。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;q2&quot;</span><span class="kw">&gt;</span><span class="co">需要附加的队列（将被删除）。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">public</span> <span class="kw">static</span> Queue&lt;Item&gt; <span class="fu">Catenation</span>(Queue&lt;Item&gt; q1, Queue&lt;Item&gt; q2)</a>
+<a class="sourceLine" id="cb1-7" title="7">{</a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">if</span> (q1.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb1-9" title="9">    {</a>
+<a class="sourceLine" id="cb1-10" title="10">        q1.<span class="fu">first</span> = q2.<span class="fu">first</span>;</a>
+<a class="sourceLine" id="cb1-11" title="11">        q1.<span class="fu">last</span> = q2.<span class="fu">last</span>;</a>
+<a class="sourceLine" id="cb1-12" title="12">        q1.<span class="fu">count</span> = q2.<span class="fu">count</span>;</a>
+<a class="sourceLine" id="cb1-13" title="13">    }</a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-15" title="15">    {</a>
+<a class="sourceLine" id="cb1-16" title="16">        q1.<span class="fu">last</span>.<span class="fu">next</span> = q2.<span class="fu">first</span>;</a>
+<a class="sourceLine" id="cb1-17" title="17">        q1.<span class="fu">last</span> = q2.<span class="fu">last</span>;</a>
+<a class="sourceLine" id="cb1-18" title="18">        q1.<span class="fu">count</span> += q2.<span class="fu">count</span>;</a>
+<a class="sourceLine" id="cb1-19" title="19">    }</a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21">    q2 = <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb1-22" title="22">    <span class="kw">return</span> q1;</a>
+<a class="sourceLine" id="cb1-23" title="23">}</a></code></pre></div>
+<h2 id="stack">Stack</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">/// 将两个栈连接。</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;s1&quot;</span><span class="kw">&gt;</span><span class="co">第一个栈。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;s2&quot;</span><span class="kw">&gt;</span><span class="co">第二个栈（将被删除）。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="kw">public</span> <span class="kw">static</span> Stack&lt;Item&gt; <span class="fu">Catenation</span>(Stack&lt;Item&gt; s1, Stack&lt;Item&gt; s2)</a>
+<a class="sourceLine" id="cb2-8" title="8">{</a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="kw">if</span> (s1.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb2-10" title="10">    {</a>
+<a class="sourceLine" id="cb2-11" title="11">        s1.<span class="fu">first</span> = s2.<span class="fu">first</span>;</a>
+<a class="sourceLine" id="cb2-12" title="12">        s1.<span class="fu">count</span> = s2.<span class="fu">count</span>;</a>
+<a class="sourceLine" id="cb2-13" title="13">    }</a>
+<a class="sourceLine" id="cb2-14" title="14">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-15" title="15">    {</a>
+<a class="sourceLine" id="cb2-16" title="16">        Node&lt;Item&gt; last = s1.<span class="fu">first</span>;</a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">while</span> (last.<span class="fu">next</span> != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb2-18" title="18">        {</a>
+<a class="sourceLine" id="cb2-19" title="19">            last = last.<span class="fu">next</span>;</a>
+<a class="sourceLine" id="cb2-20" title="20">        }</a>
+<a class="sourceLine" id="cb2-21" title="21">        last.<span class="fu">next</span> = s2.<span class="fu">first</span>;</a>
+<a class="sourceLine" id="cb2-22" title="22">        s1.<span class="fu">count</span> += s2.<span class="fu">count</span>;</a>
+<a class="sourceLine" id="cb2-23" title="23">    }</a>
+<a class="sourceLine" id="cb2-24" title="24">    s2 = <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb2-25" title="25">    <span class="kw">return</span> s1;</a>
+<a class="sourceLine" id="cb2-26" title="26">}</a></code></pre></div>
+<h2 id="steque">Steque</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">/// 将两个 Steque 连接。</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;s1&quot;</span><span class="kw">&gt;</span><span class="co">第一个 Steque </span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;s2&quot;</span><span class="kw">&gt;</span><span class="co">第二个 Steque （将被删除）&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="kw">public</span> <span class="kw">static</span> Steque&lt;Item&gt; <span class="fu">Catenation</span>(Steque&lt;Item&gt; s1, Steque&lt;Item&gt; s2)</a>
+<a class="sourceLine" id="cb3-8" title="8">{</a>
+<a class="sourceLine" id="cb3-9" title="9">    <span class="kw">if</span> (s1.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb3-10" title="10">    {</a>
+<a class="sourceLine" id="cb3-11" title="11">        s1.<span class="fu">first</span> = s2.<span class="fu">first</span>;</a>
+<a class="sourceLine" id="cb3-12" title="12">        s1.<span class="fu">last</span> = s2.<span class="fu">last</span>;</a>
+<a class="sourceLine" id="cb3-13" title="13">        s1.<span class="fu">count</span> = s2.<span class="fu">count</span>;</a>
+<a class="sourceLine" id="cb3-14" title="14">    }</a>
+<a class="sourceLine" id="cb3-15" title="15">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb3-16" title="16">    {</a>
+<a class="sourceLine" id="cb3-17" title="17">        s1.<span class="fu">last</span>.<span class="fu">next</span> = s2.<span class="fu">first</span>;</a>
+<a class="sourceLine" id="cb3-18" title="18">        s1.<span class="fu">count</span> += s2.<span class="fu">count</span>;</a>
+<a class="sourceLine" id="cb3-19" title="19">    }</a>
+<a class="sourceLine" id="cb3-20" title="20">    s2 = <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb3-21" title="21">    <span class="kw">return</span> s1;</a>
+<a class="sourceLine" id="cb3-22" title="22">}</a></code></pre></div>
 
 		</div>
 	</div>

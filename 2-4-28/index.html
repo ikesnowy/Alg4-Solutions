@@ -140,145 +140,151 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.28</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.28<br>选择过滤。<br>编写一个 TopM 的用例，从标准输入读入坐标 (x, y, z)，<br>从命令行得到值 M，然后打印出距离原点的欧几里得距离最小的 M 个点。<br>在 N=10^8 且 M=10^4 时，预计程序的运行时间。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>开始时让 N=10^5，在 M=10^4 不变的情况下令 N 不断翻倍，求出算法增长的数量级。<br>再根据求出的增长的数量级估计 N=10^8 时所需要的时间。</p>
-<p>为了方便比较，需要编写一个欧几里得距离类，<br>构造时输入一个点的坐标，内部自动计算并保存这个点到原点的欧几里得距离。<br>欧几里得距离的计算公式如下：<br>$$<br>d(x,y)=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}<br>$$<br>其中，x 和 y 分别代表两个点。<br>在本题中，y 始终是原点，且使用三维坐标系，因此公式可以简化为：<br>$$<br>d=\sqrt {x^2+y^2+z^2}<br>$$<br>同时这个类需要实现 IComparable 接口以作为最小堆的元素。</p>
-<p>做测试时，先随机生成 N 个点，再建立一个最小堆。<br>随后开始计时，把开始的 m 个点插入。<br>剩余的 n-m 个点则是先删除最小值再插入，这样可以保证最小堆的大小不变。<br>最后再把堆中的所有元素输出，停止计时。<br>用不断倍增的的 N 值做上述测试，获得每次的耗时，进而求得算法增长的数量级。</p>
-<p>求得的结果如下：<br><img src="./1.png" alt=""><br>可以推出当 N=10^8 时耗时为 $ 398  ms × 1000 = 398  s $</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>欧几里得距离类，EuclideanDistance3D</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_28
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 点到原点的欧几里得距离。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">class</span> <span class="token class-name">EuclideanDistance3D</span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>EuclideanDistance3D<span class="token operator">></span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> <span class="token keyword">double</span> distance<span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 计算点到原点的欧几里得距离。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="x">x 轴坐标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="y">y 轴坐标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="z">z 轴坐标。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token function">EuclideanDistance3D</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> z<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> x<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> y<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>z <span class="token operator">=</span> z<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>distance <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">Sqrt</span><span class="token punctuation">(</span>x <span class="token operator">*</span> x <span class="token operator">+</span> y <span class="token operator">*</span> y <span class="token operator">+</span> z <span class="token operator">*</span> z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 比较两个欧几里得距离的大小。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="other">另一个欧几里得距离。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>EuclideanDistance3D other<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>distance<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>distance<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 以 "(x, y, z)" 形式输出点的坐标。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">string</span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token string">"("</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>z <span class="token operator">+</span> <span class="token string">")"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>2.4.28 选择过滤。 编写一个 TopM 的用例，从标准输入读入坐标 (x, y, z)， 从命令行得到值 M，然后打印出距离原点的欧几里得距离最小的 M 个点。 在 N=10^8 且 M=10^4 时，预计程序的运行时间。</p>
+<h1 id="解答">解答</h1>
+<p>开始时让 N=10^5，在 M=10^4 不变的情况下令 N 不断翻倍，求出算法增长的数量级。 再根据求出的增长的数量级估计 N=10^8 时所需要的时间。</p>
+<p>为了方便比较，需要编写一个欧几里得距离类， 构造时输入一个点的坐标，内部自动计算并保存这个点到原点的欧几里得距离。 欧几里得距离的计算公式如下： <span class="math display">\[
+d(x,y)=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}
+\]</span> 其中，x 和 y 分别代表两个点。 在本题中，y 始终是原点，且使用三维坐标系，因此公式可以简化为： <span class="math display">\[
+d=\sqrt {x^2+y^2+z^2}
+\]</span> 同时这个类需要实现 IComparable 接口以作为最小堆的元素。</p>
+<p>做测试时，先随机生成 N 个点，再建立一个最小堆。 随后开始计时，把开始的 m 个点插入。 剩余的 n-m 个点则是先删除最小值再插入，这样可以保证最小堆的大小不变。 最后再把堆中的所有元素输出，停止计时。 用不断倍增的的 N 值做上述测试，获得每次的耗时，进而求得算法增长的数量级。</p>
+<p>求得的结果如下： <img src="./1.png"> 可以推出当 N=10^8 时耗时为 $ 398  ms × 1000 = 398  s $</p>
+<h1 id="代码">代码</h1>
+<p>欧几里得距离类，EuclideanDistance3D</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">4.</span>_<span class="dv">28</span></a>
+<a class="sourceLine" id="cb1-4" title="4">{</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/// 点到原点的欧几里得距离。</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">class</span> EuclideanDistance3D : IComparable&lt;EuclideanDistance3D&gt;</a>
+<a class="sourceLine" id="cb1-9" title="9">    {</a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">private</span> <span class="kw">readonly</span> <span class="dt">int</span> x, y, z;</a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">private</span> <span class="dt">double</span> distance;</a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="co">/// 计算点到原点的欧几里得距离。</span></a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;x&quot;</span><span class="kw">&gt;</span><span class="co">x 轴坐标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;y&quot;</span><span class="kw">&gt;</span><span class="co">y 轴坐标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-18" title="18">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;z&quot;</span><span class="kw">&gt;</span><span class="co">z 轴坐标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">public</span> <span class="fu">EuclideanDistance3D</span>(<span class="dt">int</span> x, <span class="dt">int</span> y, <span class="dt">int</span> z)</a>
+<a class="sourceLine" id="cb1-20" title="20">        {</a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="kw">this</span>.<span class="fu">x</span> = x;</a>
+<a class="sourceLine" id="cb1-22" title="22">            <span class="kw">this</span>.<span class="fu">y</span> = y;</a>
+<a class="sourceLine" id="cb1-23" title="23">            <span class="kw">this</span>.<span class="fu">z</span> = z;</a>
+<a class="sourceLine" id="cb1-24" title="24">            <span class="kw">this</span>.<span class="fu">distance</span> = Math.<span class="fu">Sqrt</span>(x * x + y * y + z * z);</a>
+<a class="sourceLine" id="cb1-25" title="25">        }</a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-28" title="28">        <span class="co">/// 比较两个欧几里得距离的大小。</span></a>
+<a class="sourceLine" id="cb1-29" title="29">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-30" title="30">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;other&quot;</span><span class="kw">&gt;</span><span class="co">另一个欧几里得距离。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-31" title="31">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-32" title="32">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">CompareTo</span>(EuclideanDistance3D other)</a>
+<a class="sourceLine" id="cb1-33" title="33">        {</a>
+<a class="sourceLine" id="cb1-34" title="34">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">distance</span>.<span class="fu">CompareTo</span>(other.<span class="fu">distance</span>);</a>
+<a class="sourceLine" id="cb1-35" title="35">        }</a>
+<a class="sourceLine" id="cb1-36" title="36"></a>
+<a class="sourceLine" id="cb1-37" title="37">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-38" title="38">        <span class="co">/// 以 &quot;(x, y, z)&quot; 形式输出点的坐标。</span></a>
+<a class="sourceLine" id="cb1-39" title="39">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-40" title="40">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-41" title="41">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">string</span> <span class="fu">ToString</span>()</a>
+<a class="sourceLine" id="cb1-42" title="42">        {</a>
+<a class="sourceLine" id="cb1-43" title="43">            <span class="kw">return</span> <span class="st">&quot;(&quot;</span> + <span class="kw">this</span>.<span class="fu">x</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">this</span>.<span class="fu">y</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">this</span>.<span class="fu">z</span> + <span class="st">&quot;)&quot;</span>;</a>
+<a class="sourceLine" id="cb1-44" title="44">        }</a>
+<a class="sourceLine" id="cb1-45" title="45">    }</a>
+<a class="sourceLine" id="cb1-46" title="46">}</a></code></pre></div>
 <p>测试类</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
-<span class="token keyword">using</span> PriorityQueue<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_28
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.4.28
-     * 
-     * 选择过滤。
-     * 编写一个 TopM 的用例，
-     * 从标准输入读入坐标 (x, y, z)，从命令行得到值 M，
-     * 然后打印出距离原点的欧几里得距离最小的 M 个点。
-     * 在 N=10^8 且 M=10^4 时，预计程序的运行时间。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// m 不变的情况下算法是 O(n) 的</span>
-            <span class="token comment" spellcheck="true">// 因此预计时间是 n=10^5 的运行时间乘以 10^3 倍。</span>
-            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">100000</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
-            <span class="token keyword">long</span> prev <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"n= "</span> <span class="token operator">+</span> n <span class="token operator">+</span> <span class="token string">" m= "</span> <span class="token operator">+</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">long</span> now <span class="token operator">=</span> <span class="token function">test</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 获取当前 m,n 值的算法运行时间</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"\t time="</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    prev <span class="token operator">=</span> now<span class="token punctuation">;</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">else</span>
-                <span class="token punctuation">{</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\tratio="</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>now <span class="token operator">/</span> prev<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    prev <span class="token operator">=</span> now<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 进行一次测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="m">测试使用的 m 值。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="n">测试使用的 n 值。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token keyword">int</span> m<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">var</span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MinPQ</span><span class="token operator">&lt;</span>EuclideanDistance3D<span class="token operator">></span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> x <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> y <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> z <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            Stopwatch sw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            sw<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 开始计时</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">// 先插入 m 个记录</span>
-                pq<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">EuclideanDistance3D</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> m<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">// 插入剩余 n-m 个记录</span>
-                pq<span class="token punctuation">.</span><span class="token function">DelMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                pq<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">EuclideanDistance3D</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>pq<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                pq<span class="token punctuation">.</span><span class="token function">DelMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            sw<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 停止计时</span>
-            <span class="token keyword">return</span> sw<span class="token punctuation">.</span>ElapsedMilliseconds<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://zh.wikipedia.org/wiki/欧几里得距离" target="_blank" rel="noopener">欧几里得距离-维基百科</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> System.<span class="fu">Diagnostics</span>;</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">using</span> PriorityQueue;</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">4.</span>_<span class="dv">28</span></a>
+<a class="sourceLine" id="cb2-6" title="6">{</a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * 2.4.28</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 选择过滤。</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 编写一个 TopM 的用例，</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * 从标准输入读入坐标 (x, y, z)，从命令行得到值 M，</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">     * 然后打印出距离原点的欧几里得距离最小的 M 个点。</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">     * 在 N=10^8 且 M=10^4 时，预计程序的运行时间。</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb2-17" title="17">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb2-18" title="18">    {</a>
+<a class="sourceLine" id="cb2-19" title="19">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-20" title="20">        {</a>
+<a class="sourceLine" id="cb2-21" title="21">            <span class="co">// m 不变的情况下算法是 O(n) 的</span></a>
+<a class="sourceLine" id="cb2-22" title="22">            <span class="co">// 因此预计时间是 n=10^5 的运行时间乘以 10^3 倍。</span></a>
+<a class="sourceLine" id="cb2-23" title="23">            <span class="dt">int</span> n = <span class="dv">100000</span>, m = <span class="dv">10000</span>;</a>
+<a class="sourceLine" id="cb2-24" title="24">            <span class="dt">long</span> prev = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-25" title="25">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">6</span>; i++)</a>
+<a class="sourceLine" id="cb2-26" title="26">            {</a>
+<a class="sourceLine" id="cb2-27" title="27">                Console.<span class="fu">Write</span>(<span class="st">&quot;n= &quot;</span> + n + <span class="st">&quot; m= &quot;</span> + m);</a>
+<a class="sourceLine" id="cb2-28" title="28">                <span class="dt">long</span> now = <span class="fu">test</span>(m, n);  <span class="co">// 获取当前 m,n 值的算法运行时间</span></a>
+<a class="sourceLine" id="cb2-29" title="29">                Console.<span class="fu">Write</span>(<span class="st">&quot;</span><span class="sc">\t</span><span class="st"> time=&quot;</span> + now);</a>
+<a class="sourceLine" id="cb2-30" title="30">                <span class="kw">if</span> (prev == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb2-31" title="31">                {</a>
+<a class="sourceLine" id="cb2-32" title="32">                    prev = now;</a>
+<a class="sourceLine" id="cb2-33" title="33">                    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb2-34" title="34">                }</a>
+<a class="sourceLine" id="cb2-35" title="35">                <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-36" title="36">                {</a>
+<a class="sourceLine" id="cb2-37" title="37">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t</span><span class="st">ratio=&quot;</span> + (<span class="dt">double</span>)now / prev);</a>
+<a class="sourceLine" id="cb2-38" title="38">                    prev = now;</a>
+<a class="sourceLine" id="cb2-39" title="39">                }</a>
+<a class="sourceLine" id="cb2-40" title="40">                n *= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb2-41" title="41">            }</a>
+<a class="sourceLine" id="cb2-42" title="42">        }</a>
+<a class="sourceLine" id="cb2-43" title="43"></a>
+<a class="sourceLine" id="cb2-44" title="44">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-45" title="45">        <span class="co">/// 进行一次测试。</span></a>
+<a class="sourceLine" id="cb2-46" title="46">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-47" title="47">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;m&quot;</span><span class="kw">&gt;</span><span class="co">测试使用的 m 值。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-48" title="48">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">测试使用的 n 值。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-49" title="49">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-50" title="50">        <span class="kw">static</span> <span class="dt">long</span> <span class="fu">test</span>(<span class="dt">int</span> m, <span class="dt">int</span> n)</a>
+<a class="sourceLine" id="cb2-51" title="51">        {</a>
+<a class="sourceLine" id="cb2-52" title="52">            <span class="dt">var</span> pq = <span class="kw">new</span> MinPQ&lt;EuclideanDistance3D&gt;(m);</a>
+<a class="sourceLine" id="cb2-53" title="53">            <span class="dt">int</span>[] x = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb2-54" title="54">            <span class="dt">int</span>[] y = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb2-55" title="55">            <span class="dt">int</span>[] z = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb2-56" title="56">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb2-57" title="57">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
+<a class="sourceLine" id="cb2-58" title="58">            {</a>
+<a class="sourceLine" id="cb2-59" title="59">                x[i] = random.<span class="fu">Next</span>();</a>
+<a class="sourceLine" id="cb2-60" title="60">                y[i] = random.<span class="fu">Next</span>();</a>
+<a class="sourceLine" id="cb2-61" title="61">                z[i] = random.<span class="fu">Next</span>();</a>
+<a class="sourceLine" id="cb2-62" title="62">            }</a>
+<a class="sourceLine" id="cb2-63" title="63"></a>
+<a class="sourceLine" id="cb2-64" title="64">            Stopwatch sw = <span class="kw">new</span> <span class="fu">Stopwatch</span>();</a>
+<a class="sourceLine" id="cb2-65" title="65">            sw.<span class="fu">Start</span>();<span class="co">// 开始计时</span></a>
+<a class="sourceLine" id="cb2-66" title="66">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++)</a>
+<a class="sourceLine" id="cb2-67" title="67">            {</a>
+<a class="sourceLine" id="cb2-68" title="68">                <span class="co">// 先插入 m 个记录</span></a>
+<a class="sourceLine" id="cb2-69" title="69">                pq.<span class="fu">Insert</span>(<span class="kw">new</span> <span class="fu">EuclideanDistance3D</span>(x[i], y[i], z[i]));</a>
+<a class="sourceLine" id="cb2-70" title="70">            }</a>
+<a class="sourceLine" id="cb2-71" title="71">            <span class="kw">for</span> (<span class="dt">int</span> i = m; i &lt; n; i++)</a>
+<a class="sourceLine" id="cb2-72" title="72">            {</a>
+<a class="sourceLine" id="cb2-73" title="73">                <span class="co">// 插入剩余 n-m 个记录</span></a>
+<a class="sourceLine" id="cb2-74" title="74">                pq.<span class="fu">DelMin</span>();</a>
+<a class="sourceLine" id="cb2-75" title="75">                pq.<span class="fu">Insert</span>(<span class="kw">new</span> <span class="fu">EuclideanDistance3D</span>(x[i], y[i], z[i]));</a>
+<a class="sourceLine" id="cb2-76" title="76">            }</a>
+<a class="sourceLine" id="cb2-77" title="77">            <span class="kw">while</span> (pq.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb2-78" title="78">                pq.<span class="fu">DelMin</span>();</a>
+<a class="sourceLine" id="cb2-79" title="79">            sw.<span class="fu">Stop</span>();<span class="co">// 停止计时</span></a>
+<a class="sourceLine" id="cb2-80" title="80">            <span class="kw">return</span> sw.<span class="fu">ElapsedMilliseconds</span>;</a>
+<a class="sourceLine" id="cb2-81" title="81">        }</a>
+<a class="sourceLine" id="cb2-82" title="82">    }</a>
+<a class="sourceLine" id="cb2-83" title="83">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://zh.wikipedia.org/wiki/欧几里得距离" target="_blank" rel="noopener">欧几里得距离-维基百科</a> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

@@ -140,18 +140,19 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.8</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.8<br>用一个反例证明 quick-find 算法中的 union() 方法的以下直观实现是错误的：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">union</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">connected</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> I <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> I <span class="token operator">&lt;</span> id<span class="token punctuation">.</span>length<span class="token punctuation">;</span> I<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>id<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> id<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span> id<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> id<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    count<span class="token operator">--</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>当有多个元素需要修改的时候，这个直观算法可能会出现错误。<br>例如如下情况：<br>index 0 1 2 3 4 5 6 7 8 9<br>id    0 0 0 0 0 5 5 5 5 5<br>输入 0, 5<br>i = 0 时，id[i] == id[p]，此时 id[i] = id[q]。<br>数组变为 5 0 0 0 0 5 5 5 5 5<br>i = 1 时，id[i] != id[p]，算法出现错误。<br>如果在 id[p] 之后还有需要修改的元素，那么这个算法就会出现错误。</p>
+			<h1 id="题目">题目</h1>
+<p>1.5.8 用一个反例证明 quick-find 算法中的 union() 方法的以下直观实现是错误的：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">union</span>(<span class="dt">int</span> p, <span class="dt">int</span> q)</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">if</span> (<span class="fu">connected</span>(p, q)) <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">for</span> (<span class="dt">int</span> I = <span class="dv">0</span>; I &lt; id.<span class="fu">length</span>; I++)</a>
+<a class="sourceLine" id="cb1-5" title="5">    {</a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="kw">if</span> (id[i] == id[p]) id[i] = id[q];</a>
+<a class="sourceLine" id="cb1-7" title="7">    }</a>
+<a class="sourceLine" id="cb1-8" title="8">    count--;</a>
+<a class="sourceLine" id="cb1-9" title="9">}</a></code></pre></div>
+<h1 id="解答">解答</h1>
+<p>当有多个元素需要修改的时候，这个直观算法可能会出现错误。 例如如下情况： index 0 1 2 3 4 5 6 7 8 9 id 0 0 0 0 0 5 5 5 5 5 输入 0, 5 i = 0 时，id[i] == id[p]，此时 id[i] = id[q]。 数组变为 5 0 0 0 0 5 5 5 5 5 i = 1 时，id[i] != id[p]，算法出现错误。 如果在 id[p] 之后还有需要修改的元素，那么这个算法就会出现错误。</p>
 
 		</div>
 	</div>

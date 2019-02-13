@@ -140,231 +140,240 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.34</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.34<br>过滤。<br>以下那些任务需要（在数组中，比如）保存标准输入中的所有值？<br>那些可以被实现为一个过滤器且仅使用固定数量的变量和固定大小的数组（和 N 无关）？<br>每个问题中，输入都是来自于标准输入且含有 N 个 0 到 1 的实数。</p>
+			<h1 id="题目">题目</h1>
+<p>1.1.34 过滤。 以下那些任务需要（在数组中，比如）保存标准输入中的所有值？ 那些可以被实现为一个过滤器且仅使用固定数量的变量和固定大小的数组（和 N 无关）？ 每个问题中，输入都是来自于标准输入且含有 N 个 0 到 1 的实数。</p>
 <ul>
-<li>打印出最大和最小的数  </li>
-<li>打印出所有数的中位数  </li>
-<li>打印出第 k 小的数， k 小于 100  </li>
-<li>打印出所有数的平方和  </li>
-<li>打印出 N 个数的平均值  </li>
-<li>打印出大于平均值的数的百分比  </li>
-<li>将 N 个数按照升序打印  </li>
+<li>打印出最大和最小的数<br>
+</li>
+<li>打印出所有数的中位数<br>
+</li>
+<li>打印出第 k 小的数， k 小于 100<br>
+</li>
+<li>打印出所有数的平方和<br>
+</li>
+<li>打印出 N 个数的平均值<br>
+</li>
+<li>打印出大于平均值的数的百分比<br>
+</li>
+<li>将 N 个数按照升序打印<br>
+</li>
 <li>将 N 个数按照随机顺序打印</li>
 </ul>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>第二个以及最后三个需要，其他都可以设计成过滤器的模式。</p>
+<h1 id="解答">解答</h1>
+<p>第二个以及最后三个需要，其他都可以设计成过滤器的模式。</p>
 <p>这里的 largeW.txt 只需要保留前 100 个数字就可以了，太多的话最后两个测试会刷屏。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> AllNumbers <span class="token operator">=</span> File<span class="token punctuation">.</span><span class="token function">ReadAllLines</span><span class="token punctuation">(</span><span class="token string">"largeW.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> N <span class="token operator">=</span> AllNumbers<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>AllNumbers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token function">MinAndMax</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">MidNumber</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">NumberK</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">SquareSum</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">AboveAverage</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">Ascending</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">Shuffle</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 获取最大值和最小值</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">MinAndMax</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//只用到了两个变量</span>
-    <span class="token keyword">int</span> min <span class="token operator">=</span> input<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> max <span class="token operator">=</span> input<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//只对输入值正向遍历一遍，不需要保存</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> max<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            max <span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            min <span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Min and Max:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"Min: {min}\nMax: {max}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 获取中位数</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>中位数&lt;/returns></span>
-<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">MidNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//需要对输入值进行去重 &amp; 排序，故需要保存</span>
-    List<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> DistinctNumbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>input<span class="token punctuation">.</span><span class="token function">Distinct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    DistinctNumbers<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"MidNumber:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>DistinctNumbers<span class="token punctuation">[</span>DistinctNumbers<span class="token punctuation">.</span>Count <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> DistinctNumbers<span class="token punctuation">[</span>DistinctNumbers<span class="token punctuation">.</span>Count <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 获取第 k 小的数</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="k">需要获取的排名&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>第 k 小的数&lt;/returns></span>
-<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">NumberK</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">101</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//只正向遍历一遍，不需要保存</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            temp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span>
-        <span class="token punctuation">{</span>
-            temp<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span> <span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"NumberK"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"No.k: {temp[k - 1]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> temp<span class="token punctuation">[</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 计算输入流中所有数的平方和</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>所有数的平方和&lt;/returns></span>
-<span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token function">SquareSum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">long</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//只正向遍历一遍，不需要保存</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        sum <span class="token operator">+</span><span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Sum Of Square:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 计算所有输入数据的平均值</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>所有输入数据的平均值&lt;/returns></span>
-<span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">Average</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">long</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//只遍历一遍，且不保存整个数组</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        sum <span class="token operator">+</span><span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">double</span> ave <span class="token operator">=</span> sum <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Average:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>ave<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> ave<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 计算大于平均值的元素数量</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>大于平均值的元素数量&lt;/returns></span>
-<span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">AboveAverage</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">double</span> ave <span class="token operator">=</span> <span class="token function">Average</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">double</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> ave<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            count<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"AboveAverage:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"{(count / input.Length) * 100}%"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> count<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 升序打印数组</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Ascending</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Ascending:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">" {input[i]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 随机打印数组</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="input">输入流&lt;/param></span>
-<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Shuffle</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> input<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    List<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> All <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> N <span class="token operator">=</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shuffle:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        temp <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> All<span class="token punctuation">.</span>Count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">" {All[temp]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        All<span class="token punctuation">.</span><span class="token function">RemoveAt</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="dt">string</span>[] AllNumbers = File.<span class="fu">ReadAllLines</span>(<span class="st">&quot;largeW.txt&quot;</span>);</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="dt">int</span> N = AllNumbers.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="dt">int</span>[] input = <span class="kw">new</span> <span class="dt">int</span>[N];</a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
+<a class="sourceLine" id="cb1-8" title="8">    {</a>
+<a class="sourceLine" id="cb1-9" title="9">        input[i] = <span class="dt">int</span>.<span class="fu">Parse</span>(AllNumbers[i]);</a>
+<a class="sourceLine" id="cb1-10" title="10">    }</a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="fu">MinAndMax</span>(input);</a>
+<a class="sourceLine" id="cb1-13" title="13">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="fu">MidNumber</span>(input);</a>
+<a class="sourceLine" id="cb1-16" title="16">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-17" title="17"></a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="fu">NumberK</span>(<span class="dv">4</span>, input);</a>
+<a class="sourceLine" id="cb1-19" title="19">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="fu">SquareSum</span>(input);</a>
+<a class="sourceLine" id="cb1-22" title="22">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-23" title="23"></a>
+<a class="sourceLine" id="cb1-24" title="24">    <span class="fu">AboveAverage</span>(input);</a>
+<a class="sourceLine" id="cb1-25" title="25">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27">    <span class="fu">Ascending</span>(input);</a>
+<a class="sourceLine" id="cb1-28" title="28">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-29" title="29"></a>
+<a class="sourceLine" id="cb1-30" title="30">    <span class="fu">Shuffle</span>(input);</a>
+<a class="sourceLine" id="cb1-31" title="31">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-32" title="32">}</a>
+<a class="sourceLine" id="cb1-33" title="33"></a>
+<a class="sourceLine" id="cb1-34" title="34"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-35" title="35"><span class="co">/// 获取最大值和最小值</span></a>
+<a class="sourceLine" id="cb1-36" title="36"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-37" title="37"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-38" title="38"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">MinAndMax</span>(<span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-39" title="39">{</a>
+<a class="sourceLine" id="cb1-40" title="40">    <span class="co">//只用到了两个变量</span></a>
+<a class="sourceLine" id="cb1-41" title="41">    <span class="dt">int</span> min = input[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb1-42" title="42">    <span class="dt">int</span> max = input[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb1-43" title="43"></a>
+<a class="sourceLine" id="cb1-44" title="44">    <span class="co">//只对输入值正向遍历一遍，不需要保存</span></a>
+<a class="sourceLine" id="cb1-45" title="45">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-46" title="46">    {</a>
+<a class="sourceLine" id="cb1-47" title="47">        <span class="kw">if</span> (input[i] &gt; max)</a>
+<a class="sourceLine" id="cb1-48" title="48">        {</a>
+<a class="sourceLine" id="cb1-49" title="49">            max = input[i];</a>
+<a class="sourceLine" id="cb1-50" title="50">        }</a>
+<a class="sourceLine" id="cb1-51" title="51"></a>
+<a class="sourceLine" id="cb1-52" title="52">        <span class="kw">if</span> (input[i] &lt; min)</a>
+<a class="sourceLine" id="cb1-53" title="53">        {</a>
+<a class="sourceLine" id="cb1-54" title="54">            min = input[i];</a>
+<a class="sourceLine" id="cb1-55" title="55">        }</a>
+<a class="sourceLine" id="cb1-56" title="56">    }</a>
+<a class="sourceLine" id="cb1-57" title="57"></a>
+<a class="sourceLine" id="cb1-58" title="58">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Min and Max:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-59" title="59">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;Min: {min}</span><span class="sc">\n</span><span class="st">Max: {max}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-60" title="60">}</a>
+<a class="sourceLine" id="cb1-61" title="61"></a>
+<a class="sourceLine" id="cb1-62" title="62"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-63" title="63"><span class="co">/// 获取中位数</span></a>
+<a class="sourceLine" id="cb1-64" title="64"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-65" title="65"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-66" title="66"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">中位数</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-67" title="67"><span class="kw">static</span> <span class="dt">int</span> <span class="fu">MidNumber</span>(<span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-68" title="68">{</a>
+<a class="sourceLine" id="cb1-69" title="69">    <span class="co">//需要对输入值进行去重 &amp; 排序，故需要保存</span></a>
+<a class="sourceLine" id="cb1-70" title="70">    List&lt;<span class="dt">int</span>&gt; DistinctNumbers = <span class="kw">new</span> List&lt;<span class="dt">int</span>&gt;(input.<span class="fu">Distinct</span>());</a>
+<a class="sourceLine" id="cb1-71" title="71">    DistinctNumbers.<span class="fu">Sort</span>();</a>
+<a class="sourceLine" id="cb1-72" title="72">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;MidNumber:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-73" title="73">    Console.<span class="fu">WriteLine</span>(DistinctNumbers[DistinctNumbers.<span class="fu">Count</span> / <span class="dv">2</span>]);</a>
+<a class="sourceLine" id="cb1-74" title="74"></a>
+<a class="sourceLine" id="cb1-75" title="75">    <span class="kw">return</span> DistinctNumbers[DistinctNumbers.<span class="fu">Count</span> / <span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb1-76" title="76">}</a>
+<a class="sourceLine" id="cb1-77" title="77"></a>
+<a class="sourceLine" id="cb1-78" title="78"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-79" title="79"><span class="co">/// 获取第 k 小的数</span></a>
+<a class="sourceLine" id="cb1-80" title="80"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-81" title="81"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要获取的排名</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-82" title="82"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-83" title="83"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">第 k 小的数</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-84" title="84"><span class="kw">static</span> <span class="dt">int</span> <span class="fu">NumberK</span> (<span class="dt">int</span> k, <span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-85" title="85">{</a>
+<a class="sourceLine" id="cb1-86" title="86">    <span class="dt">int</span>[] temp = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">101</span>];</a>
+<a class="sourceLine" id="cb1-87" title="87"></a>
+<a class="sourceLine" id="cb1-88" title="88">    <span class="co">//只正向遍历一遍，不需要保存</span></a>
+<a class="sourceLine" id="cb1-89" title="89">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-90" title="90">    {</a>
+<a class="sourceLine" id="cb1-91" title="91">        <span class="kw">if</span> (i &lt; <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb1-92" title="92">        {</a>
+<a class="sourceLine" id="cb1-93" title="93">            temp[i] = input[i];</a>
+<a class="sourceLine" id="cb1-94" title="94">        }</a>
+<a class="sourceLine" id="cb1-95" title="95">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-96" title="96">        {</a>
+<a class="sourceLine" id="cb1-97" title="97">            temp[<span class="dv">100</span>] = input[i];</a>
+<a class="sourceLine" id="cb1-98" title="98">            Array.<span class="fu">Sort</span>(temp);</a>
+<a class="sourceLine" id="cb1-99" title="99">        }</a>
+<a class="sourceLine" id="cb1-100" title="100">    }</a>
+<a class="sourceLine" id="cb1-101" title="101"></a>
+<a class="sourceLine" id="cb1-102" title="102">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;NumberK&quot;</span>);</a>
+<a class="sourceLine" id="cb1-103" title="103">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;No.k: {temp[k - 1]}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-104" title="104"></a>
+<a class="sourceLine" id="cb1-105" title="105">    <span class="kw">return</span> temp[k - <span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb1-106" title="106">}</a>
+<a class="sourceLine" id="cb1-107" title="107"></a>
+<a class="sourceLine" id="cb1-108" title="108"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-109" title="109"><span class="co">/// 计算输入流中所有数的平方和</span></a>
+<a class="sourceLine" id="cb1-110" title="110"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-111" title="111"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-112" title="112"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">所有数的平方和&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-113" title="113"><span class="kw">static</span> <span class="dt">long</span> <span class="fu">SquareSum</span>(<span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-114" title="114">{</a>
+<a class="sourceLine" id="cb1-115" title="115">    <span class="dt">long</span> sum = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-116" title="116">    <span class="co">//只正向遍历一遍，不需要保存</span></a>
+<a class="sourceLine" id="cb1-117" title="117">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-118" title="118">    {</a>
+<a class="sourceLine" id="cb1-119" title="119">        sum += input[i] * input[i];</a>
+<a class="sourceLine" id="cb1-120" title="120">    }</a>
+<a class="sourceLine" id="cb1-121" title="121"></a>
+<a class="sourceLine" id="cb1-122" title="122">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Sum Of Square:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-123" title="123">    Console.<span class="fu">WriteLine</span>(sum);</a>
+<a class="sourceLine" id="cb1-124" title="124"></a>
+<a class="sourceLine" id="cb1-125" title="125">    <span class="kw">return</span> sum;</a>
+<a class="sourceLine" id="cb1-126" title="126">}</a>
+<a class="sourceLine" id="cb1-127" title="127"></a>
+<a class="sourceLine" id="cb1-128" title="128"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-129" title="129"><span class="co">/// 计算所有输入数据的平均值</span></a>
+<a class="sourceLine" id="cb1-130" title="130"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-131" title="131"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-132" title="132"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">所有输入数据的平均值&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-133" title="133"><span class="kw">static</span> <span class="dt">double</span> <span class="fu">Average</span>(<span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-134" title="134">{</a>
+<a class="sourceLine" id="cb1-135" title="135">    <span class="dt">long</span> sum = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-136" title="136"></a>
+<a class="sourceLine" id="cb1-137" title="137">    <span class="co">//只遍历一遍，且不保存整个数组</span></a>
+<a class="sourceLine" id="cb1-138" title="138">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-139" title="139">    {</a>
+<a class="sourceLine" id="cb1-140" title="140">        sum += input[i];</a>
+<a class="sourceLine" id="cb1-141" title="141">    }</a>
+<a class="sourceLine" id="cb1-142" title="142"></a>
+<a class="sourceLine" id="cb1-143" title="143">    <span class="dt">double</span> ave = sum / (<span class="dt">double</span>)input.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb1-144" title="144"></a>
+<a class="sourceLine" id="cb1-145" title="145">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Average:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-146" title="146">    Console.<span class="fu">WriteLine</span>(ave);</a>
+<a class="sourceLine" id="cb1-147" title="147"></a>
+<a class="sourceLine" id="cb1-148" title="148">    <span class="kw">return</span> ave;</a>
+<a class="sourceLine" id="cb1-149" title="149">}</a>
+<a class="sourceLine" id="cb1-150" title="150"></a>
+<a class="sourceLine" id="cb1-151" title="151"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-152" title="152"><span class="co">/// 计算大于平均值的元素数量</span></a>
+<a class="sourceLine" id="cb1-153" title="153"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-154" title="154"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-155" title="155"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">大于平均值的元素数量</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-156" title="156"><span class="kw">static</span> <span class="dt">double</span> <span class="fu">AboveAverage</span>(<span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-157" title="157">{</a>
+<a class="sourceLine" id="cb1-158" title="158">    <span class="dt">double</span> ave = <span class="fu">Average</span>(input);</a>
+<a class="sourceLine" id="cb1-159" title="159">    Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-160" title="160">    <span class="dt">double</span> count = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-161" title="161"></a>
+<a class="sourceLine" id="cb1-162" title="162">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-163" title="163">    {</a>
+<a class="sourceLine" id="cb1-164" title="164">        <span class="kw">if</span> (input[i] &gt; ave)</a>
+<a class="sourceLine" id="cb1-165" title="165">        {</a>
+<a class="sourceLine" id="cb1-166" title="166">            count++;</a>
+<a class="sourceLine" id="cb1-167" title="167">        }</a>
+<a class="sourceLine" id="cb1-168" title="168">    }</a>
+<a class="sourceLine" id="cb1-169" title="169"></a>
+<a class="sourceLine" id="cb1-170" title="170"></a>
+<a class="sourceLine" id="cb1-171" title="171">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;AboveAverage:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-172" title="172">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;{(count / input.Length) * 100}%&quot;</span>);</a>
+<a class="sourceLine" id="cb1-173" title="173"></a>
+<a class="sourceLine" id="cb1-174" title="174">    <span class="kw">return</span> count;</a>
+<a class="sourceLine" id="cb1-175" title="175">}</a>
+<a class="sourceLine" id="cb1-176" title="176"></a>
+<a class="sourceLine" id="cb1-177" title="177"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-178" title="178"><span class="co">/// 升序打印数组</span></a>
+<a class="sourceLine" id="cb1-179" title="179"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-180" title="180"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-181" title="181"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Ascending</span>(<span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-182" title="182">{</a>
+<a class="sourceLine" id="cb1-183" title="183">    Array.<span class="fu">Sort</span>(input);</a>
+<a class="sourceLine" id="cb1-184" title="184"></a>
+<a class="sourceLine" id="cb1-185" title="185">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Ascending:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-186" title="186">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-187" title="187">    {</a>
+<a class="sourceLine" id="cb1-188" title="188">        Console.<span class="fu">Write</span>($<span class="st">&quot; {input[i]}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-189" title="189">    }</a>
+<a class="sourceLine" id="cb1-190" title="190">    Console.<span class="fu">Write</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-191" title="191">}</a>
+<a class="sourceLine" id="cb1-192" title="192"></a>
+<a class="sourceLine" id="cb1-193" title="193"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-194" title="194"><span class="co">/// 随机打印数组</span></a>
+<a class="sourceLine" id="cb1-195" title="195"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-196" title="196"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;input&quot;</span><span class="kw">&gt;</span><span class="co">输入流&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-197" title="197"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Shuffle</span>(<span class="dt">int</span>[] input)</a>
+<a class="sourceLine" id="cb1-198" title="198">{</a>
+<a class="sourceLine" id="cb1-199" title="199">    Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb1-200" title="200">    List&lt;<span class="dt">int</span>&gt; All = <span class="kw">new</span> List&lt;<span class="dt">int</span>&gt;(input);</a>
+<a class="sourceLine" id="cb1-201" title="201">    <span class="dt">int</span> N = input.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb1-202" title="202">    <span class="dt">int</span> temp = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-203" title="203"></a>
+<a class="sourceLine" id="cb1-204" title="204">    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shuffle:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-205" title="205">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
+<a class="sourceLine" id="cb1-206" title="206">    {</a>
+<a class="sourceLine" id="cb1-207" title="207">        temp = random.<span class="fu">Next</span>(<span class="dv">0</span>, All.<span class="fu">Count</span> - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-208" title="208">        Console.<span class="fu">Write</span>($<span class="st">&quot; {All[temp]}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-209" title="209">        All.<span class="fu">RemoveAt</span>(temp);</a>
+<a class="sourceLine" id="cb1-210" title="210">    }</a>
+<a class="sourceLine" id="cb1-211" title="211">}</a></code></pre></div>
 
 		</div>
 	</div>

@@ -140,19 +140,20 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.8</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.8<br>下列语句会打印出什么结果？给出解释。</p>
-<pre class="line-numbers language-java"><code class="language-java">a<span class="token punctuation">.</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-b<span class="token punctuation">.</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'b'</span> <span class="token operator">+</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-c<span class="token punctuation">.</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token string">'a'</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>b<br>197<br>e</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">'b'</span> <span class="token operator">+</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//char 被隐式转为为 int 类型，取 ascii 码</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'a'</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//强制转换后，ascii 码被转换为相应的字符</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.1.8 下列语句会打印出什么结果？给出解释。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1">a. <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="ch">&#39;b&#39;</span>);</a>
+<a class="sourceLine" id="cb1-2" title="2">b. <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="ch">&#39;b&#39;</span> + <span class="ch">&#39;c&#39;</span>);</a>
+<a class="sourceLine" id="cb1-3" title="3">c. <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>((<span class="dt">char</span>) (<span class="ch">&#39;a&#39;</span> + <span class="dv">4</span>));</a></code></pre></div>
+<h1 id="解答">解答</h1>
+<p>b 197 e</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-2" title="2">{</a>
+<a class="sourceLine" id="cb2-3" title="3">    Console.<span class="fu">WriteLine</span>(<span class="ch">&#39;b&#39;</span>);</a>
+<a class="sourceLine" id="cb2-4" title="4">    Console.<span class="fu">WriteLine</span>(<span class="ch">&#39;b&#39;</span> + <span class="ch">&#39;c&#39;</span>); <span class="co">//char 被隐式转为为 int 类型，取 ascii 码</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    Console.<span class="fu">WriteLine</span>((<span class="dt">char</span>)(<span class="ch">&#39;a&#39;</span> + <span class="dv">4</span>)); <span class="co">//强制转换后，ascii 码被转换为相应的字符</span></a>
+<a class="sourceLine" id="cb2-6" title="6">}</a></code></pre></div>
 
 		</div>
 	</div>

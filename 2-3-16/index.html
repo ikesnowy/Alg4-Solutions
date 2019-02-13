@@ -140,115 +140,115 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.3.16</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.16<br>最佳情况。<br>编写一段程序来生成使算法 2.5 中的 sort() 方法表现最佳的数组（无重复元素）：<br>数组大小为 N 且不包含重复元素，每次切分后两个子数组的大小最多差 1<br>（子数组的大小与含有 N 个相同元素的数组的切分情况相同）。<br>（对于这道练习，我们不需要在排序开始时打乱数组。）</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现见：<a href="https://algs4.cs.princeton.edu/23quicksort/QuickBest.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/23quicksort/QuickBest.java.html</a></p>
-<p>类似于快速排序的结构，只要中点的两边都是最佳情况，那么整个数组就是最佳情况了。<br>具体方法是：<br>首先构造一个有序数组，<br>然后找到中点（作为枢轴），<br>对中点左右两侧子数组进行构造，<br>将选择的枢轴放到开始处(a[lo])。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>用于构造最佳数组的类。</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">namespace</span> Quick
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 构建快速排序最佳情况的类。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">QuickBest</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造函数，这个类不应该被实例化。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">private</span> <span class="token function">QuickBest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造适用于快速排序的最佳数组。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="n">数组长度。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">Best</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token function">Best</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> a<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 递归的构造数组。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要构造的数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="lo">构造的起始下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="hi">构造的终止下标。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Best</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">&lt;=</span> lo<span class="token punctuation">)</span>
-                <span class="token keyword">return</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token function">Best</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Best</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 交换数组中的两个元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">数组的元素类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">包含要交换元素的数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="x">需要交换的第一个元素下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="y">需要交换的第二个元素下标。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Exch</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> t <span class="token operator">=</span> a<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            a<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            a<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>2.3.16 最佳情况。 编写一段程序来生成使算法 2.5 中的 sort() 方法表现最佳的数组（无重复元素）： 数组大小为 N 且不包含重复元素，每次切分后两个子数组的大小最多差 1 （子数组的大小与含有 N 个相同元素的数组的切分情况相同）。 （对于这道练习，我们不需要在排序开始时打乱数组。）</p>
+<h1 id="解答">解答</h1>
+<p>官方实现见：https://algs4.cs.princeton.edu/23quicksort/QuickBest.java.html</p>
+<p>类似于快速排序的结构，只要中点的两边都是最佳情况，那么整个数组就是最佳情况了。 具体方法是： 首先构造一个有序数组， 然后找到中点（作为枢轴）， 对中点左右两侧子数组进行构造， 将选择的枢轴放到开始处(a[lo])。</p>
+<h1 id="代码">代码</h1>
+<p>用于构造最佳数组的类。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">namespace</span> Quick</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="co">/// 构建快速排序最佳情况的类。</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">public</span> <span class="kw">class</span> QuickBest</a>
+<a class="sourceLine" id="cb1-7" title="7">    {</a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">        <span class="co">/// 构造函数，这个类不应该被实例化。</span></a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">private</span> <span class="fu">QuickBest</span>() { }</a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="co">/// 构造适用于快速排序的最佳数组。</span></a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">数组长度。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-18" title="18">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span>[] <span class="fu">Best</span>(<span class="dt">int</span> n)</a>
+<a class="sourceLine" id="cb1-19" title="19">        {</a>
+<a class="sourceLine" id="cb1-20" title="20">            <span class="dt">int</span>[] a = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
+<a class="sourceLine" id="cb1-22" title="22">            {</a>
+<a class="sourceLine" id="cb1-23" title="23">                a[i] = i;</a>
+<a class="sourceLine" id="cb1-24" title="24">            }</a>
+<a class="sourceLine" id="cb1-25" title="25">            <span class="fu">Best</span>(a, <span class="dv">0</span>, n - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-26" title="26">            <span class="kw">return</span> a;</a>
+<a class="sourceLine" id="cb1-27" title="27">        }</a>
+<a class="sourceLine" id="cb1-28" title="28"></a>
+<a class="sourceLine" id="cb1-29" title="29">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-30" title="30">        <span class="co">/// 递归的构造数组。</span></a>
+<a class="sourceLine" id="cb1-31" title="31">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-32" title="32">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要构造的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-33" title="33">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">构造的起始下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-34" title="34">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">构造的终止下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-35" title="35">        <span class="kw">private</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Best</span>(<span class="dt">int</span>[] a, <span class="dt">int</span> lo, <span class="dt">int</span> hi)</a>
+<a class="sourceLine" id="cb1-36" title="36">        {</a>
+<a class="sourceLine" id="cb1-37" title="37">            <span class="kw">if</span> (hi &lt;= lo)</a>
+<a class="sourceLine" id="cb1-38" title="38">                <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb1-39" title="39">            <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-40" title="40">            <span class="fu">Best</span>(a, lo, mid - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-41" title="41">            <span class="fu">Best</span>(a, mid + <span class="dv">1</span>, hi);</a>
+<a class="sourceLine" id="cb1-42" title="42">            <span class="fu">Exch</span>(a, lo, mid);</a>
+<a class="sourceLine" id="cb1-43" title="43">        }</a>
+<a class="sourceLine" id="cb1-44" title="44"></a>
+<a class="sourceLine" id="cb1-45" title="45">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-46" title="46">        <span class="co">/// 交换数组中的两个元素。</span></a>
+<a class="sourceLine" id="cb1-47" title="47">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-48" title="48">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">数组的元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb1-49" title="49">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">包含要交换元素的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-50" title="50">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;x&quot;</span><span class="kw">&gt;</span><span class="co">需要交换的第一个元素下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-51" title="51">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;y&quot;</span><span class="kw">&gt;</span><span class="co">需要交换的第二个元素下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-52" title="52">        <span class="kw">private</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Exch</span>(<span class="dt">int</span>[] a, <span class="dt">int</span> x, <span class="dt">int</span> y)</a>
+<a class="sourceLine" id="cb1-53" title="53">        {</a>
+<a class="sourceLine" id="cb1-54" title="54">            <span class="dt">int</span> t = a[x];</a>
+<a class="sourceLine" id="cb1-55" title="55">            a[x] = a[y];</a>
+<a class="sourceLine" id="cb1-56" title="56">            a[y] = t;</a>
+<a class="sourceLine" id="cb1-57" title="57">        }</a>
+<a class="sourceLine" id="cb1-58" title="58">    }</a>
+<a class="sourceLine" id="cb1-59" title="59">}</a></code></pre></div>
 <p>用于测试的方法</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Quick<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_16
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.3.16
-     * 
-     * 最佳情况。
-     * 编写一段程序来生成使算法 2.5 中的 sort() 方法表现最佳的数组（无重复元素）：
-     * 数组大小为 N 且不包含重复元素，
-     * 每次切分后两个子数组的大小最多差 1
-     * （子数组的大小与含有 N 个相同元素的数组的切分情况相同）。
-     * （对于这道练习，我们不需要在排序开始时打乱数组。）
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            QuickSortAnalyze quick <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickSortAnalyze</span>
-            <span class="token punctuation">{</span>
-                NeedShuffle <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">,</span>            <span class="token comment" spellcheck="true">// 关闭打乱</span>
-                NeedPath <span class="token operator">=</span> <span class="token keyword">true</span>                 <span class="token comment" spellcheck="true">// 显示排序轨迹</span>
-            <span class="token punctuation">}</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> QuickBest<span class="token punctuation">.</span><span class="token function">Best</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            quick<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> Quick;</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">3.</span>_<span class="dv">16</span></a>
+<a class="sourceLine" id="cb2-5" title="5">{</a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * 2.3.16</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 最佳情况。</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 编写一段程序来生成使算法 2.5 中的 sort() 方法表现最佳的数组（无重复元素）：</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * 数组大小为 N 且不包含重复元素，</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * 每次切分后两个子数组的大小最多差 1</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">     * （子数组的大小与含有 N 个相同元素的数组的切分情况相同）。</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">     * （对于这道练习，我们不需要在排序开始时打乱数组。）</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb2-17" title="17">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb2-18" title="18">    {</a>
+<a class="sourceLine" id="cb2-19" title="19">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-20" title="20">        {</a>
+<a class="sourceLine" id="cb2-21" title="21">            QuickSortAnalyze quick = <span class="kw">new</span> QuickSortAnalyze</a>
+<a class="sourceLine" id="cb2-22" title="22">            {</a>
+<a class="sourceLine" id="cb2-23" title="23">                NeedShuffle = <span class="kw">false</span>,            <span class="co">// 关闭打乱</span></a>
+<a class="sourceLine" id="cb2-24" title="24">                NeedPath = <span class="kw">true</span>                 <span class="co">// 显示排序轨迹</span></a>
+<a class="sourceLine" id="cb2-25" title="25">            };</a>
+<a class="sourceLine" id="cb2-26" title="26">            <span class="dt">int</span>[] a = QuickBest.<span class="fu">Best</span>(<span class="dv">10</span>);</a>
+<a class="sourceLine" id="cb2-27" title="27">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++)</a>
+<a class="sourceLine" id="cb2-28" title="28">            {</a>
+<a class="sourceLine" id="cb2-29" title="29">                Console.<span class="fu">Write</span>(a[i] + <span class="st">&quot; &quot;</span>);</a>
+<a class="sourceLine" id="cb2-30" title="30">            }</a>
+<a class="sourceLine" id="cb2-31" title="31">            Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb2-32" title="32">            quick.<span class="fu">Sort</span>(a);</a>
+<a class="sourceLine" id="cb2-33" title="33">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++)</a>
+<a class="sourceLine" id="cb2-34" title="34">            {</a>
+<a class="sourceLine" id="cb2-35" title="35">                Console.<span class="fu">Write</span>(a[i] + <span class="st">&quot; &quot;</span>);</a>
+<a class="sourceLine" id="cb2-36" title="36">            }</a>
+<a class="sourceLine" id="cb2-37" title="37">            Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb2-38" title="38">        }</a>
+<a class="sourceLine" id="cb2-39" title="39">    }</a>
+<a class="sourceLine" id="cb2-40" title="40">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
 
 		</div>
 	</div>

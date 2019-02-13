@@ -140,36 +140,39 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.6</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.6<br>用递归实现 select()。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>非递归官网实现见：<a href="https://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java.html</a></p>
-<p>原本是和快速排序一块介绍的，将数组重新排列，使得 <code>a[k]</code> 正好是第 <code>k</code> 小的元素，<code>k</code> 从 <code>0</code> 开始。<br>具体思路类似于二分查找，<br>先切分，如果切分位置小于 <code>k</code>，那么在右半部分继续切分，否则在左半部分继续切分。<br>直到切分位置正好等于 <code>k</code>，直接返回 <code>a[k]</code> 。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 使 a[k] 变为第 k 小的数，k 从 0 开始。</span>
-<span class="token comment" spellcheck="true">/// a[0] ~ a[k-1] 都小于等于 a[k], a[k+1]~a[n-1] 都大于等于 a[k]</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;typeparam name="T">元素类型。&lt;/typeparam></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="a">需要调整的数组。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="k">序号。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="lo">起始下标。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="hi">终止下标。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">static</span> T <span class="token generic-method function">Select<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">></span> a<span class="token punctuation">.</span>Length <span class="token operator">||</span> k <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentOutOfRangeException</span><span class="token punctuation">(</span><span class="token string">"select out of bound"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>lo <span class="token operator">>=</span> hi<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> a<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token function">Partition</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> k<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token function">Select</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> k<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> k<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token function">Select</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> k<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span>
-        <span class="token keyword">return</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.5.6 用递归实现 select()。</p>
+<h1 id="解答">解答</h1>
+<p>非递归官网实现见：https://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java.html</p>
+<p>原本是和快速排序一块介绍的，将数组重新排列，使得 <code>a[k]</code> 正好是第 <code>k</code> 小的元素，<code>k</code> 从 <code>0</code> 开始。 具体思路类似于二分查找， 先切分，如果切分位置小于 <code>k</code>，那么在右半部分继续切分，否则在左半部分继续切分。 直到切分位置正好等于 <code>k</code>，直接返回 <code>a[k]</code> 。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 使 a[k] 变为第 k 小的数，k 从 0 开始。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// a[0] ~ a[k-1] 都小于等于 a[k], a[k+1]~a[n-1] 都大于等于 a[k]</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要调整的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">序号。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">起始下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">终止下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="kw">static</span> T Select&lt;T&gt;(T[] a, <span class="dt">int</span> k, <span class="dt">int</span> lo, <span class="dt">int</span> hi) where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb1-12" title="12">{</a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="kw">if</span> (k &gt; a.<span class="fu">Length</span> || k &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentOutOfRangeException</span>(<span class="st">&quot;select out of bound&quot;</span>);</a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="kw">if</span> (lo &gt;= hi)</a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="kw">return</span> a[lo];</a>
+<a class="sourceLine" id="cb1-17" title="17"></a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="dt">int</span> i = <span class="fu">Partition</span>(a, lo, hi);</a>
+<a class="sourceLine" id="cb1-19" title="19">    <span class="kw">if</span> (i &gt; k)</a>
+<a class="sourceLine" id="cb1-20" title="20">        <span class="kw">return</span> <span class="fu">Select</span>(a, k, lo, i - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="kw">else</span> <span class="kw">if</span> (i &lt; k)</a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="kw">return</span> <span class="fu">Select</span>(a, k, i + <span class="dv">1</span>, hi);</a>
+<a class="sourceLine" id="cb1-23" title="23">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-24" title="24">        <span class="kw">return</span> a[i];</a>
+<a class="sourceLine" id="cb1-25" title="25">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
 
 		</div>
 	</div>

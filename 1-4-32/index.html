@@ -140,9 +140,11 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.32</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.32<br>均摊分析。<br>请证明，<br>对一个基于大小可变的数组实现的空栈的 M 次操作访问数组的次数和 M 成正比。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先，不需要扩容数组的的操作都只需访问数组一次，$M$ 次操作就是 $M$ 次访问。<br>随后我们有性质， $M$ 次栈操作后额外复制访问数组的次数小于 $2M$。<br>这里简单证明，设 $M$ 次操作之后栈的大小为 $n$，那么额外访问数组的次数为：<br>$S = \frac{n}{2} + \frac{n}{4} + \frac{n}{8} +…+ 2 &lt; n$<br>为了能使栈大小达到 $n$，$M$ 必须大于等于 $\frac{n}{2}$<br>因此 $2M \ge n &gt; S$，得证。</p>
-<p>因此我们可以得到 $M$ 次操作后访问数组次数的总和 $S’ = S + M &lt; 3M$。</p>
+			<h1 id="题目">题目</h1>
+<p>1.4.32 均摊分析。 请证明， 对一个基于大小可变的数组实现的空栈的 M 次操作访问数组的次数和 M 成正比。</p>
+<h1 id="解答">解答</h1>
+<p>首先，不需要扩容数组的的操作都只需访问数组一次，<span class="math inline">\(M\)</span> 次操作就是 <span class="math inline">\(M\)</span> 次访问。 随后我们有性质， <span class="math inline">\(M\)</span> 次栈操作后额外复制访问数组的次数小于 <span class="math inline">\(2M\)</span>。 这里简单证明，设 <span class="math inline">\(M\)</span> 次操作之后栈的大小为 <span class="math inline">\(n\)</span>，那么额外访问数组的次数为： <span class="math inline">\(S = \frac{n}{2} + \frac{n}{4} + \frac{n}{8} +...+ 2 &lt; n\)</span> 为了能使栈大小达到 <span class="math inline">\(n\)</span>，<span class="math inline">\(M\)</span> 必须大于等于 <span class="math inline">\(\frac{n}{2}\)</span> 因此 <span class="math inline">\(2M \ge n &gt; S\)</span>，得证。</p>
+<p>因此我们可以得到 <span class="math inline">\(M\)</span> 次操作后访问数组次数的总和 <span class="math inline">\(S&#39; = S + M &lt; 3M\)</span>。</p>
 
 		</div>
 	</div>
@@ -223,24 +225,7 @@ function dismissSearchResultModal() {
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-121852990-1', 'auto');
         ga('send', 'pageview');
-        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         
         
     </body>

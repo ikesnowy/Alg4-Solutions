@@ -140,51 +140,53 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.3.5</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.5<br>当 N 为 50 时下面这段代码会打印什么？<br>从较高的抽象层次描述给定正整数 N 时这段代码的行为。</p>
-<pre class="line-numbers language-java"><code class="language-java">Stack<span class="token operator">&lt;</span>Integer<span class="token operator">></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">while</span> <span class="token punctuation">(</span>N <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>N <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    N <span class="token operator">=</span> N <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> d <span class="token operator">:</span> stack<span class="token punctuation">)</span> StdOut<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-StdOut<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>实际上是用除二取余法求一个十进制数的二进制形式。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Generics<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_5
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 1.3.5
-     * 
-     * 当 N 为 50 时下面这段代码会打印什么？
-     * 从较高的抽象层次描述给定正整数 N 时这段代码的行为。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//将十进制数 N 转换为二进制数。</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
-            Stack<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>N <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                stack<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>N <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                N <span class="token operator">=</span> N <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">int</span> d <span class="token keyword">in</span> stack<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>1.3.5 当 N 为 50 时下面这段代码会打印什么？ 从较高的抽象层次描述给定正整数 N 时这段代码的行为。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">Stack</span>&lt;<span class="bu">Integer</span>&gt; stack = <span class="kw">new</span> <span class="bu">Stack</span>&lt;<span class="bu">Integer</span>&gt;();</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">while</span> (N &gt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3">{</a>
+<a class="sourceLine" id="cb1-4" title="4">    stack.<span class="fu">push</span>(N % <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb1-5" title="5">    N = N / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-6" title="6">}</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">for</span> (<span class="dt">int</span> d : stack) StdOut.<span class="fu">print</span>(d);</a>
+<a class="sourceLine" id="cb1-8" title="8">StdOut.<span class="fu">println</span>();</a></code></pre></div>
+<h1 id="解答">解答</h1>
+<p>实际上是用除二取余法求一个十进制数的二进制形式。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> Generics;</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-5" title="5">{</a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * 1.3.5</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 当 N 为 50 时下面这段代码会打印什么？</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 从较高的抽象层次描述给定正整数 N 时这段代码的行为。</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb2-13" title="13">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb2-14" title="14">    {</a>
+<a class="sourceLine" id="cb2-15" title="15">        <span class="co">//将十进制数 N 转换为二进制数。</span></a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-17" title="17">        {</a>
+<a class="sourceLine" id="cb2-18" title="18">            <span class="dt">int</span> N = <span class="dv">50</span>;</a>
+<a class="sourceLine" id="cb2-19" title="19">            Stack&lt;<span class="dt">int</span>&gt; stack = <span class="kw">new</span> Stack&lt;<span class="dt">int</span>&gt;();</a>
+<a class="sourceLine" id="cb2-20" title="20">            <span class="kw">while</span> (N &gt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb2-21" title="21">            {</a>
+<a class="sourceLine" id="cb2-22" title="22">                stack.<span class="fu">Push</span>(N % <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb2-23" title="23">                N = N / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb2-24" title="24">            }</a>
+<a class="sourceLine" id="cb2-25" title="25">            <span class="kw">foreach</span> (<span class="dt">int</span> d <span class="kw">in</span> stack)</a>
+<a class="sourceLine" id="cb2-26" title="26">            {</a>
+<a class="sourceLine" id="cb2-27" title="27">                Console.<span class="fu">WriteLine</span>(d);</a>
+<a class="sourceLine" id="cb2-28" title="28">            }</a>
+<a class="sourceLine" id="cb2-29" title="29">            Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb2-30" title="30">        }</a>
+<a class="sourceLine" id="cb2-31" title="31">    }</a>
+<a class="sourceLine" id="cb2-32" title="32">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
 
 		</div>
 	</div>

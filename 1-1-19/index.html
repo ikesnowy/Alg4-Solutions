@@ -140,88 +140,89 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.19</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.19<br>在计算机上运行以下程序：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Fibnacci</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token function">F</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>N <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token function">F</span><span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">F</span><span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> N <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> N<span class="token operator">++</span><span class="token punctuation">)</span>
-            StdOut<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>N <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> <span class="token function">F</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>计算机用这段程序在一个小时之内能够得到 F(N) 结果的最大 N 值是多少？<br>开发 F(N) 的一个更好的实现，用数组保存已经计算过的值。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>普通的递归算法效率很低，原因是越到后面重复运算的数目越多。</p>
+			<h1 id="题目">题目</h1>
+<p>1.1.19 在计算机上运行以下程序：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="kw">class</span> Fibnacci</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">long</span> <span class="fu">F</span>(<span class="dt">int</span> N)</a>
+<a class="sourceLine" id="cb1-4" title="4">    {</a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="kw">if</span> (N == <span class="dv">0</span>)    <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="kw">if</span> (N == <span class="dv">1</span>)    <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="kw">return</span> <span class="fu">F</span>(N - <span class="dv">1</span>) + <span class="fu">F</span>(N - <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb1-8" title="8">    }</a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args)</a>
+<a class="sourceLine" id="cb1-10" title="10">    {</a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">for</span> (<span class="dt">int</span> N = <span class="dv">0</span>; N &lt; <span class="dv">100</span>; N++)</a>
+<a class="sourceLine" id="cb1-12" title="12">            StdOut.<span class="fu">println</span>(N + <span class="st">&quot; &quot;</span> + <span class="fu">F</span>(N));</a>
+<a class="sourceLine" id="cb1-13" title="13">    }</a>
+<a class="sourceLine" id="cb1-14" title="14">}</a></code></pre></div>
+<p>计算机用这段程序在一个小时之内能够得到 F(N) 结果的最大 N 值是多少？ 开发 F(N) 的一个更好的实现，用数组保存已经计算过的值。</p>
+<h1 id="解答">解答</h1>
+<p>普通的递归算法效率很低，原因是越到后面重复运算的数目越多。</p>
 <p>比如：</p>
 <p>F(2) = F(1) + F(0)</p>
 <p>F(3) = F(2) + F(1) = F(1) + F(1) + F(0)</p>
 <p>可以看到 F(1) 被重复计算了两次。</p>
 <p>改进的方式是将每次运算的结果保存在数组中，之后计算过的数据直接从数组中提取。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">Fibnacci</span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//long 类型不够大，换成 UINT64 类型</span>
-    <span class="token comment" spellcheck="true">//用于保存计算结果的数组，UInt64? 代表可以赋值为普通 UInt64 类型的值以及 null 值</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> UInt64<span class="token operator">?</span><span class="token punctuation">[</span><span class="token punctuation">]</span> fibnacciResults <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UInt64</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/*
-         * 测试环境
-         * 
-         * Surface Pro3 i7
-         * i7 4650U + 8G
-         * 
-         */</span>
-        Stopwatch timer <span class="token operator">=</span> Stopwatch<span class="token punctuation">.</span><span class="token function">StartNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> N <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>N<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//书本中的代码，非常慢，1小时后 N = 50</span>
-            <span class="token comment" spellcheck="true">//Console.WriteLine($"{N} {F(N)}");</span>
-
-            <span class="token comment" spellcheck="true">//利用已知结果加速</span>
-            <span class="token comment" spellcheck="true">//全部计算完毕耗时 84ms</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"{N} {BetterF(N)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"{timer.ElapsedMilliseconds} ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//书中提供的代码</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> UInt64 <span class="token function">F</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>N <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> <span class="token function">F</span><span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">F</span><span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//更好的实现，将已经计算的结果保存，不必重复计算</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> UInt64<span class="token operator">?</span> <span class="token function">BetterF</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>N <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>fibnacciResults<span class="token punctuation">[</span>N<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">//如果已经计算过则直接读取已知值</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> fibnacciResults<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span>
-        <span class="token punctuation">{</span>
-            fibnacciResults<span class="token punctuation">[</span>N<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">BetterF</span><span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">BetterF</span><span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> fibnacciResults<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">class</span> Fibnacci</a>
+<a class="sourceLine" id="cb2-2" title="2">{</a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="co">//long 类型不够大，换成 UINT64 类型</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="co">//用于保存计算结果的数组，UInt64? 代表可以赋值为普通 UInt64 类型的值以及 null 值</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="kw">private</span> <span class="kw">static</span> UInt64?[] fibnacciResults = <span class="kw">new</span> UInt64?[<span class="dv">100</span>];</a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-8" title="8">    {</a>
+<a class="sourceLine" id="cb2-9" title="9">        <span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">         * 测试环境</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">         * </span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">         * Surface Pro3 i7</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">         * i7 4650U + 8G</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">         * </span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">         */</span></a>
+<a class="sourceLine" id="cb2-16" title="16">        Stopwatch timer = Stopwatch.<span class="fu">StartNew</span>();</a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">for</span> (<span class="dt">int</span> N = <span class="dv">0</span>; N &lt; <span class="dv">100</span>; ++N)</a>
+<a class="sourceLine" id="cb2-18" title="18">        {</a>
+<a class="sourceLine" id="cb2-19" title="19">            <span class="co">//书本中的代码，非常慢，1小时后 N = 50</span></a>
+<a class="sourceLine" id="cb2-20" title="20">            <span class="co">//Console.WriteLine($&quot;{N} {F(N)}&quot;);</span></a>
+<a class="sourceLine" id="cb2-21" title="21"></a>
+<a class="sourceLine" id="cb2-22" title="22">            <span class="co">//利用已知结果加速</span></a>
+<a class="sourceLine" id="cb2-23" title="23">            <span class="co">//全部计算完毕耗时 84ms</span></a>
+<a class="sourceLine" id="cb2-24" title="24">            Console.<span class="fu">WriteLine</span>($<span class="st">&quot;{N} {BetterF(N)}&quot;</span>);</a>
+<a class="sourceLine" id="cb2-25" title="25">        }</a>
+<a class="sourceLine" id="cb2-26" title="26">        Console.<span class="fu">WriteLine</span>($<span class="st">&quot;{timer.ElapsedMilliseconds} ms&quot;</span>);</a>
+<a class="sourceLine" id="cb2-27" title="27">    }</a>
+<a class="sourceLine" id="cb2-28" title="28"></a>
+<a class="sourceLine" id="cb2-29" title="29">    <span class="co">//书中提供的代码</span></a>
+<a class="sourceLine" id="cb2-30" title="30">    <span class="kw">public</span> <span class="kw">static</span> UInt64 <span class="fu">F</span>(<span class="dt">int</span> N)</a>
+<a class="sourceLine" id="cb2-31" title="31">    {</a>
+<a class="sourceLine" id="cb2-32" title="32">        <span class="kw">if</span> (N == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb2-33" title="33">            <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-34" title="34">        <span class="kw">if</span> (N == <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-35" title="35">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-36" title="36"></a>
+<a class="sourceLine" id="cb2-37" title="37">        <span class="kw">return</span> <span class="fu">F</span>(N - <span class="dv">1</span>) + <span class="fu">F</span>(N - <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb2-38" title="38">    }</a>
+<a class="sourceLine" id="cb2-39" title="39"></a>
+<a class="sourceLine" id="cb2-40" title="40">    <span class="co">//更好的实现，将已经计算的结果保存，不必重复计算</span></a>
+<a class="sourceLine" id="cb2-41" title="41">    <span class="kw">public</span> <span class="kw">static</span> UInt64? <span class="fu">BetterF</span>(<span class="dt">int</span> N)</a>
+<a class="sourceLine" id="cb2-42" title="42">    {</a>
+<a class="sourceLine" id="cb2-43" title="43">        <span class="kw">if</span> (N == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb2-44" title="44">            <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-45" title="45">        <span class="kw">if</span> (N == <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-46" title="46">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-47" title="47"></a>
+<a class="sourceLine" id="cb2-48" title="48">        <span class="kw">if</span> (fibnacciResults[N] != <span class="kw">null</span>)     <span class="co">//如果已经计算过则直接读取已知值</span></a>
+<a class="sourceLine" id="cb2-49" title="49">        {</a>
+<a class="sourceLine" id="cb2-50" title="50">            <span class="kw">return</span> fibnacciResults[N];</a>
+<a class="sourceLine" id="cb2-51" title="51">        }</a>
+<a class="sourceLine" id="cb2-52" title="52">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-53" title="53">        {</a>
+<a class="sourceLine" id="cb2-54" title="54">            fibnacciResults[N] = <span class="fu">BetterF</span>(N - <span class="dv">1</span>) + <span class="fu">BetterF</span>(N - <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb2-55" title="55">            <span class="kw">return</span> fibnacciResults[N];</a>
+<a class="sourceLine" id="cb2-56" title="56">        }</a>
+<a class="sourceLine" id="cb2-57" title="57">    }</a>
+<a class="sourceLine" id="cb2-58" title="58">}</a></code></pre></div>
 
 		</div>
 	</div>

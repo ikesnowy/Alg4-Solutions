@@ -140,72 +140,73 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.2.18</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.18<br>累加器的方法。<br>以下代码为 Accumulator 类添加了 var() 和 stddev() 方法，<br>它们计算了 addDataValue() 方法的参数的方差和标准差，验证这段代码：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Accumulator</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">double</span> m<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">double</span> s<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> N<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addDataValue</span><span class="token punctuation">(</span><span class="token keyword">double</span> x<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        N<span class="token operator">++</span><span class="token punctuation">;</span>
-        s <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token number">1.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> N <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        m <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span> <span class="token operator">/</span> N<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">mean</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> m<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">var</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> s <span class="token operator">/</span> <span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">stddev</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">var</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>与直接对所有数据的平方求和的方法相比较，<br>这种实现能够更好的避免四舍五入产生的误差。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>当数据比较大时—— 例如 10^9 加上随机小数组成的数列，这时 double 的小数精度将受限。<br>求和之后整数部分更大，小数部分将自动四舍五入，出现误差<br>这时再计算平均值时将会带来较大的误差。<br>因此采用另一个递推公式：<br>k 为下标。</p>
-<p>$M_k = M_{k-1}+ (x_k – M_{k-1})/k$<br>$S_k = S_{k-1} + (x_k – M_{k-1})\times(x_k – M_k)$.<br>方差 $s^2 = S_k/(k – 1)$.</p>
+			<h1 id="题目">题目</h1>
+<p>1.2.18 累加器的方法。 以下代码为 Accumulator 类添加了 var() 和 stddev() 方法， 它们计算了 addDataValue() 方法的参数的方差和标准差，验证这段代码：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="kw">class</span> Accumulator</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">private</span> <span class="dt">double</span> m;</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">private</span> <span class="dt">double</span> s;</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">private</span> <span class="dt">int</span> N;</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">addDataValue</span>(<span class="dt">double</span> x)</a>
+<a class="sourceLine" id="cb1-7" title="7">    {</a>
+<a class="sourceLine" id="cb1-8" title="8">        N++;</a>
+<a class="sourceLine" id="cb1-9" title="9">        s = s + <span class="fl">1.</span><span class="dv">0</span> * (N - <span class="dv">1</span>) / N * (x - m) * (x - m);</a>
+<a class="sourceLine" id="cb1-10" title="10">        m = m + (x - m) / N;</a>
+<a class="sourceLine" id="cb1-11" title="11">    }</a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">mean</span>()</a>
+<a class="sourceLine" id="cb1-13" title="13">    {</a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">return</span> m;</a>
+<a class="sourceLine" id="cb1-15" title="15">    }</a>
+<a class="sourceLine" id="cb1-16" title="16">    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">var</span>()</a>
+<a class="sourceLine" id="cb1-17" title="17">    {</a>
+<a class="sourceLine" id="cb1-18" title="18">        <span class="kw">return</span> s / (N - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-19" title="19">    }</a>
+<a class="sourceLine" id="cb1-20" title="20">    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">stddev</span>()</a>
+<a class="sourceLine" id="cb1-21" title="21">    {</a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="kw">return</span> <span class="bu">Math</span>.<span class="fu">sqrt</span>(<span class="kw">this</span>.<span class="fu">var</span>());</a>
+<a class="sourceLine" id="cb1-23" title="23">    }</a>
+<a class="sourceLine" id="cb1-24" title="24">}</a></code></pre></div>
+<p>与直接对所有数据的平方求和的方法相比较， 这种实现能够更好的避免四舍五入产生的误差。</p>
+<h1 id="解答">解答</h1>
+<p>当数据比较大时—— 例如 10^9 加上随机小数组成的数列，这时 double 的小数精度将受限。 求和之后整数部分更大，小数部分将自动四舍五入，出现误差 这时再计算平均值时将会带来较大的误差。 因此采用另一个递推公式： k 为下标。</p>
+<p><span class="math inline">\(M_k = M_{k-1}+ (x_k – M_{k-1})/k\)</span> <span class="math inline">\(S_k = S_{k-1} + (x_k – M_{k-1})\times(x_k – M_k)\)</span>. 方差 <span class="math inline">\(s^2 = S_k/(k – 1)\)</span>.</p>
 <p>这种情况下并没有直接对所有输入值求和，小数精度不会过多受到整数部分长度的影响。</p>
 <p>有关这两个公式的证明可以参考<a href="http://www.tandfonline.com/doi/pdf/10.1080/00401706.1962.10490022?needAccess=true" target="_blank" rel="noopener">这篇论文</a>，或者去查看我的<a href="https://www.zhihu.com/question/59252399/answer/241132917" target="_blank" rel="noopener">知乎回答</a>。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_18
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Accumulator</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">double</span> m<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> <span class="token keyword">double</span> s<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> N<span class="token punctuation">;</span>
-
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">AddDataValue</span><span class="token punctuation">(</span><span class="token keyword">double</span> x<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            N<span class="token operator">++</span><span class="token punctuation">;</span>
-            s <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token number">1.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> N <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            m <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span> <span class="token operator">/</span> N<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">Mean</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> m<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">Var</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> s <span class="token operator">/</span> <span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">Stddev</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">Sqrt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">Var</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">string</span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token string">"Mean ("</span> <span class="token operator">+</span> N <span class="token operator">+</span> <span class="token string">" values): "</span> <span class="token operator">+</span> <span class="token keyword">string</span><span class="token punctuation">.</span><span class="token function">Format</span><span class="token punctuation">(</span><span class="token string">"{0, 7:F5}"</span><span class="token punctuation">,</span> <span class="token function">Mean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">2.</span>_<span class="dv">18</span></a>
+<a class="sourceLine" id="cb2-4" title="4">{</a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="kw">public</span> <span class="kw">class</span> Accumulator</a>
+<a class="sourceLine" id="cb2-6" title="6">    {</a>
+<a class="sourceLine" id="cb2-7" title="7">        <span class="kw">private</span> <span class="dt">double</span> m;</a>
+<a class="sourceLine" id="cb2-8" title="8">        <span class="kw">private</span> <span class="dt">double</span> s;</a>
+<a class="sourceLine" id="cb2-9" title="9">        <span class="kw">private</span> <span class="dt">int</span> N;</a>
+<a class="sourceLine" id="cb2-10" title="10"></a>
+<a class="sourceLine" id="cb2-11" title="11">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">AddDataValue</span>(<span class="dt">double</span> x)</a>
+<a class="sourceLine" id="cb2-12" title="12">        {</a>
+<a class="sourceLine" id="cb2-13" title="13">            N++;</a>
+<a class="sourceLine" id="cb2-14" title="14">            s = s + <span class="fl">1.0</span> * (N - <span class="dv">1</span>) / N * (x - m) * (x - m);</a>
+<a class="sourceLine" id="cb2-15" title="15">            m = m + (x - m) / N;</a>
+<a class="sourceLine" id="cb2-16" title="16">        }</a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">public</span> <span class="dt">double</span> <span class="fu">Mean</span>()</a>
+<a class="sourceLine" id="cb2-18" title="18">        {</a>
+<a class="sourceLine" id="cb2-19" title="19">            <span class="kw">return</span> m;</a>
+<a class="sourceLine" id="cb2-20" title="20">        }</a>
+<a class="sourceLine" id="cb2-21" title="21">        <span class="kw">public</span> <span class="dt">double</span> <span class="fu">Var</span>()</a>
+<a class="sourceLine" id="cb2-22" title="22">        {</a>
+<a class="sourceLine" id="cb2-23" title="23">            <span class="kw">return</span> s / (N - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb2-24" title="24">        }</a>
+<a class="sourceLine" id="cb2-25" title="25">        <span class="kw">public</span> <span class="dt">double</span> <span class="fu">Stddev</span>()</a>
+<a class="sourceLine" id="cb2-26" title="26">        {</a>
+<a class="sourceLine" id="cb2-27" title="27">            <span class="kw">return</span> Math.<span class="fu">Sqrt</span>(<span class="kw">this</span>.<span class="fu">Var</span>());</a>
+<a class="sourceLine" id="cb2-28" title="28">        }</a>
+<a class="sourceLine" id="cb2-29" title="29">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">string</span> <span class="fu">ToString</span>()</a>
+<a class="sourceLine" id="cb2-30" title="30">        {</a>
+<a class="sourceLine" id="cb2-31" title="31">            <span class="kw">return</span> <span class="st">&quot;Mean (&quot;</span> + N + <span class="st">&quot; values): &quot;</span> + <span class="dt">string</span>.<span class="fu">Format</span>(<span class="st">&quot;{0, 7:F5}&quot;</span>, <span class="fu">Mean</span>());</a>
+<a class="sourceLine" id="cb2-32" title="32">        }</a>
+<a class="sourceLine" id="cb2-33" title="33">    }</a>
+<a class="sourceLine" id="cb2-34" title="34">}</a></code></pre></div>
 
 		</div>
 	</div>
@@ -286,24 +287,7 @@ function dismissSearchResultModal() {
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-121852990-1', 'auto');
         ga('send', 'pageview');
-        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         
         
     </body>

@@ -140,27 +140,32 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.6</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.6<br>给出以下代码段的运行时间的增长数量级（作为 N 的函数）。<br>a.</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> n <span class="token operator">=</span> N<span class="token punctuation">;</span> n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> n <span class="token operator">/=</span> <span class="token number">2</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-        sum<span class="token operator">++</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>b.</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-        sum<span class="token operator">++</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>c.</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-        sum<span class="token operator">++</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>a. N + N/2 + N/4 + … = ~2N，线性。</p>
-<p>b. 1 + 2 + 4 + … = ~2N，线性。</p>
-<p>c. NlogN，线性对数。</p>
+			<h1 id="题目">题目</h1>
+<p>1.4.6 给出以下代码段的运行时间的增长数量级（作为 N 的函数）。 a.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="dt">int</span> sum = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">for</span> (<span class="dt">int</span> n = N; n &gt; <span class="dv">0</span>; n /= <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
+<a class="sourceLine" id="cb1-4" title="4">        sum++;</a></code></pre></div>
+<ol start="2" type="a">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb2-1" title="1"><span class="dt">int</span> sum = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; N; i *= <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i; j++)</a>
+<a class="sourceLine" id="cb2-4" title="4">        sum++;</a></code></pre></div>
+<ol start="3" type="a">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">int</span> sum = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; N; i *= <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; N; j++)</a>
+<a class="sourceLine" id="cb3-4" title="4">        sum++;</a></code></pre></div>
+<h1 id="解答">解答</h1>
+<ol type="a">
+<li><p>N + N/2 + N/4 + … = ~2N，线性。</p></li>
+<li><p>1 + 2 + 4 + … = ~2N，线性。</p></li>
+<li><p>NlogN，线性对数。</p></li>
+</ol>
 
 		</div>
 	</div>

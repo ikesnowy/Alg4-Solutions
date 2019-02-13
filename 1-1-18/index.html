@@ -140,57 +140,62 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.18</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.18<br>请看以下递归函数：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">mystery</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>mystery(2, 25) 和 mystery(3, 11) 的返回值是多少？ </p>
-<p>给定正整数 a 和 b，mystery(a, b) 计算的结果是什么？<br>将代码中的 + 替换为 * 并将 return 0 改为 return 1，然后回答相同的问题。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>其实就是一种快速乘法的实现，换成乘号之后就变成了快速乘幂。</p>
-<p>例如对于乘法 $2 \times 4$ ，可以用 $2 + 2 + 2 + 2$ 做四次加法计算；也可以变为 $ (2 + 2) \times 2 = (2 + 2) + (2 + 2) $ 的形式，用两次加法就可以完成（先计算 $ 2 + 2 $ 的值，再计算 $ 4 + 4 $ 的值）。</p>
-<p>同理对于乘幂 $ 2^8 $  ，既可以用 $  2\times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 $ 做 8 次乘法，也可以只用三次乘法就计算出来：</p>
-<p>$$<br>2^2 = 2 \times 2 \\<br>2^4 = 2^2 \times 2^2\\<br>2^8 = 2^4 \times 2^4<br>$$<br>这样时间复杂度就从 $ O(n) $ 变为了 $ O(log n) $ 。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mystery(2, 25): {mystery(2, 25)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mystery(3, 11): {mystery(3, 11)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mysteryChanged(2, 8): {mysteryChanged(2, 8)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mysteryChanged(3, 2): {mysteryChanged(3, 2)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">//mystery(a, b) = a * b</span>
-<span class="token comment" spellcheck="true">//利用等式：a * b = 2a * b/2 = (2a * (b-1) / 2) + a</span>
-<span class="token comment" spellcheck="true">//示例：</span>
-<span class="token comment" spellcheck="true">//mystery(2, 25) =</span>
-<span class="token comment" spellcheck="true">//mystery(2 + 2, 12) + 2 =</span>
-<span class="token comment" spellcheck="true">//mystery(4 + 4, 6) + 2 =</span>
-<span class="token comment" spellcheck="true">//mystery(8 + 8, 3) =</span>
-<span class="token comment" spellcheck="true">//mystery(16 + 16, 1) + 16 + 2 =</span>
-<span class="token comment" spellcheck="true">//mystery(32 + 32, 0) + 32 + 16 + 2 =</span>
-<span class="token comment" spellcheck="true">//0 + 32 + 16 + 2 =</span>
-<span class="token comment" spellcheck="true">//50</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">mystery</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">//mysteryChanged(a, b) = a ^ b</span>
-<span class="token comment" spellcheck="true">//同理（乘方与乘法，乘法与加法之间具有类似的性质）</span>
-<span class="token comment" spellcheck="true">//a ^ b = (a ^ 2) ^ (b / 2) = (a ^ 2) ^ ((b - 1) / 2) * a</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">mysteryChanged</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">mysteryChanged</span><span class="token punctuation">(</span>a <span class="token operator">*</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">mysteryChanged</span><span class="token punctuation">(</span>a <span class="token operator">*</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> a<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.1.18 请看以下递归函数：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">mystery</span>(<span class="dt">int</span> a, <span class="dt">int</span> b)</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">if</span> (b == <span class="dv">0</span>)    <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">if</span> (b % <span class="dv">2</span> == <span class="dv">0</span>)    <span class="kw">return</span> <span class="fu">mystery</span>(a + a, b / <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">return</span> <span class="fu">mystery</span>(a + a, b / <span class="dv">2</span>) + a;</a>
+<a class="sourceLine" id="cb1-6" title="6">}</a></code></pre></div>
+<p>mystery(2, 25) 和 mystery(3, 11) 的返回值是多少？</p>
+<p>给定正整数 a 和 b，mystery(a, b) 计算的结果是什么？ 将代码中的 + 替换为 * 并将 return 0 改为 return 1，然后回答相同的问题。</p>
+<h1 id="解答">解答</h1>
+<p>其实就是一种快速乘法的实现，换成乘号之后就变成了快速乘幂。</p>
+<p>例如对于乘法 <span class="math inline">\(2 \times 4\)</span> ，可以用 <span class="math inline">\(2 + 2 + 2 + 2\)</span> 做四次加法计算；也可以变为 $ (2 + 2) 2 = (2 + 2) + (2 + 2) $ 的形式，用两次加法就可以完成（先计算 $ 2 + 2 $ 的值，再计算 $ 4 + 4 $ 的值）。</p>
+<p>同理对于乘幂 $ 2^8 $ ，既可以用 $ 22 2 2 2 2 2 2 $ 做 8 次乘法，也可以只用三次乘法就计算出来：</p>
+<p><span class="math display">\[
+2^2 = 2 \times 2 \\
+2^4 = 2^2 \times 2^2\\
+2^8 = 2^4 \times 2^4
+\]</span> 这样时间复杂度就从 $ O(n) $ 变为了 $ O(log n) $ 。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-2" title="2">{</a>
+<a class="sourceLine" id="cb2-3" title="3">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;mystery(2, 25): {mystery(2, 25)}&quot;</span>);</a>
+<a class="sourceLine" id="cb2-4" title="4">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;mystery(3, 11): {mystery(3, 11)}&quot;</span>);</a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;mysteryChanged(2, 8): {mysteryChanged(2, 8)}&quot;</span>);</a>
+<a class="sourceLine" id="cb2-7" title="7">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;mysteryChanged(3, 2): {mysteryChanged(3, 2)}&quot;</span>);</a>
+<a class="sourceLine" id="cb2-8" title="8">}</a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">//mystery(a, b) = a * b</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">//利用等式：a * b = 2a * b/2 = (2a * (b-1) / 2) + a</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">//示例：</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">//mystery(2, 25) =</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">//mystery(2 + 2, 12) + 2 =</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">//mystery(4 + 4, 6) + 2 =</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">//mystery(8 + 8, 3) =</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">//mystery(16 + 16, 1) + 16 + 2 =</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">//mystery(32 + 32, 0) + 32 + 16 + 2 =</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">//0 + 32 + 16 + 2 =</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">//50</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">mystery</span>(<span class="dt">int</span> a, <span class="dt">int</span> b)</a>
+<a class="sourceLine" id="cb2-22" title="22">{</a>
+<a class="sourceLine" id="cb2-23" title="23">    <span class="kw">if</span> (b == <span class="dv">0</span>) <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-24" title="24">    <span class="kw">if</span> (b % <span class="dv">2</span> == <span class="dv">0</span>) <span class="kw">return</span> <span class="fu">mystery</span>(a + a, b / <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb2-25" title="25">    <span class="kw">return</span> <span class="fu">mystery</span>(a + a, b / <span class="dv">2</span>) + a;</a>
+<a class="sourceLine" id="cb2-26" title="26">}</a>
+<a class="sourceLine" id="cb2-27" title="27"></a>
+<a class="sourceLine" id="cb2-28" title="28"><span class="co">//mysteryChanged(a, b) = a ^ b</span></a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="co">//同理（乘方与乘法，乘法与加法之间具有类似的性质）</span></a>
+<a class="sourceLine" id="cb2-30" title="30"><span class="co">//a ^ b = (a ^ 2) ^ (b / 2) = (a ^ 2) ^ ((b - 1) / 2) * a</span></a>
+<a class="sourceLine" id="cb2-31" title="31"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">mysteryChanged</span>(<span class="dt">int</span> a, <span class="dt">int</span> b)</a>
+<a class="sourceLine" id="cb2-32" title="32">{</a>
+<a class="sourceLine" id="cb2-33" title="33">    <span class="kw">if</span> (b == <span class="dv">0</span>) <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-34" title="34">    <span class="kw">if</span> (b % <span class="dv">2</span> == <span class="dv">0</span>) <span class="kw">return</span> <span class="fu">mysteryChanged</span>(a * a, b / <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb2-35" title="35">    <span class="kw">return</span> <span class="fu">mysteryChanged</span>(a * a, b / <span class="dv">2</span>) * a;</a>
+<a class="sourceLine" id="cb2-36" title="36">}</a></code></pre></div>
 
 		</div>
 	</div>

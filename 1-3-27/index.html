@@ -140,62 +140,65 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.3.27</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.27<br>编写一个方法 max()，接受一条链表的首结点作为参数，返回链表中键最大的节点的值。<br>假设所有键均为正整数，如果链表为空则返回 0。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>遍历一遍即可。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Generics<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_27
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 1.3.27
-     * 
-     * 编写一个方法 max()，接受一条链表的首结点作为参数，返回链表中键最大的节点的值。
-     * 假设所有键均为正整数，如果链表为空则返回 0。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Node<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> first <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Node<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> second <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Node<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> third <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Node<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> fourth <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            first<span class="token punctuation">.</span>item <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            second<span class="token punctuation">.</span>item <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            third<span class="token punctuation">.</span>item <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-            fourth<span class="token punctuation">.</span>item <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
-
-            first<span class="token punctuation">.</span>next <span class="token operator">=</span> second<span class="token punctuation">;</span>
-            second<span class="token punctuation">.</span>next <span class="token operator">=</span> third<span class="token punctuation">;</span>
-            third<span class="token punctuation">.</span>next <span class="token operator">=</span> fourth<span class="token punctuation">;</span>
-            fourth<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Max:"</span> <span class="token operator">+</span> <span class="token function">Max</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">Max</span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> first<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-            Node<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> current <span class="token operator">=</span> first<span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>current <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&lt;</span> current<span class="token punctuation">.</span>item<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    max <span class="token operator">=</span> current<span class="token punctuation">.</span>item<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                current <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">return</span> max<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>1.3.27 编写一个方法 max()，接受一条链表的首结点作为参数，返回链表中键最大的节点的值。 假设所有键均为正整数，如果链表为空则返回 0。</p>
+<h1 id="解答">解答</h1>
+<p>遍历一遍即可。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Generics;</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">27</span></a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 1.3.27</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 编写一个方法 max()，接受一条链表的首结点作为参数，返回链表中键最大的节点的值。</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 假设所有键均为正整数，如果链表为空则返回 0。</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-14" title="14">    {</a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-16" title="16">        {</a>
+<a class="sourceLine" id="cb1-17" title="17">            Node&lt;<span class="dt">int</span>&gt; first = <span class="kw">new</span> Node&lt;<span class="dt">int</span>&gt;();</a>
+<a class="sourceLine" id="cb1-18" title="18">            Node&lt;<span class="dt">int</span>&gt; second = <span class="kw">new</span> Node&lt;<span class="dt">int</span>&gt;();</a>
+<a class="sourceLine" id="cb1-19" title="19">            Node&lt;<span class="dt">int</span>&gt; third = <span class="kw">new</span> Node&lt;<span class="dt">int</span>&gt;();</a>
+<a class="sourceLine" id="cb1-20" title="20">            Node&lt;<span class="dt">int</span>&gt; fourth = <span class="kw">new</span> Node&lt;<span class="dt">int</span>&gt;();</a>
+<a class="sourceLine" id="cb1-21" title="21"></a>
+<a class="sourceLine" id="cb1-22" title="22">            first.<span class="fu">item</span> = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-23" title="23">            second.<span class="fu">item</span> = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-24" title="24">            third.<span class="fu">item</span> = <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb1-25" title="25">            fourth.<span class="fu">item</span> = <span class="dv">4</span>;</a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27">            first.<span class="fu">next</span> = second;</a>
+<a class="sourceLine" id="cb1-28" title="28">            second.<span class="fu">next</span> = third;</a>
+<a class="sourceLine" id="cb1-29" title="29">            third.<span class="fu">next</span> = fourth;</a>
+<a class="sourceLine" id="cb1-30" title="30">            fourth.<span class="fu">next</span> = <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb1-31" title="31"></a>
+<a class="sourceLine" id="cb1-32" title="32">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Max:&quot;</span> + <span class="fu">Max</span>(first));</a>
+<a class="sourceLine" id="cb1-33" title="33">        }</a>
+<a class="sourceLine" id="cb1-34" title="34"></a>
+<a class="sourceLine" id="cb1-35" title="35">        <span class="kw">static</span> <span class="dt">int</span> <span class="fu">Max</span>(Node&lt;<span class="dt">int</span>&gt; first)</a>
+<a class="sourceLine" id="cb1-36" title="36">        {</a>
+<a class="sourceLine" id="cb1-37" title="37">            <span class="dt">int</span> max = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-38" title="38"></a>
+<a class="sourceLine" id="cb1-39" title="39">            Node&lt;<span class="dt">int</span>&gt; current = first;</a>
+<a class="sourceLine" id="cb1-40" title="40">            <span class="kw">while</span> (current != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb1-41" title="41">            {</a>
+<a class="sourceLine" id="cb1-42" title="42">                <span class="kw">if</span> (max &lt; current.<span class="fu">item</span>)</a>
+<a class="sourceLine" id="cb1-43" title="43">                {</a>
+<a class="sourceLine" id="cb1-44" title="44">                    max = current.<span class="fu">item</span>;</a>
+<a class="sourceLine" id="cb1-45" title="45">                }</a>
+<a class="sourceLine" id="cb1-46" title="46">                current = current.<span class="fu">next</span>;</a>
+<a class="sourceLine" id="cb1-47" title="47">            }</a>
+<a class="sourceLine" id="cb1-48" title="48"></a>
+<a class="sourceLine" id="cb1-49" title="49">            <span class="kw">return</span> max;</a>
+<a class="sourceLine" id="cb1-50" title="50">        }</a>
+<a class="sourceLine" id="cb1-51" title="51">    }</a>
+<a class="sourceLine" id="cb1-52" title="52">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
 
 		</div>
 	</div>

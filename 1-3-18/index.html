@@ -140,49 +140,51 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.3.18</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.18<br>假设 x 是一条链表的某个结点且不是尾结点。<br>下面这条语句的效果是什么？</p>
-<pre class="line-numbers language-java"><code class="language-java">x<span class="token punctuation">.</span>next <span class="token operator">=</span> x<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>删除该结点的下一个结点。</p>
-<p>如下图，没有任何结点指向 y 结点，失去了所有引用的 y 结点会被 GC 清理掉。<br><img src="./linkedlist.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Generics<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_18
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 1.3.18
-     * 
-     * 假设 x 是一条链表的某个结点且不是尾结点。
-     * 下面这条语句的效果是什么？
-     * x.next = x.next.next;
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//删除 x 的后一个结点。</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Node<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            x<span class="token punctuation">.</span>item <span class="token operator">=</span> <span class="token string">"first"</span><span class="token punctuation">;</span>
-            Node<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span> y <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            y<span class="token punctuation">.</span>item <span class="token operator">=</span> <span class="token string">"second"</span><span class="token punctuation">;</span>
-            x<span class="token punctuation">.</span>next <span class="token operator">=</span> y<span class="token punctuation">;</span>
-            Node<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span> z <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            z<span class="token punctuation">.</span>item <span class="token operator">=</span> <span class="token string">"third"</span><span class="token punctuation">;</span>
-            y<span class="token punctuation">.</span>next <span class="token operator">=</span> z<span class="token punctuation">;</span>
-
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"x: "</span> <span class="token operator">+</span> x<span class="token punctuation">.</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"x.next: "</span> <span class="token operator">+</span> x<span class="token punctuation">.</span>next<span class="token punctuation">.</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            x<span class="token punctuation">.</span>next <span class="token operator">=</span> x<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"x: "</span> <span class="token operator">+</span> x<span class="token punctuation">.</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"x.next: "</span> <span class="token operator">+</span> x<span class="token punctuation">.</span>next<span class="token punctuation">.</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>1.3.18 假设 x 是一条链表的某个结点且不是尾结点。 下面这条语句的效果是什么？</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb1-1" title="1">x.<span class="fu">next</span> = x.<span class="fu">next</span>.<span class="fu">next</span>;</a></code></pre></div>
+<h1 id="解答">解答</h1>
+<p>删除该结点的下一个结点。</p>
+<p>如下图，没有任何结点指向 y 结点，失去了所有引用的 y 结点会被 GC 清理掉。 <img src="./linkedlist.png"></p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> Generics;</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">18</span></a>
+<a class="sourceLine" id="cb2-5" title="5">{</a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">     * 1.3.18</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">     * 假设 x 是一条链表的某个结点且不是尾结点。</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">     * 下面这条语句的效果是什么？</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">     * x.next = x.next.next;</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb2-14" title="14">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb2-15" title="15">    {</a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="co">//删除 x 的后一个结点。</span></a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-18" title="18">        {</a>
+<a class="sourceLine" id="cb2-19" title="19">            Node&lt;<span class="dt">string</span>&gt; x = <span class="kw">new</span> Node&lt;<span class="dt">string</span>&gt;();</a>
+<a class="sourceLine" id="cb2-20" title="20">            x.<span class="fu">item</span> = <span class="st">&quot;first&quot;</span>;</a>
+<a class="sourceLine" id="cb2-21" title="21">            Node&lt;<span class="dt">string</span>&gt; y = <span class="kw">new</span> Node&lt;<span class="dt">string</span>&gt;();</a>
+<a class="sourceLine" id="cb2-22" title="22">            y.<span class="fu">item</span> = <span class="st">&quot;second&quot;</span>;</a>
+<a class="sourceLine" id="cb2-23" title="23">            x.<span class="fu">next</span> = y;</a>
+<a class="sourceLine" id="cb2-24" title="24">            Node&lt;<span class="dt">string</span>&gt; z = <span class="kw">new</span> Node&lt;<span class="dt">string</span>&gt;();</a>
+<a class="sourceLine" id="cb2-25" title="25">            z.<span class="fu">item</span> = <span class="st">&quot;third&quot;</span>;</a>
+<a class="sourceLine" id="cb2-26" title="26">            y.<span class="fu">next</span> = z;</a>
+<a class="sourceLine" id="cb2-27" title="27"></a>
+<a class="sourceLine" id="cb2-28" title="28">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;x: &quot;</span> + x.<span class="fu">item</span>);</a>
+<a class="sourceLine" id="cb2-29" title="29">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;x.next: &quot;</span> + x.<span class="fu">next</span>.<span class="fu">item</span>);</a>
+<a class="sourceLine" id="cb2-30" title="30">            x.<span class="fu">next</span> = x.<span class="fu">next</span>.<span class="fu">next</span>;</a>
+<a class="sourceLine" id="cb2-31" title="31">            Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb2-32" title="32">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;x: &quot;</span> + x.<span class="fu">item</span>);</a>
+<a class="sourceLine" id="cb2-33" title="33">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;x.next: &quot;</span> + x.<span class="fu">next</span>.<span class="fu">item</span>);</a>
+<a class="sourceLine" id="cb2-34" title="34">        }</a>
+<a class="sourceLine" id="cb2-35" title="35">    }</a>
+<a class="sourceLine" id="cb2-36" title="36">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
 
 		</div>
 	</div>

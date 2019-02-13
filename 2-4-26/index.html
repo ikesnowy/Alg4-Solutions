@@ -140,45 +140,47 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.26</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.26<br>无需交换的堆。<br>因为 sink() 和 swim() 中都用到了初级函数 exch()，所以所有元素都被多加载并存储了一次。<br>回避这种低效的方式，用插入排序给出新的实现（请见练习 2.1.25）。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>用类似于「半交换」的方法避免频繁调用 Exch() 方法。<br>上浮时，先单独保存待上浮的元素，随后进行比较，<br>如果当前 k 值对应的父结点（即 k/2 ）小于待上浮的元素，令 <code>pq[k]=pq[k/2]</code>。<br>否则令当前 k 值等于待上浮的元素，终止循环。<br>下沉的过程类似。</p>
+			<h1 id="题目">题目</h1>
+<p>2.4.26 无需交换的堆。 因为 sink() 和 swim() 中都用到了初级函数 exch()，所以所有元素都被多加载并存储了一次。 回避这种低效的方式，用插入排序给出新的实现（请见练习 2.1.25）。</p>
+<h1 id="解答">解答</h1>
+<p>用类似于「半交换」的方法避免频繁调用 Exch() 方法。 上浮时，先单独保存待上浮的元素，随后进行比较， 如果当前 k 值对应的父结点（即 k/2 ）小于待上浮的元素，令 <code>pq[k]=pq[k/2]</code>。 否则令当前 k 值等于待上浮的元素，终止循环。 下沉的过程类似。</p>
 <p>修改后的 sink 和 swim 方法：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 使元素上浮。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="k">需要上浮的元素。&lt;/param></span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Swim</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Key key <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        k <span class="token operator">/</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> key<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 使元素下沉。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="k">需要下沉的元素。&lt;/param></span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Sink</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Key key <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> k<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            j<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        k <span class="token operator">=</span> j<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> key<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 使元素上浮。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要上浮的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">private</span> <span class="dt">void</span> <span class="fu">Swim</span>(<span class="dt">int</span> k)</a>
+<a class="sourceLine" id="cb1-6" title="6">{</a>
+<a class="sourceLine" id="cb1-7" title="7">    Key key = <span class="kw">this</span>.<span class="fu">pq</span>[k];</a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">while</span> (k &gt; <span class="dv">1</span> &amp;&amp; <span class="kw">this</span>.<span class="fu">pq</span>[k / <span class="dv">2</span>].<span class="fu">CompareTo</span>(key) &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-9" title="9">    {</a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">this</span>.<span class="fu">pq</span>[k] = <span class="kw">this</span>.<span class="fu">pq</span>[k / <span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb1-11" title="11">        k /= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-12" title="12">    }</a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="kw">this</span>.<span class="fu">pq</span>[k] = key;</a>
+<a class="sourceLine" id="cb1-14" title="14">}</a>
+<a class="sourceLine" id="cb1-15" title="15"></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">/// 使元素下沉。</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要下沉的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-20" title="20"><span class="kw">private</span> <span class="dt">void</span> <span class="fu">Sink</span>(<span class="dt">int</span> k)</a>
+<a class="sourceLine" id="cb1-21" title="21">{</a>
+<a class="sourceLine" id="cb1-22" title="22">    Key key = <span class="kw">this</span>.<span class="fu">pq</span>[k];</a>
+<a class="sourceLine" id="cb1-23" title="23">    <span class="kw">while</span> (k * <span class="dv">2</span> &lt;= <span class="kw">this</span>.<span class="fu">n</span>)</a>
+<a class="sourceLine" id="cb1-24" title="24">    {</a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="dt">int</span> j = <span class="dv">2</span> * k;</a>
+<a class="sourceLine" id="cb1-26" title="26">        <span class="kw">if</span> (<span class="fu">Less</span>(j, j + <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb1-27" title="27">            j++;</a>
+<a class="sourceLine" id="cb1-28" title="28">        <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">pq</span>[j].<span class="fu">CompareTo</span>(key) &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-29" title="29">            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb1-30" title="30">        <span class="kw">this</span>.<span class="fu">pq</span>[k] = <span class="kw">this</span>.<span class="fu">pq</span>[j];</a>
+<a class="sourceLine" id="cb1-31" title="31">        k = j;</a>
+<a class="sourceLine" id="cb1-32" title="32">    }</a>
+<a class="sourceLine" id="cb1-33" title="33">    <span class="kw">this</span>.<span class="fu">pq</span>[k] = key;</a>
+<a class="sourceLine" id="cb1-34" title="34">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

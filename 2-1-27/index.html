@@ -140,70 +140,73 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.27</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.27<br>希尔排序的用时是次平方级的。<br>在你的计算机上用 SortCompare 比较希尔排序和插入排序以及选择排序。<br>测试数组的大小按照 2 的幂次递增，从 128 开始。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>数据比较大的时候会比较明显。<br><img src="./1.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Sort<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_27
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.1.27
-     * 
-     * 希尔排序的用时是次平方级的。
-     * 在你的计算机上用 SortCompare 比较希尔排序和插入排序以及选择排序。
-     * 测试数组的大小按照 2 的幂次递增，从 128 开始。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">128</span><span class="token punctuation">;</span>
-            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">double</span> shellPrev <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">double</span> insertionPrev <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">double</span> selectionPrev <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">65538</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testShell <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testInsertion <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testSelection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    testShell<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    testInsertion<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> testShell<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                    testSelection<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> testShell<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"数组大小："</span> <span class="token operator">+</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"Shell Sort:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">double</span> shellNow <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> testShell<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>shellNow <span class="token operator">+</span> <span class="token string">"\t\tNow/Prev="</span> <span class="token operator">+</span> shellNow <span class="token operator">/</span> shellPrev<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">double</span> insertionNow <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> testInsertion<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>insertionNow <span class="token operator">+</span> <span class="token string">"\tNow/Prev="</span> <span class="token operator">+</span> insertionNow <span class="token operator">/</span> insertionPrev<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"Selection Sort:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">double</span> selectionNow <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> testSelection<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>selectionNow <span class="token operator">+</span> <span class="token string">"\tNow/Prev="</span> <span class="token operator">+</span> selectionNow <span class="token operator">/</span> selectionPrev<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                shellPrev <span class="token operator">=</span> shellNow<span class="token punctuation">;</span>
-                insertionPrev <span class="token operator">=</span> insertionNow<span class="token punctuation">;</span>
-                selectionPrev <span class="token operator">=</span> selectionNow<span class="token punctuation">;</span>
-
-                n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.1.27 希尔排序的用时是次平方级的。 在你的计算机上用 SortCompare 比较希尔排序和插入排序以及选择排序。 测试数组的大小按照 2 的幂次递增，从 128 开始。</p>
+<h1 id="解答">解答</h1>
+<p>数据比较大的时候会比较明显。 <img src="./1.png"></p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Sort;</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">27</span></a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 2.1.27</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 希尔排序的用时是次平方级的。</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 在你的计算机上用 SortCompare 比较希尔排序和插入排序以及选择排序。</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 测试数组的大小按照 2 的幂次递增，从 128 开始。</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-15" title="15">    {</a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-17" title="17">        {</a>
+<a class="sourceLine" id="cb1-18" title="18">            <span class="dt">int</span> n = <span class="dv">128</span>;</a>
+<a class="sourceLine" id="cb1-19" title="19">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">double</span> shellPrev = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-22" title="22">            <span class="dt">double</span> insertionPrev = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-23" title="23">            <span class="dt">double</span> selectionPrev = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25"></a>
+<a class="sourceLine" id="cb1-26" title="26">            <span class="kw">while</span> (n &lt; <span class="dv">65538</span>)</a>
+<a class="sourceLine" id="cb1-27" title="27">            {</a>
+<a class="sourceLine" id="cb1-28" title="28">                <span class="dt">int</span>[] testShell = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb1-29" title="29">                <span class="dt">int</span>[] testInsertion = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb1-30" title="30">                <span class="dt">int</span>[] testSelection = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb1-31" title="31"></a>
+<a class="sourceLine" id="cb1-32" title="32">                <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++)</a>
+<a class="sourceLine" id="cb1-33" title="33">                {</a>
+<a class="sourceLine" id="cb1-34" title="34">                    testShell[i] = random.<span class="fu">Next</span>();</a>
+<a class="sourceLine" id="cb1-35" title="35">                    testInsertion[i] = testShell[i];</a>
+<a class="sourceLine" id="cb1-36" title="36">                    testSelection[i] = testShell[i];</a>
+<a class="sourceLine" id="cb1-37" title="37">                }</a>
+<a class="sourceLine" id="cb1-38" title="38"></a>
+<a class="sourceLine" id="cb1-39" title="39">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;数组大小：&quot;</span> + n);</a>
+<a class="sourceLine" id="cb1-40" title="40"></a>
+<a class="sourceLine" id="cb1-41" title="41">                Console.<span class="fu">Write</span>(<span class="st">&quot;Shell Sort:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-42" title="42">                <span class="dt">double</span> shellNow = SortCompare.<span class="fu">Time</span>(<span class="kw">new</span> <span class="fu">ShellSort</span>(), testShell);</a>
+<a class="sourceLine" id="cb1-43" title="43">                Console.<span class="fu">WriteLine</span>(shellNow + <span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Now/Prev=&quot;</span> + shellNow / shellPrev);</a>
+<a class="sourceLine" id="cb1-44" title="44">                Console.<span class="fu">Write</span>(<span class="st">&quot;Insertion Sort:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-45" title="45">                <span class="dt">double</span> insertionNow = SortCompare.<span class="fu">Time</span>(<span class="kw">new</span> <span class="fu">InsertionSort</span>(), testInsertion);</a>
+<a class="sourceLine" id="cb1-46" title="46">                Console.<span class="fu">WriteLine</span>(insertionNow + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">Now/Prev=&quot;</span> + insertionNow / insertionPrev);</a>
+<a class="sourceLine" id="cb1-47" title="47">                Console.<span class="fu">Write</span>(<span class="st">&quot;Selection Sort:&quot;</span>);</a>
+<a class="sourceLine" id="cb1-48" title="48">                <span class="dt">double</span> selectionNow = SortCompare.<span class="fu">Time</span>(<span class="kw">new</span> <span class="fu">SelectionSort</span>(), testSelection);</a>
+<a class="sourceLine" id="cb1-49" title="49">                Console.<span class="fu">WriteLine</span>(selectionNow + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">Now/Prev=&quot;</span> + selectionNow / selectionPrev);</a>
+<a class="sourceLine" id="cb1-50" title="50">                Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb1-51" title="51"></a>
+<a class="sourceLine" id="cb1-52" title="52">                shellPrev = shellNow;</a>
+<a class="sourceLine" id="cb1-53" title="53">                insertionPrev = insertionNow;</a>
+<a class="sourceLine" id="cb1-54" title="54">                selectionPrev = selectionNow;</a>
+<a class="sourceLine" id="cb1-55" title="55"></a>
+<a class="sourceLine" id="cb1-56" title="56">                n *= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-57" title="57">            }</a>
+<a class="sourceLine" id="cb1-58" title="58">        }</a>
+<a class="sourceLine" id="cb1-59" title="59">    }</a>
+<a class="sourceLine" id="cb1-60" title="60">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
 
 		</div>
 	</div>

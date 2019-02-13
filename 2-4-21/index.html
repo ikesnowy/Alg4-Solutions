@@ -140,24 +140,25 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.21</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.21<br>基础数据结构。<br>说明如何使用优先队列实现第一章中的栈、队列和随机队列这几种数据结构。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>给元素添上序号组成结点，按照序号排序即可，每个结点可以用类似于这样的实现：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">ElemType</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>ElemType<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> key<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> T element<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token function">ElemType</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>key <span class="token operator">=</span> key<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>ElemType<span class="token operator">&lt;</span>T<span class="token operator">></span> other<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>栈：<br>用最大元素在最前的优先队列。<br>每个结点都包含一个元素和一个序号，<br>插入新元素时序号递增，这样最后插入的元素总在最前。</p>
-<p>队列：<br>用最小元素在最前的优先队列。<br>每个结点都包含一个元素和一个序号，<br>插入新元素时序号递增，这样最先插入的元素总在最前。</p>
-<p>随机队列：<br>优先队列的选择任意<br>每个结点都包含一个元素和一个序号，<br>插入新元素时随机指定一个序号，这样元素的顺序就是任意的了。</p>
+			<h1 id="题目">题目</h1>
+<p>2.4.21 基础数据结构。 说明如何使用优先队列实现第一章中的栈、队列和随机队列这几种数据结构。</p>
+<h1 id="解答">解答</h1>
+<p>给元素添上序号组成结点，按照序号排序即可，每个结点可以用类似于这样的实现：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">class</span> ElemType&lt;T&gt; : IComparable&lt;ElemType&lt;T&gt;&gt;</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">private</span> <span class="dt">int</span> key;</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">private</span> T element;</a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">public</span> <span class="fu">ElemType</span>(<span class="dt">int</span> key) =&gt; <span class="kw">this</span>.<span class="fu">key</span> = key;</a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">CompareTo</span>(ElemType&lt;T&gt; other)</a>
+<a class="sourceLine" id="cb1-9" title="9">    {</a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">key</span>.<span class="fu">CompareTo</span>(other.<span class="fu">key</span>);</a>
+<a class="sourceLine" id="cb1-11" title="11">    }</a>
+<a class="sourceLine" id="cb1-12" title="12">}</a></code></pre></div>
+<p>栈： 用最大元素在最前的优先队列。 每个结点都包含一个元素和一个序号， 插入新元素时序号递增，这样最后插入的元素总在最前。</p>
+<p>队列： 用最小元素在最前的优先队列。 每个结点都包含一个元素和一个序号， 插入新元素时序号递增，这样最先插入的元素总在最前。</p>
+<p>随机队列： 优先队列的选择任意 每个结点都包含一个元素和一个序号， 插入新元素时随机指定一个序号，这样元素的顺序就是任意的了。</p>
 
 		</div>
 	</div>

@@ -140,51 +140,54 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.31</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.31<br>快速插入。<br>用基于比较的方式实现 MinPQ 的 API，<br>使得插入元素需要 ~loglogN 次比较，删除最小元素需要 ~2logN 次比较。<br>提示：在 swim() 方法中用二分查找来寻找祖先结点。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先可以观察到堆有这样一个性质，从根结点到某一个叶子结点的路径是有序的，满足二分查找的条件。</p>
-<p>但是，<br>从叶子结点到根结点的路径可以通过不断地令 <code>k = k / 2</code> 得到（从下往上只有一条路径）。<br>但从根结点到叶子结点的路径却不能简单地通过 <code>k = k * 2</code> 得到（从上往下会有两条分支）。<br>因此只通过堆本身是无法满足二分查找对于随机访问的要求的。</p>
-<p>为了达到 ~loglogN 次比较，我们需要对 <code>Swim()</code> 方法做修改，<br>即，先通过一个数组来保存路径，再对这个数组进行二分查找，从而获得合适的祖先结点。<br>路径的长度是 ~logN（完全二叉树的性质），于是二分查找的比较次数即为 ~loglogN。</p>
+			<h1 id="题目">题目</h1>
+<p>2.4.31 快速插入。 用基于比较的方式实现 MinPQ 的 API， 使得插入元素需要 ~loglogN 次比较，删除最小元素需要 ~2logN 次比较。 提示：在 swim() 方法中用二分查找来寻找祖先结点。</p>
+<h1 id="解答">解答</h1>
+<p>首先可以观察到堆有这样一个性质，从根结点到某一个叶子结点的路径是有序的，满足二分查找的条件。</p>
+<p>但是， 从叶子结点到根结点的路径可以通过不断地令 <code>k = k / 2</code> 得到（从下往上只有一条路径）。 但从根结点到叶子结点的路径却不能简单地通过 <code>k = k * 2</code> 得到（从上往下会有两条分支）。 因此只通过堆本身是无法满足二分查找对于随机访问的要求的。</p>
+<p>为了达到 ~loglogN 次比较，我们需要对 <code>Swim()</code> 方法做修改， 即，先通过一个数组来保存路径，再对这个数组进行二分查找，从而获得合适的祖先结点。 路径的长度是 ~logN（完全二叉树的性质），于是二分查找的比较次数即为 ~loglogN。</p>
 <p>删除操作原本就是 ~2logN 的，不需要修改。</p>
-<p>注意这样的方法仅仅只是减少了比较次数，<br>为了保持堆的有序，即使找到了结点的合适位置也不能直接插入，<br>仍然需要将路径上的结点依次下移，空出位置后再插入结点，复杂度仍然是 ~logN。<br>由于增加了保存路径等操作（建立了大量的小数组），实际算法的运行时间是增加的。</p>
-<p>也可以用空间换时间，由于在堆中下标为 k 的结点到根结点的路径是唯一确定的。<br>因此可以提前计算好路径，用一个数组保存起来（数组的数组），在 <code>Swim</code> 中取出对应路径进行二分查找。<br>当然这样是很不划算的，除非元素比较的开销非常大。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>修改后的 <code>Swim()</code> 方法，注意输入的路径是从下往上的。</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 使元素上浮。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="k">需要上浮的元素。&lt;/param></span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Swim</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">// 获取路径</span>
-    <span class="token keyword">int</span> heapHeight <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span> <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    List<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> temp <span class="token operator">=</span> k<span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>temp <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        path<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        temp <span class="token operator">/</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">// lo=插入结点的父结点 hi=根结点</span>
-    <span class="token keyword">int</span> lo <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> hi <span class="token operator">=</span> path<span class="token punctuation">.</span>Count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;=</span> hi<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Greater</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> path<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            hi <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 当前值比较大，应该向下走</span>
-        <span class="token keyword">else</span>
-            lo <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 值较小，向根结点方向走</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> lo<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token function">Exch</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> path<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+<p>注意这样的方法仅仅只是减少了比较次数， 为了保持堆的有序，即使找到了结点的合适位置也不能直接插入， 仍然需要将路径上的结点依次下移，空出位置后再插入结点，复杂度仍然是 ~logN。 由于增加了保存路径等操作（建立了大量的小数组），实际算法的运行时间是增加的。</p>
+<p>也可以用空间换时间，由于在堆中下标为 k 的结点到根结点的路径是唯一确定的。 因此可以提前计算好路径，用一个数组保存起来（数组的数组），在 <code>Swim</code> 中取出对应路径进行二分查找。 当然这样是很不划算的，除非元素比较的开销非常大。</p>
+<h1 id="代码">代码</h1>
+<p>修改后的 <code>Swim()</code> 方法，注意输入的路径是从下往上的。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 使元素上浮。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要上浮的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">private</span> <span class="dt">void</span> <span class="fu">Swim</span>(<span class="dt">int</span> k)</a>
+<a class="sourceLine" id="cb1-6" title="6">{</a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="kw">if</span> (k == <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="co">// 获取路径</span></a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="dt">int</span> heapHeight = (<span class="dt">int</span>)(Math.<span class="fu">Log</span>(<span class="kw">this</span>.<span class="fu">n</span>) / Math.<span class="fu">Log</span>(<span class="dv">2</span>));</a>
+<a class="sourceLine" id="cb1-12" title="12">    List&lt;<span class="dt">int</span>&gt; path = <span class="kw">new</span> List&lt;<span class="dt">int</span>&gt;();</a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="dt">int</span> temp = k;</a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">while</span> (temp &gt;= <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-15" title="15">    {</a>
+<a class="sourceLine" id="cb1-16" title="16">        path.<span class="fu">Add</span>(temp);</a>
+<a class="sourceLine" id="cb1-17" title="17">        temp /= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-18" title="18">    }</a>
+<a class="sourceLine" id="cb1-19" title="19"></a>
+<a class="sourceLine" id="cb1-20" title="20">    <span class="co">// lo=插入结点的父结点 hi=根结点</span></a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="dt">int</span> lo = <span class="dv">1</span>, hi = path.<span class="fu">Count</span> - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-22" title="22">    <span class="kw">while</span> (lo &lt;= hi)</a>
+<a class="sourceLine" id="cb1-23" title="23">    {</a>
+<a class="sourceLine" id="cb1-24" title="24">        <span class="dt">int</span> mid = lo + (hi - lo) / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="kw">if</span> (<span class="fu">Greater</span>(k, path[mid]))</a>
+<a class="sourceLine" id="cb1-26" title="26">            hi = mid - <span class="dv">1</span>;   <span class="co">// 当前值比较大，应该向下走</span></a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-28" title="28">            lo = mid + <span class="dv">1</span>;   <span class="co">// 值较小，向根结点方向走</span></a>
+<a class="sourceLine" id="cb1-29" title="29">    }</a>
+<a class="sourceLine" id="cb1-30" title="30"></a>
+<a class="sourceLine" id="cb1-31" title="31">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; lo; i++)</a>
+<a class="sourceLine" id="cb1-32" title="32">    {</a>
+<a class="sourceLine" id="cb1-33" title="33">        <span class="fu">Exch</span>(path[i - <span class="dv">1</span>], path[i]);</a>
+<a class="sourceLine" id="cb1-34" title="34">    }</a>
+<a class="sourceLine" id="cb1-35" title="35">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

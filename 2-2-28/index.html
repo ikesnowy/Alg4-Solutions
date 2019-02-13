@@ -140,50 +140,53 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.2.28</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.28<br>自顶向下和自底向上。<br>对于 N=10^3、10^4、10^5 和 10^6，<br>使用 SortCompare 比较自顶向下和自底向上的归并排序的性能。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>自底向上会快一些，省去了递归过程中函数重复调用的时间。<br><img src="./1.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Merge<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_28
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.2.28
-     * 
-     * 自顶向下和自底向上。
-     * 对于 N=10^3、10^4、10^5 和 10^6，
-     * 使用 SortCompare 比较自顶向下和自底向上的归并排序的性能。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
-            MergeSort topBottomMergeSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MergeSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            MergeSortBU bottomUpMergeSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MergeSortBU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> trialTimes <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"数组大小："</span> <span class="token operator">+</span> n <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> time1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> time2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> trialTimes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data1 <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetRandomArrayDouble</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                    data1<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>data2<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    time1 <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>topBottomMergeSort<span class="token punctuation">,</span> data1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    time2 <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>bottomUpMergeSort<span class="token punctuation">,</span> data2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"自顶向下："</span> <span class="token operator">+</span> time1 <span class="token operator">/</span> trialTimes <span class="token operator">+</span> <span class="token string">"ms\t自底向上："</span> <span class="token operator">+</span> time2 <span class="token operator">/</span> trialTimes <span class="token operator">+</span> <span class="token string">"ms"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2/Merge" target="_blank" rel="noopener">Merge 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.2.28 自顶向下和自底向上。 对于 N=10<sup>3、10</sup>4、10^5 和 10^6， 使用 SortCompare 比较自顶向下和自底向上的归并排序的性能。</p>
+<h1 id="解答">解答</h1>
+<p>自底向上会快一些，省去了递归过程中函数重复调用的时间。 <img src="./1.png"></p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Merge;</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">2.</span>_<span class="dv">28</span></a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 2.2.28</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 自顶向下和自底向上。</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 对于 N=10^3、10^4、10^5 和 10^6，</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 使用 SortCompare 比较自顶向下和自底向上的归并排序的性能。</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-15" title="15">    {</a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-17" title="17">        {</a>
+<a class="sourceLine" id="cb1-18" title="18">            <span class="dt">int</span> n = <span class="dv">1000</span>;</a>
+<a class="sourceLine" id="cb1-19" title="19">            MergeSort topBottomMergeSort = <span class="kw">new</span> <span class="fu">MergeSort</span>();</a>
+<a class="sourceLine" id="cb1-20" title="20">            MergeSortBU bottomUpMergeSort = <span class="kw">new</span> <span class="fu">MergeSortBU</span>();</a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">int</span> trialTimes = <span class="dv">100</span>;</a>
+<a class="sourceLine" id="cb1-22" title="22">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">4</span>; i++)</a>
+<a class="sourceLine" id="cb1-23" title="23">            {</a>
+<a class="sourceLine" id="cb1-24" title="24">                Console.<span class="fu">Write</span>(<span class="st">&quot;数组大小：&quot;</span> + n + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-25" title="25">                <span class="dt">int</span> time1 = <span class="dv">0</span>, time2 = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-26" title="26">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; trialTimes; j++)</a>
+<a class="sourceLine" id="cb1-27" title="27">                {</a>
+<a class="sourceLine" id="cb1-28" title="28">                    <span class="dt">double</span>[] data1 = SortCompare.<span class="fu">GetRandomArrayDouble</span>(n);</a>
+<a class="sourceLine" id="cb1-29" title="29">                    <span class="dt">double</span>[] data2 = <span class="kw">new</span> <span class="dt">double</span>[n];</a>
+<a class="sourceLine" id="cb1-30" title="30">                    data1.<span class="fu">CopyTo</span>(data2, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb1-31" title="31">                    time1 += (<span class="dt">int</span>)SortCompare.<span class="fu">Time</span>(topBottomMergeSort, data1);</a>
+<a class="sourceLine" id="cb1-32" title="32">                    time2 += (<span class="dt">int</span>)SortCompare.<span class="fu">Time</span>(bottomUpMergeSort, data2);</a>
+<a class="sourceLine" id="cb1-33" title="33">                }</a>
+<a class="sourceLine" id="cb1-34" title="34">                </a>
+<a class="sourceLine" id="cb1-35" title="35">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;自顶向下：&quot;</span> + time1 / trialTimes + <span class="st">&quot;ms</span><span class="sc">\t</span><span class="st">自底向上：&quot;</span> + time2 / trialTimes + <span class="st">&quot;ms&quot;</span>);</a>
+<a class="sourceLine" id="cb1-36" title="36">                n *= <span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb1-37" title="37">            }</a>
+<a class="sourceLine" id="cb1-38" title="38">        }</a>
+<a class="sourceLine" id="cb1-39" title="39">    }</a>
+<a class="sourceLine" id="cb1-40" title="40">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2/Merge" target="_blank" rel="noopener">Merge 库</a></p>
 
 		</div>
 	</div>

@@ -140,343 +140,343 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.37</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.37<br>自动装箱的性能代价。<br>通过实验在你的计算机上计算使用自动装箱所付出的性能代价。<br>实现一个 FixedCapacityStackOfInts，并使用类似 DoublingRatio 的用例比较它和泛型 FixedCapacityStack 在进行大量 push() 和 pop() 时的性能。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>数据量比较大时才会有比较明显的差距。<br><img src="./1.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>FixedCapacityStackOfInts</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_37
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 固定大小的整型数据栈。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">class</span> <span class="token class-name">FixedCapacityStackOfInts</span> <span class="token punctuation">:</span> IEnumerable<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> N<span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="capacity">栈的大小。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token function">FixedCapacityStackOfInts</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 检查栈是否为空。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 检查栈是否已满。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 将一个元素压入栈中。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="item">要压入栈中的元素。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Push</span><span class="token punctuation">(</span><span class="token keyword">int</span> item<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 从栈中弹出一个元素，返回被弹出的元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token operator">--</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 返回栈顶元素（但不弹出它）。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">public</span> IEnumerator<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ReverseEnmerator</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        IEnumerator IEnumerable<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">ReverseEnmerator</span> <span class="token punctuation">:</span> IEnumerator<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">private</span> <span class="token keyword">int</span> current<span class="token punctuation">;</span>
-            <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">;</span>
-
-            <span class="token keyword">public</span> <span class="token function">ReverseEnmerator</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">int</span> IEnumerator<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">object</span> IEnumerator<span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">void</span> IDisposable<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">bool</span> IEnumerator<span class="token punctuation">.</span><span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                    <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token operator">--</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">void</span> IEnumerator<span class="token punctuation">.</span><span class="token function">Reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>FixedCapacityStack\&lt;Item></p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_37
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 固定大小的栈。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">class</span> <span class="token class-name">FixedCapacityStack</span><span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token punctuation">:</span> IEnumerable<span class="token operator">&lt;</span>Item<span class="token operator">></span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> Item<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> N<span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="capacity">栈的大小。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token function">FixedCapacityStack</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 检查栈是否为空。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 检查栈是否已满。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 将一个元素压入栈中。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="item">要压入栈中的元素。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Push</span><span class="token punctuation">(</span>Item item<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 从栈中弹出一个元素，返回被弹出的元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> Item <span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token operator">--</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 返回栈顶元素（但不弹出它）。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> Item <span class="token function">Peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">public</span> IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ReverseEnmerator</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        IEnumerator IEnumerable<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">ReverseEnmerator</span> <span class="token punctuation">:</span> IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">private</span> <span class="token keyword">int</span> current<span class="token punctuation">;</span>
-            <span class="token keyword">private</span> Item<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">;</span>
-
-            <span class="token keyword">public</span> <span class="token function">ReverseEnmerator</span><span class="token punctuation">(</span>Item<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            Item IEnumerator<span class="token operator">&lt;</span>Item<span class="token operator">></span><span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">object</span> IEnumerator<span class="token punctuation">.</span>Current <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">void</span> IDisposable<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">bool</span> IEnumerator<span class="token punctuation">.</span><span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                    <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current<span class="token operator">--</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">void</span> IEnumerator<span class="token punctuation">.</span><span class="token function">Reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.4.37 自动装箱的性能代价。 通过实验在你的计算机上计算使用自动装箱所付出的性能代价。 实现一个 FixedCapacityStackOfInts，并使用类似 DoublingRatio 的用例比较它和泛型 FixedCapacityStack 在进行大量 push() 和 pop() 时的性能。</p>
+<h1 id="解答">解答</h1>
+<p>数据量比较大时才会有比较明显的差距。 <img src="./1.png"></p>
+<h1 id="代码">代码</h1>
+<p>FixedCapacityStackOfInts</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">using</span> System.<span class="fu">Collections</span>.<span class="fu">Generic</span>;</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">37</span></a>
+<a class="sourceLine" id="cb1-6" title="6">{</a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="co">/// 固定大小的整型数据栈。</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="kw">class</span> FixedCapacityStackOfInts : IEnumerable&lt;<span class="dt">int</span>&gt;</a>
+<a class="sourceLine" id="cb1-11" title="11">    {</a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="kw">private</span> <span class="dt">int</span>[] a;</a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="kw">private</span> <span class="dt">int</span> N;</a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="co">/// 默认构造函数。</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-18" title="18">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;capacity&quot;</span><span class="kw">&gt;</span><span class="co">栈的大小。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">public</span> <span class="fu">FixedCapacityStackOfInts</span>(<span class="dt">int</span> capacity)</a>
+<a class="sourceLine" id="cb1-20" title="20">        {</a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="kw">this</span>.<span class="fu">a</span> = <span class="kw">new</span> <span class="dt">int</span>[capacity];</a>
+<a class="sourceLine" id="cb1-22" title="22">            <span class="kw">this</span>.<span class="fu">N</span> = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-23" title="23">        }</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-26" title="26">        <span class="co">/// 检查栈是否为空。</span></a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-28" title="28">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-29" title="29">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsEmpty</span>()</a>
+<a class="sourceLine" id="cb1-30" title="30">        {</a>
+<a class="sourceLine" id="cb1-31" title="31">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">N</span> == <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-32" title="32">        }</a>
+<a class="sourceLine" id="cb1-33" title="33"></a>
+<a class="sourceLine" id="cb1-34" title="34">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-35" title="35">        <span class="co">/// 检查栈是否已满。</span></a>
+<a class="sourceLine" id="cb1-36" title="36">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-37" title="37">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-38" title="38">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsFull</span>()</a>
+<a class="sourceLine" id="cb1-39" title="39">        {</a>
+<a class="sourceLine" id="cb1-40" title="40">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">N</span> == <span class="kw">this</span>.<span class="fu">a</span>.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb1-41" title="41">        }</a>
+<a class="sourceLine" id="cb1-42" title="42"></a>
+<a class="sourceLine" id="cb1-43" title="43">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-44" title="44">        <span class="co">/// 将一个元素压入栈中。</span></a>
+<a class="sourceLine" id="cb1-45" title="45">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-46" title="46">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;item&quot;</span><span class="kw">&gt;</span><span class="co">要压入栈中的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-47" title="47">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Push</span>(<span class="dt">int</span> item)</a>
+<a class="sourceLine" id="cb1-48" title="48">        {</a>
+<a class="sourceLine" id="cb1-49" title="49">            <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">N</span>] = item;</a>
+<a class="sourceLine" id="cb1-50" title="50">            <span class="kw">this</span>.<span class="fu">N</span>++;</a>
+<a class="sourceLine" id="cb1-51" title="51">        }</a>
+<a class="sourceLine" id="cb1-52" title="52"></a>
+<a class="sourceLine" id="cb1-53" title="53">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-54" title="54">        <span class="co">/// 从栈中弹出一个元素，返回被弹出的元素。</span></a>
+<a class="sourceLine" id="cb1-55" title="55">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-56" title="56">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-57" title="57">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Pop</span>()</a>
+<a class="sourceLine" id="cb1-58" title="58">        {</a>
+<a class="sourceLine" id="cb1-59" title="59">            <span class="kw">this</span>.<span class="fu">N</span>--;</a>
+<a class="sourceLine" id="cb1-60" title="60">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">N</span>];</a>
+<a class="sourceLine" id="cb1-61" title="61">        }</a>
+<a class="sourceLine" id="cb1-62" title="62"></a>
+<a class="sourceLine" id="cb1-63" title="63">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-64" title="64">        <span class="co">/// 返回栈顶元素（但不弹出它）。</span></a>
+<a class="sourceLine" id="cb1-65" title="65">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-66" title="66">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-67" title="67">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Peek</span>()</a>
+<a class="sourceLine" id="cb1-68" title="68">        {</a>
+<a class="sourceLine" id="cb1-69" title="69">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">N</span> - <span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb1-70" title="70">        }</a>
+<a class="sourceLine" id="cb1-71" title="71"></a>
+<a class="sourceLine" id="cb1-72" title="72">        <span class="kw">public</span> IEnumerator&lt;<span class="dt">int</span>&gt; <span class="fu">GetEnumerator</span>()</a>
+<a class="sourceLine" id="cb1-73" title="73">        {</a>
+<a class="sourceLine" id="cb1-74" title="74">            <span class="kw">return</span> <span class="kw">new</span> <span class="fu">ReverseEnmerator</span>(<span class="kw">this</span>.<span class="fu">a</span>);</a>
+<a class="sourceLine" id="cb1-75" title="75">        }</a>
+<a class="sourceLine" id="cb1-76" title="76"></a>
+<a class="sourceLine" id="cb1-77" title="77">        IEnumerator IEnumerable.<span class="fu">GetEnumerator</span>()</a>
+<a class="sourceLine" id="cb1-78" title="78">        {</a>
+<a class="sourceLine" id="cb1-79" title="79">            <span class="kw">return</span> <span class="fu">GetEnumerator</span>();</a>
+<a class="sourceLine" id="cb1-80" title="80">        }</a>
+<a class="sourceLine" id="cb1-81" title="81"></a>
+<a class="sourceLine" id="cb1-82" title="82">        <span class="kw">private</span> <span class="kw">class</span> ReverseEnmerator : IEnumerator&lt;<span class="dt">int</span>&gt;</a>
+<a class="sourceLine" id="cb1-83" title="83">        {</a>
+<a class="sourceLine" id="cb1-84" title="84">            <span class="kw">private</span> <span class="dt">int</span> current;</a>
+<a class="sourceLine" id="cb1-85" title="85">            <span class="kw">private</span> <span class="dt">int</span>[] a;</a>
+<a class="sourceLine" id="cb1-86" title="86"></a>
+<a class="sourceLine" id="cb1-87" title="87">            <span class="kw">public</span> <span class="fu">ReverseEnmerator</span>(<span class="dt">int</span>[] a)</a>
+<a class="sourceLine" id="cb1-88" title="88">            {</a>
+<a class="sourceLine" id="cb1-89" title="89">                <span class="kw">this</span>.<span class="fu">current</span> = a.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb1-90" title="90">                <span class="kw">this</span>.<span class="fu">a</span> = a;</a>
+<a class="sourceLine" id="cb1-91" title="91">            }</a>
+<a class="sourceLine" id="cb1-92" title="92"></a>
+<a class="sourceLine" id="cb1-93" title="93">            <span class="dt">int</span> IEnumerator&lt;<span class="dt">int</span>&gt;.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">current</span>];</a>
+<a class="sourceLine" id="cb1-94" title="94"></a>
+<a class="sourceLine" id="cb1-95" title="95">            <span class="dt">object</span> IEnumerator.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">current</span>];</a>
+<a class="sourceLine" id="cb1-96" title="96"></a>
+<a class="sourceLine" id="cb1-97" title="97">            <span class="dt">void</span> IDisposable.<span class="fu">Dispose</span>()</a>
+<a class="sourceLine" id="cb1-98" title="98">            {</a>
+<a class="sourceLine" id="cb1-99" title="99">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-100" title="100">                <span class="kw">this</span>.<span class="fu">a</span> = <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb1-101" title="101">            }</a>
+<a class="sourceLine" id="cb1-102" title="102"></a>
+<a class="sourceLine" id="cb1-103" title="103">            <span class="dt">bool</span> IEnumerator.<span class="fu">MoveNext</span>()</a>
+<a class="sourceLine" id="cb1-104" title="104">            {</a>
+<a class="sourceLine" id="cb1-105" title="105">                <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">current</span> == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-106" title="106">                    <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb1-107" title="107">                <span class="kw">this</span>.<span class="fu">current</span>--;</a>
+<a class="sourceLine" id="cb1-108" title="108">                <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb1-109" title="109">            }</a>
+<a class="sourceLine" id="cb1-110" title="110"></a>
+<a class="sourceLine" id="cb1-111" title="111">            <span class="dt">void</span> IEnumerator.<span class="fu">Reset</span>()</a>
+<a class="sourceLine" id="cb1-112" title="112">            {</a>
+<a class="sourceLine" id="cb1-113" title="113">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="kw">this</span>.<span class="fu">a</span>.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb1-114" title="114">            }</a>
+<a class="sourceLine" id="cb1-115" title="115">        }</a>
+<a class="sourceLine" id="cb1-116" title="116">    }</a>
+<a class="sourceLine" id="cb1-117" title="117">}</a></code></pre></div>
+<p>FixedCapacityStack&lt;Item&gt;</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">using</span> System.<span class="fu">Collections</span>.<span class="fu">Generic</span>;</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">37</span></a>
+<a class="sourceLine" id="cb2-6" title="6">{</a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="co">/// 固定大小的栈。</span></a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-10" title="10">    <span class="kw">class</span> FixedCapacityStack&lt;Item&gt; : IEnumerable&lt;Item&gt;</a>
+<a class="sourceLine" id="cb2-11" title="11">    {</a>
+<a class="sourceLine" id="cb2-12" title="12">        <span class="kw">private</span> Item[] a;</a>
+<a class="sourceLine" id="cb2-13" title="13">        <span class="kw">private</span> <span class="dt">int</span> N;</a>
+<a class="sourceLine" id="cb2-14" title="14"></a>
+<a class="sourceLine" id="cb2-15" title="15">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="co">/// 默认构造函数。</span></a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-18" title="18">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;capacity&quot;</span><span class="kw">&gt;</span><span class="co">栈的大小。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">        <span class="kw">public</span> <span class="fu">FixedCapacityStack</span>(<span class="dt">int</span> capacity)</a>
+<a class="sourceLine" id="cb2-20" title="20">        {</a>
+<a class="sourceLine" id="cb2-21" title="21">            <span class="kw">this</span>.<span class="fu">a</span> = <span class="kw">new</span> Item[capacity];</a>
+<a class="sourceLine" id="cb2-22" title="22">            <span class="kw">this</span>.<span class="fu">N</span> = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-23" title="23">        }</a>
+<a class="sourceLine" id="cb2-24" title="24"></a>
+<a class="sourceLine" id="cb2-25" title="25">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-26" title="26">        <span class="co">/// 检查栈是否为空。</span></a>
+<a class="sourceLine" id="cb2-27" title="27">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-28" title="28">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-29" title="29">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsEmpty</span>()</a>
+<a class="sourceLine" id="cb2-30" title="30">        {</a>
+<a class="sourceLine" id="cb2-31" title="31">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">N</span> == <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-32" title="32">        }</a>
+<a class="sourceLine" id="cb2-33" title="33"></a>
+<a class="sourceLine" id="cb2-34" title="34">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-35" title="35">        <span class="co">/// 检查栈是否已满。</span></a>
+<a class="sourceLine" id="cb2-36" title="36">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-37" title="37">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-38" title="38">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsFull</span>()</a>
+<a class="sourceLine" id="cb2-39" title="39">        {</a>
+<a class="sourceLine" id="cb2-40" title="40">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">N</span> == <span class="kw">this</span>.<span class="fu">a</span>.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb2-41" title="41">        }</a>
+<a class="sourceLine" id="cb2-42" title="42"></a>
+<a class="sourceLine" id="cb2-43" title="43">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-44" title="44">        <span class="co">/// 将一个元素压入栈中。</span></a>
+<a class="sourceLine" id="cb2-45" title="45">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-46" title="46">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;item&quot;</span><span class="kw">&gt;</span><span class="co">要压入栈中的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-47" title="47">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Push</span>(Item item)</a>
+<a class="sourceLine" id="cb2-48" title="48">        {</a>
+<a class="sourceLine" id="cb2-49" title="49">            <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">N</span>] = item;</a>
+<a class="sourceLine" id="cb2-50" title="50">            <span class="kw">this</span>.<span class="fu">N</span>++;</a>
+<a class="sourceLine" id="cb2-51" title="51">        }</a>
+<a class="sourceLine" id="cb2-52" title="52"></a>
+<a class="sourceLine" id="cb2-53" title="53">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-54" title="54">        <span class="co">/// 从栈中弹出一个元素，返回被弹出的元素。</span></a>
+<a class="sourceLine" id="cb2-55" title="55">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-56" title="56">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-57" title="57">        <span class="kw">public</span> Item <span class="fu">Pop</span>()</a>
+<a class="sourceLine" id="cb2-58" title="58">        {</a>
+<a class="sourceLine" id="cb2-59" title="59">            <span class="kw">this</span>.<span class="fu">N</span>--;</a>
+<a class="sourceLine" id="cb2-60" title="60">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">N</span>];</a>
+<a class="sourceLine" id="cb2-61" title="61">        }</a>
+<a class="sourceLine" id="cb2-62" title="62"></a>
+<a class="sourceLine" id="cb2-63" title="63">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-64" title="64">        <span class="co">/// 返回栈顶元素（但不弹出它）。</span></a>
+<a class="sourceLine" id="cb2-65" title="65">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-66" title="66">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-67" title="67">        <span class="kw">public</span> Item <span class="fu">Peek</span>()</a>
+<a class="sourceLine" id="cb2-68" title="68">        {</a>
+<a class="sourceLine" id="cb2-69" title="69">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">N</span> - <span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb2-70" title="70">        }</a>
+<a class="sourceLine" id="cb2-71" title="71"></a>
+<a class="sourceLine" id="cb2-72" title="72">        <span class="kw">public</span> IEnumerator&lt;Item&gt; <span class="fu">GetEnumerator</span>()</a>
+<a class="sourceLine" id="cb2-73" title="73">        {</a>
+<a class="sourceLine" id="cb2-74" title="74">            <span class="kw">return</span> <span class="kw">new</span> <span class="fu">ReverseEnmerator</span>(<span class="kw">this</span>.<span class="fu">a</span>);</a>
+<a class="sourceLine" id="cb2-75" title="75">        }</a>
+<a class="sourceLine" id="cb2-76" title="76"></a>
+<a class="sourceLine" id="cb2-77" title="77">        IEnumerator IEnumerable.<span class="fu">GetEnumerator</span>()</a>
+<a class="sourceLine" id="cb2-78" title="78">        {</a>
+<a class="sourceLine" id="cb2-79" title="79">            <span class="kw">return</span> <span class="fu">GetEnumerator</span>();</a>
+<a class="sourceLine" id="cb2-80" title="80">        }</a>
+<a class="sourceLine" id="cb2-81" title="81"></a>
+<a class="sourceLine" id="cb2-82" title="82">        <span class="kw">private</span> <span class="kw">class</span> ReverseEnmerator : IEnumerator&lt;Item&gt;</a>
+<a class="sourceLine" id="cb2-83" title="83">        {</a>
+<a class="sourceLine" id="cb2-84" title="84">            <span class="kw">private</span> <span class="dt">int</span> current;</a>
+<a class="sourceLine" id="cb2-85" title="85">            <span class="kw">private</span> Item[] a;</a>
+<a class="sourceLine" id="cb2-86" title="86"></a>
+<a class="sourceLine" id="cb2-87" title="87">            <span class="kw">public</span> <span class="fu">ReverseEnmerator</span>(Item[] a)</a>
+<a class="sourceLine" id="cb2-88" title="88">            {</a>
+<a class="sourceLine" id="cb2-89" title="89">                <span class="kw">this</span>.<span class="fu">current</span> = a.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb2-90" title="90">                <span class="kw">this</span>.<span class="fu">a</span> = a;</a>
+<a class="sourceLine" id="cb2-91" title="91">            }</a>
+<a class="sourceLine" id="cb2-92" title="92"></a>
+<a class="sourceLine" id="cb2-93" title="93">            Item IEnumerator&lt;Item&gt;.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">current</span>];</a>
+<a class="sourceLine" id="cb2-94" title="94"></a>
+<a class="sourceLine" id="cb2-95" title="95">            <span class="dt">object</span> IEnumerator.<span class="fu">Current</span> =&gt; <span class="kw">this</span>.<span class="fu">a</span>[<span class="kw">this</span>.<span class="fu">current</span>];</a>
+<a class="sourceLine" id="cb2-96" title="96"></a>
+<a class="sourceLine" id="cb2-97" title="97">            <span class="dt">void</span> IDisposable.<span class="fu">Dispose</span>()</a>
+<a class="sourceLine" id="cb2-98" title="98">            {</a>
+<a class="sourceLine" id="cb2-99" title="99">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb2-100" title="100">                <span class="kw">this</span>.<span class="fu">a</span> = <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb2-101" title="101">            }</a>
+<a class="sourceLine" id="cb2-102" title="102"></a>
+<a class="sourceLine" id="cb2-103" title="103">            <span class="dt">bool</span> IEnumerator.<span class="fu">MoveNext</span>()</a>
+<a class="sourceLine" id="cb2-104" title="104">            {</a>
+<a class="sourceLine" id="cb2-105" title="105">                <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">current</span> == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb2-106" title="106">                    <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb2-107" title="107">                <span class="kw">this</span>.<span class="fu">current</span>--;</a>
+<a class="sourceLine" id="cb2-108" title="108">                <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb2-109" title="109">            }</a>
+<a class="sourceLine" id="cb2-110" title="110"></a>
+<a class="sourceLine" id="cb2-111" title="111">            <span class="dt">void</span> IEnumerator.<span class="fu">Reset</span>()</a>
+<a class="sourceLine" id="cb2-112" title="112">            {</a>
+<a class="sourceLine" id="cb2-113" title="113">                <span class="kw">this</span>.<span class="fu">current</span> = <span class="kw">this</span>.<span class="fu">a</span>.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb2-114" title="114">            }</a>
+<a class="sourceLine" id="cb2-115" title="115">        }</a>
+<a class="sourceLine" id="cb2-116" title="116">    }</a>
+<a class="sourceLine" id="cb2-117" title="117">}</a></code></pre></div>
 <p>测试函数：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Measurement<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_37
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// FixedCapacityStackOfInts 测试类。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DoubleTest</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">readonly</span> <span class="token keyword">int</span> MAXIMUM_INTEGER <span class="token operator">=</span> <span class="token number">1000000</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 返回对 n 个随机整数的栈进行 n 次 push 和 n 次 pop 所需的时间。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="n">随机数组的长度。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">TimeTrial</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            FixedCapacityStackOfInts stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FixedCapacityStackOfInts</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span>DateTime<span class="token punctuation">.</span>Now<span class="token punctuation">.</span>Millisecond<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token operator">-</span>MAXIMUM_INTEGER<span class="token punctuation">,</span> MAXIMUM_INTEGER<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            Stopwatch timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                stack<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                stack<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> timer<span class="token punctuation">.</span><span class="token function">ElapsedTimeMillionSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 返回对 n 个随机整数的栈进行 n 次 push 和 n 次 pop 所需的时间。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="n">随机数组的长度。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">TimeTrialGeneric</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            FixedCapacityStack<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FixedCapacityStack</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span>DateTime<span class="token punctuation">.</span>Now<span class="token punctuation">.</span>Millisecond<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token operator">-</span>MAXIMUM_INTEGER<span class="token punctuation">,</span> MAXIMUM_INTEGER<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            Stopwatch timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stopwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                stack<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                stack<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> timer<span class="token punctuation">.</span><span class="token function">ElapsedTimeMillionSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">using</span> Measurement;</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">37</span></a>
+<a class="sourceLine" id="cb3-5" title="5">{</a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="co">/// FixedCapacityStackOfInts 测试类。</span></a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-9" title="9">    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">class</span> DoubleTest</a>
+<a class="sourceLine" id="cb3-10" title="10">    {</a>
+<a class="sourceLine" id="cb3-11" title="11">        <span class="kw">private</span> <span class="kw">static</span> <span class="kw">readonly</span> <span class="dt">int</span> MAXIMUM_INTEGER = <span class="dv">1000000</span>;</a>
+<a class="sourceLine" id="cb3-12" title="12"></a>
+<a class="sourceLine" id="cb3-13" title="13">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-14" title="14">        <span class="co">/// 返回对 n 个随机整数的栈进行 n 次 push 和 n 次 pop 所需的时间。</span></a>
+<a class="sourceLine" id="cb3-15" title="15">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-16" title="16">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">随机数组的长度。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-17" title="17">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-18" title="18">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">TimeTrial</span>(<span class="dt">int</span> n)</a>
+<a class="sourceLine" id="cb3-19" title="19">        {</a>
+<a class="sourceLine" id="cb3-20" title="20">            <span class="dt">int</span>[] a = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb3-21" title="21">            FixedCapacityStackOfInts stack = <span class="kw">new</span> <span class="fu">FixedCapacityStackOfInts</span>(n);</a>
+<a class="sourceLine" id="cb3-22" title="22">            Random random = <span class="kw">new</span> <span class="fu">Random</span>(DateTime.<span class="fu">Now</span>.<span class="fu">Millisecond</span>);</a>
+<a class="sourceLine" id="cb3-23" title="23">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
+<a class="sourceLine" id="cb3-24" title="24">            {</a>
+<a class="sourceLine" id="cb3-25" title="25">                a[i] = random.<span class="fu">Next</span>(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);</a>
+<a class="sourceLine" id="cb3-26" title="26">            }</a>
+<a class="sourceLine" id="cb3-27" title="27">            Stopwatch timer = <span class="kw">new</span> <span class="fu">Stopwatch</span>();</a>
+<a class="sourceLine" id="cb3-28" title="28">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
+<a class="sourceLine" id="cb3-29" title="29">            {</a>
+<a class="sourceLine" id="cb3-30" title="30">                stack.<span class="fu">Push</span>(a[i]);</a>
+<a class="sourceLine" id="cb3-31" title="31">            }</a>
+<a class="sourceLine" id="cb3-32" title="32">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
+<a class="sourceLine" id="cb3-33" title="33">            {</a>
+<a class="sourceLine" id="cb3-34" title="34">                stack.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb3-35" title="35">            }</a>
+<a class="sourceLine" id="cb3-36" title="36">            <span class="kw">return</span> timer.<span class="fu">ElapsedTimeMillionSeconds</span>();</a>
+<a class="sourceLine" id="cb3-37" title="37">        }</a>
+<a class="sourceLine" id="cb3-38" title="38"></a>
+<a class="sourceLine" id="cb3-39" title="39">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-40" title="40">        <span class="co">/// 返回对 n 个随机整数的栈进行 n 次 push 和 n 次 pop 所需的时间。</span></a>
+<a class="sourceLine" id="cb3-41" title="41">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-42" title="42">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">随机数组的长度。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-43" title="43">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-44" title="44">        <span class="kw">public</span> <span class="kw">static</span> <span class="dt">double</span> <span class="fu">TimeTrialGeneric</span>(<span class="dt">int</span> n)</a>
+<a class="sourceLine" id="cb3-45" title="45">        {</a>
+<a class="sourceLine" id="cb3-46" title="46">            <span class="dt">int</span>[] a = <span class="kw">new</span> <span class="dt">int</span>[n];</a>
+<a class="sourceLine" id="cb3-47" title="47">            FixedCapacityStack&lt;<span class="dt">int</span>&gt; stack = <span class="kw">new</span> FixedCapacityStack&lt;<span class="dt">int</span>&gt;(n);</a>
+<a class="sourceLine" id="cb3-48" title="48">            Random random = <span class="kw">new</span> <span class="fu">Random</span>(DateTime.<span class="fu">Now</span>.<span class="fu">Millisecond</span>);</a>
+<a class="sourceLine" id="cb3-49" title="49">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
+<a class="sourceLine" id="cb3-50" title="50">            {</a>
+<a class="sourceLine" id="cb3-51" title="51">                a[i] = random.<span class="fu">Next</span>(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);</a>
+<a class="sourceLine" id="cb3-52" title="52">            }</a>
+<a class="sourceLine" id="cb3-53" title="53">            Stopwatch timer = <span class="kw">new</span> <span class="fu">Stopwatch</span>();</a>
+<a class="sourceLine" id="cb3-54" title="54">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
+<a class="sourceLine" id="cb3-55" title="55">            {</a>
+<a class="sourceLine" id="cb3-56" title="56">                stack.<span class="fu">Push</span>(a[i]);</a>
+<a class="sourceLine" id="cb3-57" title="57">            }</a>
+<a class="sourceLine" id="cb3-58" title="58">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; ++i)</a>
+<a class="sourceLine" id="cb3-59" title="59">            {</a>
+<a class="sourceLine" id="cb3-60" title="60">                stack.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb3-61" title="61">            }</a>
+<a class="sourceLine" id="cb3-62" title="62">            <span class="kw">return</span> timer.<span class="fu">ElapsedTimeMillionSeconds</span>();</a>
+<a class="sourceLine" id="cb3-63" title="63">        }</a>
+<a class="sourceLine" id="cb3-64" title="64">    }</a>
+<a class="sourceLine" id="cb3-65" title="65">}</a></code></pre></div>
 <p>主函数</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_37
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 1.4.37
-     * 
-     * 自动装箱的性能代价。
-     * 通过实验在你的计算机上计算使用自动装箱所付出的性能代价。
-     * 实现一个 FixedCapacityStackOfInts，
-     * 并使用类似 DoublingRatio 的用例比较它和泛型 FixedCapacityStack 在进行大量 push() 和 pop() 时的性能。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"测试量\t非泛型耗时（毫秒）\t泛型耗时（毫秒）\t差值"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">250</span><span class="token punctuation">;</span> <span class="token keyword">true</span><span class="token punctuation">;</span> n <span class="token operator">+</span><span class="token operator">=</span> n<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">double</span> time <span class="token operator">=</span> DoubleTest<span class="token punctuation">.</span><span class="token function">TimeTrial</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">double</span> timeGeneric <span class="token operator">=</span> DoubleTest<span class="token punctuation">.</span><span class="token function">TimeTrialGeneric</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"{n}\t{time}\t{timeGeneric}\t{Math.Abs(time - timeGeneric)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.4/Measurement" target="_blank" rel="noopener">Measurement 库</a></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">4.</span>_<span class="dv">37</span></a>
+<a class="sourceLine" id="cb4-4" title="4">{</a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">     * 1.4.37</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">     * 自动装箱的性能代价。</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">     * 通过实验在你的计算机上计算使用自动装箱所付出的性能代价。</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">     * 实现一个 FixedCapacityStackOfInts，</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">     * 并使用类似 DoublingRatio 的用例比较它和泛型 FixedCapacityStack 在进行大量 push() 和 pop() 时的性能。</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb4-14" title="14">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb4-15" title="15">    {</a>
+<a class="sourceLine" id="cb4-16" title="16">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb4-17" title="17">        {</a>
+<a class="sourceLine" id="cb4-18" title="18">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;测试量</span><span class="sc">\t</span><span class="st">非泛型耗时（毫秒）</span><span class="sc">\t</span><span class="st">泛型耗时（毫秒）</span><span class="sc">\t</span><span class="st">差值&quot;</span>);</a>
+<a class="sourceLine" id="cb4-19" title="19">            <span class="kw">for</span> (<span class="dt">int</span> n = <span class="dv">250</span>; <span class="kw">true</span>; n += n)</a>
+<a class="sourceLine" id="cb4-20" title="20">            {</a>
+<a class="sourceLine" id="cb4-21" title="21">                <span class="dt">double</span> time = DoubleTest.<span class="fu">TimeTrial</span>(n);</a>
+<a class="sourceLine" id="cb4-22" title="22">                <span class="dt">double</span> timeGeneric = DoubleTest.<span class="fu">TimeTrialGeneric</span>(n);</a>
+<a class="sourceLine" id="cb4-23" title="23">                Console.<span class="fu">WriteLine</span>($<span class="st">&quot;{n}</span><span class="sc">\t</span><span class="st">{time}</span><span class="sc">\t</span><span class="st">{timeGeneric}</span><span class="sc">\t</span><span class="st">{Math.Abs(time - timeGeneric)}&quot;</span>);</a>
+<a class="sourceLine" id="cb4-24" title="24">            }</a>
+<a class="sourceLine" id="cb4-25" title="25">        }</a>
+<a class="sourceLine" id="cb4-26" title="26">    }</a>
+<a class="sourceLine" id="cb4-27" title="27">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.4/Measurement" target="_blank" rel="noopener">Measurement 库</a></p>
 
 		</div>
 	</div>

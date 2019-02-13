@@ -140,114 +140,115 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.25</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.25<br>扔两个鸡蛋。<br>和上一题相同的问题，但现在假设你只有两个鸡蛋，而你的成本模型则是扔鸡蛋的次数。<br>设计一种策略，最多扔 2√(N) 次鸡蛋即可判断出 F 的值， 然后想办法把这个成本降低到 ~c√(F) 次。 这和查找命中（鸡蛋完好无损）比未命中（鸡蛋被摔碎）的成本小得多的情形类似。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>第一问：<br>第一个蛋按照 √(N), 2√(N), 3√(N), 4√(N),…, √(N) * √(N) 顺序查找直至碎掉。这里扔了 k 次，k &lt;= √(N)。<br>k-1√(N) ~ k√(N) 顺序查找直至碎掉，F 值就找到了。这里最多扔 √(N) 次。</p>
-<p>第二问：<br>按照第 1, 3, 6, 10,…, 1/2k^2 层顺序查找，一直到 1/2k^2 &gt; F，<br>随后在 [1/2k^2 - k, 1/2k^2] 范围中顺序查找。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>这里我们同样定义了一个结构体：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">struct</span> testResult
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> F<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 测试得出的 F 值</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> BrokenEggs<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 碎掉的鸡蛋数。</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> ThrowTimes<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 扔鸡蛋的次数。</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.4.25 扔两个鸡蛋。 和上一题相同的问题，但现在假设你只有两个鸡蛋，而你的成本模型则是扔鸡蛋的次数。 设计一种策略，最多扔 2√(N) 次鸡蛋即可判断出 F 的值， 然后想办法把这个成本降低到 ~c√(F) 次。 这和查找命中（鸡蛋完好无损）比未命中（鸡蛋被摔碎）的成本小得多的情形类似。</p>
+<h1 id="解答">解答</h1>
+<p>第一问： 第一个蛋按照 √(N), 2√(N), 3√(N), 4√(N),..., √(N) * √(N) 顺序查找直至碎掉。这里扔了 k 次，k &lt;= √(N)。 k-1√(N) ~ k√(N) 顺序查找直至碎掉，F 值就找到了。这里最多扔 √(N) 次。</p>
+<p>第二问： 按照第 1, 3, 6, 10,..., 1/2k^2 层顺序查找，一直到 1/2k^2 &gt; F， 随后在 [1/2k^2 - k, 1/2k^2] 范围中顺序查找。</p>
+<h1 id="代码">代码</h1>
+<p>这里我们同样定义了一个结构体：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">struct</span> testResult</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">public</span> <span class="dt">int</span> F;<span class="co">// 测试得出的 F 值</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">public</span> <span class="dt">int</span> BrokenEggs;<span class="co">// 碎掉的鸡蛋数。</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">public</span> <span class="dt">int</span> ThrowTimes;<span class="co">// 扔鸡蛋的次数。</span></a>
+<a class="sourceLine" id="cb1-6" title="6">}</a></code></pre></div>
 <p>之后是测试用的方法：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 扔鸡蛋，没碎返回 true，碎了返回 false。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="floor">扔鸡蛋的高度。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">ThrowEgg</span><span class="token punctuation">(</span><span class="token keyword">int</span> floor<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">return</span> floor <span class="token operator">&lt;=</span> F<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 第一种方案。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="a">大楼。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">static</span> testResult <span class="token function">PlanA</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> lo <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> hi <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
-    <span class="token keyword">int</span> eggs <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> throwTimes <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    testResult result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">testResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">ThrowEgg</span><span class="token punctuation">(</span>hi<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        throwTimes<span class="token operator">++</span><span class="token punctuation">;</span>
-        lo <span class="token operator">=</span> hi<span class="token punctuation">;</span>
-        hi <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Sqrt</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    eggs<span class="token operator">++</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">></span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        hi <span class="token operator">=</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;=</span> hi<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">ThrowEgg</span><span class="token punctuation">(</span>lo<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            eggs<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        throwTimes<span class="token operator">++</span><span class="token punctuation">;</span>
-        lo<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    result<span class="token punctuation">.</span>BrokenEggs <span class="token operator">=</span> eggs<span class="token punctuation">;</span>
-    result<span class="token punctuation">.</span>F <span class="token operator">=</span> lo <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    result<span class="token punctuation">.</span>ThrowTimes <span class="token operator">=</span> throwTimes<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 第二种方案。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="a">大楼。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">static</span> testResult <span class="token function">PlanB</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> lo <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> hi <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> eggs <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> throwTimes <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    testResult result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">testResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token function">ThrowEgg</span><span class="token punctuation">(</span>hi<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        throwTimes<span class="token operator">++</span><span class="token punctuation">;</span>
-        lo <span class="token operator">=</span> hi<span class="token punctuation">;</span>
-        hi <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    eggs<span class="token operator">++</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">></span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        hi <span class="token operator">=</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;=</span> hi<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">ThrowEgg</span><span class="token punctuation">(</span>lo<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            eggs<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        lo<span class="token operator">++</span><span class="token punctuation">;</span>
-        throwTimes<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    result<span class="token punctuation">.</span>BrokenEggs <span class="token operator">=</span> eggs<span class="token punctuation">;</span>
-    result<span class="token punctuation">.</span>F <span class="token operator">=</span> lo <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    result<span class="token punctuation">.</span>ThrowTimes <span class="token operator">=</span> throwTimes<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">/// 扔鸡蛋，没碎返回 true，碎了返回 false。</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;floor&quot;</span><span class="kw">&gt;</span><span class="co">扔鸡蛋的高度。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="kw">static</span> <span class="dt">bool</span> <span class="fu">ThrowEgg</span>(<span class="dt">int</span> floor)</a>
+<a class="sourceLine" id="cb2-7" title="7">{</a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="kw">return</span> floor &lt;= F;</a>
+<a class="sourceLine" id="cb2-9" title="9">}</a>
+<a class="sourceLine" id="cb2-10" title="10"></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">/// 第一种方案。</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">大楼。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="kw">static</span> testResult <span class="fu">PlanA</span>(<span class="dt">int</span>[] a)</a>
+<a class="sourceLine" id="cb2-17" title="17">{</a>
+<a class="sourceLine" id="cb2-18" title="18">    <span class="dt">int</span> lo = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-19" title="19">    <span class="dt">int</span> hi = <span class="dv">0</span>; </a>
+<a class="sourceLine" id="cb2-20" title="20">    <span class="dt">int</span> eggs = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-21" title="21">    <span class="dt">int</span> throwTimes = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-22" title="22">    testResult result = <span class="kw">new</span> <span class="fu">testResult</span>();</a>
+<a class="sourceLine" id="cb2-23" title="23"></a>
+<a class="sourceLine" id="cb2-24" title="24">    <span class="kw">while</span> (<span class="fu">ThrowEgg</span>(hi))</a>
+<a class="sourceLine" id="cb2-25" title="25">    {</a>
+<a class="sourceLine" id="cb2-26" title="26">        throwTimes++;</a>
+<a class="sourceLine" id="cb2-27" title="27">        lo = hi;</a>
+<a class="sourceLine" id="cb2-28" title="28">        hi += (<span class="dt">int</span>)Math.<span class="fu">Sqrt</span>(a.<span class="fu">Length</span>);</a>
+<a class="sourceLine" id="cb2-29" title="29">    }</a>
+<a class="sourceLine" id="cb2-30" title="30">    eggs++;</a>
+<a class="sourceLine" id="cb2-31" title="31"></a>
+<a class="sourceLine" id="cb2-32" title="32">    <span class="kw">if</span> (hi &gt; a.<span class="fu">Length</span> - <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-33" title="33">    {</a>
+<a class="sourceLine" id="cb2-34" title="34">        hi = a.<span class="fu">Length</span> - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-35" title="35">    }</a>
+<a class="sourceLine" id="cb2-36" title="36"></a>
+<a class="sourceLine" id="cb2-37" title="37">    <span class="kw">while</span> (lo &lt;= hi)</a>
+<a class="sourceLine" id="cb2-38" title="38">    {</a>
+<a class="sourceLine" id="cb2-39" title="39">        <span class="kw">if</span> (!<span class="fu">ThrowEgg</span>(lo))</a>
+<a class="sourceLine" id="cb2-40" title="40">        {</a>
+<a class="sourceLine" id="cb2-41" title="41">            eggs++;</a>
+<a class="sourceLine" id="cb2-42" title="42">            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb2-43" title="43">        }</a>
+<a class="sourceLine" id="cb2-44" title="44">        throwTimes++;</a>
+<a class="sourceLine" id="cb2-45" title="45">        lo++;</a>
+<a class="sourceLine" id="cb2-46" title="46">    }</a>
+<a class="sourceLine" id="cb2-47" title="47"></a>
+<a class="sourceLine" id="cb2-48" title="48">    result.<span class="fu">BrokenEggs</span> = eggs;</a>
+<a class="sourceLine" id="cb2-49" title="49">    result.<span class="fu">F</span> = lo - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-50" title="50">    result.<span class="fu">ThrowTimes</span> = throwTimes;</a>
+<a class="sourceLine" id="cb2-51" title="51">    <span class="kw">return</span> result;</a>
+<a class="sourceLine" id="cb2-52" title="52">}</a>
+<a class="sourceLine" id="cb2-53" title="53"></a>
+<a class="sourceLine" id="cb2-54" title="54"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-55" title="55"><span class="co">/// 第二种方案。</span></a>
+<a class="sourceLine" id="cb2-56" title="56"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-57" title="57"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">大楼。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-58" title="58"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-59" title="59"><span class="kw">static</span> testResult <span class="fu">PlanB</span>(<span class="dt">int</span>[] a)</a>
+<a class="sourceLine" id="cb2-60" title="60">{</a>
+<a class="sourceLine" id="cb2-61" title="61">    <span class="dt">int</span> lo = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-62" title="62">    <span class="dt">int</span> hi = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-63" title="63">    <span class="dt">int</span> eggs = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-64" title="64">    <span class="dt">int</span> throwTimes = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-65" title="65">    testResult result = <span class="kw">new</span> <span class="fu">testResult</span>();</a>
+<a class="sourceLine" id="cb2-66" title="66"></a>
+<a class="sourceLine" id="cb2-67" title="67">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; <span class="fu">ThrowEgg</span>(hi); ++i)</a>
+<a class="sourceLine" id="cb2-68" title="68">    {</a>
+<a class="sourceLine" id="cb2-69" title="69">        throwTimes++;</a>
+<a class="sourceLine" id="cb2-70" title="70">        lo = hi;</a>
+<a class="sourceLine" id="cb2-71" title="71">        hi += i;</a>
+<a class="sourceLine" id="cb2-72" title="72">    }</a>
+<a class="sourceLine" id="cb2-73" title="73">    eggs++;</a>
+<a class="sourceLine" id="cb2-74" title="74"></a>
+<a class="sourceLine" id="cb2-75" title="75">    <span class="kw">if</span> (hi &gt; a.<span class="fu">Length</span> - <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-76" title="76">    {</a>
+<a class="sourceLine" id="cb2-77" title="77">        hi = a.<span class="fu">Length</span> - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-78" title="78">    }</a>
+<a class="sourceLine" id="cb2-79" title="79"></a>
+<a class="sourceLine" id="cb2-80" title="80">    <span class="kw">while</span> (lo &lt;= hi)</a>
+<a class="sourceLine" id="cb2-81" title="81">    {</a>
+<a class="sourceLine" id="cb2-82" title="82">        <span class="kw">if</span> (!<span class="fu">ThrowEgg</span>(lo))</a>
+<a class="sourceLine" id="cb2-83" title="83">        {</a>
+<a class="sourceLine" id="cb2-84" title="84">            eggs++;</a>
+<a class="sourceLine" id="cb2-85" title="85">            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb2-86" title="86">        }</a>
+<a class="sourceLine" id="cb2-87" title="87">        lo++;</a>
+<a class="sourceLine" id="cb2-88" title="88">        throwTimes++;</a>
+<a class="sourceLine" id="cb2-89" title="89">    }</a>
+<a class="sourceLine" id="cb2-90" title="90"></a>
+<a class="sourceLine" id="cb2-91" title="91">    result.<span class="fu">BrokenEggs</span> = eggs;</a>
+<a class="sourceLine" id="cb2-92" title="92">    result.<span class="fu">F</span> = lo - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-93" title="93">    result.<span class="fu">ThrowTimes</span> = throwTimes;</a>
+<a class="sourceLine" id="cb2-94" title="94">    <span class="kw">return</span> result;</a>
+<a class="sourceLine" id="cb2-95" title="95">}</a></code></pre></div>
 
 		</div>
 	</div>

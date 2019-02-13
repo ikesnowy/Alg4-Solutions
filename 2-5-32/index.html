@@ -140,195 +140,197 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.32</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.32<br>8 字谜题。<br>8 字谜题是 S.Loyd 于 19 世纪 70 年代发明的一个游戏。<br>游戏需要一个三乘三的九宫格，其中八格填上了 1 到 8 这 8 个数字，一格空着。<br>你的目标就是将所有的格子排序。<br>可以将一个格子向上下或左右（但不能是对角线方向）移动到空白的格子中。<br>编写一个程序用 A* 算法解决这个问题。<br>先用到达九宫格的当前位置所需的步数加上错位的格子数量作为优先级函数<br>（注意，步数至少大于等于错位的格子数）。尝试用其他函数代替错位的格子数量，<br>比如每个格子距离它的正确位置的曼哈顿距离，或是这些距离的平方之和。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>（前置知识：提前了解 Dijkstra 算法能够降低理解 A* 算法的难度。）</p>
+			<h1 id="题目">题目</h1>
+<p>2.5.32 8 字谜题。 8 字谜题是 S.Loyd 于 19 世纪 70 年代发明的一个游戏。 游戏需要一个三乘三的九宫格，其中八格填上了 1 到 8 这 8 个数字，一格空着。 你的目标就是将所有的格子排序。 可以将一个格子向上下或左右（但不能是对角线方向）移动到空白的格子中。 编写一个程序用 A* 算法解决这个问题。 先用到达九宫格的当前位置所需的步数加上错位的格子数量作为优先级函数 （注意，步数至少大于等于错位的格子数）。尝试用其他函数代替错位的格子数量， 比如每个格子距离它的正确位置的曼哈顿距离，或是这些距离的平方之和。</p>
+<h1 id="解答">解答</h1>
+<p>（前置知识：提前了解 Dijkstra 算法能够降低理解 A* 算法的难度。）</p>
 <p>A* 算法是 Dijkstra 算法和最佳优先算法的一种结合。</p>
-<p>Dijkstra 算法需要遍历所有结点来找到最短路径，唯一的优化条件就是路径长度。<br>建立队列 <code>queue</code> ，把所有的结点加入 <code>queue</code> 中；建立数组 <code>d</code>，<code>d[v]</code> 代表起点到点 v 的距离。<br>开始时只有起点到起点的距离为 0，其他都为无穷大，然后重复如下步骤：<br>从队列中取出已知距离最短的结点 <code>u</code>，检查该结点的所有边。<br>如果通过这个点能够以更近的距离到达 <code>v</code>，更新起点到 <code>v</code> 的距离 <code>d[v] = d[u] + distance(u, v)</code>。<br>等到队列为空之后数组 <code>d</code> 中就存放着起点到其他所有结点的最短距离。</p>
-<p>Dijkstra 算法会计算起点到所有点的最短路径，因此会均匀的遍历所有结点，效率较低。<br>很多时候，我们只需要找到起点到某一终点的最短路径即可，为此遍历整个图显然是不必要的。<br>通过修改算法，使得比较接近终点的结点优先得到搜索，我们就可能在遍历完全部结点之前获得结果。</p>
-<p>在 Dijkstra 算法中，离起点最近的点会被优先搜索，记结点离起点的距离为 <code>g[n]</code> 。<br>现在引入新的条件，用于估计结点和终点的接近程度，记结点离终点的估计距离为 <code>h[n]</code> 。<br>令 <code>f[n] = g[n] + h[n]</code>，我们按照 <code>f[n]</code> 对等待搜索的结点进行排序。<br>同时令 <code>h[n]</code> 始终小于 <code>g[n]</code> ，保证离起点的距离 <code>g[n]</code> 权重大于离终点的估计距离 <code>h[n]</code> 。<br>（<code>h[n]</code>也被称之为<a href="https://en.wikipedia.org/wiki/Admissible_heuristic" target="_blank" rel="noopener">容许估计</a>）<br>于是在离起点距离接近的条件下，离终点比较近的点会被优先搜索，减少搜索范围。</p>
-<p>接下来就是算法的具体内容，与 Dijkstra 算法不同，A<em> 算法不一定需要访问所有结点，<br>因此 A</em> 算法需要维护两个集合，<code>openSet</code> 保存等待搜索的结点，<code>closeSet</code> 保存已经搜索过的结点。<br>和 Dijkstra 算法类似，一开始 <code>openSet</code> 中只有起点，<code>closeSet</code> 则是空的。<br>然后重复执行如下步骤，直到 <code>openSet</code> 为空：<br>从 <code>openSet</code> 中取出 <code>f[n]</code> 最小的结点 <code>u</code> ，放入 <code>closeSet</code>。（标记为已访问）<br>如果 <code>u</code> 就是终点，算法结束。<br>计算结点 <code>u</code> 直接可达的周围结点，放入集合 <code>neighbors</code>。<br>遍历 <code>neighbors</code> 中的所有结点 <code>v</code>，做如下判断：<br>    如果 <code>v</code> 已经存在于 <code>closeSet</code> ，忽略之。（防止走回头路）<br>    如果经过 <code>u</code> 不能缩短起点到 <code>v</code> 的路径长度 <code>g[v]</code>，忽略之。（和 Dijkstra 算法一样的做法）<br>    否则将 <code>v</code> 放入 <code>openSet</code>，更新 <code>g[v] = g[u] + distance(u, v)</code> ，计算 <code>f[v] = g[v] + h[v]</code>。（更新结点）<br>以上是 A* 算法的核心逻辑，<br>为了结合具体问题，我们需要自定义计算 <code>g[n]</code> 和 <code>h[n]</code> 的方法，以及获得某个结点周围结点的方法。</p>
-<p>这里有个问题，<code>openSet</code> 和 <code>closeSet</code> 应该用什么数据结构？<br><code>closeSet</code> 比较简单，只需要添加和查找即可，哈希表 <code>HashSet</code> 是不二选择。<br><code>openSet</code> 需要读取并删除最小元素，以及添加和查找元素，用最小堆 <code>MinPQ</code> 会是比较方便的方法。<br>书中给出的最小堆 <code>MinPQ</code> 没有实现 <code>Contains</code> 方法，需要自己实现一个，简单顺序查找就够用了。<br>同时 <code>MinPQ</code> 的 <code>Greater</code> 比较方法也需要重新实现，需要使用基于 <code>f[n]</code> 进行比较的比较器。</p>
-<p>现在我们考虑 8 字谜题如何用 A* 算法实现。<br>棋盘的每一个状态就是一个结点，每走一步就能进入下一个状态，结点可以这么定义：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">SearchNode</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> Board<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 棋盘状态</span>
-    <span class="token keyword">int</span> Steps<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// 已经使用的步数</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>g(start, goal)</code> 直接就是 <code>goal.Steps - start.Steps</code>，<code>h(start, goal)</code> 则根据题意有不同的实现。<br>获得周围结点的方法 <code>GetNeighbors(current)</code>，会返回一个数组，其中有从 <code>current</code> 上下左右走获得的棋盘状态。</p>
+<p>Dijkstra 算法需要遍历所有结点来找到最短路径，唯一的优化条件就是路径长度。 建立队列 <code>queue</code> ，把所有的结点加入 <code>queue</code> 中；建立数组 <code>d</code>，<code>d[v]</code> 代表起点到点 v 的距离。 开始时只有起点到起点的距离为 0，其他都为无穷大，然后重复如下步骤： 从队列中取出已知距离最短的结点 <code>u</code>，检查该结点的所有边。 如果通过这个点能够以更近的距离到达 <code>v</code>，更新起点到 <code>v</code> 的距离 <code>d[v] = d[u] + distance(u, v)</code>。 等到队列为空之后数组 <code>d</code> 中就存放着起点到其他所有结点的最短距离。</p>
+<p>Dijkstra 算法会计算起点到所有点的最短路径，因此会均匀的遍历所有结点，效率较低。 很多时候，我们只需要找到起点到某一终点的最短路径即可，为此遍历整个图显然是不必要的。 通过修改算法，使得比较接近终点的结点优先得到搜索，我们就可能在遍历完全部结点之前获得结果。</p>
+<p>在 Dijkstra 算法中，离起点最近的点会被优先搜索，记结点离起点的距离为 <code>g[n]</code> 。 现在引入新的条件，用于估计结点和终点的接近程度，记结点离终点的估计距离为 <code>h[n]</code> 。 令 <code>f[n] = g[n] + h[n]</code>，我们按照 <code>f[n]</code> 对等待搜索的结点进行排序。 同时令 <code>h[n]</code> 始终小于 <code>g[n]</code> ，保证离起点的距离 <code>g[n]</code> 权重大于离终点的估计距离 <code>h[n]</code> 。 （<code>h[n]</code>也被称之为<a href="https://en.wikipedia.org/wiki/Admissible_heuristic" target="_blank" rel="noopener">容许估计</a>） 于是在离起点距离接近的条件下，离终点比较近的点会被优先搜索，减少搜索范围。</p>
+<p>接下来就是算法的具体内容，与 Dijkstra 算法不同，A* 算法不一定需要访问所有结点， 因此 A* 算法需要维护两个集合，<code>openSet</code> 保存等待搜索的结点，<code>closeSet</code> 保存已经搜索过的结点。 和 Dijkstra 算法类似，一开始 <code>openSet</code> 中只有起点，<code>closeSet</code> 则是空的。 然后重复执行如下步骤，直到 <code>openSet</code> 为空： 从 <code>openSet</code> 中取出 <code>f[n]</code> 最小的结点 <code>u</code> ，放入 <code>closeSet</code>。（标记为已访问） 如果 <code>u</code> 就是终点，算法结束。 计算结点 <code>u</code> 直接可达的周围结点，放入集合 <code>neighbors</code>。 遍历 <code>neighbors</code> 中的所有结点 <code>v</code>，做如下判断： 如果 <code>v</code> 已经存在于 <code>closeSet</code> ，忽略之。（防止走回头路） 如果经过 <code>u</code> 不能缩短起点到 <code>v</code> 的路径长度 <code>g[v]</code>，忽略之。（和 Dijkstra 算法一样的做法） 否则将 <code>v</code> 放入 <code>openSet</code>，更新 <code>g[v] = g[u] + distance(u, v)</code> ，计算 <code>f[v] = g[v] + h[v]</code>。（更新结点） 以上是 A* 算法的核心逻辑， 为了结合具体问题，我们需要自定义计算 <code>g[n]</code> 和 <code>h[n]</code> 的方法，以及获得某个结点周围结点的方法。</p>
+<p>这里有个问题，<code>openSet</code> 和 <code>closeSet</code> 应该用什么数据结构？ <code>closeSet</code> 比较简单，只需要添加和查找即可，哈希表 <code>HashSet</code> 是不二选择。 <code>openSet</code> 需要读取并删除最小元素，以及添加和查找元素，用最小堆 <code>MinPQ</code> 会是比较方便的方法。 书中给出的最小堆 <code>MinPQ</code> 没有实现 <code>Contains</code> 方法，需要自己实现一个，简单顺序查找就够用了。 同时 <code>MinPQ</code> 的 <code>Greater</code> 比较方法也需要重新实现，需要使用基于 <code>f[n]</code> 进行比较的比较器。</p>
+<p>现在我们考虑 8 字谜题如何用 A* 算法实现。 棋盘的每一个状态就是一个结点，每走一步就能进入下一个状态，结点可以这么定义：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">class</span> SearchNode</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="dt">int</span>[] Board;        <span class="co">// 棋盘状态</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="dt">int</span> Steps;          <span class="co">// 已经使用的步数</span></a>
+<a class="sourceLine" id="cb1-5" title="5">}</a></code></pre></div>
+<p><code>g(start, goal)</code> 直接就是 <code>goal.Steps - start.Steps</code>，<code>h(start, goal)</code> 则根据题意有不同的实现。 获得周围结点的方法 <code>GetNeighbors(current)</code>，会返回一个数组，其中有从 <code>current</code> 上下左右走获得的棋盘状态。</p>
 <p>运行结果，初始状态为：</p>
 <pre><code>0 1 3
 4 2 5
-7 9 6
-</code></pre><p><img src="./1.png" alt=""> <img src="./2.png" alt=""> <img src="./3.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>A* 算法的泛型实现</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> SortApplication
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// A* 搜索器。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">&lt;/typeparam></span>
-    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AStar</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 相等比较器。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">private</span> <span class="token keyword">readonly</span> IEqualityComparer<span class="token operator">&lt;</span>T<span class="token operator">></span> equalityComparer<span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 默认相等比较器。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">class</span> <span class="token class-name">DefaultEqualityComparer</span> <span class="token punctuation">:</span> IEqualityComparer<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">Equals</span><span class="token punctuation">(</span>T x<span class="token punctuation">,</span> T y<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> x<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">GetHashCode</span><span class="token punctuation">(</span>T obj<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> obj<span class="token punctuation">.</span><span class="token function">GetHashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 根据 FScore 进行比较的比较器。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">class</span> <span class="token class-name">FScoreComparer</span> <span class="token punctuation">:</span> IComparer<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            Dictionary<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> fScore<span class="token punctuation">;</span>
-
-            <span class="token keyword">public</span> <span class="token function">FScoreComparer</span><span class="token punctuation">(</span>Dictionary<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> fScore<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>fScore <span class="token operator">=</span> fScore<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Compare</span><span class="token punctuation">(</span>T x<span class="token punctuation">,</span> T y<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>fScore<span class="token punctuation">.</span><span class="token function">ContainsKey</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">this</span><span class="token punctuation">.</span>fScore<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>fScore<span class="token punctuation">.</span><span class="token function">ContainsKey</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">this</span><span class="token punctuation">.</span>fScore<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span>MaxValue<span class="token punctuation">;</span>
-                <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>fScore<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>fScore<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 新建一个 Astar 寻路器，使用元素默认相等比较器。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">protected</span> <span class="token function">AStar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DefaultEqualityComparer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 新建一个 AStar 寻路器。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="equalityComparer">用于确定状态之间相等的比较器。&lt;/param></span>
-        <span class="token keyword">protected</span> <span class="token function">AStar</span><span class="token punctuation">(</span>IEqualityComparer<span class="token operator">&lt;</span>T<span class="token operator">></span> equalityComparer<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>equalityComparer <span class="token operator">=</span> equalityComparer<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获得最短路径。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="start">起始状态。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="goal">终止状态。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> T<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetPath</span><span class="token punctuation">(</span>T start<span class="token punctuation">,</span> T goal<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Dictionary<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> T<span class="token operator">></span> comeFrom <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dictionary</span><span class="token operator">&lt;</span>T<span class="token punctuation">,</span> T<span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>equalityComparer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Dictionary<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> gScore <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dictionary</span><span class="token operator">&lt;</span>T<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>equalityComparer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Dictionary<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> fScore <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dictionary</span><span class="token operator">&lt;</span>T<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>equalityComparer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            MinPQ<span class="token operator">&lt;</span>T<span class="token operator">></span> openSet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MinPQ</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FScoreComparer</span><span class="token punctuation">(</span>fScore<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>equalityComparer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            HashSet<span class="token operator">&lt;</span>T<span class="token operator">></span> closeSet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>equalityComparer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            openSet<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            gScore<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            fScore<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> <span class="token function">HeuristicDistance</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> goal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>openSet<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                T current <span class="token operator">=</span> openSet<span class="token punctuation">.</span><span class="token function">DelMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>equalityComparer<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> goal<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">return</span> <span class="token function">ReconstructPath</span><span class="token punctuation">(</span>comeFrom<span class="token punctuation">,</span> current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                closeSet<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                T<span class="token punctuation">[</span><span class="token punctuation">]</span> neighbors <span class="token operator">=</span> <span class="token function">GetNeighbors</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">foreach</span> <span class="token punctuation">(</span>T neighbor <span class="token keyword">in</span> neighbors<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>closeSet<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                        <span class="token keyword">continue</span><span class="token punctuation">;</span>
-
-                    <span class="token keyword">int</span> gScoreTentative <span class="token operator">=</span> gScore<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token function">ActualDistance</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> neighbor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                    <span class="token comment" spellcheck="true">// 新状态</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>openSet<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                        openSet<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>gScoreTentative <span class="token operator">>=</span> gScore<span class="token punctuation">[</span>neighbor<span class="token punctuation">]</span><span class="token punctuation">)</span>
-                        <span class="token keyword">continue</span><span class="token punctuation">;</span>
-
-                    <span class="token comment" spellcheck="true">// 记录新状态</span>
-                    comeFrom<span class="token punctuation">[</span>neighbor<span class="token punctuation">]</span> <span class="token operator">=</span> current<span class="token punctuation">;</span>
-                    gScore<span class="token punctuation">[</span>neighbor<span class="token punctuation">]</span> <span class="token operator">=</span> gScoreTentative<span class="token punctuation">;</span>
-                    fScore<span class="token punctuation">[</span>neighbor<span class="token punctuation">]</span> <span class="token operator">=</span> gScore<span class="token punctuation">[</span>neighbor<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token function">HeuristicDistance</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">,</span> goal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 倒回重建最佳路径。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="status">包含所有状态的数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="from">记载了状态之间顺序的数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="current">当前状态位置。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">private</span> T<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">ReconstructPath</span><span class="token punctuation">(</span>Dictionary<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> T<span class="token operator">></span> comeFrom<span class="token punctuation">,</span> T current<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Stack<span class="token operator">&lt;</span>T<span class="token operator">></span> pathReverse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>comeFrom<span class="token punctuation">.</span><span class="token function">ContainsKey</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                pathReverse<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                current <span class="token operator">=</span> comeFrom<span class="token punctuation">[</span>current<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            T<span class="token punctuation">[</span><span class="token punctuation">]</span> path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">T</span><span class="token punctuation">[</span>pathReverse<span class="token punctuation">.</span>Count<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> path<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                path<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> pathReverse<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> path<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 计算两个状态之间的估计距离，即 h(n)。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="start">初始状态。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="goal">目标状态。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">protected</span> <span class="token keyword">abstract</span> <span class="token keyword">int</span> <span class="token function">HeuristicDistance</span><span class="token punctuation">(</span>T start<span class="token punctuation">,</span> T goal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 计算两个状态之间的实际距离，即 g(n)。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="start">初始状态。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="goal">目标状态。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">protected</span> <span class="token keyword">abstract</span> <span class="token keyword">int</span> <span class="token function">ActualDistance</span><span class="token punctuation">(</span>T start<span class="token punctuation">,</span> T goal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获得当前状态的周围状态。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="current">当前状态。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">protected</span> <span class="token keyword">abstract</span> T<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetNeighbors</span><span class="token punctuation">(</span>T current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://en.wikipedia.org/wiki/A*_search_algorithm" target="_blank" rel="noopener">A* search algorithm-Wikipedia</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
+7 9 6</code></pre>
+<p><img src="./1.png"> <img src="./2.png"> <img src="./3.png"></p>
+<h1 id="代码">代码</h1>
+<p>A* 算法的泛型实现</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">using</span> System.<span class="fu">Collections</span>.<span class="fu">Generic</span>;</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">namespace</span> SortApplication</a>
+<a class="sourceLine" id="cb3-5" title="5">{</a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="co">/// A* 搜索器。</span></a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-9" title="9">    <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">    <span class="kw">public</span> <span class="kw">abstract</span> <span class="kw">class</span> AStar&lt;T&gt; where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb3-11" title="11">    {</a>
+<a class="sourceLine" id="cb3-12" title="12">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-13" title="13">        <span class="co">/// 相等比较器。</span></a>
+<a class="sourceLine" id="cb3-14" title="14">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-15" title="15">        <span class="kw">private</span> <span class="kw">readonly</span> IEqualityComparer&lt;T&gt; equalityComparer;</a>
+<a class="sourceLine" id="cb3-16" title="16"></a>
+<a class="sourceLine" id="cb3-17" title="17">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-18" title="18">        <span class="co">/// 默认相等比较器。</span></a>
+<a class="sourceLine" id="cb3-19" title="19">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-20" title="20">        <span class="kw">class</span> DefaultEqualityComparer : IEqualityComparer&lt;T&gt;</a>
+<a class="sourceLine" id="cb3-21" title="21">        {</a>
+<a class="sourceLine" id="cb3-22" title="22">            <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">Equals</span>(T x, T y)</a>
+<a class="sourceLine" id="cb3-23" title="23">            {</a>
+<a class="sourceLine" id="cb3-24" title="24">                <span class="kw">return</span> x.<span class="fu">Equals</span>(y);</a>
+<a class="sourceLine" id="cb3-25" title="25">            }</a>
+<a class="sourceLine" id="cb3-26" title="26"></a>
+<a class="sourceLine" id="cb3-27" title="27">            <span class="kw">public</span> <span class="dt">int</span> <span class="fu">GetHashCode</span>(T obj)</a>
+<a class="sourceLine" id="cb3-28" title="28">            {</a>
+<a class="sourceLine" id="cb3-29" title="29">                <span class="kw">return</span> obj.<span class="fu">GetHashCode</span>();</a>
+<a class="sourceLine" id="cb3-30" title="30">            }</a>
+<a class="sourceLine" id="cb3-31" title="31">        }</a>
+<a class="sourceLine" id="cb3-32" title="32"></a>
+<a class="sourceLine" id="cb3-33" title="33">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-34" title="34">        <span class="co">/// 根据 FScore 进行比较的比较器。</span></a>
+<a class="sourceLine" id="cb3-35" title="35">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-36" title="36">        <span class="kw">class</span> FScoreComparer : IComparer&lt;T&gt;</a>
+<a class="sourceLine" id="cb3-37" title="37">        {</a>
+<a class="sourceLine" id="cb3-38" title="38">            Dictionary&lt;T, <span class="dt">int</span>&gt; fScore;</a>
+<a class="sourceLine" id="cb3-39" title="39"></a>
+<a class="sourceLine" id="cb3-40" title="40">            <span class="kw">public</span> <span class="fu">FScoreComparer</span>(Dictionary&lt;T, <span class="dt">int</span>&gt; fScore)</a>
+<a class="sourceLine" id="cb3-41" title="41">            {</a>
+<a class="sourceLine" id="cb3-42" title="42">                <span class="kw">this</span>.<span class="fu">fScore</span> = fScore;</a>
+<a class="sourceLine" id="cb3-43" title="43">            }</a>
+<a class="sourceLine" id="cb3-44" title="44"></a>
+<a class="sourceLine" id="cb3-45" title="45">            <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Compare</span>(T x, T y)</a>
+<a class="sourceLine" id="cb3-46" title="46">            {</a>
+<a class="sourceLine" id="cb3-47" title="47">                <span class="kw">if</span> (!<span class="kw">this</span>.<span class="fu">fScore</span>.<span class="fu">ContainsKey</span>(x))</a>
+<a class="sourceLine" id="cb3-48" title="48">                    <span class="kw">this</span>.<span class="fu">fScore</span>[x] = <span class="dt">int</span>.<span class="fu">MaxValue</span>;</a>
+<a class="sourceLine" id="cb3-49" title="49">                <span class="kw">if</span> (!<span class="kw">this</span>.<span class="fu">fScore</span>.<span class="fu">ContainsKey</span>(y))</a>
+<a class="sourceLine" id="cb3-50" title="50">                    <span class="kw">this</span>.<span class="fu">fScore</span>[y] = <span class="dt">int</span>.<span class="fu">MaxValue</span>;</a>
+<a class="sourceLine" id="cb3-51" title="51">                <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">fScore</span>[x].<span class="fu">CompareTo</span>(<span class="kw">this</span>.<span class="fu">fScore</span>[y]);</a>
+<a class="sourceLine" id="cb3-52" title="52">            }</a>
+<a class="sourceLine" id="cb3-53" title="53">        }</a>
+<a class="sourceLine" id="cb3-54" title="54"></a>
+<a class="sourceLine" id="cb3-55" title="55">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-56" title="56">        <span class="co">/// 新建一个 Astar 寻路器，使用元素默认相等比较器。</span></a>
+<a class="sourceLine" id="cb3-57" title="57">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-58" title="58">        <span class="kw">protected</span> <span class="fu">AStar</span>() : <span class="kw">this</span>(<span class="kw">new</span> <span class="fu">DefaultEqualityComparer</span>()) { }</a>
+<a class="sourceLine" id="cb3-59" title="59"></a>
+<a class="sourceLine" id="cb3-60" title="60">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-61" title="61">        <span class="co">/// 新建一个 AStar 寻路器。</span></a>
+<a class="sourceLine" id="cb3-62" title="62">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-63" title="63">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;equalityComparer&quot;</span><span class="kw">&gt;</span><span class="co">用于确定状态之间相等的比较器。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-64" title="64">        <span class="kw">protected</span> <span class="fu">AStar</span>(IEqualityComparer&lt;T&gt; equalityComparer)</a>
+<a class="sourceLine" id="cb3-65" title="65">        {</a>
+<a class="sourceLine" id="cb3-66" title="66">            <span class="kw">this</span>.<span class="fu">equalityComparer</span> = equalityComparer;</a>
+<a class="sourceLine" id="cb3-67" title="67">        }</a>
+<a class="sourceLine" id="cb3-68" title="68"></a>
+<a class="sourceLine" id="cb3-69" title="69">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-70" title="70">        <span class="co">/// 获得最短路径。</span></a>
+<a class="sourceLine" id="cb3-71" title="71">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-72" title="72">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;start&quot;</span><span class="kw">&gt;</span><span class="co">起始状态。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-73" title="73">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;goal&quot;</span><span class="kw">&gt;</span><span class="co">终止状态。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-74" title="74">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-75" title="75">        <span class="kw">public</span> T[] <span class="fu">GetPath</span>(T start, T goal)</a>
+<a class="sourceLine" id="cb3-76" title="76">        {</a>
+<a class="sourceLine" id="cb3-77" title="77">            Dictionary&lt;T, T&gt; comeFrom = <span class="kw">new</span> Dictionary&lt;T, T&gt;(<span class="kw">this</span>.<span class="fu">equalityComparer</span>);</a>
+<a class="sourceLine" id="cb3-78" title="78">            Dictionary&lt;T, <span class="dt">int</span>&gt; gScore = <span class="kw">new</span> Dictionary&lt;T, <span class="dt">int</span>&gt;(<span class="kw">this</span>.<span class="fu">equalityComparer</span>);</a>
+<a class="sourceLine" id="cb3-79" title="79">            Dictionary&lt;T, <span class="dt">int</span>&gt; fScore = <span class="kw">new</span> Dictionary&lt;T, <span class="dt">int</span>&gt;(<span class="kw">this</span>.<span class="fu">equalityComparer</span>);</a>
+<a class="sourceLine" id="cb3-80" title="80"></a>
+<a class="sourceLine" id="cb3-81" title="81">            MinPQ&lt;T&gt; openSet = <span class="kw">new</span> MinPQ&lt;T&gt;(<span class="kw">new</span> <span class="fu">FScoreComparer</span>(fScore), <span class="kw">this</span>.<span class="fu">equalityComparer</span>);</a>
+<a class="sourceLine" id="cb3-82" title="82">            HashSet&lt;T&gt; closeSet = <span class="kw">new</span> HashSet&lt;T&gt;(<span class="kw">this</span>.<span class="fu">equalityComparer</span>);</a>
+<a class="sourceLine" id="cb3-83" title="83"></a>
+<a class="sourceLine" id="cb3-84" title="84">            openSet.<span class="fu">Insert</span>(start);</a>
+<a class="sourceLine" id="cb3-85" title="85">            gScore.<span class="fu">Add</span>(start, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb3-86" title="86">            fScore.<span class="fu">Add</span>(start, <span class="fu">HeuristicDistance</span>(start, goal));</a>
+<a class="sourceLine" id="cb3-87" title="87">            <span class="kw">while</span> (!openSet.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb3-88" title="88">            {</a>
+<a class="sourceLine" id="cb3-89" title="89">                T current = openSet.<span class="fu">DelMin</span>();</a>
+<a class="sourceLine" id="cb3-90" title="90">                <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">equalityComparer</span>.<span class="fu">Equals</span>(current, goal))</a>
+<a class="sourceLine" id="cb3-91" title="91">                    <span class="kw">return</span> <span class="fu">ReconstructPath</span>(comeFrom, current);</a>
+<a class="sourceLine" id="cb3-92" title="92"></a>
+<a class="sourceLine" id="cb3-93" title="93">                closeSet.<span class="fu">Add</span>(current);</a>
+<a class="sourceLine" id="cb3-94" title="94"></a>
+<a class="sourceLine" id="cb3-95" title="95">                T[] neighbors = <span class="fu">GetNeighbors</span>(current);</a>
+<a class="sourceLine" id="cb3-96" title="96">                <span class="kw">foreach</span> (T neighbor <span class="kw">in</span> neighbors)</a>
+<a class="sourceLine" id="cb3-97" title="97">                {</a>
+<a class="sourceLine" id="cb3-98" title="98">                    <span class="kw">if</span> (closeSet.<span class="fu">Contains</span>(neighbor))</a>
+<a class="sourceLine" id="cb3-99" title="99">                        <span class="kw">continue</span>;</a>
+<a class="sourceLine" id="cb3-100" title="100"></a>
+<a class="sourceLine" id="cb3-101" title="101">                    <span class="dt">int</span> gScoreTentative = gScore[current] + <span class="fu">ActualDistance</span>(current, neighbor);</a>
+<a class="sourceLine" id="cb3-102" title="102"></a>
+<a class="sourceLine" id="cb3-103" title="103">                    <span class="co">// 新状态</span></a>
+<a class="sourceLine" id="cb3-104" title="104">                    <span class="kw">if</span> (!openSet.<span class="fu">Contains</span>(neighbor))</a>
+<a class="sourceLine" id="cb3-105" title="105">                        openSet.<span class="fu">Insert</span>(neighbor);</a>
+<a class="sourceLine" id="cb3-106" title="106">                    <span class="kw">else</span> <span class="kw">if</span> (gScoreTentative &gt;= gScore[neighbor])</a>
+<a class="sourceLine" id="cb3-107" title="107">                        <span class="kw">continue</span>;</a>
+<a class="sourceLine" id="cb3-108" title="108"></a>
+<a class="sourceLine" id="cb3-109" title="109">                    <span class="co">// 记录新状态</span></a>
+<a class="sourceLine" id="cb3-110" title="110">                    comeFrom[neighbor] = current;</a>
+<a class="sourceLine" id="cb3-111" title="111">                    gScore[neighbor] = gScoreTentative;</a>
+<a class="sourceLine" id="cb3-112" title="112">                    fScore[neighbor] = gScore[neighbor] + <span class="fu">HeuristicDistance</span>(neighbor, goal);</a>
+<a class="sourceLine" id="cb3-113" title="113">                }</a>
+<a class="sourceLine" id="cb3-114" title="114">            }</a>
+<a class="sourceLine" id="cb3-115" title="115"></a>
+<a class="sourceLine" id="cb3-116" title="116">            <span class="kw">return</span> <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb3-117" title="117">        }</a>
+<a class="sourceLine" id="cb3-118" title="118"></a>
+<a class="sourceLine" id="cb3-119" title="119">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-120" title="120">        <span class="co">/// 倒回重建最佳路径。</span></a>
+<a class="sourceLine" id="cb3-121" title="121">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-122" title="122">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;status&quot;</span><span class="kw">&gt;</span><span class="co">包含所有状态的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-123" title="123">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;from&quot;</span><span class="kw">&gt;</span><span class="co">记载了状态之间顺序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-124" title="124">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;current&quot;</span><span class="kw">&gt;</span><span class="co">当前状态位置。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-125" title="125">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-126" title="126">        <span class="kw">private</span> T[] <span class="fu">ReconstructPath</span>(Dictionary&lt;T, T&gt; comeFrom, T current)</a>
+<a class="sourceLine" id="cb3-127" title="127">        {</a>
+<a class="sourceLine" id="cb3-128" title="128">            Stack&lt;T&gt; pathReverse = <span class="kw">new</span> Stack&lt;T&gt;();</a>
+<a class="sourceLine" id="cb3-129" title="129">            <span class="kw">while</span> (comeFrom.<span class="fu">ContainsKey</span>(current))</a>
+<a class="sourceLine" id="cb3-130" title="130">            {</a>
+<a class="sourceLine" id="cb3-131" title="131">                pathReverse.<span class="fu">Push</span>(current);</a>
+<a class="sourceLine" id="cb3-132" title="132">                current = comeFrom[current];</a>
+<a class="sourceLine" id="cb3-133" title="133">            }</a>
+<a class="sourceLine" id="cb3-134" title="134">            T[] path = <span class="kw">new</span> T[pathReverse.<span class="fu">Count</span>];</a>
+<a class="sourceLine" id="cb3-135" title="135">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; path.<span class="fu">Length</span>; i++)</a>
+<a class="sourceLine" id="cb3-136" title="136">            {</a>
+<a class="sourceLine" id="cb3-137" title="137">                path[i] = pathReverse.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb3-138" title="138">            }</a>
+<a class="sourceLine" id="cb3-139" title="139">            <span class="kw">return</span> path;</a>
+<a class="sourceLine" id="cb3-140" title="140">        }</a>
+<a class="sourceLine" id="cb3-141" title="141"></a>
+<a class="sourceLine" id="cb3-142" title="142">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-143" title="143">        <span class="co">/// 计算两个状态之间的估计距离，即 h(n)。</span></a>
+<a class="sourceLine" id="cb3-144" title="144">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-145" title="145">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;start&quot;</span><span class="kw">&gt;</span><span class="co">初始状态。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-146" title="146">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;goal&quot;</span><span class="kw">&gt;</span><span class="co">目标状态。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-147" title="147">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-148" title="148">        <span class="kw">protected</span> <span class="kw">abstract</span> <span class="dt">int</span> <span class="fu">HeuristicDistance</span>(T start, T goal);</a>
+<a class="sourceLine" id="cb3-149" title="149"></a>
+<a class="sourceLine" id="cb3-150" title="150">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-151" title="151">        <span class="co">/// 计算两个状态之间的实际距离，即 g(n)。</span></a>
+<a class="sourceLine" id="cb3-152" title="152">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-153" title="153">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;start&quot;</span><span class="kw">&gt;</span><span class="co">初始状态。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-154" title="154">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;goal&quot;</span><span class="kw">&gt;</span><span class="co">目标状态。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-155" title="155">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-156" title="156">        <span class="kw">protected</span> <span class="kw">abstract</span> <span class="dt">int</span> <span class="fu">ActualDistance</span>(T start, T goal);</a>
+<a class="sourceLine" id="cb3-157" title="157"></a>
+<a class="sourceLine" id="cb3-158" title="158">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb3-159" title="159">        <span class="co">/// 获得当前状态的周围状态。</span></a>
+<a class="sourceLine" id="cb3-160" title="160">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb3-161" title="161">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;current&quot;</span><span class="kw">&gt;</span><span class="co">当前状态。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb3-162" title="162">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb3-163" title="163">        <span class="kw">protected</span> <span class="kw">abstract</span> T[] <span class="fu">GetNeighbors</span>(T current);</a>
+<a class="sourceLine" id="cb3-164" title="164">    }</a>
+<a class="sourceLine" id="cb3-165" title="165">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://en.wikipedia.org/wiki/A*_search_algorithm" target="_blank" rel="noopener">A* search algorithm-Wikipedia</a> <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
 
 		</div>
 	</div>

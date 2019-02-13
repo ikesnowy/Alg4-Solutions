@@ -140,51 +140,53 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.22</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.22<br>仅用加减实现的二分查找（Mihai Patrascu）。<br>编写一个程序，给定一个含有 N 个不同 int 值的按照升序排列的数组，判断它是否含有给定的整数。<br>只能使用加法和减法以及常数的额外内存空间。<br>程序的运行时间在最坏情况下应该和 logN 成正比。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>普通二分查找是通过除法不断减半缩小搜索范围。<br>这里我们用斐波那契数列来缩小范围。<br>举个例子，例如数组大小是 100，比它大的最小斐波那契数是 144。<br>斐波那契数列如下：0 1 1 2 3 5 8 13 21 34 55 89 144<br>我们记 F(n) = 144,F(n-1) = 89, F(n-2) = 55。<br>我们先查看第 0 + F(n-2) 个数，如果比关键值小则直接将范围缩小到 [55, 100]；否则则在[0, 55]之间查找。<br>之后我们令 n = n-1。<br>递归上述过程即可完成查找。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 使用斐波那契数列进行的查找。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="a">查找范围。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="key">关键字。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>返回查找到的关键值下标，没有结果则返回 -1。&lt;/returns></span>
-<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">rank</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 使用斐波那契数列作为缩减范围的依据</span>
-    <span class="token keyword">int</span> Fk <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> Fk_1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> Fk_2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">// 获得 Fk，Fk需要大于等于数组的大小，复杂度 lgN</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>Fk <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        Fk <span class="token operator">=</span> Fk <span class="token operator">+</span> Fk_1<span class="token punctuation">;</span>
-        Fk_1 <span class="token operator">=</span> Fk_1 <span class="token operator">+</span> Fk_2<span class="token punctuation">;</span>
-        Fk_2 <span class="token operator">=</span> Fk <span class="token operator">-</span> Fk_1<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> lo <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">// 按照斐波那契数列缩减查找范围，复杂度 lgN</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>Fk_2 <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> i <span class="token operator">=</span> lo <span class="token operator">+</span> Fk_2 <span class="token operator">></span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">?</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span> <span class="token punctuation">:</span> lo <span class="token operator">+</span> Fk_2<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> key<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            lo <span class="token operator">=</span> lo <span class="token operator">+</span> Fk_2<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> key<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> i<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        Fk <span class="token operator">=</span> Fk_1<span class="token punctuation">;</span>
-        Fk_1 <span class="token operator">=</span> Fk_2<span class="token punctuation">;</span>
-        Fk_2 <span class="token operator">=</span> Fk <span class="token operator">-</span> Fk_1<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.4.22 仅用加减实现的二分查找（Mihai Patrascu）。 编写一个程序，给定一个含有 N 个不同 int 值的按照升序排列的数组，判断它是否含有给定的整数。 只能使用加法和减法以及常数的额外内存空间。 程序的运行时间在最坏情况下应该和 logN 成正比。</p>
+<h1 id="解答">解答</h1>
+<p>普通二分查找是通过除法不断减半缩小搜索范围。 这里我们用斐波那契数列来缩小范围。 举个例子，例如数组大小是 100，比它大的最小斐波那契数是 144。 斐波那契数列如下：0 1 1 2 3 5 8 13 21 34 55 89 144 我们记 F(n) = 144,F(n-1) = 89, F(n-2) = 55。 我们先查看第 0 + F(n-2) 个数，如果比关键值小则直接将范围缩小到 [55, 100]；否则则在[0, 55]之间查找。 之后我们令 n = n-1。 递归上述过程即可完成查找。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 使用斐波那契数列进行的查找。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">查找范围。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;key&quot;</span><span class="kw">&gt;</span><span class="co">关键字。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回查找到的关键值下标，没有结果则返回 -1。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">static</span> <span class="dt">int</span> <span class="fu">rank</span>(<span class="dt">int</span>[] a, <span class="dt">int</span> key)</a>
+<a class="sourceLine" id="cb1-8" title="8">{</a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="co">// 使用斐波那契数列作为缩减范围的依据</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="dt">int</span> Fk = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="dt">int</span> Fk_<span class="dv">1</span> = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="dt">int</span> Fk_<span class="dv">2</span> = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-13" title="13"></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="co">// 获得 Fk，Fk需要大于等于数组的大小，复杂度 lgN</span></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="kw">while</span> (Fk &lt; a.<span class="fu">Length</span>)</a>
+<a class="sourceLine" id="cb1-16" title="16">    {</a>
+<a class="sourceLine" id="cb1-17" title="17">        Fk = Fk + Fk_<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-18" title="18">        Fk_<span class="dv">1</span> = Fk_<span class="dv">1</span> + Fk_<span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-19" title="19">        Fk_<span class="dv">2</span> = Fk - Fk_<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-20" title="20">    }</a>
+<a class="sourceLine" id="cb1-21" title="21"></a>
+<a class="sourceLine" id="cb1-22" title="22">    <span class="dt">int</span> lo = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-23" title="23"></a>
+<a class="sourceLine" id="cb1-24" title="24">    <span class="co">// 按照斐波那契数列缩减查找范围，复杂度 lgN</span></a>
+<a class="sourceLine" id="cb1-25" title="25">    <span class="kw">while</span> (Fk_<span class="dv">2</span> &gt;= <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-26" title="26">    {</a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="dt">int</span> i = lo + Fk_<span class="dv">2</span> &gt; a.<span class="fu">Length</span> - <span class="dv">1</span> ? a.<span class="fu">Length</span> - <span class="dv">1</span> : lo + Fk_<span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-28" title="28">        <span class="kw">if</span> (a[i] &lt; key)</a>
+<a class="sourceLine" id="cb1-29" title="29">        {</a>
+<a class="sourceLine" id="cb1-30" title="30">            lo = lo + Fk_<span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-31" title="31">        }</a>
+<a class="sourceLine" id="cb1-32" title="32">        <span class="kw">else</span> <span class="kw">if</span> (a[i] == key)</a>
+<a class="sourceLine" id="cb1-33" title="33">        {</a>
+<a class="sourceLine" id="cb1-34" title="34">            <span class="kw">return</span> i;</a>
+<a class="sourceLine" id="cb1-35" title="35">        }</a>
+<a class="sourceLine" id="cb1-36" title="36">        Fk = Fk_<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-37" title="37">        Fk_<span class="dv">1</span> = Fk_<span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-38" title="38">        Fk_<span class="dv">2</span> = Fk - Fk_<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-39" title="39">    }</a>
+<a class="sourceLine" id="cb1-40" title="40"></a>
+<a class="sourceLine" id="cb1-41" title="41">    <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-42" title="42">}</a></code></pre></div>
 
 		</div>
 	</div>

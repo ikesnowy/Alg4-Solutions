@@ -140,166 +140,169 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.25</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.25<br>平面上的点。<br>为表 1.2.3 的 Point2D 类型编写三个静态的比较器，<br>一个按照 x 坐标比较，一个按照 y 坐标比较，一个按照点到原点的距离进行比较。<br>编写两个非静态的比较器，一个按照两点到第三点的距离比较，一个按照两点相对于第三点的辐角比较。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答见：<a href="https://algs4.cs.princeton.edu/25applications/Point2D.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/25applications/Point2D.java.html</a></p>
-<p>这些比较器都以嵌套类的形式在 <code>Point2D</code> 中定义。<br>静态比较器直接在类中以静态成员的方式声明。<br>非静态比较器则需要提供工厂方法，该方法新建并返回对应的比较器对象。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 按照 X 顺序比较。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">XOrder</span> <span class="token punctuation">:</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Point2D x<span class="token punctuation">,</span> Point2D y<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>X <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>X<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>X <span class="token operator">></span> y<span class="token punctuation">.</span>X<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 按照 Y 顺序比较。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">YOrder</span> <span class="token punctuation">:</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Point2D x<span class="token punctuation">,</span> Point2D y<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>Y <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>Y<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>Y <span class="token operator">></span> y<span class="token punctuation">.</span>Y<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 按照极径顺序比较。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">ROrder</span> <span class="token punctuation">:</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Point2D x<span class="token punctuation">,</span> Point2D y<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">double</span> delta <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>X <span class="token operator">*</span> x<span class="token punctuation">.</span>X <span class="token operator">+</span> x<span class="token punctuation">.</span>Y <span class="token operator">*</span> x<span class="token punctuation">.</span>Y<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>y<span class="token punctuation">.</span>X <span class="token operator">*</span> y<span class="token punctuation">.</span>X <span class="token operator">+</span> y<span class="token punctuation">.</span>Y <span class="token operator">*</span> y<span class="token punctuation">.</span>Y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>delta <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>delta <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 按照 atan2 值顺序比较。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">Atan2Order</span> <span class="token punctuation">:</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> Point2D parent<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token function">Atan2Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token function">Atan2Order</span><span class="token punctuation">(</span>Point2D parent<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Point2D x<span class="token punctuation">,</span> Point2D y<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">double</span> angle1 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span><span class="token function">AngleTo</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">double</span> angle2 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span><span class="token function">AngleTo</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>angle1 <span class="token operator">&lt;</span> angle2<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>angle1 <span class="token operator">></span> angle2<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 按照极角顺序比较。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">PolorOrder</span> <span class="token punctuation">:</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> Point2D parent<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token function">PolorOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token function">PolorOrder</span><span class="token punctuation">(</span>Point2D parent<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Point2D q1<span class="token punctuation">,</span> Point2D q2<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">double</span> dx1 <span class="token operator">=</span> q1<span class="token punctuation">.</span>X <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span>X<span class="token punctuation">;</span>
-        <span class="token keyword">double</span> dy1 <span class="token operator">=</span> q1<span class="token punctuation">.</span>Y <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span>Y<span class="token punctuation">;</span>
-        <span class="token keyword">double</span> dx2 <span class="token operator">=</span> q2<span class="token punctuation">.</span>X <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span>X<span class="token punctuation">;</span>
-        <span class="token keyword">double</span> dy2 <span class="token operator">=</span> q2<span class="token punctuation">.</span>Y <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span>Y<span class="token punctuation">;</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>dy2 <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> dy2 <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>dy2 <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> dy1 <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>dy1 <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> dy2 <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>dx1 <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> dx2 <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>dx2 <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> dx1 <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token function">CCW</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">,</span> q1<span class="token punctuation">,</span> q2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 按照距离顺序比较。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">DistanceToOrder</span> <span class="token punctuation">:</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> Point2D parent<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token function">DistanceToOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token function">DistanceToOrder</span><span class="token punctuation">(</span>Point2D parent<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Point2D p<span class="token punctuation">,</span> Point2D q<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">double</span> dist1 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span><span class="token function">DistanceSquareTo</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">double</span> dist2 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span><span class="token function">DistanceSquareTo</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>dist1 <span class="token operator">&lt;</span> dist2<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>dist1 <span class="token operator">></span> dist2<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 提供到当前点极角的比较器。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">public</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span> <span class="token function">Polor_Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">PolorOrder</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 提供到当前点 Atan2 值的比较器。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">public</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span> <span class="token function">Atan2_Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Atan2Order</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 提供到当前点距离的比较器。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-<span class="token keyword">public</span> Comparer<span class="token operator">&lt;</span>Point2D<span class="token operator">></span> <span class="token function">DistanceTo_Order</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DistanceToOrder</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.5.25 平面上的点。 为表 1.2.3 的 Point2D 类型编写三个静态的比较器， 一个按照 x 坐标比较，一个按照 y 坐标比较，一个按照点到原点的距离进行比较。 编写两个非静态的比较器，一个按照两点到第三点的距离比较，一个按照两点相对于第三点的辐角比较。</p>
+<h1 id="解答">解答</h1>
+<p>官方解答见：https://algs4.cs.princeton.edu/25applications/Point2D.java.html</p>
+<p>这些比较器都以嵌套类的形式在 <code>Point2D</code> 中定义。 静态比较器直接在类中以静态成员的方式声明。 非静态比较器则需要提供工厂方法，该方法新建并返回对应的比较器对象。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 按照 X 顺序比较。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">private</span> <span class="kw">class</span> XOrder : Comparer&lt;Point2D&gt;</a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Compare</span>(Point2D x, Point2D y)</a>
+<a class="sourceLine" id="cb1-7" title="7">    {</a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="kw">if</span> (x.<span class="fu">X</span> &lt; y.<span class="fu">X</span>)</a>
+<a class="sourceLine" id="cb1-9" title="9">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">if</span> (x.<span class="fu">X</span> &gt; y.<span class="fu">X</span>)</a>
+<a class="sourceLine" id="cb1-11" title="11">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-13" title="13">    }</a>
+<a class="sourceLine" id="cb1-14" title="14">}</a>
+<a class="sourceLine" id="cb1-15" title="15"></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">/// 按照 Y 顺序比较。</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="kw">private</span> <span class="kw">class</span> YOrder : Comparer&lt;Point2D&gt;</a>
+<a class="sourceLine" id="cb1-20" title="20">{</a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Compare</span>(Point2D x, Point2D y)</a>
+<a class="sourceLine" id="cb1-22" title="22">    {</a>
+<a class="sourceLine" id="cb1-23" title="23">        <span class="kw">if</span> (x.<span class="fu">Y</span> &lt; y.<span class="fu">Y</span>)</a>
+<a class="sourceLine" id="cb1-24" title="24">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="kw">if</span> (x.<span class="fu">Y</span> &gt; y.<span class="fu">Y</span>)</a>
+<a class="sourceLine" id="cb1-26" title="26">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-28" title="28">    }</a>
+<a class="sourceLine" id="cb1-29" title="29">}</a>
+<a class="sourceLine" id="cb1-30" title="30"></a>
+<a class="sourceLine" id="cb1-31" title="31"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-32" title="32"><span class="co">/// 按照极径顺序比较。</span></a>
+<a class="sourceLine" id="cb1-33" title="33"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-34" title="34"><span class="kw">private</span> <span class="kw">class</span> ROrder : Comparer&lt;Point2D&gt;</a>
+<a class="sourceLine" id="cb1-35" title="35">{</a>
+<a class="sourceLine" id="cb1-36" title="36">    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Compare</span>(Point2D x, Point2D y)</a>
+<a class="sourceLine" id="cb1-37" title="37">    {</a>
+<a class="sourceLine" id="cb1-38" title="38">        <span class="dt">double</span> delta = (x.<span class="fu">X</span> * x.<span class="fu">X</span> + x.<span class="fu">Y</span> * x.<span class="fu">Y</span>) - (y.<span class="fu">X</span> * y.<span class="fu">X</span> + y.<span class="fu">Y</span> * y.<span class="fu">Y</span>);</a>
+<a class="sourceLine" id="cb1-39" title="39">        <span class="kw">if</span> (delta &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-40" title="40">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-41" title="41">        <span class="kw">if</span> (delta &gt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-42" title="42">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-43" title="43">        <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-44" title="44">    }</a>
+<a class="sourceLine" id="cb1-45" title="45">}</a>
+<a class="sourceLine" id="cb1-46" title="46"></a>
+<a class="sourceLine" id="cb1-47" title="47"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-48" title="48"><span class="co">/// 按照 atan2 值顺序比较。</span></a>
+<a class="sourceLine" id="cb1-49" title="49"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-50" title="50"><span class="kw">private</span> <span class="kw">class</span> Atan2Order : Comparer&lt;Point2D&gt;</a>
+<a class="sourceLine" id="cb1-51" title="51">{</a>
+<a class="sourceLine" id="cb1-52" title="52">    <span class="kw">private</span> Point2D parent;</a>
+<a class="sourceLine" id="cb1-53" title="53">    <span class="kw">public</span> <span class="fu">Atan2Order</span>() { }</a>
+<a class="sourceLine" id="cb1-54" title="54">    <span class="kw">public</span> <span class="fu">Atan2Order</span>(Point2D parent)</a>
+<a class="sourceLine" id="cb1-55" title="55">    {</a>
+<a class="sourceLine" id="cb1-56" title="56">        <span class="kw">this</span>.<span class="fu">parent</span> = parent;</a>
+<a class="sourceLine" id="cb1-57" title="57">    }</a>
+<a class="sourceLine" id="cb1-58" title="58">    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Compare</span>(Point2D x, Point2D y)</a>
+<a class="sourceLine" id="cb1-59" title="59">    {</a>
+<a class="sourceLine" id="cb1-60" title="60">        <span class="dt">double</span> angle1 = <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">AngleTo</span>(x);</a>
+<a class="sourceLine" id="cb1-61" title="61">        <span class="dt">double</span> angle2 = <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">AngleTo</span>(y);</a>
+<a class="sourceLine" id="cb1-62" title="62">        <span class="kw">if</span> (angle1 &lt; angle2)</a>
+<a class="sourceLine" id="cb1-63" title="63">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-64" title="64">        <span class="kw">if</span> (angle1 &gt; angle2)</a>
+<a class="sourceLine" id="cb1-65" title="65">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-66" title="66">        <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-67" title="67">    }</a>
+<a class="sourceLine" id="cb1-68" title="68">}</a>
+<a class="sourceLine" id="cb1-69" title="69"></a>
+<a class="sourceLine" id="cb1-70" title="70"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-71" title="71"><span class="co">/// 按照极角顺序比较。</span></a>
+<a class="sourceLine" id="cb1-72" title="72"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-73" title="73"><span class="kw">private</span> <span class="kw">class</span> PolorOrder : Comparer&lt;Point2D&gt;</a>
+<a class="sourceLine" id="cb1-74" title="74">{</a>
+<a class="sourceLine" id="cb1-75" title="75">    <span class="kw">private</span> Point2D parent;</a>
+<a class="sourceLine" id="cb1-76" title="76">    <span class="kw">public</span> <span class="fu">PolorOrder</span>() { }</a>
+<a class="sourceLine" id="cb1-77" title="77">    <span class="kw">public</span> <span class="fu">PolorOrder</span>(Point2D parent)</a>
+<a class="sourceLine" id="cb1-78" title="78">    {</a>
+<a class="sourceLine" id="cb1-79" title="79">        <span class="kw">this</span>.<span class="fu">parent</span> = parent;</a>
+<a class="sourceLine" id="cb1-80" title="80">    }</a>
+<a class="sourceLine" id="cb1-81" title="81">    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Compare</span>(Point2D q1, Point2D q2)</a>
+<a class="sourceLine" id="cb1-82" title="82">    {</a>
+<a class="sourceLine" id="cb1-83" title="83">        <span class="dt">double</span> dx1 = q1.<span class="fu">X</span> - <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">X</span>;</a>
+<a class="sourceLine" id="cb1-84" title="84">        <span class="dt">double</span> dy1 = q1.<span class="fu">Y</span> - <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">Y</span>;</a>
+<a class="sourceLine" id="cb1-85" title="85">        <span class="dt">double</span> dx2 = q2.<span class="fu">X</span> - <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">X</span>;</a>
+<a class="sourceLine" id="cb1-86" title="86">        <span class="dt">double</span> dy2 = q2.<span class="fu">Y</span> - <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">Y</span>;</a>
+<a class="sourceLine" id="cb1-87" title="87"></a>
+<a class="sourceLine" id="cb1-88" title="88">        <span class="kw">if</span> (dy2 &gt;= <span class="dv">0</span> &amp;&amp; dy2 &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-89" title="89">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-90" title="90">        <span class="kw">else</span> <span class="kw">if</span> (dy2 &gt;= <span class="dv">0</span> &amp;&amp; dy1 &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-91" title="91">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-92" title="92">        <span class="kw">else</span> <span class="kw">if</span> (dy1 == <span class="dv">0</span> &amp;&amp; dy2 == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-93" title="93">        {</a>
+<a class="sourceLine" id="cb1-94" title="94">            <span class="kw">if</span> (dx1 &gt;= <span class="dv">0</span> &amp;&amp; dx2 &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-95" title="95">                <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-96" title="96">            <span class="kw">else</span> <span class="kw">if</span> (dx2 &gt;= <span class="dv">0</span> &amp;&amp; dx1 &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-97" title="97">                <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-98" title="98">            <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-99" title="99">        }</a>
+<a class="sourceLine" id="cb1-100" title="100">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-101" title="101">            <span class="kw">return</span> -<span class="fu">CCW</span>(<span class="kw">this</span>.<span class="fu">parent</span>, q1, q2);</a>
+<a class="sourceLine" id="cb1-102" title="102">    }</a>
+<a class="sourceLine" id="cb1-103" title="103">}</a>
+<a class="sourceLine" id="cb1-104" title="104"></a>
+<a class="sourceLine" id="cb1-105" title="105"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-106" title="106"><span class="co">/// 按照距离顺序比较。</span></a>
+<a class="sourceLine" id="cb1-107" title="107"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-108" title="108"><span class="kw">private</span> <span class="kw">class</span> DistanceToOrder : Comparer&lt;Point2D&gt;</a>
+<a class="sourceLine" id="cb1-109" title="109">{</a>
+<a class="sourceLine" id="cb1-110" title="110">    <span class="kw">private</span> Point2D parent;</a>
+<a class="sourceLine" id="cb1-111" title="111">    <span class="kw">public</span> <span class="fu">DistanceToOrder</span>() { }</a>
+<a class="sourceLine" id="cb1-112" title="112">    <span class="kw">public</span> <span class="fu">DistanceToOrder</span>(Point2D parent)</a>
+<a class="sourceLine" id="cb1-113" title="113">    {</a>
+<a class="sourceLine" id="cb1-114" title="114">        <span class="kw">this</span>.<span class="fu">parent</span> = parent;</a>
+<a class="sourceLine" id="cb1-115" title="115">    }</a>
+<a class="sourceLine" id="cb1-116" title="116">    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Compare</span>(Point2D p, Point2D q)</a>
+<a class="sourceLine" id="cb1-117" title="117">    {</a>
+<a class="sourceLine" id="cb1-118" title="118">        <span class="dt">double</span> dist1 = <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">DistanceSquareTo</span>(p);</a>
+<a class="sourceLine" id="cb1-119" title="119">        <span class="dt">double</span> dist2 = <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">DistanceSquareTo</span>(q);</a>
+<a class="sourceLine" id="cb1-120" title="120"></a>
+<a class="sourceLine" id="cb1-121" title="121">        <span class="kw">if</span> (dist1 &lt; dist2)</a>
+<a class="sourceLine" id="cb1-122" title="122">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-123" title="123">        <span class="kw">else</span> <span class="kw">if</span> (dist1 &gt; dist2)</a>
+<a class="sourceLine" id="cb1-124" title="124">            <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-125" title="125">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-126" title="126">            <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-127" title="127">    }</a>
+<a class="sourceLine" id="cb1-128" title="128">}</a>
+<a class="sourceLine" id="cb1-129" title="129"></a>
+<a class="sourceLine" id="cb1-130" title="130"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-131" title="131"><span class="co">/// 提供到当前点极角的比较器。</span></a>
+<a class="sourceLine" id="cb1-132" title="132"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-133" title="133"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-134" title="134"><span class="kw">public</span> Comparer&lt;Point2D&gt; <span class="fu">Polor_Order</span>()</a>
+<a class="sourceLine" id="cb1-135" title="135">{</a>
+<a class="sourceLine" id="cb1-136" title="136">    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">PolorOrder</span>(<span class="kw">this</span>);</a>
+<a class="sourceLine" id="cb1-137" title="137">}</a>
+<a class="sourceLine" id="cb1-138" title="138"></a>
+<a class="sourceLine" id="cb1-139" title="139"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-140" title="140"><span class="co">/// 提供到当前点 Atan2 值的比较器。</span></a>
+<a class="sourceLine" id="cb1-141" title="141"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-142" title="142"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-143" title="143"><span class="kw">public</span> Comparer&lt;Point2D&gt; <span class="fu">Atan2_Order</span>()</a>
+<a class="sourceLine" id="cb1-144" title="144">{</a>
+<a class="sourceLine" id="cb1-145" title="145">    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Atan2Order</span>(<span class="kw">this</span>);</a>
+<a class="sourceLine" id="cb1-146" title="146">}</a>
+<a class="sourceLine" id="cb1-147" title="147"></a>
+<a class="sourceLine" id="cb1-148" title="148"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-149" title="149"><span class="co">/// 提供到当前点距离的比较器。</span></a>
+<a class="sourceLine" id="cb1-150" title="150"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-151" title="151"><span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-152" title="152"><span class="kw">public</span> Comparer&lt;Point2D&gt; <span class="fu">DistanceTo_Order</span>()</a>
+<a class="sourceLine" id="cb1-153" title="153">{</a>
+<a class="sourceLine" id="cb1-154" title="154">    <span class="kw">return</span> <span class="kw">new</span> <span class="fu">DistanceToOrder</span>(<span class="kw">this</span>);</a>
+<a class="sourceLine" id="cb1-155" title="155">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.5/SortApplication" target="_blank" rel="noopener">SortApplication 库</a></p>
 
 		</div>
 	</div>

@@ -140,161 +140,164 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.34</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.34<br>罕见情况。<br>编写一个测试用例，<br>调用 sort() 方法对实际应用中可能出现困难或极端情况的数组进行排序。<br>比如，数组可能已经是有序的，或是逆序的，<br>数组中的所有主键相同，数组的主键只有两种值，大小是 0 或 1的数组。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p><img src="./1.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Sort<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_34
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.1.34
-     * 
-     * 罕见情况。
-     * 编写一个测试用例，
-     * 调用 sort() 方法对实际应用中可能出现困难或极端情况的数组进行排序。
-     * 比如，数组可能已经是有序的，
-     * 或是逆序的，
-     * 数组中的所有主键相同，
-     * 数组的主键只有两种值，
-     * 大小是 0 或 1 的数组。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            InsertionSort insertionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            SelectionSort selectionSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            ShellSort shellSort <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 逆序</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"逆序"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort Time: "</span> <span class="token operator">+</span> <span class="token function">ReverseSortTest</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort Time: "</span> <span class="token operator">+</span> <span class="token function">ReverseSortTest</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort Time: "</span> <span class="token operator">+</span> <span class="token function">ReverseSortTest</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 顺序</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"顺序"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort Time: "</span> <span class="token operator">+</span> <span class="token function">SortedSortTest</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort Time: "</span> <span class="token operator">+</span> <span class="token function">SortedSortTest</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort Time: "</span> <span class="token operator">+</span> <span class="token function">SortedSortTest</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 主键相同</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"主键相同"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort Time: "</span> <span class="token operator">+</span> <span class="token function">EqualSortTest</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort Time: "</span> <span class="token operator">+</span> <span class="token function">EqualSortTest</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort Time: "</span> <span class="token operator">+</span> <span class="token function">EqualSortTest</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 二元数组</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"二元数组"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort Time: "</span> <span class="token operator">+</span> <span class="token function">BinarySortTest</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort Time: "</span> <span class="token operator">+</span> <span class="token function">BinarySortTest</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort Time: "</span> <span class="token operator">+</span> <span class="token function">BinarySortTest</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 空数组</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"空数组"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort Time: "</span> <span class="token operator">+</span> <span class="token function">ZeroArraySizeSort</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort Time: "</span> <span class="token operator">+</span> <span class="token function">ZeroArraySizeSort</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort Time: "</span> <span class="token operator">+</span> <span class="token function">ZeroArraySizeSort</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 只有一个元素的数组</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"只有一个元素的数组"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Insertion Sort Time: "</span> <span class="token operator">+</span> <span class="token function">OneArraySizeSort</span><span class="token punctuation">(</span>insertionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Selection Sort Time: "</span> <span class="token operator">+</span> <span class="token function">OneArraySizeSort</span><span class="token punctuation">(</span>selectionSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Shell Sort Time: "</span> <span class="token operator">+</span> <span class="token function">OneArraySizeSort</span><span class="token punctuation">(</span>shellSort<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造逆序数组并用其对指定输入算法进行测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sort">需要做测试的算法。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>算法耗时。&lt;/returns></span>
-        <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">ReverseSortTest</span><span class="token punctuation">(</span>BaseSort sort<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">10000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">.</span>Length <span class="token operator">-</span> i<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">return</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>sort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造已排序的数组并用其对指定排序算法测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sort">需要做测试的排序算法。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>算法的耗时。&lt;/returns></span>
-        <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">SortedSortTest</span><span class="token punctuation">(</span>BaseSort sort<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> SortCompare<span class="token punctuation">.</span><span class="token function">TimeSortedInput</span><span class="token punctuation">(</span>sort<span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造只有一个值的数组并用其对指定排序算法做测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sort">需要做测试的排序算法。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>算法的耗时。&lt;/returns></span>
-        <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">EqualSortTest</span><span class="token punctuation">(</span>BaseSort sort<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">10000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> num <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> num<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">return</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>sort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造只有两种取值的数组并用其对指定排序算法做测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sort">需要做测试的排序算法。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>排序算法的耗时。&lt;/returns></span>
-        <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">BinarySortTest</span><span class="token punctuation">(</span>BaseSort sort<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">10000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">return</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>sort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造空数组并用其对指定排序算法做测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sort">需要做测试的排序算法。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>排序算法的耗时。&lt;/returns></span>
-        <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">ZeroArraySizeSort</span><span class="token punctuation">(</span>BaseSort sort<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">return</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>sort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造只有一个元素的数组并用其对指定排序算法做测试。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="sort">需要做测试的排序算法。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>排序算法的耗时。&lt;/returns></span>
-        <span class="token keyword">static</span> <span class="token keyword">double</span> <span class="token function">OneArraySizeSort</span><span class="token punctuation">(</span>BaseSort sort<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">return</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>sort<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.1.34 罕见情况。 编写一个测试用例， 调用 sort() 方法对实际应用中可能出现困难或极端情况的数组进行排序。 比如，数组可能已经是有序的，或是逆序的， 数组中的所有主键相同，数组的主键只有两种值，大小是 0 或 1的数组。</p>
+<h1 id="解答">解答</h1>
+<p><img src="./1.png"></p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Sort;</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">34</span></a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 2.1.34</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 罕见情况。</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 编写一个测试用例，</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 调用 sort() 方法对实际应用中可能出现困难或极端情况的数组进行排序。</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 比如，数组可能已经是有序的，</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * 或是逆序的，</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">     * 数组中的所有主键相同，</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">     * 数组的主键只有两种值，</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">     * 大小是 0 或 1 的数组。</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb1-19" title="19">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-20" title="20">    {</a>
+<a class="sourceLine" id="cb1-21" title="21">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-22" title="22">        {</a>
+<a class="sourceLine" id="cb1-23" title="23">            InsertionSort insertionSort = <span class="kw">new</span> <span class="fu">InsertionSort</span>();</a>
+<a class="sourceLine" id="cb1-24" title="24">            SelectionSort selectionSort = <span class="kw">new</span> <span class="fu">SelectionSort</span>();</a>
+<a class="sourceLine" id="cb1-25" title="25">            ShellSort shellSort = <span class="kw">new</span> <span class="fu">ShellSort</span>();</a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27">            <span class="co">// 逆序</span></a>
+<a class="sourceLine" id="cb1-28" title="28">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;逆序&quot;</span>);</a>
+<a class="sourceLine" id="cb1-29" title="29">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort Time: &quot;</span> + <span class="fu">ReverseSortTest</span>(insertionSort));</a>
+<a class="sourceLine" id="cb1-30" title="30">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort Time: &quot;</span> + <span class="fu">ReverseSortTest</span>(selectionSort));</a>
+<a class="sourceLine" id="cb1-31" title="31">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort Time: &quot;</span> + <span class="fu">ReverseSortTest</span>(shellSort));</a>
+<a class="sourceLine" id="cb1-32" title="32"></a>
+<a class="sourceLine" id="cb1-33" title="33">            <span class="co">// 顺序</span></a>
+<a class="sourceLine" id="cb1-34" title="34">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;顺序&quot;</span>);</a>
+<a class="sourceLine" id="cb1-35" title="35">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort Time: &quot;</span> + <span class="fu">SortedSortTest</span>(insertionSort));</a>
+<a class="sourceLine" id="cb1-36" title="36">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort Time: &quot;</span> + <span class="fu">SortedSortTest</span>(selectionSort));</a>
+<a class="sourceLine" id="cb1-37" title="37">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort Time: &quot;</span> + <span class="fu">SortedSortTest</span>(shellSort));</a>
+<a class="sourceLine" id="cb1-38" title="38"></a>
+<a class="sourceLine" id="cb1-39" title="39">            <span class="co">// 主键相同</span></a>
+<a class="sourceLine" id="cb1-40" title="40">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;主键相同&quot;</span>);</a>
+<a class="sourceLine" id="cb1-41" title="41">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort Time: &quot;</span> + <span class="fu">EqualSortTest</span>(insertionSort));</a>
+<a class="sourceLine" id="cb1-42" title="42">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort Time: &quot;</span> + <span class="fu">EqualSortTest</span>(selectionSort));</a>
+<a class="sourceLine" id="cb1-43" title="43">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort Time: &quot;</span> + <span class="fu">EqualSortTest</span>(shellSort));</a>
+<a class="sourceLine" id="cb1-44" title="44">            </a>
+<a class="sourceLine" id="cb1-45" title="45">            <span class="co">// 二元数组</span></a>
+<a class="sourceLine" id="cb1-46" title="46">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;二元数组&quot;</span>);</a>
+<a class="sourceLine" id="cb1-47" title="47">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort Time: &quot;</span> + <span class="fu">BinarySortTest</span>(insertionSort));</a>
+<a class="sourceLine" id="cb1-48" title="48">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort Time: &quot;</span> + <span class="fu">BinarySortTest</span>(selectionSort));</a>
+<a class="sourceLine" id="cb1-49" title="49">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort Time: &quot;</span> + <span class="fu">BinarySortTest</span>(shellSort));</a>
+<a class="sourceLine" id="cb1-50" title="50"></a>
+<a class="sourceLine" id="cb1-51" title="51">            <span class="co">// 空数组</span></a>
+<a class="sourceLine" id="cb1-52" title="52">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;空数组&quot;</span>);</a>
+<a class="sourceLine" id="cb1-53" title="53">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort Time: &quot;</span> + <span class="fu">ZeroArraySizeSort</span>(insertionSort));</a>
+<a class="sourceLine" id="cb1-54" title="54">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort Time: &quot;</span> + <span class="fu">ZeroArraySizeSort</span>(selectionSort));</a>
+<a class="sourceLine" id="cb1-55" title="55">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort Time: &quot;</span> + <span class="fu">ZeroArraySizeSort</span>(shellSort));</a>
+<a class="sourceLine" id="cb1-56" title="56"></a>
+<a class="sourceLine" id="cb1-57" title="57">            <span class="co">// 只有一个元素的数组</span></a>
+<a class="sourceLine" id="cb1-58" title="58">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;只有一个元素的数组&quot;</span>);</a>
+<a class="sourceLine" id="cb1-59" title="59">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Insertion Sort Time: &quot;</span> + <span class="fu">OneArraySizeSort</span>(insertionSort));</a>
+<a class="sourceLine" id="cb1-60" title="60">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Selection Sort Time: &quot;</span> + <span class="fu">OneArraySizeSort</span>(selectionSort));</a>
+<a class="sourceLine" id="cb1-61" title="61">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Shell Sort Time: &quot;</span> + <span class="fu">OneArraySizeSort</span>(shellSort));</a>
+<a class="sourceLine" id="cb1-62" title="62">        }</a>
+<a class="sourceLine" id="cb1-63" title="63"></a>
+<a class="sourceLine" id="cb1-64" title="64">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-65" title="65">        <span class="co">/// 构造逆序数组并用其对指定输入算法进行测试。</span></a>
+<a class="sourceLine" id="cb1-66" title="66">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-67" title="67">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sort&quot;</span><span class="kw">&gt;</span><span class="co">需要做测试的算法。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-68" title="68">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">算法耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-69" title="69">        <span class="kw">static</span> <span class="dt">double</span> <span class="fu">ReverseSortTest</span>(BaseSort sort)</a>
+<a class="sourceLine" id="cb1-70" title="70">        {</a>
+<a class="sourceLine" id="cb1-71" title="71">            <span class="dt">int</span>[] array = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">10000</span>];</a>
+<a class="sourceLine" id="cb1-72" title="72">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; array.<span class="fu">Length</span>; i++)</a>
+<a class="sourceLine" id="cb1-73" title="73">            {</a>
+<a class="sourceLine" id="cb1-74" title="74">                array[i] = array.<span class="fu">Length</span> - i;</a>
+<a class="sourceLine" id="cb1-75" title="75">            }</a>
+<a class="sourceLine" id="cb1-76" title="76"></a>
+<a class="sourceLine" id="cb1-77" title="77">            <span class="kw">return</span> SortCompare.<span class="fu">Time</span>(sort, array);</a>
+<a class="sourceLine" id="cb1-78" title="78">        }</a>
+<a class="sourceLine" id="cb1-79" title="79"></a>
+<a class="sourceLine" id="cb1-80" title="80">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-81" title="81">        <span class="co">/// 构造已排序的数组并用其对指定排序算法测试。</span></a>
+<a class="sourceLine" id="cb1-82" title="82">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-83" title="83">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sort&quot;</span><span class="kw">&gt;</span><span class="co">需要做测试的排序算法。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-84" title="84">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">算法的耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-85" title="85">        <span class="kw">static</span> <span class="dt">double</span> <span class="fu">SortedSortTest</span>(BaseSort sort)</a>
+<a class="sourceLine" id="cb1-86" title="86">        {</a>
+<a class="sourceLine" id="cb1-87" title="87">            <span class="kw">return</span> SortCompare.<span class="fu">TimeSortedInput</span>(sort, <span class="dv">10000</span>, <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-88" title="88">        }</a>
+<a class="sourceLine" id="cb1-89" title="89"></a>
+<a class="sourceLine" id="cb1-90" title="90">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-91" title="91">        <span class="co">/// 构造只有一个值的数组并用其对指定排序算法做测试。</span></a>
+<a class="sourceLine" id="cb1-92" title="92">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-93" title="93">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sort&quot;</span><span class="kw">&gt;</span><span class="co">需要做测试的排序算法。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-94" title="94">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">算法的耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-95" title="95">        <span class="kw">static</span> <span class="dt">double</span> <span class="fu">EqualSortTest</span>(BaseSort sort)</a>
+<a class="sourceLine" id="cb1-96" title="96">        {</a>
+<a class="sourceLine" id="cb1-97" title="97">            <span class="dt">int</span>[] array = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">10000</span>];</a>
+<a class="sourceLine" id="cb1-98" title="98">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb1-99" title="99">            <span class="dt">int</span> num = random.<span class="fu">Next</span>();</a>
+<a class="sourceLine" id="cb1-100" title="100">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; array.<span class="fu">Length</span>; i++)</a>
+<a class="sourceLine" id="cb1-101" title="101">            {</a>
+<a class="sourceLine" id="cb1-102" title="102">                array[i] = num;</a>
+<a class="sourceLine" id="cb1-103" title="103">            }</a>
+<a class="sourceLine" id="cb1-104" title="104"></a>
+<a class="sourceLine" id="cb1-105" title="105">            <span class="kw">return</span> SortCompare.<span class="fu">Time</span>(sort, array);</a>
+<a class="sourceLine" id="cb1-106" title="106">        }</a>
+<a class="sourceLine" id="cb1-107" title="107"></a>
+<a class="sourceLine" id="cb1-108" title="108">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-109" title="109">        <span class="co">/// 构造只有两种取值的数组并用其对指定排序算法做测试。</span></a>
+<a class="sourceLine" id="cb1-110" title="110">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-111" title="111">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sort&quot;</span><span class="kw">&gt;</span><span class="co">需要做测试的排序算法。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-112" title="112">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">排序算法的耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-113" title="113">        <span class="kw">static</span> <span class="dt">double</span> <span class="fu">BinarySortTest</span>(BaseSort sort)</a>
+<a class="sourceLine" id="cb1-114" title="114">        {</a>
+<a class="sourceLine" id="cb1-115" title="115">            <span class="dt">int</span>[] array = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">10000</span>];</a>
+<a class="sourceLine" id="cb1-116" title="116">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb1-117" title="117">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; array.<span class="fu">Length</span>; i++)</a>
+<a class="sourceLine" id="cb1-118" title="118">            {</a>
+<a class="sourceLine" id="cb1-119" title="119">                array[i] = random.<span class="fu">Next</span>(<span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb1-120" title="120">            }</a>
+<a class="sourceLine" id="cb1-121" title="121"></a>
+<a class="sourceLine" id="cb1-122" title="122">            <span class="kw">return</span> SortCompare.<span class="fu">Time</span>(sort, array);</a>
+<a class="sourceLine" id="cb1-123" title="123">        }</a>
+<a class="sourceLine" id="cb1-124" title="124"></a>
+<a class="sourceLine" id="cb1-125" title="125">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-126" title="126">        <span class="co">/// 构造空数组并用其对指定排序算法做测试。</span></a>
+<a class="sourceLine" id="cb1-127" title="127">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-128" title="128">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sort&quot;</span><span class="kw">&gt;</span><span class="co">需要做测试的排序算法。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-129" title="129">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">排序算法的耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-130" title="130">        <span class="kw">static</span> <span class="dt">double</span> <span class="fu">ZeroArraySizeSort</span>(BaseSort sort)</a>
+<a class="sourceLine" id="cb1-131" title="131">        {</a>
+<a class="sourceLine" id="cb1-132" title="132">            <span class="dt">int</span>[] array = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb1-133" title="133"></a>
+<a class="sourceLine" id="cb1-134" title="134">            <span class="kw">return</span> SortCompare.<span class="fu">Time</span>(sort, array);</a>
+<a class="sourceLine" id="cb1-135" title="135">        }</a>
+<a class="sourceLine" id="cb1-136" title="136"></a>
+<a class="sourceLine" id="cb1-137" title="137">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-138" title="138">        <span class="co">/// 构造只有一个元素的数组并用其对指定排序算法做测试。</span></a>
+<a class="sourceLine" id="cb1-139" title="139">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-140" title="140">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;sort&quot;</span><span class="kw">&gt;</span><span class="co">需要做测试的排序算法。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-141" title="141">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">排序算法的耗时。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-142" title="142">        <span class="kw">static</span> <span class="dt">double</span> <span class="fu">OneArraySizeSort</span>(BaseSort sort)</a>
+<a class="sourceLine" id="cb1-143" title="143">        {</a>
+<a class="sourceLine" id="cb1-144" title="144">            <span class="dt">int</span>[] array = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb1-145" title="145">            Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb1-146" title="146">            array[<span class="dv">0</span>] = random.<span class="fu">Next</span>();</a>
+<a class="sourceLine" id="cb1-147" title="147"></a>
+<a class="sourceLine" id="cb1-148" title="148">            <span class="kw">return</span> SortCompare.<span class="fu">Time</span>(sort, array);</a>
+<a class="sourceLine" id="cb1-149" title="149">        }</a>
+<a class="sourceLine" id="cb1-150" title="150">    }</a>
+<a class="sourceLine" id="cb1-151" title="151">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
 
 		</div>
 	</div>

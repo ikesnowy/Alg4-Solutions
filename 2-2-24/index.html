@@ -140,49 +140,52 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.2.24</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.24<br>改进的有序测试。<br>在实验中用大型随机数组评估练习 2.2.8 所做的修改的效果。<br>根据经验用 N（被排序的原始数组的大小）的函数描述条件语句<br>（<code>a[mid] &lt;= a[mid + 1]</code>）成立（无论数组是否有序）的次数。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p><img src="./1.png" alt=""><br>约为 $ lgN $ 次</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Merge<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_2<span class="token punctuation">.</span>_24
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.2.24
-     * 
-     * 改进的有序测试。
-     * 在实验中用大型随机数组评估练习 2.2.8 所做的修改的效果。
-     * 根据经验用 N（被排序的原始数组的大小）的函数描述条件语句
-     * （a[mid] &lt;= a[mid + 1]）成立（无论数组是否有序）的次数。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            MergeSortX mergeSortX <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MergeSortX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> trialTimes <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"数组\t平均命中次数"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">int</span> avgHit <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> trialTimes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    mergeSortX<span class="token punctuation">.</span><span class="token function">ResetHitTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetRandomArrayInt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    mergeSortX<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    avgHit <span class="token operator">+</span><span class="token operator">=</span> mergeSortX<span class="token punctuation">.</span><span class="token function">GetHitTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> avgHit <span class="token operator">/</span> trialTimes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                n <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2/Merge" target="_blank" rel="noopener">Merge 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.2.24 改进的有序测试。 在实验中用大型随机数组评估练习 2.2.8 所做的修改的效果。 根据经验用 N（被排序的原始数组的大小）的函数描述条件语句 （<code>a[mid] &lt;= a[mid + 1]</code>）成立（无论数组是否有序）的次数。</p>
+<h1 id="解答">解答</h1>
+<p><img src="./1.png"> 约为 $ lgN $ 次</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Merge;</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">2.</span>_<span class="dv">24</span></a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 2.2.24</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 改进的有序测试。</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 在实验中用大型随机数组评估练习 2.2.8 所做的修改的效果。</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 根据经验用 N（被排序的原始数组的大小）的函数描述条件语句</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * （a[mid] &lt;= a[mid + 1]）成立（无论数组是否有序）的次数。</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-16" title="16">    {</a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-18" title="18">        {</a>
+<a class="sourceLine" id="cb1-19" title="19">            MergeSortX mergeSortX = <span class="kw">new</span> <span class="fu">MergeSortX</span>();</a>
+<a class="sourceLine" id="cb1-20" title="20">            <span class="dt">int</span> n = <span class="dv">10000</span>;</a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">int</span> trialTimes = <span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb1-22" title="22">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;数组</span><span class="sc">\t</span><span class="st">平均命中次数&quot;</span>);</a>
+<a class="sourceLine" id="cb1-23" title="23">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">4</span>; i++)</a>
+<a class="sourceLine" id="cb1-24" title="24">            {</a>
+<a class="sourceLine" id="cb1-25" title="25">                <span class="dt">int</span> avgHit = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-26" title="26">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; trialTimes; j++)</a>
+<a class="sourceLine" id="cb1-27" title="27">                {</a>
+<a class="sourceLine" id="cb1-28" title="28">                    mergeSortX.<span class="fu">ResetHitTime</span>();</a>
+<a class="sourceLine" id="cb1-29" title="29">                    <span class="dt">int</span>[] a = SortCompare.<span class="fu">GetRandomArrayInt</span>(n);</a>
+<a class="sourceLine" id="cb1-30" title="30">                    mergeSortX.<span class="fu">Sort</span>(a);</a>
+<a class="sourceLine" id="cb1-31" title="31">                    avgHit += mergeSortX.<span class="fu">GetHitTime</span>();</a>
+<a class="sourceLine" id="cb1-32" title="32">                }</a>
+<a class="sourceLine" id="cb1-33" title="33"></a>
+<a class="sourceLine" id="cb1-34" title="34">                Console.<span class="fu">WriteLine</span>(n + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> + avgHit / trialTimes);</a>
+<a class="sourceLine" id="cb1-35" title="35">                n *= <span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb1-36" title="36">            }</a>
+<a class="sourceLine" id="cb1-37" title="37">        }</a>
+<a class="sourceLine" id="cb1-38" title="38">    }</a>
+<a class="sourceLine" id="cb1-39" title="39">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2/Merge" target="_blank" rel="noopener">Merge 库</a></p>
 
 		</div>
 	</div>

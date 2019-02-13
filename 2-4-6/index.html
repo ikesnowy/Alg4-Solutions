@@ -140,9 +140,11 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.4.6</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.6<br>按照练习 2.4.1 的规则，<br>用序列 <code>P R I O * R * * I * T * Y * * * Q U E * * * U * E</code> 操作一个初始空间为空的面向最大元素的堆，<br>给出每次操作后堆的内容。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方给出的最大堆实现：<a href="https://algs4.cs.princeton.edu/24pq/MaxPQ.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/24pq/MaxPQ.java.html</a></p>
-<p>运行示意图：<br><img src="./1.gif" alt=""></p>
+			<h1 id="题目">题目</h1>
+<p>2.4.6 按照练习 2.4.1 的规则， 用序列 <code>P R I O * R * * I * T * Y * * * Q U E * * * U * E</code> 操作一个初始空间为空的面向最大元素的堆， 给出每次操作后堆的内容。</p>
+<h1 id="解答">解答</h1>
+<p>官方给出的最大堆实现：https://algs4.cs.princeton.edu/24pq/MaxPQ.java.html</p>
+<p>运行示意图： <img src="./1.gif"></p>
 <p>运行结果：</p>
 <pre><code>P
 R P
@@ -168,205 +170,205 @@ E
 
 U
 
-E
-</code></pre><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>最大堆的实现</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> PriorityQueue
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 最大堆。（数组实现）</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token comment" spellcheck="true">/// &lt;typeparam name="Key">最大堆中保存的元素。&lt;/typeparam></span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MaxPQ</span><span class="token operator">&lt;</span>Key<span class="token operator">></span> <span class="token punctuation">:</span> IMaxPQ<span class="token operator">&lt;</span>Key<span class="token operator">></span><span class="token punctuation">,</span> IEnumerable<span class="token operator">&lt;</span>Key<span class="token operator">></span> <span class="token keyword">where</span> Key <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Key<span class="token operator">></span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> Key<span class="token punctuation">[</span><span class="token punctuation">]</span> pq<span class="token punctuation">;</span>               <span class="token comment" spellcheck="true">// 保存元素的数组。</span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> n<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">// 堆中的元素数量。</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">public</span> <span class="token function">MaxPQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 建立指定容量的最大堆。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="capacity">最大堆的容量。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token function">MaxPQ</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Key</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 删除并返回最大元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> Key <span class="token function">DelMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentOutOfRangeException</span><span class="token punctuation">(</span><span class="token string">"Priority Queue Underflow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            Key max <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token function">Exch</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Sink</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">(</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">.</span>Length <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">.</span>Length <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> max<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 向堆中插入一个元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="v">需要插入的元素。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Insert</span><span class="token punctuation">(</span>Key v<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-                <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">.</span>Length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span><span class="token operator">++</span><span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
-            <span class="token function">Swim</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 检查堆是否为空。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获得堆中最大元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> Key <span class="token function">Max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获得堆中元素的数量。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获取堆的迭代器，元素以降序排列。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> IEnumerator<span class="token operator">&lt;</span>Key<span class="token operator">></span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            MaxPQ<span class="token operator">&lt;</span>Key<span class="token operator">></span> copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxPQ</span><span class="token operator">&lt;</span>Key<span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-                copy<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>copy<span class="token punctuation">.</span><span class="token function">IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token keyword">yield</span> <span class="token keyword">return</span> copy<span class="token punctuation">.</span><span class="token function">DelMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 下次迭代的时候从这里继续执行。</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获取堆的迭代器，元素以降序排列。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        IEnumerator IEnumerable<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 使元素上浮。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="k">需要上浮的元素。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Swim</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>k <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token function">Exch</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> k <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                k <span class="token operator">/</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 使元素下沉。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="k">需要下沉的元素。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Sink</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> k<span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    j<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">Less</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">break</span><span class="token punctuation">;</span>
-                <span class="token function">Exch</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                k <span class="token operator">=</span> j<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 重新调整堆的大小。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="capacity">调整后的堆大小。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Key<span class="token punctuation">[</span><span class="token punctuation">]</span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Key</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                temp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>pq <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 判断堆中某个元素是否小于另一元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="i">判断是否较小的元素。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="j">判断是否较大的元素。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token function">Less</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span>
-            <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">;</span> 
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 交换堆中的两个元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="i">要交换的第一个元素下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="j">要交换的第二个元素下标。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Exch</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Key swap <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>pq<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> swap<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 检查当前二叉树是不是一个最大堆。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token function">IsMaxHeap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">IsMaxHeap</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 确定以 k 为根节点的二叉树是不是一个最大堆。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="k">需要检查的二叉树根节点。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token function">IsMaxHeap</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> k<span class="token punctuation">;</span>
-            <span class="token keyword">int</span> right <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> left<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">return</span> <span class="token function">IsMaxHeap</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">IsMaxHeap</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
+E</code></pre>
+<h1 id="代码">代码</h1>
+<p>最大堆的实现</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">using</span> System.<span class="fu">Collections</span>.<span class="fu">Generic</span>;</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">namespace</span> PriorityQueue</a>
+<a class="sourceLine" id="cb2-6" title="6">{</a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="co">/// 最大堆。（数组实现）</span></a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-10" title="10">    <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;Key&quot;</span><span class="kw">&gt;</span><span class="co">最大堆中保存的元素。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb2-11" title="11">    <span class="kw">public</span> <span class="kw">class</span> MaxPQ&lt;Key&gt; : IMaxPQ&lt;Key&gt;, IEnumerable&lt;Key&gt; where Key : IComparable&lt;Key&gt;</a>
+<a class="sourceLine" id="cb2-12" title="12">    {</a>
+<a class="sourceLine" id="cb2-13" title="13">        <span class="kw">private</span> Key[] pq;               <span class="co">// 保存元素的数组。</span></a>
+<a class="sourceLine" id="cb2-14" title="14">        <span class="kw">private</span> <span class="dt">int</span> n;                  <span class="co">// 堆中的元素数量。</span></a>
+<a class="sourceLine" id="cb2-15" title="15"></a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="co">/// 默认构造函数。</span></a>
+<a class="sourceLine" id="cb2-18" title="18">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">        <span class="kw">public</span> <span class="fu">MaxPQ</span>() : <span class="kw">this</span>(<span class="dv">1</span>) { }</a>
+<a class="sourceLine" id="cb2-20" title="20"></a>
+<a class="sourceLine" id="cb2-21" title="21">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-22" title="22">        <span class="co">/// 建立指定容量的最大堆。</span></a>
+<a class="sourceLine" id="cb2-23" title="23">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-24" title="24">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;capacity&quot;</span><span class="kw">&gt;</span><span class="co">最大堆的容量。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-25" title="25">        <span class="kw">public</span> <span class="fu">MaxPQ</span>(<span class="dt">int</span> capacity)</a>
+<a class="sourceLine" id="cb2-26" title="26">        {</a>
+<a class="sourceLine" id="cb2-27" title="27">            <span class="kw">this</span>.<span class="fu">pq</span> = <span class="kw">new</span> Key[capacity];</a>
+<a class="sourceLine" id="cb2-28" title="28">            <span class="kw">this</span>.<span class="fu">n</span> = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-29" title="29">        }</a>
+<a class="sourceLine" id="cb2-30" title="30"></a>
+<a class="sourceLine" id="cb2-31" title="31">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-32" title="32">        <span class="co">/// 删除并返回最大元素。</span></a>
+<a class="sourceLine" id="cb2-33" title="33">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-34" title="34">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-35" title="35">        <span class="kw">public</span> Key <span class="fu">DelMax</span>()</a>
+<a class="sourceLine" id="cb2-36" title="36">        {</a>
+<a class="sourceLine" id="cb2-37" title="37">            <span class="kw">if</span> (<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb2-38" title="38">                <span class="kw">throw</span> <span class="kw">new</span> <span class="fu">ArgumentOutOfRangeException</span>(<span class="st">&quot;Priority Queue Underflow&quot;</span>);</a>
+<a class="sourceLine" id="cb2-39" title="39"></a>
+<a class="sourceLine" id="cb2-40" title="40">            Key max = <span class="kw">this</span>.<span class="fu">pq</span>[<span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb2-41" title="41">            <span class="fu">Exch</span>(<span class="dv">1</span>, <span class="kw">this</span>.<span class="fu">n</span>--);</a>
+<a class="sourceLine" id="cb2-42" title="42">            <span class="fu">Sink</span>(<span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb2-43" title="43">            <span class="kw">this</span>.<span class="fu">pq</span>[<span class="kw">this</span>.<span class="fu">n</span> + <span class="dv">1</span>] = <span class="kw">default</span>(Key);</a>
+<a class="sourceLine" id="cb2-44" title="44">            <span class="kw">if</span> ((<span class="kw">this</span>.<span class="fu">n</span> &gt; <span class="dv">0</span>) &amp;&amp; (<span class="kw">this</span>.<span class="fu">n</span> == <span class="kw">this</span>.<span class="fu">pq</span>.<span class="fu">Length</span> / <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb2-45" title="45">                <span class="fu">Resize</span>(<span class="kw">this</span>.<span class="fu">pq</span>.<span class="fu">Length</span> / <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb2-46" title="46">            <span class="kw">return</span> max;</a>
+<a class="sourceLine" id="cb2-47" title="47">        }</a>
+<a class="sourceLine" id="cb2-48" title="48"></a>
+<a class="sourceLine" id="cb2-49" title="49">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-50" title="50">        <span class="co">/// 向堆中插入一个元素。</span></a>
+<a class="sourceLine" id="cb2-51" title="51">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-52" title="52">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;v&quot;</span><span class="kw">&gt;</span><span class="co">需要插入的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-53" title="53">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Insert</span>(Key v)</a>
+<a class="sourceLine" id="cb2-54" title="54">        {</a>
+<a class="sourceLine" id="cb2-55" title="55">            <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">n</span> == <span class="kw">this</span>.<span class="fu">pq</span>.<span class="fu">Length</span> - <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-56" title="56">                <span class="fu">Resize</span>(<span class="dv">2</span> * <span class="kw">this</span>.<span class="fu">pq</span>.<span class="fu">Length</span>);</a>
+<a class="sourceLine" id="cb2-57" title="57"></a>
+<a class="sourceLine" id="cb2-58" title="58">            <span class="kw">this</span>.<span class="fu">pq</span>[++<span class="kw">this</span>.<span class="fu">n</span>] = v;</a>
+<a class="sourceLine" id="cb2-59" title="59">            <span class="fu">Swim</span>(<span class="kw">this</span>.<span class="fu">n</span>);</a>
+<a class="sourceLine" id="cb2-60" title="60">        }</a>
+<a class="sourceLine" id="cb2-61" title="61"></a>
+<a class="sourceLine" id="cb2-62" title="62">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-63" title="63">        <span class="co">/// 检查堆是否为空。</span></a>
+<a class="sourceLine" id="cb2-64" title="64">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-65" title="65">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-66" title="66">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">IsEmpty</span>() =&gt; <span class="kw">this</span>.<span class="fu">n</span> == <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-67" title="67"></a>
+<a class="sourceLine" id="cb2-68" title="68">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-69" title="69">        <span class="co">/// 获得堆中最大元素。</span></a>
+<a class="sourceLine" id="cb2-70" title="70">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-71" title="71">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-72" title="72">        <span class="kw">public</span> Key <span class="fu">Max</span>() =&gt; <span class="kw">this</span>.<span class="fu">pq</span>[<span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb2-73" title="73"></a>
+<a class="sourceLine" id="cb2-74" title="74">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-75" title="75">        <span class="co">/// 获得堆中元素的数量。</span></a>
+<a class="sourceLine" id="cb2-76" title="76">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-77" title="77">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-78" title="78">        <span class="kw">public</span> <span class="dt">int</span> <span class="fu">Size</span>() =&gt; <span class="kw">this</span>.<span class="fu">n</span>;</a>
+<a class="sourceLine" id="cb2-79" title="79"></a>
+<a class="sourceLine" id="cb2-80" title="80">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-81" title="81">        <span class="co">/// 获取堆的迭代器，元素以降序排列。</span></a>
+<a class="sourceLine" id="cb2-82" title="82">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-83" title="83">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-84" title="84">        <span class="kw">public</span> IEnumerator&lt;Key&gt; <span class="fu">GetEnumerator</span>()</a>
+<a class="sourceLine" id="cb2-85" title="85">        {</a>
+<a class="sourceLine" id="cb2-86" title="86">            MaxPQ&lt;Key&gt; copy = <span class="kw">new</span> MaxPQ&lt;Key&gt;(<span class="kw">this</span>.<span class="fu">n</span>);</a>
+<a class="sourceLine" id="cb2-87" title="87">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt;= <span class="kw">this</span>.<span class="fu">n</span>; i++)</a>
+<a class="sourceLine" id="cb2-88" title="88">                copy.<span class="fu">Insert</span>(<span class="kw">this</span>.<span class="fu">pq</span>[i]);</a>
+<a class="sourceLine" id="cb2-89" title="89"></a>
+<a class="sourceLine" id="cb2-90" title="90">            <span class="kw">while</span> (!copy.<span class="fu">IsEmpty</span>())</a>
+<a class="sourceLine" id="cb2-91" title="91">                <span class="kw">yield</span> <span class="kw">return</span> copy.<span class="fu">DelMax</span>(); <span class="co">// 下次迭代的时候从这里继续执行。</span></a>
+<a class="sourceLine" id="cb2-92" title="92">        }</a>
+<a class="sourceLine" id="cb2-93" title="93"></a>
+<a class="sourceLine" id="cb2-94" title="94">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-95" title="95">        <span class="co">/// 获取堆的迭代器，元素以降序排列。</span></a>
+<a class="sourceLine" id="cb2-96" title="96">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-97" title="97">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-98" title="98">        IEnumerator IEnumerable.<span class="fu">GetEnumerator</span>()</a>
+<a class="sourceLine" id="cb2-99" title="99">        {</a>
+<a class="sourceLine" id="cb2-100" title="100">            <span class="kw">return</span> <span class="fu">GetEnumerator</span>();</a>
+<a class="sourceLine" id="cb2-101" title="101">        }</a>
+<a class="sourceLine" id="cb2-102" title="102"></a>
+<a class="sourceLine" id="cb2-103" title="103">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-104" title="104">        <span class="co">/// 使元素上浮。</span></a>
+<a class="sourceLine" id="cb2-105" title="105">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-106" title="106">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要上浮的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-107" title="107">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Swim</span>(<span class="dt">int</span> k)</a>
+<a class="sourceLine" id="cb2-108" title="108">        {</a>
+<a class="sourceLine" id="cb2-109" title="109">            <span class="kw">while</span> (k &gt; <span class="dv">1</span> &amp;&amp; <span class="fu">Less</span>(k / <span class="dv">2</span>, k))</a>
+<a class="sourceLine" id="cb2-110" title="110">            {</a>
+<a class="sourceLine" id="cb2-111" title="111">                <span class="fu">Exch</span>(k, k / <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb2-112" title="112">                k /= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb2-113" title="113">            }</a>
+<a class="sourceLine" id="cb2-114" title="114">        }</a>
+<a class="sourceLine" id="cb2-115" title="115"></a>
+<a class="sourceLine" id="cb2-116" title="116">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-117" title="117">        <span class="co">/// 使元素下沉。</span></a>
+<a class="sourceLine" id="cb2-118" title="118">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-119" title="119">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要下沉的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-120" title="120">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Sink</span>(<span class="dt">int</span> k)</a>
+<a class="sourceLine" id="cb2-121" title="121">        {</a>
+<a class="sourceLine" id="cb2-122" title="122">            <span class="kw">while</span> (k * <span class="dv">2</span> &lt;= <span class="kw">this</span>.<span class="fu">n</span>)</a>
+<a class="sourceLine" id="cb2-123" title="123">            {</a>
+<a class="sourceLine" id="cb2-124" title="124">                <span class="dt">int</span> j = <span class="dv">2</span> * k;</a>
+<a class="sourceLine" id="cb2-125" title="125">                <span class="kw">if</span> (j &lt; <span class="kw">this</span>.<span class="fu">n</span> &amp;&amp; <span class="fu">Less</span>(j, j + <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb2-126" title="126">                    j++;</a>
+<a class="sourceLine" id="cb2-127" title="127">                <span class="kw">if</span> (!<span class="fu">Less</span>(k, j))</a>
+<a class="sourceLine" id="cb2-128" title="128">                    <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb2-129" title="129">                <span class="fu">Exch</span>(k, j);</a>
+<a class="sourceLine" id="cb2-130" title="130">                k = j;</a>
+<a class="sourceLine" id="cb2-131" title="131">            }</a>
+<a class="sourceLine" id="cb2-132" title="132">        }</a>
+<a class="sourceLine" id="cb2-133" title="133"></a>
+<a class="sourceLine" id="cb2-134" title="134">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-135" title="135">        <span class="co">/// 重新调整堆的大小。</span></a>
+<a class="sourceLine" id="cb2-136" title="136">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-137" title="137">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;capacity&quot;</span><span class="kw">&gt;</span><span class="co">调整后的堆大小。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-138" title="138">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Resize</span>(<span class="dt">int</span> capacity)</a>
+<a class="sourceLine" id="cb2-139" title="139">        {</a>
+<a class="sourceLine" id="cb2-140" title="140">            Key[] temp = <span class="kw">new</span> Key[capacity];</a>
+<a class="sourceLine" id="cb2-141" title="141">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt;= <span class="kw">this</span>.<span class="fu">n</span>; i++)</a>
+<a class="sourceLine" id="cb2-142" title="142">            {</a>
+<a class="sourceLine" id="cb2-143" title="143">                temp[i] = <span class="kw">this</span>.<span class="fu">pq</span>[i];</a>
+<a class="sourceLine" id="cb2-144" title="144">            }</a>
+<a class="sourceLine" id="cb2-145" title="145">            <span class="kw">this</span>.<span class="fu">pq</span> = temp;</a>
+<a class="sourceLine" id="cb2-146" title="146">        }</a>
+<a class="sourceLine" id="cb2-147" title="147"></a>
+<a class="sourceLine" id="cb2-148" title="148">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-149" title="149">        <span class="co">/// 判断堆中某个元素是否小于另一元素。</span></a>
+<a class="sourceLine" id="cb2-150" title="150">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-151" title="151">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;i&quot;</span><span class="kw">&gt;</span><span class="co">判断是否较小的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-152" title="152">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;j&quot;</span><span class="kw">&gt;</span><span class="co">判断是否较大的元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-153" title="153">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-154" title="154">        <span class="kw">private</span> <span class="dt">bool</span> <span class="fu">Less</span>(<span class="dt">int</span> i, <span class="dt">int</span> j)</a>
+<a class="sourceLine" id="cb2-155" title="155">            =&gt; <span class="kw">this</span>.<span class="fu">pq</span>[i].<span class="fu">CompareTo</span>(<span class="kw">this</span>.<span class="fu">pq</span>[j]) &lt; <span class="dv">0</span>; </a>
+<a class="sourceLine" id="cb2-156" title="156"></a>
+<a class="sourceLine" id="cb2-157" title="157">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-158" title="158">        <span class="co">/// 交换堆中的两个元素。</span></a>
+<a class="sourceLine" id="cb2-159" title="159">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-160" title="160">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;i&quot;</span><span class="kw">&gt;</span><span class="co">要交换的第一个元素下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-161" title="161">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;j&quot;</span><span class="kw">&gt;</span><span class="co">要交换的第二个元素下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-162" title="162">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Exch</span>(<span class="dt">int</span> i, <span class="dt">int</span> j)</a>
+<a class="sourceLine" id="cb2-163" title="163">        {</a>
+<a class="sourceLine" id="cb2-164" title="164">            Key swap = <span class="kw">this</span>.<span class="fu">pq</span>[i];</a>
+<a class="sourceLine" id="cb2-165" title="165">            <span class="kw">this</span>.<span class="fu">pq</span>[i] = <span class="kw">this</span>.<span class="fu">pq</span>[j];</a>
+<a class="sourceLine" id="cb2-166" title="166">            <span class="kw">this</span>.<span class="fu">pq</span>[j] = swap;</a>
+<a class="sourceLine" id="cb2-167" title="167">        }</a>
+<a class="sourceLine" id="cb2-168" title="168"></a>
+<a class="sourceLine" id="cb2-169" title="169">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-170" title="170">        <span class="co">/// 检查当前二叉树是不是一个最大堆。</span></a>
+<a class="sourceLine" id="cb2-171" title="171">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-172" title="172">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-173" title="173">        <span class="kw">private</span> <span class="dt">bool</span> <span class="fu">IsMaxHeap</span>() =&gt; <span class="fu">IsMaxHeap</span>(<span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb2-174" title="174"></a>
+<a class="sourceLine" id="cb2-175" title="175">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-176" title="176">        <span class="co">/// 确定以 k 为根节点的二叉树是不是一个最大堆。</span></a>
+<a class="sourceLine" id="cb2-177" title="177">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-178" title="178">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">需要检查的二叉树根节点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-179" title="179">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-180" title="180">        <span class="kw">private</span> <span class="dt">bool</span> <span class="fu">IsMaxHeap</span>(<span class="dt">int</span> k)</a>
+<a class="sourceLine" id="cb2-181" title="181">        {</a>
+<a class="sourceLine" id="cb2-182" title="182">            <span class="kw">if</span> (k &gt; <span class="kw">this</span>.<span class="fu">n</span>)</a>
+<a class="sourceLine" id="cb2-183" title="183">                <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb2-184" title="184">            <span class="dt">int</span> left = <span class="dv">2</span> * k;</a>
+<a class="sourceLine" id="cb2-185" title="185">            <span class="dt">int</span> right = <span class="dv">2</span> * k + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-186" title="186">            <span class="kw">if</span> (left &lt;= <span class="kw">this</span>.<span class="fu">n</span> &amp;&amp; <span class="fu">Less</span>(k, left))</a>
+<a class="sourceLine" id="cb2-187" title="187">                <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb2-188" title="188">            <span class="kw">if</span> (right &lt;= <span class="kw">this</span>.<span class="fu">n</span> &amp;&amp; <span class="fu">Less</span>(k, right))</a>
+<a class="sourceLine" id="cb2-189" title="189">                <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb2-190" title="190"></a>
+<a class="sourceLine" id="cb2-191" title="191">            <span class="kw">return</span> <span class="fu">IsMaxHeap</span>(left) &amp;&amp; <span class="fu">IsMaxHeap</span>(right);</a>
+<a class="sourceLine" id="cb2-192" title="192">        }</a>
+<a class="sourceLine" id="cb2-193" title="193">    }</a>
+<a class="sourceLine" id="cb2-194" title="194">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>

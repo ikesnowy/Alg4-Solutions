@@ -140,95 +140,97 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.31</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.31<br>随机连接。<br>编写一段程序，从命令行接受一个整数 N 和 double 值 p （0 到 1 之间）作为参数，<br>在一个圆上画出大小为 0.05 且间距相等的 N 个点，<br>然后将每对点按照概率 p 用灰线连接。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>概率的实现方法：</p>
-<p>例如概率是 60 %，就在 [0, 100) 之间随机一个值，小于等于 60 则执行操作，反之不执行。<br>需要更精确的情况可以增大随机的范围，例如 [0, 1000)。</p>
-<p>绘图结果<br><img src="./result.png" alt=""></p>
+			<h1 id="题目">题目</h1>
+<p>1.1.31 随机连接。 编写一段程序，从命令行接受一个整数 N 和 double 值 p （0 到 1 之间）作为参数， 在一个圆上画出大小为 0.05 且间距相等的 N 个点， 然后将每对点按照概率 p 用灰线连接。</p>
+<h1 id="解答">解答</h1>
+<p>概率的实现方法：</p>
+<p>例如概率是 60 %，就在 [0, 100) 之间随机一个值，小于等于 60 则执行操作，反之不执行。 需要更精确的情况可以增大随机的范围，例如 [0, 1000)。</p>
+<p>绘图结果 <img src="./result.png"></p>
 <p>N = 10,p = 0.2, 0.5, 1</p>
 <p>完整项目可以到 Github 上下载。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 主绘图函数</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="N">点的总数目&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="p">每对点之间连接的概率&lt;/param></span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">StartDrawing</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">,</span> <span class="token keyword">double</span> p<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> pointSize <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//每个点绘制的大小</span>
-    <span class="token keyword">int</span> precious <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//概率判断的精度</span>
-
-    <span class="token comment" spellcheck="true">//新建一个绘图窗口</span>
-    Form2 DrawPad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Form2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//显示绘图窗口</span>
-    DrawPad<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//新建画布</span>
-    Graphics graphics <span class="token operator">=</span> DrawPad<span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//建立绘图区域（矩形）</span>
-    Rectangle rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//画圆</span>
-    graphics<span class="token punctuation">.</span><span class="token function">DrawEllipse</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//计算旋转角度</span>
-    <span class="token keyword">double</span> rotateDgree <span class="token operator">=</span> <span class="token number">360.0</span> <span class="token operator">/</span> N<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//计算点的坐标</span>
-    Point Center <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>Top <span class="token operator">+</span> rect<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> rect<span class="token punctuation">.</span>Top <span class="token operator">+</span> rect<span class="token punctuation">.</span>Height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Point<span class="token punctuation">[</span><span class="token punctuation">]</span> points <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>X <span class="token operator">=</span> rect<span class="token punctuation">.</span>Left <span class="token operator">+</span> rect<span class="token punctuation">.</span>Width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Y <span class="token operator">=</span> rect<span class="token punctuation">.</span>Top<span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        points<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">Rotate</span><span class="token punctuation">(</span>Center<span class="token punctuation">,</span> points<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rotateDgree<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//绘制点</span>
-    <span class="token keyword">foreach</span> <span class="token punctuation">(</span>Point point <span class="token keyword">in</span> points<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        graphics<span class="token punctuation">.</span><span class="token function">FillEllipse</span><span class="token punctuation">(</span>Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> point<span class="token punctuation">.</span>X <span class="token operator">-</span> pointSize<span class="token punctuation">,</span> point<span class="token punctuation">.</span>Y <span class="token operator">-</span> pointSize<span class="token punctuation">,</span> pointSize<span class="token punctuation">,</span> pointSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//按照概率绘制直线</span>
-    Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//举例：输入概率为 0.6，精度为 1000</span>
-            <span class="token comment" spellcheck="true">//在 0~1000 范围内等概率取值，如果小于等于 600 则视为事件发生</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> precious<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> p <span class="token operator">*</span> precious<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                graphics<span class="token punctuation">.</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>Gray<span class="token punctuation">,</span> points<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//释放资源</span>
-    graphics<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 计算一个点绕某点旋转之后的坐标值</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="origin">旋转的圆心&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="point">需要旋转的点&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="dgree">旋转的角度（逆时针）&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>返回旋转后的坐标&lt;/returns></span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> Point <span class="token function">Rotate</span><span class="token punctuation">(</span>Point origin<span class="token punctuation">,</span> Point point<span class="token punctuation">,</span> <span class="token keyword">double</span> dgree<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Point rotated <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">double</span> dgreePi <span class="token operator">=</span> dgree <span class="token operator">/</span> <span class="token number">180</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span>PI<span class="token punctuation">;</span>
-
-    rotated<span class="token punctuation">.</span>X <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>point<span class="token punctuation">.</span>X <span class="token operator">-</span> origin<span class="token punctuation">.</span>X<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Cos</span><span class="token punctuation">(</span>dgreePi<span class="token punctuation">)</span> <span class="token operator">-</span>
-                      <span class="token punctuation">(</span>point<span class="token punctuation">.</span>Y <span class="token operator">-</span> origin<span class="token punctuation">.</span>Y<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Sin</span><span class="token punctuation">(</span>dgreePi<span class="token punctuation">)</span> <span class="token operator">+</span> origin<span class="token punctuation">.</span>X<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    rotated<span class="token punctuation">.</span>Y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span>point<span class="token punctuation">.</span>X <span class="token operator">-</span> origin<span class="token punctuation">.</span>X<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Sin</span><span class="token punctuation">(</span>dgreePi<span class="token punctuation">)</span> <span class="token operator">+</span>
-                      <span class="token punctuation">(</span>point<span class="token punctuation">.</span>Y <span class="token operator">-</span> origin<span class="token punctuation">.</span>Y<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">Cos</span><span class="token punctuation">(</span>dgreePi<span class="token punctuation">)</span> <span class="token operator">+</span> origin<span class="token punctuation">.</span>Y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> rotated<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 主绘图函数</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;N&quot;</span><span class="kw">&gt;</span><span class="co">点的总数目</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">每对点之间连接的概率</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">StartDrawing</span>(<span class="dt">int</span> N, <span class="dt">double</span> p)</a>
+<a class="sourceLine" id="cb1-7" title="7">{</a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="dt">int</span> pointSize = <span class="dv">5</span>;<span class="co">//每个点绘制的大小</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="dt">int</span> precious = <span class="dv">1000</span>;<span class="co">//概率判断的精度</span></a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="co">//新建一个绘图窗口</span></a>
+<a class="sourceLine" id="cb1-12" title="12">    Form2 DrawPad = <span class="kw">new</span> <span class="fu">Form2</span>();</a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="co">//显示绘图窗口</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    DrawPad.<span class="fu">Show</span>();</a>
+<a class="sourceLine" id="cb1-15" title="15"></a>
+<a class="sourceLine" id="cb1-16" title="16">    <span class="co">//新建画布</span></a>
+<a class="sourceLine" id="cb1-17" title="17">    Graphics graphics = DrawPad.<span class="fu">CreateGraphics</span>();</a>
+<a class="sourceLine" id="cb1-18" title="18"></a>
+<a class="sourceLine" id="cb1-19" title="19">    <span class="co">//建立绘图区域（矩形）</span></a>
+<a class="sourceLine" id="cb1-20" title="20">    Rectangle rect = <span class="kw">new</span> <span class="fu">Rectangle</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">400</span>, <span class="dv">400</span>);</a>
+<a class="sourceLine" id="cb1-21" title="21"></a>
+<a class="sourceLine" id="cb1-22" title="22">    <span class="co">//画圆</span></a>
+<a class="sourceLine" id="cb1-23" title="23">    graphics.<span class="fu">DrawEllipse</span>(Pens.<span class="fu">Black</span>, rect);</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25">    <span class="co">//计算旋转角度</span></a>
+<a class="sourceLine" id="cb1-26" title="26">    <span class="dt">double</span> rotateDgree = <span class="fl">360.0</span> / N;</a>
+<a class="sourceLine" id="cb1-27" title="27"></a>
+<a class="sourceLine" id="cb1-28" title="28">    <span class="co">//计算点的坐标</span></a>
+<a class="sourceLine" id="cb1-29" title="29">    Point Center = <span class="kw">new</span> <span class="fu">Point</span>(rect.<span class="fu">Top</span> + rect.<span class="fu">Height</span> / <span class="dv">2</span>, rect.<span class="fu">Top</span> + rect.<span class="fu">Height</span> / <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb1-30" title="30">    Point[] points = <span class="kw">new</span> Point[N];</a>
+<a class="sourceLine" id="cb1-31" title="31">    points[<span class="dv">0</span>].<span class="fu">X</span> = rect.<span class="fu">Left</span> + rect.<span class="fu">Width</span> / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-32" title="32">    points[<span class="dv">0</span>].<span class="fu">Y</span> = rect.<span class="fu">Top</span>;</a>
+<a class="sourceLine" id="cb1-33" title="33"></a>
+<a class="sourceLine" id="cb1-34" title="34">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; N; ++i)</a>
+<a class="sourceLine" id="cb1-35" title="35">    {</a>
+<a class="sourceLine" id="cb1-36" title="36">        points[i] = <span class="fu">Rotate</span>(Center, points[i - <span class="dv">1</span>], rotateDgree);</a>
+<a class="sourceLine" id="cb1-37" title="37">    }</a>
+<a class="sourceLine" id="cb1-38" title="38"></a>
+<a class="sourceLine" id="cb1-39" title="39">    <span class="co">//绘制点</span></a>
+<a class="sourceLine" id="cb1-40" title="40">    <span class="kw">foreach</span> (Point point <span class="kw">in</span> points)</a>
+<a class="sourceLine" id="cb1-41" title="41">    {</a>
+<a class="sourceLine" id="cb1-42" title="42">        graphics.<span class="fu">FillEllipse</span>(Brushes.<span class="fu">Black</span>, point.<span class="fu">X</span> - pointSize, point.<span class="fu">Y</span> - pointSize, pointSize, pointSize);</a>
+<a class="sourceLine" id="cb1-43" title="43">    }</a>
+<a class="sourceLine" id="cb1-44" title="44"></a>
+<a class="sourceLine" id="cb1-45" title="45">    <span class="co">//按照概率绘制直线</span></a>
+<a class="sourceLine" id="cb1-46" title="46">    Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb1-47" title="47">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
+<a class="sourceLine" id="cb1-48" title="48">    {</a>
+<a class="sourceLine" id="cb1-49" title="49">        <span class="kw">for</span> (<span class="dt">int</span> j = i + <span class="dv">1</span>; j &lt; N; ++j)</a>
+<a class="sourceLine" id="cb1-50" title="50">        {</a>
+<a class="sourceLine" id="cb1-51" title="51">            <span class="co">//举例：输入概率为 0.6，精度为 1000</span></a>
+<a class="sourceLine" id="cb1-52" title="52">            <span class="co">//在 0~1000 范围内等概率取值，如果小于等于 600 则视为事件发生</span></a>
+<a class="sourceLine" id="cb1-53" title="53">            <span class="kw">if</span> (random.<span class="fu">Next</span>(<span class="dv">0</span>, precious) &lt;= p * precious)</a>
+<a class="sourceLine" id="cb1-54" title="54">            {</a>
+<a class="sourceLine" id="cb1-55" title="55">                graphics.<span class="fu">DrawLine</span>(Pens.<span class="fu">Gray</span>, points[i], points[j]);</a>
+<a class="sourceLine" id="cb1-56" title="56">            }</a>
+<a class="sourceLine" id="cb1-57" title="57">        }</a>
+<a class="sourceLine" id="cb1-58" title="58">    }</a>
+<a class="sourceLine" id="cb1-59" title="59"></a>
+<a class="sourceLine" id="cb1-60" title="60">    <span class="co">//释放资源</span></a>
+<a class="sourceLine" id="cb1-61" title="61">    graphics.<span class="fu">Dispose</span>();</a>
+<a class="sourceLine" id="cb1-62" title="62">}</a>
+<a class="sourceLine" id="cb1-63" title="63"></a>
+<a class="sourceLine" id="cb1-64" title="64"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-65" title="65"><span class="co">/// 计算一个点绕某点旋转之后的坐标值</span></a>
+<a class="sourceLine" id="cb1-66" title="66"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-67" title="67"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;origin&quot;</span><span class="kw">&gt;</span><span class="co">旋转的圆心</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-68" title="68"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;point&quot;</span><span class="kw">&gt;</span><span class="co">需要旋转的点</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-69" title="69"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;dgree&quot;</span><span class="kw">&gt;</span><span class="co">旋转的角度（逆时针）&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-70" title="70"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回旋转后的坐标</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-71" title="71"><span class="kw">public</span> <span class="kw">static</span> Point <span class="fu">Rotate</span>(Point origin, Point point, <span class="dt">double</span> dgree)</a>
+<a class="sourceLine" id="cb1-72" title="72">{</a>
+<a class="sourceLine" id="cb1-73" title="73">    Point rotated = <span class="kw">new</span> <span class="fu">Point</span>();</a>
+<a class="sourceLine" id="cb1-74" title="74">    <span class="dt">double</span> dgreePi = dgree / <span class="dv">180</span> * Math.<span class="fu">PI</span>;</a>
+<a class="sourceLine" id="cb1-75" title="75"></a>
+<a class="sourceLine" id="cb1-76" title="76">    rotated.<span class="fu">X</span> = (<span class="dt">int</span>)((point.<span class="fu">X</span> - origin.<span class="fu">X</span>) * Math.<span class="fu">Cos</span>(dgreePi) -</a>
+<a class="sourceLine" id="cb1-77" title="77">                      (point.<span class="fu">Y</span> - origin.<span class="fu">Y</span>) * Math.<span class="fu">Sin</span>(dgreePi) + origin.<span class="fu">X</span>);</a>
+<a class="sourceLine" id="cb1-78" title="78">    rotated.<span class="fu">Y</span> = (<span class="dt">int</span>)((point.<span class="fu">X</span> - origin.<span class="fu">X</span>) * Math.<span class="fu">Sin</span>(dgreePi) +</a>
+<a class="sourceLine" id="cb1-79" title="79">                      (point.<span class="fu">Y</span> - origin.<span class="fu">Y</span>) * Math.<span class="fu">Cos</span>(dgreePi) + origin.<span class="fu">Y</span>);</a>
+<a class="sourceLine" id="cb1-80" title="80"></a>
+<a class="sourceLine" id="cb1-81" title="81">    <span class="kw">return</span> rotated;</a>
+<a class="sourceLine" id="cb1-82" title="82">}</a></code></pre></div>
 
 		</div>
 	</div>

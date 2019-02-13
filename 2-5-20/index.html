@@ -140,99 +140,101 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.5.20</h1>
 			<p>上次更新：2019-02-12</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.20<br>空闲时间。<br>假设有一台计算机能够并行处理 N 个任务。<br>编写一段程序并给定一系列任务的起始时间和结束时间，<br>找出这台机器最长的空闲时间和最长的繁忙时间。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>我们以事件为单位进行处理，每个事件包含任务名，记录时刻和开始/结束标记。<br>随后按照时间从小到大排序，遍历事件数组。<br>设开始的时候机器空闲，设置计数器，作为当前正在运行的任务数量。<br>当遇到开始事件时，计数器加一；遇到结束事件时，计数器减一。<br>如果计数器加一<strong>之前</strong>计数器为 0，说明空闲状态结束，记录并更新空闲时间，当前时间为忙碌开始的时间。<br>如果计数器减一<strong>之后</strong>计数器为 0，说明忙碌状态结束，记录并更新忙碌时间，当前时间为空闲开始的时间。</p>
-<p>测试结果：<br><img src="./1.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_20
-<span class="token punctuation">{</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 任务变化事件。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">class</span> <span class="token class-name">JobEvent</span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>JobEvent<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">public</span> <span class="token keyword">string</span> JobName<span class="token punctuation">;</span>
-            <span class="token keyword">public</span> <span class="token keyword">int</span> Time<span class="token punctuation">;</span>
-            <span class="token keyword">public</span> <span class="token keyword">bool</span> IsFinished <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// false = 开始，true = 结束</span>
-
-            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>JobEvent other<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Time<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>Time<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// 输入格式： JobName 15:02 17:02</span>
-            <span class="token keyword">int</span> nowRunning <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 正在运行的程序数量</span>
-            <span class="token keyword">int</span> maxIdle <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> maxBusy <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">int</span> items <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            JobEvent<span class="token punctuation">[</span><span class="token punctuation">]</span> jobs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JobEvent</span><span class="token punctuation">[</span>items <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> jobs<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JobEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                jobs<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JobEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>IsFinished <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 开始事件</span>
-                jobs<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>IsFinished <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 停止事件</span>
-
-                <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> record <span class="token operator">=</span> Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token string">' '</span><span class="token punctuation">,</span> <span class="token string">':'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> StringSplitOptions<span class="token punctuation">.</span>RemoveEmptyEntries<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>JobName <span class="token operator">=</span> record<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                jobs<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>JobName <span class="token operator">=</span> record<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-                jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Time <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>record<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>record<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                jobs<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Time <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>record<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>record<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            Array<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span>jobs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 事件处理</span>
-            <span class="token keyword">int</span> idleStart <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> busyStart <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> jobs<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">// 启动事件</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>IsFinished<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    <span class="token comment" spellcheck="true">// 空闲状态结束</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>nowRunning <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">{</span>
-                        <span class="token keyword">int</span> idle <span class="token operator">=</span> jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Time <span class="token operator">-</span> idleStart<span class="token punctuation">;</span>
-                        <span class="token keyword">if</span> <span class="token punctuation">(</span>idle <span class="token operator">></span> maxIdle<span class="token punctuation">)</span>
-                            maxIdle <span class="token operator">=</span> idle<span class="token punctuation">;</span>
-
-                        <span class="token comment" spellcheck="true">// 开始忙碌</span>
-                        busyStart <span class="token operator">=</span> jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Time<span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                    nowRunning<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">else</span>
-                <span class="token punctuation">{</span>
-                    nowRunning<span class="token operator">--</span><span class="token punctuation">;</span>
-                    <span class="token comment" spellcheck="true">// 忙碌状态结束</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>nowRunning <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">{</span>
-                        <span class="token keyword">int</span> busy <span class="token operator">=</span> jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Time <span class="token operator">-</span> busyStart<span class="token punctuation">;</span>
-                        <span class="token keyword">if</span> <span class="token punctuation">(</span>busy <span class="token operator">></span> maxBusy<span class="token punctuation">)</span>
-                            maxBusy <span class="token operator">=</span> busy<span class="token punctuation">;</span>
-
-                        <span class="token comment" spellcheck="true">// 开始空闲</span>
-                        idleStart <span class="token operator">=</span> jobs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Time<span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Max Idle: "</span> <span class="token operator">+</span> maxIdle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Max Busy: "</span> <span class="token operator">+</span> maxBusy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>2.5.20 空闲时间。 假设有一台计算机能够并行处理 N 个任务。 编写一段程序并给定一系列任务的起始时间和结束时间， 找出这台机器最长的空闲时间和最长的繁忙时间。</p>
+<h1 id="解答">解答</h1>
+<p>我们以事件为单位进行处理，每个事件包含任务名，记录时刻和开始/结束标记。 随后按照时间从小到大排序，遍历事件数组。 设开始的时候机器空闲，设置计数器，作为当前正在运行的任务数量。 当遇到开始事件时，计数器加一；遇到结束事件时，计数器减一。 如果计数器加一<strong>之前</strong>计数器为 0，说明空闲状态结束，记录并更新空闲时间，当前时间为忙碌开始的时间。 如果计数器减一<strong>之后</strong>计数器为 0，说明忙碌状态结束，记录并更新忙碌时间，当前时间为空闲开始的时间。</p>
+<p>测试结果： <img src="./1.png"></p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">5.</span>_<span class="dv">20</span></a>
+<a class="sourceLine" id="cb1-4" title="4">{</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-6" title="6">    {</a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="co">/// 任务变化事件。</span></a>
+<a class="sourceLine" id="cb1-9" title="9">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">class</span> JobEvent : IComparable&lt;JobEvent&gt;</a>
+<a class="sourceLine" id="cb1-11" title="11">        {</a>
+<a class="sourceLine" id="cb1-12" title="12">            <span class="kw">public</span> <span class="dt">string</span> JobName;</a>
+<a class="sourceLine" id="cb1-13" title="13">            <span class="kw">public</span> <span class="dt">int</span> Time;</a>
+<a class="sourceLine" id="cb1-14" title="14">            <span class="kw">public</span> <span class="dt">bool</span> IsFinished = <span class="kw">false</span>;     <span class="co">// false = 开始，true = 结束</span></a>
+<a class="sourceLine" id="cb1-15" title="15"></a>
+<a class="sourceLine" id="cb1-16" title="16">            <span class="kw">public</span> <span class="dt">int</span> <span class="fu">CompareTo</span>(JobEvent other)</a>
+<a class="sourceLine" id="cb1-17" title="17">            {</a>
+<a class="sourceLine" id="cb1-18" title="18">                <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">Time</span>.<span class="fu">CompareTo</span>(other.<span class="fu">Time</span>);</a>
+<a class="sourceLine" id="cb1-19" title="19">            }</a>
+<a class="sourceLine" id="cb1-20" title="20">        }</a>
+<a class="sourceLine" id="cb1-21" title="21"></a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-23" title="23">        {</a>
+<a class="sourceLine" id="cb1-24" title="24">            <span class="co">// 输入格式： JobName 15:02 17:02</span></a>
+<a class="sourceLine" id="cb1-25" title="25">            <span class="dt">int</span> nowRunning = <span class="dv">0</span>;     <span class="co">// 正在运行的程序数量</span></a>
+<a class="sourceLine" id="cb1-26" title="26">            <span class="dt">int</span> maxIdle = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-27" title="27">            <span class="dt">int</span> maxBusy = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-28" title="28">      </a>
+<a class="sourceLine" id="cb1-29" title="29">            <span class="dt">int</span> items = <span class="dt">int</span>.<span class="fu">Parse</span>(Console.<span class="fu">ReadLine</span>());</a>
+<a class="sourceLine" id="cb1-30" title="30">            JobEvent[] jobs = <span class="kw">new</span> JobEvent[items * <span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb1-31" title="31">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; jobs.<span class="fu">Length</span>; i += <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-32" title="32">            {</a>
+<a class="sourceLine" id="cb1-33" title="33">                jobs[i] = <span class="kw">new</span> <span class="fu">JobEvent</span>();</a>
+<a class="sourceLine" id="cb1-34" title="34">                jobs[i + <span class="dv">1</span>] = <span class="kw">new</span> <span class="fu">JobEvent</span>();</a>
+<a class="sourceLine" id="cb1-35" title="35"></a>
+<a class="sourceLine" id="cb1-36" title="36">                jobs[i].<span class="fu">IsFinished</span> = <span class="kw">false</span>;     <span class="co">// 开始事件</span></a>
+<a class="sourceLine" id="cb1-37" title="37">                jobs[i + <span class="dv">1</span>].<span class="fu">IsFinished</span> = <span class="kw">true</span>;  <span class="co">// 停止事件</span></a>
+<a class="sourceLine" id="cb1-38" title="38"></a>
+<a class="sourceLine" id="cb1-39" title="39">                <span class="dt">string</span>[] record = Console.<span class="fu">ReadLine</span>().<span class="fu">Split</span>(<span class="kw">new</span> <span class="dt">char</span>[] { <span class="ch">&#39; &#39;</span>, <span class="ch">&#39;:&#39;</span> }, StringSplitOptions.<span class="fu">RemoveEmptyEntries</span>);</a>
+<a class="sourceLine" id="cb1-40" title="40">                jobs[i].<span class="fu">JobName</span> = record[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb1-41" title="41">                jobs[i + <span class="dv">1</span>].<span class="fu">JobName</span> = record[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb1-42" title="42"></a>
+<a class="sourceLine" id="cb1-43" title="43">                jobs[i].<span class="fu">Time</span> = <span class="dt">int</span>.<span class="fu">Parse</span>(record[<span class="dv">1</span>]) * <span class="dv">60</span> + <span class="dt">int</span>.<span class="fu">Parse</span>(record[<span class="dv">2</span>]);</a>
+<a class="sourceLine" id="cb1-44" title="44">                jobs[i + <span class="dv">1</span>].<span class="fu">Time</span> = <span class="dt">int</span>.<span class="fu">Parse</span>(record[<span class="dv">3</span>]) * <span class="dv">60</span> + <span class="dt">int</span>.<span class="fu">Parse</span>(record[<span class="dv">4</span>]);</a>
+<a class="sourceLine" id="cb1-45" title="45">            }</a>
+<a class="sourceLine" id="cb1-46" title="46"></a>
+<a class="sourceLine" id="cb1-47" title="47">            Array.<span class="fu">Sort</span>(jobs);</a>
+<a class="sourceLine" id="cb1-48" title="48"></a>
+<a class="sourceLine" id="cb1-49" title="49">            <span class="co">// 事件处理</span></a>
+<a class="sourceLine" id="cb1-50" title="50">            <span class="dt">int</span> idleStart = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-51" title="51">            <span class="dt">int</span> busyStart = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-52" title="52">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; jobs.<span class="fu">Length</span>; i++)</a>
+<a class="sourceLine" id="cb1-53" title="53">            {</a>
+<a class="sourceLine" id="cb1-54" title="54">                <span class="co">// 启动事件</span></a>
+<a class="sourceLine" id="cb1-55" title="55">                <span class="kw">if</span> (!jobs[i].<span class="fu">IsFinished</span>)</a>
+<a class="sourceLine" id="cb1-56" title="56">                {</a>
+<a class="sourceLine" id="cb1-57" title="57">                    <span class="co">// 空闲状态结束</span></a>
+<a class="sourceLine" id="cb1-58" title="58">                    <span class="kw">if</span> (nowRunning == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-59" title="59">                    {</a>
+<a class="sourceLine" id="cb1-60" title="60">                        <span class="dt">int</span> idle = jobs[i].<span class="fu">Time</span> - idleStart;</a>
+<a class="sourceLine" id="cb1-61" title="61">                        <span class="kw">if</span> (idle &gt; maxIdle)</a>
+<a class="sourceLine" id="cb1-62" title="62">                            maxIdle = idle;</a>
+<a class="sourceLine" id="cb1-63" title="63">                        </a>
+<a class="sourceLine" id="cb1-64" title="64">                        <span class="co">// 开始忙碌</span></a>
+<a class="sourceLine" id="cb1-65" title="65">                        busyStart = jobs[i].<span class="fu">Time</span>;</a>
+<a class="sourceLine" id="cb1-66" title="66">                    }</a>
+<a class="sourceLine" id="cb1-67" title="67">                    nowRunning++;</a>
+<a class="sourceLine" id="cb1-68" title="68">                }</a>
+<a class="sourceLine" id="cb1-69" title="69">                <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-70" title="70">                {</a>
+<a class="sourceLine" id="cb1-71" title="71">                    nowRunning--;</a>
+<a class="sourceLine" id="cb1-72" title="72">                    <span class="co">// 忙碌状态结束</span></a>
+<a class="sourceLine" id="cb1-73" title="73">                    <span class="kw">if</span> (nowRunning == <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-74" title="74">                    {</a>
+<a class="sourceLine" id="cb1-75" title="75">                        <span class="dt">int</span> busy = jobs[i].<span class="fu">Time</span> - busyStart;</a>
+<a class="sourceLine" id="cb1-76" title="76">                        <span class="kw">if</span> (busy &gt; maxBusy)</a>
+<a class="sourceLine" id="cb1-77" title="77">                            maxBusy = busy;</a>
+<a class="sourceLine" id="cb1-78" title="78"></a>
+<a class="sourceLine" id="cb1-79" title="79">                        <span class="co">// 开始空闲</span></a>
+<a class="sourceLine" id="cb1-80" title="80">                        idleStart = jobs[i].<span class="fu">Time</span>;</a>
+<a class="sourceLine" id="cb1-81" title="81">                    }</a>
+<a class="sourceLine" id="cb1-82" title="82">                }</a>
+<a class="sourceLine" id="cb1-83" title="83">            }</a>
+<a class="sourceLine" id="cb1-84" title="84"></a>
+<a class="sourceLine" id="cb1-85" title="85">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Max Idle: &quot;</span> + maxIdle);</a>
+<a class="sourceLine" id="cb1-86" title="86">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Max Busy: &quot;</span> + maxBusy);</a>
+<a class="sourceLine" id="cb1-87" title="87">        }</a>
+<a class="sourceLine" id="cb1-88" title="88">    }</a>
+<a class="sourceLine" id="cb1-89" title="89">}</a></code></pre></div>
 
 		</div>
 	</div>

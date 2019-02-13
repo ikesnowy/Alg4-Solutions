@@ -140,233 +140,237 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.2.3</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.3<br>编写一个 Interval2D 的用例，从命令行接受参数 N、min 和 max。<br>生成 N 个随机的 2D 间隔，其宽和高均匀的分布在单位正方形中的 min 和 max 之间。<br>用 StdDraw 画出它们并打印出相交的间隔对的数量以及有包含关系的间隔对数量。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先先实现一个 Interval2D 类（位于 Geometry 库），再使用窗体应用程序绘图。</p>
-<p>JAVA 版本参考：<a href="http://algs4.cs.princeton.edu/12oop/Interval2D.java.html" target="_blank" rel="noopener">http://algs4.cs.princeton.edu/12oop/Interval2D.java.html</a>。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="Interval2D："><a href="#Interval2D：" class="headerlink" title="Interval2D："></a>Interval2D：</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">.</span>Drawing<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> Geometry
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 二维闭合区间。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Interval2D</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">readonly</span> Interval1D X<span class="token punctuation">;</span>
-        <span class="token keyword">private</span> <span class="token keyword">readonly</span> Interval1D Y<span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 构造函数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="x">x 轴上的范围。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="y">y 轴上的范围。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token function">Interval2D</span><span class="token punctuation">(</span>Interval1D x<span class="token punctuation">,</span> Interval1D y<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>X <span class="token operator">=</span> x<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>Y <span class="token operator">=</span> y<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 判断两个平面是否相交。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="that">需要判断的另一个平面。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">Intersects</span><span class="token punctuation">(</span>Interval2D that<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span><span class="token function">Intersect</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>X<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span><span class="token function">Intersect</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>Y<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 判断目标区间是否被本区间包含。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="that">需要判断是否被包含的区间。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">Contains</span><span class="token punctuation">(</span>Interval2D that<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>X<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>Y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 判断一个二维点是否在该平面范围内。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要判断的二维点。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">Contains</span><span class="token punctuation">(</span>Point2D p<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>X<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>Y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 计算平面范围的面积。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">Area</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 在画布上绘制二维区间。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="g">原点在左下方，x轴向右，y轴向上的画布。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span>Graphics g<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Rectangle rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span>Min<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span>Min<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            g<span class="token punctuation">.</span><span class="token function">DrawRectangle</span><span class="token punctuation">(</span>Pens<span class="token punctuation">.</span>White<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            g<span class="token punctuation">.</span><span class="token function">FillRectangle</span><span class="token punctuation">(</span>Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 返回形如“[xmin, xmax] x [ymin, ymax]”的字符串。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">string</span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> X <span class="token operator">+</span> <span class="token string">"x"</span> <span class="token operator">+</span> Y<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 判断两个二维区间是否相等。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="obj">需要比较的另一个区间。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">bool</span> <span class="token function">Equals</span><span class="token punctuation">(</span><span class="token keyword">object</span> obj<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>obj  <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">GetType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">GetType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            Interval2D that <span class="token operator">=</span> <span class="token punctuation">(</span>Interval2D<span class="token punctuation">)</span>obj<span class="token punctuation">;</span>
-
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>X<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>Y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获取哈希值</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">GetHashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> hash1 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>X<span class="token punctuation">.</span><span class="token function">GetHashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> hash2 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Y<span class="token punctuation">.</span><span class="token function">GetHashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">return</span> <span class="token number">31</span> <span class="token operator">*</span> hash1 <span class="token operator">+</span> hash2<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="绘图方法"><a href="#绘图方法" class="headerlink" title="绘图方法"></a>绘图方法</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 主绘图函数。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="N">2D 间隔的数目。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="Min">分布范围的下界。（大于 0 且小于 1）&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="Max">分布范围的上界。（大于 0 且小于 1）&lt;/param></span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">StartDrawing</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">,</span> <span class="token keyword">double</span> Min<span class="token punctuation">,</span> <span class="token keyword">double</span> Max<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Interval2D<span class="token punctuation">[</span><span class="token punctuation">]</span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Interval2D</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//开始绘图</span>
-    Form2 drawPad <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Form2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    drawPad<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Graphics graphics <span class="token operator">=</span> drawPad<span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//生成随机二维间隔</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">double</span> x <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Max <span class="token operator">-</span> Min<span class="token punctuation">)</span> <span class="token operator">+</span> Min<span class="token punctuation">;</span>
-        <span class="token keyword">double</span> y <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Max <span class="token operator">-</span> Min<span class="token punctuation">)</span> <span class="token operator">+</span> Min<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">>=</span> y<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">double</span> temp <span class="token operator">=</span> x<span class="token punctuation">;</span>
-            x <span class="token operator">=</span> y<span class="token punctuation">;</span>
-            y <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        x <span class="token operator">*</span><span class="token operator">=</span> drawPad<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Width<span class="token punctuation">;</span>
-        y <span class="token operator">*</span><span class="token operator">=</span> drawPad<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Width<span class="token punctuation">;</span>
-        Interval1D tempx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Interval1D</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        x <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Max <span class="token operator">-</span> Min<span class="token punctuation">)</span> <span class="token operator">+</span> Min<span class="token punctuation">;</span>
-        y <span class="token operator">=</span> random<span class="token punctuation">.</span><span class="token function">NextDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Max <span class="token operator">-</span> Min<span class="token punctuation">)</span> <span class="token operator">+</span> Min<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">>=</span> y<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">double</span> temp <span class="token operator">=</span> x<span class="token punctuation">;</span>
-            x <span class="token operator">=</span> y<span class="token punctuation">;</span>
-            y <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        x <span class="token operator">*</span><span class="token operator">=</span> drawPad<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height<span class="token punctuation">;</span>
-        y <span class="token operator">*</span><span class="token operator">=</span> drawPad<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height<span class="token punctuation">;</span>
-        Interval1D tempy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Interval1D</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        list<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Interval2D</span><span class="token punctuation">(</span>tempx<span class="token punctuation">,</span> tempy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//计算相交和包含的数量</span>
-    <span class="token keyword">int</span> intersectNum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">Intersects</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                intersectNum<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> containsNum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> j<span class="token punctuation">)</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                containsNum<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//移动原点至左下方，翻转坐标系</span>
-    graphics<span class="token punctuation">.</span><span class="token function">TranslateTransform</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> drawPad<span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    graphics<span class="token punctuation">.</span><span class="token function">ScaleTransform</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//绘制所有区间</span>
-    <span class="token keyword">foreach</span> <span class="token punctuation">(</span>Interval2D n <span class="token keyword">in</span> list<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        n<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>graphics<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//新建一个窗口，显示计算结果</span>
-    MessageBox<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span>$<span class="token string">"相交的区间数：{intersectNum}, 包含的区间数：{containsNum}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">//清理资源</span>
-    graphics<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.2/Geometry" target="_blank" rel="noopener">Geometry 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>1.2.3 编写一个 Interval2D 的用例，从命令行接受参数 N、min 和 max。 生成 N 个随机的 2D 间隔，其宽和高均匀的分布在单位正方形中的 min 和 max 之间。 用 StdDraw 画出它们并打印出相交的间隔对的数量以及有包含关系的间隔对数量。</p>
+<h1 id="解答">解答</h1>
+<p>首先先实现一个 Interval2D 类（位于 Geometry 库），再使用窗体应用程序绘图。</p>
+<p>JAVA 版本参考：<a href="http://algs4.cs.princeton.edu/12oop/Interval2D.java.html" class="uri" target="_blank" rel="noopener">http://algs4.cs.princeton.edu/12oop/Interval2D.java.html</a>。</p>
+<h1 id="代码">代码</h1>
+<h2 id="interval2d">Interval2D：</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System.<span class="fu">Drawing</span>;</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">namespace</span> Geometry</a>
+<a class="sourceLine" id="cb1-4" title="4">{</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/// 二维闭合区间。</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">public</span> <span class="kw">class</span> Interval2D</a>
+<a class="sourceLine" id="cb1-9" title="9">    {</a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">private</span> <span class="kw">readonly</span> Interval1D X;</a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">private</span> <span class="kw">readonly</span> Interval1D Y;</a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="co">/// 构造函数。</span></a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;x&quot;</span><span class="kw">&gt;</span><span class="co">x 轴上的范围。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;y&quot;</span><span class="kw">&gt;</span><span class="co">y 轴上的范围。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-18" title="18">        <span class="kw">public</span> <span class="fu">Interval2D</span>(Interval1D x, Interval1D y)</a>
+<a class="sourceLine" id="cb1-19" title="19">        {</a>
+<a class="sourceLine" id="cb1-20" title="20">            <span class="kw">this</span>.<span class="fu">X</span> = x;</a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="kw">this</span>.<span class="fu">Y</span> = y;</a>
+<a class="sourceLine" id="cb1-22" title="22">        }</a>
+<a class="sourceLine" id="cb1-23" title="23"></a>
+<a class="sourceLine" id="cb1-24" title="24">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="co">/// 判断两个平面是否相交。</span></a>
+<a class="sourceLine" id="cb1-26" title="26">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;that&quot;</span><span class="kw">&gt;</span><span class="co">需要判断的另一个平面。&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-28" title="28">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-29" title="29">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">Intersects</span>(Interval2D that)</a>
+<a class="sourceLine" id="cb1-30" title="30">        {</a>
+<a class="sourceLine" id="cb1-31" title="31">            <span class="kw">if</span> (!<span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">Intersect</span>(that.<span class="fu">X</span>))</a>
+<a class="sourceLine" id="cb1-32" title="32">            {</a>
+<a class="sourceLine" id="cb1-33" title="33">                <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb1-34" title="34">            }</a>
+<a class="sourceLine" id="cb1-35" title="35"></a>
+<a class="sourceLine" id="cb1-36" title="36">            <span class="kw">if</span> (!<span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">Intersect</span>(that.<span class="fu">Y</span>))</a>
+<a class="sourceLine" id="cb1-37" title="37">            {</a>
+<a class="sourceLine" id="cb1-38" title="38">                <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb1-39" title="39">            }</a>
+<a class="sourceLine" id="cb1-40" title="40"></a>
+<a class="sourceLine" id="cb1-41" title="41">            <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb1-42" title="42">        }</a>
+<a class="sourceLine" id="cb1-43" title="43"></a>
+<a class="sourceLine" id="cb1-44" title="44">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-45" title="45">        <span class="co">/// 判断目标区间是否被本区间包含。</span></a>
+<a class="sourceLine" id="cb1-46" title="46">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-47" title="47">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;that&quot;</span><span class="kw">&gt;</span><span class="co">需要判断是否被包含的区间。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-48" title="48">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-49" title="49">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">Contains</span>(Interval2D that)</a>
+<a class="sourceLine" id="cb1-50" title="50">        {</a>
+<a class="sourceLine" id="cb1-51" title="51">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">Contains</span>(that.<span class="fu">X</span>) &amp;&amp; <span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">Contains</span>(that.<span class="fu">Y</span>);</a>
+<a class="sourceLine" id="cb1-52" title="52">        }</a>
+<a class="sourceLine" id="cb1-53" title="53"></a>
+<a class="sourceLine" id="cb1-54" title="54">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-55" title="55">        <span class="co">/// 判断一个二维点是否在该平面范围内。</span></a>
+<a class="sourceLine" id="cb1-56" title="56">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-57" title="57">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要判断的二维点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-58" title="58">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-59" title="59">        <span class="kw">public</span> <span class="dt">bool</span> <span class="fu">Contains</span>(Point2D p)</a>
+<a class="sourceLine" id="cb1-60" title="60">        {</a>
+<a class="sourceLine" id="cb1-61" title="61">            <span class="kw">return</span> (<span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">Contains</span>(p.<span class="fu">X</span>) &amp;&amp; <span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">Contains</span>(p.<span class="fu">Y</span>));</a>
+<a class="sourceLine" id="cb1-62" title="62">        }</a>
+<a class="sourceLine" id="cb1-63" title="63"></a>
+<a class="sourceLine" id="cb1-64" title="64">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-65" title="65">        <span class="co">/// 计算平面范围的面积。</span></a>
+<a class="sourceLine" id="cb1-66" title="66">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-67" title="67">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-68" title="68">        <span class="kw">public</span> <span class="dt">double</span> <span class="fu">Area</span>()</a>
+<a class="sourceLine" id="cb1-69" title="69">        {</a>
+<a class="sourceLine" id="cb1-70" title="70">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">Length</span>() * <span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">Length</span>();</a>
+<a class="sourceLine" id="cb1-71" title="71">        }</a>
+<a class="sourceLine" id="cb1-72" title="72"></a>
+<a class="sourceLine" id="cb1-73" title="73">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-74" title="74">        <span class="co">/// 在画布上绘制二维区间。</span></a>
+<a class="sourceLine" id="cb1-75" title="75">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-76" title="76">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;g&quot;</span><span class="kw">&gt;</span><span class="co">原点在左下方，x轴向右，y轴向上的画布。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-77" title="77">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">Draw</span>(Graphics g)</a>
+<a class="sourceLine" id="cb1-78" title="78">        {</a>
+<a class="sourceLine" id="cb1-79" title="79">            Rectangle rect = <span class="kw">new</span> <span class="fu">Rectangle</span>((<span class="dt">int</span>)<span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">Min</span>, (<span class="dt">int</span>)<span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">Min</span>, (<span class="dt">int</span>)<span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">Length</span>(), (<span class="dt">int</span>)<span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">Length</span>());</a>
+<a class="sourceLine" id="cb1-80" title="80">            g.<span class="fu">DrawRectangle</span>(Pens.<span class="fu">White</span>, rect);</a>
+<a class="sourceLine" id="cb1-81" title="81">            g.<span class="fu">FillRectangle</span>(Brushes.<span class="fu">Black</span>, rect);</a>
+<a class="sourceLine" id="cb1-82" title="82">        }</a>
+<a class="sourceLine" id="cb1-83" title="83"></a>
+<a class="sourceLine" id="cb1-84" title="84">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-85" title="85">        <span class="co">/// 返回形如“[xmin, xmax] x [ymin, ymax]”的字符串。</span></a>
+<a class="sourceLine" id="cb1-86" title="86">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-87" title="87">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-88" title="88">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">string</span> <span class="fu">ToString</span>()</a>
+<a class="sourceLine" id="cb1-89" title="89">        {</a>
+<a class="sourceLine" id="cb1-90" title="90">            <span class="kw">return</span> X + <span class="st">&quot;x&quot;</span> + Y;</a>
+<a class="sourceLine" id="cb1-91" title="91">        }</a>
+<a class="sourceLine" id="cb1-92" title="92"></a>
+<a class="sourceLine" id="cb1-93" title="93">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-94" title="94">        <span class="co">/// 判断两个二维区间是否相等。</span></a>
+<a class="sourceLine" id="cb1-95" title="95">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-96" title="96">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;obj&quot;</span><span class="kw">&gt;</span><span class="co">需要比较的另一个区间。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-97" title="97">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-98" title="98">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">bool</span> <span class="fu">Equals</span>(<span class="dt">object</span> obj)</a>
+<a class="sourceLine" id="cb1-99" title="99">        {</a>
+<a class="sourceLine" id="cb1-100" title="100">            <span class="kw">if</span> (obj == <span class="kw">this</span>)</a>
+<a class="sourceLine" id="cb1-101" title="101">            {</a>
+<a class="sourceLine" id="cb1-102" title="102">                <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb1-103" title="103">            }</a>
+<a class="sourceLine" id="cb1-104" title="104">            <span class="kw">if</span> (obj  == <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb1-105" title="105">            {</a>
+<a class="sourceLine" id="cb1-106" title="106">                <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb1-107" title="107">            }</a>
+<a class="sourceLine" id="cb1-108" title="108"></a>
+<a class="sourceLine" id="cb1-109" title="109">            <span class="kw">if</span> (obj.<span class="fu">GetType</span>() != <span class="kw">this</span>.<span class="fu">GetType</span>())</a>
+<a class="sourceLine" id="cb1-110" title="110">            {</a>
+<a class="sourceLine" id="cb1-111" title="111">                <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb1-112" title="112">            }</a>
+<a class="sourceLine" id="cb1-113" title="113"></a>
+<a class="sourceLine" id="cb1-114" title="114">            Interval2D that = (Interval2D)obj;</a>
+<a class="sourceLine" id="cb1-115" title="115"></a>
+<a class="sourceLine" id="cb1-116" title="116">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">Equals</span>(that.<span class="fu">X</span>) &amp;&amp; <span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">Equals</span>(that.<span class="fu">Y</span>);</a>
+<a class="sourceLine" id="cb1-117" title="117">        }</a>
+<a class="sourceLine" id="cb1-118" title="118"></a>
+<a class="sourceLine" id="cb1-119" title="119">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-120" title="120">        <span class="co">/// 获取哈希值</span></a>
+<a class="sourceLine" id="cb1-121" title="121">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-122" title="122">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-123" title="123">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">GetHashCode</span>()</a>
+<a class="sourceLine" id="cb1-124" title="124">        {</a>
+<a class="sourceLine" id="cb1-125" title="125">            <span class="dt">int</span> hash1 = <span class="kw">this</span>.<span class="fu">X</span>.<span class="fu">GetHashCode</span>();</a>
+<a class="sourceLine" id="cb1-126" title="126">            <span class="dt">int</span> hash2 = <span class="kw">this</span>.<span class="fu">Y</span>.<span class="fu">GetHashCode</span>();</a>
+<a class="sourceLine" id="cb1-127" title="127"></a>
+<a class="sourceLine" id="cb1-128" title="128">            <span class="kw">return</span> <span class="dv">31</span> * hash1 + hash2;</a>
+<a class="sourceLine" id="cb1-129" title="129">        }</a>
+<a class="sourceLine" id="cb1-130" title="130">    }</a>
+<a class="sourceLine" id="cb1-131" title="131">}</a></code></pre></div>
+<h2 id="绘图方法">绘图方法</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">/// 主绘图函数。</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;N&quot;</span><span class="kw">&gt;</span><span class="co">2D 间隔的数目。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;Min&quot;</span><span class="kw">&gt;</span><span class="co">分布范围的下界。（大于 0 且小于 1）&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;Max&quot;</span><span class="kw">&gt;</span><span class="co">分布范围的上界。（大于 0 且小于 1）&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">StartDrawing</span>(<span class="dt">int</span> N, <span class="dt">double</span> Min, <span class="dt">double</span> Max)</a>
+<a class="sourceLine" id="cb2-8" title="8">{</a>
+<a class="sourceLine" id="cb2-9" title="9">    Interval2D[] list = <span class="kw">new</span> Interval2D[N];</a>
+<a class="sourceLine" id="cb2-10" title="10">    Random random = <span class="kw">new</span> <span class="fu">Random</span>();</a>
+<a class="sourceLine" id="cb2-11" title="11"></a>
+<a class="sourceLine" id="cb2-12" title="12">    <span class="co">//开始绘图</span></a>
+<a class="sourceLine" id="cb2-13" title="13">    Form2 drawPad = <span class="kw">new</span> <span class="fu">Form2</span>();</a>
+<a class="sourceLine" id="cb2-14" title="14">    drawPad.<span class="fu">Show</span>();</a>
+<a class="sourceLine" id="cb2-15" title="15">    Graphics graphics = drawPad.<span class="fu">CreateGraphics</span>();</a>
+<a class="sourceLine" id="cb2-16" title="16"></a>
+<a class="sourceLine" id="cb2-17" title="17">    <span class="co">//生成随机二维间隔</span></a>
+<a class="sourceLine" id="cb2-18" title="18">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
+<a class="sourceLine" id="cb2-19" title="19">    {</a>
+<a class="sourceLine" id="cb2-20" title="20">        <span class="dt">double</span> x = random.<span class="fu">NextDouble</span>() * (Max - Min) + Min;</a>
+<a class="sourceLine" id="cb2-21" title="21">        <span class="dt">double</span> y = random.<span class="fu">NextDouble</span>() * (Max - Min) + Min;</a>
+<a class="sourceLine" id="cb2-22" title="22">        <span class="kw">if</span> (x &gt;= y)</a>
+<a class="sourceLine" id="cb2-23" title="23">        {</a>
+<a class="sourceLine" id="cb2-24" title="24">            <span class="dt">double</span> temp = x;</a>
+<a class="sourceLine" id="cb2-25" title="25">            x = y;</a>
+<a class="sourceLine" id="cb2-26" title="26">            y = temp;</a>
+<a class="sourceLine" id="cb2-27" title="27">        }</a>
+<a class="sourceLine" id="cb2-28" title="28">        x *= drawPad.<span class="fu">ClientRectangle</span>.<span class="fu">Width</span>;</a>
+<a class="sourceLine" id="cb2-29" title="29">        y *= drawPad.<span class="fu">ClientRectangle</span>.<span class="fu">Width</span>;</a>
+<a class="sourceLine" id="cb2-30" title="30">        Interval1D tempx = <span class="kw">new</span> <span class="fu">Interval1D</span>(x, y);</a>
+<a class="sourceLine" id="cb2-31" title="31"></a>
+<a class="sourceLine" id="cb2-32" title="32">        x = random.<span class="fu">NextDouble</span>() * (Max - Min) + Min;</a>
+<a class="sourceLine" id="cb2-33" title="33">        y = random.<span class="fu">NextDouble</span>() * (Max - Min) + Min;</a>
+<a class="sourceLine" id="cb2-34" title="34">        <span class="kw">if</span> (x &gt;= y)</a>
+<a class="sourceLine" id="cb2-35" title="35">        {</a>
+<a class="sourceLine" id="cb2-36" title="36">            <span class="dt">double</span> temp = x;</a>
+<a class="sourceLine" id="cb2-37" title="37">            x = y;</a>
+<a class="sourceLine" id="cb2-38" title="38">            y = temp;</a>
+<a class="sourceLine" id="cb2-39" title="39">        }</a>
+<a class="sourceLine" id="cb2-40" title="40">        x *= drawPad.<span class="fu">ClientRectangle</span>.<span class="fu">Height</span>;</a>
+<a class="sourceLine" id="cb2-41" title="41">        y *= drawPad.<span class="fu">ClientRectangle</span>.<span class="fu">Height</span>;</a>
+<a class="sourceLine" id="cb2-42" title="42">        Interval1D tempy = <span class="kw">new</span> <span class="fu">Interval1D</span>(x, y);</a>
+<a class="sourceLine" id="cb2-43" title="43"></a>
+<a class="sourceLine" id="cb2-44" title="44">        list[i] = <span class="kw">new</span> <span class="fu">Interval2D</span>(tempx, tempy);</a>
+<a class="sourceLine" id="cb2-45" title="45">    }</a>
+<a class="sourceLine" id="cb2-46" title="46"></a>
+<a class="sourceLine" id="cb2-47" title="47">    <span class="co">//计算相交和包含的数量</span></a>
+<a class="sourceLine" id="cb2-48" title="48">    <span class="dt">int</span> intersectNum = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-49" title="49">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
+<a class="sourceLine" id="cb2-50" title="50">    {</a>
+<a class="sourceLine" id="cb2-51" title="51">        <span class="kw">for</span> (<span class="dt">int</span> j = i + <span class="dv">1</span>; j &lt; N; ++j)</a>
+<a class="sourceLine" id="cb2-52" title="52">        {</a>
+<a class="sourceLine" id="cb2-53" title="53">            <span class="kw">if</span> (list[i].<span class="fu">Intersects</span>(list[j]))</a>
+<a class="sourceLine" id="cb2-54" title="54">            {</a>
+<a class="sourceLine" id="cb2-55" title="55">                intersectNum++;</a>
+<a class="sourceLine" id="cb2-56" title="56">            }</a>
+<a class="sourceLine" id="cb2-57" title="57">        }</a>
+<a class="sourceLine" id="cb2-58" title="58">    }</a>
+<a class="sourceLine" id="cb2-59" title="59"></a>
+<a class="sourceLine" id="cb2-60" title="60">    <span class="dt">int</span> containsNum = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-61" title="61">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; N; ++i)</a>
+<a class="sourceLine" id="cb2-62" title="62">    {</a>
+<a class="sourceLine" id="cb2-63" title="63">        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; N; ++j)</a>
+<a class="sourceLine" id="cb2-64" title="64">        {</a>
+<a class="sourceLine" id="cb2-65" title="65">            <span class="kw">if</span> (i == j)</a>
+<a class="sourceLine" id="cb2-66" title="66">                <span class="kw">continue</span>;</a>
+<a class="sourceLine" id="cb2-67" title="67"></a>
+<a class="sourceLine" id="cb2-68" title="68">            <span class="kw">if</span> (list[i].<span class="fu">Contains</span>(list[j]))</a>
+<a class="sourceLine" id="cb2-69" title="69">            {</a>
+<a class="sourceLine" id="cb2-70" title="70">                containsNum++;</a>
+<a class="sourceLine" id="cb2-71" title="71">            }</a>
+<a class="sourceLine" id="cb2-72" title="72">        }</a>
+<a class="sourceLine" id="cb2-73" title="73">    }</a>
+<a class="sourceLine" id="cb2-74" title="74"></a>
+<a class="sourceLine" id="cb2-75" title="75">    <span class="co">//移动原点至左下方，翻转坐标系</span></a>
+<a class="sourceLine" id="cb2-76" title="76">    graphics.<span class="fu">TranslateTransform</span>(<span class="dv">0</span>, drawPad.<span class="fu">ClientRectangle</span>.<span class="fu">Height</span>);</a>
+<a class="sourceLine" id="cb2-77" title="77">    graphics.<span class="fu">ScaleTransform</span>(<span class="dv">1</span>, <span class="dv">-1</span>);</a>
+<a class="sourceLine" id="cb2-78" title="78"></a>
+<a class="sourceLine" id="cb2-79" title="79">    <span class="co">//绘制所有区间</span></a>
+<a class="sourceLine" id="cb2-80" title="80">    <span class="kw">foreach</span> (Interval2D n <span class="kw">in</span> list)</a>
+<a class="sourceLine" id="cb2-81" title="81">    {</a>
+<a class="sourceLine" id="cb2-82" title="82">        n.<span class="fu">Draw</span>(graphics);</a>
+<a class="sourceLine" id="cb2-83" title="83">    }</a>
+<a class="sourceLine" id="cb2-84" title="84"></a>
+<a class="sourceLine" id="cb2-85" title="85">    <span class="co">//新建一个窗口，显示计算结果</span></a>
+<a class="sourceLine" id="cb2-86" title="86">    MessageBox.<span class="fu">Show</span>($<span class="st">&quot;相交的区间数：{intersectNum}, 包含的区间数：{containsNum}&quot;</span>);</a>
+<a class="sourceLine" id="cb2-87" title="87"></a>
+<a class="sourceLine" id="cb2-88" title="88">    <span class="co">//清理资源</span></a>
+<a class="sourceLine" id="cb2-89" title="89">    graphics.<span class="fu">Dispose</span>();</a>
+<a class="sourceLine" id="cb2-90" title="90">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.2/Geometry" target="_blank" rel="noopener">Geometry 库</a></p>
 
 		</div>
 	</div>

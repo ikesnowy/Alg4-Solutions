@@ -140,110 +140,113 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.3.9</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.9<br>编写一段程序，从标准输入得到一个缺少左括号的表达式并打印出补全括号之后的中序表达式。<br>例如，给定输入：<br><code>1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )</code><br>你的程序应该输出：<br><code>( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )</code></p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>在计算中序表达式算法的基础上做修改。<br>压入数字时将该数字所在的位置也一并压入。<br>弹出数字进行运算时在位置靠前的数字前加上左括号。<br>A + B ) <em> C + D ) ) 为例。<br>A 压入栈中并记录位置 。<br>‘+’ 压入栈中。<br>B 压入栈中并记录位置。<br>) 计算，在 A 之前加入左括号，结果 E 压入栈中，位置为 A 的位置。<br>‘</em>‘ 压入栈中。<br>C 压入栈中并记录位置。<br>‘+’ 压入栈中。<br>D 压入栈中并记录位置。<br>) 计算，在 C 之前加入左括号，结果 F 压入栈中，位置为 C 的位置。<br>) 计算，在 E 之前加入左括号（也就是 A 之前），结果 G 压入栈中，位置为 E 的位置。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Generics<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_9
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 1.3.9
-     * 
-     * 编写一段程序，从标准输入得到一个缺少左括号的表达式并打印出补全括号之后的中序表达式。
-     * 例如，给定输入：
-     * 1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )
-     * 你的程序应该输出：
-     * ( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//在计算中序表达式算法的基础上做修改</span>
-        <span class="token comment" spellcheck="true">//压入数字时将该数字所在的位置也一并压入</span>
-        <span class="token comment" spellcheck="true">//弹出数字进行运算时在位置靠前的数字前加上左括号</span>
-        <span class="token comment" spellcheck="true">//A + B ) * C + D ) ) 为例</span>
-        <span class="token comment" spellcheck="true">//A 压入栈中并记录位置                                        </span>
-        <span class="token comment" spellcheck="true">//+ 压入栈中</span>
-        <span class="token comment" spellcheck="true">//B 压入栈中并记录位置                                             </span>
-        <span class="token comment" spellcheck="true">//) 计算，在 A 之前加入左括号，结果 E 压入栈中，位置为 A 的位置</span>
-        <span class="token comment" spellcheck="true">//* 压入栈中</span>
-        <span class="token comment" spellcheck="true">//C 压入栈中并记录位置</span>
-        <span class="token comment" spellcheck="true">//+ 压入栈中</span>
-        <span class="token comment" spellcheck="true">//D 压入栈中并记录位置</span>
-        <span class="token comment" spellcheck="true">//) 计算，在 C 之前加入左括号，结果 F 压入栈中，位置为 C 的位置</span>
-        <span class="token comment" spellcheck="true">//) 计算，在 E 之前加入左括号（也就是 A 之前），结果 G 压入栈中，位置为 E 的位置。</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">string</span> input <span class="token operator">=</span> <span class="token string">"1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )"</span><span class="token punctuation">;</span>
-            Stack<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">></span> operators <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Stack<span class="token operator">&lt;</span>Number<span class="token operator">></span> numbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span>Number<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> leftBrackets <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>input<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">' '</span><span class="token punctuation">)</span>
-                    <span class="token keyword">continue</span><span class="token punctuation">;</span>
-                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'+'</span> <span class="token operator">||</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'-'</span> <span class="token operator">||</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'*'</span> <span class="token operator">||</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'/'</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    operators<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">')'</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    Number B <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Number A <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token keyword">char</span> operation <span class="token operator">=</span> operators<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Number C <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    C<span class="token punctuation">.</span>Position <span class="token operator">=</span> A<span class="token punctuation">.</span>Position<span class="token punctuation">;</span>
-                    leftBrackets<span class="token punctuation">[</span>A<span class="token punctuation">.</span>Position<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-
-                    <span class="token keyword">switch</span> <span class="token punctuation">(</span>operation<span class="token punctuation">)</span>
-                    <span class="token punctuation">{</span>
-                        <span class="token keyword">case</span> <span class="token string">'+'</span><span class="token punctuation">:</span>
-                            C<span class="token punctuation">.</span>Value <span class="token operator">=</span> A<span class="token punctuation">.</span>Value <span class="token operator">+</span> B<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
-                            <span class="token keyword">break</span><span class="token punctuation">;</span>
-                        <span class="token keyword">case</span> <span class="token string">'-'</span><span class="token punctuation">:</span>
-                            C<span class="token punctuation">.</span>Value <span class="token operator">=</span> A<span class="token punctuation">.</span>Value <span class="token operator">-</span> B<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
-                            <span class="token keyword">break</span><span class="token punctuation">;</span>
-                        <span class="token keyword">case</span> <span class="token string">'*'</span><span class="token punctuation">:</span>
-                            C<span class="token punctuation">.</span>Value <span class="token operator">=</span> A<span class="token punctuation">.</span>Value <span class="token operator">*</span> B<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
-                            <span class="token keyword">break</span><span class="token punctuation">;</span>
-                        <span class="token keyword">case</span> <span class="token string">'/'</span><span class="token punctuation">:</span>
-                            C<span class="token punctuation">.</span>Value <span class="token operator">=</span> A<span class="token punctuation">.</span>Value <span class="token operator">/</span> B<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
-                            <span class="token keyword">break</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                    numbers<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>C<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">else</span>
-                <span class="token punctuation">{</span>
-                    Number num <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    num<span class="token punctuation">.</span>Position <span class="token operator">=</span> i<span class="token punctuation">;</span>
-                    num<span class="token punctuation">.</span>Value <span class="token operator">=</span> input<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">;</span>
-                    numbers<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">while</span> <span class="token punctuation">(</span>leftBrackets<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"( "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    leftBrackets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">struct</span> Number
-    <span class="token punctuation">{</span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> Value<span class="token punctuation">;</span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> Position<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>1.3.9 编写一段程序，从标准输入得到一个缺少左括号的表达式并打印出补全括号之后的中序表达式。 例如，给定输入： <code>1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )</code> 你的程序应该输出： <code>( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )</code></p>
+<h1 id="解答">解答</h1>
+<p>在计算中序表达式算法的基础上做修改。 压入数字时将该数字所在的位置也一并压入。 弹出数字进行运算时在位置靠前的数字前加上左括号。 A + B ) * C + D ) ) 为例。 A 压入栈中并记录位置 。 '+' 压入栈中。 B 压入栈中并记录位置。 ) 计算，在 A 之前加入左括号，结果 E 压入栈中，位置为 A 的位置。 '*' 压入栈中。 C 压入栈中并记录位置。 '+' 压入栈中。 D 压入栈中并记录位置。 ) 计算，在 C 之前加入左括号，结果 F 压入栈中，位置为 C 的位置。 ) 计算，在 E 之前加入左括号（也就是 A 之前），结果 G 压入栈中，位置为 E 的位置。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Generics;</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">3.</span>_<span class="dv">9</span></a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 1.3.9</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 编写一段程序，从标准输入得到一个缺少左括号的表达式并打印出补全括号之后的中序表达式。</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 例如，给定输入：</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 你的程序应该输出：</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * ( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb1-16" title="16">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-17" title="17">    {</a>
+<a class="sourceLine" id="cb1-18" title="18">        <span class="co">//在计算中序表达式算法的基础上做修改</span></a>
+<a class="sourceLine" id="cb1-19" title="19">        <span class="co">//压入数字时将该数字所在的位置也一并压入</span></a>
+<a class="sourceLine" id="cb1-20" title="20">        <span class="co">//弹出数字进行运算时在位置靠前的数字前加上左括号</span></a>
+<a class="sourceLine" id="cb1-21" title="21">        <span class="co">//A + B ) * C + D ) ) 为例</span></a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="co">//A 压入栈中并记录位置                                        </span></a>
+<a class="sourceLine" id="cb1-23" title="23">        <span class="co">//+ 压入栈中</span></a>
+<a class="sourceLine" id="cb1-24" title="24">        <span class="co">//B 压入栈中并记录位置                                             </span></a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="co">//) 计算，在 A 之前加入左括号，结果 E 压入栈中，位置为 A 的位置</span></a>
+<a class="sourceLine" id="cb1-26" title="26">        <span class="co">//* 压入栈中</span></a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="co">//C 压入栈中并记录位置</span></a>
+<a class="sourceLine" id="cb1-28" title="28">        <span class="co">//+ 压入栈中</span></a>
+<a class="sourceLine" id="cb1-29" title="29">        <span class="co">//D 压入栈中并记录位置</span></a>
+<a class="sourceLine" id="cb1-30" title="30">        <span class="co">//) 计算，在 C 之前加入左括号，结果 F 压入栈中，位置为 C 的位置</span></a>
+<a class="sourceLine" id="cb1-31" title="31">        <span class="co">//) 计算，在 E 之前加入左括号（也就是 A 之前），结果 G 压入栈中，位置为 E 的位置。</span></a>
+<a class="sourceLine" id="cb1-32" title="32">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-33" title="33">        {</a>
+<a class="sourceLine" id="cb1-34" title="34">            <span class="dt">string</span> input = <span class="st">&quot;1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )&quot;</span>;</a>
+<a class="sourceLine" id="cb1-35" title="35">            Stack&lt;<span class="dt">char</span>&gt; operators = <span class="kw">new</span> Stack&lt;<span class="dt">char</span>&gt;();</a>
+<a class="sourceLine" id="cb1-36" title="36">            Stack&lt;Number&gt; numbers = <span class="kw">new</span> Stack&lt;Number&gt;();</a>
+<a class="sourceLine" id="cb1-37" title="37">            <span class="dt">int</span>[] leftBrackets = <span class="kw">new</span> <span class="dt">int</span>[input.<span class="fu">Length</span>];</a>
+<a class="sourceLine" id="cb1-38" title="38">            </a>
+<a class="sourceLine" id="cb1-39" title="39">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-40" title="40">            {</a>
+<a class="sourceLine" id="cb1-41" title="41">                <span class="kw">if</span> (input[i] == <span class="ch">&#39; &#39;</span>)</a>
+<a class="sourceLine" id="cb1-42" title="42">                    <span class="kw">continue</span>;</a>
+<a class="sourceLine" id="cb1-43" title="43">                <span class="kw">else</span> <span class="kw">if</span> (input[i] == <span class="ch">&#39;+&#39;</span> || input[i] == <span class="ch">&#39;-&#39;</span> || input[i] == <span class="ch">&#39;*&#39;</span> || input[i] == <span class="ch">&#39;/&#39;</span>)</a>
+<a class="sourceLine" id="cb1-44" title="44">                {</a>
+<a class="sourceLine" id="cb1-45" title="45">                    operators.<span class="fu">Push</span>(input[i]);</a>
+<a class="sourceLine" id="cb1-46" title="46">                }</a>
+<a class="sourceLine" id="cb1-47" title="47">                <span class="kw">else</span> <span class="kw">if</span> (input[i] == <span class="ch">&#39;)&#39;</span>)</a>
+<a class="sourceLine" id="cb1-48" title="48">                {</a>
+<a class="sourceLine" id="cb1-49" title="49">                    Number B = numbers.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb1-50" title="50">                    Number A = numbers.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb1-51" title="51">                    <span class="dt">char</span> operation = operators.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb1-52" title="52">                    Number C = <span class="kw">new</span> <span class="fu">Number</span>();</a>
+<a class="sourceLine" id="cb1-53" title="53">                    C.<span class="fu">Position</span> = A.<span class="fu">Position</span>;</a>
+<a class="sourceLine" id="cb1-54" title="54">                    leftBrackets[A.<span class="fu">Position</span>]++;</a>
+<a class="sourceLine" id="cb1-55" title="55"></a>
+<a class="sourceLine" id="cb1-56" title="56">                    <span class="kw">switch</span> (operation)</a>
+<a class="sourceLine" id="cb1-57" title="57">                    {</a>
+<a class="sourceLine" id="cb1-58" title="58">                        <span class="kw">case</span> <span class="ch">&#39;+&#39;</span>:</a>
+<a class="sourceLine" id="cb1-59" title="59">                            C.<span class="fu">Value</span> = A.<span class="fu">Value</span> + B.<span class="fu">Value</span>;</a>
+<a class="sourceLine" id="cb1-60" title="60">                            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb1-61" title="61">                        <span class="kw">case</span> <span class="ch">&#39;-&#39;</span>:</a>
+<a class="sourceLine" id="cb1-62" title="62">                            C.<span class="fu">Value</span> = A.<span class="fu">Value</span> - B.<span class="fu">Value</span>;</a>
+<a class="sourceLine" id="cb1-63" title="63">                            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb1-64" title="64">                        <span class="kw">case</span> <span class="ch">&#39;*&#39;</span>:</a>
+<a class="sourceLine" id="cb1-65" title="65">                            C.<span class="fu">Value</span> = A.<span class="fu">Value</span> * B.<span class="fu">Value</span>;</a>
+<a class="sourceLine" id="cb1-66" title="66">                            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb1-67" title="67">                        <span class="kw">case</span> <span class="ch">&#39;/&#39;</span>:</a>
+<a class="sourceLine" id="cb1-68" title="68">                            C.<span class="fu">Value</span> = A.<span class="fu">Value</span> / B.<span class="fu">Value</span>;</a>
+<a class="sourceLine" id="cb1-69" title="69">                            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb1-70" title="70">                    }</a>
+<a class="sourceLine" id="cb1-71" title="71">                    numbers.<span class="fu">Push</span>(C);</a>
+<a class="sourceLine" id="cb1-72" title="72">                }</a>
+<a class="sourceLine" id="cb1-73" title="73">                <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-74" title="74">                {</a>
+<a class="sourceLine" id="cb1-75" title="75">                    Number num = <span class="kw">new</span> <span class="fu">Number</span>();</a>
+<a class="sourceLine" id="cb1-76" title="76">                    num.<span class="fu">Position</span> = i;</a>
+<a class="sourceLine" id="cb1-77" title="77">                    num.<span class="fu">Value</span> = input[i] - <span class="ch">&#39;0&#39;</span>;</a>
+<a class="sourceLine" id="cb1-78" title="78">                    numbers.<span class="fu">Push</span>(num);</a>
+<a class="sourceLine" id="cb1-79" title="79">                }</a>
+<a class="sourceLine" id="cb1-80" title="80">            }</a>
+<a class="sourceLine" id="cb1-81" title="81"></a>
+<a class="sourceLine" id="cb1-82" title="82">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; input.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb1-83" title="83">            {</a>
+<a class="sourceLine" id="cb1-84" title="84">                <span class="kw">while</span> (leftBrackets[i] != <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-85" title="85">                {</a>
+<a class="sourceLine" id="cb1-86" title="86">                    Console.<span class="fu">Write</span>(<span class="st">&quot;( &quot;</span>);</a>
+<a class="sourceLine" id="cb1-87" title="87">                    leftBrackets[i]--;</a>
+<a class="sourceLine" id="cb1-88" title="88">                }</a>
+<a class="sourceLine" id="cb1-89" title="89"></a>
+<a class="sourceLine" id="cb1-90" title="90">                Console.<span class="fu">Write</span>(input[i]);</a>
+<a class="sourceLine" id="cb1-91" title="91">            }</a>
+<a class="sourceLine" id="cb1-92" title="92">        }</a>
+<a class="sourceLine" id="cb1-93" title="93">    }</a>
+<a class="sourceLine" id="cb1-94" title="94"></a>
+<a class="sourceLine" id="cb1-95" title="95">    <span class="kw">struct</span> Number</a>
+<a class="sourceLine" id="cb1-96" title="96">    {</a>
+<a class="sourceLine" id="cb1-97" title="97">        <span class="kw">public</span> <span class="dt">int</span> Value;</a>
+<a class="sourceLine" id="cb1-98" title="98">        <span class="kw">public</span> <span class="dt">int</span> Position;</a>
+<a class="sourceLine" id="cb1-99" title="99">    }</a>
+<a class="sourceLine" id="cb1-100" title="100">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3/Generics" target="_blank" rel="noopener">Generics 库</a></p>
 
 		</div>
 	</div>

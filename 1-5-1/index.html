@@ -140,8 +140,10 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.1</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.1<br>使用 quick-find 算法处理序列 9-0 3-4 5-8 7-2 2-1 5-7 0-3 4-2 。<br>对于输入的每一对整数，给出 id[] 数组的内容和访问数组的次数。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>quick-find 的官方实现：<a href="http://algs4.cs.princeton.edu/15uf/QuickFindUF.java.html" target="_blank" rel="noopener">QuickFindUF.java</a>。<br>只要实现相应并查集，然后输入内容即可。<br>增加一个记录访问数组次数的类成员变量，在每次访问数组的语句执行后自增即可。<br>样例输出：</p>
+			<h1 id="题目">题目</h1>
+<p>1.5.1 使用 quick-find 算法处理序列 9-0 3-4 5-8 7-2 2-1 5-7 0-3 4-2 。 对于输入的每一对整数，给出 id[] 数组的内容和访问数组的次数。</p>
+<h1 id="解答">解答</h1>
+<p>quick-find 的官方实现：<a href="http://algs4.cs.princeton.edu/15uf/QuickFindUF.java.html" target="_blank" rel="noopener">QuickFindUF.java</a>。 只要实现相应并查集，然后输入内容即可。 增加一个记录访问数组次数的类成员变量，在每次访问数组的语句执行后自增即可。 样例输出：</p>
 <pre><code>1 2 3 4 5 6 7 8 0 数组访问：13
 1 2 4 4 5 6 7 8 0 数组访问：13
 1 2 4 4 8 6 7 8 0 数组访问：13
@@ -149,102 +151,103 @@ function dismissSearchResultModal() {
 1 1 4 4 8 6 1 8 0 数组访问：14
 1 1 4 4 1 6 1 1 0 数组访问：14
 1 1 4 4 1 6 1 1 4 数组访问：14
-1 1 1 1 1 6 1 1 1 数组访问：16
-</code></pre><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>QuickFindUF.cs，这个类继承了 UF.cs，重新实现了 Union() 和 Find() 等方法。<br>关于 UF.cs 可以参见原书中文版 P138 或英文版 P221 的算法 1.5。</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">namespace</span> UnionFind
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 用 QuickFind 算法实现的并查集。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">QuickFindUF</span> <span class="token punctuation">:</span> UF
-    <span class="token punctuation">{</span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> ArrayVisitCount <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//记录数组访问的次数。</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 新建一个使用 quick-find 实现的并查集。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="n">并查集的大小。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token function">QuickFindUF</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">base</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 重置数组访问计数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">ResetArrayCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 寻找 p 所在的连通分量。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要寻找的结点。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>返回 p 所在的连通分量。&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Find</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">Validate</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 判断两个结点是否属于同一个连通分量。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要判断的结点。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="q">需要判断的另一个结点。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>如果属于同一个连通分量则返回 true，否则返回 false。&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">bool</span> <span class="token function">IsConnected</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">Validate</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Validate</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 将两个结点所在的连通分量合并。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要合并的结点。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="q">需要合并的另一个结点。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Union</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">Validate</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Validate</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> pID <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> qID <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 如果两个结点同属于一个连通分量，那么什么也不做。</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>pID <span class="token operator">==</span> qID<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> pID<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> qID<span class="token punctuation">;</span>
-                    <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">this</span><span class="token punctuation">.</span>ArrayVisitCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">--</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获得 parent 数组。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>id 数组。&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">GetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+1 1 1 1 1 6 1 1 1 数组访问：16</code></pre>
+<h1 id="代码">代码</h1>
+<p>QuickFindUF.cs，这个类继承了 UF.cs，重新实现了 Union() 和 Find() 等方法。 关于 UF.cs 可以参见原书中文版 P138 或英文版 P221 的算法 1.5。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">namespace</span> UnionFind</a>
+<a class="sourceLine" id="cb2-2" title="2">{</a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="co">/// 用 QuickFind 算法实现的并查集。</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="kw">public</span> <span class="kw">class</span> QuickFindUF : UF</a>
+<a class="sourceLine" id="cb2-7" title="7">    {</a>
+<a class="sourceLine" id="cb2-8" title="8">        <span class="kw">public</span> <span class="dt">int</span> ArrayVisitCount { <span class="kw">get</span>; <span class="kw">private</span> <span class="kw">set</span>; } <span class="co">//记录数组访问的次数。</span></a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-11" title="11">        <span class="co">/// 新建一个使用 quick-find 实现的并查集。</span></a>
+<a class="sourceLine" id="cb2-12" title="12">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-13" title="13">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">并查集的大小。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-14" title="14">        <span class="kw">public</span> <span class="fu">QuickFindUF</span>(<span class="dt">int</span> n) : <span class="kw">base</span>(n) { }</a>
+<a class="sourceLine" id="cb2-15" title="15"></a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="co">/// 重置数组访问计数。</span></a>
+<a class="sourceLine" id="cb2-18" title="18">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">ResetArrayCount</span>()</a>
+<a class="sourceLine" id="cb2-20" title="20">        {</a>
+<a class="sourceLine" id="cb2-21" title="21">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-22" title="22">        }</a>
+<a class="sourceLine" id="cb2-23" title="23">        </a>
+<a class="sourceLine" id="cb2-24" title="24">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-25" title="25">        <span class="co">/// 寻找 p 所在的连通分量。</span></a>
+<a class="sourceLine" id="cb2-26" title="26">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-27" title="27">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要寻找的结点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-28" title="28">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回 p 所在的连通分量。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-29" title="29">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Find</span>(<span class="dt">int</span> p)</a>
+<a class="sourceLine" id="cb2-30" title="30">        {</a>
+<a class="sourceLine" id="cb2-31" title="31">            <span class="fu">Validate</span>(p);</a>
+<a class="sourceLine" id="cb2-32" title="32">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span>++;</a>
+<a class="sourceLine" id="cb2-33" title="33">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">parent</span>[p];</a>
+<a class="sourceLine" id="cb2-34" title="34">        }</a>
+<a class="sourceLine" id="cb2-35" title="35"></a>
+<a class="sourceLine" id="cb2-36" title="36">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-37" title="37">        <span class="co">/// 判断两个结点是否属于同一个连通分量。</span></a>
+<a class="sourceLine" id="cb2-38" title="38">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-39" title="39">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要判断的结点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-40" title="40">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;q&quot;</span><span class="kw">&gt;</span><span class="co">需要判断的另一个结点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-41" title="41">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">如果属于同一个连通分量则返回 true，否则返回 false。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-42" title="42">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">bool</span> <span class="fu">IsConnected</span>(<span class="dt">int</span> p, <span class="dt">int</span> q)</a>
+<a class="sourceLine" id="cb2-43" title="43">        {</a>
+<a class="sourceLine" id="cb2-44" title="44">            <span class="fu">Validate</span>(p);</a>
+<a class="sourceLine" id="cb2-45" title="45">            <span class="fu">Validate</span>(q);</a>
+<a class="sourceLine" id="cb2-46" title="46">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> += <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb2-47" title="47">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">parent</span>[p] == <span class="kw">this</span>.<span class="fu">parent</span>[q];</a>
+<a class="sourceLine" id="cb2-48" title="48">        }</a>
+<a class="sourceLine" id="cb2-49" title="49"></a>
+<a class="sourceLine" id="cb2-50" title="50">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-51" title="51">        <span class="co">/// 将两个结点所在的连通分量合并。</span></a>
+<a class="sourceLine" id="cb2-52" title="52">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-53" title="53">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要合并的结点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-54" title="54">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;q&quot;</span><span class="kw">&gt;</span><span class="co">需要合并的另一个结点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-55" title="55">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">Union</span>(<span class="dt">int</span> p, <span class="dt">int</span> q)</a>
+<a class="sourceLine" id="cb2-56" title="56">        {</a>
+<a class="sourceLine" id="cb2-57" title="57">            <span class="fu">Validate</span>(p);</a>
+<a class="sourceLine" id="cb2-58" title="58">            <span class="fu">Validate</span>(q);</a>
+<a class="sourceLine" id="cb2-59" title="59">            <span class="dt">int</span> pID = <span class="kw">this</span>.<span class="fu">parent</span>[p];</a>
+<a class="sourceLine" id="cb2-60" title="60">            <span class="dt">int</span> qID = <span class="kw">this</span>.<span class="fu">parent</span>[q];</a>
+<a class="sourceLine" id="cb2-61" title="61">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> += <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb2-62" title="62"></a>
+<a class="sourceLine" id="cb2-63" title="63">            <span class="co">// 如果两个结点同属于一个连通分量，那么什么也不做。</span></a>
+<a class="sourceLine" id="cb2-64" title="64">            <span class="kw">if</span> (pID == qID)</a>
+<a class="sourceLine" id="cb2-65" title="65">            {</a>
+<a class="sourceLine" id="cb2-66" title="66">                <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb2-67" title="67">            }</a>
+<a class="sourceLine" id="cb2-68" title="68"></a>
+<a class="sourceLine" id="cb2-69" title="69">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb2-70" title="70">            {</a>
+<a class="sourceLine" id="cb2-71" title="71">                <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">parent</span>[i] == pID)</a>
+<a class="sourceLine" id="cb2-72" title="72">                {</a>
+<a class="sourceLine" id="cb2-73" title="73">                    <span class="kw">this</span>.<span class="fu">parent</span>[i] = qID;</a>
+<a class="sourceLine" id="cb2-74" title="74">                    <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span>++;</a>
+<a class="sourceLine" id="cb2-75" title="75">                }</a>
+<a class="sourceLine" id="cb2-76" title="76">            }</a>
+<a class="sourceLine" id="cb2-77" title="77"></a>
+<a class="sourceLine" id="cb2-78" title="78">            <span class="kw">this</span>.<span class="fu">ArrayVisitCount</span> += <span class="kw">this</span>.<span class="fu">parent</span>.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb2-79" title="79">            <span class="kw">this</span>.<span class="fu">count</span>--;</a>
+<a class="sourceLine" id="cb2-80" title="80">            <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb2-81" title="81">        }</a>
+<a class="sourceLine" id="cb2-82" title="82"></a>
+<a class="sourceLine" id="cb2-83" title="83">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-84" title="84">        <span class="co">/// 获得 parent 数组。</span></a>
+<a class="sourceLine" id="cb2-85" title="85">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-86" title="86">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">id 数组。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-87" title="87">        <span class="kw">public</span> <span class="dt">int</span>[] <span class="fu">GetParent</span>()</a>
+<a class="sourceLine" id="cb2-88" title="88">        {</a>
+<a class="sourceLine" id="cb2-89" title="89">            <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">parent</span>;</a>
+<a class="sourceLine" id="cb2-90" title="90">        }</a>
+<a class="sourceLine" id="cb2-91" title="91">    }</a>
+<a class="sourceLine" id="cb2-92" title="92">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
 
 		</div>
 	</div>

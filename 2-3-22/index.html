@@ -140,232 +140,245 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.3.22</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.22<br>快速三向切分。（J.Bently，D.McIlroy）<br>用将重复元素放置于子数组两端的方式实现一个信息量最优的排序算法。<br>使用两个索引 p 和 q，使得 a[lo…p-1] 和 a[q+1..hi] 的元素都和 a[lo] 相等。<br>使用另外两个索引 i 和 j，使得 a[p…i-1] 小于 a[lo]，a[j+i..q] 大于 a[lo]。<br>在内循环中加入代码，在 a[i] 和 v 相等时将其与 a[p] 交换（并将 p 加 1），<br>在 a[j] 和 v 相等且 a[i] 和 a[j] 尚未和 v 进行比较之前将其与 a[q] 交换。<br>添加在切分循环结束后将和 v 相等的元素交换到正确位置的代码，如图 2.3.6 所示。<br>请注意：<br>这里实现的代码和正文中给出的代码时等价的，<br>因为这里额外的交换用于和切分元素相等的元素，<br>而正文中的代码将额外的交换用于和切分元素不等的元素。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现见：<a href="https://algs4.cs.princeton.edu/23quicksort/QuickBentleyMcIlroy.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/23quicksort/QuickBentleyMcIlroy.java.html</a></p>
-<h2 id="快速三向切分"><a href="#快速三向切分" class="headerlink" title="快速三向切分"></a>快速三向切分</h2><p>论文引用见「另请参阅」部分。<br>算法演示<br><img src="./3.gif" alt=""></p>
-<h2 id="Ninther-算法"><a href="#Ninther-算法" class="headerlink" title="Ninther 算法"></a>Ninther 算法</h2><p>官方实现中用到了 Ninther 算法用于选取近似中位数（作为枢轴），<br>该算法由 John Tukey 在 1978 年提出，论文引用见「另请参阅」部分。<br>这个算法的思想其实很简单，假设我们有三个数 $ y_1, y_2, y_3 $ ，那么其中位数为：<br>$$<br>y_A= {\rm median}\lbrace y_1,y_2,y_3 \rbrace<br>$$<br>现在对于九个数，我们以三个为一组，取三个中位数：<br>$$<br>y_A= {\rm median}\lbrace y_1,y_2,y_3 \rbrace \\<br>y_B= {\rm median}\lbrace y_4,y_5,y_6 \rbrace \\<br>y_C= {\rm median}\lbrace y_7,y_8,y_9 \rbrace<br>$$<br>接下来取这三个中位数的中位数，有：<br>$$<br>y_E= {\rm median}\lbrace y_A,y_B,y_C \rbrace<br>$$<br>我们把上述过程封装成函数，即 $ y_E= {\rm ninther}\lbrace y_1,y_2,\cdots,y_9 \rbrace $ 。<br>于是我们获得的 $ y_E $ 即为近似中位数，如果 $ \lbrace y_1,y_2,\cdots,y_9 \rbrace $ 是单调数列，那么 $ y_E $ 就是中位数。</p>
-<h2 id="获取三个数中的中位数"><a href="#获取三个数中的中位数" class="headerlink" title="获取三个数中的中位数"></a>获取三个数中的中位数</h2><p>事实上，我们可以直接画出三个数排列的所有可能，获得决策树。<br><img src="2.png" alt=""><br>然后根据决策树写出取中位数的算法：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token generic-method function">Median3<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">return</span>
-        <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span>
-        <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> j <span class="token punctuation">:</span> <span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> k <span class="token punctuation">:</span> i<span class="token punctuation">)</span> <span class="token punctuation">:</span>
-        <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> j <span class="token punctuation">:</span> <span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> k <span class="token punctuation">:</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>提高约 20% 左右的性能。<br><img src="./1.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>QuickBentleyMcIlroy</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> Quick
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">QuickBentleyMcIlroy</span> <span class="token punctuation">:</span> BaseSort
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 小于这个数值的数组调用插入排序。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token keyword">int</span> INSERTION_SORT_CUTOFF <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 小于这个数值的数组调用中位数作为枢轴。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token keyword">int</span> MEDIAN_OF_3_CUTOFF <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">public</span> <span class="token function">QuickBentleyMcIlroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 用快速排序对数组 a 进行升序排序。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要排序的数组。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Debug<span class="token punctuation">.</span><span class="token function">Assert</span><span class="token punctuation">(</span><span class="token function">IsSorted</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 对指定范围内的数组进行排序。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要排序的数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="lo">排序的起始下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="hi">排序的终止下标。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> n <span class="token operator">=</span> hi <span class="token operator">-</span> lo <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>INSERTION_SORT_CUTOFF<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token function">InsertionSort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>MEDIAN_OF_3_CUTOFF<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">// 对于较小的数组，直接选择左中右三个元素中的中位数作为枢轴。</span>
-                <span class="token keyword">int</span> m <span class="token operator">=</span> <span class="token function">Median3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> lo <span class="token operator">+</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> m<span class="token punctuation">,</span> lo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">else</span>
-            <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">// 对于较大的数组使用 Turkey Ninther 作为枢轴。</span>
-                <span class="token keyword">int</span> eps <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> mid <span class="token operator">=</span> lo <span class="token operator">+</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> m1 <span class="token operator">=</span> <span class="token function">Median3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> lo <span class="token operator">+</span> eps<span class="token punctuation">,</span> lo <span class="token operator">+</span> eps <span class="token operator">+</span> eps<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> m2 <span class="token operator">=</span> <span class="token function">Median3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> mid <span class="token operator">-</span> eps<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> mid <span class="token operator">+</span> eps<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-                <span class="token keyword">int</span> m3 <span class="token operator">=</span> <span class="token function">Median3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> hi <span class="token operator">-</span> eps <span class="token operator">-</span> eps<span class="token punctuation">,</span> hi <span class="token operator">-</span> eps<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> ninther <span class="token operator">=</span> <span class="token function">Median3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> m1<span class="token punctuation">,</span> m2<span class="token punctuation">,</span> m3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> ninther<span class="token punctuation">,</span> lo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token comment" spellcheck="true">// 三向切分</span>
-            <span class="token keyword">int</span> i <span class="token operator">=</span> lo<span class="token punctuation">,</span> j <span class="token operator">=</span> hi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> p <span class="token operator">=</span> lo<span class="token punctuation">,</span> q <span class="token operator">=</span> hi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            T v <span class="token operator">=</span> a<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token operator">++</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> hi<span class="token punctuation">)</span>
-                        <span class="token keyword">break</span><span class="token punctuation">;</span>
-                <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> a<span class="token punctuation">[</span><span class="token operator">--</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> lo<span class="token punctuation">)</span>
-                        <span class="token keyword">break</span><span class="token punctuation">;</span>
-
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> j <span class="token operator">&amp;&amp;</span> <span class="token function">IsEqual</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token operator">++</span>p<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> j<span class="token punctuation">)</span>
-                    <span class="token keyword">break</span><span class="token punctuation">;</span>
-
-                <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEqual</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token operator">++</span>p<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsEqual</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token operator">--</span>q<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            i <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> lo<span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> p<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> k<span class="token punctuation">,</span> j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> hi<span class="token punctuation">;</span> k <span class="token operator">>=</span> q<span class="token punctuation">;</span> k<span class="token operator">--</span><span class="token punctuation">)</span>
-                <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> k<span class="token punctuation">,</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">Sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> i<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 判断两个元素是否值相等。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要判断的元素类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">进行比较的第一个元素。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="b">进行比较的第二个元素。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>两个元素的值是否相等。&lt;/returns></span>
-        <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token generic-method function">IsEqual<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T a<span class="token punctuation">,</span> T b<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 用插入排序对指定范围内的数组排序。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">数组的元素类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要排序的数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="lo">排序的起始下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="hi">排序的终止下标。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token generic-method function">InsertionSort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> lo<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> hi<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> lo <span class="token operator">&amp;&amp;</span> <span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    <span class="token function">Exch</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 获取三个元素中的中位数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">用于排序的元素。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要排序的数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="i">第一个待选元素的下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="j">第二个待选元素的下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="k">第三个待选元素的下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token generic-method function">Median3<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span>
-               <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span>
-               <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> j <span class="token punctuation">:</span> <span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> k <span class="token punctuation">:</span> i<span class="token punctuation">)</span> <span class="token punctuation">:</span>
-               <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> j <span class="token punctuation">:</span> <span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> k <span class="token punctuation">:</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>2.3.22 快速三向切分。（J.Bently，D.McIlroy） 用将重复元素放置于子数组两端的方式实现一个信息量最优的排序算法。 使用两个索引 p 和 q，使得 a[lo...p-1] 和 a[q+1..hi] 的元素都和 a[lo] 相等。 使用另外两个索引 i 和 j，使得 a[p...i-1] 小于 a[lo]，a[j+i..q] 大于 a[lo]。 在内循环中加入代码，在 a[i] 和 v 相等时将其与 a[p] 交换（并将 p 加 1）， 在 a[j] 和 v 相等且 a[i] 和 a[j] 尚未和 v 进行比较之前将其与 a[q] 交换。 添加在切分循环结束后将和 v 相等的元素交换到正确位置的代码，如图 2.3.6 所示。 请注意： 这里实现的代码和正文中给出的代码时等价的， 因为这里额外的交换用于和切分元素相等的元素， 而正文中的代码将额外的交换用于和切分元素不等的元素。</p>
+<h1 id="解答">解答</h1>
+<p>官方实现见：https://algs4.cs.princeton.edu/23quicksort/QuickBentleyMcIlroy.java.html</p>
+<h2 id="快速三向切分">快速三向切分</h2>
+<p>论文引用见「另请参阅」部分。 算法演示 <img src="./3.gif"></p>
+<h2 id="ninther-算法">Ninther 算法</h2>
+<p>官方实现中用到了 Ninther 算法用于选取近似中位数（作为枢轴）， 该算法由 John Tukey 在 1978 年提出，论文引用见「另请参阅」部分。 这个算法的思想其实很简单，假设我们有三个数 $ y_1, y_2, y_3 $ ，那么其中位数为： <span class="math display">\[
+y_A= {\rm median}\lbrace y_1,y_2,y_3 \rbrace
+\]</span> 现在对于九个数，我们以三个为一组，取三个中位数： <span class="math display">\[
+y_A= {\rm median}\lbrace y_1,y_2,y_3 \rbrace \\
+y_B= {\rm median}\lbrace y_4,y_5,y_6 \rbrace \\
+y_C= {\rm median}\lbrace y_7,y_8,y_9 \rbrace
+\]</span> 接下来取这三个中位数的中位数，有： <span class="math display">\[
+y_E= {\rm median}\lbrace y_A,y_B,y_C \rbrace
+\]</span> 我们把上述过程封装成函数，即 $ y_E= {}y_1,y_2,,y_9 $ 。 于是我们获得的 $ y_E $ 即为近似中位数，如果 $ y_1,y_2,,y_9 $ 是单调数列，那么 $ y_E $ 就是中位数。</p>
+<h2 id="获取三个数中的中位数">获取三个数中的中位数</h2>
+<p>事实上，我们可以直接画出三个数排列的所有可能，获得决策树。 <img src="2.png"> 然后根据决策树写出取中位数的算法：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">private</span> <span class="dt">int</span> Median3&lt;T&gt;(T[] a, <span class="dt">int</span> i, <span class="dt">int</span> j, <span class="dt">int</span> k) where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">return</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        (<span class="fu">Less</span>(a[i], a[j]) ?</a>
+<a class="sourceLine" id="cb1-5" title="5">        (<span class="fu">Less</span>(a[j], a[k]) ? j : <span class="fu">Less</span>(a[i], a[k]) ? k : i) :</a>
+<a class="sourceLine" id="cb1-6" title="6">        (<span class="fu">Less</span>(a[k], a[j]) ? j : <span class="fu">Less</span>(a[k], a[i]) ? k : i));</a>
+<a class="sourceLine" id="cb1-7" title="7">}</a></code></pre></div>
+<h2 id="测试结果">测试结果</h2>
+<p>提高约 20% 左右的性能。 <img src="./1.png"></p>
+<h1 id="代码">代码</h1>
+<p>QuickBentleyMcIlroy</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">using</span> System.<span class="fu">Diagnostics</span>;</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw">namespace</span> Quick</a>
+<a class="sourceLine" id="cb2-5" title="5">{</a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="kw">public</span> <span class="kw">class</span> QuickBentleyMcIlroy : BaseSort</a>
+<a class="sourceLine" id="cb2-7" title="7">    {</a>
+<a class="sourceLine" id="cb2-8" title="8">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">        <span class="co">/// 小于这个数值的数组调用插入排序。</span></a>
+<a class="sourceLine" id="cb2-10" title="10">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-11" title="11">        <span class="kw">private</span> <span class="kw">readonly</span> <span class="dt">int</span> INSERTION_SORT_CUTOFF = <span class="dv">8</span>;</a>
+<a class="sourceLine" id="cb2-12" title="12"></a>
+<a class="sourceLine" id="cb2-13" title="13">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-14" title="14">        <span class="co">/// 小于这个数值的数组调用中位数作为枢轴。</span></a>
+<a class="sourceLine" id="cb2-15" title="15">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="kw">private</span> <span class="kw">readonly</span> <span class="dt">int</span> MEDIAN_OF_<span class="dv">3</span>_CUTOFF = <span class="dv">40</span>;</a>
+<a class="sourceLine" id="cb2-17" title="17"></a>
+<a class="sourceLine" id="cb2-18" title="18">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">        <span class="co">/// 默认构造函数。</span></a>
+<a class="sourceLine" id="cb2-20" title="20">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-21" title="21">        <span class="kw">public</span> <span class="fu">QuickBentleyMcIlroy</span>() { }</a>
+<a class="sourceLine" id="cb2-22" title="22"></a>
+<a class="sourceLine" id="cb2-23" title="23">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-24" title="24">        <span class="co">/// 用快速排序对数组 a 进行升序排序。</span></a>
+<a class="sourceLine" id="cb2-25" title="25">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-26" title="26">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb2-27" title="27">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-28" title="28">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">void</span> Sort&lt;T&gt;(T[] a)</a>
+<a class="sourceLine" id="cb2-29" title="29">        {</a>
+<a class="sourceLine" id="cb2-30" title="30">            <span class="fu">Sort</span>(a, <span class="dv">0</span>, a.<span class="fu">Length</span> - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb2-31" title="31">            Debug.<span class="fu">Assert</span>(<span class="fu">IsSorted</span>(a));</a>
+<a class="sourceLine" id="cb2-32" title="32">        }</a>
+<a class="sourceLine" id="cb2-33" title="33"></a>
+<a class="sourceLine" id="cb2-34" title="34">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-35" title="35">        <span class="co">/// 对指定范围内的数组进行排序。</span></a>
+<a class="sourceLine" id="cb2-36" title="36">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-37" title="37">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb2-38" title="38">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-39" title="39">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">排序的起始下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-40" title="40">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">排序的终止下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-41" title="41">        <span class="kw">private</span> <span class="dt">void</span> Sort&lt;T&gt;(T[] a, <span class="dt">int</span> lo, <span class="dt">int</span> hi) where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb2-42" title="42">        {</a>
+<a class="sourceLine" id="cb2-43" title="43">            <span class="dt">int</span> n = hi - lo + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-44" title="44"></a>
+<a class="sourceLine" id="cb2-45" title="45">            <span class="kw">if</span> (n &lt;= <span class="kw">this</span>.<span class="fu">INSERTION_SORT_CUTOFF</span>)</a>
+<a class="sourceLine" id="cb2-46" title="46">            {</a>
+<a class="sourceLine" id="cb2-47" title="47">                <span class="fu">InsertionSort</span>(a, lo, hi);</a>
+<a class="sourceLine" id="cb2-48" title="48">                <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb2-49" title="49">            }</a>
+<a class="sourceLine" id="cb2-50" title="50">            <span class="kw">else</span> <span class="kw">if</span> (n &lt;= <span class="kw">this</span>.<span class="fu">MEDIAN_OF_3_CUTOFF</span>)</a>
+<a class="sourceLine" id="cb2-51" title="51">            {</a>
+<a class="sourceLine" id="cb2-52" title="52">                <span class="co">// 对于较小的数组，直接选择左中右三个元素中的中位数作为枢轴。</span></a>
+<a class="sourceLine" id="cb2-53" title="53">                <span class="dt">int</span> m = <span class="fu">Median3</span>(a, lo, lo + n / <span class="dv">2</span>, hi);</a>
+<a class="sourceLine" id="cb2-54" title="54">                <span class="fu">Exch</span>(a, m, lo);</a>
+<a class="sourceLine" id="cb2-55" title="55">            }</a>
+<a class="sourceLine" id="cb2-56" title="56">            <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-57" title="57">            {</a>
+<a class="sourceLine" id="cb2-58" title="58">                <span class="co">// 对于较大的数组使用 Turkey Ninther 作为枢轴。</span></a>
+<a class="sourceLine" id="cb2-59" title="59">                <span class="dt">int</span> eps = n / <span class="dv">8</span>;</a>
+<a class="sourceLine" id="cb2-60" title="60">                <span class="dt">int</span> mid = lo + n / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb2-61" title="61">                <span class="dt">int</span> m1 = <span class="fu">Median3</span>(a, lo, lo + eps, lo + eps + eps);</a>
+<a class="sourceLine" id="cb2-62" title="62">                <span class="dt">int</span> m2 = <span class="fu">Median3</span>(a, mid - eps, mid, mid + eps); </a>
+<a class="sourceLine" id="cb2-63" title="63">                <span class="dt">int</span> m3 = <span class="fu">Median3</span>(a, hi - eps - eps, hi - eps, hi);</a>
+<a class="sourceLine" id="cb2-64" title="64">                <span class="dt">int</span> ninther = <span class="fu">Median3</span>(a, m1, m2, m3);</a>
+<a class="sourceLine" id="cb2-65" title="65">                <span class="fu">Exch</span>(a, ninther, lo);</a>
+<a class="sourceLine" id="cb2-66" title="66">            }</a>
+<a class="sourceLine" id="cb2-67" title="67"></a>
+<a class="sourceLine" id="cb2-68" title="68">            <span class="co">// 三向切分</span></a>
+<a class="sourceLine" id="cb2-69" title="69">            <span class="dt">int</span> i = lo, j = hi + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-70" title="70">            <span class="dt">int</span> p = lo, q = hi + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-71" title="71">            T v = a[lo];</a>
+<a class="sourceLine" id="cb2-72" title="72">            <span class="kw">while</span> (<span class="kw">true</span>)</a>
+<a class="sourceLine" id="cb2-73" title="73">            {</a>
+<a class="sourceLine" id="cb2-74" title="74">                <span class="kw">while</span> (<span class="fu">Less</span>(a[++i], v))</a>
+<a class="sourceLine" id="cb2-75" title="75">                    <span class="kw">if</span> (i == hi)</a>
+<a class="sourceLine" id="cb2-76" title="76">                        <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb2-77" title="77">                <span class="kw">while</span> (<span class="fu">Less</span>(v, a[--j]))</a>
+<a class="sourceLine" id="cb2-78" title="78">                    <span class="kw">if</span> (j == lo)</a>
+<a class="sourceLine" id="cb2-79" title="79">                        <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb2-80" title="80"></a>
+<a class="sourceLine" id="cb2-81" title="81">                <span class="kw">if</span> (i == j &amp;&amp; <span class="fu">IsEqual</span>(a[i], v))</a>
+<a class="sourceLine" id="cb2-82" title="82">                    <span class="fu">Exch</span>(a, ++p, i);</a>
+<a class="sourceLine" id="cb2-83" title="83">                <span class="kw">if</span> (i &gt;= j)</a>
+<a class="sourceLine" id="cb2-84" title="84">                    <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb2-85" title="85"></a>
+<a class="sourceLine" id="cb2-86" title="86">                <span class="fu">Exch</span>(a, i, j);</a>
+<a class="sourceLine" id="cb2-87" title="87">                <span class="kw">if</span> (<span class="fu">IsEqual</span>(a[i], v))</a>
+<a class="sourceLine" id="cb2-88" title="88">                    <span class="fu">Exch</span>(a, ++p, i);</a>
+<a class="sourceLine" id="cb2-89" title="89">                <span class="kw">if</span> (<span class="fu">IsEqual</span>(a[j], v))</a>
+<a class="sourceLine" id="cb2-90" title="90">                    <span class="fu">Exch</span>(a, --q, j);</a>
+<a class="sourceLine" id="cb2-91" title="91">            }</a>
+<a class="sourceLine" id="cb2-92" title="92"></a>
+<a class="sourceLine" id="cb2-93" title="93">            i = j + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-94" title="94">            <span class="kw">for</span> (<span class="dt">int</span> k = lo; k &lt;= p; k++)</a>
+<a class="sourceLine" id="cb2-95" title="95">                <span class="fu">Exch</span>(a, k, j--);</a>
+<a class="sourceLine" id="cb2-96" title="96">            <span class="kw">for</span> (<span class="dt">int</span> k = hi; k &gt;= q; k--)</a>
+<a class="sourceLine" id="cb2-97" title="97">                <span class="fu">Exch</span>(a, k, i++);</a>
+<a class="sourceLine" id="cb2-98" title="98"></a>
+<a class="sourceLine" id="cb2-99" title="99">            <span class="fu">Sort</span>(a, lo, j);</a>
+<a class="sourceLine" id="cb2-100" title="100">            <span class="fu">Sort</span>(a, i, hi);</a>
+<a class="sourceLine" id="cb2-101" title="101">        }</a>
+<a class="sourceLine" id="cb2-102" title="102"></a>
+<a class="sourceLine" id="cb2-103" title="103">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-104" title="104">        <span class="co">/// 判断两个元素是否值相等。</span></a>
+<a class="sourceLine" id="cb2-105" title="105">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-106" title="106">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">需要判断的元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb2-107" title="107">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">进行比较的第一个元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-108" title="108">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;b&quot;</span><span class="kw">&gt;</span><span class="co">进行比较的第二个元素。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-109" title="109">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">两个元素的值是否相等。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-110" title="110">        <span class="kw">private</span> <span class="dt">bool</span> IsEqual&lt;T&gt;(T a, T b) where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb2-111" title="111">        {</a>
+<a class="sourceLine" id="cb2-112" title="112">            <span class="kw">return</span> a.<span class="fu">CompareTo</span>(b) == <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-113" title="113">        }</a>
+<a class="sourceLine" id="cb2-114" title="114"></a>
+<a class="sourceLine" id="cb2-115" title="115">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-116" title="116">        <span class="co">/// 用插入排序对指定范围内的数组排序。</span></a>
+<a class="sourceLine" id="cb2-117" title="117">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-118" title="118">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">数组的元素类型。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb2-119" title="119">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-120" title="120">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">排序的起始下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-121" title="121">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">排序的终止下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-122" title="122">        <span class="kw">private</span> <span class="dt">void</span> InsertionSort&lt;T&gt;(T[] a, <span class="dt">int</span> lo, <span class="dt">int</span> hi) where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb2-123" title="123">        {</a>
+<a class="sourceLine" id="cb2-124" title="124">            <span class="kw">for</span> (<span class="dt">int</span> i = lo; i &lt;= hi; i++)</a>
+<a class="sourceLine" id="cb2-125" title="125">            {</a>
+<a class="sourceLine" id="cb2-126" title="126">                <span class="kw">for</span> (<span class="dt">int</span> j = i; j &gt; lo &amp;&amp; <span class="fu">Less</span>(a[j], a[j - <span class="dv">1</span>]); j--)</a>
+<a class="sourceLine" id="cb2-127" title="127">                {</a>
+<a class="sourceLine" id="cb2-128" title="128">                    <span class="fu">Exch</span>(a, j, j - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb2-129" title="129">                }</a>
+<a class="sourceLine" id="cb2-130" title="130">            }</a>
+<a class="sourceLine" id="cb2-131" title="131">        }</a>
+<a class="sourceLine" id="cb2-132" title="132"></a>
+<a class="sourceLine" id="cb2-133" title="133">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-134" title="134">        <span class="co">/// 获取三个元素中的中位数。</span></a>
+<a class="sourceLine" id="cb2-135" title="135">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-136" title="136">        <span class="co">/// </span><span class="kw">&lt;typeparam</span><span class="ot"> name=</span><span class="dt">&quot;T&quot;</span><span class="kw">&gt;</span><span class="co">用于排序的元素。</span><span class="kw">&lt;/typeparam&gt;</span></a>
+<a class="sourceLine" id="cb2-137" title="137">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;a&quot;</span><span class="kw">&gt;</span><span class="co">需要排序的数组。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-138" title="138">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;i&quot;</span><span class="kw">&gt;</span><span class="co">第一个待选元素的下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-139" title="139">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;j&quot;</span><span class="kw">&gt;</span><span class="co">第二个待选元素的下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-140" title="140">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;k&quot;</span><span class="kw">&gt;</span><span class="co">第三个待选元素的下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-141" title="141">        <span class="co">/// </span><span class="kw">&lt;returns&gt;&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-142" title="142">        <span class="kw">private</span> <span class="dt">int</span> Median3&lt;T&gt;(T[] a, <span class="dt">int</span> i, <span class="dt">int</span> j, <span class="dt">int</span> k) where T : IComparable&lt;T&gt;</a>
+<a class="sourceLine" id="cb2-143" title="143">        {</a>
+<a class="sourceLine" id="cb2-144" title="144">            <span class="kw">return</span></a>
+<a class="sourceLine" id="cb2-145" title="145">               (<span class="fu">Less</span>(a[i], a[j]) ?</a>
+<a class="sourceLine" id="cb2-146" title="146">               (<span class="fu">Less</span>(a[j], a[k]) ? j : <span class="fu">Less</span>(a[i], a[k]) ? k : i) :</a>
+<a class="sourceLine" id="cb2-147" title="147">               (<span class="fu">Less</span>(a[k], a[j]) ? j : <span class="fu">Less</span>(a[k], a[i]) ? k : i));</a>
+<a class="sourceLine" id="cb2-148" title="148">        }</a>
+<a class="sourceLine" id="cb2-149" title="149">    }</a>
+<a class="sourceLine" id="cb2-150" title="150">}</a></code></pre></div>
 <p>测试用例</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Quick<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_22
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.3.22
-     * 
-     * 快速三向切分。（J.Bently，D.McIlroy）
-     * 用将重复元素放置于子数组两端的方式实现一个信息量最优的排序算法。
-     * 使用两个索引 p 和 q，使得 a[lo...p-1] 和 a[q+1..hi] 的元素都和 a[lo] 相等。
-     * 使用另外两个索引 i 和 j，
-     * 使得 a[p...i-1] 小于 a[lo]，a[j+i..q] 大于 a[lo]。
-     * 在内循环中加入代码，在 a[i] 和 v 相当时将其与 a[p] 交换（并将 p 加 1），
-     * 在 a[j] 和 v 相等且 a[i] 和 a[j] 尚未和 v 进行比较之前将其与 a[q] 交换。
-     * 添加在切分循环结束后将和 v 相等的元素交换到正确位置的代码，如图 2.3.6 所示。
-     * 请注意：
-     * 这里实现的代码和正文中给出的代码时等价的，
-     * 因为这里额外的交换用于和切分元素相等的元素，
-     * 而正文中的代码将额外的交换用于和切分元素不等的元素。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            QuickSort quickNormal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            QuickBentleyMcIlroy quickBentleyMcIlroy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickBentleyMcIlroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> arraySize <span class="token operator">=</span> <span class="token number">800000</span><span class="token punctuation">;</span>                         <span class="token comment" spellcheck="true">// 初始数组大小。</span>
-            <span class="token keyword">const</span> <span class="token keyword">int</span> trialTimes <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>                       <span class="token comment" spellcheck="true">// 每次实验的重复次数。</span>
-            <span class="token keyword">const</span> <span class="token keyword">int</span> trialLevel <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>                       <span class="token comment" spellcheck="true">// 双倍递增的次数。</span>
-
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"n\t\t3way\tnormal\tratio"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> trialLevel<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">double</span> timeBentleyMcIlroy <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-                <span class="token keyword">double</span> timeNormal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> trialTimes<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetRandomArrayInt</span><span class="token punctuation">(</span>arraySize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>Length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                    a<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    timeNormal <span class="token operator">+</span><span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>quickNormal<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    timeBentleyMcIlroy <span class="token operator">+</span><span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>quickBentleyMcIlroy<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                <span class="token punctuation">}</span>
-                timeBentleyMcIlroy <span class="token operator">/</span><span class="token operator">=</span> trialTimes<span class="token punctuation">;</span>
-                timeNormal <span class="token operator">/</span><span class="token operator">=</span> trialTimes<span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>arraySize <span class="token operator">&lt;</span> <span class="token number">10000000</span><span class="token punctuation">)</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>arraySize <span class="token operator">+</span> <span class="token string">"\t\t"</span> <span class="token operator">+</span> timeBentleyMcIlroy <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> timeNormal <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> timeBentleyMcIlroy <span class="token operator">/</span> timeNormal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">else</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>arraySize <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> timeBentleyMcIlroy <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> timeNormal <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> timeBentleyMcIlroy <span class="token operator">/</span> timeNormal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                arraySize <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p>有关这种快速排序算法的来源以及三个数的中位数的选取算法，请参阅下面这篇 1993 年的论文：<br><a href="https://doi.org/10.1002/spe.4380231105" target="_blank" rel="noopener">Bentley J L, McIlroy M D. Engineering a sort function[J]. Software: Practice and Experience, 1993, 23(11): 1249-1265.</a><br>下面这份 2002 年的 PPT 详细解释和分析了官方实现代码的思路和性能：<br><a href="https://www.cs.princeton.edu/~rs/talks/QuicksortIsOptimal.pdf" target="_blank" rel="noopener">Sedgewick R, Bentley J. Quicksort is optimal[J]. Knuthfest, Stanford University, Stanford, 2002.</a><br>有关选取中位数 Ninther 算法，请参阅下面这篇 1978 年的论文：<br><a href="https://www.sciencedirect.com/science/article/pii/B9780122047503500241" target="_blank" rel="noopener">Tukey J W. The ninther, a technique for low-effort robust (resistant) location in large samples[M]//Contributions to Survey Sampling and Applied Statistics. 1978: 251-257.</a><br>以及按照惯例给出本题用到的类库链接：<br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">using</span> Quick;</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">3.</span>_<span class="dv">22</span></a>
+<a class="sourceLine" id="cb3-5" title="5">{</a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">     * 2.3.22</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">     * 快速三向切分。（J.Bently，D.McIlroy）</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">     * 用将重复元素放置于子数组两端的方式实现一个信息量最优的排序算法。</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">     * 使用两个索引 p 和 q，使得 a[lo...p-1] 和 a[q+1..hi] 的元素都和 a[lo] 相等。</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">     * 使用另外两个索引 i 和 j，</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">     * 使得 a[p...i-1] 小于 a[lo]，a[j+i..q] 大于 a[lo]。</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">     * 在内循环中加入代码，在 a[i] 和 v 相当时将其与 a[p] 交换（并将 p 加 1），</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">     * 在 a[j] 和 v 相等且 a[i] 和 a[j] 尚未和 v 进行比较之前将其与 a[q] 交换。</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">     * 添加在切分循环结束后将和 v 相等的元素交换到正确位置的代码，如图 2.3.6 所示。</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="co">     * 请注意：</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">     * 这里实现的代码和正文中给出的代码时等价的，</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">     * 因为这里额外的交换用于和切分元素相等的元素，</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">     * 而正文中的代码将额外的交换用于和切分元素不等的元素。</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb3-23" title="23">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb3-24" title="24">    {</a>
+<a class="sourceLine" id="cb3-25" title="25">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb3-26" title="26">        {</a>
+<a class="sourceLine" id="cb3-27" title="27">            QuickSort quickNormal = <span class="kw">new</span> <span class="fu">QuickSort</span>();</a>
+<a class="sourceLine" id="cb3-28" title="28">            QuickBentleyMcIlroy quickBentleyMcIlroy = <span class="kw">new</span> <span class="fu">QuickBentleyMcIlroy</span>();</a>
+<a class="sourceLine" id="cb3-29" title="29">            <span class="dt">int</span> arraySize = <span class="dv">800000</span>;                         <span class="co">// 初始数组大小。</span></a>
+<a class="sourceLine" id="cb3-30" title="30">            <span class="dt">const</span> <span class="dt">int</span> trialTimes = <span class="dv">1</span>;                       <span class="co">// 每次实验的重复次数。</span></a>
+<a class="sourceLine" id="cb3-31" title="31">            <span class="dt">const</span> <span class="dt">int</span> trialLevel = <span class="dv">8</span>;                       <span class="co">// 双倍递增的次数。</span></a>
+<a class="sourceLine" id="cb3-32" title="32"></a>
+<a class="sourceLine" id="cb3-33" title="33">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;n</span><span class="sc">\t\t</span><span class="st">3way</span><span class="sc">\t</span><span class="st">normal</span><span class="sc">\t</span><span class="st">ratio&quot;</span>);</a>
+<a class="sourceLine" id="cb3-34" title="34">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; trialLevel; i++)</a>
+<a class="sourceLine" id="cb3-35" title="35">            {</a>
+<a class="sourceLine" id="cb3-36" title="36">                <span class="dt">double</span> timeBentleyMcIlroy = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-37" title="37">                <span class="dt">double</span> timeNormal = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-38" title="38">                <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; trialTimes; j++)</a>
+<a class="sourceLine" id="cb3-39" title="39">                {</a>
+<a class="sourceLine" id="cb3-40" title="40">                    <span class="dt">int</span>[] a = SortCompare.<span class="fu">GetRandomArrayInt</span>(arraySize);</a>
+<a class="sourceLine" id="cb3-41" title="41">                    <span class="dt">int</span>[] b = <span class="kw">new</span> <span class="dt">int</span>[a.<span class="fu">Length</span>];</a>
+<a class="sourceLine" id="cb3-42" title="42">                    a.<span class="fu">CopyTo</span>(b, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb3-43" title="43">                    timeNormal += SortCompare.<span class="fu">Time</span>(quickNormal, b);</a>
+<a class="sourceLine" id="cb3-44" title="44">                    timeBentleyMcIlroy += SortCompare.<span class="fu">Time</span>(quickBentleyMcIlroy, a);</a>
+<a class="sourceLine" id="cb3-45" title="45"></a>
+<a class="sourceLine" id="cb3-46" title="46">                }</a>
+<a class="sourceLine" id="cb3-47" title="47">                timeBentleyMcIlroy /= trialTimes;</a>
+<a class="sourceLine" id="cb3-48" title="48">                timeNormal /= trialTimes;</a>
+<a class="sourceLine" id="cb3-49" title="49">                <span class="kw">if</span> (arraySize &lt; <span class="dv">10000000</span>)</a>
+<a class="sourceLine" id="cb3-50" title="50">                    Console.<span class="fu">WriteLine</span>(arraySize + <span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">&quot;</span> + timeBentleyMcIlroy + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> + timeNormal + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> + timeBentleyMcIlroy / timeNormal);</a>
+<a class="sourceLine" id="cb3-51" title="51">                <span class="kw">else</span></a>
+<a class="sourceLine" id="cb3-52" title="52">                    Console.<span class="fu">WriteLine</span>(arraySize + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> + timeBentleyMcIlroy + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> + timeNormal + <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> + timeBentleyMcIlroy / timeNormal);</a>
+<a class="sourceLine" id="cb3-53" title="53">                arraySize *= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb3-54" title="54">            }</a>
+<a class="sourceLine" id="cb3-55" title="55">        }</a>
+<a class="sourceLine" id="cb3-56" title="56">    }</a>
+<a class="sourceLine" id="cb3-57" title="57">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p>有关这种快速排序算法的来源以及三个数的中位数的选取算法，请参阅下面这篇 1993 年的论文： <a href="https://doi.org/10.1002/spe.4380231105" target="_blank" rel="noopener">Bentley J L, McIlroy M D. Engineering a sort function[J]. Software: Practice and Experience, 1993, 23(11): 1249-1265.</a> 下面这份 2002 年的 PPT 详细解释和分析了官方实现代码的思路和性能： <a href="https://www.cs.princeton.edu/~rs/talks/QuicksortIsOptimal.pdf" target="_blank" rel="noopener">Sedgewick R, Bentley J. Quicksort is optimal[J]. Knuthfest, Stanford University, Stanford, 2002.</a> 有关选取中位数 Ninther 算法，请参阅下面这篇 1978 年的论文： <a href="https://www.sciencedirect.com/science/article/pii/B9780122047503500241" target="_blank" rel="noopener">Tukey J W. The ninther, a technique for low-effort robust (resistant) location in large samples[M]//Contributions to Survey Sampling and Applied Statistics. 1978: 251-257.</a> 以及按照惯例给出本题用到的类库链接： <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3/Quick" target="_blank" rel="noopener">Quick 库</a></p>
 
 		</div>
 	</div>

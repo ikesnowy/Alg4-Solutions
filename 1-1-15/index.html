@@ -140,45 +140,47 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.15</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.15<br>编写一个静态方法 histogram()，<br>接受一个整型数组 a[] 和一个整数 M 作为参数并返回一个大小为 M 的数组，<br>其中第 i 个元素的值为整数 i 在参数数组中出现的次数。<br>如果 a[] 中的值均在 0 到 M-1 之间，<br>返回数组中所有元素之和应该和 a.length 相等。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>利用二重循环，查找每个值在数组中出现的次数。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> M <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token function">Histogram</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> M<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"a.length: {a.Length}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"sum of result array: {result.Sum()}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">Histogram</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> M<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> M<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//初始化</span>
-        result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//遍历数组，计算数组中值为 i 的元素个数</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//值为 i 的元素</span>
-            <span class="token punctuation">{</span>
-                result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.1.15 编写一个静态方法 histogram()， 接受一个整型数组 a[] 和一个整数 M 作为参数并返回一个大小为 M 的数组， 其中第 i 个元素的值为整数 i 在参数数组中出现的次数。 如果 a[] 中的值均在 0 到 M-1 之间， 返回数组中所有元素之和应该和 a.length 相等。</p>
+<h1 id="解答">解答</h1>
+<p>利用二重循环，查找每个值在数组中出现的次数。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="dt">int</span>[] a = <span class="kw">new</span> <span class="dt">int</span>[<span class="dv">10</span>];</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="dt">int</span> M = <span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; ++i)</a>
+<a class="sourceLine" id="cb1-6" title="6">    {</a>
+<a class="sourceLine" id="cb1-7" title="7">        a[i] = i;</a>
+<a class="sourceLine" id="cb1-8" title="8">    }</a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="dt">int</span>[] result = <span class="fu">Histogram</span>(a, M);</a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;a.length: {a.Length}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-13" title="13">    Console.<span class="fu">WriteLine</span>($<span class="st">&quot;sum of result array: {result.Sum()}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-14" title="14">}</a>
+<a class="sourceLine" id="cb1-15" title="15"></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="kw">static</span> <span class="dt">int</span>[] <span class="fu">Histogram</span>(<span class="dt">int</span>[] a, <span class="dt">int</span> M)</a>
+<a class="sourceLine" id="cb1-17" title="17">{</a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="dt">int</span>[] result = <span class="kw">new</span> <span class="dt">int</span>[M];</a>
+<a class="sourceLine" id="cb1-19" title="19"></a>
+<a class="sourceLine" id="cb1-20" title="20">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; M; ++i)</a>
+<a class="sourceLine" id="cb1-21" title="21">    {</a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="co">//初始化</span></a>
+<a class="sourceLine" id="cb1-23" title="23">        result[i] = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="co">//遍历数组，计算数组中值为 i 的元素个数</span></a>
+<a class="sourceLine" id="cb1-26" title="26">        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; a.<span class="fu">Length</span>; ++j)</a>
+<a class="sourceLine" id="cb1-27" title="27">        {</a>
+<a class="sourceLine" id="cb1-28" title="28">            <span class="kw">if</span> (a[j] == i) <span class="co">//值为 i 的元素</span></a>
+<a class="sourceLine" id="cb1-29" title="29">            {</a>
+<a class="sourceLine" id="cb1-30" title="30">                result[i]++;</a>
+<a class="sourceLine" id="cb1-31" title="31">            }</a>
+<a class="sourceLine" id="cb1-32" title="32">        }</a>
+<a class="sourceLine" id="cb1-33" title="33">    }</a>
+<a class="sourceLine" id="cb1-34" title="34"></a>
+<a class="sourceLine" id="cb1-35" title="35">    <span class="kw">return</span> result;</a>
+<a class="sourceLine" id="cb1-36" title="36">}</a></code></pre></div>
 
 		</div>
 	</div>

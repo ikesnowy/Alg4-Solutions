@@ -140,50 +140,52 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.1.21</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.21<br>编写一段程序，从标准输入按行读取数据，其中每行都包含一个名字和两个整数。<br>然后用 printf() 打印一张表格，<br>每行的若干列数据包含名字、两个整数和第一个整数除以第二个整数的结果，<br>精确到小数点后三位。</p>
+			<h1 id="题目">题目</h1>
+<p>1.1.21 编写一段程序，从标准输入按行读取数据，其中每行都包含一个名字和两个整数。 然后用 printf() 打印一张表格， 每行的若干列数据包含名字、两个整数和第一个整数除以第二个整数的结果， 精确到小数点后三位。</p>
 <p>可以用这种程序将棒球球手的击球命中率或者学生的考试分数制成表格。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>实现上没什么难度，打印表格的部分可以参考之前打印二位布尔数组的方法。<br>注意整型数据之间相除得到的仍然是整型，小数部分会直接舍去，例如 2 / 3 = 0。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> columns <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> rows <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//行号</span>
-
-    <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> names <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">string</span><span class="token punctuation">[</span>rows<span class="token punctuation">]</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//姓名</span>
-    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>rows<span class="token punctuation">,</span> columns<span class="token punctuation">]</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//输入的两个整数</span>
-    <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span>rows<span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//计算结果</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rows<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">string</span> temp <span class="token operator">=</span> Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        names<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> columns<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            array<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        results<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>array<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span> array<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token function">PrintArray2D</span><span class="token punctuation">(</span>names<span class="token punctuation">,</span> array<span class="token punctuation">,</span> results<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">PrintArray2D</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> names<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token punctuation">]</span> array<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> results<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> rows <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取行数</span>
-    <span class="token keyword">int</span> columns <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取列数</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rows<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">"\t{names[i]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> columns <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">"\t{array[i, j]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">"\t{array[i, columns - 1]}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>$<span class="token string">"\t{results[i]:N3}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//变量名:N3 保留三位小数</span>
-        Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="解答">解答</h1>
+<p>实现上没什么难度，打印表格的部分可以参考之前打印二位布尔数组的方法。 注意整型数据之间相除得到的仍然是整型，小数部分会直接舍去，例如 2 / 3 = 0。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-2" title="2">{</a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="dt">int</span> columns = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="dt">int</span> rows = <span class="dt">int</span>.<span class="fu">Parse</span>(Console.<span class="fu">ReadLine</span>());   <span class="co">//行号</span></a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="dt">string</span>[] names = <span class="kw">new</span> <span class="dt">string</span>[rows];          <span class="co">//姓名</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="dt">int</span>[,] array = <span class="kw">new</span> <span class="dt">int</span>[rows, columns];      <span class="co">//输入的两个整数</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="dt">double</span>[] results = <span class="kw">new</span> <span class="dt">double</span>[rows];        <span class="co">//计算结果</span></a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; rows; ++i)</a>
+<a class="sourceLine" id="cb1-11" title="11">    {</a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="dt">string</span> temp = Console.<span class="fu">ReadLine</span>();</a>
+<a class="sourceLine" id="cb1-13" title="13">        names[i] = temp.<span class="fu">Split</span>(<span class="ch">&#39; &#39;</span>)[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; columns; ++j)</a>
+<a class="sourceLine" id="cb1-15" title="15">        {</a>
+<a class="sourceLine" id="cb1-16" title="16">            array[i, j] = <span class="dt">int</span>.<span class="fu">Parse</span>(temp.<span class="fu">Split</span>(<span class="ch">&#39; &#39;</span>)[j + <span class="dv">1</span>]);</a>
+<a class="sourceLine" id="cb1-17" title="17">        }</a>
+<a class="sourceLine" id="cb1-18" title="18">        results[i] = (<span class="dt">double</span>)array[i, <span class="dv">0</span>] / array[i, <span class="dv">1</span>];</a>
+<a class="sourceLine" id="cb1-19" title="19">    }</a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="fu">PrintArray2D</span>(names, array, results);</a>
+<a class="sourceLine" id="cb1-22" title="22">}</a>
+<a class="sourceLine" id="cb1-23" title="23"></a>
+<a class="sourceLine" id="cb1-24" title="24"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">PrintArray2D</span>(<span class="dt">string</span>[] names, <span class="dt">int</span>[,] array, <span class="dt">double</span>[] results)</a>
+<a class="sourceLine" id="cb1-25" title="25">{</a>
+<a class="sourceLine" id="cb1-26" title="26">    <span class="dt">int</span> rows = array.<span class="fu">GetLength</span>(<span class="dv">0</span>);<span class="co">//获取行数</span></a>
+<a class="sourceLine" id="cb1-27" title="27">    <span class="dt">int</span> columns = array.<span class="fu">GetLength</span>(<span class="dv">1</span>);<span class="co">//获取列数</span></a>
+<a class="sourceLine" id="cb1-28" title="28"></a>
+<a class="sourceLine" id="cb1-29" title="29">    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; rows; i++)</a>
+<a class="sourceLine" id="cb1-30" title="30">    {</a>
+<a class="sourceLine" id="cb1-31" title="31">        Console.<span class="fu">Write</span>($<span class="st">&quot;</span><span class="sc">\t</span><span class="st">{names[i]}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-32" title="32">        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; columns - <span class="dv">1</span>; j++)</a>
+<a class="sourceLine" id="cb1-33" title="33">        {</a>
+<a class="sourceLine" id="cb1-34" title="34">            Console.<span class="fu">Write</span>($<span class="st">&quot;</span><span class="sc">\t</span><span class="st">{array[i, j]}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-35" title="35">        }</a>
+<a class="sourceLine" id="cb1-36" title="36">        Console.<span class="fu">Write</span>($<span class="st">&quot;</span><span class="sc">\t</span><span class="st">{array[i, columns - 1]}&quot;</span>);</a>
+<a class="sourceLine" id="cb1-37" title="37">        Console.<span class="fu">Write</span>($<span class="st">&quot;</span><span class="sc">\t</span><span class="st">{results[i]:N3}&quot;</span>);    <span class="co">//变量名:N3 保留三位小数</span></a>
+<a class="sourceLine" id="cb1-38" title="38">        Console.<span class="fu">Write</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb1-39" title="39">    }</a>
+<a class="sourceLine" id="cb1-40" title="40">}</a></code></pre></div>
 
 		</div>
 	</div>

@@ -140,106 +140,107 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.5.12</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.12<br>使用路径压缩的 quick-union 算法。<br>根据路径压缩修改 quick-union 算法（请见 1.5.2.3 节），<br>在 find() 方法中添加一个循环来将从 p 到根节点的路径上的每个触点都连接到根节点。<br>给出一列输入，<br>使该方法能够产生一条长度为 4 的路径。<br>注意：该算法的所有操作的均摊成本已知为对数级别。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>QuickUnionPathCompression 的官方实现：<a href="http://algs4.cs.princeton.edu/15uf/QuickUnionPathCompressionUF.java.html" target="_blank" rel="noopener">QuickUnionPathCompressionUF.java</a><br>在找到根节点之后，再访问一遍 p 到根节点这条路径上的所有结点，将它们直接和根节点相连。<br>重写过后的 Find() 方法：</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 寻找结点所属的连通分量。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="p">需要寻找的结点。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>结点所属的连通分量。&lt;/returns></span>
-<span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Find</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> root <span class="token operator">=</span> p<span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>root <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        root <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> root<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> newp <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">=</span> root<span class="token punctuation">;</span>
-        p <span class="token operator">=</span> newp<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> p<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>由于路径压缩是在 Find() 方法中实现的，<br>只要输入保证是根节点两两相连即可构造较长的路径。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>QuickUnionPathCompressionUF.cs 直接从 QuickUnionUF.cs 继承而来。<br>关于 QuickUnionUF.cs，参见 1.5.2 的解答。</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">namespace</span> UnionFind
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 使用路径压缩的 quick-union 并查集。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">QuickUnionPathCompressionUF</span> <span class="token punctuation">:</span> QuickFindUF
-    <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 新建一个大小为 n 的并查集。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="n">新建并查集的大小。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token function">QuickUnionPathCompressionUF</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">base</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 寻找结点所属的连通分量。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="p">需要寻找的结点。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>结点所属的连通分量。&lt;/returns></span>
-        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token keyword">int</span> <span class="token function">Find</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> root <span class="token operator">=</span> p<span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>root <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                root <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> root<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">int</span> newp <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>parent<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">=</span> root<span class="token punctuation">;</span>
-                p <span class="token operator">=</span> newp<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> p<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.5.12 使用路径压缩的 quick-union 算法。 根据路径压缩修改 quick-union 算法（请见 1.5.2.3 节）， 在 find() 方法中添加一个循环来将从 p 到根节点的路径上的每个触点都连接到根节点。 给出一列输入， 使该方法能够产生一条长度为 4 的路径。 注意：该算法的所有操作的均摊成本已知为对数级别。</p>
+<h1 id="解答">解答</h1>
+<p>QuickUnionPathCompression 的官方实现：<a href="http://algs4.cs.princeton.edu/15uf/QuickUnionPathCompressionUF.java.html" target="_blank" rel="noopener">QuickUnionPathCompressionUF.java</a> 在找到根节点之后，再访问一遍 p 到根节点这条路径上的所有结点，将它们直接和根节点相连。 重写过后的 Find() 方法：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 寻找结点所属的连通分量。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要寻找的结点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">结点所属的连通分量。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Find</span>(<span class="dt">int</span> p)</a>
+<a class="sourceLine" id="cb1-7" title="7">{</a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="dt">int</span> root = p;</a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="kw">while</span> (root != <span class="kw">this</span>.<span class="fu">parent</span>[root])</a>
+<a class="sourceLine" id="cb1-10" title="10">    {</a>
+<a class="sourceLine" id="cb1-11" title="11">        root = <span class="kw">this</span>.<span class="fu">parent</span>[root];</a>
+<a class="sourceLine" id="cb1-12" title="12">    }</a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="kw">while</span> (p != root)</a>
+<a class="sourceLine" id="cb1-14" title="14">    {</a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="dt">int</span> newp = <span class="kw">this</span>.<span class="fu">parent</span>[p];</a>
+<a class="sourceLine" id="cb1-16" title="16">        <span class="kw">this</span>.<span class="fu">parent</span>[p] = root;</a>
+<a class="sourceLine" id="cb1-17" title="17">        p = newp;</a>
+<a class="sourceLine" id="cb1-18" title="18">    }</a>
+<a class="sourceLine" id="cb1-19" title="19">    <span class="kw">return</span> p;</a>
+<a class="sourceLine" id="cb1-20" title="20">}</a></code></pre></div>
+<p>由于路径压缩是在 Find() 方法中实现的， 只要输入保证是根节点两两相连即可构造较长的路径。</p>
+<h1 id="代码">代码</h1>
+<p>QuickUnionPathCompressionUF.cs 直接从 QuickUnionUF.cs 继承而来。 关于 QuickUnionUF.cs，参见 1.5.2 的解答。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">namespace</span> UnionFind</a>
+<a class="sourceLine" id="cb2-2" title="2">{</a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="co">/// 使用路径压缩的 quick-union 并查集。</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="kw">public</span> <span class="kw">class</span> QuickUnionPathCompressionUF : QuickFindUF</a>
+<a class="sourceLine" id="cb2-7" title="7">    {</a>
+<a class="sourceLine" id="cb2-8" title="8">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">        <span class="co">/// 新建一个大小为 n 的并查集。</span></a>
+<a class="sourceLine" id="cb2-10" title="10">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-11" title="11">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;n&quot;</span><span class="kw">&gt;</span><span class="co">新建并查集的大小。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-12" title="12">        <span class="kw">public</span> <span class="fu">QuickUnionPathCompressionUF</span>(<span class="dt">int</span> n) : <span class="kw">base</span>(n) { }</a>
+<a class="sourceLine" id="cb2-13" title="13"></a>
+<a class="sourceLine" id="cb2-14" title="14">        <span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb2-15" title="15">        <span class="co">/// 寻找结点所属的连通分量。</span></a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;p&quot;</span><span class="kw">&gt;</span><span class="co">需要寻找的结点。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb2-18" title="18">        <span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">结点所属的连通分量。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">        <span class="kw">public</span> <span class="kw">override</span> <span class="dt">int</span> <span class="fu">Find</span>(<span class="dt">int</span> p)</a>
+<a class="sourceLine" id="cb2-20" title="20">        {</a>
+<a class="sourceLine" id="cb2-21" title="21">            <span class="dt">int</span> root = p;</a>
+<a class="sourceLine" id="cb2-22" title="22">            <span class="kw">while</span> (root != <span class="kw">this</span>.<span class="fu">parent</span>[root])</a>
+<a class="sourceLine" id="cb2-23" title="23">            {</a>
+<a class="sourceLine" id="cb2-24" title="24">                root = <span class="kw">this</span>.<span class="fu">parent</span>[root];</a>
+<a class="sourceLine" id="cb2-25" title="25">            }</a>
+<a class="sourceLine" id="cb2-26" title="26">            <span class="kw">while</span> (p != root)</a>
+<a class="sourceLine" id="cb2-27" title="27">            {</a>
+<a class="sourceLine" id="cb2-28" title="28">                <span class="dt">int</span> newp = <span class="kw">this</span>.<span class="fu">parent</span>[p];</a>
+<a class="sourceLine" id="cb2-29" title="29">                <span class="kw">this</span>.<span class="fu">parent</span>[p] = root;</a>
+<a class="sourceLine" id="cb2-30" title="30">                p = newp;</a>
+<a class="sourceLine" id="cb2-31" title="31">            }</a>
+<a class="sourceLine" id="cb2-32" title="32">            <span class="kw">return</span> p;</a>
+<a class="sourceLine" id="cb2-33" title="33">        }</a>
+<a class="sourceLine" id="cb2-34" title="34">    }</a>
+<a class="sourceLine" id="cb2-35" title="35">}</a></code></pre></div>
 <p>Main 方法</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> UnionFind<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_5<span class="token punctuation">.</span>_12
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 1.5.12
-     * 
-     * 使用路径压缩的 quick-union 算法。
-     * 根据路径压缩修改 quick-union 算法（请见 1.5.2.3 节），
-     * 在 find() 方法中添加一个循环来将从 p 到根节点的路径上的每个触点都连接到根节点。
-     * 给出一列输入，使该方法能够产生一条长度为 4 的路径。
-     * 注意：该算法的所有操作的均摊成本已知为对数级别。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">var</span> UF <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QuickUnionPathCompressionUF</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment" spellcheck="true">// 使用书中提到的最坏情况，0 连 1，1 连 2，2 连 3……</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                UF<span class="token punctuation">.</span><span class="token function">Union</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> id <span class="token operator">=</span> UF<span class="token punctuation">.</span><span class="token function">GetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> id<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                Console<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>id<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">using</span> UnionFind;</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">namespace</span> _<span class="fl">1.</span>_<span class="fl">5.</span>_<span class="dv">12</span></a>
+<a class="sourceLine" id="cb3-5" title="5">{</a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">     * 1.5.12</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">     * 使用路径压缩的 quick-union 算法。</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">     * 根据路径压缩修改 quick-union 算法（请见 1.5.2.3 节），</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">     * 在 find() 方法中添加一个循环来将从 p 到根节点的路径上的每个触点都连接到根节点。</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">     * 给出一列输入，使该方法能够产生一条长度为 4 的路径。</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">     * 注意：该算法的所有操作的均摊成本已知为对数级别。</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb3-16" title="16">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb3-17" title="17">    {</a>
+<a class="sourceLine" id="cb3-18" title="18">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb3-19" title="19">        {</a>
+<a class="sourceLine" id="cb3-20" title="20">            <span class="dt">var</span> UF = <span class="kw">new</span> <span class="fu">QuickUnionPathCompressionUF</span>(<span class="dv">10</span>);</a>
+<a class="sourceLine" id="cb3-21" title="21"></a>
+<a class="sourceLine" id="cb3-22" title="22">            <span class="co">// 使用书中提到的最坏情况，0 连 1，1 连 2，2 连 3……</span></a>
+<a class="sourceLine" id="cb3-23" title="23">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">4</span>; ++i)</a>
+<a class="sourceLine" id="cb3-24" title="24">            {</a>
+<a class="sourceLine" id="cb3-25" title="25">                UF.<span class="fu">Union</span>(i, i + <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb3-26" title="26">            }</a>
+<a class="sourceLine" id="cb3-27" title="27"></a>
+<a class="sourceLine" id="cb3-28" title="28">            <span class="dt">int</span>[] id = UF.<span class="fu">GetParent</span>();</a>
+<a class="sourceLine" id="cb3-29" title="29">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; id.<span class="fu">Length</span>; ++i)</a>
+<a class="sourceLine" id="cb3-30" title="30">            {</a>
+<a class="sourceLine" id="cb3-31" title="31">                Console.<span class="fu">Write</span>(id[i]);</a>
+<a class="sourceLine" id="cb3-32" title="32">            }</a>
+<a class="sourceLine" id="cb3-33" title="33">            Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb3-34" title="34">        }</a>
+<a class="sourceLine" id="cb3-35" title="35">    }</a>
+<a class="sourceLine" id="cb3-36" title="36">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5/UnionFind" target="_blank" rel="noopener">UnionFind 库</a></p>
 
 		</div>
 	</div>

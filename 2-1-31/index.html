@@ -140,87 +140,90 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>2.1.31</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.31<br>双倍测试。<br>编写一个能够对排序算法进行双倍测试的用例。<br>数组规模 N 的起始值为 1000，排序后打印 N、估计排序用时、实际排序用时以及在 N 倍增之后两次用时的比例。<br>用这段程序验证在随机输入模型下插入排序和选择排序的运行时间都是平方级别的。<br>对希尔排序的性能做出猜想并验证你的猜想。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里截取数据量比较大的时候的数据。<br>插入排序和选择排序显然都是平方级别的。<br>希尔排序猜测是线性的，实际上要比线性大一点（次平方级）。<br><img src="./1.png" alt=""></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
-<span class="token keyword">using</span> Sort<span class="token punctuation">;</span>
-
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_1<span class="token punctuation">.</span>_31
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-     * 2.1.31
-     * 
-     * 双倍测试。
-     * 编写一个能够对排序算法进行双倍测试的用例。
-     * 数组规模 N 的起始值为 1000，
-     * 排序后打印 N、估计排序用时、实际排序用时以及在 N 倍增之后两次用时的比例。
-     * 用这段程序验证在随机输入模型下插入排序和选择排序的运行时间都是平方级别的。
-     * 对希尔排序的性能做出猜想并验证你的猜想。
-     * 
-     */</span>
-    <span class="token keyword">class</span> <span class="token class-name">Program</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
-
-            InsertionSort insertion <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InsertionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            SelectionSort selection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SelectionSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            ShellSort shell <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShellSort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">double</span> prevInsertion <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token keyword">double</span> prevSelection <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token keyword">double</span> prevShell <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"N:"</span> <span class="token operator">+</span> N<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">GetRandomArrayInt</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayBak <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                array<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>arrayBak<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\tInsertion Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">double</span> now <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>insertion<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tActual Time(ms):"</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tEstimate Time(ms):"</span> <span class="token operator">+</span> prevInsertion <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tRatio:"</span> <span class="token operator">+</span> now <span class="token operator">/</span> prevInsertion<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                prevInsertion <span class="token operator">=</span> now<span class="token punctuation">;</span>
-
-                arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\tSelection Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                now <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>selection<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tActual Time(ms):"</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tEstimate Time(ms):"</span> <span class="token operator">+</span> prevSelection <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tRatio:"</span> <span class="token operator">+</span> now <span class="token operator">/</span> prevSelection<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                prevSelection <span class="token operator">=</span> now<span class="token punctuation">;</span>
-
-                arrayBak<span class="token punctuation">.</span><span class="token function">CopyTo</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\tShell Sort"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                now <span class="token operator">=</span> SortCompare<span class="token punctuation">.</span><span class="token function">Time</span><span class="token punctuation">(</span>shell<span class="token punctuation">,</span> array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tActual Time(ms):"</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tEstimate Time(ms):"</span> <span class="token operator">+</span> prevShell <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"\t\tRatio:"</span> <span class="token operator">+</span> now <span class="token operator">/</span> prevShell<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                prevShell <span class="token operator">=</span> now<span class="token punctuation">;</span>
-
-                N <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
+			<h1 id="题目">题目</h1>
+<p>2.1.31 双倍测试。 编写一个能够对排序算法进行双倍测试的用例。 数组规模 N 的起始值为 1000，排序后打印 N、估计排序用时、实际排序用时以及在 N 倍增之后两次用时的比例。 用这段程序验证在随机输入模型下插入排序和选择排序的运行时间都是平方级别的。 对希尔排序的性能做出猜想并验证你的猜想。</p>
+<h1 id="解答">解答</h1>
+<p>这里截取数据量比较大的时候的数据。 插入排序和选择排序显然都是平方级别的。 希尔排序猜测是线性的，实际上要比线性大一点（次平方级）。 <img src="./1.png"></p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">using</span> Sort;</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">namespace</span> _<span class="fl">2.</span>_<span class="fl">1.</span>_<span class="dv">31</span></a>
+<a class="sourceLine" id="cb1-5" title="5">{</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">     * 2.1.31</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">     * 双倍测试。</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">     * 编写一个能够对排序算法进行双倍测试的用例。</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">     * 数组规模 N 的起始值为 1000，</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">     * 排序后打印 N、估计排序用时、实际排序用时以及在 N 倍增之后两次用时的比例。</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">     * 用这段程序验证在随机输入模型下插入排序和选择排序的运行时间都是平方级别的。</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">     * 对希尔排序的性能做出猜想并验证你的猜想。</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">     * </span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb1-17" title="17">    <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb1-18" title="18">    {</a>
+<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb1-20" title="20">        {</a>
+<a class="sourceLine" id="cb1-21" title="21">            <span class="dt">int</span> N = <span class="dv">1000</span>;</a>
+<a class="sourceLine" id="cb1-22" title="22"></a>
+<a class="sourceLine" id="cb1-23" title="23">            InsertionSort insertion = <span class="kw">new</span> <span class="fu">InsertionSort</span>();</a>
+<a class="sourceLine" id="cb1-24" title="24">            SelectionSort selection = <span class="kw">new</span> <span class="fu">SelectionSort</span>();</a>
+<a class="sourceLine" id="cb1-25" title="25">            ShellSort shell = <span class="kw">new</span> <span class="fu">ShellSort</span>();</a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27">            <span class="dt">double</span> prevInsertion = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-28" title="28">            <span class="dt">double</span> prevSelection = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-29" title="29">            <span class="dt">double</span> prevShell = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-30" title="30"></a>
+<a class="sourceLine" id="cb1-31" title="31">            <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++)</a>
+<a class="sourceLine" id="cb1-32" title="32">            {</a>
+<a class="sourceLine" id="cb1-33" title="33">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;N:&quot;</span> + N);</a>
+<a class="sourceLine" id="cb1-34" title="34">                <span class="dt">int</span>[] array = SortCompare.<span class="fu">GetRandomArrayInt</span>(N);</a>
+<a class="sourceLine" id="cb1-35" title="35">                <span class="dt">int</span>[] arrayBak = <span class="kw">new</span> <span class="dt">int</span>[N];</a>
+<a class="sourceLine" id="cb1-36" title="36">                array.<span class="fu">CopyTo</span>(arrayBak, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb1-37" title="37"></a>
+<a class="sourceLine" id="cb1-38" title="38">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t</span><span class="st">Insertion Sort&quot;</span>);</a>
+<a class="sourceLine" id="cb1-39" title="39">                <span class="dt">double</span> now = SortCompare.<span class="fu">Time</span>(insertion, array);</a>
+<a class="sourceLine" id="cb1-40" title="40">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Actual Time(ms):&quot;</span> + now);</a>
+<a class="sourceLine" id="cb1-41" title="41">                <span class="kw">if</span> (i != <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-42" title="42">                {</a>
+<a class="sourceLine" id="cb1-43" title="43">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Estimate Time(ms):&quot;</span> + prevInsertion * <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb1-44" title="44">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Ratio:&quot;</span> + now / prevInsertion);</a>
+<a class="sourceLine" id="cb1-45" title="45">                }</a>
+<a class="sourceLine" id="cb1-46" title="46">                prevInsertion = now;</a>
+<a class="sourceLine" id="cb1-47" title="47"></a>
+<a class="sourceLine" id="cb1-48" title="48">                arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb1-49" title="49"></a>
+<a class="sourceLine" id="cb1-50" title="50">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t</span><span class="st">Selection Sort&quot;</span>);</a>
+<a class="sourceLine" id="cb1-51" title="51">                now = SortCompare.<span class="fu">Time</span>(selection, array);</a>
+<a class="sourceLine" id="cb1-52" title="52">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Actual Time(ms):&quot;</span> + now);</a>
+<a class="sourceLine" id="cb1-53" title="53">                <span class="kw">if</span> (i != <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-54" title="54">                {</a>
+<a class="sourceLine" id="cb1-55" title="55">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Estimate Time(ms):&quot;</span> + prevSelection * <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb1-56" title="56">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Ratio:&quot;</span> + now / prevSelection);</a>
+<a class="sourceLine" id="cb1-57" title="57">                }</a>
+<a class="sourceLine" id="cb1-58" title="58">                prevSelection = now;</a>
+<a class="sourceLine" id="cb1-59" title="59"></a>
+<a class="sourceLine" id="cb1-60" title="60">                arrayBak.<span class="fu">CopyTo</span>(array, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb1-61" title="61"></a>
+<a class="sourceLine" id="cb1-62" title="62">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t</span><span class="st">Shell Sort&quot;</span>);</a>
+<a class="sourceLine" id="cb1-63" title="63">                now = SortCompare.<span class="fu">Time</span>(shell, array);</a>
+<a class="sourceLine" id="cb1-64" title="64">                Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Actual Time(ms):&quot;</span> + now);</a>
+<a class="sourceLine" id="cb1-65" title="65">                <span class="kw">if</span> (i != <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-66" title="66">                {</a>
+<a class="sourceLine" id="cb1-67" title="67">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Estimate Time(ms):&quot;</span> + prevShell * <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb1-68" title="68">                    Console.<span class="fu">WriteLine</span>(<span class="st">&quot;</span><span class="sc">\t\t</span><span class="st">Ratio:&quot;</span> + now / prevShell);</a>
+<a class="sourceLine" id="cb1-69" title="69">                }</a>
+<a class="sourceLine" id="cb1-70" title="70">                prevShell = now;</a>
+<a class="sourceLine" id="cb1-71" title="71"></a>
+<a class="sourceLine" id="cb1-72" title="72">                N *= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb1-73" title="73">            }</a>
+<a class="sourceLine" id="cb1-74" title="74">            </a>
+<a class="sourceLine" id="cb1-75" title="75">        }</a>
+<a class="sourceLine" id="cb1-76" title="76">    }</a>
+<a class="sourceLine" id="cb1-77" title="77">}</a></code></pre></div>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1/Sort" target="_blank" rel="noopener">Sort 库</a></p>
 
 		</div>
 	</div>

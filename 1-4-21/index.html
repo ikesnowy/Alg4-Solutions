@@ -140,40 +140,42 @@ function dismissSearchResultModal() {
 		<div class="page_content mdcss">
 			<h1>1.4.21</h1>
 			<p>上次更新：2019-02-11</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.21<br>无重复值之中的二分查找。<br>用二分查找实现 StaticSETofInts （参见表 1.2.15），<br>保证 contains() 的运行时间为 ~lgR，其中 R 为参数数组中不同整数的数量。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>直接将 Contains() 实现为二分查找即可。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 检查数组中是否存在指定元素。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="key">要查找的值。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>存在则返回 true，否则返回 false。&lt;/returns></span>
-<span class="token keyword">public</span> <span class="token keyword">bool</span> <span class="token function">Contains</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token function">Rank</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 二分查找。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="key">关键值。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="lo">查找的起始下标。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;param name="hi">查找的结束下标。&lt;/param></span>
-<span class="token comment" spellcheck="true">/// &lt;returns>返回关键值的下标，如果不存在则返回 -1。&lt;/returns></span>
-<span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">Rank</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;=</span> hi<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>hi <span class="token operator">-</span> lo<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">+</span> lo<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            hi <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            lo <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span>
-            <span class="token keyword">return</span> mid<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+			<h1 id="题目">题目</h1>
+<p>1.4.21 无重复值之中的二分查找。 用二分查找实现 StaticSETofInts （参见表 1.2.15）， 保证 contains() 的运行时间为 ~lgR，其中 R 为参数数组中不同整数的数量。</p>
+<h1 id="解答">解答</h1>
+<p>直接将 Contains() 实现为二分查找即可。</p>
+<h1 id="代码">代码</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode csharp"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" title="1"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">/// 检查数组中是否存在指定元素。</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;key&quot;</span><span class="kw">&gt;</span><span class="co">要查找的值。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">存在则返回 true，否则返回 false。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">public</span> <span class="dt">bool</span> <span class="fu">Contains</span>(<span class="dt">int</span> key)</a>
+<a class="sourceLine" id="cb1-7" title="7">{</a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">return</span> <span class="fu">Rank</span>(key, <span class="dv">0</span>, <span class="kw">this</span>.<span class="fu">a</span>.<span class="fu">Length</span> - <span class="dv">1</span>) != <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-9" title="9">}</a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">/// </span><span class="kw">&lt;summary&gt;</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">/// 二分查找。</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">/// </span><span class="kw">&lt;/summary&gt;</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;key&quot;</span><span class="kw">&gt;</span><span class="co">关键值。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;lo&quot;</span><span class="kw">&gt;</span><span class="co">查找的起始下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">/// </span><span class="kw">&lt;param</span><span class="ot"> name=</span><span class="dt">&quot;hi&quot;</span><span class="kw">&gt;</span><span class="co">查找的结束下标。</span><span class="kw">&lt;/param&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">/// </span><span class="kw">&lt;returns&gt;</span><span class="co">返回关键值的下标，如果不存在则返回 -1。</span><span class="kw">&lt;/returns&gt;</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="kw">public</span> <span class="dt">int</span> <span class="fu">Rank</span>(<span class="dt">int</span> key, <span class="dt">int</span> lo, <span class="dt">int</span> hi)</a>
+<a class="sourceLine" id="cb1-19" title="19">{</a>
+<a class="sourceLine" id="cb1-20" title="20">    <span class="kw">while</span> (lo &lt;= hi)</a>
+<a class="sourceLine" id="cb1-21" title="21">    {</a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="dt">int</span> mid = (hi - lo) / <span class="dv">2</span> + lo;</a>
+<a class="sourceLine" id="cb1-23" title="23">        <span class="kw">if</span> (key &lt; <span class="kw">this</span>.<span class="fu">a</span>[mid])</a>
+<a class="sourceLine" id="cb1-24" title="24">            hi = mid - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-25" title="25">        <span class="kw">else</span> <span class="kw">if</span> (key &gt; <span class="kw">this</span>.<span class="fu">a</span>[mid])</a>
+<a class="sourceLine" id="cb1-26" title="26">            lo = mid + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-28" title="28">            <span class="kw">return</span> mid;</a>
+<a class="sourceLine" id="cb1-29" title="29">    }</a>
+<a class="sourceLine" id="cb1-30" title="30">    <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb1-31" title="31">}</a></code></pre></div>
 
 		</div>
 	</div>
