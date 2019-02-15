@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,6 +426,9 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
@@ -561,7 +561,7 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L40">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L41">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_OrderedLinkedMaxPQ_1_DelMax_" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.DelMax*"></a>
   <h4 id="PriorityQueue_OrderedLinkedMaxPQ_1_DelMax" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.DelMax">DelMax()</h4>
@@ -583,10 +583,14 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>优先队列中的最大值。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="PriorityQueue_OrderedLinkedMaxPQ_1_DelMax_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>如果希望获得最大值而不删除它，请使用 <a class="xref" href="PriorityQueue.OrderedLinkedMaxPQ-1.html#PriorityQueue_OrderedLinkedMaxPQ_1_Max">Max()</a>。</p>
+</div>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L28">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
@@ -618,7 +622,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L46">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L47">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_OrderedLinkedMaxPQ_1_IsEmpty_" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.IsEmpty*"></a>
   <h4 id="PriorityQueue_OrderedLinkedMaxPQ_1_IsEmpty" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.IsEmpty">IsEmpty()</h4>
@@ -640,12 +644,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>如果为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L52">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L54">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_OrderedLinkedMaxPQ_1_Max_" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.Max*"></a>
   <h4 id="PriorityQueue_OrderedLinkedMaxPQ_1_Max" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.Max">Max()</h4>
@@ -667,12 +672,16 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>优先队列中的最大元素。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="PriorityQueue_OrderedLinkedMaxPQ_1_Max_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>如果希望获得并删除最大元素，请使用 <a class="xref" href="PriorityQueue.OrderedLinkedMaxPQ-1.html#PriorityQueue_OrderedLinkedMaxPQ_1_DelMax">DelMax()</a>。</p>
+</div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L58">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/OrderedLinkedMaxPQ.cs/#L60">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_OrderedLinkedMaxPQ_1_Size_" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.Size*"></a>
   <h4 id="PriorityQueue_OrderedLinkedMaxPQ_1_Size" data-uid="PriorityQueue.OrderedLinkedMaxPQ`1.Size">Size()</h4>
@@ -694,7 +703,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>优先队列中的元素数量。</p>
+</td>
       </tr>
     </tbody>
   </table>

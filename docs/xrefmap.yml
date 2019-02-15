@@ -357,128 +357,6 @@ references:
   fullName.vb: Generics.Bag(Of Item).Add
   nameWithType: Bag<Item>.Add
   nameWithType.vb: Bag(Of Item).Add
-- uid: Generics.Bag`1.BagEnumerator
-  name: Bag<Item>.BagEnumerator
-  href: api/Generics.Bag-1.BagEnumerator.html
-  commentId: T:Generics.Bag`1.BagEnumerator
-  name.vb: Bag(Of Item).BagEnumerator
-  fullName: Generics.Bag<Item>.BagEnumerator
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator
-  nameWithType: Bag<Item>.BagEnumerator
-  nameWithType.vb: Bag(Of Item).BagEnumerator
-- uid: Generics.Bag`1.BagEnumerator.#ctor(Generics.Node{`0})
-  name: BagEnumerator(Node<Item>)
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator__ctor_Generics_Node__0__
-  commentId: M:Generics.Bag`1.BagEnumerator.#ctor(Generics.Node{`0})
-  name.vb: BagEnumerator(Node(Of Item))
-  fullName: Generics.Bag<Item>.BagEnumerator.BagEnumerator(Generics.Node<Item>)
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.BagEnumerator(Generics.Node(Of Item))
-  nameWithType: Bag<Item>.BagEnumerator.BagEnumerator(Node<Item>)
-  nameWithType.vb: Bag(Of Item).BagEnumerator.BagEnumerator(Node(Of Item))
-- uid: Generics.Bag`1.BagEnumerator.#ctor*
-  name: BagEnumerator
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator__ctor_
-  commentId: Overload:Generics.Bag`1.BagEnumerator.#ctor
-  isSpec: "True"
-  fullName: Generics.Bag<Item>.BagEnumerator.BagEnumerator
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.BagEnumerator
-  nameWithType: Bag<Item>.BagEnumerator.BagEnumerator
-  nameWithType.vb: Bag(Of Item).BagEnumerator.BagEnumerator
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#Generic#IEnumerator{Item}#Current
-  name: IEnumerator<Item>.Current
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_Generic_IEnumerator_Item__Current
-  commentId: P:Generics.Bag`1.BagEnumerator.System#Collections#Generic#IEnumerator{Item}#Current
-  name.vb: System.Collections.Generic.IEnumerator<Item>.Current
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.Generic.IEnumerator<Item>.Current
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.Generic.IEnumerator<Item>.Current
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator<Item>.Current
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.Generic.IEnumerator<Item>.Current
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#Generic#IEnumerator{Item}#Current*
-  name: IEnumerator<Item>.Current
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_Generic_IEnumerator_Item__Current_
-  commentId: Overload:Generics.Bag`1.BagEnumerator.System#Collections#Generic#IEnumerator{Item}#Current
-  isSpec: "True"
-  name.vb: System.Collections.Generic.IEnumerator<Item>.Current
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.Generic.IEnumerator<Item>.Current
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.Generic.IEnumerator<Item>.Current
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator<Item>.Current
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.Generic.IEnumerator<Item>.Current
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Current
-  name: IEnumerator.Current
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_IEnumerator_Current
-  commentId: P:Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Current
-  name.vb: System.Collections.IEnumerator.Current
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.IEnumerator.Current
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Current
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator.Current
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Current
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Current*
-  name: IEnumerator.Current
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_IEnumerator_Current_
-  commentId: Overload:Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Current
-  isSpec: "True"
-  name.vb: System.Collections.IEnumerator.Current
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.IEnumerator.Current
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Current
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator.Current
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Current
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#MoveNext
-  name: IEnumerator.MoveNext()
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_IEnumerator_MoveNext
-  commentId: M:Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#MoveNext
-  name.vb: System.Collections.IEnumerator.MoveNext()
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.IEnumerator.MoveNext()
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.MoveNext()
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator.MoveNext()
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.MoveNext()
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#MoveNext*
-  name: IEnumerator.MoveNext
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_IEnumerator_MoveNext_
-  commentId: Overload:Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#MoveNext
-  isSpec: "True"
-  name.vb: System.Collections.IEnumerator.MoveNext
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.IEnumerator.MoveNext
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.MoveNext
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator.MoveNext
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.MoveNext
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Reset
-  name: IEnumerator.Reset()
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_IEnumerator_Reset
-  commentId: M:Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Reset
-  name.vb: System.Collections.IEnumerator.Reset()
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.IEnumerator.Reset()
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Reset()
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator.Reset()
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Reset()
-- uid: Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Reset*
-  name: IEnumerator.Reset
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_Collections_IEnumerator_Reset_
-  commentId: Overload:Generics.Bag`1.BagEnumerator.System#Collections#IEnumerator#Reset
-  isSpec: "True"
-  name.vb: System.Collections.IEnumerator.Reset
-  fullName: Generics.Bag<Item>.BagEnumerator.System.Collections.IEnumerator.Reset
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Reset
-  nameWithType: Bag<Item>.BagEnumerator.IEnumerator.Reset
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.Collections.IEnumerator.Reset
-- uid: Generics.Bag`1.BagEnumerator.System#IDisposable#Dispose
-  name: IDisposable.Dispose()
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_IDisposable_Dispose
-  commentId: M:Generics.Bag`1.BagEnumerator.System#IDisposable#Dispose
-  name.vb: System.IDisposable.Dispose()
-  fullName: Generics.Bag<Item>.BagEnumerator.System.IDisposable.Dispose()
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.IDisposable.Dispose()
-  nameWithType: Bag<Item>.BagEnumerator.IDisposable.Dispose()
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.IDisposable.Dispose()
-- uid: Generics.Bag`1.BagEnumerator.System#IDisposable#Dispose*
-  name: IDisposable.Dispose
-  href: api/Generics.Bag-1.BagEnumerator.html#Generics_Bag_1_BagEnumerator_System_IDisposable_Dispose_
-  commentId: Overload:Generics.Bag`1.BagEnumerator.System#IDisposable#Dispose
-  isSpec: "True"
-  name.vb: System.IDisposable.Dispose
-  fullName: Generics.Bag<Item>.BagEnumerator.System.IDisposable.Dispose
-  fullName.vb: Generics.Bag(Of Item).BagEnumerator.System.IDisposable.Dispose
-  nameWithType: Bag<Item>.BagEnumerator.IDisposable.Dispose
-  nameWithType.vb: Bag(Of Item).BagEnumerator.System.IDisposable.Dispose
 - uid: Generics.Bag`1.GetEnumerator
   name: GetEnumerator()
   href: api/Generics.Bag-1.html#Generics_Bag_1_GetEnumerator
@@ -8949,6 +8827,134 @@ references:
   fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Size
   nameWithType: IOrderedST<Key, Value>.Size
   nameWithType.vb: IOrderedST(Of Key, Value).Size
+- uid: SymbolTable.IST`2
+  name: IST<Key, Value>
+  href: api/SymbolTable.IST-2.html
+  commentId: T:SymbolTable.IST`2
+  name.vb: IST(Of Key, Value)
+  fullName: SymbolTable.IST<Key, Value>
+  fullName.vb: SymbolTable.IST(Of Key, Value)
+  nameWithType: IST<Key, Value>
+  nameWithType.vb: IST(Of Key, Value)
+- uid: SymbolTable.IST`2.Contains(`0)
+  name: Contains(Key)
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Contains__0_
+  commentId: M:SymbolTable.IST`2.Contains(`0)
+  fullName: SymbolTable.IST<Key, Value>.Contains(Key)
+  fullName.vb: SymbolTable.IST(Of Key, Value).Contains(Key)
+  nameWithType: IST<Key, Value>.Contains(Key)
+  nameWithType.vb: IST(Of Key, Value).Contains(Key)
+- uid: SymbolTable.IST`2.Contains*
+  name: Contains
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Contains_
+  commentId: Overload:SymbolTable.IST`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.IST<Key, Value>.Contains
+  fullName.vb: SymbolTable.IST(Of Key, Value).Contains
+  nameWithType: IST<Key, Value>.Contains
+  nameWithType.vb: IST(Of Key, Value).Contains
+- uid: SymbolTable.IST`2.Delete(`0)
+  name: Delete(Key)
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Delete__0_
+  commentId: M:SymbolTable.IST`2.Delete(`0)
+  fullName: SymbolTable.IST<Key, Value>.Delete(Key)
+  fullName.vb: SymbolTable.IST(Of Key, Value).Delete(Key)
+  nameWithType: IST<Key, Value>.Delete(Key)
+  nameWithType.vb: IST(Of Key, Value).Delete(Key)
+- uid: SymbolTable.IST`2.Delete*
+  name: Delete
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Delete_
+  commentId: Overload:SymbolTable.IST`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.IST<Key, Value>.Delete
+  fullName.vb: SymbolTable.IST(Of Key, Value).Delete
+  nameWithType: IST<Key, Value>.Delete
+  nameWithType.vb: IST(Of Key, Value).Delete
+- uid: SymbolTable.IST`2.Get(`0)
+  name: Get(Key)
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Get__0_
+  commentId: M:SymbolTable.IST`2.Get(`0)
+  fullName: SymbolTable.IST<Key, Value>.Get(Key)
+  fullName.vb: SymbolTable.IST(Of Key, Value).Get(Key)
+  nameWithType: IST<Key, Value>.Get(Key)
+  nameWithType.vb: IST(Of Key, Value).Get(Key)
+- uid: SymbolTable.IST`2.Get*
+  name: Get
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Get_
+  commentId: Overload:SymbolTable.IST`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.IST<Key, Value>.Get
+  fullName.vb: SymbolTable.IST(Of Key, Value).Get
+  nameWithType: IST<Key, Value>.Get
+  nameWithType.vb: IST(Of Key, Value).Get
+- uid: SymbolTable.IST`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_IsEmpty
+  commentId: M:SymbolTable.IST`2.IsEmpty
+  fullName: SymbolTable.IST<Key, Value>.IsEmpty()
+  fullName.vb: SymbolTable.IST(Of Key, Value).IsEmpty()
+  nameWithType: IST<Key, Value>.IsEmpty()
+  nameWithType.vb: IST(Of Key, Value).IsEmpty()
+- uid: SymbolTable.IST`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_IsEmpty_
+  commentId: Overload:SymbolTable.IST`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.IST<Key, Value>.IsEmpty
+  fullName.vb: SymbolTable.IST(Of Key, Value).IsEmpty
+  nameWithType: IST<Key, Value>.IsEmpty
+  nameWithType.vb: IST(Of Key, Value).IsEmpty
+- uid: SymbolTable.IST`2.Keys
+  name: Keys()
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Keys
+  commentId: M:SymbolTable.IST`2.Keys
+  fullName: SymbolTable.IST<Key, Value>.Keys()
+  fullName.vb: SymbolTable.IST(Of Key, Value).Keys()
+  nameWithType: IST<Key, Value>.Keys()
+  nameWithType.vb: IST(Of Key, Value).Keys()
+- uid: SymbolTable.IST`2.Keys*
+  name: Keys
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Keys_
+  commentId: Overload:SymbolTable.IST`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.IST<Key, Value>.Keys
+  fullName.vb: SymbolTable.IST(Of Key, Value).Keys
+  nameWithType: IST<Key, Value>.Keys
+  nameWithType.vb: IST(Of Key, Value).Keys
+- uid: SymbolTable.IST`2.Put(`0,`1)
+  name: Put(Key, Value)
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Put__0__1_
+  commentId: M:SymbolTable.IST`2.Put(`0,`1)
+  fullName: SymbolTable.IST<Key, Value>.Put(Key, Value)
+  fullName.vb: SymbolTable.IST(Of Key, Value).Put(Key, Value)
+  nameWithType: IST<Key, Value>.Put(Key, Value)
+  nameWithType.vb: IST(Of Key, Value).Put(Key, Value)
+- uid: SymbolTable.IST`2.Put*
+  name: Put
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Put_
+  commentId: Overload:SymbolTable.IST`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.IST<Key, Value>.Put
+  fullName.vb: SymbolTable.IST(Of Key, Value).Put
+  nameWithType: IST<Key, Value>.Put
+  nameWithType.vb: IST(Of Key, Value).Put
+- uid: SymbolTable.IST`2.Size
+  name: Size()
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Size
+  commentId: M:SymbolTable.IST`2.Size
+  fullName: SymbolTable.IST<Key, Value>.Size()
+  fullName.vb: SymbolTable.IST(Of Key, Value).Size()
+  nameWithType: IST<Key, Value>.Size()
+  nameWithType.vb: IST(Of Key, Value).Size()
+- uid: SymbolTable.IST`2.Size*
+  name: Size
+  href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Size_
+  commentId: Overload:SymbolTable.IST`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.IST<Key, Value>.Size
+  fullName.vb: SymbolTable.IST(Of Key, Value).Size
+  nameWithType: IST<Key, Value>.Size
+  nameWithType.vb: IST(Of Key, Value).Size
 - uid: SymbolTable.OrderedSequentialSearchST`2
   name: OrderedSequentialSearchST<Key, Value>
   href: api/SymbolTable.OrderedSequentialSearchST-2.html

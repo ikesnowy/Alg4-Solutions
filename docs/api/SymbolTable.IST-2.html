@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Transaction 类
+    <title>IST&lt;Key, Value&gt; 接口
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Transaction 类
+    <meta name="title" content="IST&lt;Key, Value&gt; 接口
    ">
     <meta name="generator" content="docfx 2.40.10.0">
     
@@ -401,8 +401,8 @@
                           <li class="">
                             <a href="SortApplication.ShellSort.html" title="ShellSort" class="">ShellSort</a>
                           </li>
-                          <li class="active">
-                            <a href="SortApplication.Transaction.html" title="Transaction" class="active">Transaction</a>
+                          <li class="">
+                            <a href="SortApplication.Transaction.html" title="Transaction" class="">Transaction</a>
                           </li>
                           <li class="">
                             <a href="SortApplication.Transaction.HowMuchOrder.html" title="Transaction.HowMuchOrder" class="">Transaction.HowMuchOrder</a>
@@ -425,8 +425,8 @@
                           <li class="">
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
-                          <li class="">
-                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          <li class="active">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="active">IST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
@@ -481,214 +481,54 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SortApplication.Transaction">
+            <article class="content wrap" id="_content" data-uid="SymbolTable.IST`2">
   
   
-  <h1 id="SortApplication_Transaction" data-uid="SortApplication.Transaction" class="text-break">Transaction 类
+  <h1 id="SymbolTable_IST_2" data-uid="SymbolTable.IST`2" class="text-break">IST&lt;Key, Value&gt; 接口
   </h1>
-  <div class="markdown level0 summary"><p>交易记录类。</p>
+  <div class="markdown level0 summary"><p>符号表 API。</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>&#32487;&#25215;</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Transaction</span></div>
-  </div>
-  <div classs="implements">
-    <h5>&#23454;&#29616;</h5>
-    <div><span class="xref">System.IComparable</span>&lt;<a class="xref" href="SortApplication.Transaction.html">Transaction</a>&gt;</div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>&#32487;&#25215;&#25104;&#21592;</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-  </div>
-  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="SortApplication.html">SortApplication</a></h6>
-  <h6><strong>&#31243;&#24207;&#38598;</strong>: SortApplication.dll</h6>
-  <h5 id="SortApplication_Transaction_syntax">&#35821;&#27861;</h5>
+  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="SymbolTable.html">SymbolTable</a></h6>
+  <h6><strong>&#31243;&#24207;&#38598;</strong>: SymbolTable.dll</h6>
+  <h5 id="SymbolTable_IST_2_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Transaction : IComparable&lt;Transaction&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IST&lt;Key, Value&gt;</code></pre>
   </div>
-  <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L28">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="SortApplication_Transaction__ctor_" data-uid="SortApplication.Transaction.#ctor*"></a>
-  <h4 id="SortApplication_Transaction__ctor_System_String_" data-uid="SortApplication.Transaction.#ctor(System.String)">Transaction(String)</h4>
-  <div class="markdown level1 summary"><p>构造函数。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Transaction(string transaction)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>&#31867;&#22411;</th>
         <th>&#21517;&#31216;</th>
         <th>&#25551;&#36848;</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">transaction</span></td>
-        <td><p>用空格隔开的形如 “姓名 日期 金额” 的字符串。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L42">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="SortApplication_Transaction__ctor_" data-uid="SortApplication.Transaction.#ctor*"></a>
-  <h4 id="SortApplication_Transaction__ctor_System_String_SortApplication_Date_System_Double_" data-uid="SortApplication.Transaction.#ctor(System.String,SortApplication.Date,System.Double)">Transaction(String, Date, Double)</h4>
-  <div class="markdown level1 summary"><p>构造函数。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Transaction(string who, Date when, double amount)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">who</span></td>
-        <td><p>客户姓名。</p>
+        <td><span class="parametername">Key</span></td>
+        <td><p>键类型。</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="SortApplication.Date.html">Date</a></td>
-        <td><span class="parametername">when</span></td>
-        <td><p>交易日期。</p>
+        <td><span class="parametername">Value</span></td>
+        <td><p>值类型。</p>
 </td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">amount</span></td>
-        <td><p>交易金额。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">&#23646;&#24615;
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L22">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="SortApplication_Transaction_Amount_" data-uid="SortApplication.Transaction.Amount*"></a>
-  <h4 id="SortApplication_Transaction_Amount" data-uid="SortApplication.Transaction.Amount">Amount</h4>
-  <div class="markdown level1 summary"><p>交易金额。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Amount { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">&#23646;&#24615;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L18">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="SortApplication_Transaction_When_" data-uid="SortApplication.Transaction.When*"></a>
-  <h4 id="SortApplication_Transaction_When" data-uid="SortApplication.Transaction.When">When</h4>
-  <div class="markdown level1 summary"><p>交易时间。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Date When { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">&#23646;&#24615;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SortApplication.Date.html">Date</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L14">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="SortApplication_Transaction_Who_" data-uid="SortApplication.Transaction.Who*"></a>
-  <h4 id="SortApplication_Transaction_Who" data-uid="SortApplication.Transaction.Who">Who</h4>
-  <div class="markdown level1 summary"><p>客户姓名。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Who { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">&#23646;&#24615;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L67">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L37">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="SortApplication_Transaction_CompareTo_" data-uid="SortApplication.Transaction.CompareTo*"></a>
-  <h4 id="SortApplication_Transaction_CompareTo_SortApplication_Transaction_" data-uid="SortApplication.Transaction.CompareTo(SortApplication.Transaction)">CompareTo(Transaction)</h4>
-  <div class="markdown level1 summary"><p>默认按照交易金额升序比较。</p>
+  <a id="SymbolTable_IST_2_Contains_" data-uid="SymbolTable.IST`2.Contains*"></a>
+  <h4 id="SymbolTable_IST_2_Contains__0_" data-uid="SymbolTable.IST`2.Contains(`0)">Contains(Key)</h4>
+  <div class="markdown level1 summary"><p>键 <code data-dev-comment-type="paramref" class="paramref">key</code> 在表中是否存在对应的值。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CompareTo(Transaction other)</code></pre>
+    <pre><code class="lang-csharp hljs">bool Contains(Key key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -701,54 +541,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SortApplication.Transaction.html">Transaction</a></td>
-        <td><span class="parametername">other</span></td>
-        <td><p>比较的另一个对象。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L114">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="SortApplication_Transaction_Equals_" data-uid="SortApplication.Transaction.Equals*"></a>
-  <h4 id="SortApplication_Transaction_Equals_System_Object_" data-uid="SortApplication.Transaction.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"><p>比较两笔交易是否相同。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>另一个对象。</p>
+        <td><span class="xref">Key</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>键。</p>
 </td>
       </tr>
     </tbody>
@@ -764,23 +559,190 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>如果存在则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.Equals(System.Object)</span></div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L134">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L30">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="SortApplication_Transaction_GetHashCode_" data-uid="SortApplication.Transaction.GetHashCode*"></a>
-  <h4 id="SortApplication_Transaction_GetHashCode" data-uid="SortApplication.Transaction.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"><p>返回交易信息的哈希值。</p>
+  <a id="SymbolTable_IST_2_Delete_" data-uid="SymbolTable.IST`2.Delete*"></a>
+  <h4 id="SymbolTable_IST_2_Delete__0_" data-uid="SymbolTable.IST`2.Delete(`0)">Delete(Key)</h4>
+  <div class="markdown level1 summary"><p>从表中删去键 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+    <pre><code class="lang-csharp hljs">void Delete(Key key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Key</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L24">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_IST_2_Get_" data-uid="SymbolTable.IST`2.Get*"></a>
+  <h4 id="SymbolTable_IST_2_Get__0_" data-uid="SymbolTable.IST`2.Get(`0)">Get(Key)</h4>
+  <div class="markdown level1 summary"><p>获取键 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值，不存在则返回 <code>default(Value)</code>。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Value Get(Key key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Key</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Value</span></td>
+        <td><p>键 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值，不存在则返回 <code>default(Value)</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L43">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_IST_2_IsEmpty_" data-uid="SymbolTable.IST`2.IsEmpty*"></a>
+  <h4 id="SymbolTable_IST_2_IsEmpty" data-uid="SymbolTable.IST`2.IsEmpty">IsEmpty()</h4>
+  <div class="markdown level1 summary"><p>符号表是否为空。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsEmpty()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L55">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_IST_2_Keys_" data-uid="SymbolTable.IST`2.Keys*"></a>
+  <h4 id="SymbolTable_IST_2_Keys" data-uid="SymbolTable.IST`2.Keys">Keys()</h4>
+  <div class="markdown level1 summary"><p>获得符号表中所有键的集合。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;Key&gt; Keys()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</td>
+        <td><p>符号表中所有键的集合。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L17">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_IST_2_Put_" data-uid="SymbolTable.IST`2.Put*"></a>
+  <h4 id="SymbolTable_IST_2_Put__0__1_" data-uid="SymbolTable.IST`2.Put(`0,`1)">Put(Key, Value)</h4>
+  <div class="markdown level1 summary"><p>向符号表插入键值对。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Put(Key key, Value value)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Key</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>键。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Value</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>值。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L49">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_IST_2_Size_" data-uid="SymbolTable.IST`2.Size*"></a>
+  <h4 id="SymbolTable_IST_2_Size" data-uid="SymbolTable.IST`2.Size">Size()</h4>
+  <div class="markdown level1 summary"><p>获得符号表中键值对的数量。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Size()</code></pre>
   </div>
   <h5 class="returns">&#36820;&#22238;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -793,45 +755,11 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>符号表中键值对的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.GetHashCode()</span></div>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L57">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="SortApplication_Transaction_ToString_" data-uid="SortApplication.Transaction.ToString*"></a>
-  <h4 id="SortApplication_Transaction_ToString" data-uid="SortApplication.Transaction.ToString">ToString()</h4>
-  <div class="markdown level1 summary"><p>返回字符串形式的交易信息。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.ToString()</span></div>
-  <h3 id="implements">&#23454;&#29616;</h3>
-  <div>
-      <span class="xref">System.IComparable&lt;T&gt;</span>
-  </div>
 </article>
           </div>
           
@@ -840,7 +768,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Transaction.cs/#L9" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/IST.cs/#L10" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>

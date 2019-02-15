@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,6 +426,9 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
@@ -549,7 +549,7 @@
   <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L21">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L33">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1__ctor_" data-uid="PriorityQueue.MaxPQWithMin`1.#ctor*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1__ctor" data-uid="PriorityQueue.MaxPQWithMin`1.#ctor">MaxPQWithMin()</h4>
@@ -561,7 +561,7 @@
     <pre><code class="lang-csharp hljs">public MaxPQWithMin()</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L38">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L50">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1__ctor_" data-uid="PriorityQueue.MaxPQWithMin`1.#ctor*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1__ctor__0___" data-uid="PriorityQueue.MaxPQWithMin`1.#ctor(`0[])">MaxPQWithMin(Key[])</h4>
@@ -591,7 +591,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L27">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L39">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1__ctor_" data-uid="PriorityQueue.MaxPQWithMin`1.#ctor*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1__ctor_System_Int32_" data-uid="PriorityQueue.MaxPQWithMin`1.#ctor(System.Int32)">MaxPQWithMin(Int32)</h4>
@@ -623,7 +623,7 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L65">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L79">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_DelMax_" data-uid="PriorityQueue.MaxPQWithMin`1.DelMax*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_DelMax" data-uid="PriorityQueue.MaxPQWithMin`1.DelMax">DelMax()</h4>
@@ -645,12 +645,32 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>堆中的最大元素。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="PriorityQueue_MaxPQWithMin_1_DelMax_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>如果希望获得最大元素但不删除它，请使用 <a class="xref" href="PriorityQueue.MaxPQWithMin-1.html#PriorityQueue_MaxPQWithMin_1_Max">Max()</a>。</p>
+</div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>当堆为空时抛出该异常。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L134">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L149">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_GetEnumerator_" data-uid="PriorityQueue.MaxPQWithMin`1.GetEnumerator*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_GetEnumerator" data-uid="PriorityQueue.MaxPQWithMin`1.GetEnumerator">GetEnumerator()</h4>
@@ -672,12 +692,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;Key&gt;</td>
-        <td></td>
+        <td><p>最大堆的迭代器。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L90">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L104">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_Insert_" data-uid="PriorityQueue.MaxPQWithMin`1.Insert*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_Insert__0_" data-uid="PriorityQueue.MaxPQWithMin`1.Insert(`0)">Insert(Key)</h4>
@@ -707,7 +728,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L110">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L124">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_IsEmpty_" data-uid="PriorityQueue.MaxPQWithMin`1.IsEmpty*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_IsEmpty" data-uid="PriorityQueue.MaxPQWithMin`1.IsEmpty">IsEmpty()</h4>
@@ -729,12 +750,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>若堆为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L116">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L131">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_Max_" data-uid="PriorityQueue.MaxPQWithMin`1.Max*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_Max" data-uid="PriorityQueue.MaxPQWithMin`1.Max">Max()</h4>
@@ -756,12 +778,16 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>堆中的最大元素。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="PriorityQueue_MaxPQWithMin_1_Max_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>如果希望删除并返回最大元素，请使用 <a class="xref" href="PriorityQueue.MaxPQWithMin-1.html#PriorityQueue_MaxPQWithMin_1_DelMax">DelMax()</a>。</p>
+</div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L122">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L137">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_Min_" data-uid="PriorityQueue.MaxPQWithMin`1.Min*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_Min" data-uid="PriorityQueue.MaxPQWithMin`1.Min">Min()</h4>
@@ -783,12 +809,13 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>堆中的最小元素。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L128">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L143">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_Size_" data-uid="PriorityQueue.MaxPQWithMin`1.Size*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_Size" data-uid="PriorityQueue.MaxPQWithMin`1.Size">Size()</h4>
@@ -810,14 +837,15 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>堆中的元素数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="eii">&#26174;&#31034;&#25509;&#21475;&#23454;&#29616;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L148">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MaxPQWithMin.cs/#L164">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MaxPQWithMin_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="PriorityQueue.MaxPQWithMin`1.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="PriorityQueue_MaxPQWithMin_1_System_Collections_IEnumerable_GetEnumerator" data-uid="PriorityQueue.MaxPQWithMin`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
@@ -839,10 +867,14 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
+        <td><p>堆的迭代器。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="PriorityQueue_MaxPQWithMin_1_System_Collections_IEnumerable_GetEnumerator_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>实际上调用的是 <a class="xref" href="PriorityQueue.MaxPQWithMin-1.html#PriorityQueue_MaxPQWithMin_1_GetEnumerator">GetEnumerator()</a>。</p>
+</div>
   <h3 id="implements">&#23454;&#29616;</h3>
   <div>
       <a class="xref" href="PriorityQueue.IMaxPQ-1.html">IMaxPQ&lt;Key&gt;</a>

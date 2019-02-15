@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,6 +426,9 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="active">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
@@ -486,7 +486,7 @@
   
   <h1 id="SymbolTable_IOrderedST_2" data-uid="SymbolTable.IOrderedST`2" class="text-break">IOrderedST&lt;Key, Value&gt; 接口
   </h1>
-  <div class="markdown level0 summary"><p>有序符号表接口。</p>
+  <div class="markdown level0 summary"><p>有序符号表 API。</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="SymbolTable.html">SymbolTable</a></h6>
@@ -523,7 +523,7 @@
   </span>
   <a id="SymbolTable_IOrderedST_2_Ceiling_" data-uid="SymbolTable.IOrderedST`2.Ceiling*"></a>
   <h4 id="SymbolTable_IOrderedST_2_Ceiling__0_" data-uid="SymbolTable.IOrderedST`2.Ceiling(`0)">Ceiling(Key)</h4>
-  <div class="markdown level1 summary"><p>大于等于 key 的最小值。</p>
+  <div class="markdown level1 summary"><p>大于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最小值。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
@@ -558,7 +558,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>大于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最小值。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -603,7 +604,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>如果存在则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -666,7 +668,7 @@
   </span>
   <a id="SymbolTable_IOrderedST_2_Floor_" data-uid="SymbolTable.IOrderedST`2.Floor*"></a>
   <h4 id="SymbolTable_IOrderedST_2_Floor__0_" data-uid="SymbolTable.IOrderedST`2.Floor(`0)">Floor(Key)</h4>
-  <div class="markdown level1 summary"><p>小于等于 Key 的最大值。</p>
+  <div class="markdown level1 summary"><p>小于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最大值。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
@@ -701,7 +703,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>小于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最大值。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -746,7 +749,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Value</span></td>
-        <td></td>
+        <td><p><code data-dev-comment-type="typeparamref" class="typeparamref">Key</code> 对应的值。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -773,7 +777,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -800,7 +805,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</td>
-        <td></td>
+        <td><p>全部键的集合。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -851,7 +857,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</td>
-        <td></td>
+        <td><p>符号表中 [<code data-dev-comment-type="paramref" class="paramref">lo</code>, <code data-dev-comment-type="paramref" class="paramref">hi</code>] 之间的键。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -878,7 +885,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>最大的键。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -905,7 +913,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>最小的键。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -950,7 +959,7 @@
   </span>
   <a id="SymbolTable_IOrderedST_2_Rank_" data-uid="SymbolTable.IOrderedST`2.Rank*"></a>
   <h4 id="SymbolTable_IOrderedST_2_Rank__0_" data-uid="SymbolTable.IOrderedST`2.Rank(`0)">Rank(Key)</h4>
-  <div class="markdown level1 summary"><p>小于 Key 的键的数量。</p>
+  <div class="markdown level1 summary"><p>小于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的键的数量。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
@@ -985,7 +994,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>小于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的键的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -994,7 +1004,7 @@
   </span>
   <a id="SymbolTable_IOrderedST_2_Select_" data-uid="SymbolTable.IOrderedST`2.Select*"></a>
   <h4 id="SymbolTable_IOrderedST_2_Select_System_Int32_" data-uid="SymbolTable.IOrderedST`2.Select(System.Int32)">Select(Int32)</h4>
-  <div class="markdown level1 summary"><p>排名为 k 的键。</p>
+  <div class="markdown level1 summary"><p>获得排名为 k 的键。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
@@ -1014,7 +1024,8 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">k</span></td>
-        <td></td>
+        <td><p>需要获得的键的排名。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1029,7 +1040,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>排名为 k 的键。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1056,7 +1068,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>键值对数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1107,7 +1120,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>[<code data-dev-comment-type="paramref" class="paramref">lo</code>, <code data-dev-comment-type="paramref" class="paramref">hi</code>] 之间键的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>

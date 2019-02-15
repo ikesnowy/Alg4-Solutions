@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,6 +426,9 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="active">
@@ -496,6 +496,7 @@
   </div>
   <div classs="implements">
     <h5>&#23454;&#29616;</h5>
+    <div><a class="xref" href="SymbolTable.IST-2.html">IST</a>&lt;Key, Value&gt;</div>
     <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</div>
     <div><span class="xref">System.Collections.IEnumerable</span></div>
   </div>
@@ -607,7 +608,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>如果存在则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -682,7 +684,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Value</span></td>
-        <td></td>
+        <td><p>键 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值，不存在则返回 <code>default(Value)</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -709,7 +712,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;Key&gt;</td>
-        <td></td>
+        <td><p>符号表的枚举器。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -736,7 +740,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>如果符号表为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -763,7 +768,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</td>
-        <td></td>
+        <td><p>包含符号表中所有键的集合。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -826,14 +832,15 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>符号表中键值对的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="eii">&#26174;&#31034;&#25509;&#21475;&#23454;&#29616;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/ST.cs/#L75">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/ST.cs/#L76">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_ST_2_System_Collections_IEnumerable_GetEnumerator_" data-uid="SymbolTable.ST`2.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="SymbolTable_ST_2_System_Collections_IEnumerable_GetEnumerator" data-uid="SymbolTable.ST`2.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
@@ -855,11 +862,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
+        <td><p>符号表的枚举器。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="SymbolTable_ST_2_System_Collections_IEnumerable_GetEnumerator_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>实际上调用的是 <a class="xref" href="SymbolTable.ST-2.html#SymbolTable_ST_2_GetEnumerator">GetEnumerator()</a>。</p>
+</div>
   <h3 id="implements">&#23454;&#29616;</h3>
+  <div>
+      <a class="xref" href="SymbolTable.IST-2.html">IST&lt;Key, Value&gt;</a>
+  </div>
   <div>
       <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
   </div>

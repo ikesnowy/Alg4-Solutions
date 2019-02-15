@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,6 +426,9 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
@@ -486,7 +486,7 @@
   
   <h1 id="Generics_Queue_1" data-uid="Generics.Queue`1" class="text-break">Queue&lt;Item&gt; 类
   </h1>
-  <div class="markdown level0 summary"><p>队列类。</p>
+  <div class="markdown level0 summary"><p>队列类（链表实现）。</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -581,14 +581,15 @@
       <tr>
         <td><a class="xref" href="Generics.Queue-1.html">Queue</a>&lt;Item&gt;</td>
         <td><span class="parametername">r</span></td>
-        <td></td>
+        <td><p>要复制的队列。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L107">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L112">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Queue_1_Catenation_" data-uid="Generics.Queue`1.Catenation*"></a>
   <h4 id="Generics_Queue_1_Catenation_Generics_Queue__0__Generics_Queue__0__" data-uid="Generics.Queue`1.Catenation(Generics.Queue{`0},Generics.Queue{`0})">Catenation(Queue&lt;Item&gt;, Queue&lt;Item&gt;)</h4>
@@ -638,8 +639,11 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="Generics_Queue_1_Catenation_Generics_Queue__0__Generics_Queue__0___remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>运行此方法后，<code data-dev-comment-type="paramref" class="paramref">q2</code> 将被置为 <code>null</code>。</p>
+</div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L90">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L94">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Queue_1_Dequeue_" data-uid="Generics.Queue`1.Dequeue*"></a>
   <h4 id="Generics_Queue_1_Dequeue" data-uid="Generics.Queue`1.Dequeue">Dequeue()</h4>
@@ -661,12 +665,32 @@
     <tbody>
       <tr>
         <td><span class="xref">Item</span></td>
-        <td></td>
+        <td><p>队列中的第一个元素。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Generics_Queue_1_Dequeue_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>若不希望第一个元素被删除，请使用 <a class="xref" href="Generics.Queue-1.html#Generics_Queue_1_Peek">Peek()</a>。</p>
+</div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当队列为空时抛出此异常。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L73">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L75">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Queue_1_Enqueue_" data-uid="Generics.Queue`1.Enqueue*"></a>
   <h4 id="Generics_Queue_1_Enqueue__0_" data-uid="Generics.Queue`1.Enqueue(`0)">Enqueue(Item)</h4>
@@ -696,11 +720,12 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L137">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L150">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Queue_1_GetEnumerator_" data-uid="Generics.Queue`1.GetEnumerator*"></a>
   <h4 id="Generics_Queue_1_GetEnumerator" data-uid="Generics.Queue`1.GetEnumerator">GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获得队列枚举器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -717,7 +742,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;Item&gt;</td>
-        <td></td>
+        <td><p>队列枚举器。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -744,12 +770,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>如果队列为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L62">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L64">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Queue_1_Peek_" data-uid="Generics.Queue`1.Peek*"></a>
   <h4 id="Generics_Queue_1_Peek" data-uid="Generics.Queue`1.Peek">Peek()</h4>
@@ -771,7 +798,27 @@
     <tbody>
       <tr>
         <td><span class="xref">Item</span></td>
-        <td></td>
+        <td><p>队列中的第一个元素。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Generics_Queue_1_Peek_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>若要删除并返回第一个元素，请使用 <a class="xref" href="Generics.Queue-1.html#Generics_Queue_1_Dequeue">Dequeue()</a>。</p>
+</div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当队列为空时抛出此异常。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -798,16 +845,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>队列中元素的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L126">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L135">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Queue_1_ToString_" data-uid="Generics.Queue`1.ToString*"></a>
   <h4 id="Generics_Queue_1_ToString" data-uid="Generics.Queue`1.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>将队列中的元素转变为字符串并输出，各元素以空格分隔。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -824,7 +873,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>形如 &quot;1 2 3 4 5 &quot; 字符串。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -833,11 +883,12 @@
   <h3 id="eii">&#26174;&#31034;&#25509;&#21475;&#23454;&#29616;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L142">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Queue.cs/#L160">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Queue_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Generics.Queue`1.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="Generics_Queue_1_System_Collections_IEnumerable_GetEnumerator" data-uid="Generics.Queue`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获得队列枚举器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -854,10 +905,14 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
+        <td><p>队列枚举器。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Generics_Queue_1_System_Collections_IEnumerable_GetEnumerator_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>此方法实际上调用的是 <a class="xref" href="Generics.Queue-1.html#Generics_Queue_1_GetEnumerator">GetEnumerator()</a>。</p>
+</div>
   <h3 id="implements">&#23454;&#29616;</h3>
   <div>
       <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
