@@ -9252,6 +9252,151 @@ references:
   fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Size
   nameWithType: OrderedSequentialSearchST<Key, Value>.Size
   nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Size
+- uid: SymbolTable.SequentialSearchST`2
+  name: SequentialSearchST<Key, Value>
+  href: api/SymbolTable.SequentialSearchST-2.html
+  commentId: T:SymbolTable.SequentialSearchST`2
+  name.vb: SequentialSearchST(Of Key, Value)
+  fullName: SymbolTable.SequentialSearchST<Key, Value>
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value)
+  nameWithType: SequentialSearchST<Key, Value>
+  nameWithType.vb: SequentialSearchST(Of Key, Value)
+- uid: SymbolTable.SequentialSearchST`2.#ctor
+  name: SequentialSearchST()
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2__ctor
+  commentId: M:SymbolTable.SequentialSearchST`2.#ctor
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.SequentialSearchST()
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).SequentialSearchST()
+  nameWithType: SequentialSearchST<Key, Value>.SequentialSearchST()
+  nameWithType.vb: SequentialSearchST(Of Key, Value).SequentialSearchST()
+- uid: SymbolTable.SequentialSearchST`2.#ctor*
+  name: SequentialSearchST
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2__ctor_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.SequentialSearchST
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).SequentialSearchST
+  nameWithType: SequentialSearchST<Key, Value>.SequentialSearchST
+  nameWithType.vb: SequentialSearchST(Of Key, Value).SequentialSearchST
+- uid: SymbolTable.SequentialSearchST`2.Contains(`0)
+  name: Contains(Key)
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Contains__0_
+  commentId: M:SymbolTable.SequentialSearchST`2.Contains(`0)
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Contains(Key)
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Contains(Key)
+  nameWithType: SequentialSearchST<Key, Value>.Contains(Key)
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Contains(Key)
+- uid: SymbolTable.SequentialSearchST`2.Contains*
+  name: Contains
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Contains_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Contains
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Contains
+  nameWithType: SequentialSearchST<Key, Value>.Contains
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Contains
+- uid: SymbolTable.SequentialSearchST`2.Delete(`0)
+  name: Delete(Key)
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Delete__0_
+  commentId: M:SymbolTable.SequentialSearchST`2.Delete(`0)
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Delete(Key)
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Delete(Key)
+  nameWithType: SequentialSearchST<Key, Value>.Delete(Key)
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Delete(Key)
+- uid: SymbolTable.SequentialSearchST`2.Delete*
+  name: Delete
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Delete_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Delete
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Delete
+  nameWithType: SequentialSearchST<Key, Value>.Delete
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Delete
+- uid: SymbolTable.SequentialSearchST`2.Get(`0)
+  name: Get(Key)
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Get__0_
+  commentId: M:SymbolTable.SequentialSearchST`2.Get(`0)
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Get(Key)
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Get(Key)
+  nameWithType: SequentialSearchST<Key, Value>.Get(Key)
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Get(Key)
+- uid: SymbolTable.SequentialSearchST`2.Get*
+  name: Get
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Get_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Get
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Get
+  nameWithType: SequentialSearchST<Key, Value>.Get
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Get
+- uid: SymbolTable.SequentialSearchST`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_IsEmpty
+  commentId: M:SymbolTable.SequentialSearchST`2.IsEmpty
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.IsEmpty()
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).IsEmpty()
+  nameWithType: SequentialSearchST<Key, Value>.IsEmpty()
+  nameWithType.vb: SequentialSearchST(Of Key, Value).IsEmpty()
+- uid: SymbolTable.SequentialSearchST`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_IsEmpty_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.IsEmpty
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).IsEmpty
+  nameWithType: SequentialSearchST<Key, Value>.IsEmpty
+  nameWithType.vb: SequentialSearchST(Of Key, Value).IsEmpty
+- uid: SymbolTable.SequentialSearchST`2.Keys
+  name: Keys()
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Keys
+  commentId: M:SymbolTable.SequentialSearchST`2.Keys
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Keys()
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Keys()
+  nameWithType: SequentialSearchST<Key, Value>.Keys()
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Keys()
+- uid: SymbolTable.SequentialSearchST`2.Keys*
+  name: Keys
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Keys_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Keys
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Keys
+  nameWithType: SequentialSearchST<Key, Value>.Keys
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Keys
+- uid: SymbolTable.SequentialSearchST`2.Put(`0,`1)
+  name: Put(Key, Value)
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Put__0__1_
+  commentId: M:SymbolTable.SequentialSearchST`2.Put(`0,`1)
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Put(Key, Value)
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Put(Key, Value)
+  nameWithType: SequentialSearchST<Key, Value>.Put(Key, Value)
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Put(Key, Value)
+- uid: SymbolTable.SequentialSearchST`2.Put*
+  name: Put
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Put_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Put
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Put
+  nameWithType: SequentialSearchST<Key, Value>.Put
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Put
+- uid: SymbolTable.SequentialSearchST`2.Size
+  name: Size()
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Size
+  commentId: M:SymbolTable.SequentialSearchST`2.Size
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Size()
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Size()
+  nameWithType: SequentialSearchST<Key, Value>.Size()
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Size()
+- uid: SymbolTable.SequentialSearchST`2.Size*
+  name: Size
+  href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Size_
+  commentId: Overload:SymbolTable.SequentialSearchST`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchST<Key, Value>.Size
+  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Size
+  nameWithType: SequentialSearchST<Key, Value>.Size
+  nameWithType.vb: SequentialSearchST(Of Key, Value).Size
 - uid: SymbolTable.ST`2
   name: ST<Key, Value>
   href: api/SymbolTable.ST-2.html
