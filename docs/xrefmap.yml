@@ -8547,6 +8547,44 @@ references:
   fullName.vb: SymbolTable.ArrayST(Of Key, Value).Size
   nameWithType: ArrayST<Key, Value>.Size
   nameWithType.vb: ArrayST(Of Key, Value).Size
+- uid: SymbolTable.FrequencyCounter
+  name: FrequencyCounter
+  href: api/SymbolTable.FrequencyCounter.html
+  commentId: T:SymbolTable.FrequencyCounter
+  fullName: SymbolTable.FrequencyCounter
+  nameWithType: FrequencyCounter
+- uid: SymbolTable.FrequencyCounter.CountDistinct*
+  name: CountDistinct
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_CountDistinct_
+  commentId: Overload:SymbolTable.FrequencyCounter.CountDistinct
+  isSpec: "True"
+  fullName: SymbolTable.FrequencyCounter.CountDistinct
+  nameWithType: FrequencyCounter.CountDistinct
+- uid: SymbolTable.FrequencyCounter.CountDistinct``1(``0[],SymbolTable.IST{``0,System.Int32})
+  name: CountDistinct<TKey>(TKey[], IST<TKey, Int32>)
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_CountDistinct__1___0___SymbolTable_IST___0_System_Int32__
+  commentId: M:SymbolTable.FrequencyCounter.CountDistinct``1(``0[],SymbolTable.IST{``0,System.Int32})
+  name.vb: CountDistinct(Of TKey)(TKey(), IST(Of TKey, Int32))
+  fullName: SymbolTable.FrequencyCounter.CountDistinct<TKey>(TKey[], SymbolTable.IST<TKey, System.Int32>)
+  fullName.vb: SymbolTable.FrequencyCounter.CountDistinct(Of TKey)(TKey(), SymbolTable.IST(Of TKey, System.Int32))
+  nameWithType: FrequencyCounter.CountDistinct<TKey>(TKey[], IST<TKey, Int32>)
+  nameWithType.vb: FrequencyCounter.CountDistinct(Of TKey)(TKey(), IST(Of TKey, Int32))
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32})
+  name: MostFrequentlyWord(String, Int32, IST<String, Int32>)
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWord_System_String_System_Int32_SymbolTable_IST_System_String_System_Int32__
+  commentId: M:SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32})
+  name.vb: MostFrequentlyWord(String, Int32, IST(Of String, Int32))
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, SymbolTable.IST<System.String, System.Int32>)
+  fullName.vb: SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, SymbolTable.IST(Of System.String, System.Int32))
+  nameWithType: FrequencyCounter.MostFrequentlyWord(String, Int32, IST<String, Int32>)
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWord(String, Int32, IST(Of String, Int32))
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWord*
+  name: MostFrequentlyWord
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWord_
+  commentId: Overload:SymbolTable.FrequencyCounter.MostFrequentlyWord
+  isSpec: "True"
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWord
+  nameWithType: FrequencyCounter.MostFrequentlyWord
 - uid: SymbolTable.IOrderedST`2
   name: IOrderedST<Key, Value>
   href: api/SymbolTable.IOrderedST-2.html
