@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,7 +426,13 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
@@ -523,7 +526,6 @@
   <h5 id="PriorityQueue_MedianPQ_1_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class MedianPQ&lt;Key&gt;
-
     where Key : IComparable&lt;Key&gt;</code></pre>
   </div>
   <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
@@ -544,7 +546,7 @@
   <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L30">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L34">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MedianPQ_1__ctor_" data-uid="PriorityQueue.MedianPQ`1.#ctor*"></a>
   <h4 id="PriorityQueue_MedianPQ_1__ctor" data-uid="PriorityQueue.MedianPQ`1.#ctor">MedianPQ()</h4>
@@ -556,7 +558,7 @@
     <pre><code class="lang-csharp hljs">public MedianPQ()</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L54">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L58">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MedianPQ_1__ctor_" data-uid="PriorityQueue.MedianPQ`1.#ctor*"></a>
   <h4 id="PriorityQueue_MedianPQ_1__ctor__0___" data-uid="PriorityQueue.MedianPQ`1.#ctor(`0[])">MedianPQ(Key[])</h4>
@@ -586,7 +588,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L42">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L46">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MedianPQ_1__ctor_" data-uid="PriorityQueue.MedianPQ`1.#ctor*"></a>
   <h4 id="PriorityQueue_MedianPQ_1__ctor_System_Int32_" data-uid="PriorityQueue.MedianPQ`1.#ctor(System.Int32)">MedianPQ(Int32)</h4>
@@ -618,7 +620,7 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L105">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L111">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MedianPQ_1_DelMedian_" data-uid="PriorityQueue.MedianPQ`1.DelMedian*"></a>
   <h4 id="PriorityQueue_MedianPQ_1_DelMedian" data-uid="PriorityQueue.MedianPQ`1.DelMedian">DelMedian()</h4>
@@ -640,12 +642,32 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>中位数。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="PriorityQueue_MedianPQ_1_DelMedian_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>如果希望获得中位数但不将其删除，请使用 <a class="xref" href="PriorityQueue.MedianPQ-1.html#PriorityQueue_MedianPQ_1_Median">Median()</a>。</p>
+</div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>当堆为空时抛出该异常。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L83">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L87">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MedianPQ_1_Insert_" data-uid="PriorityQueue.MedianPQ`1.Insert*"></a>
   <h4 id="PriorityQueue_MedianPQ_1_Insert__0_" data-uid="PriorityQueue.MedianPQ`1.Insert(`0)">Insert(Key)</h4>
@@ -675,7 +697,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L138">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L145">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MedianPQ_1_IsEmpty_" data-uid="PriorityQueue.MedianPQ`1.IsEmpty*"></a>
   <h4 id="PriorityQueue_MedianPQ_1_IsEmpty" data-uid="PriorityQueue.MedianPQ`1.IsEmpty">IsEmpty()</h4>
@@ -697,12 +719,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>若堆为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L132">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.4/PriorityQueue/MedianPQ.cs/#L139">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="PriorityQueue_MedianPQ_1_Median_" data-uid="PriorityQueue.MedianPQ`1.Median*"></a>
   <h4 id="PriorityQueue_MedianPQ_1_Median" data-uid="PriorityQueue.MedianPQ`1.Median">Median()</h4>
@@ -724,10 +747,14 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>中位数。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="PriorityQueue_MedianPQ_1_Median_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>如果希望删除并返回中位数，请使用 <a class="xref" href="PriorityQueue.MedianPQ-1.html#PriorityQueue_MedianPQ_1_DelMedian">DelMedian()</a>。</p>
+</div>
 </article>
           </div>
           

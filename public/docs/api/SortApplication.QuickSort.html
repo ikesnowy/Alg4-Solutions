@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,7 +426,13 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
@@ -567,7 +570,7 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/QuickSort.cs/#L78">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/QuickSort.cs/#L79">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_QuickSort_Select_" data-uid="SortApplication.QuickSort.Select*"></a>
   <h4 id="SortApplication_QuickSort_Select__1___0___System_Int32_" data-uid="SortApplication.QuickSort.Select``1(``0[],System.Int32)">Select&lt;T&gt;(T[], Int32)</h4>
@@ -577,7 +580,6 @@
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T Select&lt;T&gt;(T[] a, int k)
-
     where T : IComparable&lt;T&gt;</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
@@ -615,7 +617,8 @@
     <tbody>
       <tr>
         <td><span class="xref">T</span></td>
-        <td></td>
+        <td><p>第 <code data-dev-comment-type="paramref" class="paramref">k</code> 小的元素。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -635,6 +638,22 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IndexOutOfRangeException</span></td>
+        <td><p>当序号超出数组范围时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/QuickSort.cs/#L20">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
@@ -646,7 +665,6 @@
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void Sort&lt;T&gt;(T[] a)
-
     where T : IComparable&lt;T&gt;</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
@@ -696,7 +714,6 @@
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected void Sort&lt;T&gt;(T[] a, int lo, int hi)
-
     where T : IComparable&lt;T&gt;</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>

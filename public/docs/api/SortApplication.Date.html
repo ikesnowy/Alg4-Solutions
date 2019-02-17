@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,7 +426,13 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
@@ -486,7 +489,8 @@
   
   <h1 id="SortApplication_Date" data-uid="SortApplication.Date" class="text-break">Date 类
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>日期类。</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>&#32487;&#25215;</h5>
@@ -521,7 +525,7 @@
   <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L31">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L47">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date__ctor_" data-uid="SortApplication.Date.#ctor*"></a>
   <h4 id="SortApplication_Date__ctor_System_Int32_System_Int32_System_Int32_" data-uid="SortApplication.Date.#ctor(System.Int32,System.Int32,System.Int32)">Date(Int32, Int32, Int32)</h4>
@@ -563,7 +567,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L15">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L31">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date__ctor_" data-uid="SortApplication.Date.#ctor*"></a>
   <h4 id="SortApplication_Date__ctor_System_String_" data-uid="SortApplication.Date.#ctor(System.String)">Date(String)</h4>
@@ -592,14 +596,31 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>输入日期格式不正确时抛出异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">&#23646;&#24615;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L8">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L19">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date_Day_" data-uid="SortApplication.Date.Day*"></a>
   <h4 id="SortApplication_Date_Day" data-uid="SortApplication.Date.Day">Day</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>日期。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -616,16 +637,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>日期数据。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L7">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L14">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date_Month_" data-uid="SortApplication.Date.Month*"></a>
   <h4 id="SortApplication_Date_Month" data-uid="SortApplication.Date.Month">Month</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>月份。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -642,16 +665,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>月份数据。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L9">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L24">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date_Year_" data-uid="SortApplication.Date.Year*"></a>
   <h4 id="SortApplication_Date_Year" data-uid="SortApplication.Date.Year">Year</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>年份。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -668,14 +693,15 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>年份数据。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L82">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L98">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date_CompareTo_" data-uid="SortApplication.Date.CompareTo*"></a>
   <h4 id="SortApplication_Date_CompareTo_SortApplication_Date_" data-uid="SortApplication.Date.CompareTo(SortApplication.Date)">CompareTo(Date)</h4>
@@ -715,12 +741,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">other</code> 较后时返回大于 0 的数，反之返回小于 0 的数，相等返回 0。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L52">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L68">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date_Equals_" data-uid="SortApplication.Date.Equals*"></a>
   <h4 id="SortApplication_Date_Equals_System_Object_" data-uid="SortApplication.Date.Equals(System.Object)">Equals(Object)</h4>
@@ -760,14 +787,15 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>相等返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
   <div><span class="xref">System.Object.Equals(System.Object)</span></div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L68">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L84">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date_GetHashCode_" data-uid="SortApplication.Date.GetHashCode*"></a>
   <h4 id="SortApplication_Date_GetHashCode" data-uid="SortApplication.Date.GetHashCode">GetHashCode()</h4>
@@ -789,18 +817,19 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>日期的哈希值。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
   <div><span class="xref">System.Object.GetHashCode()</span></div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L42">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L58">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SortApplication_Date_ToString_" data-uid="SortApplication.Date.ToString*"></a>
   <h4 id="SortApplication_Date_ToString" data-uid="SortApplication.Date.ToString">ToString()</h4>
-  <div class="markdown level1 summary"><p>返回形如 05/22/2017 的字符串。</p>
+  <div class="markdown level1 summary"><p>将日期转换成字符串，格式为 dd/mm/yyyy。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
@@ -818,7 +847,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>形如 05/22/2017 的字符串。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -836,7 +866,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L5" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.5/SortApplication/Date.cs/#L8" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>

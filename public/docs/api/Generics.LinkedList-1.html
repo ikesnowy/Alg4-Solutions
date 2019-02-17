@@ -107,9 +107,6 @@
                           <li class="">
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
-                          <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
                           <li class="active">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="active">LinkedList&lt;Item&gt;</a>
                           </li>
@@ -429,7 +426,13 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
@@ -559,7 +562,7 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L96">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L98">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_LinkedList_1_Delete_" data-uid="Generics.LinkedList`1.Delete*"></a>
   <h4 id="Generics_LinkedList_1_Delete_System_Int32_" data-uid="Generics.LinkedList`1.Delete(System.Int32)">Delete(Int32)</h4>
@@ -599,12 +602,29 @@
     <tbody>
       <tr>
         <td><span class="xref">Item</span></td>
-        <td></td>
+        <td><p>被删除的元素。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IndexOutOfRangeException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">index</code> 大于链表元素数量时抛出此异常。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L75">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L76">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_LinkedList_1_Find_" data-uid="Generics.LinkedList`1.Find*"></a>
   <h4 id="Generics_LinkedList_1_Find_System_Int32_" data-uid="Generics.LinkedList`1.Find(System.Int32)">Find(Int32)</h4>
@@ -644,16 +664,34 @@
     <tbody>
       <tr>
         <td><span class="xref">Item</span></td>
-        <td></td>
+        <td><p>返回指定元素的下标。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IndexOutOfRangeException</span></td>
+        <td><p>如果 <code data-dev-comment-type="paramref" class="paramref">index</code> 大于链表内元素数量时抛出此异常。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L158">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L171">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_LinkedList_1_GetEnumerator_" data-uid="Generics.LinkedList`1.GetEnumerator*"></a>
   <h4 id="Generics_LinkedList_1_GetEnumerator" data-uid="Generics.LinkedList`1.GetEnumerator">GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获得链表的枚举器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -670,7 +708,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;Item&gt;</td>
-        <td></td>
+        <td><p>返回一个枚举器对象。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -741,7 +780,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L127">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L129">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_LinkedList_1_IsEmpty_" data-uid="Generics.LinkedList`1.IsEmpty*"></a>
   <h4 id="Generics_LinkedList_1_IsEmpty" data-uid="Generics.LinkedList`1.IsEmpty">IsEmpty()</h4>
@@ -763,12 +802,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L136">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L138">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_LinkedList_1_Size_" data-uid="Generics.LinkedList`1.Size*"></a>
   <h4 id="Generics_LinkedList_1_Size" data-uid="Generics.LinkedList`1.Size">Size()</h4>
@@ -790,12 +830,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>链表中元素的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L145">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L154">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_LinkedList_1_ToString_" data-uid="Generics.LinkedList`1.ToString*"></a>
   <h4 id="Generics_LinkedList_1_ToString" data-uid="Generics.LinkedList`1.ToString">ToString()</h4>
@@ -817,20 +858,27 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>链表中元素组成的字符串。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
   <div><span class="xref">System.Object.ToString()</span></div>
+  <h5 id="Generics_LinkedList_1_ToString_examples">&#31034;&#20363;</h5>
+  <p>链表元素为：1, 2, 3, 4, 5, 6, 7</p>
+<pre><code>    Console.WriteLine(list);</code></pre>
+<p>将输出 <code>1 2 3 4 5 6 7 </code></p>
+
   <h3 id="eii">&#26174;&#31034;&#25509;&#21475;&#23454;&#29616;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L163">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/LinkedList.cs/#L181">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_LinkedList_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Generics.LinkedList`1.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="Generics_LinkedList_1_System_Collections_IEnumerable_GetEnumerator" data-uid="Generics.LinkedList`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获得链表枚举器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -847,10 +895,14 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
+        <td><p>链表枚举器对象。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Generics_LinkedList_1_System_Collections_IEnumerable_GetEnumerator_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>这个方法实际上调用的是 <a class="xref" href="Generics.LinkedList-1.html#Generics_LinkedList_1_GetEnumerator">GetEnumerator()</a>。</p>
+</div>
   <h3 id="implements">&#23454;&#29616;</h3>
   <div>
       <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>

@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -428,8 +425,14 @@
                           <li class="">
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
+                          <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
                           <li class="active">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="active">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
@@ -496,6 +499,7 @@
   </div>
   <div classs="implements">
     <h5>&#23454;&#29616;</h5>
+    <div><a class="xref" href="SymbolTable.IST-2.html">IST</a>&lt;Key, Value&gt;</div>
     <div><a class="xref" href="SymbolTable.IOrderedST-2.html">IOrderedST</a>&lt;Key, Value&gt;</div>
   </div>
   <div class="inheritedMembers">
@@ -605,7 +609,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>大于等于 key 的最小值，不存在则返回 <code>default(Key)</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -650,7 +655,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>如果存在则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -748,7 +754,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>小于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最大值。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -793,7 +800,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Value</span></td>
-        <td></td>
+        <td><p><code data-dev-comment-type="typeparamref" class="typeparamref">Key</code> 对应的值。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -820,7 +828,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -847,7 +856,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</td>
-        <td></td>
+        <td><p>符号表中所有键的集合。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -898,7 +908,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</td>
-        <td></td>
+        <td><p>符号表中 [<code data-dev-comment-type="paramref" class="paramref">lo</code>, <code data-dev-comment-type="paramref" class="paramref">hi</code>] 之间的键。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -925,7 +936,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>最大的键，不存在则返回 <code>default(Key)</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -952,7 +964,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>最小的键，不存在则返回 <code>default(Key)</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1032,7 +1045,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>小于 Key 的键的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1077,7 +1091,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Key</span></td>
-        <td></td>
+        <td><p>获得排名为 k 的键（从 0 开始）。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1104,7 +1119,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>符号表中键值对的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1155,11 +1171,15 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>[<code data-dev-comment-type="paramref" class="paramref">lo</code>, <code data-dev-comment-type="paramref" class="paramref">hi</code>] 之间键的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">&#23454;&#29616;</h3>
+  <div>
+      <a class="xref" href="SymbolTable.IST-2.html">IST&lt;Key, Value&gt;</a>
+  </div>
   <div>
       <a class="xref" href="SymbolTable.IOrderedST-2.html">IOrderedST&lt;Key, Value&gt;</a>
   </div>

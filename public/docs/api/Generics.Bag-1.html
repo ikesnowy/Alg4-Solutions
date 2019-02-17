@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="active">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,7 +426,13 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
@@ -592,11 +595,12 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Bag.cs/#L56">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Bag.cs/#L60">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Bag_1_GetEnumerator_" data-uid="Generics.Bag`1.GetEnumerator*"></a>
   <h4 id="Generics_Bag_1_GetEnumerator" data-uid="Generics.Bag`1.GetEnumerator">GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获得枚举器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -613,7 +617,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;Item&gt;</td>
-        <td></td>
+        <td><p>返回枚举器对象。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -640,7 +645,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -649,7 +655,7 @@
   </span>
   <a id="Generics_Bag_1_Size_" data-uid="Generics.Bag`1.Size*"></a>
   <h4 id="Generics_Bag_1_Size" data-uid="Generics.Bag`1.Size">Size()</h4>
-  <div class="markdown level1 summary"><p>返回背包中元素的数量。</p>
+  <div class="markdown level1 summary"><p>获得背包中元素的数量。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
@@ -667,18 +673,20 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>背包中元素的数量。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="eii">&#26174;&#31034;&#25509;&#21475;&#23454;&#29616;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Bag.cs/#L61">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.3/Generics/Bag.cs/#L70">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Generics_Bag_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Generics.Bag`1.System#Collections#IEnumerable#GetEnumerator*"></a>
   <h4 id="Generics_Bag_1_System_Collections_IEnumerable_GetEnumerator" data-uid="Generics.Bag`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获得枚举器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -695,10 +703,14 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
+        <td><p>背包枚举器对象。</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Generics_Bag_1_System_Collections_IEnumerable_GetEnumerator_remarks">&#22791;&#27880;</h5>
+  <div class="markdown level1 remarks"><p>这个方法实际上调用的是 <a class="xref" href="Generics.Bag-1.html#Generics_Bag_1_GetEnumerator">GetEnumerator()</a>。</p>
+</div>
   <h3 id="implements">&#23454;&#29616;</h3>
   <div>
       <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>

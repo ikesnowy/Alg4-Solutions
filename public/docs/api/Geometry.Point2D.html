@@ -108,9 +108,6 @@
                             <a href="Generics.Bag-1.html" title="Bag&lt;Item&gt;" class="">Bag&lt;Item&gt;</a>
                           </li>
                           <li class="">
-                            <a href="Generics.Bag-1.BagEnumerator.html" title="Bag&lt;Item&gt;.BagEnumerator" class="">Bag&lt;Item&gt;.BagEnumerator</a>
-                          </li>
-                          <li class="">
                             <a href="Generics.LinkedList-1.html" title="LinkedList&lt;Item&gt;" class="">LinkedList&lt;Item&gt;</a>
                           </li>
                           <li class="">
@@ -429,7 +426,13 @@
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
@@ -522,11 +525,12 @@
   <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L20">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L51">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D__ctor_" data-uid="Geometry.Point2D.#ctor*"></a>
   <h4 id="Geometry_Point2D__ctor_System_Double_System_Double_" data-uid="Geometry.Point2D.#ctor(System.Double,System.Double)">Point2D(Double, Double)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>构造一个二维点。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -545,22 +549,46 @@
       <tr>
         <td><span class="xref">System.Double</span></td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>点的 X 轴坐标。</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Double</span></td>
         <td><span class="parametername">y</span></td>
-        <td></td>
+        <td><p>点的 Y 轴坐标。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>当 <code data-dev-comment-type="paramref" class="paramref">x</code> 或 <code data-dev-comment-type="paramref" class="paramref">y</code> 为±无穷时抛出此异常。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>当 <code data-dev-comment-type="paramref" class="paramref">x</code> 或 <code data-dev-comment-type="paramref" class="paramref">y</code> 为 <span class="xref">System.Double.NaN</span> 时抛出。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="fields">&#23383;&#27573;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L14">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L26">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <h4 id="Geometry_Point2D_R_Order" data-uid="Geometry.Point2D.R_Order">R_Order</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>以极半径升序排序。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -577,15 +605,17 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Point2D.html">Point2D</a>&gt;</td>
-        <td></td>
+        <td><p>以极半径升序排序的静态比较器。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L12">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L16">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <h4 id="Geometry_Point2D_X_Order" data-uid="Geometry.Point2D.X_Order">X_Order</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>以 X 坐标升序排序。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -602,15 +632,17 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Point2D.html">Point2D</a>&gt;</td>
-        <td></td>
+        <td><p>以 X 坐标升序排序的静态比较器。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L13">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L21">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <h4 id="Geometry_Point2D_Y_Order" data-uid="Geometry.Point2D.Y_Order">Y_Order</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>以 Y 坐标升序排序。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -627,18 +659,20 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Point2D.html">Point2D</a>&gt;</td>
-        <td></td>
+        <td><p>以 Y 坐标升序排序的静态比较器。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">&#23646;&#24615;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L18">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L42">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Radius_" data-uid="Geometry.Point2D.Radius*"></a>
   <h4 id="Geometry_Point2D_Radius" data-uid="Geometry.Point2D.Radius">Radius</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>绘制时点的半径，以像素为单位，默认值为 2。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -655,16 +689,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>点的半径，以像素为单位。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L16">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L32">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_X_" data-uid="Geometry.Point2D.X*"></a>
   <h4 id="Geometry_Point2D_X" data-uid="Geometry.Point2D.X">X</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>二维点的 X 坐标。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -681,16 +717,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td></td>
+        <td><p>X 坐标。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L17">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L37">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Y_" data-uid="Geometry.Point2D.Y*"></a>
   <h4 id="Geometry_Point2D_Y" data-uid="Geometry.Point2D.Y">Y</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>二维坐标的 Y 坐标。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -707,14 +745,15 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td></td>
+        <td><p>Y 坐标。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L91">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L122">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Area2_" data-uid="Geometry.Point2D.Area2*"></a>
   <h4 id="Geometry_Point2D_Area2_Geometry_Point2D_Geometry_Point2D_Geometry_Point2D_" data-uid="Geometry.Point2D.Area2(Geometry.Point2D,Geometry.Point2D,Geometry.Point2D)">Area2(Point2D, Point2D, Point2D)</h4>
@@ -766,16 +805,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">a</code> 和 <code data-dev-comment-type="paramref" class="paramref">b</code> 和 <code data-dev-comment-type="paramref" class="paramref">c</code> 构成的三角形的面积的平方。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L328">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L367">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Atan2_Order_" data-uid="Geometry.Point2D.Atan2_Order*"></a>
   <h4 id="Geometry_Point2D_Atan2_Order" data-uid="Geometry.Point2D.Atan2_Order">Atan2_Order()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>构造一个以到当前点的 Atan2 为关键字的升序比较器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -792,12 +833,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Point2D.html">Point2D</a>&gt;</td>
-        <td></td>
+        <td><p>以到当前点的 Atan2 为关键字的升序比较器。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L74">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L105">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_CCW_" data-uid="Geometry.Point2D.CCW*"></a>
   <h4 id="Geometry_Point2D_CCW_Geometry_Point2D_Geometry_Point2D_Geometry_Point2D_" data-uid="Geometry.Point2D.CCW(Geometry.Point2D,Geometry.Point2D,Geometry.Point2D)">CCW(Point2D, Point2D, Point2D)</h4>
@@ -849,16 +891,17 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>如果 {顺时针, 共线, 逆时针} 则返回 {-1, 0, 1}</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L137">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L168">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_CompareTo_" data-uid="Geometry.Point2D.CompareTo*"></a>
   <h4 id="Geometry_Point2D_CompareTo_Geometry_Point2D_" data-uid="Geometry.Point2D.CompareTo(Geometry.Point2D)">CompareTo(Point2D)</h4>
-  <div class="markdown level1 summary"><p>实现 IComparable 接口。</p>
+  <div class="markdown level1 summary"><p>优先按照 <a class="xref" href="Geometry.Point2D.html#Geometry_Point2D_Y">Y</a> 比较，相同时再按照 <a class="xref" href="Geometry.Point2D.html#Geometry_Point2D_X">X</a> 比较。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
@@ -894,12 +937,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>如果 <code data-dev-comment-type="paramref" class="paramref">other</code> 较小则返回 -1，反之返回 1，相等返回 0。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L115">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L146">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_DistanceSquareTo_" data-uid="Geometry.Point2D.DistanceSquareTo*"></a>
   <h4 id="Geometry_Point2D_DistanceSquareTo_Geometry_Point2D_" data-uid="Geometry.Point2D.DistanceSquareTo(Geometry.Point2D)">DistanceSquareTo(Point2D)</h4>
@@ -939,12 +983,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td></td>
+        <td><p>到 <code data-dev-comment-type="paramref" class="paramref">that</code> 距离的平方。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L102">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L133">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_DistanceTo_" data-uid="Geometry.Point2D.DistanceTo*"></a>
   <h4 id="Geometry_Point2D_DistanceTo_Geometry_Point2D_" data-uid="Geometry.Point2D.DistanceTo(Geometry.Point2D)">DistanceTo(Point2D)</h4>
@@ -984,16 +1029,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td></td>
+        <td><p>返回到 <code data-dev-comment-type="paramref" class="paramref">that</code> 的距离。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L333">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L376">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_DistanceTo_Order_" data-uid="Geometry.Point2D.DistanceTo_Order*"></a>
   <h4 id="Geometry_Point2D_DistanceTo_Order" data-uid="Geometry.Point2D.DistanceTo_Order">DistanceTo_Order()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>构造一个以到当前点的距离为关键字的升序比较器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -1010,12 +1057,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Point2D.html">Point2D</a>&gt;</td>
-        <td></td>
+        <td><p>以到当前点的距离为关键字的升序比较器。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L127">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L158">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Draw_" data-uid="Geometry.Point2D.Draw*"></a>
   <h4 id="Geometry_Point2D_Draw_System_Drawing_Graphics_" data-uid="Geometry.Point2D.Draw(System.Drawing.Graphics)">Draw(Graphics)</h4>
@@ -1045,11 +1093,12 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L338">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L386">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Equals_" data-uid="Geometry.Point2D.Equals*"></a>
   <h4 id="Geometry_Point2D_Equals_System_Object_" data-uid="Geometry.Point2D.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>比较 <code data-dev-comment-type="paramref" class="paramref">obj</code> 是否与自身相等。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -1068,7 +1117,8 @@
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">obj</span></td>
-        <td></td>
+        <td><p>要判别相等的另一个对象，</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1083,18 +1133,20 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>相等则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
   <div><span class="xref">System.Object.Equals(System.Object)</span></div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L361">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L417">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_GetHashCode_" data-uid="Geometry.Point2D.GetHashCode*"></a>
   <h4 id="Geometry_Point2D_GetHashCode" data-uid="Geometry.Point2D.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获得二维点的哈希值。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -1111,18 +1163,20 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>哈希值。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
   <div><span class="xref">System.Object.GetHashCode()</span></div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L323">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L358">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Polor_Order_" data-uid="Geometry.Point2D.Polor_Order*"></a>
   <h4 id="Geometry_Point2D_Polor_Order" data-uid="Geometry.Point2D.Polor_Order">Polor_Order()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>构造一个以到当前点的极角为关键字的升序比较器。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -1139,12 +1193,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Point2D.html">Point2D</a>&gt;</td>
-        <td></td>
+        <td><p>以到当前点的极角为关键字的升序比较器。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L41">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L72">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_R_" data-uid="Geometry.Point2D.R*"></a>
   <h4 id="Geometry_Point2D_R" data-uid="Geometry.Point2D.R">R()</h4>
@@ -1166,12 +1221,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td></td>
+        <td><p>极半径。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L50">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L81">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_Theta_" data-uid="Geometry.Point2D.Theta*"></a>
   <h4 id="Geometry_Point2D_Theta" data-uid="Geometry.Point2D.Theta">Theta()</h4>
@@ -1193,16 +1249,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td></td>
+        <td><p>极角。</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L356">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Point2D.cs/#L408">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="Geometry_Point2D_ToString_" data-uid="Geometry.Point2D.ToString*"></a>
   <h4 id="Geometry_Point2D_ToString" data-uid="Geometry.Point2D.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>获取点的坐标字符串。</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
@@ -1219,7 +1277,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>形如 &quot;(<a class="xref" href="Geometry.Point2D.html#Geometry_Point2D_X">X</a>, <a class="xref" href="Geometry.Point2D.html#Geometry_Point2D_Y">Y</a>)&quot; 的字符串。</p>
+</td>
       </tr>
     </tbody>
   </table>
