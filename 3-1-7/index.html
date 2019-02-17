@@ -147,8 +147,19 @@ function dismissSearchResultModal() {
 			<h1>3.1.7</h1>
 			<p>上次更新：2019-02-17</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.7<br>对于 N=10、10^2、10^3、10^4、10^5 和 10^6，<br>在 N 个小于 1000 的随机非负整数中 FrequencyCounter 平均能够找到多少个不同的键？</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp">
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>在 <code>FrequencyCounter</code> 中添加一个 <code>CountDistinct</code> 方法，计算不重复的键数。</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token generic-method function">CountDistinct<span class="token punctuation">&lt;</span>TKey<span class="token punctuation">></span></span><span class="token punctuation">(</span>TKey<span class="token punctuation">[</span><span class="token punctuation">]</span> keys<span class="token punctuation">,</span> IST<span class="token operator">&lt;</span>TKey<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> st<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> distinct <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> keys<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>st<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            st<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> distinct<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> distinct<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果如下：<br><img src="./1.png" alt=""></p>
 <h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/SymbolTable.html">SymbolTable 库</a></p>
 
 		</div>
