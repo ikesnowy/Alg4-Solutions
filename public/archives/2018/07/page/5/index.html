@@ -15,9 +15,9 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/common.css">
         <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
-    <body onscroll="scrollYListener()">
+    <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
             <div class="mobile_menu_btn">
   <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
@@ -110,7 +110,7 @@
 				</div>
 			</div>
 			<div class="modal" id="search-result" style="display:none">
-				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<h2 id="search-result-title">找到 0 条结果:</h2>
 				<ul id="search-result-list">
 				</ul>
 				<span>
@@ -210,7 +210,7 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/2018/07/page/4/">Prev</a>
+		<a href="/archives/2018/07/page/4/">上一页</a>
 		
 		
 	</div>
@@ -241,20 +241,6 @@ function dismissSearchResultModal() {
 </footer>
         </div>
         <script type="text/javascript">
-        function scrollYListener() {
-        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
-        var width = document.documentElement.clientWidth;
-        var supportPageOffset = window.pageXOffset !== undefined;
-        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
-        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
-        if (scrollY >= searchHeight-10) {
-        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
-        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
-        } else {
-        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
-        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
-        }
-        }
         var isMenuExpanded = false;
         document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
         if (isMenuExpanded) {

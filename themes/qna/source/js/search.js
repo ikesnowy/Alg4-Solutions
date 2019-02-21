@@ -88,9 +88,9 @@ var searchFunc = function(path, search_id, content_id) {
                 });
 
                 if (count == 0) {
-                    document.getElementById("search-result-title").innerHTML = "Found 0 match.";
+                    document.getElementById("search-result-title").innerHTML = "找到 0 条结果";
                 } else {
-                    document.getElementById("search-result-title").innerHTML = "Found "+count+" match(es):";
+                    document.getElementById("search-result-title").innerHTML = "找到 "+count+" 条结果:";
                 }
                 $resultContent.innerHTML = str;
                 document.getElementById("search-result").style.display = "block";

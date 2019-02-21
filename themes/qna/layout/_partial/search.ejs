@@ -16,7 +16,7 @@
 				</div>
 			</div>
 			<div class="modal" id="search-result" style="display:none">
-				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<h2 id="search-result-title">找到 0 条结果:</h2>
 				<ul id="search-result-list">
 				</ul>
 				<span>
@@ -60,9 +60,9 @@ this.ref('id');
 		var keyword = document.getElementById("search-input").value;
 		var result = content.search(keyword);
 		if (result.length == 0) {
-			document.getElementById("search-result-title").innerHTML = "Found 0 match.";
+			document.getElementById("search-result-title").innerHTML = "找到 0 条结果.";
 		} else {
-			document.getElementById("search-result-title").innerHTML = "Found "+result.length+" match(es):";
+			document.getElementById("search-result-title").innerHTML = "找到 "+result.length+" 条结果:";
 		}
 		document.getElementById("search_result_list").innerHTML = "";
 		for(var i = 0; i < result.length; i++) {

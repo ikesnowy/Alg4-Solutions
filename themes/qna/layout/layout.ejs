@@ -30,27 +30,13 @@
         <%- css('css/common') %>
         <%- css('css/markdown') %>
     </head>
-    <body onscroll="scrollYListener()">
+    <body>
         <div class="wrapper">
             <%- partial('_partial/header') %>
             <%- body %>
             <%- partial('_partial/footer') %>
         </div>
         <script type="text/javascript">
-        function scrollYListener() {
-        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
-        var width = document.documentElement.clientWidth;
-        var supportPageOffset = window.pageXOffset !== undefined;
-        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
-        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
-        if (scrollY >= searchHeight-10) {
-        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
-        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
-        } else {
-        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
-        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
-        }
-        }
         var isMenuExpanded = false;
         document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
         if (isMenuExpanded) {

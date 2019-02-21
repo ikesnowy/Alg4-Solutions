@@ -97,7 +97,7 @@ deploy:
 
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
-  theme: 'base16-ateliersulphurpool.light'
+  theme: 'atom-dark'
   line_number: true    # default false
 
 math:
