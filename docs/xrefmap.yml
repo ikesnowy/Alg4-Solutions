@@ -8395,158 +8395,463 @@ references:
   fullName: SymbolTable
   nameWithType: SymbolTable
 - uid: SymbolTable.ArrayST`2
-  name: ArrayST<Key, Value>
+  name: ArrayST<TKey, TValue>
   href: api/SymbolTable.ArrayST-2.html
   commentId: T:SymbolTable.ArrayST`2
-  name.vb: ArrayST(Of Key, Value)
-  fullName: SymbolTable.ArrayST<Key, Value>
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value)
-  nameWithType: ArrayST<Key, Value>
-  nameWithType.vb: ArrayST(Of Key, Value)
+  name.vb: ArrayST(Of TKey, TValue)
+  fullName: SymbolTable.ArrayST<TKey, TValue>
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue)
+  nameWithType: ArrayST<TKey, TValue>
+  nameWithType.vb: ArrayST(Of TKey, TValue)
 - uid: SymbolTable.ArrayST`2.#ctor
   name: ArrayST()
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2__ctor
   commentId: M:SymbolTable.ArrayST`2.#ctor
-  fullName: SymbolTable.ArrayST<Key, Value>.ArrayST()
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).ArrayST()
-  nameWithType: ArrayST<Key, Value>.ArrayST()
-  nameWithType.vb: ArrayST(Of Key, Value).ArrayST()
+  fullName: SymbolTable.ArrayST<TKey, TValue>.ArrayST()
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).ArrayST()
+  nameWithType: ArrayST<TKey, TValue>.ArrayST()
+  nameWithType.vb: ArrayST(Of TKey, TValue).ArrayST()
 - uid: SymbolTable.ArrayST`2.#ctor(System.Int32)
   name: ArrayST(Int32)
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2__ctor_System_Int32_
   commentId: M:SymbolTable.ArrayST`2.#ctor(System.Int32)
-  fullName: SymbolTable.ArrayST<Key, Value>.ArrayST(System.Int32)
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).ArrayST(System.Int32)
-  nameWithType: ArrayST<Key, Value>.ArrayST(Int32)
-  nameWithType.vb: ArrayST(Of Key, Value).ArrayST(Int32)
+  fullName: SymbolTable.ArrayST<TKey, TValue>.ArrayST(System.Int32)
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).ArrayST(System.Int32)
+  nameWithType: ArrayST<TKey, TValue>.ArrayST(Int32)
+  nameWithType.vb: ArrayST(Of TKey, TValue).ArrayST(Int32)
 - uid: SymbolTable.ArrayST`2.#ctor*
   name: ArrayST
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2__ctor_
   commentId: Overload:SymbolTable.ArrayST`2.#ctor
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.ArrayST
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).ArrayST
-  nameWithType: ArrayST<Key, Value>.ArrayST
-  nameWithType.vb: ArrayST(Of Key, Value).ArrayST
+  fullName: SymbolTable.ArrayST<TKey, TValue>.ArrayST
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).ArrayST
+  nameWithType: ArrayST<TKey, TValue>.ArrayST
+  nameWithType.vb: ArrayST(Of TKey, TValue).ArrayST
 - uid: SymbolTable.ArrayST`2.Contains(`0)
-  name: Contains(Key)
+  name: Contains(TKey)
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Contains__0_
   commentId: M:SymbolTable.ArrayST`2.Contains(`0)
-  fullName: SymbolTable.ArrayST<Key, Value>.Contains(Key)
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Contains(Key)
-  nameWithType: ArrayST<Key, Value>.Contains(Key)
-  nameWithType.vb: ArrayST(Of Key, Value).Contains(Key)
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Contains(TKey)
+  nameWithType: ArrayST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: ArrayST(Of TKey, TValue).Contains(TKey)
 - uid: SymbolTable.ArrayST`2.Contains*
   name: Contains
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Contains_
   commentId: Overload:SymbolTable.ArrayST`2.Contains
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.Contains
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Contains
-  nameWithType: ArrayST<Key, Value>.Contains
-  nameWithType.vb: ArrayST(Of Key, Value).Contains
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Contains
+  nameWithType: ArrayST<TKey, TValue>.Contains
+  nameWithType.vb: ArrayST(Of TKey, TValue).Contains
 - uid: SymbolTable.ArrayST`2.Delete(`0)
-  name: Delete(Key)
+  name: Delete(TKey)
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Delete__0_
   commentId: M:SymbolTable.ArrayST`2.Delete(`0)
-  fullName: SymbolTable.ArrayST<Key, Value>.Delete(Key)
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Delete(Key)
-  nameWithType: ArrayST<Key, Value>.Delete(Key)
-  nameWithType.vb: ArrayST(Of Key, Value).Delete(Key)
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Delete(TKey)
+  nameWithType: ArrayST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: ArrayST(Of TKey, TValue).Delete(TKey)
 - uid: SymbolTable.ArrayST`2.Delete*
   name: Delete
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Delete_
   commentId: Overload:SymbolTable.ArrayST`2.Delete
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.Delete
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Delete
-  nameWithType: ArrayST<Key, Value>.Delete
-  nameWithType.vb: ArrayST(Of Key, Value).Delete
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Delete
+  nameWithType: ArrayST<TKey, TValue>.Delete
+  nameWithType.vb: ArrayST(Of TKey, TValue).Delete
 - uid: SymbolTable.ArrayST`2.Get(`0)
-  name: Get(Key)
+  name: Get(TKey)
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Get__0_
   commentId: M:SymbolTable.ArrayST`2.Get(`0)
-  fullName: SymbolTable.ArrayST<Key, Value>.Get(Key)
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Get(Key)
-  nameWithType: ArrayST<Key, Value>.Get(Key)
-  nameWithType.vb: ArrayST(Of Key, Value).Get(Key)
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Get(TKey)
+  nameWithType: ArrayST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: ArrayST(Of TKey, TValue).Get(TKey)
 - uid: SymbolTable.ArrayST`2.Get*
   name: Get
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Get_
   commentId: Overload:SymbolTable.ArrayST`2.Get
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.Get
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Get
-  nameWithType: ArrayST<Key, Value>.Get
-  nameWithType.vb: ArrayST(Of Key, Value).Get
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Get
+  nameWithType: ArrayST<TKey, TValue>.Get
+  nameWithType.vb: ArrayST(Of TKey, TValue).Get
 - uid: SymbolTable.ArrayST`2.IsEmpty
   name: IsEmpty()
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_IsEmpty
   commentId: M:SymbolTable.ArrayST`2.IsEmpty
-  fullName: SymbolTable.ArrayST<Key, Value>.IsEmpty()
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).IsEmpty()
-  nameWithType: ArrayST<Key, Value>.IsEmpty()
-  nameWithType.vb: ArrayST(Of Key, Value).IsEmpty()
+  fullName: SymbolTable.ArrayST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).IsEmpty()
+  nameWithType: ArrayST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: ArrayST(Of TKey, TValue).IsEmpty()
 - uid: SymbolTable.ArrayST`2.IsEmpty*
   name: IsEmpty
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_IsEmpty_
   commentId: Overload:SymbolTable.ArrayST`2.IsEmpty
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.IsEmpty
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).IsEmpty
-  nameWithType: ArrayST<Key, Value>.IsEmpty
-  nameWithType.vb: ArrayST(Of Key, Value).IsEmpty
+  fullName: SymbolTable.ArrayST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).IsEmpty
+  nameWithType: ArrayST<TKey, TValue>.IsEmpty
+  nameWithType.vb: ArrayST(Of TKey, TValue).IsEmpty
 - uid: SymbolTable.ArrayST`2.Keys
   name: Keys()
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Keys
   commentId: M:SymbolTable.ArrayST`2.Keys
-  fullName: SymbolTable.ArrayST<Key, Value>.Keys()
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Keys()
-  nameWithType: ArrayST<Key, Value>.Keys()
-  nameWithType.vb: ArrayST(Of Key, Value).Keys()
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Keys()
+  nameWithType: ArrayST<TKey, TValue>.Keys()
+  nameWithType.vb: ArrayST(Of TKey, TValue).Keys()
 - uid: SymbolTable.ArrayST`2.Keys*
   name: Keys
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Keys_
   commentId: Overload:SymbolTable.ArrayST`2.Keys
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.Keys
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Keys
-  nameWithType: ArrayST<Key, Value>.Keys
-  nameWithType.vb: ArrayST(Of Key, Value).Keys
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Keys
+  nameWithType: ArrayST<TKey, TValue>.Keys
+  nameWithType.vb: ArrayST(Of TKey, TValue).Keys
 - uid: SymbolTable.ArrayST`2.Put(`0,`1)
-  name: Put(Key, Value)
+  name: Put(TKey, TValue)
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Put__0__1_
   commentId: M:SymbolTable.ArrayST`2.Put(`0,`1)
-  fullName: SymbolTable.ArrayST<Key, Value>.Put(Key, Value)
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Put(Key, Value)
-  nameWithType: ArrayST<Key, Value>.Put(Key, Value)
-  nameWithType.vb: ArrayST(Of Key, Value).Put(Key, Value)
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: ArrayST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: ArrayST(Of TKey, TValue).Put(TKey, TValue)
 - uid: SymbolTable.ArrayST`2.Put*
   name: Put
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Put_
   commentId: Overload:SymbolTable.ArrayST`2.Put
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.Put
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Put
-  nameWithType: ArrayST<Key, Value>.Put
-  nameWithType.vb: ArrayST(Of Key, Value).Put
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Put
+  nameWithType: ArrayST<TKey, TValue>.Put
+  nameWithType.vb: ArrayST(Of TKey, TValue).Put
 - uid: SymbolTable.ArrayST`2.Size
   name: Size()
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Size
   commentId: M:SymbolTable.ArrayST`2.Size
-  fullName: SymbolTable.ArrayST<Key, Value>.Size()
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Size()
-  nameWithType: ArrayST<Key, Value>.Size()
-  nameWithType.vb: ArrayST(Of Key, Value).Size()
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Size()
+  nameWithType: ArrayST<TKey, TValue>.Size()
+  nameWithType.vb: ArrayST(Of TKey, TValue).Size()
 - uid: SymbolTable.ArrayST`2.Size*
   name: Size
   href: api/SymbolTable.ArrayST-2.html#SymbolTable_ArrayST_2_Size_
   commentId: Overload:SymbolTable.ArrayST`2.Size
   isSpec: "True"
-  fullName: SymbolTable.ArrayST<Key, Value>.Size
-  fullName.vb: SymbolTable.ArrayST(Of Key, Value).Size
-  nameWithType: ArrayST<Key, Value>.Size
-  nameWithType.vb: ArrayST(Of Key, Value).Size
+  fullName: SymbolTable.ArrayST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Size
+  nameWithType: ArrayST<TKey, TValue>.Size
+  nameWithType.vb: ArrayST(Of TKey, TValue).Size
+- uid: SymbolTable.BinarySearchST`2
+  name: BinarySearchST<TKey, TValue>
+  href: api/SymbolTable.BinarySearchST-2.html
+  commentId: T:SymbolTable.BinarySearchST`2
+  name.vb: BinarySearchST(Of TKey, TValue)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue)
+  nameWithType: BinarySearchST<TKey, TValue>
+  nameWithType.vb: BinarySearchST(Of TKey, TValue)
+- uid: SymbolTable.BinarySearchST`2.#ctor
+  name: BinarySearchST()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2__ctor
+  commentId: M:SymbolTable.BinarySearchST`2.#ctor
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.BinarySearchST()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).BinarySearchST()
+  nameWithType: BinarySearchST<TKey, TValue>.BinarySearchST()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).BinarySearchST()
+- uid: SymbolTable.BinarySearchST`2.#ctor(System.Int32)
+  name: BinarySearchST(Int32)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2__ctor_System_Int32_
+  commentId: M:SymbolTable.BinarySearchST`2.#ctor(System.Int32)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.BinarySearchST(System.Int32)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).BinarySearchST(System.Int32)
+  nameWithType: BinarySearchST<TKey, TValue>.BinarySearchST(Int32)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).BinarySearchST(Int32)
+- uid: SymbolTable.BinarySearchST`2.#ctor*
+  name: BinarySearchST
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2__ctor_
+  commentId: Overload:SymbolTable.BinarySearchST`2.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.BinarySearchST
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).BinarySearchST
+  nameWithType: BinarySearchST<TKey, TValue>.BinarySearchST
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).BinarySearchST
+- uid: SymbolTable.BinarySearchST`2.Ceiling(`0)
+  name: Ceiling(TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Ceiling__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Ceiling(`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Ceiling(TKey)
+- uid: SymbolTable.BinarySearchST`2.Ceiling*
+  name: Ceiling
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Ceiling_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Ceiling
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Ceiling
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Ceiling
+  nameWithType: BinarySearchST<TKey, TValue>.Ceiling
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Ceiling
+- uid: SymbolTable.BinarySearchST`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Contains__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Contains(`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Contains(TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Contains(TKey)
+- uid: SymbolTable.BinarySearchST`2.Contains*
+  name: Contains
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Contains_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Contains
+  nameWithType: BinarySearchST<TKey, TValue>.Contains
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Contains
+- uid: SymbolTable.BinarySearchST`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Delete__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Delete(`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Delete(TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Delete(TKey)
+- uid: SymbolTable.BinarySearchST`2.Delete*
+  name: Delete
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Delete_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Delete
+  nameWithType: BinarySearchST<TKey, TValue>.Delete
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Delete
+- uid: SymbolTable.BinarySearchST`2.DeleteMax
+  name: DeleteMax()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_DeleteMax
+  commentId: M:SymbolTable.BinarySearchST`2.DeleteMax
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.DeleteMax()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).DeleteMax()
+  nameWithType: BinarySearchST<TKey, TValue>.DeleteMax()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).DeleteMax()
+- uid: SymbolTable.BinarySearchST`2.DeleteMax*
+  name: DeleteMax
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_DeleteMax_
+  commentId: Overload:SymbolTable.BinarySearchST`2.DeleteMax
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.DeleteMax
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).DeleteMax
+  nameWithType: BinarySearchST<TKey, TValue>.DeleteMax
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).DeleteMax
+- uid: SymbolTable.BinarySearchST`2.DeleteMin
+  name: DeleteMin()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_DeleteMin
+  commentId: M:SymbolTable.BinarySearchST`2.DeleteMin
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.DeleteMin()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).DeleteMin()
+  nameWithType: BinarySearchST<TKey, TValue>.DeleteMin()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).DeleteMin()
+- uid: SymbolTable.BinarySearchST`2.DeleteMin*
+  name: DeleteMin
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_DeleteMin_
+  commentId: Overload:SymbolTable.BinarySearchST`2.DeleteMin
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.DeleteMin
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).DeleteMin
+  nameWithType: BinarySearchST<TKey, TValue>.DeleteMin
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).DeleteMin
+- uid: SymbolTable.BinarySearchST`2.Floor(`0)
+  name: Floor(TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Floor__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Floor(`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Floor(TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Floor(TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Floor(TKey)
+- uid: SymbolTable.BinarySearchST`2.Floor*
+  name: Floor
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Floor_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Floor
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Floor
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Floor
+  nameWithType: BinarySearchST<TKey, TValue>.Floor
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Floor
+- uid: SymbolTable.BinarySearchST`2.Get(`0)
+  name: Get(TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Get__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Get(`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Get(TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Get(TKey)
+- uid: SymbolTable.BinarySearchST`2.Get*
+  name: Get
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Get_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Get
+  nameWithType: BinarySearchST<TKey, TValue>.Get
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Get
+- uid: SymbolTable.BinarySearchST`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_IsEmpty
+  commentId: M:SymbolTable.BinarySearchST`2.IsEmpty
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).IsEmpty()
+  nameWithType: BinarySearchST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).IsEmpty()
+- uid: SymbolTable.BinarySearchST`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_IsEmpty_
+  commentId: Overload:SymbolTable.BinarySearchST`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).IsEmpty
+  nameWithType: BinarySearchST<TKey, TValue>.IsEmpty
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).IsEmpty
+- uid: SymbolTable.BinarySearchST`2.Keys
+  name: Keys()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Keys
+  commentId: M:SymbolTable.BinarySearchST`2.Keys
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Keys()
+  nameWithType: BinarySearchST<TKey, TValue>.Keys()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Keys()
+- uid: SymbolTable.BinarySearchST`2.Keys(`0,`0)
+  name: Keys(TKey, TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Keys__0__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Keys(`0,`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Keys(TKey, TKey)
+- uid: SymbolTable.BinarySearchST`2.Keys*
+  name: Keys
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Keys_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Keys
+  nameWithType: BinarySearchST<TKey, TValue>.Keys
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Keys
+- uid: SymbolTable.BinarySearchST`2.Max
+  name: Max()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Max
+  commentId: M:SymbolTable.BinarySearchST`2.Max
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Max()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Max()
+  nameWithType: BinarySearchST<TKey, TValue>.Max()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Max()
+- uid: SymbolTable.BinarySearchST`2.Max*
+  name: Max
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Max_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Max
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Max
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Max
+  nameWithType: BinarySearchST<TKey, TValue>.Max
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Max
+- uid: SymbolTable.BinarySearchST`2.Min
+  name: Min()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Min
+  commentId: M:SymbolTable.BinarySearchST`2.Min
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Min()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Min()
+  nameWithType: BinarySearchST<TKey, TValue>.Min()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Min()
+- uid: SymbolTable.BinarySearchST`2.Min*
+  name: Min
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Min_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Min
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Min
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Min
+  nameWithType: BinarySearchST<TKey, TValue>.Min
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Min
+- uid: SymbolTable.BinarySearchST`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Put__0__1_
+  commentId: M:SymbolTable.BinarySearchST`2.Put(`0,`1)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BinarySearchST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Put(TKey, TValue)
+- uid: SymbolTable.BinarySearchST`2.Put*
+  name: Put
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Put_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Put
+  nameWithType: BinarySearchST<TKey, TValue>.Put
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Put
+- uid: SymbolTable.BinarySearchST`2.Rank(`0)
+  name: Rank(TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Rank__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Rank(`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Rank(TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Rank(TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Rank(TKey)
+- uid: SymbolTable.BinarySearchST`2.Rank*
+  name: Rank
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Rank_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Rank
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Rank
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Rank
+  nameWithType: BinarySearchST<TKey, TValue>.Rank
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Rank
+- uid: SymbolTable.BinarySearchST`2.Select(System.Int32)
+  name: Select(Int32)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Select_System_Int32_
+  commentId: M:SymbolTable.BinarySearchST`2.Select(System.Int32)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Select(System.Int32)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Select(System.Int32)
+  nameWithType: BinarySearchST<TKey, TValue>.Select(Int32)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Select(Int32)
+- uid: SymbolTable.BinarySearchST`2.Select*
+  name: Select
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Select_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Select
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Select
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Select
+  nameWithType: BinarySearchST<TKey, TValue>.Select
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Select
+- uid: SymbolTable.BinarySearchST`2.Size
+  name: Size()
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Size
+  commentId: M:SymbolTable.BinarySearchST`2.Size
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Size()
+  nameWithType: BinarySearchST<TKey, TValue>.Size()
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Size()
+- uid: SymbolTable.BinarySearchST`2.Size(`0,`0)
+  name: Size(TKey, TKey)
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Size__0__0_
+  commentId: M:SymbolTable.BinarySearchST`2.Size(`0,`0)
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: BinarySearchST<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Size(TKey, TKey)
+- uid: SymbolTable.BinarySearchST`2.Size*
+  name: Size
+  href: api/SymbolTable.BinarySearchST-2.html#SymbolTable_BinarySearchST_2_Size_
+  commentId: Overload:SymbolTable.BinarySearchST`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Size
+  nameWithType: BinarySearchST<TKey, TValue>.Size
+  nameWithType.vb: BinarySearchST(Of TKey, TValue).Size
 - uid: SymbolTable.FrequencyCounter
   name: FrequencyCounter
   href: api/SymbolTable.FrequencyCounter.html
@@ -8586,1036 +8891,1411 @@ references:
   fullName: SymbolTable.FrequencyCounter.MostFrequentlyWord
   nameWithType: FrequencyCounter.MostFrequentlyWord
 - uid: SymbolTable.IOrderedST`2
-  name: IOrderedST<Key, Value>
+  name: IOrderedST<TKey, TValue>
   href: api/SymbolTable.IOrderedST-2.html
   commentId: T:SymbolTable.IOrderedST`2
-  name.vb: IOrderedST(Of Key, Value)
-  fullName: SymbolTable.IOrderedST<Key, Value>
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value)
-  nameWithType: IOrderedST<Key, Value>
-  nameWithType.vb: IOrderedST(Of Key, Value)
+  name.vb: IOrderedST(Of TKey, TValue)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue)
+  nameWithType: IOrderedST<TKey, TValue>
+  nameWithType.vb: IOrderedST(Of TKey, TValue)
 - uid: SymbolTable.IOrderedST`2.Ceiling(`0)
-  name: Ceiling(Key)
+  name: Ceiling(TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Ceiling__0_
   commentId: M:SymbolTable.IOrderedST`2.Ceiling(`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Ceiling(Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Ceiling(Key)
-  nameWithType: IOrderedST<Key, Value>.Ceiling(Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Ceiling(Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Ceiling(TKey)
 - uid: SymbolTable.IOrderedST`2.Ceiling*
   name: Ceiling
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Ceiling_
   commentId: Overload:SymbolTable.IOrderedST`2.Ceiling
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Ceiling
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Ceiling
-  nameWithType: IOrderedST<Key, Value>.Ceiling
-  nameWithType.vb: IOrderedST(Of Key, Value).Ceiling
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Ceiling
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Ceiling
+  nameWithType: IOrderedST<TKey, TValue>.Ceiling
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Ceiling
 - uid: SymbolTable.IOrderedST`2.Contains(`0)
-  name: Contains(Key)
+  name: Contains(TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Contains__0_
   commentId: M:SymbolTable.IOrderedST`2.Contains(`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Contains(Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Contains(Key)
-  nameWithType: IOrderedST<Key, Value>.Contains(Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Contains(Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Contains(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Contains(TKey)
 - uid: SymbolTable.IOrderedST`2.Contains*
   name: Contains
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Contains_
   commentId: Overload:SymbolTable.IOrderedST`2.Contains
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Contains
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Contains
-  nameWithType: IOrderedST<Key, Value>.Contains
-  nameWithType.vb: IOrderedST(Of Key, Value).Contains
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Contains
+  nameWithType: IOrderedST<TKey, TValue>.Contains
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Contains
 - uid: SymbolTable.IOrderedST`2.Delete(`0)
-  name: Delete(Key)
+  name: Delete(TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Delete__0_
   commentId: M:SymbolTable.IOrderedST`2.Delete(`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Delete(Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Delete(Key)
-  nameWithType: IOrderedST<Key, Value>.Delete(Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Delete(Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Delete(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Delete(TKey)
 - uid: SymbolTable.IOrderedST`2.Delete*
   name: Delete
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Delete_
   commentId: Overload:SymbolTable.IOrderedST`2.Delete
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Delete
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Delete
-  nameWithType: IOrderedST<Key, Value>.Delete
-  nameWithType.vb: IOrderedST(Of Key, Value).Delete
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Delete
+  nameWithType: IOrderedST<TKey, TValue>.Delete
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Delete
 - uid: SymbolTable.IOrderedST`2.DeleteMax
   name: DeleteMax()
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_DeleteMax
   commentId: M:SymbolTable.IOrderedST`2.DeleteMax
-  fullName: SymbolTable.IOrderedST<Key, Value>.DeleteMax()
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).DeleteMax()
-  nameWithType: IOrderedST<Key, Value>.DeleteMax()
-  nameWithType.vb: IOrderedST(Of Key, Value).DeleteMax()
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.DeleteMax()
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).DeleteMax()
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMax()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMax()
 - uid: SymbolTable.IOrderedST`2.DeleteMax*
   name: DeleteMax
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_DeleteMax_
   commentId: Overload:SymbolTable.IOrderedST`2.DeleteMax
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.DeleteMax
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).DeleteMax
-  nameWithType: IOrderedST<Key, Value>.DeleteMax
-  nameWithType.vb: IOrderedST(Of Key, Value).DeleteMax
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.DeleteMax
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).DeleteMax
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMax
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMax
 - uid: SymbolTable.IOrderedST`2.DeleteMin
   name: DeleteMin()
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_DeleteMin
   commentId: M:SymbolTable.IOrderedST`2.DeleteMin
-  fullName: SymbolTable.IOrderedST<Key, Value>.DeleteMin()
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).DeleteMin()
-  nameWithType: IOrderedST<Key, Value>.DeleteMin()
-  nameWithType.vb: IOrderedST(Of Key, Value).DeleteMin()
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.DeleteMin()
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).DeleteMin()
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMin()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMin()
 - uid: SymbolTable.IOrderedST`2.DeleteMin*
   name: DeleteMin
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_DeleteMin_
   commentId: Overload:SymbolTable.IOrderedST`2.DeleteMin
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.DeleteMin
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).DeleteMin
-  nameWithType: IOrderedST<Key, Value>.DeleteMin
-  nameWithType.vb: IOrderedST(Of Key, Value).DeleteMin
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.DeleteMin
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).DeleteMin
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMin
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMin
 - uid: SymbolTable.IOrderedST`2.Floor(`0)
-  name: Floor(Key)
+  name: Floor(TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Floor__0_
   commentId: M:SymbolTable.IOrderedST`2.Floor(`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Floor(Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Floor(Key)
-  nameWithType: IOrderedST<Key, Value>.Floor(Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Floor(Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Floor(TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Floor(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Floor(TKey)
 - uid: SymbolTable.IOrderedST`2.Floor*
   name: Floor
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Floor_
   commentId: Overload:SymbolTable.IOrderedST`2.Floor
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Floor
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Floor
-  nameWithType: IOrderedST<Key, Value>.Floor
-  nameWithType.vb: IOrderedST(Of Key, Value).Floor
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Floor
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Floor
+  nameWithType: IOrderedST<TKey, TValue>.Floor
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Floor
 - uid: SymbolTable.IOrderedST`2.Get(`0)
-  name: Get(Key)
+  name: Get(TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Get__0_
   commentId: M:SymbolTable.IOrderedST`2.Get(`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Get(Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Get(Key)
-  nameWithType: IOrderedST<Key, Value>.Get(Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Get(Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Get(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Get(TKey)
 - uid: SymbolTable.IOrderedST`2.Get*
   name: Get
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Get_
   commentId: Overload:SymbolTable.IOrderedST`2.Get
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Get
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Get
-  nameWithType: IOrderedST<Key, Value>.Get
-  nameWithType.vb: IOrderedST(Of Key, Value).Get
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Get
+  nameWithType: IOrderedST<TKey, TValue>.Get
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Get
 - uid: SymbolTable.IOrderedST`2.IsEmpty
   name: IsEmpty()
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_IsEmpty
   commentId: M:SymbolTable.IOrderedST`2.IsEmpty
-  fullName: SymbolTable.IOrderedST<Key, Value>.IsEmpty()
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).IsEmpty()
-  nameWithType: IOrderedST<Key, Value>.IsEmpty()
-  nameWithType.vb: IOrderedST(Of Key, Value).IsEmpty()
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).IsEmpty()
+  nameWithType: IOrderedST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).IsEmpty()
 - uid: SymbolTable.IOrderedST`2.IsEmpty*
   name: IsEmpty
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_IsEmpty_
   commentId: Overload:SymbolTable.IOrderedST`2.IsEmpty
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.IsEmpty
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).IsEmpty
-  nameWithType: IOrderedST<Key, Value>.IsEmpty
-  nameWithType.vb: IOrderedST(Of Key, Value).IsEmpty
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).IsEmpty
+  nameWithType: IOrderedST<TKey, TValue>.IsEmpty
+  nameWithType.vb: IOrderedST(Of TKey, TValue).IsEmpty
 - uid: SymbolTable.IOrderedST`2.Keys
   name: Keys()
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Keys
   commentId: M:SymbolTable.IOrderedST`2.Keys
-  fullName: SymbolTable.IOrderedST<Key, Value>.Keys()
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Keys()
-  nameWithType: IOrderedST<Key, Value>.Keys()
-  nameWithType.vb: IOrderedST(Of Key, Value).Keys()
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Keys()
+  nameWithType: IOrderedST<TKey, TValue>.Keys()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Keys()
 - uid: SymbolTable.IOrderedST`2.Keys(`0,`0)
-  name: Keys(Key, Key)
+  name: Keys(TKey, TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Keys__0__0_
   commentId: M:SymbolTable.IOrderedST`2.Keys(`0,`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Keys(Key, Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Keys(Key, Key)
-  nameWithType: IOrderedST<Key, Value>.Keys(Key, Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Keys(Key, Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Keys(TKey, TKey)
 - uid: SymbolTable.IOrderedST`2.Keys*
   name: Keys
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Keys_
   commentId: Overload:SymbolTable.IOrderedST`2.Keys
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Keys
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Keys
-  nameWithType: IOrderedST<Key, Value>.Keys
-  nameWithType.vb: IOrderedST(Of Key, Value).Keys
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Keys
+  nameWithType: IOrderedST<TKey, TValue>.Keys
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Keys
 - uid: SymbolTable.IOrderedST`2.Max
   name: Max()
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Max
   commentId: M:SymbolTable.IOrderedST`2.Max
-  fullName: SymbolTable.IOrderedST<Key, Value>.Max()
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Max()
-  nameWithType: IOrderedST<Key, Value>.Max()
-  nameWithType.vb: IOrderedST(Of Key, Value).Max()
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Max()
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Max()
+  nameWithType: IOrderedST<TKey, TValue>.Max()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Max()
 - uid: SymbolTable.IOrderedST`2.Max*
   name: Max
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Max_
   commentId: Overload:SymbolTable.IOrderedST`2.Max
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Max
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Max
-  nameWithType: IOrderedST<Key, Value>.Max
-  nameWithType.vb: IOrderedST(Of Key, Value).Max
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Max
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Max
+  nameWithType: IOrderedST<TKey, TValue>.Max
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Max
 - uid: SymbolTable.IOrderedST`2.Min
   name: Min()
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Min
   commentId: M:SymbolTable.IOrderedST`2.Min
-  fullName: SymbolTable.IOrderedST<Key, Value>.Min()
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Min()
-  nameWithType: IOrderedST<Key, Value>.Min()
-  nameWithType.vb: IOrderedST(Of Key, Value).Min()
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Min()
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Min()
+  nameWithType: IOrderedST<TKey, TValue>.Min()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Min()
 - uid: SymbolTable.IOrderedST`2.Min*
   name: Min
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Min_
   commentId: Overload:SymbolTable.IOrderedST`2.Min
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Min
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Min
-  nameWithType: IOrderedST<Key, Value>.Min
-  nameWithType.vb: IOrderedST(Of Key, Value).Min
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Min
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Min
+  nameWithType: IOrderedST<TKey, TValue>.Min
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Min
 - uid: SymbolTable.IOrderedST`2.Put(`0,`1)
-  name: Put(Key, Value)
+  name: Put(TKey, TValue)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Put__0__1_
   commentId: M:SymbolTable.IOrderedST`2.Put(`0,`1)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Put(Key, Value)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Put(Key, Value)
-  nameWithType: IOrderedST<Key, Value>.Put(Key, Value)
-  nameWithType.vb: IOrderedST(Of Key, Value).Put(Key, Value)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: IOrderedST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Put(TKey, TValue)
 - uid: SymbolTable.IOrderedST`2.Put*
   name: Put
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Put_
   commentId: Overload:SymbolTable.IOrderedST`2.Put
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Put
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Put
-  nameWithType: IOrderedST<Key, Value>.Put
-  nameWithType.vb: IOrderedST(Of Key, Value).Put
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Put
+  nameWithType: IOrderedST<TKey, TValue>.Put
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Put
 - uid: SymbolTable.IOrderedST`2.Rank(`0)
-  name: Rank(Key)
+  name: Rank(TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Rank__0_
   commentId: M:SymbolTable.IOrderedST`2.Rank(`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Rank(Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Rank(Key)
-  nameWithType: IOrderedST<Key, Value>.Rank(Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Rank(Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Rank(TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Rank(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Rank(TKey)
 - uid: SymbolTable.IOrderedST`2.Rank*
   name: Rank
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Rank_
   commentId: Overload:SymbolTable.IOrderedST`2.Rank
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Rank
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Rank
-  nameWithType: IOrderedST<Key, Value>.Rank
-  nameWithType.vb: IOrderedST(Of Key, Value).Rank
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Rank
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Rank
+  nameWithType: IOrderedST<TKey, TValue>.Rank
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Rank
 - uid: SymbolTable.IOrderedST`2.Select(System.Int32)
   name: Select(Int32)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Select_System_Int32_
   commentId: M:SymbolTable.IOrderedST`2.Select(System.Int32)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Select(System.Int32)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Select(System.Int32)
-  nameWithType: IOrderedST<Key, Value>.Select(Int32)
-  nameWithType.vb: IOrderedST(Of Key, Value).Select(Int32)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Select(System.Int32)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Select(System.Int32)
+  nameWithType: IOrderedST<TKey, TValue>.Select(Int32)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Select(Int32)
 - uid: SymbolTable.IOrderedST`2.Select*
   name: Select
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Select_
   commentId: Overload:SymbolTable.IOrderedST`2.Select
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Select
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Select
-  nameWithType: IOrderedST<Key, Value>.Select
-  nameWithType.vb: IOrderedST(Of Key, Value).Select
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Select
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Select
+  nameWithType: IOrderedST<TKey, TValue>.Select
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Select
 - uid: SymbolTable.IOrderedST`2.Size
   name: Size()
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Size
   commentId: M:SymbolTable.IOrderedST`2.Size
-  fullName: SymbolTable.IOrderedST<Key, Value>.Size()
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Size()
-  nameWithType: IOrderedST<Key, Value>.Size()
-  nameWithType.vb: IOrderedST(Of Key, Value).Size()
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Size()
+  nameWithType: IOrderedST<TKey, TValue>.Size()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Size()
 - uid: SymbolTable.IOrderedST`2.Size(`0,`0)
-  name: Size(Key, Key)
+  name: Size(TKey, TKey)
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Size__0__0_
   commentId: M:SymbolTable.IOrderedST`2.Size(`0,`0)
-  fullName: SymbolTable.IOrderedST<Key, Value>.Size(Key, Key)
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Size(Key, Key)
-  nameWithType: IOrderedST<Key, Value>.Size(Key, Key)
-  nameWithType.vb: IOrderedST(Of Key, Value).Size(Key, Key)
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Size(TKey, TKey)
 - uid: SymbolTable.IOrderedST`2.Size*
   name: Size
   href: api/SymbolTable.IOrderedST-2.html#SymbolTable_IOrderedST_2_Size_
   commentId: Overload:SymbolTable.IOrderedST`2.Size
   isSpec: "True"
-  fullName: SymbolTable.IOrderedST<Key, Value>.Size
-  fullName.vb: SymbolTable.IOrderedST(Of Key, Value).Size
-  nameWithType: IOrderedST<Key, Value>.Size
-  nameWithType.vb: IOrderedST(Of Key, Value).Size
+  fullName: SymbolTable.IOrderedST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.IOrderedST(Of TKey, TValue).Size
+  nameWithType: IOrderedST<TKey, TValue>.Size
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Size
 - uid: SymbolTable.IST`2
-  name: IST<Key, Value>
+  name: IST<TKey, TValue>
   href: api/SymbolTable.IST-2.html
   commentId: T:SymbolTable.IST`2
-  name.vb: IST(Of Key, Value)
-  fullName: SymbolTable.IST<Key, Value>
-  fullName.vb: SymbolTable.IST(Of Key, Value)
-  nameWithType: IST<Key, Value>
-  nameWithType.vb: IST(Of Key, Value)
+  name.vb: IST(Of TKey, TValue)
+  fullName: SymbolTable.IST<TKey, TValue>
+  fullName.vb: SymbolTable.IST(Of TKey, TValue)
+  nameWithType: IST<TKey, TValue>
+  nameWithType.vb: IST(Of TKey, TValue)
 - uid: SymbolTable.IST`2.Contains(`0)
-  name: Contains(Key)
+  name: Contains(TKey)
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Contains__0_
   commentId: M:SymbolTable.IST`2.Contains(`0)
-  fullName: SymbolTable.IST<Key, Value>.Contains(Key)
-  fullName.vb: SymbolTable.IST(Of Key, Value).Contains(Key)
-  nameWithType: IST<Key, Value>.Contains(Key)
-  nameWithType.vb: IST(Of Key, Value).Contains(Key)
+  fullName: SymbolTable.IST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Contains(TKey)
+  nameWithType: IST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: IST(Of TKey, TValue).Contains(TKey)
 - uid: SymbolTable.IST`2.Contains*
   name: Contains
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Contains_
   commentId: Overload:SymbolTable.IST`2.Contains
   isSpec: "True"
-  fullName: SymbolTable.IST<Key, Value>.Contains
-  fullName.vb: SymbolTable.IST(Of Key, Value).Contains
-  nameWithType: IST<Key, Value>.Contains
-  nameWithType.vb: IST(Of Key, Value).Contains
+  fullName: SymbolTable.IST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Contains
+  nameWithType: IST<TKey, TValue>.Contains
+  nameWithType.vb: IST(Of TKey, TValue).Contains
 - uid: SymbolTable.IST`2.Delete(`0)
-  name: Delete(Key)
+  name: Delete(TKey)
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Delete__0_
   commentId: M:SymbolTable.IST`2.Delete(`0)
-  fullName: SymbolTable.IST<Key, Value>.Delete(Key)
-  fullName.vb: SymbolTable.IST(Of Key, Value).Delete(Key)
-  nameWithType: IST<Key, Value>.Delete(Key)
-  nameWithType.vb: IST(Of Key, Value).Delete(Key)
+  fullName: SymbolTable.IST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Delete(TKey)
+  nameWithType: IST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: IST(Of TKey, TValue).Delete(TKey)
 - uid: SymbolTable.IST`2.Delete*
   name: Delete
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Delete_
   commentId: Overload:SymbolTable.IST`2.Delete
   isSpec: "True"
-  fullName: SymbolTable.IST<Key, Value>.Delete
-  fullName.vb: SymbolTable.IST(Of Key, Value).Delete
-  nameWithType: IST<Key, Value>.Delete
-  nameWithType.vb: IST(Of Key, Value).Delete
+  fullName: SymbolTable.IST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Delete
+  nameWithType: IST<TKey, TValue>.Delete
+  nameWithType.vb: IST(Of TKey, TValue).Delete
 - uid: SymbolTable.IST`2.Get(`0)
-  name: Get(Key)
+  name: Get(TKey)
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Get__0_
   commentId: M:SymbolTable.IST`2.Get(`0)
-  fullName: SymbolTable.IST<Key, Value>.Get(Key)
-  fullName.vb: SymbolTable.IST(Of Key, Value).Get(Key)
-  nameWithType: IST<Key, Value>.Get(Key)
-  nameWithType.vb: IST(Of Key, Value).Get(Key)
+  fullName: SymbolTable.IST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Get(TKey)
+  nameWithType: IST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: IST(Of TKey, TValue).Get(TKey)
 - uid: SymbolTable.IST`2.Get*
   name: Get
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Get_
   commentId: Overload:SymbolTable.IST`2.Get
   isSpec: "True"
-  fullName: SymbolTable.IST<Key, Value>.Get
-  fullName.vb: SymbolTable.IST(Of Key, Value).Get
-  nameWithType: IST<Key, Value>.Get
-  nameWithType.vb: IST(Of Key, Value).Get
+  fullName: SymbolTable.IST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Get
+  nameWithType: IST<TKey, TValue>.Get
+  nameWithType.vb: IST(Of TKey, TValue).Get
 - uid: SymbolTable.IST`2.IsEmpty
   name: IsEmpty()
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_IsEmpty
   commentId: M:SymbolTable.IST`2.IsEmpty
-  fullName: SymbolTable.IST<Key, Value>.IsEmpty()
-  fullName.vb: SymbolTable.IST(Of Key, Value).IsEmpty()
-  nameWithType: IST<Key, Value>.IsEmpty()
-  nameWithType.vb: IST(Of Key, Value).IsEmpty()
+  fullName: SymbolTable.IST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).IsEmpty()
+  nameWithType: IST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: IST(Of TKey, TValue).IsEmpty()
 - uid: SymbolTable.IST`2.IsEmpty*
   name: IsEmpty
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_IsEmpty_
   commentId: Overload:SymbolTable.IST`2.IsEmpty
   isSpec: "True"
-  fullName: SymbolTable.IST<Key, Value>.IsEmpty
-  fullName.vb: SymbolTable.IST(Of Key, Value).IsEmpty
-  nameWithType: IST<Key, Value>.IsEmpty
-  nameWithType.vb: IST(Of Key, Value).IsEmpty
+  fullName: SymbolTable.IST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).IsEmpty
+  nameWithType: IST<TKey, TValue>.IsEmpty
+  nameWithType.vb: IST(Of TKey, TValue).IsEmpty
 - uid: SymbolTable.IST`2.Keys
   name: Keys()
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Keys
   commentId: M:SymbolTable.IST`2.Keys
-  fullName: SymbolTable.IST<Key, Value>.Keys()
-  fullName.vb: SymbolTable.IST(Of Key, Value).Keys()
-  nameWithType: IST<Key, Value>.Keys()
-  nameWithType.vb: IST(Of Key, Value).Keys()
+  fullName: SymbolTable.IST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Keys()
+  nameWithType: IST<TKey, TValue>.Keys()
+  nameWithType.vb: IST(Of TKey, TValue).Keys()
 - uid: SymbolTable.IST`2.Keys*
   name: Keys
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Keys_
   commentId: Overload:SymbolTable.IST`2.Keys
   isSpec: "True"
-  fullName: SymbolTable.IST<Key, Value>.Keys
-  fullName.vb: SymbolTable.IST(Of Key, Value).Keys
-  nameWithType: IST<Key, Value>.Keys
-  nameWithType.vb: IST(Of Key, Value).Keys
+  fullName: SymbolTable.IST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Keys
+  nameWithType: IST<TKey, TValue>.Keys
+  nameWithType.vb: IST(Of TKey, TValue).Keys
 - uid: SymbolTable.IST`2.Put(`0,`1)
-  name: Put(Key, Value)
+  name: Put(TKey, TValue)
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Put__0__1_
   commentId: M:SymbolTable.IST`2.Put(`0,`1)
-  fullName: SymbolTable.IST<Key, Value>.Put(Key, Value)
-  fullName.vb: SymbolTable.IST(Of Key, Value).Put(Key, Value)
-  nameWithType: IST<Key, Value>.Put(Key, Value)
-  nameWithType.vb: IST(Of Key, Value).Put(Key, Value)
+  fullName: SymbolTable.IST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: IST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: IST(Of TKey, TValue).Put(TKey, TValue)
 - uid: SymbolTable.IST`2.Put*
   name: Put
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Put_
   commentId: Overload:SymbolTable.IST`2.Put
   isSpec: "True"
-  fullName: SymbolTable.IST<Key, Value>.Put
-  fullName.vb: SymbolTable.IST(Of Key, Value).Put
-  nameWithType: IST<Key, Value>.Put
-  nameWithType.vb: IST(Of Key, Value).Put
+  fullName: SymbolTable.IST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Put
+  nameWithType: IST<TKey, TValue>.Put
+  nameWithType.vb: IST(Of TKey, TValue).Put
 - uid: SymbolTable.IST`2.Size
   name: Size()
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Size
   commentId: M:SymbolTable.IST`2.Size
-  fullName: SymbolTable.IST<Key, Value>.Size()
-  fullName.vb: SymbolTable.IST(Of Key, Value).Size()
-  nameWithType: IST<Key, Value>.Size()
-  nameWithType.vb: IST(Of Key, Value).Size()
+  fullName: SymbolTable.IST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Size()
+  nameWithType: IST<TKey, TValue>.Size()
+  nameWithType.vb: IST(Of TKey, TValue).Size()
 - uid: SymbolTable.IST`2.Size*
   name: Size
   href: api/SymbolTable.IST-2.html#SymbolTable_IST_2_Size_
   commentId: Overload:SymbolTable.IST`2.Size
   isSpec: "True"
-  fullName: SymbolTable.IST<Key, Value>.Size
-  fullName.vb: SymbolTable.IST(Of Key, Value).Size
-  nameWithType: IST<Key, Value>.Size
-  nameWithType.vb: IST(Of Key, Value).Size
+  fullName: SymbolTable.IST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.IST(Of TKey, TValue).Size
+  nameWithType: IST<TKey, TValue>.Size
+  nameWithType.vb: IST(Of TKey, TValue).Size
+- uid: SymbolTable.Item`2
+  name: Item<TKey, TValue>
+  href: api/SymbolTable.Item-2.html
+  commentId: T:SymbolTable.Item`2
+  name.vb: Item(Of TKey, TValue)
+  fullName: SymbolTable.Item<TKey, TValue>
+  fullName.vb: SymbolTable.Item(Of TKey, TValue)
+  nameWithType: Item<TKey, TValue>
+  nameWithType.vb: Item(Of TKey, TValue)
+- uid: SymbolTable.Item`2.CompareTo(SymbolTable.Item{`0,`1})
+  name: CompareTo(Item<TKey, TValue>)
+  href: api/SymbolTable.Item-2.html#SymbolTable_Item_2_CompareTo_SymbolTable_Item__0__1__
+  commentId: M:SymbolTable.Item`2.CompareTo(SymbolTable.Item{`0,`1})
+  name.vb: CompareTo(Item(Of TKey, TValue))
+  fullName: SymbolTable.Item<TKey, TValue>.CompareTo(SymbolTable.Item<TKey, TValue>)
+  fullName.vb: SymbolTable.Item(Of TKey, TValue).CompareTo(SymbolTable.Item(Of TKey, TValue))
+  nameWithType: Item<TKey, TValue>.CompareTo(Item<TKey, TValue>)
+  nameWithType.vb: Item(Of TKey, TValue).CompareTo(Item(Of TKey, TValue))
+- uid: SymbolTable.Item`2.CompareTo*
+  name: CompareTo
+  href: api/SymbolTable.Item-2.html#SymbolTable_Item_2_CompareTo_
+  commentId: Overload:SymbolTable.Item`2.CompareTo
+  isSpec: "True"
+  fullName: SymbolTable.Item<TKey, TValue>.CompareTo
+  fullName.vb: SymbolTable.Item(Of TKey, TValue).CompareTo
+  nameWithType: Item<TKey, TValue>.CompareTo
+  nameWithType.vb: Item(Of TKey, TValue).CompareTo
+- uid: SymbolTable.Item`2.Key
+  name: Key
+  href: api/SymbolTable.Item-2.html#SymbolTable_Item_2_Key
+  commentId: P:SymbolTable.Item`2.Key
+  fullName: SymbolTable.Item<TKey, TValue>.Key
+  fullName.vb: SymbolTable.Item(Of TKey, TValue).Key
+  nameWithType: Item<TKey, TValue>.Key
+  nameWithType.vb: Item(Of TKey, TValue).Key
+- uid: SymbolTable.Item`2.Key*
+  name: Key
+  href: api/SymbolTable.Item-2.html#SymbolTable_Item_2_Key_
+  commentId: Overload:SymbolTable.Item`2.Key
+  isSpec: "True"
+  fullName: SymbolTable.Item<TKey, TValue>.Key
+  fullName.vb: SymbolTable.Item(Of TKey, TValue).Key
+  nameWithType: Item<TKey, TValue>.Key
+  nameWithType.vb: Item(Of TKey, TValue).Key
+- uid: SymbolTable.Item`2.Value
+  name: Value
+  href: api/SymbolTable.Item-2.html#SymbolTable_Item_2_Value
+  commentId: P:SymbolTable.Item`2.Value
+  fullName: SymbolTable.Item<TKey, TValue>.Value
+  fullName.vb: SymbolTable.Item(Of TKey, TValue).Value
+  nameWithType: Item<TKey, TValue>.Value
+  nameWithType.vb: Item(Of TKey, TValue).Value
+- uid: SymbolTable.Item`2.Value*
+  name: Value
+  href: api/SymbolTable.Item-2.html#SymbolTable_Item_2_Value_
+  commentId: Overload:SymbolTable.Item`2.Value
+  isSpec: "True"
+  fullName: SymbolTable.Item<TKey, TValue>.Value
+  fullName.vb: SymbolTable.Item(Of TKey, TValue).Value
+  nameWithType: Item<TKey, TValue>.Value
+  nameWithType.vb: Item(Of TKey, TValue).Value
+- uid: SymbolTable.ItemBinarySearchST`2
+  name: ItemBinarySearchST<TKey, TValue>
+  href: api/SymbolTable.ItemBinarySearchST-2.html
+  commentId: T:SymbolTable.ItemBinarySearchST`2
+  name.vb: ItemBinarySearchST(Of TKey, TValue)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue)
+  nameWithType: ItemBinarySearchST<TKey, TValue>
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue)
+- uid: SymbolTable.ItemBinarySearchST`2.#ctor
+  name: ItemBinarySearchST()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2__ctor
+  commentId: M:SymbolTable.ItemBinarySearchST`2.#ctor
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST()
+- uid: SymbolTable.ItemBinarySearchST`2.#ctor(SymbolTable.Item{`0,`1}[])
+  name: ItemBinarySearchST(Item<TKey, TValue>[])
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2__ctor_SymbolTable_Item__0__1____
+  commentId: M:SymbolTable.ItemBinarySearchST`2.#ctor(SymbolTable.Item{`0,`1}[])
+  name.vb: ItemBinarySearchST(Item(Of TKey, TValue)())
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST(SymbolTable.Item<TKey, TValue>[])
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST(SymbolTable.Item(Of TKey, TValue)())
+  nameWithType: ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST(Item<TKey, TValue>[])
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST(Item(Of TKey, TValue)())
+- uid: SymbolTable.ItemBinarySearchST`2.#ctor(System.Int32)
+  name: ItemBinarySearchST(Int32)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2__ctor_System_Int32_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.#ctor(System.Int32)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST(System.Int32)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST(System.Int32)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST(Int32)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST(Int32)
+- uid: SymbolTable.ItemBinarySearchST`2.#ctor*
+  name: ItemBinarySearchST
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2__ctor_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST
+  nameWithType: ItemBinarySearchST<TKey, TValue>.ItemBinarySearchST
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).ItemBinarySearchST
+- uid: SymbolTable.ItemBinarySearchST`2.Ceiling(`0)
+  name: Ceiling(TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Ceiling__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Ceiling(`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Ceiling(TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Ceiling*
+  name: Ceiling
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Ceiling_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Ceiling
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Ceiling
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Ceiling
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Ceiling
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Ceiling
+- uid: SymbolTable.ItemBinarySearchST`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Contains__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Contains(`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Contains(TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Contains(TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Contains*
+  name: Contains
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Contains_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Contains
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Contains
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Contains
+- uid: SymbolTable.ItemBinarySearchST`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Delete__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Delete(`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Delete(TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Delete(TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Delete*
+  name: Delete
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Delete_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Delete
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Delete
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Delete
+- uid: SymbolTable.ItemBinarySearchST`2.DeleteMax
+  name: DeleteMax()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_DeleteMax
+  commentId: M:SymbolTable.ItemBinarySearchST`2.DeleteMax
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.DeleteMax()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).DeleteMax()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.DeleteMax()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).DeleteMax()
+- uid: SymbolTable.ItemBinarySearchST`2.DeleteMax*
+  name: DeleteMax
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_DeleteMax_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.DeleteMax
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.DeleteMax
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).DeleteMax
+  nameWithType: ItemBinarySearchST<TKey, TValue>.DeleteMax
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).DeleteMax
+- uid: SymbolTable.ItemBinarySearchST`2.DeleteMin
+  name: DeleteMin()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_DeleteMin
+  commentId: M:SymbolTable.ItemBinarySearchST`2.DeleteMin
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.DeleteMin()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).DeleteMin()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.DeleteMin()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).DeleteMin()
+- uid: SymbolTable.ItemBinarySearchST`2.DeleteMin*
+  name: DeleteMin
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_DeleteMin_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.DeleteMin
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.DeleteMin
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).DeleteMin
+  nameWithType: ItemBinarySearchST<TKey, TValue>.DeleteMin
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).DeleteMin
+- uid: SymbolTable.ItemBinarySearchST`2.Floor(`0)
+  name: Floor(TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Floor__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Floor(`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Floor(TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Floor(TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Floor(TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Floor*
+  name: Floor
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Floor_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Floor
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Floor
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Floor
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Floor
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Floor
+- uid: SymbolTable.ItemBinarySearchST`2.Get(`0)
+  name: Get(TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Get__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Get(`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Get(TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Get(TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Get*
+  name: Get
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Get_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Get
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Get
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Get
+- uid: SymbolTable.ItemBinarySearchST`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_IsEmpty
+  commentId: M:SymbolTable.ItemBinarySearchST`2.IsEmpty
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).IsEmpty()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).IsEmpty()
+- uid: SymbolTable.ItemBinarySearchST`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_IsEmpty_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).IsEmpty
+  nameWithType: ItemBinarySearchST<TKey, TValue>.IsEmpty
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).IsEmpty
+- uid: SymbolTable.ItemBinarySearchST`2.Keys
+  name: Keys()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Keys
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Keys
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Keys()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Keys()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Keys()
+- uid: SymbolTable.ItemBinarySearchST`2.Keys(`0,`0)
+  name: Keys(TKey, TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Keys__0__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Keys(`0,`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Keys(TKey, TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Keys*
+  name: Keys
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Keys_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Keys
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Keys
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Keys
+- uid: SymbolTable.ItemBinarySearchST`2.Max
+  name: Max()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Max
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Max
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Max()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Max()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Max()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Max()
+- uid: SymbolTable.ItemBinarySearchST`2.Max*
+  name: Max
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Max_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Max
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Max
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Max
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Max
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Max
+- uid: SymbolTable.ItemBinarySearchST`2.Min
+  name: Min()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Min
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Min
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Min()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Min()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Min()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Min()
+- uid: SymbolTable.ItemBinarySearchST`2.Min*
+  name: Min
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Min_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Min
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Min
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Min
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Min
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Min
+- uid: SymbolTable.ItemBinarySearchST`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Put__0__1_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Put(`0,`1)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Put(TKey, TValue)
+- uid: SymbolTable.ItemBinarySearchST`2.Put*
+  name: Put
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Put_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Put
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Put
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Put
+- uid: SymbolTable.ItemBinarySearchST`2.Rank(`0)
+  name: Rank(TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Rank__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Rank(`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Rank(TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Rank(TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Rank(TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Rank*
+  name: Rank
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Rank_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Rank
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Rank
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Rank
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Rank
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Rank
+- uid: SymbolTable.ItemBinarySearchST`2.Select(System.Int32)
+  name: Select(Int32)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Select_System_Int32_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Select(System.Int32)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Select(System.Int32)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Select(System.Int32)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Select(Int32)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Select(Int32)
+- uid: SymbolTable.ItemBinarySearchST`2.Select*
+  name: Select
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Select_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Select
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Select
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Select
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Select
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Select
+- uid: SymbolTable.ItemBinarySearchST`2.Size
+  name: Size()
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Size
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Size
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Size()
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Size()
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Size()
+- uid: SymbolTable.ItemBinarySearchST`2.Size(`0,`0)
+  name: Size(TKey, TKey)
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Size__0__0_
+  commentId: M:SymbolTable.ItemBinarySearchST`2.Size(`0,`0)
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Size(TKey, TKey)
+- uid: SymbolTable.ItemBinarySearchST`2.Size*
+  name: Size
+  href: api/SymbolTable.ItemBinarySearchST-2.html#SymbolTable_ItemBinarySearchST_2_Size_
+  commentId: Overload:SymbolTable.ItemBinarySearchST`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.ItemBinarySearchST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Size
+  nameWithType: ItemBinarySearchST<TKey, TValue>.Size
+  nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Size
 - uid: SymbolTable.OrderedSequentialSearchST`2
-  name: OrderedSequentialSearchST<Key, Value>
+  name: OrderedSequentialSearchST<TKey, TValue>
   href: api/SymbolTable.OrderedSequentialSearchST-2.html
   commentId: T:SymbolTable.OrderedSequentialSearchST`2
-  name.vb: OrderedSequentialSearchST(Of Key, Value)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value)
-  nameWithType: OrderedSequentialSearchST<Key, Value>
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value)
+  name.vb: OrderedSequentialSearchST(Of TKey, TValue)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue)
 - uid: SymbolTable.OrderedSequentialSearchST`2.#ctor
   name: OrderedSequentialSearchST()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2__ctor
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.#ctor
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.OrderedSequentialSearchST()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).OrderedSequentialSearchST()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.OrderedSequentialSearchST()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).OrderedSequentialSearchST()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.OrderedSequentialSearchST()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).OrderedSequentialSearchST()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.OrderedSequentialSearchST()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).OrderedSequentialSearchST()
 - uid: SymbolTable.OrderedSequentialSearchST`2.#ctor*
   name: OrderedSequentialSearchST
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2__ctor_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.#ctor
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.OrderedSequentialSearchST
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).OrderedSequentialSearchST
-  nameWithType: OrderedSequentialSearchST<Key, Value>.OrderedSequentialSearchST
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).OrderedSequentialSearchST
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.OrderedSequentialSearchST
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).OrderedSequentialSearchST
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.OrderedSequentialSearchST
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).OrderedSequentialSearchST
 - uid: SymbolTable.OrderedSequentialSearchST`2.Ceiling(`0)
-  name: Ceiling(Key)
+  name: Ceiling(TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Ceiling__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Ceiling(`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Ceiling(Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Ceiling(Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Ceiling(Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Ceiling(Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Ceiling(TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Ceiling*
   name: Ceiling
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Ceiling_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Ceiling
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Ceiling
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Ceiling
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Ceiling
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Ceiling
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Ceiling
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Ceiling
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Ceiling
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Ceiling
 - uid: SymbolTable.OrderedSequentialSearchST`2.Contains(`0)
-  name: Contains(Key)
+  name: Contains(TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Contains__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Contains(`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Contains(Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Contains(Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Contains(Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Contains(Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Contains(TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Contains(TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Contains*
   name: Contains
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Contains_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Contains
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Contains
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Contains
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Contains
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Contains
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Contains
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Contains
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Contains
 - uid: SymbolTable.OrderedSequentialSearchST`2.Delete(`0)
-  name: Delete(Key)
+  name: Delete(TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Delete__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Delete(`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Delete(Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Delete(Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Delete(Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Delete(Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Delete(TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Delete(TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Delete*
   name: Delete
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Delete_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Delete
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Delete
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Delete
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Delete
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Delete
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Delete
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Delete
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Delete
 - uid: SymbolTable.OrderedSequentialSearchST`2.DeleteMax
   name: DeleteMax()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_DeleteMax
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.DeleteMax
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.DeleteMax()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).DeleteMax()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.DeleteMax()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).DeleteMax()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.DeleteMax()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).DeleteMax()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.DeleteMax()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).DeleteMax()
 - uid: SymbolTable.OrderedSequentialSearchST`2.DeleteMax*
   name: DeleteMax
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_DeleteMax_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.DeleteMax
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.DeleteMax
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).DeleteMax
-  nameWithType: OrderedSequentialSearchST<Key, Value>.DeleteMax
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).DeleteMax
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.DeleteMax
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).DeleteMax
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.DeleteMax
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).DeleteMax
 - uid: SymbolTable.OrderedSequentialSearchST`2.DeleteMin
   name: DeleteMin()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_DeleteMin
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.DeleteMin
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.DeleteMin()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).DeleteMin()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.DeleteMin()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).DeleteMin()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.DeleteMin()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).DeleteMin()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.DeleteMin()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).DeleteMin()
 - uid: SymbolTable.OrderedSequentialSearchST`2.DeleteMin*
   name: DeleteMin
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_DeleteMin_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.DeleteMin
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.DeleteMin
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).DeleteMin
-  nameWithType: OrderedSequentialSearchST<Key, Value>.DeleteMin
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).DeleteMin
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.DeleteMin
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).DeleteMin
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.DeleteMin
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).DeleteMin
 - uid: SymbolTable.OrderedSequentialSearchST`2.Floor(`0)
-  name: Floor(Key)
+  name: Floor(TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Floor__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Floor(`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Floor(Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Floor(Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Floor(Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Floor(Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Floor(TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Floor(TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Floor(TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Floor*
   name: Floor
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Floor_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Floor
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Floor
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Floor
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Floor
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Floor
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Floor
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Floor
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Floor
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Floor
 - uid: SymbolTable.OrderedSequentialSearchST`2.Get(`0)
-  name: Get(Key)
+  name: Get(TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Get__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Get(`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Get(Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Get(Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Get(Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Get(Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Get(TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Get(TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Get*
   name: Get
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Get_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Get
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Get
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Get
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Get
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Get
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Get
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Get
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Get
 - uid: SymbolTable.OrderedSequentialSearchST`2.IsEmpty
   name: IsEmpty()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_IsEmpty
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.IsEmpty
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.IsEmpty()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).IsEmpty()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.IsEmpty()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).IsEmpty()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).IsEmpty()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).IsEmpty()
 - uid: SymbolTable.OrderedSequentialSearchST`2.IsEmpty*
   name: IsEmpty
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_IsEmpty_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.IsEmpty
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.IsEmpty
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).IsEmpty
-  nameWithType: OrderedSequentialSearchST<Key, Value>.IsEmpty
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).IsEmpty
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).IsEmpty
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.IsEmpty
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).IsEmpty
 - uid: SymbolTable.OrderedSequentialSearchST`2.Keys
   name: Keys()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Keys
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Keys
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Keys()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Keys()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Keys()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Keys()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Keys()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Keys()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Keys()
 - uid: SymbolTable.OrderedSequentialSearchST`2.Keys(`0,`0)
-  name: Keys(Key, Key)
+  name: Keys(TKey, TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Keys__0__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Keys(`0,`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Keys(Key, Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Keys(Key, Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Keys(Key, Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Keys(Key, Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Keys(TKey, TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Keys*
   name: Keys
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Keys_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Keys
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Keys
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Keys
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Keys
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Keys
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Keys
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Keys
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Keys
 - uid: SymbolTable.OrderedSequentialSearchST`2.Max
   name: Max()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Max
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Max
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Max()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Max()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Max()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Max()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Max()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Max()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Max()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Max()
 - uid: SymbolTable.OrderedSequentialSearchST`2.Max*
   name: Max
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Max_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Max
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Max
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Max
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Max
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Max
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Max
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Max
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Max
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Max
 - uid: SymbolTable.OrderedSequentialSearchST`2.Min
   name: Min()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Min
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Min
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Min()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Min()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Min()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Min()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Min()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Min()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Min()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Min()
 - uid: SymbolTable.OrderedSequentialSearchST`2.Min*
   name: Min
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Min_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Min
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Min
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Min
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Min
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Min
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Min
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Min
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Min
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Min
 - uid: SymbolTable.OrderedSequentialSearchST`2.Put(`0,`1)
-  name: Put(Key, Value)
+  name: Put(TKey, TValue)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Put__0__1_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Put(`0,`1)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Put(Key, Value)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Put(Key, Value)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Put(Key, Value)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Put(Key, Value)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Put(TKey, TValue)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Put*
   name: Put
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Put_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Put
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Put
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Put
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Put
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Put
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Put
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Put
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Put
 - uid: SymbolTable.OrderedSequentialSearchST`2.Rank(`0)
-  name: Rank(Key)
+  name: Rank(TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Rank__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Rank(`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Rank(Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Rank(Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Rank(Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Rank(Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Rank(TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Rank(TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Rank(TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Rank*
   name: Rank
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Rank_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Rank
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Rank
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Rank
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Rank
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Rank
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Rank
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Rank
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Rank
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Rank
 - uid: SymbolTable.OrderedSequentialSearchST`2.Select(System.Int32)
   name: Select(Int32)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Select_System_Int32_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Select(System.Int32)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Select(System.Int32)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Select(System.Int32)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Select(Int32)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Select(Int32)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Select(System.Int32)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Select(System.Int32)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Select(Int32)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Select(Int32)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Select*
   name: Select
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Select_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Select
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Select
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Select
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Select
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Select
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Select
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Select
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Select
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Select
 - uid: SymbolTable.OrderedSequentialSearchST`2.Size
   name: Size()
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Size
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Size
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Size()
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Size()
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Size()
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Size()
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Size()
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Size()
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Size()
 - uid: SymbolTable.OrderedSequentialSearchST`2.Size(`0,`0)
-  name: Size(Key, Key)
+  name: Size(TKey, TKey)
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Size__0__0_
   commentId: M:SymbolTable.OrderedSequentialSearchST`2.Size(`0,`0)
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Size(Key, Key)
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Size(Key, Key)
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Size(Key, Key)
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Size(Key, Key)
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Size(TKey, TKey)
 - uid: SymbolTable.OrderedSequentialSearchST`2.Size*
   name: Size
   href: api/SymbolTable.OrderedSequentialSearchST-2.html#SymbolTable_OrderedSequentialSearchST_2_Size_
   commentId: Overload:SymbolTable.OrderedSequentialSearchST`2.Size
   isSpec: "True"
-  fullName: SymbolTable.OrderedSequentialSearchST<Key, Value>.Size
-  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of Key, Value).Size
-  nameWithType: OrderedSequentialSearchST<Key, Value>.Size
-  nameWithType.vb: OrderedSequentialSearchST(Of Key, Value).Size
+  fullName: SymbolTable.OrderedSequentialSearchST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.OrderedSequentialSearchST(Of TKey, TValue).Size
+  nameWithType: OrderedSequentialSearchST<TKey, TValue>.Size
+  nameWithType.vb: OrderedSequentialSearchST(Of TKey, TValue).Size
 - uid: SymbolTable.SequentialSearchST`2
-  name: SequentialSearchST<Key, Value>
+  name: SequentialSearchST<TKey, TValue>
   href: api/SymbolTable.SequentialSearchST-2.html
   commentId: T:SymbolTable.SequentialSearchST`2
-  name.vb: SequentialSearchST(Of Key, Value)
-  fullName: SymbolTable.SequentialSearchST<Key, Value>
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value)
-  nameWithType: SequentialSearchST<Key, Value>
-  nameWithType.vb: SequentialSearchST(Of Key, Value)
+  name.vb: SequentialSearchST(Of TKey, TValue)
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue)
+  nameWithType: SequentialSearchST<TKey, TValue>
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue)
 - uid: SymbolTable.SequentialSearchST`2.#ctor
   name: SequentialSearchST()
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2__ctor
   commentId: M:SymbolTable.SequentialSearchST`2.#ctor
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.SequentialSearchST()
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).SequentialSearchST()
-  nameWithType: SequentialSearchST<Key, Value>.SequentialSearchST()
-  nameWithType.vb: SequentialSearchST(Of Key, Value).SequentialSearchST()
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.SequentialSearchST()
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).SequentialSearchST()
+  nameWithType: SequentialSearchST<TKey, TValue>.SequentialSearchST()
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).SequentialSearchST()
 - uid: SymbolTable.SequentialSearchST`2.#ctor*
   name: SequentialSearchST
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2__ctor_
   commentId: Overload:SymbolTable.SequentialSearchST`2.#ctor
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.SequentialSearchST
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).SequentialSearchST
-  nameWithType: SequentialSearchST<Key, Value>.SequentialSearchST
-  nameWithType.vb: SequentialSearchST(Of Key, Value).SequentialSearchST
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.SequentialSearchST
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).SequentialSearchST
+  nameWithType: SequentialSearchST<TKey, TValue>.SequentialSearchST
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).SequentialSearchST
 - uid: SymbolTable.SequentialSearchST`2.Contains(`0)
-  name: Contains(Key)
+  name: Contains(TKey)
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Contains__0_
   commentId: M:SymbolTable.SequentialSearchST`2.Contains(`0)
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Contains(Key)
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Contains(Key)
-  nameWithType: SequentialSearchST<Key, Value>.Contains(Key)
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Contains(Key)
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Contains(TKey)
+  nameWithType: SequentialSearchST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Contains(TKey)
 - uid: SymbolTable.SequentialSearchST`2.Contains*
   name: Contains
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Contains_
   commentId: Overload:SymbolTable.SequentialSearchST`2.Contains
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Contains
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Contains
-  nameWithType: SequentialSearchST<Key, Value>.Contains
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Contains
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Contains
+  nameWithType: SequentialSearchST<TKey, TValue>.Contains
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Contains
 - uid: SymbolTable.SequentialSearchST`2.Delete(`0)
-  name: Delete(Key)
+  name: Delete(TKey)
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Delete__0_
   commentId: M:SymbolTable.SequentialSearchST`2.Delete(`0)
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Delete(Key)
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Delete(Key)
-  nameWithType: SequentialSearchST<Key, Value>.Delete(Key)
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Delete(Key)
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Delete(TKey)
+  nameWithType: SequentialSearchST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Delete(TKey)
 - uid: SymbolTable.SequentialSearchST`2.Delete*
   name: Delete
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Delete_
   commentId: Overload:SymbolTable.SequentialSearchST`2.Delete
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Delete
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Delete
-  nameWithType: SequentialSearchST<Key, Value>.Delete
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Delete
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Delete
+  nameWithType: SequentialSearchST<TKey, TValue>.Delete
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Delete
 - uid: SymbolTable.SequentialSearchST`2.Get(`0)
-  name: Get(Key)
+  name: Get(TKey)
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Get__0_
   commentId: M:SymbolTable.SequentialSearchST`2.Get(`0)
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Get(Key)
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Get(Key)
-  nameWithType: SequentialSearchST<Key, Value>.Get(Key)
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Get(Key)
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Get(TKey)
+  nameWithType: SequentialSearchST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Get(TKey)
 - uid: SymbolTable.SequentialSearchST`2.Get*
   name: Get
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Get_
   commentId: Overload:SymbolTable.SequentialSearchST`2.Get
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Get
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Get
-  nameWithType: SequentialSearchST<Key, Value>.Get
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Get
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Get
+  nameWithType: SequentialSearchST<TKey, TValue>.Get
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Get
 - uid: SymbolTable.SequentialSearchST`2.IsEmpty
   name: IsEmpty()
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_IsEmpty
   commentId: M:SymbolTable.SequentialSearchST`2.IsEmpty
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.IsEmpty()
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).IsEmpty()
-  nameWithType: SequentialSearchST<Key, Value>.IsEmpty()
-  nameWithType.vb: SequentialSearchST(Of Key, Value).IsEmpty()
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).IsEmpty()
+  nameWithType: SequentialSearchST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).IsEmpty()
 - uid: SymbolTable.SequentialSearchST`2.IsEmpty*
   name: IsEmpty
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_IsEmpty_
   commentId: Overload:SymbolTable.SequentialSearchST`2.IsEmpty
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.IsEmpty
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).IsEmpty
-  nameWithType: SequentialSearchST<Key, Value>.IsEmpty
-  nameWithType.vb: SequentialSearchST(Of Key, Value).IsEmpty
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).IsEmpty
+  nameWithType: SequentialSearchST<TKey, TValue>.IsEmpty
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).IsEmpty
 - uid: SymbolTable.SequentialSearchST`2.Keys
   name: Keys()
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Keys
   commentId: M:SymbolTable.SequentialSearchST`2.Keys
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Keys()
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Keys()
-  nameWithType: SequentialSearchST<Key, Value>.Keys()
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Keys()
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Keys()
+  nameWithType: SequentialSearchST<TKey, TValue>.Keys()
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Keys()
 - uid: SymbolTable.SequentialSearchST`2.Keys*
   name: Keys
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Keys_
   commentId: Overload:SymbolTable.SequentialSearchST`2.Keys
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Keys
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Keys
-  nameWithType: SequentialSearchST<Key, Value>.Keys
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Keys
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Keys
+  nameWithType: SequentialSearchST<TKey, TValue>.Keys
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Keys
 - uid: SymbolTable.SequentialSearchST`2.Put(`0,`1)
-  name: Put(Key, Value)
+  name: Put(TKey, TValue)
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Put__0__1_
   commentId: M:SymbolTable.SequentialSearchST`2.Put(`0,`1)
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Put(Key, Value)
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Put(Key, Value)
-  nameWithType: SequentialSearchST<Key, Value>.Put(Key, Value)
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Put(Key, Value)
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: SequentialSearchST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Put(TKey, TValue)
 - uid: SymbolTable.SequentialSearchST`2.Put*
   name: Put
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Put_
   commentId: Overload:SymbolTable.SequentialSearchST`2.Put
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Put
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Put
-  nameWithType: SequentialSearchST<Key, Value>.Put
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Put
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Put
+  nameWithType: SequentialSearchST<TKey, TValue>.Put
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Put
 - uid: SymbolTable.SequentialSearchST`2.Size
   name: Size()
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Size
   commentId: M:SymbolTable.SequentialSearchST`2.Size
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Size()
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Size()
-  nameWithType: SequentialSearchST<Key, Value>.Size()
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Size()
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Size()
+  nameWithType: SequentialSearchST<TKey, TValue>.Size()
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Size()
 - uid: SymbolTable.SequentialSearchST`2.Size*
   name: Size
   href: api/SymbolTable.SequentialSearchST-2.html#SymbolTable_SequentialSearchST_2_Size_
   commentId: Overload:SymbolTable.SequentialSearchST`2.Size
   isSpec: "True"
-  fullName: SymbolTable.SequentialSearchST<Key, Value>.Size
-  fullName.vb: SymbolTable.SequentialSearchST(Of Key, Value).Size
-  nameWithType: SequentialSearchST<Key, Value>.Size
-  nameWithType.vb: SequentialSearchST(Of Key, Value).Size
+  fullName: SymbolTable.SequentialSearchST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Size
+  nameWithType: SequentialSearchST<TKey, TValue>.Size
+  nameWithType.vb: SequentialSearchST(Of TKey, TValue).Size
 - uid: SymbolTable.ST`2
-  name: ST<Key, Value>
+  name: ST<TKey, TValue>
   href: api/SymbolTable.ST-2.html
   commentId: T:SymbolTable.ST`2
-  name.vb: ST(Of Key, Value)
-  fullName: SymbolTable.ST<Key, Value>
-  fullName.vb: SymbolTable.ST(Of Key, Value)
-  nameWithType: ST<Key, Value>
-  nameWithType.vb: ST(Of Key, Value)
+  name.vb: ST(Of TKey, TValue)
+  fullName: SymbolTable.ST<TKey, TValue>
+  fullName.vb: SymbolTable.ST(Of TKey, TValue)
+  nameWithType: ST<TKey, TValue>
+  nameWithType.vb: ST(Of TKey, TValue)
 - uid: SymbolTable.ST`2.#ctor
   name: ST()
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2__ctor
   commentId: M:SymbolTable.ST`2.#ctor
-  fullName: SymbolTable.ST<Key, Value>.ST()
-  fullName.vb: SymbolTable.ST(Of Key, Value).ST()
-  nameWithType: ST<Key, Value>.ST()
-  nameWithType.vb: ST(Of Key, Value).ST()
+  fullName: SymbolTable.ST<TKey, TValue>.ST()
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).ST()
+  nameWithType: ST<TKey, TValue>.ST()
+  nameWithType.vb: ST(Of TKey, TValue).ST()
 - uid: SymbolTable.ST`2.#ctor*
   name: ST
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2__ctor_
   commentId: Overload:SymbolTable.ST`2.#ctor
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.ST
-  fullName.vb: SymbolTable.ST(Of Key, Value).ST
-  nameWithType: ST<Key, Value>.ST
-  nameWithType.vb: ST(Of Key, Value).ST
+  fullName: SymbolTable.ST<TKey, TValue>.ST
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).ST
+  nameWithType: ST<TKey, TValue>.ST
+  nameWithType.vb: ST(Of TKey, TValue).ST
 - uid: SymbolTable.ST`2.Contains(`0)
-  name: Contains(Key)
+  name: Contains(TKey)
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Contains__0_
   commentId: M:SymbolTable.ST`2.Contains(`0)
-  fullName: SymbolTable.ST<Key, Value>.Contains(Key)
-  fullName.vb: SymbolTable.ST(Of Key, Value).Contains(Key)
-  nameWithType: ST<Key, Value>.Contains(Key)
-  nameWithType.vb: ST(Of Key, Value).Contains(Key)
+  fullName: SymbolTable.ST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Contains(TKey)
+  nameWithType: ST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: ST(Of TKey, TValue).Contains(TKey)
 - uid: SymbolTable.ST`2.Contains*
   name: Contains
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Contains_
   commentId: Overload:SymbolTable.ST`2.Contains
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.Contains
-  fullName.vb: SymbolTable.ST(Of Key, Value).Contains
-  nameWithType: ST<Key, Value>.Contains
-  nameWithType.vb: ST(Of Key, Value).Contains
+  fullName: SymbolTable.ST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Contains
+  nameWithType: ST<TKey, TValue>.Contains
+  nameWithType.vb: ST(Of TKey, TValue).Contains
 - uid: SymbolTable.ST`2.Delete(`0)
-  name: Delete(Key)
+  name: Delete(TKey)
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Delete__0_
   commentId: M:SymbolTable.ST`2.Delete(`0)
-  fullName: SymbolTable.ST<Key, Value>.Delete(Key)
-  fullName.vb: SymbolTable.ST(Of Key, Value).Delete(Key)
-  nameWithType: ST<Key, Value>.Delete(Key)
-  nameWithType.vb: ST(Of Key, Value).Delete(Key)
+  fullName: SymbolTable.ST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Delete(TKey)
+  nameWithType: ST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: ST(Of TKey, TValue).Delete(TKey)
 - uid: SymbolTable.ST`2.Delete*
   name: Delete
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Delete_
   commentId: Overload:SymbolTable.ST`2.Delete
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.Delete
-  fullName.vb: SymbolTable.ST(Of Key, Value).Delete
-  nameWithType: ST<Key, Value>.Delete
-  nameWithType.vb: ST(Of Key, Value).Delete
+  fullName: SymbolTable.ST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Delete
+  nameWithType: ST<TKey, TValue>.Delete
+  nameWithType.vb: ST(Of TKey, TValue).Delete
 - uid: SymbolTable.ST`2.Get(`0)
-  name: Get(Key)
+  name: Get(TKey)
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Get__0_
   commentId: M:SymbolTable.ST`2.Get(`0)
-  fullName: SymbolTable.ST<Key, Value>.Get(Key)
-  fullName.vb: SymbolTable.ST(Of Key, Value).Get(Key)
-  nameWithType: ST<Key, Value>.Get(Key)
-  nameWithType.vb: ST(Of Key, Value).Get(Key)
+  fullName: SymbolTable.ST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Get(TKey)
+  nameWithType: ST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: ST(Of TKey, TValue).Get(TKey)
 - uid: SymbolTable.ST`2.Get*
   name: Get
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Get_
   commentId: Overload:SymbolTable.ST`2.Get
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.Get
-  fullName.vb: SymbolTable.ST(Of Key, Value).Get
-  nameWithType: ST<Key, Value>.Get
-  nameWithType.vb: ST(Of Key, Value).Get
+  fullName: SymbolTable.ST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Get
+  nameWithType: ST<TKey, TValue>.Get
+  nameWithType.vb: ST(Of TKey, TValue).Get
 - uid: SymbolTable.ST`2.GetEnumerator
   name: GetEnumerator()
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_GetEnumerator
   commentId: M:SymbolTable.ST`2.GetEnumerator
-  fullName: SymbolTable.ST<Key, Value>.GetEnumerator()
-  fullName.vb: SymbolTable.ST(Of Key, Value).GetEnumerator()
-  nameWithType: ST<Key, Value>.GetEnumerator()
-  nameWithType.vb: ST(Of Key, Value).GetEnumerator()
+  fullName: SymbolTable.ST<TKey, TValue>.GetEnumerator()
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).GetEnumerator()
+  nameWithType: ST<TKey, TValue>.GetEnumerator()
+  nameWithType.vb: ST(Of TKey, TValue).GetEnumerator()
 - uid: SymbolTable.ST`2.GetEnumerator*
   name: GetEnumerator
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_GetEnumerator_
   commentId: Overload:SymbolTable.ST`2.GetEnumerator
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.GetEnumerator
-  fullName.vb: SymbolTable.ST(Of Key, Value).GetEnumerator
-  nameWithType: ST<Key, Value>.GetEnumerator
-  nameWithType.vb: ST(Of Key, Value).GetEnumerator
+  fullName: SymbolTable.ST<TKey, TValue>.GetEnumerator
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).GetEnumerator
+  nameWithType: ST<TKey, TValue>.GetEnumerator
+  nameWithType.vb: ST(Of TKey, TValue).GetEnumerator
 - uid: SymbolTable.ST`2.IsEmpty
   name: IsEmpty()
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_IsEmpty
   commentId: M:SymbolTable.ST`2.IsEmpty
-  fullName: SymbolTable.ST<Key, Value>.IsEmpty()
-  fullName.vb: SymbolTable.ST(Of Key, Value).IsEmpty()
-  nameWithType: ST<Key, Value>.IsEmpty()
-  nameWithType.vb: ST(Of Key, Value).IsEmpty()
+  fullName: SymbolTable.ST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).IsEmpty()
+  nameWithType: ST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: ST(Of TKey, TValue).IsEmpty()
 - uid: SymbolTable.ST`2.IsEmpty*
   name: IsEmpty
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_IsEmpty_
   commentId: Overload:SymbolTable.ST`2.IsEmpty
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.IsEmpty
-  fullName.vb: SymbolTable.ST(Of Key, Value).IsEmpty
-  nameWithType: ST<Key, Value>.IsEmpty
-  nameWithType.vb: ST(Of Key, Value).IsEmpty
+  fullName: SymbolTable.ST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).IsEmpty
+  nameWithType: ST<TKey, TValue>.IsEmpty
+  nameWithType.vb: ST(Of TKey, TValue).IsEmpty
 - uid: SymbolTable.ST`2.Keys
   name: Keys()
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Keys
   commentId: M:SymbolTable.ST`2.Keys
-  fullName: SymbolTable.ST<Key, Value>.Keys()
-  fullName.vb: SymbolTable.ST(Of Key, Value).Keys()
-  nameWithType: ST<Key, Value>.Keys()
-  nameWithType.vb: ST(Of Key, Value).Keys()
+  fullName: SymbolTable.ST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Keys()
+  nameWithType: ST<TKey, TValue>.Keys()
+  nameWithType.vb: ST(Of TKey, TValue).Keys()
 - uid: SymbolTable.ST`2.Keys*
   name: Keys
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Keys_
   commentId: Overload:SymbolTable.ST`2.Keys
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.Keys
-  fullName.vb: SymbolTable.ST(Of Key, Value).Keys
-  nameWithType: ST<Key, Value>.Keys
-  nameWithType.vb: ST(Of Key, Value).Keys
+  fullName: SymbolTable.ST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Keys
+  nameWithType: ST<TKey, TValue>.Keys
+  nameWithType.vb: ST(Of TKey, TValue).Keys
 - uid: SymbolTable.ST`2.Put(`0,`1)
-  name: Put(Key, Value)
+  name: Put(TKey, TValue)
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Put__0__1_
   commentId: M:SymbolTable.ST`2.Put(`0,`1)
-  fullName: SymbolTable.ST<Key, Value>.Put(Key, Value)
-  fullName.vb: SymbolTable.ST(Of Key, Value).Put(Key, Value)
-  nameWithType: ST<Key, Value>.Put(Key, Value)
-  nameWithType.vb: ST(Of Key, Value).Put(Key, Value)
+  fullName: SymbolTable.ST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: ST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: ST(Of TKey, TValue).Put(TKey, TValue)
 - uid: SymbolTable.ST`2.Put*
   name: Put
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Put_
   commentId: Overload:SymbolTable.ST`2.Put
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.Put
-  fullName.vb: SymbolTable.ST(Of Key, Value).Put
-  nameWithType: ST<Key, Value>.Put
-  nameWithType.vb: ST(Of Key, Value).Put
+  fullName: SymbolTable.ST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Put
+  nameWithType: ST<TKey, TValue>.Put
+  nameWithType.vb: ST(Of TKey, TValue).Put
 - uid: SymbolTable.ST`2.Size
   name: Size()
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Size
   commentId: M:SymbolTable.ST`2.Size
-  fullName: SymbolTable.ST<Key, Value>.Size()
-  fullName.vb: SymbolTable.ST(Of Key, Value).Size()
-  nameWithType: ST<Key, Value>.Size()
-  nameWithType.vb: ST(Of Key, Value).Size()
+  fullName: SymbolTable.ST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Size()
+  nameWithType: ST<TKey, TValue>.Size()
+  nameWithType.vb: ST(Of TKey, TValue).Size()
 - uid: SymbolTable.ST`2.Size*
   name: Size
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_Size_
   commentId: Overload:SymbolTable.ST`2.Size
   isSpec: "True"
-  fullName: SymbolTable.ST<Key, Value>.Size
-  fullName.vb: SymbolTable.ST(Of Key, Value).Size
-  nameWithType: ST<Key, Value>.Size
-  nameWithType.vb: ST(Of Key, Value).Size
+  fullName: SymbolTable.ST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).Size
+  nameWithType: ST<TKey, TValue>.Size
+  nameWithType.vb: ST(Of TKey, TValue).Size
 - uid: SymbolTable.ST`2.System#Collections#IEnumerable#GetEnumerator
   name: IEnumerable.GetEnumerator()
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_System_Collections_IEnumerable_GetEnumerator
   commentId: M:SymbolTable.ST`2.System#Collections#IEnumerable#GetEnumerator
   name.vb: System.Collections.IEnumerable.GetEnumerator()
-  fullName: SymbolTable.ST<Key, Value>.System.Collections.IEnumerable.GetEnumerator()
-  fullName.vb: SymbolTable.ST(Of Key, Value).System.Collections.IEnumerable.GetEnumerator()
-  nameWithType: ST<Key, Value>.IEnumerable.GetEnumerator()
-  nameWithType.vb: ST(Of Key, Value).System.Collections.IEnumerable.GetEnumerator()
+  fullName: SymbolTable.ST<TKey, TValue>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: ST<TKey, TValue>.IEnumerable.GetEnumerator()
+  nameWithType.vb: ST(Of TKey, TValue).System.Collections.IEnumerable.GetEnumerator()
 - uid: SymbolTable.ST`2.System#Collections#IEnumerable#GetEnumerator*
   name: IEnumerable.GetEnumerator
   href: api/SymbolTable.ST-2.html#SymbolTable_ST_2_System_Collections_IEnumerable_GetEnumerator_
   commentId: Overload:SymbolTable.ST`2.System#Collections#IEnumerable#GetEnumerator
   isSpec: "True"
   name.vb: System.Collections.IEnumerable.GetEnumerator
-  fullName: SymbolTable.ST<Key, Value>.System.Collections.IEnumerable.GetEnumerator
-  fullName.vb: SymbolTable.ST(Of Key, Value).System.Collections.IEnumerable.GetEnumerator
-  nameWithType: ST<Key, Value>.IEnumerable.GetEnumerator
-  nameWithType.vb: ST(Of Key, Value).System.Collections.IEnumerable.GetEnumerator
+  fullName: SymbolTable.ST<TKey, TValue>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: SymbolTable.ST(Of TKey, TValue).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ST<TKey, TValue>.IEnumerable.GetEnumerator
+  nameWithType.vb: ST(Of TKey, TValue).System.Collections.IEnumerable.GetEnumerator
 - uid: UnionFind
   name: UnionFind
   href: api/UnionFind.html
