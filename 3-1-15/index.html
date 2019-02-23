@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档 | 《算法（第四版）》C# 题解</title>
+        <title>3.1.15 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -134,75 +134,28 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2018</h4>
-        
-        <p class="post-title"><span>2018年9月9日</span><a href="/2-4-20/">2.4.20</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年9月9日</span><a href="/2-4-19/">2.4.19</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年9月9日</span><a href="/2-4-18/">2.4.18</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年9月9日</span><a href="/2-4-17/">2.4.17</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年9月8日</span><a href="/2-4-16/">2.4.16</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年8月21日</span><a href="/2-4-15/">2.4.15</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年8月20日</span><a href="/2-4-14/">2.4.14</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年8月19日</span><a href="/2-4-13/">2.4.13</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年8月18日</span><a href="/2-4-12/">2.4.12</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年8月18日</span><a href="/2-4-11/">2.4.11</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.1.15
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.1.15</h1>
+			<p>上次更新：2019-02-23</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.15<br>假设在一个 BinarySearchST 的用例程序中，查找操作的次数是插入操作的 1000 倍。<br>当分别进行 10^3、10^6 和 10^9 次查找时，请估计插入操作在总耗时中的比例。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>假设先全部 <code>Put()</code>，再进行查找操作。<br>即分别进行 $ 1 $, $ 10 ^ 3 $, $ 10 ^ 6 $ 次插入<br>$ N = 1 $ 时，可以直接得出比例 $ 0.1 \% $。<br>$ N = 10 ^ 3 $ 时，<br>插入耗时 $ =  1 + 2 + … + 10 ^ 3 = 500500 $，<br>查询耗时 $ = 10 ^ 6 * \lg(10 ^ 3) = 9965784 $，<br>比例为 $ 4.782 \% $。<br>$ N = 10 ^ 6 $ 时<br>插入耗时 $ = 1 + 2 + … + 10 ^ 6 = 500000500000 $，<br>查询耗时 $ = 10 ^ 9 * \lg(10 ^ 6) = 19931568569 $，<br>比例为 $ 96.17 \% ​$。</p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -210,10 +163,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/page/7/">上一页</a>
+		<a href="/3-1-14/">上一题</a>
 		
-		
-		<a href="/archives/page/9/">下一页</a>
 		
 	</div>
 	
@@ -261,7 +212,24 @@ function dismissSearchResultModal() {
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-121852990-1', 'auto');
         ga('send', 'pageview');
-        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
         
         
     </body>
