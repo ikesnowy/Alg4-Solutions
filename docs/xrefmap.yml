@@ -8890,6 +8890,22 @@ references:
   isSpec: "True"
   fullName: SymbolTable.FrequencyCounter.MostFrequentlyWord
   nameWithType: FrequencyCounter.MostFrequentlyWord
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWords(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32})
+  name: MostFrequentlyWords(String, Int32, IST<String, Int32>)
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWords_System_String_System_Int32_SymbolTable_IST_System_String_System_Int32__
+  commentId: M:SymbolTable.FrequencyCounter.MostFrequentlyWords(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32})
+  name.vb: MostFrequentlyWords(String, Int32, IST(Of String, Int32))
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWords(System.String, System.Int32, SymbolTable.IST<System.String, System.Int32>)
+  fullName.vb: SymbolTable.FrequencyCounter.MostFrequentlyWords(System.String, System.Int32, SymbolTable.IST(Of System.String, System.Int32))
+  nameWithType: FrequencyCounter.MostFrequentlyWords(String, Int32, IST<String, Int32>)
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWords(String, Int32, IST(Of String, Int32))
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWords*
+  name: MostFrequentlyWords
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWords_
+  commentId: Overload:SymbolTable.FrequencyCounter.MostFrequentlyWords
+  isSpec: "True"
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWords
+  nameWithType: FrequencyCounter.MostFrequentlyWords
 - uid: SymbolTable.IOrderedST`2
   name: IOrderedST<TKey, TValue>
   href: api/SymbolTable.IOrderedST-2.html

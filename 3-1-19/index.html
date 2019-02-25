@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>《算法（第四版）》C# 题解</title>
+        <title>3.1.19 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -29,7 +29,7 @@
     <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -77,7 +77,7 @@
       <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -134,31 +134,46 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="PostList">
-	<h2 class="center">最近添加</h2>
-	<div class="post-list">
-		
-		<p class="post-title"><a href="/2-3-25/">1. 2.3.25</a></p>
-		
-		<p class="post-title"><a href="/2-3-24/">2. 2.3.24</a></p>
-		
-		<p class="post-title"><a href="/2-3-23/">3. 2.3.23</a></p>
-		
-		<p class="post-title"><a href="/2-3-22/">4. 2.3.22</a></p>
-		
-		<p class="post-title"><a href="/2-3-21/">5. 2.3.21</a></p>
-		
-		<p class="post-title"><a href="/2-3-20/">6. 2.3.20</a></p>
-		
-		<p class="post-title"><a href="/2-3-19/">7. 2.3.19</a></p>
-		
-		<p class="post-title"><a href="/2-3-18/">8. 2.3.18</a></p>
-		
-		<p class="post-title"><a href="/2-3-17/">9. 2.3.17</a></p>
-		
-		<p class="post-title"><a href="/2-3-16/">10. 2.3.16</a></p>
-		
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.1.19
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.1.19</h1>
+			<p>上次更新：2019-02-25</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.19<br>修改 FrequencyCounter，打印出现频率最高的所有单词，而非之一。<br>提示：请用 Queue。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>将频率和当前最大频率相同的单词都放到一个队列里即可。</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">string</span> max <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+Queue<span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Queue</span><span class="token operator">&lt;</span><span class="token keyword">string</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+st<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">string</span> s <span class="token keyword">in</span> st<span class="token punctuation">.</span><span class="token function">Keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>st<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">></span> st<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>max<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        max <span class="token operator">=</span> s<span class="token punctuation">;</span>
+        queue<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        queue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>st<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">==</span> st<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>max<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        queue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/SymbolTable.html">SymbolTable 库</a></p>
+
+		</div>
 	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -166,10 +181,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/page/10/">上一页</a>
+		<a href="/3-1-18/">上一题</a>
 		
-		
-		<a href="/page/12/">下一页</a>
 		
 	</div>
 	
