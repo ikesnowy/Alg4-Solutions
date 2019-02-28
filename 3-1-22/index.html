@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档 | 《算法（第四版）》C# 题解</title>
+        <title>3.1.22 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -134,75 +134,53 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2018</h4>
-        
-        <p class="post-title"><span>2018年6月30日</span><a href="/2-1-5/">2.1.5</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月30日</span><a href="/2-1-4/">2.1.4</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月30日</span><a href="/2-1-3/">2.1.3</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月30日</span><a href="/2-1-2/">2.1.2</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月30日</span><a href="/2-1-1/">2.1.1</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月28日</span><a href="/1-5-26/">1.5.26</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月28日</span><a href="/1-5-25/">1.5.25</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月28日</span><a href="/1-5-24/">1.5.24</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月28日</span><a href="/1-5-23/">1.5.23</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月28日</span><a href="/1-5-22/">1.5.22</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.1.22
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.1.22</h1>
+			<p>上次更新：2019-02-28</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.22<br>自组织查找。<br>自组织查找指的是一种能够将数组元素重新排序<br>使得被访问频率较高的元素更容易被找到的查找算法。<br>请修改你为习题 3.1.2 给出的答案，在每次查找命中时：<br>将被找到的键值对移动到数组的开头，将所有中间的键值对向右移动一格。<br>这个启发式的过程被称为前移编码。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对 <code>Get()</code> 做修改，得到 <code>MoveToFrontArrayST</code>。</p>
+<pre class="line-numbers language-csahrp"><code class="language-csahrp">public TValue Get(TKey key)
+{
+    int i;
+    for (i = 0; i < this.n; i++)
+        if (this.keys[i].Equals(key))
+            break;
+
+    if (i == this.n)
+        return default(TValue);
+
+    TKey toFrontKey = this.keys[i];
+    TValue toFrontValue = this.values[i];
+
+    for (int j = i; j > 0; j--)
+        this.keys[j] = this.keys[j - 1];
+    for (int j = i; j > 0; j--)
+        this.values[j] = this.values[j - 1];
+
+    this.keys[0] = toFrontKey;
+    this.values[0] = toFrontValue;
+
+    return this.values[0];
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/SymbolTable.html">SymbolTable 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -210,10 +188,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/page/19/">上一页</a>
+		<a href="/3-1-21/">上一题</a>
 		
-		
-		<a href="/archives/page/21/">下一页</a>
 		
 	</div>
 	
