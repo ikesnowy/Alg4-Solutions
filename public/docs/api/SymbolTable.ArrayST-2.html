@@ -13,10 +13,10 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ArrayST&lt;Key, Value&gt; 类
+    <title>ArrayST&lt;TKey, TValue&gt; 类
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ArrayST&lt;Key, Value&gt; 类
+    <meta name="title" content="ArrayST&lt;TKey, TValue&gt; 类
    ">
     <meta name="generator" content="docfx 2.40.10.0">
     
@@ -428,25 +428,34 @@
                         
                         <ul class="nav level2">
                           <li class="active">
-                            <a href="SymbolTable.ArrayST-2.html" title="ArrayST&lt;Key, Value&gt;" class="active">ArrayST&lt;Key, Value&gt;</a>
+                            <a href="SymbolTable.ArrayST-2.html" title="ArrayST&lt;TKey, TValue&gt;" class="active">ArrayST&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.BinarySearchST-2.html" title="BinarySearchST&lt;TKey, TValue&gt;" class="">BinarySearchST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.FrequencyCounter.html" title="FrequencyCounter" class="">FrequencyCounter</a>
                           </li>
                           <li class="">
-                            <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;Key, Value&gt;" class="">IOrderedST&lt;Key, Value&gt;</a>
+                            <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;TKey, TValue&gt;" class="">IOrderedST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
-                            <a href="SymbolTable.IST-2.html" title="IST&lt;Key, Value&gt;" class="">IST&lt;Key, Value&gt;</a>
+                            <a href="SymbolTable.IST-2.html" title="IST&lt;TKey, TValue&gt;" class="">IST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
-                            <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;Key, Value&gt;" class="">OrderedSequentialSearchST&lt;Key, Value&gt;</a>
+                            <a href="SymbolTable.Item-2.html" title="Item&lt;TKey, TValue&gt;" class="">Item&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
-                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;Key, Value&gt;" class="">SequentialSearchST&lt;Key, Value&gt;</a>
+                            <a href="SymbolTable.ItemBinarySearchST-2.html" title="ItemBinarySearchST&lt;TKey, TValue&gt;" class="">ItemBinarySearchST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
-                            <a href="SymbolTable.ST-2.html" title="ST&lt;Key, Value&gt;" class="">ST&lt;Key, Value&gt;</a>
+                            <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;TKey, TValue&gt;" class="">OrderedSequentialSearchST&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;TKey, TValue&gt;" class="">SequentialSearchST&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.ST-2.html" title="ST&lt;TKey, TValue&gt;" class="">ST&lt;TKey, TValue&gt;</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -498,7 +507,7 @@
             <article class="content wrap" id="_content" data-uid="SymbolTable.ArrayST`2">
   
   
-  <h1 id="SymbolTable_ArrayST_2" data-uid="SymbolTable.ArrayST`2" class="text-break">ArrayST&lt;Key, Value&gt; 类
+  <h1 id="SymbolTable_ArrayST_2" data-uid="SymbolTable.ArrayST`2" class="text-break">ArrayST&lt;TKey, TValue&gt; 类
   </h1>
   <div class="markdown level0 summary"><p>符号表（数组实现）。</p>
 </div>
@@ -506,11 +515,11 @@
   <div class="inheritance">
     <h5>&#32487;&#25215;</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ArrayST&lt;Key, Value&gt;</span></div>
+    <div class="level1"><span class="xref">ArrayST&lt;TKey, TValue&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>&#23454;&#29616;</h5>
-    <div><a class="xref" href="SymbolTable.IST-2.html">IST</a>&lt;Key, Value&gt;</div>
+    <div><a class="xref" href="SymbolTable.IST-2.html">IST</a>&lt;TKey, TValue&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>&#32487;&#25215;&#25104;&#21592;</h5>
@@ -540,7 +549,7 @@
   <h6><strong>&#31243;&#24207;&#38598;</strong>: SymbolTable.dll</h6>
   <h5 id="SymbolTable_ArrayST_2_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ArrayST&lt;Key, Value&gt; : IST&lt;Key, Value&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class ArrayST&lt;TKey, TValue&gt; : IST&lt;TKey, TValue&gt;</code></pre>
   </div>
   <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -552,12 +561,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">Key</span></td>
+        <td><span class="parametername">TKey</span></td>
         <td><p>键类型。</p>
 </td>
       </tr>
       <tr>
-        <td><span class="parametername">Value</span></td>
+        <td><span class="parametername">TValue</span></td>
         <td><p>值类型。</p>
 </td>
       </tr>
@@ -613,13 +622,13 @@
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/ArrayST.cs/#L49">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_ArrayST_2_Contains_" data-uid="SymbolTable.ArrayST`2.Contains*"></a>
-  <h4 id="SymbolTable_ArrayST_2_Contains__0_" data-uid="SymbolTable.ArrayST`2.Contains(`0)">Contains(Key)</h4>
-  <div class="markdown level1 summary"><p>检查键 <code data-dev-comment-type="typeparamref" class="typeparamref">Key</code> 是否存在。</p>
+  <h4 id="SymbolTable_ArrayST_2_Contains__0_" data-uid="SymbolTable.ArrayST`2.Contains(`0)">Contains(TKey)</h4>
+  <div class="markdown level1 summary"><p>检查键 <code data-dev-comment-type="typeparamref" class="typeparamref">TKey</code> 是否存在。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(Key key)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Contains(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -632,7 +641,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Key</span></td>
+        <td><span class="xref">TKey</span></td>
         <td><span class="parametername">key</span></td>
         <td><p>需要检查是否存在的键。</p>
 </td>
@@ -659,13 +668,13 @@
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/ArrayST.cs/#L55">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_ArrayST_2_Delete_" data-uid="SymbolTable.ArrayST`2.Delete*"></a>
-  <h4 id="SymbolTable_ArrayST_2_Delete__0_" data-uid="SymbolTable.ArrayST`2.Delete(`0)">Delete(Key)</h4>
+  <h4 id="SymbolTable_ArrayST_2_Delete__0_" data-uid="SymbolTable.ArrayST`2.Delete(`0)">Delete(TKey)</h4>
   <div class="markdown level1 summary"><p>删除键 <code data-dev-comment-type="paramref" class="paramref">key</code> 及对应的值。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Delete(Key key)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Delete(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -678,7 +687,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Key</span></td>
+        <td><span class="xref">TKey</span></td>
         <td><span class="parametername">key</span></td>
         <td><p>需要删除的键。</p>
 </td>
@@ -689,13 +698,13 @@
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/ArrayST.cs/#L78">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_ArrayST_2_Get_" data-uid="SymbolTable.ArrayST`2.Get*"></a>
-  <h4 id="SymbolTable_ArrayST_2_Get__0_" data-uid="SymbolTable.ArrayST`2.Get(`0)">Get(Key)</h4>
+  <h4 id="SymbolTable_ArrayST_2_Get__0_" data-uid="SymbolTable.ArrayST`2.Get(`0)">Get(TKey)</h4>
   <div class="markdown level1 summary"><p>获取键对应的值，若键不存在则返回 null。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Value Get(Key key)</code></pre>
+    <pre><code class="lang-csharp hljs">public TValue Get(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -708,7 +717,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Key</span></td>
+        <td><span class="xref">TKey</span></td>
         <td><span class="parametername">key</span></td>
         <td><p>需要查找的键。</p>
 </td>
@@ -725,7 +734,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Value</span></td>
+        <td><span class="xref">TValue</span></td>
         <td><p>找到的值，不存在则返回 <code>default(Value)</code></p>
 </td>
       </tr>
@@ -769,7 +778,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Key&gt; Keys()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TKey&gt; Keys()</code></pre>
   </div>
   <h5 class="returns">&#36820;&#22238;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -781,7 +790,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;Key&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TKey&gt;</td>
         <td><p>全部键的集合。</p>
 </td>
       </tr>
@@ -791,13 +800,13 @@
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/ArrayST.cs/#L108">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_ArrayST_2_Put_" data-uid="SymbolTable.ArrayST`2.Put*"></a>
-  <h4 id="SymbolTable_ArrayST_2_Put__0__1_" data-uid="SymbolTable.ArrayST`2.Put(`0,`1)">Put(Key, Value)</h4>
+  <h4 id="SymbolTable_ArrayST_2_Put__0__1_" data-uid="SymbolTable.ArrayST`2.Put(`0,`1)">Put(TKey, TValue)</h4>
   <div class="markdown level1 summary"><p>向符号表中插入新元素，若键存在将被替换。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Put(Key key, Value value)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Put(TKey key, TValue value)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -810,13 +819,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Key</span></td>
+        <td><span class="xref">TKey</span></td>
         <td><span class="parametername">key</span></td>
         <td><p>键。</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Value</span></td>
+        <td><span class="xref">TValue</span></td>
         <td><span class="parametername">value</span></td>
         <td><p>值。</p>
 </td>
@@ -853,7 +862,7 @@
   </table>
   <h3 id="implements">&#23454;&#29616;</h3>
   <div>
-      <a class="xref" href="SymbolTable.IST-2.html">IST&lt;Key, Value&gt;</a>
+      <a class="xref" href="SymbolTable.IST-2.html">IST&lt;TKey, TValue&gt;</a>
   </div>
 </article>
           </div>

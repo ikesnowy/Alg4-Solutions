@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://alg4.ikesnowy.com/"/>
-  <updated>2019-02-20T12:35:12.662Z</updated>
+  <updated>2019-02-28T11:42:39.617Z</updated>
   <id>http://alg4.ikesnowy.com/</id>
   
   <author>
@@ -15,6 +15,249 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3.1.21</title>
+    <link href="http://alg4.ikesnowy.com/3-1-21/"/>
+    <id>http://alg4.ikesnowy.com/3-1-21/</id>
+    <published>2019-02-28T11:39:05.000Z</published>
+    <updated>2019-02-28T11:42:39.617Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.21&lt;br&gt;内存使用。&lt;br&gt;基于 1.4 节中的假设，&lt;br&gt;对于 N 对键值比较 BinarySearchST 和
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.20</title>
+    <link href="http://alg4.ikesnowy.com/3-1-20/"/>
+    <id>http://alg4.ikesnowy.com/3-1-20/</id>
+    <published>2019-02-26T12:52:55.000Z</published>
+    <updated>2019-02-27T12:39:46.905Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.20&lt;br&gt;补全命题 B 的证明（证明 N 的一般情况）。&lt;br&gt;提示：先证明 C(N) 的单调性，即对于所有的
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.19</title>
+    <link href="http://alg4.ikesnowy.com/3-1-19/"/>
+    <id>http://alg4.ikesnowy.com/3-1-19/</id>
+    <published>2019-02-25T08:30:42.000Z</published>
+    <updated>2019-02-25T09:54:41.537Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.19&lt;br&gt;修改 FrequencyCounter，打印出现频率最高的所有单词，而非之一。&lt;br&gt;提示：请用
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.18</title>
+    <link href="http://alg4.ikesnowy.com/3-1-18/"/>
+    <id>http://alg4.ikesnowy.com/3-1-18/</id>
+    <published>2019-02-24T12:36:02.000Z</published>
+    <updated>2019-02-24T12:41:21.692Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.18&lt;br&gt;证明 BinarySearchST 中 rank() 方法的实现的正确性。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.16</title>
+    <link href="http://alg4.ikesnowy.com/3-1-16/"/>
+    <id>http://alg4.ikesnowy.com/3-1-16/</id>
+    <published>2019-02-24T10:48:38.000Z</published>
+    <updated>2019-02-24T10:51:44.063Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.16&lt;br&gt;为 BinarySearchST 实现 delete() 方法。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.17</title>
+    <link href="http://alg4.ikesnowy.com/3-1-17/"/>
+    <id>http://alg4.ikesnowy.com/3-1-17/</id>
+    <published>2019-02-24T10:48:24.000Z</published>
+    <updated>2019-02-24T12:36:04.256Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.17&lt;br&gt;为 BinarySearchST 实现 floor() 方法。&lt;/p&gt;
+&lt;h1 id=&quot;解答&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.15</title>
+    <link href="http://alg4.ikesnowy.com/3-1-15/"/>
+    <id>http://alg4.ikesnowy.com/3-1-15/</id>
+    <published>2019-02-23T13:00:45.000Z</published>
+    <updated>2019-02-23T13:04:38.526Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.15&lt;br&gt;假设在一个 BinarySearchST 的用例程序中，查找操作的次数是插入操作的 1000 倍。&lt;br&gt;当分别进行
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.14</title>
+    <link href="http://alg4.ikesnowy.com/3-1-14/"/>
+    <id>http://alg4.ikesnowy.com/3-1-14/</id>
+    <published>2019-02-23T12:31:15.000Z</published>
+    <updated>2019-02-23T12:33:29.772Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.14&lt;br&gt;对于一个会随机混合进行 10^6 次 put() 和 10^3 次 get()
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.13</title>
+    <link href="http://alg4.ikesnowy.com/3-1-13/"/>
+    <id>http://alg4.ikesnowy.com/3-1-13/</id>
+    <published>2019-02-23T11:55:28.000Z</published>
+    <updated>2019-02-23T12:34:33.165Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.13&lt;br&gt;对于一个会随机混合进行 10^3 次 put() 和 10^6 次 get()
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.1.12</title>
+    <link href="http://alg4.ikesnowy.com/3-1-12/"/>
+    <id>http://alg4.ikesnowy.com/3-1-12/</id>
+    <published>2019-02-23T10:38:29.000Z</published>
+    <updated>2019-02-23T11:11:32.840Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;3.1.12&lt;br&gt;修改 BinarySearchST，用一个 Item
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Searching" scheme="http://alg4.ikesnowy.com/tags/Searching/"/>
+    
+  </entry>
   
   <entry>
     <title>3.1.11</title>
@@ -5220,7 +5463,7 @@
     <link href="http://alg4.ikesnowy.com/1-4-40/"/>
     <id>http://alg4.ikesnowy.com/1-4-40/</id>
     <published>2018-05-31T10:36:18.000Z</published>
-    <updated>2019-02-11T11:03:14.500Z</updated>
+    <updated>2019-02-27T06:09:37.901Z</updated>
     
     <summary type="html">
     
