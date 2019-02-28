@@ -9689,6 +9689,159 @@ references:
   fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Size
   nameWithType: ItemBinarySearchST<TKey, TValue>.Size
   nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Size
+- uid: SymbolTable.MoveToFrontArrayST`2
+  name: MoveToFrontArrayST<TKey, TValue>
+  href: api/SymbolTable.MoveToFrontArrayST-2.html
+  commentId: T:SymbolTable.MoveToFrontArrayST`2
+  name.vb: MoveToFrontArrayST(Of TKey, TValue)
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue)
+  nameWithType: MoveToFrontArrayST<TKey, TValue>
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue)
+- uid: SymbolTable.MoveToFrontArrayST`2.#ctor
+  name: MoveToFrontArrayST()
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2__ctor
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.#ctor
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.MoveToFrontArrayST()
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).MoveToFrontArrayST()
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.MoveToFrontArrayST()
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).MoveToFrontArrayST()
+- uid: SymbolTable.MoveToFrontArrayST`2.#ctor(System.Int32)
+  name: MoveToFrontArrayST(Int32)
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2__ctor_System_Int32_
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.#ctor(System.Int32)
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.MoveToFrontArrayST(System.Int32)
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).MoveToFrontArrayST(System.Int32)
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.MoveToFrontArrayST(Int32)
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).MoveToFrontArrayST(Int32)
+- uid: SymbolTable.MoveToFrontArrayST`2.#ctor*
+  name: MoveToFrontArrayST
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2__ctor_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.MoveToFrontArrayST
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).MoveToFrontArrayST
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.MoveToFrontArrayST
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).MoveToFrontArrayST
+- uid: SymbolTable.MoveToFrontArrayST`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Contains__0_
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.Contains(`0)
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Contains(TKey)
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Contains(TKey)
+- uid: SymbolTable.MoveToFrontArrayST`2.Contains*
+  name: Contains
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Contains_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Contains
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Contains
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Contains
+- uid: SymbolTable.MoveToFrontArrayST`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Delete__0_
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.Delete(`0)
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Delete(TKey)
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Delete(TKey)
+- uid: SymbolTable.MoveToFrontArrayST`2.Delete*
+  name: Delete
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Delete_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Delete
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Delete
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Delete
+- uid: SymbolTable.MoveToFrontArrayST`2.Get(`0)
+  name: Get(TKey)
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Get__0_
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.Get(`0)
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Get(TKey)
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Get(TKey)
+- uid: SymbolTable.MoveToFrontArrayST`2.Get*
+  name: Get
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Get_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Get
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Get
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Get
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Get
+- uid: SymbolTable.MoveToFrontArrayST`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_IsEmpty
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.IsEmpty
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).IsEmpty()
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).IsEmpty()
+- uid: SymbolTable.MoveToFrontArrayST`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_IsEmpty_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).IsEmpty
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.IsEmpty
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).IsEmpty
+- uid: SymbolTable.MoveToFrontArrayST`2.Keys
+  name: Keys()
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Keys
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.Keys
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Keys()
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Keys()
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Keys()
+- uid: SymbolTable.MoveToFrontArrayST`2.Keys*
+  name: Keys
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Keys_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Keys
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Keys
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Keys
+- uid: SymbolTable.MoveToFrontArrayST`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Put__0__1_
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.Put(`0,`1)
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Put(TKey, TValue)
+- uid: SymbolTable.MoveToFrontArrayST`2.Put*
+  name: Put
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Put_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Put
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Put
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Put
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Put
+- uid: SymbolTable.MoveToFrontArrayST`2.Size
+  name: Size()
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Size
+  commentId: M:SymbolTable.MoveToFrontArrayST`2.Size
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Size()
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Size()
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Size()
+- uid: SymbolTable.MoveToFrontArrayST`2.Size*
+  name: Size
+  href: api/SymbolTable.MoveToFrontArrayST-2.html#SymbolTable_MoveToFrontArrayST_2_Size_
+  commentId: Overload:SymbolTable.MoveToFrontArrayST`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.MoveToFrontArrayST<TKey, TValue>.Size
+  fullName.vb: SymbolTable.MoveToFrontArrayST(Of TKey, TValue).Size
+  nameWithType: MoveToFrontArrayST<TKey, TValue>.Size
+  nameWithType.vb: MoveToFrontArrayST(Of TKey, TValue).Size
 - uid: SymbolTable.OrderedSequentialSearchST`2
   name: OrderedSequentialSearchST<TKey, TValue>
   href: api/SymbolTable.OrderedSequentialSearchST-2.html
