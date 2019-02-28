@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档: 2019 | 《算法（第四版）》C# 题解</title>
+        <title>3.1.21 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -134,75 +134,28 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2019</h4>
-        
-        <p class="post-title"><span>2019年2月20日</span><a href="/3-1-11/">3.1.11</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月19日</span><a href="/3-1-10/">3.1.10</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月19日</span><a href="/3-1-9/">3.1.9</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月17日</span><a href="/3-1-8/">3.1.8</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月17日</span><a href="/3-1-7/">3.1.7</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月17日</span><a href="/3-1-6/">3.1.6</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月15日</span><a href="/3-1-5/">3.1.5</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月13日</span><a href="/3-1-4/">3.1.4</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月12日</span><a href="/3-1-3/">3.1.3</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月12日</span><a href="/3-1-2/">3.1.2</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.1.21
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.1.21</h1>
+			<p>上次更新：2019-02-28</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.21<br>内存使用。<br>基于 1.4 节中的假设，<br>对于 N 对键值比较 BinarySearchST 和 SequentialSearchST 的内存使用情况。<br>不需要记录键值本身占用的内存，只统计它们的引用。<br>对于BinarySearchST，假设数组大小可以动态调整，<br>数组中被占用的空间比例为 25%~100%。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p><code>BinarySearchST</code><br>包含一个键数组和一个值数组，以及一个 <code>int</code> 变量。<br>数组长度变化范围为 N~4N ，故总大小：<br>从 2 × (24 + 8N) +4 = 52 + 16N 字节 （100 %），<br>到 2 × (24 + 32N) +4 = 52 + 64N 字节（25 %）之间变动。<br><code>SequentialSearchST</code><br>包含 N 个结点以及一个 <code>int</code> 变量<br>(16 + 8 + 8 + 8)N + 4 = 4 + 40N 字节</p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -210,10 +163,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/2019/">上一页</a>
+		<a href="/3-1-20/">上一题</a>
 		
-		
-		<a href="/archives/2019/page/3/">下一页</a>
 		
 	</div>
 	
