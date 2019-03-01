@@ -145,32 +145,32 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.22</h1>
-			<p>上次更新：2019-02-28</p>
+			<p>上次更新：2019-03-01</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.22<br>自组织查找。<br>自组织查找指的是一种能够将数组元素重新排序<br>使得被访问频率较高的元素更容易被找到的查找算法。<br>请修改你为习题 3.1.2 给出的答案，在每次查找命中时：<br>将被找到的键值对移动到数组的开头，将所有中间的键值对向右移动一格。<br>这个启发式的过程被称为前移编码。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对 <code>Get()</code> 做修改，得到 <code>MoveToFrontArrayST</code>。</p>
-<pre class="line-numbers language-csahrp"><code class="language-csahrp">public TValue Get(TKey key)
-{
-    int i;
-    for (i = 0; i < this.n; i++)
-        if (this.keys[i].Equals(key))
-            break;
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> TValue <span class="token function">Get</span><span class="token punctuation">(</span>TKey key<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
 
-    if (i == this.n)
-        return default(TValue);
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token keyword">default</span><span class="token punctuation">(</span>TValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    TKey toFrontKey = this.keys[i];
-    TValue toFrontValue = this.values[i];
+    TKey toFrontKey <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    TValue toFrontValue <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    for (int j = i; j > 0; j--)
-        this.keys[j] = this.keys[j - 1];
-    for (int j = i; j > 0; j--)
-        this.values[j] = this.values[j - 1];
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    this.keys[0] = toFrontKey;
-    this.values[0] = toFrontValue;
+    <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> toFrontKey<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> toFrontValue<span class="token punctuation">;</span>
 
-    return this.values[0];
-}
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/SymbolTable.html">SymbolTable 库</a></p>
 
