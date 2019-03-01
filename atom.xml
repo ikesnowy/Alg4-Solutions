@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://alg4.ikesnowy.com/"/>
-  <updated>2019-03-01T09:00:48.579Z</updated>
+  <updated>2019-02-28T13:00:27.930Z</updated>
   <id>http://alg4.ikesnowy.com/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>如何：查找 API 说明</title>
-    <link href="http://alg4.ikesnowy.com/%E5%A6%82%E4%BD%95%EF%BC%9A%E6%9F%A5%E6%89%BE-API-%E8%AF%B4%E6%98%8E/"/>
-    <id>http://alg4.ikesnowy.com/如何：查找-API-说明/</id>
-    <published>2019-03-01T08:39:10.000Z</published>
-    <updated>2019-03-01T09:00:48.579Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;有时候题解中会使用到自定义的类，它们一般都位于章节对应的类库中，本文将介绍如何查阅 API 并获得源代码。&lt;/p&gt;
-&lt;p&gt;这里以 3.1.22 为例，题解见 &lt;a href=&quot;/3-1-22/&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="API" scheme="http://alg4.ikesnowy.com/tags/API/"/>
-    
-  </entry>
   
   <entry>
     <title>3.1.23</title>
@@ -5653,55 +5628,6 @@
   </entry>
   
   <entry>
-    <title>如何：提交反馈</title>
-    <link href="http://alg4.ikesnowy.com/%E5%A6%82%E4%BD%95%EF%BC%9A%E6%8F%90%E4%BA%A4%E5%8F%8D%E9%A6%88/"/>
-    <id>http://alg4.ikesnowy.com/如何：提交反馈/</id>
-    <published>2018-05-31T08:58:48.000Z</published>
-    <updated>2019-02-11T11:03:15.883Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;如果你在使用本站的过程中发现了错误，或者有更好的改进和建议，欢迎向我提交反馈。这里提供了两种提交反馈的方式。&lt;/p&gt;
-&lt;h2 id=&quot;GitHub-Issue（推荐）&quot;&gt;&lt;a href=&quot;#GitHub-Issue（推荐）&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="反馈" scheme="http://alg4.ikesnowy.com/tags/%E5%8F%8D%E9%A6%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何：运行题解代码</title>
-    <link href="http://alg4.ikesnowy.com/%E5%A6%82%E4%BD%95%EF%BC%9A%E8%BF%90%E8%A1%8C%E9%A2%98%E8%A7%A3%E4%BB%A3%E7%A0%81/"/>
-    <id>http://alg4.ikesnowy.com/如何：运行题解代码/</id>
-    <published>2018-05-31T04:38:40.000Z</published>
-    <updated>2019-03-01T08:21:57.581Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;本文将介绍如何下载题解项目并运行代码。&lt;br&gt;在开始之前，请确保你的电脑上已经安装了 Visual Studio 2015（及以上版本）并启用了 .NET Framework 4.7。&lt;br&gt;下载 Visual Studio：&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="运行代码" scheme="http://alg4.ikesnowy.com/tags/%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
     <title>1.4.35</title>
     <link href="http://alg4.ikesnowy.com/1-4-35/"/>
     <id>http://alg4.ikesnowy.com/1-4-35/</id>
@@ -9188,6 +9114,80 @@
     
     
       <category term="Fundamental" scheme="http://alg4.ikesnowy.com/tags/Fundamental/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何：提交反馈</title>
+    <link href="http://alg4.ikesnowy.com/%E5%A6%82%E4%BD%95%EF%BC%9A%E6%8F%90%E4%BA%A4%E5%8F%8D%E9%A6%88/"/>
+    <id>http://alg4.ikesnowy.com/如何：提交反馈/</id>
+    <published>2018-05-14T08:58:48.000Z</published>
+    <updated>2019-03-01T09:05:50.587Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;如果你在使用本站的过程中发现了错误，或者有更好的改进和建议，欢迎向我提交反馈。这里提供了两种提交反馈的方式。&lt;/p&gt;
+&lt;h2 id=&quot;GitHub-Issue（推荐）&quot;&gt;&lt;a href=&quot;#GitHub-Issue（推荐）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="反馈" scheme="http://alg4.ikesnowy.com/tags/%E5%8F%8D%E9%A6%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何：查找 API 说明</title>
+    <link href="http://alg4.ikesnowy.com/%E5%A6%82%E4%BD%95%EF%BC%9A%E6%9F%A5%E6%89%BE-API-%E8%AF%B4%E6%98%8E/"/>
+    <id>http://alg4.ikesnowy.com/如何：查找-API-说明/</id>
+    <published>2018-05-14T08:39:10.000Z</published>
+    <updated>2019-03-01T09:06:01.842Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;有时候题解中会使用到自定义的类，它们一般都位于章节对应的类库中，本文将介绍如何查阅 API 并获得源代码。&lt;/p&gt;
+&lt;p&gt;这里以 3.1.22 为例，题解见 &lt;a href=&quot;/3-1-22/&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="API" scheme="http://alg4.ikesnowy.com/tags/API/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何：运行题解代码</title>
+    <link href="http://alg4.ikesnowy.com/%E5%A6%82%E4%BD%95%EF%BC%9A%E8%BF%90%E8%A1%8C%E9%A2%98%E8%A7%A3%E4%BB%A3%E7%A0%81/"/>
+    <id>http://alg4.ikesnowy.com/如何：运行题解代码/</id>
+    <published>2018-05-14T04:38:40.000Z</published>
+    <updated>2019-03-01T09:06:22.623Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文将介绍如何下载题解项目并运行代码。&lt;br&gt;在开始之前，请确保你的电脑上已经安装了 Visual Studio 2015（及以上版本）并启用了 .NET Framework 4.7。&lt;br&gt;下载 Visual Studio：&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="运行代码" scheme="http://alg4.ikesnowy.com/tags/%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
     
   </entry>
   
