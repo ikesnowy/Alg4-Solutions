@@ -13,10 +13,10 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interval1D 类
+    <title>SequentialSearchSTCached&lt;TKey, TValue&gt; 类
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interval1D 类
+    <meta name="title" content="SequentialSearchSTCached&lt;TKey, TValue&gt; 类
    ">
     <meta name="generator" content="docfx 2.40.10.0">
     
@@ -133,8 +133,8 @@
                       <a href="Geometry.html" title="Geometry" class="">Geometry</a>
                         
                         <ul class="nav level2">
-                          <li class="active">
-                            <a href="Geometry.Interval1D.html" title="Interval1D" class="active">Interval1D</a>
+                          <li class="">
+                            <a href="Geometry.Interval1D.html" title="Interval1D" class="">Interval1D</a>
                           </li>
                           <li class="">
                             <a href="Geometry.Interval2D.html" title="Interval2D" class="">Interval2D</a>
@@ -466,8 +466,8 @@
                           <li class="">
                             <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;TKey, TValue&gt;" class="">SequentialSearchST&lt;TKey, TValue&gt;</a>
                           </li>
-                          <li class="">
-                            <a href="SymbolTable.SequentialSearchSTCached-2.html" title="SequentialSearchSTCached&lt;TKey, TValue&gt;" class="">SequentialSearchSTCached&lt;TKey, TValue&gt;</a>
+                          <li class="active">
+                            <a href="SymbolTable.SequentialSearchSTCached-2.html" title="SequentialSearchSTCached&lt;TKey, TValue&gt;" class="active">SequentialSearchSTCached&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;TKey, TValue&gt;" class="">ST&lt;TKey, TValue&gt;</a>
@@ -519,26 +519,39 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Geometry.Interval1D">
+            <article class="content wrap" id="_content" data-uid="SymbolTable.SequentialSearchSTCached`2">
   
   
-  <h1 id="Geometry_Interval1D" data-uid="Geometry.Interval1D" class="text-break">Interval1D 类
+  <h1 id="SymbolTable_SequentialSearchSTCached_2" data-uid="SymbolTable.SequentialSearchSTCached`2" class="text-break">SequentialSearchSTCached&lt;TKey, TValue&gt; 类
   </h1>
-  <div class="markdown level0 summary"><p>一维闭区间。</p>
+  <div class="markdown level0 summary"><p>基于无序链表的符号表。</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>&#32487;&#25215;</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Interval1D</span></div>
+    <div class="level1"><span class="xref">SequentialSearchSTCached&lt;TKey, TValue&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>&#23454;&#29616;</h5>
+    <div><a class="xref" href="SymbolTable.IST-2.html">IST</a>&lt;TKey, TValue&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>&#32487;&#25215;&#25104;&#21592;</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
@@ -547,210 +560,60 @@
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
   </div>
-  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="Geometry.html">Geometry</a></h6>
-  <h6><strong>&#31243;&#24207;&#38598;</strong>: Geometry.dll</h6>
-  <h5 id="Geometry_Interval1D_syntax">&#35821;&#27861;</h5>
+  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="SymbolTable.html">SymbolTable</a></h6>
+  <h6><strong>&#31243;&#24207;&#38598;</strong>: SymbolTable.dll</h6>
+  <h5 id="SymbolTable_SequentialSearchSTCached_2_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Interval1D</code></pre>
+    <pre><code class="lang-csharp hljs">public class SequentialSearchSTCached&lt;TKey, TValue&gt; : IST&lt;TKey, TValue&gt;</code></pre>
   </div>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td><p>键类型。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>值类型。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L46">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L49">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Geometry_Interval1D__ctor_" data-uid="Geometry.Interval1D.#ctor*"></a>
-  <h4 id="Geometry_Interval1D__ctor_System_Double_System_Double_" data-uid="Geometry.Interval1D.#ctor(System.Double,System.Double)">Interval1D(Double, Double)</h4>
-  <div class="markdown level1 summary"><p>构造函数。</p>
+  <a id="SymbolTable_SequentialSearchSTCached_2__ctor_" data-uid="SymbolTable.SequentialSearchSTCached`2.#ctor*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2__ctor" data-uid="SymbolTable.SequentialSearchSTCached`2.#ctor">SequentialSearchSTCached()</h4>
+  <div class="markdown level1 summary"><p>构造空的符号表。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Interval1D(double lo, double hi)</code></pre>
+    <pre><code class="lang-csharp hljs">public SequentialSearchSTCached()</code></pre>
   </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">lo</span></td>
-        <td><p>一维区域的下界。</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">hi</span></td>
-        <td><p>一维区域的上界。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">&#23383;&#27573;
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L26">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <h4 id="Geometry_Interval1D_Length_Order" data-uid="Geometry.Interval1D.Length_Order">Length_Order</h4>
-  <div class="markdown level1 summary"><p>以区间长度升序排序。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly Comparer&lt;Interval1D&gt; Length_Order</code></pre>
-  </div>
-  <h5 class="fieldValue">&#23383;&#27573;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Interval1D.html">Interval1D</a>&gt;</td>
-        <td><p>以区间长度升序排序。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L21">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <h4 id="Geometry_Interval1D_Max_Order" data-uid="Geometry.Interval1D.Max_Order">Max_Order</h4>
-  <div class="markdown level1 summary"><p>优先以终点升序排序，起点相同时按照起点升序排序。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly Comparer&lt;Interval1D&gt; Max_Order</code></pre>
-  </div>
-  <h5 class="fieldValue">&#23383;&#27573;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Interval1D.html">Interval1D</a>&gt;</td>
-        <td><p>优先以终点升序排序，起点相同时按照起点升序排序。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L16">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <h4 id="Geometry_Interval1D_Min_Order" data-uid="Geometry.Interval1D.Min_Order">Min_Order</h4>
-  <div class="markdown level1 summary"><p>优先以起点升序排序，起点相同时按照终点升序排序。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly Comparer&lt;Interval1D&gt; Min_Order</code></pre>
-  </div>
-  <h5 class="fieldValue">&#23383;&#27573;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.Comparer</span>&lt;<a class="xref" href="Geometry.Interval1D.html">Interval1D</a>&gt;</td>
-        <td><p>优先以起点升序排序，起点相同时按照终点升序排序。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">&#23646;&#24615;
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L39">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval1D_Max_" data-uid="Geometry.Interval1D.Max*"></a>
-  <h4 id="Geometry_Interval1D_Max" data-uid="Geometry.Interval1D.Max">Max</h4>
-  <div class="markdown level1 summary"><p>区间终点。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Max { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">&#23646;&#24615;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><p>区间终点。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Geometry_Interval1D_Max_remarks">&#22791;&#27880;</h5>
-  <div class="markdown level1 remarks"><p>这个属性是只读的。</p>
-</div>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L33">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval1D_Min_" data-uid="Geometry.Interval1D.Min*"></a>
-  <h4 id="Geometry_Interval1D_Min" data-uid="Geometry.Interval1D.Min">Min</h4>
-  <div class="markdown level1 summary"><p>区间起点。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Min { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">&#23646;&#24615;&#20540;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><p>区间起点。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Geometry_Interval1D_Min_remarks">&#22791;&#27880;</h5>
-  <div class="markdown level1 remarks"><p>这个属性是只读的。</p>
-</div>
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L82">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L57">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Geometry_Interval1D_Contains_" data-uid="Geometry.Interval1D.Contains*"></a>
-  <h4 id="Geometry_Interval1D_Contains_Geometry_Interval1D_" data-uid="Geometry.Interval1D.Contains(Geometry.Interval1D)">Contains(Interval1D)</h4>
-  <div class="markdown level1 summary"><p>判断目标区间是否被本区间包含。</p>
+  <a id="SymbolTable_SequentialSearchSTCached_2_Contains_" data-uid="SymbolTable.SequentialSearchSTCached`2.Contains*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2_Contains__0_" data-uid="SymbolTable.SequentialSearchSTCached`2.Contains(`0)">Contains(TKey)</h4>
+  <div class="markdown level1 summary"><p>检查键 <code data-dev-comment-type="paramref" class="paramref">key</code> 是否已被包含在符号表中。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(Interval1D that)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Contains(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -763,9 +626,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Geometry.Interval1D.html">Interval1D</a></td>
-        <td><span class="parametername">that</span></td>
-        <td><p>需要判断是否被包含的区间。</p>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>需要检查的键。</p>
 </td>
       </tr>
     </tbody>
@@ -781,22 +644,38 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>若 <code data-dev-comment-type="paramref" class="paramref">that</code> 被本区间包含则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+        <td><p>如果 <code data-dev-comment-type="paramref" class="paramref">key</code> 已被包含在符号表中则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>当 <code data-dev-comment-type="paramref" class="paramref">key</code> 为 <code>null</code> 时抛出此异常。</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L92">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L71">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Geometry_Interval1D_Contains_" data-uid="Geometry.Interval1D.Contains*"></a>
-  <h4 id="Geometry_Interval1D_Contains_System_Double_" data-uid="Geometry.Interval1D.Contains(System.Double)">Contains(Double)</h4>
-  <div class="markdown level1 summary"><p>目标值是否处在区域内。如果目标值在区域内则返回 True，否则返回 False。</p>
+  <a id="SymbolTable_SequentialSearchSTCached_2_Delete_" data-uid="SymbolTable.SequentialSearchSTCached`2.Delete*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2_Delete__0_" data-uid="SymbolTable.SequentialSearchSTCached`2.Delete(`0)">Delete(TKey)</h4>
+  <div class="markdown level1 summary"><p>从表中删去键 <code data-dev-comment-type="paramref" class="paramref">key</code> 及其对应的值。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(double x)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Delete(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -809,9 +688,39 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>需要判断的值。</p>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>要删除的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L110">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SequentialSearchSTCached_2_Get_" data-uid="SymbolTable.SequentialSearchSTCached`2.Get*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2_Get__0_" data-uid="SymbolTable.SequentialSearchSTCached`2.Get(`0)">Get(TKey)</h4>
+  <div class="markdown level1 summary"><p>获取键 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值，不存在则返回 <code>default(Value)</code>。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TValue Get(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>键。</p>
 </td>
       </tr>
     </tbody>
@@ -826,23 +735,79 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>若 <code data-dev-comment-type="paramref" class="paramref">x</code> 被本区间包含则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+        <td><span class="xref">TValue</span></td>
+        <td><p>键 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值，不存在则返回 <code>default(Value)</code>。</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L115">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L132">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Geometry_Interval1D_Draw_" data-uid="Geometry.Interval1D.Draw*"></a>
-  <h4 id="Geometry_Interval1D_Draw_System_Drawing_Graphics_System_Int32_" data-uid="Geometry.Interval1D.Draw(System.Drawing.Graphics,System.Int32)">Draw(Graphics, Int32)</h4>
-  <div class="markdown level1 summary"><p>绘制一维区间。</p>
+  <a id="SymbolTable_SequentialSearchSTCached_2_IsEmpty_" data-uid="SymbolTable.SequentialSearchSTCached`2.IsEmpty*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2_IsEmpty" data-uid="SymbolTable.SequentialSearchSTCached`2.IsEmpty">IsEmpty()</h4>
+  <div class="markdown level1 summary"><p>符号表是否为空。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Draw(Graphics g, int y)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsEmpty()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L138">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SequentialSearchSTCached_2_Keys_" data-uid="SymbolTable.SequentialSearchSTCached`2.Keys*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2_Keys" data-uid="SymbolTable.SequentialSearchSTCached`2.Keys">Keys()</h4>
+  <div class="markdown level1 summary"><p>获得所有的键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TKey&gt; Keys()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TKey&gt;</td>
+        <td><p>包含所有键的集合。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L156">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SequentialSearchSTCached_2_Put_" data-uid="SymbolTable.SequentialSearchSTCached`2.Put*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2_Put__0__1_" data-uid="SymbolTable.SequentialSearchSTCached`2.Put(`0,`1)">Put(TKey, TValue)</h4>
+  <div class="markdown level1 summary"><p>插入一个新的键值对。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Put(TKey key, TValue value)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -855,201 +820,67 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Drawing.Graphics</span></td>
-        <td><span class="parametername">g</span></td>
-        <td><p>原点在左下方，y轴向上，x轴向右的画布。</p>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>新的键。</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>新的值。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>当 <code data-dev-comment-type="paramref" class="paramref">key</code> 为 <code>null</code> 时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L182">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SequentialSearchSTCached_2_Size_" data-uid="SymbolTable.SequentialSearchSTCached`2.Size*"></a>
+  <h4 id="SymbolTable_SequentialSearchSTCached_2_Size" data-uid="SymbolTable.SequentialSearchSTCached`2.Size">Size()</h4>
+  <div class="markdown level1 summary"><p>获取符号表中的键值对数量。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Size()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>绘制一维区间的 y轴 坐标。</p>
+        <td><p>当前符号表中的键值对数量。</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L137">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval1D_Equals_" data-uid="Geometry.Interval1D.Equals*"></a>
-  <h4 id="Geometry_Interval1D_Equals_System_Object_" data-uid="Geometry.Interval1D.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"><p>判断两个区间是否相等。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  <h3 id="implements">&#23454;&#29616;</h3>
+  <div>
+      <a class="xref" href="SymbolTable.IST-2.html">IST&lt;TKey, TValue&gt;</a>
   </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>相比较的区间。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>如果区间相等则返回 <code>true</code>，否则返回 <code>false</code>。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.Equals(System.Object)</span></div>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L159">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval1D_GetHashCode_" data-uid="Geometry.Interval1D.GetHashCode*"></a>
-  <h4 id="Geometry_Interval1D_GetHashCode" data-uid="Geometry.Interval1D.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"><p>返回区间的哈希代码。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><p>返回区间的哈希代码。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.GetHashCode()</span></div>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L102">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval1D_Intersect_" data-uid="Geometry.Interval1D.Intersect*"></a>
-  <h4 id="Geometry_Interval1D_Intersect_Geometry_Interval1D_" data-uid="Geometry.Interval1D.Intersect(Geometry.Interval1D)">Intersect(Interval1D)</h4>
-  <div class="markdown level1 summary"><p>判断两个区域是否相交。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Intersect(Interval1D that)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Geometry.Interval1D.html">Interval1D</a></td>
-        <td><span class="parametername">that</span></td>
-        <td><p>需要判断相交的另一个区域。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>如果相交则返回 True，否则返回 False。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L72">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval1D_Length_" data-uid="Geometry.Interval1D.Length*"></a>
-  <h4 id="Geometry_Interval1D_Length" data-uid="Geometry.Interval1D.Length">Length()</h4>
-  <div class="markdown level1 summary"><p>一维区域的长度。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Length()</code></pre>
-  </div>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><p>返回长度。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L126">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval1D_ToString_" data-uid="Geometry.Interval1D.ToString*"></a>
-  <h4 id="Geometry_Interval1D_ToString" data-uid="Geometry.Interval1D.ToString">ToString()</h4>
-  <div class="markdown level1 summary"><p>将区域转换为 string，返回形如 &quot;[lo, hi]&quot; 的字符串。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>形如 &quot;[<a class="xref" href="Geometry.Interval1D.html#Geometry_Interval1D_Min">Min</a>, <a class="xref" href="Geometry.Interval1D.html#Geometry_Interval1D_Max">Max</a>]&quot; 的字符串。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.ToString()</span></div>
 </article>
           </div>
           
@@ -1058,7 +889,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval1D.cs/#L10" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SequentialSearchSTCached.cs/#L11" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>
