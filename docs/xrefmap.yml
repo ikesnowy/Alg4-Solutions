@@ -9157,6 +9157,311 @@ references:
   fullName.vb: SymbolTable.BinarySearchSTCached(Of TKey, TValue).Size
   nameWithType: BinarySearchSTCached<TKey, TValue>.Size
   nameWithType.vb: BinarySearchSTCached(Of TKey, TValue).Size
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2
+  name: BinarySearchSTOrderedInsertion<TKey, TValue>
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html
+  commentId: T:SymbolTable.BinarySearchSTOrderedInsertion`2
+  name.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.#ctor
+  name: BinarySearchSTOrderedInsertion()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2__ctor
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.#ctor
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.BinarySearchSTOrderedInsertion()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).BinarySearchSTOrderedInsertion()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.BinarySearchSTOrderedInsertion()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).BinarySearchSTOrderedInsertion()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.#ctor(System.Int32)
+  name: BinarySearchSTOrderedInsertion(Int32)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2__ctor_System_Int32_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.#ctor(System.Int32)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.BinarySearchSTOrderedInsertion(System.Int32)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).BinarySearchSTOrderedInsertion(System.Int32)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.BinarySearchSTOrderedInsertion(Int32)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).BinarySearchSTOrderedInsertion(Int32)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.#ctor*
+  name: BinarySearchSTOrderedInsertion
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2__ctor_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.BinarySearchSTOrderedInsertion
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).BinarySearchSTOrderedInsertion
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.BinarySearchSTOrderedInsertion
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).BinarySearchSTOrderedInsertion
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Ceiling(`0)
+  name: Ceiling(TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Ceiling__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Ceiling(`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Ceiling(TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Ceiling*
+  name: Ceiling
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Ceiling_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Ceiling
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Ceiling
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Ceiling
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Ceiling
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Ceiling
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Contains__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Contains(`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Contains(TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Contains(TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Contains*
+  name: Contains
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Contains_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Contains
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Contains
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Contains
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Delete__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Delete(`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Delete(TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Delete(TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Delete*
+  name: Delete
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Delete_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Delete
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Delete
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Delete
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMax
+  name: DeleteMax()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_DeleteMax
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMax
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMax()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMax()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMax()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMax()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMax*
+  name: DeleteMax
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_DeleteMax_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMax
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMax
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMax
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMax
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMax
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMin
+  name: DeleteMin()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_DeleteMin
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMin
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMin()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMin()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMin()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMin()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMin*
+  name: DeleteMin
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_DeleteMin_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.DeleteMin
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMin
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMin
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.DeleteMin
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).DeleteMin
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Floor(`0)
+  name: Floor(TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Floor__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Floor(`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Floor(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Floor(TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Floor(TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Floor*
+  name: Floor
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Floor_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Floor
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Floor
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Floor
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Floor
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Floor
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Get(`0)
+  name: Get(TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Get__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Get(`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Get(TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Get(TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Get*
+  name: Get
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Get_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Get
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Get
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Get
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Get
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_IsEmpty
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.IsEmpty
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).IsEmpty()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.IsEmpty()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).IsEmpty()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_IsEmpty_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).IsEmpty
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.IsEmpty
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).IsEmpty
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Keys
+  name: Keys()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Keys
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Keys
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Keys()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Keys()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Keys()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Keys(`0,`0)
+  name: Keys(TKey, TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Keys__0__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Keys(`0,`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Keys(TKey, TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Keys*
+  name: Keys
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Keys_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Keys
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Keys
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Keys
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Max
+  name: Max()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Max
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Max
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Max()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Max()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Max()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Max()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Max*
+  name: Max
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Max_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Max
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Max
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Max
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Max
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Max
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Min
+  name: Min()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Min
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Min
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Min()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Min()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Min()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Min()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Min*
+  name: Min
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Min_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Min
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Min
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Min
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Min
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Min
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Put__0__1_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Put(`0,`1)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Put(TKey, TValue)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Put*
+  name: Put
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Put_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Put
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Put
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Put
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Put
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Rank(`0)
+  name: Rank(TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Rank__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Rank(`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Rank(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Rank(TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Rank(TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Rank*
+  name: Rank
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Rank_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Rank
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Rank
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Rank
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Rank
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Rank
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Select(System.Int32)
+  name: Select(Int32)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Select_System_Int32_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Select(System.Int32)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Select(System.Int32)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Select(System.Int32)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Select(Int32)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Select(Int32)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Select*
+  name: Select
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Select_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Select
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Select
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Select
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Select
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Select
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Size
+  name: Size()
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Size
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Size
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Size()
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Size()
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Size()
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Size(`0,`0)
+  name: Size(TKey, TKey)
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Size__0__0_
+  commentId: M:SymbolTable.BinarySearchSTOrderedInsertion`2.Size(`0,`0)
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Size(TKey, TKey)
+- uid: SymbolTable.BinarySearchSTOrderedInsertion`2.Size*
+  name: Size
+  href: api/SymbolTable.BinarySearchSTOrderedInsertion-2.html#SymbolTable_BinarySearchSTOrderedInsertion_2_Size_
+  commentId: Overload:SymbolTable.BinarySearchSTOrderedInsertion`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTOrderedInsertion<TKey, TValue>.Size
+  fullName.vb: SymbolTable.BinarySearchSTOrderedInsertion(Of TKey, TValue).Size
+  nameWithType: BinarySearchSTOrderedInsertion<TKey, TValue>.Size
+  nameWithType.vb: BinarySearchSTOrderedInsertion(Of TKey, TValue).Size
 - uid: SymbolTable.FrequencyCounter
   name: FrequencyCounter
   href: api/SymbolTable.FrequencyCounter.html
@@ -9179,6 +9484,19 @@ references:
   fullName.vb: SymbolTable.FrequencyCounter.CountDistinct(Of TKey)(TKey(), SymbolTable.IST(Of TKey, System.Int32))
   nameWithType: FrequencyCounter.CountDistinct<TKey>(TKey[], IST<TKey, Int32>)
   nameWithType.vb: FrequencyCounter.CountDistinct(Of TKey)(TKey(), IST(Of TKey, Int32))
+- uid: SymbolTable.FrequencyCounter.LookUpDictionary(System.String,System.String,System.Int32)
+  name: LookUpDictionary(String, String, Int32)
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_LookUpDictionary_System_String_System_String_System_Int32_
+  commentId: M:SymbolTable.FrequencyCounter.LookUpDictionary(System.String,System.String,System.Int32)
+  fullName: SymbolTable.FrequencyCounter.LookUpDictionary(System.String, System.String, System.Int32)
+  nameWithType: FrequencyCounter.LookUpDictionary(String, String, Int32)
+- uid: SymbolTable.FrequencyCounter.LookUpDictionary*
+  name: LookUpDictionary
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_LookUpDictionary_
+  commentId: Overload:SymbolTable.FrequencyCounter.LookUpDictionary
+  isSpec: "True"
+  fullName: SymbolTable.FrequencyCounter.LookUpDictionary
+  nameWithType: FrequencyCounter.LookUpDictionary
 - uid: SymbolTable.FrequencyCounter.MostFrequentlyKey*
   name: MostFrequentlyKey
   href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyKey_
@@ -11198,6 +11516,28 @@ references:
   fullName.vb: SymbolTable.ST(Of TKey, TValue).System.Collections.IEnumerable.GetEnumerator
   nameWithType: ST<TKey, TValue>.IEnumerable.GetEnumerator
   nameWithType.vb: ST(Of TKey, TValue).System.Collections.IEnumerable.GetEnumerator
+- uid: SymbolTable.TestBinarySearchST
+  name: TestBinarySearchST
+  href: api/SymbolTable.TestBinarySearchST.html
+  commentId: T:SymbolTable.TestBinarySearchST
+  fullName: SymbolTable.TestBinarySearchST
+  nameWithType: TestBinarySearchST
+- uid: SymbolTable.TestBinarySearchST.Test(SymbolTable.BinarySearchST{System.String,System.Int32})
+  name: Test(BinarySearchST<String, Int32>)
+  href: api/SymbolTable.TestBinarySearchST.html#SymbolTable_TestBinarySearchST_Test_SymbolTable_BinarySearchST_System_String_System_Int32__
+  commentId: M:SymbolTable.TestBinarySearchST.Test(SymbolTable.BinarySearchST{System.String,System.Int32})
+  name.vb: Test(BinarySearchST(Of String, Int32))
+  fullName: SymbolTable.TestBinarySearchST.Test(SymbolTable.BinarySearchST<System.String, System.Int32>)
+  fullName.vb: SymbolTable.TestBinarySearchST.Test(SymbolTable.BinarySearchST(Of System.String, System.Int32))
+  nameWithType: TestBinarySearchST.Test(BinarySearchST<String, Int32>)
+  nameWithType.vb: TestBinarySearchST.Test(BinarySearchST(Of String, Int32))
+- uid: SymbolTable.TestBinarySearchST.Test*
+  name: Test
+  href: api/SymbolTable.TestBinarySearchST.html#SymbolTable_TestBinarySearchST_Test_
+  commentId: Overload:SymbolTable.TestBinarySearchST.Test
+  isSpec: "True"
+  fullName: SymbolTable.TestBinarySearchST.Test
+  nameWithType: TestBinarySearchST.Test
 - uid: UnionFind
   name: UnionFind
   href: api/UnionFind.html
