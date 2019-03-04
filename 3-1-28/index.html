@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>《算法（第四版）》C# 题解</title>
+        <title>3.1.28 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -29,7 +29,7 @@
     <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -77,7 +77,7 @@
       <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -134,31 +134,47 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="PostList">
-	<h2 class="center">最近添加</h2>
-	<div class="post-list">
-		
-		<p class="post-title"><a href="/2-1-11/">1. 2.1.11</a></p>
-		
-		<p class="post-title"><a href="/2-1-10/">2. 2.1.10</a></p>
-		
-		<p class="post-title"><a href="/2-1-9/">3. 2.1.9</a></p>
-		
-		<p class="post-title"><a href="/2-1-8/">4. 2.1.8</a></p>
-		
-		<p class="post-title"><a href="/2-1-7/">5. 2.1.7</a></p>
-		
-		<p class="post-title"><a href="/2-1-6/">6. 2.1.6</a></p>
-		
-		<p class="post-title"><a href="/2-1-5/">7. 2.1.5</a></p>
-		
-		<p class="post-title"><a href="/2-1-4/">8. 2.1.4</a></p>
-		
-		<p class="post-title"><a href="/2-1-3/">9. 2.1.3</a></p>
-		
-		<p class="post-title"><a href="/2-1-2/">10. 2.1.2</a></p>
-		
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.1.28
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.1.28</h1>
+			<p>上次更新：2019-03-04</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.28<br>有序的插入。<br>修改 BinarySearchST，使得插入一个比当前所有键都大的键只需要常数时间<br>（这样在构造符号表时有序的使用 put() 插入键值对就只需要线性时间了）。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>将重新分配数组空间的代码提前，然后添加判断语句即可。<br><code>BinarySearchSTOrderedInsertion</code>：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/* 省略 */</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
+    <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 如果插入的键比所有键都大则直接插入末尾。</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> key<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token function">Rank</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/* 省略 */</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/SymbolTable.html">SymbolTable 库</a></p>
+
+		</div>
 	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -166,10 +182,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/page/19/">上一页</a>
+		<a href="/3-1-27/">上一题</a>
 		
-		
-		<a href="/page/21/">下一页</a>
 		
 	</div>
 	
