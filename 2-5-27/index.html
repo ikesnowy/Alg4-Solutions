@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.27</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11  <br> 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.27<br>平行数组的排序。<br>在将平行数组排序时，可以将索引排序并返回一个 index[] 数组。<br>为 Insertion 添加一个 indirectSort 方法，接受一个 Comparable 的对象数组 a[] 作为参数，<br>但它不会将 a[] 中的元素重新排列，而是返回一个整型数组 index[] 使得 a[index[0]] 到 a[index[N-1]] 正好是升序的。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>类似于索引排序的做法，访问数组都通过一层索引来间接实现。<br>首先创建一个数组 <code>index</code>，令 <code>index[i] = i</code>。<br>排序时的交换变成 <code>index</code> 数组中元素的交换，<br>读取元素时使用 <code>a[index[i]]</code> 而非 <code>a[i]</code> 。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>

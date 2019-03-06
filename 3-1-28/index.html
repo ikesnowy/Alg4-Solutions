@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.28</h1>
-			<p>上次更新：2019-03-04</p>
+			<p>上次更新：2019-03-04  <br> 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.28<br>有序的插入。<br>修改 BinarySearchST，使得插入一个比当前所有键都大的键只需要常数时间<br>（这样在构造符号表时有序的使用 put() 插入键值对就只需要线性时间了）。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>将重新分配数组空间的代码提前，然后添加判断语句即可。<br><code>BinarySearchSTOrderedInsertion</code>：</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/* 省略 */</span>

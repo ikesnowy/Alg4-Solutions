@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.21</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11  <br> 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.21<br>将重复元素排序的比较次数的下界。<br>完成命题 M 的证明的第一部分。<br>参考命题 I 的证明并注意当有 $ k $ 个主键值时所有元素存在 $ N!/f_1!f_2!…f_k!$ 种不同的排列，<br>其中第 $ i $ 个主键值出现的概率为 $ f_1 $（即 $ N_{p_i} $，按照命题 M 的记法），且 $ f_1+… +f_k=N $。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先引入命题 I 的结论，对于互不相同的主键值，基于比较的排序算法的下界等于所形成的比较树的高度，即：<br>$$<br>h \ge \log_2{N!}<br>$$<br>那么我们题目即可转化为求证<br>$$<br>h \ge \log_2 (\frac{N!}{f_1!f_2!\cdots f_k!}) \ge \log_2 N!<br>$$<br>这里的 $ f_i $ 为某个主键值出现的频率，即某个主键值出现的次数，因此 $f_i\ge 1$ 。<br>根据题目给出的条件，如果主键互不重复，此时 $ k=N $，且 $ f_1=f_2=\cdots=f_k=1 $ 。<br>那么 $ f_1!f_2!\cdots f_k!=1 $ ，待证式子即为命题 I 的结论。</p>
 <p>那么当主键有重复时，此时 $ k &lt; N $，为使 $ f_1+f_2+ \cdots + f_k=N $ ，至少存在一个 $ f_m \ge 2 $。<br>故此时：<br>$$<br>f_1!f_2!\cdots f_k! &gt;1\Rightarrow \frac{N!}{f_1!f_2!\cdots f_k!}&lt;N! \Rightarrow \\<br>h \ge \log_2 (\frac{N!}{f_1!f_2!\cdots f_k!}) \ge \log_2 N!  \blacksquare<br>$$<br>得证。</p>

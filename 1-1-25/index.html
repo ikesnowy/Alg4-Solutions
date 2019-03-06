@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.1.25</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11  <br> 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.25<br>用数学归纳法证明欧几里得算法能够计算出任意一对非负整数 p 和 q 的最大公约数。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>已知：$ a,b $ 皆为正整数，且 $ a&gt;b $。$ g $ 是 $ a,b$ 的最大公约数<br>设 $  r_0=a\bmod b $ ，$ r_k = r_{k-2} \bmod r_{k-1} $ 。<br>那么有 $ gcd(a,b)=gcd(b,r_0)=gcd(r_0,r_1)…=gcd(r_{n-1},r_n) $ 。<br>且 $ r_n=0 $ （此时算法终止）。</p>
 <p>由于 $ r_{n-2}=q_n\times r_{n-1} + r_n=q_n\times r_{n-1}  (q_n=\lfloor r_{n-2}/r_{n-1}\rfloor) $ 。<br>可得 $ r_{n-2} $ 能被 $ r_{n-1} $ 整除。<br>则有<br>$ r_{n-3}\\=q_{n-1} \times r_{n-2} + r_{n-1}\\=q_{n-1}\times (q_n \times r_{n-1})+r_{n-1}\\=q_{n-1}\times q_n \times r_{n-1} + r_{n-1} \\=(q_{n-1} \times q_n +1)\times r_{n-1} $<br>可得 $ r_{n-3} $ 也能被 $ r_{n-1} $ 整除<br>以此类推，$ r_{n-1} $ 可以整除 $ a $ 和 $ b $ ，即 $ r_{n-1} $  是 $ a $ 和 $ b $ 的公约数<br>则 $ r_{n-1}\le g $ 。</p>

@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.18</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11  <br> 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.18<br>数组的局部最小元素。<br>编写一个程序，给定一个含有 N 个不同整数的数组，找到一个局部最小元素： 满足 a[i] &lt; a[i-1]，且 a[i] &lt; a[i+1] 的索引 i。 程序在最坏情况下所需的比较次数为 ~ 2lgN。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>和二分查找的方式类似，先确认中间的值是否是局部最小，如果不是，则向较小的一侧二分查找。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
