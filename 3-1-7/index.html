@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.7</h1>
-			<p>上次更新：2019-02-17 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-17 </p>
+			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.7<br>对于 N=10、10^2、10^3、10^4、10^5 和 10^6，<br>在 N 个小于 1000 的随机非负整数中 FrequencyCounter 平均能够找到多少个不同的键？</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>在 <code>FrequencyCounter</code> 中添加一个 <code>CountDistinct</code> 方法，计算不重复的键数。</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token generic-method function">CountDistinct<span class="token punctuation">&lt;</span>TKey<span class="token punctuation">></span></span><span class="token punctuation">(</span>TKey<span class="token punctuation">[</span><span class="token punctuation">]</span> keys<span class="token punctuation">,</span> IST<span class="token operator">&lt;</span>TKey<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> st<span class="token punctuation">)</span>

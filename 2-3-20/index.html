@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.20</h1>
-			<p>上次更新：2019-02-13 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 </p>
+			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.3.20<br>非递归的快速排序。<br>实现一个非递归的快速排序，使用一个循环来将弹出栈的子数组切分并将结果子数组重新压入栈。<br>注意：先将较大的子数组压入栈，这样就可以保证栈最多只会有 lgN 个元素。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>事实上就是用一个栈保存每次切分后的子数组下标。<br>关键代码如下，这里用到的栈（链栈）是在 1.3 中构建的：</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>

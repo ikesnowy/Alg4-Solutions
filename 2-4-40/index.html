@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.40</h1>
-			<p>上次更新：2019-02-13 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 </p>
+			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.40<br>Floyd 方法。<br>根据正文中 Floyd 的先沉后浮思想实现堆排序。<br>对于 N=10^3、10^6 和 10^9 大小的随机不重复数组，<br>记录你的程序所使用的比较次数和标准实现所使用的比较次数。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>如同书上所说，可以节省约 50% 的比较次数。<br><img src="./1.png" alt=""></p>
 <p>先沉后浮的实现也很简单，将 <code>swim</code> 方法加入，<br>然后修改 <code>sink</code> 方法，去掉其中检查是否需要下沉的条件（<code>if(!Less(pq, k, j))</code>），<br>然后在 <code>sink</code> 方法的循环之后调用 <code>swim</code>。</p>

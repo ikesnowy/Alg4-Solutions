@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.2.6</h1>
-			<p>上次更新：2019-02-11 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 </p>
+			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.6<br>如果字符串 s 中的字符循环移动任意位置之后能够得到另一个字符串 t， 那么 s 就被称为 t 的回环变位（circular rotation）。<br>例如，ACTGACG 就是 TGACGAC 的一个回环变位，反之亦然。<br>判定这个条件在基因组序列的研究中是很重要的。<br>编写一个程序检查两个给定的字符串 s 和 t 是否互为回环变位。<br>提示：答案只需要一行用到 indexOf()、length() 和字符串连接的代码。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对于任意字符串 s，将其拆分成 s = s1 + s2（s2长度即为循环移动的位数）  其回环变位则为 s’ = s2 + s1<br>显然 s’ + s’ = s2 + s1 + s2 + s1<br>即 s’ + s’ = s2 + s + s1，其中必定包含 s<br>例如 ABC 和 BCA， BCABCA 显然包含 ABC</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>

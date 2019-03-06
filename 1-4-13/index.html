@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.13</h1>
-			<p>上次更新：2019-02-11 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 </p>
+			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.13<br>根据正文中的假设分别给出表示以下数据类型的一个对象所需的内存量：<br>a. Accumulator<br>b. Transaction<br>c. FixedCapacityStackOfStrings，其容量为 C 且含有 N 个元素。<br>d. Point2D<br>e. Interval1D<br>f. Interval2D<br>g. Double</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对象的固定开销用 Object 表示。</p>
 <p>a. Accumulator<br>使用 1.2.4.3 节给出的实现。<br>= int * 1 + double + Object * 1<br>= 4 * 1 + 8 + 16 * 1 = 32</p>
