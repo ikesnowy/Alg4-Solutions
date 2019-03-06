@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.14</h1>
-			<p>上次更新：2019-02-11     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.14<br>逆域名排序。<br>为域名编写一个数据类型 Domain 并为它实现一个 compareTo() 方法，使之能够按照逆向的域名排序。<br>例如，域名 cs.princeton.edu 的逆是 edu.princeton.cs。<br>这在网络日志处理时很有用。<br>提示：使用s.split(“.“) 将域名用点分为若干部分。<br>编写一个 Domain 的用例，从标准输入读取域名并将他们按照逆域名有序地打印出来。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答：<a href="https://algs4.cs.princeton.edu/25applications/Domain.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/25applications/Domain.java.html</a></p>
 <p>按照逆域名排序，例如输入的是 <code>com.google</code> 和 <code>com.apple</code> ，<br>比较的时候是按照 <code>google.com</code> 和 <code>apple.com</code> 进行比较的。<br>排序结果自然是 <code>apple.com, google.com</code>。</p>

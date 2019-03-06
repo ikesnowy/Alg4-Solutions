@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.27</h1>
-			<p>上次更新：2019-02-11     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.27<br>两个栈实现的队列。<br>用两个栈实现一个队列，使得每个队列操作所需要的堆栈操作均摊后为一个常数。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>实现比较简单，想象两个栈背靠背接在一起，左侧栈负责出队，右侧栈负责入队。<br>当左侧栈为空时就把右侧栈中的元素倒到左侧栈，这个过程是 O(n) 的。<br>但在这个过程之前必然有 n 个元素入栈，均摊后即为 O(1)。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_27

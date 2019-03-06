@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.5.22</h1>
-			<p>上次更新：2019-02-13     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.22<br>Erdös-Renyi 的倍率实验。<br>开发一个性能测试用例，从命令行接受一个 int 值 T 并进行 T 次以下实验：<br>使用练习 1.5.17 的用例生成随机连接，<br>和我们的开发用例一样使用 UnionFind 来检查触点的连通性，<br>不断循环直到所有触点都相互连通。<br>对于每个 N，<br>打印出 N 值和平均所需的连接数以及前后两次运行时间的比值。<br>使用你的程序验证正文中的猜想：<br>quick-find 算法和 quick-union 算法的运行时间是平方级别的，<br>加权 quick-union 算法则接近线性级别。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>平方级别算法在输入加倍后耗时应该增加四倍，线性则是两倍。<br>下面给出我电脑上的结果，数据量较大时比较明显：</p>
 <pre><code>N:16000

@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.33</h1>
-			<p>上次更新：2019-02-11     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.33<br>32位计算机中的内存需求。<br>给出 32 位计算机中 Integer、Date、Counter、int[]、double[]、double[][]、String、Node 和 Stack（链表表示）对象所需的内存， 设引用需要 4 字节，表示对象的开销为 8 字节，所需内存均会被填充为 4 字节的倍数。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>Integer = 4(int) + 8(对象开销) = 12<br>Date = 3 * 4(int * 3) + 8(对象开销) = 20<br>Counter = 4(String 的引用) + 4(int) + 8(对象开销) = 16<br>int[] = 8(对象开销) + 4(数组长度) + 4N = 12 + 4N<br>double[] = 8(对象开销) + 4(数组长度) + 8N = 12 + 8N<br>double[][] = 8(对象开销) + 4(数组长度) + 4M(引用) + M(12 + 8N)(M 个一维数组) = 12 + 16M + 8MN<br>String = 8(对象开销) + 3*4(int * 3) + 4(字符数组的引用) = 24<br>Node = 8(对象开销) + 4*2(引用*2) = 16<br>Stack = 8(对象开销) + 4(引用) + 4(int) = 16</p>
 

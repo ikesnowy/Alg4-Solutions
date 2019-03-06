@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.3</h1>
-			<p>上次更新：2019-02-13     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.3<br>开发一个符号表的实现 OrderedSequentialSearchST，<br>使用有序链表来实现我们的有序符号表 API。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>基于无序链表的官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/SequentialSearchST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/SequentialSearchST.java.html</a></p>
 <p>有序符号表的 API 见书中表 3.1.4（中文版 P230，英文版 P366）。<br>在官方实现的基础上修改 <code>Put</code> 方法，先找到合适位置再插入新的键值对，保证链表有序。<br>为方便插入操作，可以使用双向链表作为基础进行实现。<br>表中同时维护开头和末尾引用，加快获得最值的速度。</p>

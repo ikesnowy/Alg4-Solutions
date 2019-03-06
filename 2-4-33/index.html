@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.33</h1>
-			<p>上次更新：2019-02-13     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.33<br>索引优先队列的实现。<br>按照 2.4.4.6 节的描述修改算法 2.6 来实现索引优先队列 API 中的基本操作：<br>使用 pq[] 保存索引，添加一个数组 keys[] 来保存元素，<br>再添加一个数组 qp[] 来保存 pq[] 的逆序——qp[i] 的值时 i 在 pq[] 中的位置（即索引 j，pq[j]=i）。<br>修改算法 2.6 的代码来维护这些数据结构。<br>若 i 不在队列之中，则总是令 qp[i] = -1 并添加一个方法 contains() 来检测这种情况。<br>你需要修改辅助函数 exch() 和 less()，但不需要修改 sink() 和 swim()。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现见：<a href="https://algs4.cs.princeton.edu/24pq/IndexMaxPQ.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/24pq/IndexMaxPQ.java.html</a></p>
 <p>书中算法 2.6 给出的是一个最大堆的实现，但本题给出的部分解答却是最小堆的。<br>同时官网给出的解答是最大堆的，这里选择和官网保持一致，给出最大堆的实现。</p>

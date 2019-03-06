@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.2.9</h1>
-			<p>上次更新：2019-02-13     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.9<br>在库函数中使用 aux[] 这样的静态数组时不妥当的，<br>因为可能会有多个程序同时使用这个类。<br>实现一个不用静态数组的 Merge 类，<br>但也不要将 aux[] 变为 merge() 的局部变量（请见本书的答疑部分）。<br>提示：可以将辅助数组作为参数传递给递归的 sort() 方法。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方给出的归并排序实现中在 Sort 方法里初始化了 aux 数组。<br>源码见：<a href="https://algs4.cs.princeton.edu/22mergesort/Merge.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/22mergesort/Merge.java.html</a></p>
 <p>C#实现和官方的实现非常类似，<br>首先定义只接受一个参数的<strong>公开</strong> Sort 方法，在这个方法里面初始化 aux 数组。</p>

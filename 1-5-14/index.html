@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.5.14</h1>
-			<p>上次更新：2019-02-13     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.14<br>根据高度加权的 quick-union 算法。<br>给出 UF 的一个实现，<br>使用和加权 quick-union 算法相同的策略，<br>但记录的是树的高度并总是将较矮的树连接到较高的树上。<br>用算法证明 N 个触点的树的高度不会超过其大小的对数级别。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>WeightedQuickUnionByHeight 的官方实现：<a href="http://algs4.cs.princeton.edu/15uf/WeightedQuickUnionByHeightUF.java.html" target="_blank" rel="noopener">WeightedQuickUnionByHeightUF.java</a>。</p>
 <p>证明：<br> 一次 Union 操作只可能发生如下两种情况。<br> 1.两棵树的高度相同，这样合并后的新树的高度等于较大那棵树的高度 + 1。<br> 2.两棵树的高度不同，这样合并后的新树高度等于较大那棵树的高度。 </p>
