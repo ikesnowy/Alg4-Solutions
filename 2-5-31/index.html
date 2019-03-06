@@ -145,8 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.31</h1>
-			<p>上次更新：2019-02-11 </p>
-			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.31<br>重复元素。<br>编写一段程序，接受命令行参数 M、N 和 T，然后使用正文中的代码进行 T 遍实验：<br>生成 N 个 0 到 M-1 间的 int 值并计算重复值的个数。<br>令 T=10，N=10^3、10^4、10^5 和 10^6<br>以及 M = N/2、N 以及 2N。<br>根据概率论，重复值的个数应该约为 M(1-e^(-α))，其中 α=N/M。<br>打印一张表格来确认你的实验验证了这个公式。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>编写代码进行实验即可，实验结果如下，可以发现十分接近：<br><img src="./1.png" alt=""></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>

@@ -145,8 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.5.15</h1>
-			<p>上次更新：2019-02-11 </p>
-			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.15<br>二项树。<br>请证明，对于加权 quick-union 算法，<br>在最坏情况下树中的每一层的结点数均为二项式系数。<br>在这种情况下，计算含有 N=2^n 个节点的树中节点的平均深度。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先证明在最坏情况下加权 quick-union 算法生成的树中的每一层结点数均为二项式系数。<br>最坏情况下，每次 union 操作都是合并相同大小的树，如下图所示：<br><img src="./1.png" alt=""><br>设第 i 层的结点数为 ki，那么最坏情况下每次合并后的 ki’ = ki + ki-1 。<br>这符合二项式系数的构造特点（详情可以搜索杨辉三角），<br>第一个结论证明完毕。</p>
 <p>接下来求平均深度，首先根据二项式的求和公式，一棵深度为 n 的树（根结点的深度为零）结点总数为：<br>$$<br>\sum_{k=0}^{n}<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}<br>=2^n<br>$$<br>每层结点数 × 该层深度后的和为：<br>$$<br>\sum_{k=0}^{n}k \cdot<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}=n\sum_{k=1}^{n}<br>\begin{pmatrix}<br>n-1 \\<br>k-1<br>\end{pmatrix}=n\sum_{s=0}^{n-1}<br>\begin{pmatrix}<br>n-1 \\<br>s<br>\end{pmatrix}=n2^{n-1}<br>$$<br>这里用到了这个公式化简：<br>$$<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}=\frac{n}{k}<br>\begin{pmatrix}<br>n-1 \\<br>k-1<br>\end{pmatrix}<br>$$<br>相除可以求得平均深度：<br>$$<br>\bar{D} = \frac{\sum_{k=0}^{n}k\cdot\begin{pmatrix}n\\k\end{pmatrix}}{\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}}=\frac{n2^{n-1}}{2^n}=\frac{n}{2}<br>$$</p>

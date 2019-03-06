@@ -145,8 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.3.37</h1>
-			<p>上次更新：2019-02-13 </p>
-			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.37<br>Josephus 问题。<br>在这个古老的问题中，N 个身陷绝境的人一致同意通过以下方式减少生存人数。<br>他们围坐成一圈（位置记作 0 到 N-1）并从第一个人开始报数， 报到 M 的人会被杀死，直到最后一个人留下来。<br>传说中 Josephus 找到了不会被杀死的位置。<br>编写一个 Queue 的用例 Josephus，从命令行接受 N 和 M 并打印出人们被杀死的顺序 （这也将显示 Josephus 在圈中的位置）。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>也就是约瑟夫问题，官方给出的 JAVA 版答案：<a href="http://algs4.cs.princeton.edu/13stacks/Josephus.java.html" target="_blank" rel="noopener">Josephus.java</a>。</p>
 <p>报数时将一个人出队然后入队来模拟一个环。<br>报到 M 个后将那个人出队但不入队（删除）<br>随后继续循环。</p>

@@ -145,8 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.31</h1>
-			<p>上次更新：2019-02-11 </p>
-			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.31<br>三个栈实现的双向队列。<br>使用三个栈实现一个双向队列，<br>使得双向队列的每个操作所需的栈操作均摊之后为一个常数。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>三个栈分别命名为左中右。<br>左侧栈和右侧栈负责模拟队列，和用两个栈模拟队列的方法类似。<br>由于是双向队列，左栈和右栈会频繁的倒来倒去，因此每次都只倒一半的元素可以有效减少开销。<br>有一侧栈为空时，另一侧栈中上半部分先移动到中间栈中，下半部分倒到另一侧栈里，再从中间栈拿回上半部分元素。<br>这样可以确保接下来的 pop 操作一定是常数级别的。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">namespace</span> _1<span class="token punctuation">.</span>_4<span class="token punctuation">.</span>_31

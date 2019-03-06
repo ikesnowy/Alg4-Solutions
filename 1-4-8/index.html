@@ -145,8 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.8</h1>
-			<p>上次更新：2019-02-11 </p>
-			<p>发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.8<br>编写一个程序，计算输入文件中相等的整数对的数量。<br>如果你的第一个程序是平方级别的， 请继续思考并用 Array.sort() 给出一个线性对数级别的解答。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>平方级别：直接二层循环遍历一遍。<br>线性对数：<br>先对数组排序，然后遍历一遍数组，在遍历过程中计算重复元素的数量，<br>然后用公式 $ 1+2+\cdots+n-1=n(n-1)/2 $ 计算重复整数对的数量。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
