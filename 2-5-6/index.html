@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.6</h1>
-			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.6<br>用递归实现 select()。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>非递归官网实现见：<a href="https://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java.html</a></p>
 <p>原本是和快速排序一块介绍的，将数组重新排列，使得 <code>a[k]</code> 正好是第 <code>k</code> 小的元素，<code>k</code> 从 <code>0</code> 开始。<br>具体思路类似于二分查找，<br>先切分，如果切分位置小于 <code>k</code>，那么在右半部分继续切分，否则在左半部分继续切分。<br>直到切分位置正好等于 <code>k</code>，直接返回 <code>a[k]</code> 。</p>

@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.5.13</h1>
-			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.13<br>使用路径压缩的加权 quick-union 算法。<br>修改加权 quick-union 算法（算法 1.5），<br>实现如练习 1.5.12 所述的路径压缩。<br>给出一列输入，使该方法能产生一棵高度为 4 的树。<br>注意：<br>该算法的所有操作的均摊成本已知被限制在反 Ackermann 函数的范围之内，<br>且对于实际应用中可能出现的所有 N 值均小于 5。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="http://algs4.cs.princeton.edu/15uf/WeightedQuickUnionPathCompressionUF.java.html" target="_blank" rel="noopener">WeightedQuickUnionPathCompressionUF</a>。<br>加权 quick-union 中，两个大小相等的树合并可以有效增加高度，同时输入必须保证是根节点以规避路径压缩。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>WeightedQuickUnionPathCompressionUF.cs 从 WeightedQuickUnionUF.cs 继承，详情参见 1.5.3 的解答。</p>

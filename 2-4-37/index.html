@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.37</h1>
-			<p>上次更新：2019-02-13 &emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-13 &emsp;&emsp; 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.37<br>性能测试Ⅱ。<br>编写一个性能测试用例，用插入元素操作填满一个优先队列，<br>然后在一秒钟之内尽可能多地连续反复调用删除最大元素和插入元素的操作。<br>用一列随机的长短不同的元素多次重复以上过程，<br>将程序能够完成的删除最大元素操作的平均次数打印出来或是绘成图表。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>建立一个全局变量 <code>isRunning</code> ，每次 <code>DelMax()</code> 之前都先确认这个值是否为 <code>true</code>，<br>设立一个 <code>Timer</code> 在 1 秒钟之后自动将 <code>isRunning</code> 置为 <code>false</code>。</p>
 <p>测试结果如下：<br><img src="./1.png" alt=""><br>随着 <code>n</code> 增大，一秒钟之内能执行的 <code>DelMax()</code> 次数会下降。</p>
