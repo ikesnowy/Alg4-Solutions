@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.21</h1>
-			<p>上次更新：2019-02-28  <br> 发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<p>上次更新：2019-02-28     发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.21<br>内存使用。<br>基于 1.4 节中的假设，<br>对于 N 对键值比较 BinarySearchST 和 SequentialSearchST 的内存使用情况。<br>不需要记录键值本身占用的内存，只统计它们的引用。<br>对于BinarySearchST，假设数组大小可以动态调整，<br>数组中被占用的空间比例为 25%~100%。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p><code>BinarySearchST</code><br>包含一个键数组和一个值数组，以及一个 <code>int</code> 变量。<br>数组长度变化范围为 N~4N ，故总大小：<br>从 2 × (24 + 8N) +4 = 52 + 16N 字节 （100 %），<br>到 2 × (24 + 32N) +4 = 52 + 64N 字节（25 %）之间变动。<br><code>SequentialSearchST</code><br>包含 N 个结点以及一个 <code>int</code> 变量<br>(16 + 8 + 8 + 8)N + 4 = 4 + 40N 字节</p>
 
