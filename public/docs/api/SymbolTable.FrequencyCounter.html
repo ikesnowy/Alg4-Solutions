@@ -433,8 +433,17 @@
                           <li class="">
                             <a href="SymbolTable.BinarySearchST-2.html" title="BinarySearchST&lt;TKey, TValue&gt;" class="">BinarySearchST&lt;TKey, TValue&gt;</a>
                           </li>
+                          <li class="">
+                            <a href="SymbolTable.BinarySearchSTCached-2.html" title="BinarySearchSTCached&lt;TKey, TValue&gt;" class="">BinarySearchSTCached&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.BinarySearchSTOrderedInsertion-2.html" title="BinarySearchSTOrderedInsertion&lt;TKey, TValue&gt;" class="">BinarySearchSTOrderedInsertion&lt;TKey, TValue&gt;</a>
+                          </li>
                           <li class="active">
                             <a href="SymbolTable.FrequencyCounter.html" title="FrequencyCounter" class="active">FrequencyCounter</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.InterpolationSearchST.html" title="InterpolationSearchST" class="">InterpolationSearchST</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.IOrderedST-2.html" title="IOrderedST&lt;TKey, TValue&gt;" class="">IOrderedST&lt;TKey, TValue&gt;</a>
@@ -455,10 +464,19 @@
                             <a href="SymbolTable.OrderedSequentialSearchST-2.html" title="OrderedSequentialSearchST&lt;TKey, TValue&gt;" class="">OrderedSequentialSearchST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.SearchCompare.html" title="SearchCompare" class="">SearchCompare</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;TKey, TValue&gt;" class="">SequentialSearchST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.SequentialSearchSTCached-2.html" title="SequentialSearchSTCached&lt;TKey, TValue&gt;" class="">SequentialSearchSTCached&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.ST-2.html" title="ST&lt;TKey, TValue&gt;" class="">ST&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.TestBinarySearchST.html" title="TestBinarySearchST" class="">TestBinarySearchST</a>
                           </li>
                         </ul>  </li>
                     <li class="">
@@ -554,7 +572,7 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L122">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L25">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_FrequencyCounter_CountDistinct_" data-uid="SymbolTable.FrequencyCounter.CountDistinct*"></a>
   <h4 id="SymbolTable_FrequencyCounter_CountDistinct__1___0___SymbolTable_IST___0_System_Int32__" data-uid="SymbolTable.FrequencyCounter.CountDistinct``1(``0[],SymbolTable.IST{``0,System.Int32})">CountDistinct&lt;TKey&gt;(TKey[], IST&lt;TKey, Int32&gt;)</h4>
@@ -622,7 +640,117 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L25">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L42">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_FrequencyCounter_LookUpDictionary_" data-uid="SymbolTable.FrequencyCounter.LookUpDictionary*"></a>
+  <h4 id="SymbolTable_FrequencyCounter_LookUpDictionary_System_String_System_String_System_Int32_" data-uid="SymbolTable.FrequencyCounter.LookUpDictionary(System.String,System.String,System.Int32)">LookUpDictionary(String, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>找到同时存在于字典和输入文件的单词并统计频率，
+分别按照频率降序和字典升序输出。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void LookUpDictionary(string filename, string dictionaryFile, int minLength)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filename</span></td>
+        <td><p>输入文件。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dictionaryFile</span></td>
+        <td><p>字典文件。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minLength</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L103">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_FrequencyCounter_MostFrequentlyKey_" data-uid="SymbolTable.FrequencyCounter.MostFrequentlyKey*"></a>
+  <h4 id="SymbolTable_FrequencyCounter_MostFrequentlyKey__1_SymbolTable_IST___0_System_Int32____0___" data-uid="SymbolTable.FrequencyCounter.MostFrequentlyKey``1(SymbolTable.IST{``0,System.Int32},``0[])">MostFrequentlyKey&lt;TKey&gt;(IST&lt;TKey, Int32&gt;, TKey[])</h4>
+  <div class="markdown level1 summary"><p>获得指定键中出现频率最高的键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TKey MostFrequentlyKey&lt;TKey&gt;(IST&lt;TKey, int&gt; st, TKey[] keys)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SymbolTable.IST-2.html">IST</a>&lt;TKey, <span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">st</span></td>
+        <td><p>用于计算的符号表。</p>
+</td>
+      </tr>
+      <tr>
+        <td>TKey[]</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>所有的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">keys</code> 中出现频率最高的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td><p>键类型。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L128">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_FrequencyCounter_MostFrequentlyWord_" data-uid="SymbolTable.FrequencyCounter.MostFrequentlyWord*"></a>
   <h4 id="SymbolTable_FrequencyCounter_MostFrequentlyWord_System_String_System_Int32_SymbolTable_IST_System_String_System_Int32__" data-uid="SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32})">MostFrequentlyWord(String, Int32, IST&lt;String, Int32&gt;)</h4>
@@ -680,7 +808,7 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L68">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/FrequencyCounter.cs/#L171">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_FrequencyCounter_MostFrequentlyWords_" data-uid="SymbolTable.FrequencyCounter.MostFrequentlyWords*"></a>
   <h4 id="SymbolTable_FrequencyCounter_MostFrequentlyWords_System_String_System_Int32_SymbolTable_IST_System_String_System_Int32__" data-uid="SymbolTable.FrequencyCounter.MostFrequentlyWords(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32})">MostFrequentlyWords(String, Int32, IST&lt;String, Int32&gt;)</h4>

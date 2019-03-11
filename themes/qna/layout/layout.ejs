@@ -25,10 +25,10 @@
         <% if (theme.favicon){ %>
         <link rel="icon" href="<%- config.root+theme.favicon %>">
         <% } %>
-        <%- css('css/normalize') %>
-        <%- css('css/style') %>
-        <%- css('css/common') %>
-        <%- css('css/markdown') %>
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown">
     </head>
     <body>
         <div class="wrapper">
@@ -45,6 +45,28 @@
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         <% if (theme.ga != null) { %>

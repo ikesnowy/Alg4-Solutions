@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.2.13</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.13<br>平均情况的下限。<br>请证明任意基于比较的排序算法的预期比较次数至少为 ~NlogN<br>（假设输入元素的所有排列的出现概率是均等的）。<br>提示：<br>比较次数至少是比较树的外部路径的长度<br>（根结点到叶子结点的路径长度之和），<br>当树平衡时该值最小。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>假设对三个数进行排序，<br>这三个数是：35，10，17<br>三个数排序的决策树如下，<br>结点代表比较对应位置上的数。<br><img src="./1.jpg" alt=""><br>对于 35,10,17 来说，路径遵循右、左、左，最后得到的结果就是 2 3 1（10,17,35）。<br>我们可以发现决策树上的每一个叶子节点都代表一种排列顺序，对于 N 个数，叶子节点就有 $ N! $ 个<br>根据二叉树的性质，高度为 $ h $ 的二叉树最多有 $ 2^h $ 个叶子节点<br>那么，对于 $ N $ 个数，决策树的高度 $ h $ 的最小值可以通过下面这个式子得出来<br>$ 2^h &gt;= n! $<br>$ h \ge log(n!) $<br>因此可以得到决策树高度 $ h $ 的最小值是 $ log(n!) $ </p>
 <p>接下来我们来计算平均路径长度<br>我们令函数 $ H(k) $ 代表有 $ k $ 个叶子节点的平衡决策树的所有路径长度之和<br>上例中 $ H(6) = 2 + 2 + 3 + 3 + 3 + 3 = 16 $<br>由于平衡决策树的性质，$ H(k) = 2H(k / 2) + k $<br>（加上 $ k $ 的原因：左右子树的高度比整个树的高度小 $ 1 $，因此每条路径的长度都必须加 $ 1 $，总共多加了 $ k $ 次）<br>因此 $ H(k) = klogk $<br>现在令 $ k = n! $<br>$ H(n!) = n!log(n!) $<br>由于每次排序时我们只经过某一条路径（上例中我们只经过了右、左、左这条路径）<br>而且每种路径的出现概率相等<br>因此平均比较次数应该为 $ H(n!) / n! = log(n!) = nlog(n) $<br>证明完毕</p>
@@ -192,7 +193,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -206,6 +207,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

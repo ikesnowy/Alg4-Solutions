@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -146,61 +146,61 @@ function dismissSearchResultModal() {
         
         <h4>2018</h4>
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-28/">2.2.28</a></p>
+        <p class="post-title"><span>2018年7月12日</span><a href="/2-3-13/">2.3.13</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-27/">2.2.27</a></p>
+        <p class="post-title"><span>2018年7月11日</span><a href="/2-3-12/">2.3.12</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-26/">2.2.26</a></p>
+        <p class="post-title"><span>2018年7月11日</span><a href="/2-3-11/">2.3.11</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-25/">2.2.25</a></p>
+        <p class="post-title"><span>2018年7月11日</span><a href="/2-3-10/">2.3.10</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-24/">2.2.24</a></p>
+        <p class="post-title"><span>2018年7月11日</span><a href="/2-3-9/">2.3.9</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-23/">2.2.23</a></p>
+        <p class="post-title"><span>2018年7月10日</span><a href="/2-3-8/">2.3.8</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-22/">2.2.22</a></p>
+        <p class="post-title"><span>2018年7月10日</span><a href="/2-3-7/">2.3.7</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-21/">2.2.21</a></p>
+        <p class="post-title"><span>2018年7月9日</span><a href="/2-3-6/">2.3.6</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-20/">2.2.20</a></p>
+        <p class="post-title"><span>2018年7月8日</span><a href="/2-3-5/">2.3.5</a></p>
         
         
         
         
         
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-19/">2.2.19</a></p>
+        <p class="post-title"><span>2018年7月8日</span><a href="/2-3-4/">2.3.4</a></p>
         
     </div>
 </div>
@@ -237,7 +237,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -251,6 +251,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

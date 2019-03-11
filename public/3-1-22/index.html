@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,32 +145,33 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.22</h1>
-			<p>上次更新：2019-02-28</p>
+			<p>上次更新：2019-03-01 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.22<br>自组织查找。<br>自组织查找指的是一种能够将数组元素重新排序<br>使得被访问频率较高的元素更容易被找到的查找算法。<br>请修改你为习题 3.1.2 给出的答案，在每次查找命中时：<br>将被找到的键值对移动到数组的开头，将所有中间的键值对向右移动一格。<br>这个启发式的过程被称为前移编码。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对 <code>Get()</code> 做修改，得到 <code>MoveToFrontArrayST</code>。</p>
-<pre class="line-numbers language-csahrp"><code class="language-csahrp">public TValue Get(TKey key)
-{
-    int i;
-    for (i = 0; i < this.n; i++)
-        if (this.keys[i].Equals(key))
-            break;
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> TValue <span class="token function">Get</span><span class="token punctuation">(</span>TKey key<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">Equals</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
 
-    if (i == this.n)
-        return default(TValue);
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">.</span>n<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token keyword">default</span><span class="token punctuation">(</span>TValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    TKey toFrontKey = this.keys[i];
-    TValue toFrontValue = this.values[i];
+    TKey toFrontKey <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    TValue toFrontValue <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    for (int j = i; j > 0; j--)
-        this.keys[j] = this.keys[j - 1];
-    for (int j = i; j > 0; j--)
-        this.values[j] = this.values[j - 1];
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    this.keys[0] = toFrontKey;
-    this.values[0] = toFrontValue;
+    <span class="token keyword">this</span><span class="token punctuation">.</span>keys<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> toFrontKey<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> toFrontValue<span class="token punctuation">;</span>
 
-    return this.values[0];
-}
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/SymbolTable.html">SymbolTable 库</a></p>
 
@@ -215,7 +216,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -229,6 +230,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

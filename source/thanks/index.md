@@ -5,6 +5,8 @@ date: 2019-01-24 10:56:53
 
 代码避免不了 bug，题解也避免不了错误，感谢你们对于题解中问题的指出！
 
+发现了题解错误/代码缺陷/排版问题？请点这里：{% post_link 如何：提交反馈 %} 。
+
 （排名不分先后）
 
 [@杨晗](https://github.com/YangXiaoHei) ，1.3.49 等 。⬅ 他写了一份 Java 版的题解，做的比我多，[点此进入](https://github.com/YangXiaoHei/Algorithms) 。

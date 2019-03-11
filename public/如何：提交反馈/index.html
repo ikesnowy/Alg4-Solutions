@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>如何：提交反馈</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-03-01 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<p>如果你在使用本站的过程中发现了错误，或者有更好的改进和建议，欢迎向我提交反馈。这里提供了两种提交反馈的方式。</p>
 <h2 id="GitHub-Issue（推荐）"><a href="#GitHub-Issue（推荐）" class="headerlink" title="GitHub Issue（推荐）"></a>GitHub Issue（推荐）</h2><p>1. 点击本页底部的 GitHub 图标，进入题解源代码页面。<br>2. 点击 「Issue」，进入 Issue 页。<br><img src="./1.png" alt=""><br>3. 点击「New Issue」，新建 Issue。（GitHub 可能会要求你登录，你可能需要先注册一个免费账号以继续）。<br><img src="./2.png" alt=""><br>4. 填写相关内容，然后点击「Submit Issue」即可。<br><img src="./3.png" alt=""><br>5. 随后页面会跳转到刚刚创建的 Issue 上，相关回复会出现在这个页面，请保持关注。下面是一个例子：<br><img src="./4.png" alt=""><br>6. 如果问题被修复，Issue 的状态会被更改为 「Closed」。<strong>请不要在已关闭的 Issue 中回复</strong>，如果还有更多的问题，你可以重新提交一个新的 Issue。</p>
 <h2 id="Email"><a href="#Email" class="headerlink" title="Email"></a>Email</h2><p>如果不希望你的反馈被公开，你也可以直接向我发送电子邮件，邮件地址是：<a href="mailto:ikesnowy@outlook.com" target="_blank" rel="noopener">ikesnowy@outlook.com</a>。我会尽快回复。</p>
@@ -164,10 +165,10 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/如何：运行题解代码/">上一题</a>
+		<a href="/如何：查找-API-说明/">上一题</a>
 		
 		
-		<a href="/1-4-36/">下一题</a>
+		<a href="/1-1-1/">下一题</a>
 		
 	</div>
 	
@@ -191,7 +192,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -205,6 +206,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

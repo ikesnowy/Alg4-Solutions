@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.23</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.23<br>Multiway 的堆。<br>只考虑比较的成本且假设找到 t 个元素中的最大者需要 t 次比较，<br>在堆排序中使用 t 向堆的情况下找出使比较次数 NlogN 的系数最小的 t 值。<br>首先，假设使用的是一个简单通用的 sink() 方法；<br>其次，假设 Floyd 方法在内循环中每轮可以节省一次比较。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><h2 id="简单的-sink-实现"><a href="#简单的-sink-实现" class="headerlink" title="简单的 sink 实现"></a>简单的 sink 实现</h2><p>sink 方法会在所有的 $ t $ 个子结点中寻找最大的结点。<br>如果找到的结点比当前结点大，那么就进行交换。<br>否则视为结点已经下沉到了合适的位置，结束循环。<br>根据题意，在 $ t $ 个元素中找最大值需要 $ t $ 次比较。<br>sink 操作需要找到 $ t $ 个子结点中的最大值并与当前结点相比较。<br>于是 sink 操作每次最多需要 $ t + 1 $ 次比较。</p>
 <p>建堆过程，对 2.4.20 的证明进行推广。<br>设 $ t $ 叉树的高度为 $ h $ ，叶子结点的高度为 $ 0 $，根结点的高度为 $ h $。<br>根据 sink 操作的定义，高度为 $ k $ 的结点最多进行 $ k $ 次交换（到达叶子结点）。<br>于是建堆需要的总<strong>交换</strong>次数为：<br>$$<br>\begin{align*}<br>&amp; h+t(h-1)+t^2(h-2)+ \dots + t^h(0) \\<br>&amp; =\sum_{k=0}^{h-1} t^k(h-k) \\<br>&amp; =h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \\<br>\end {align*}<br>$$</p>
@@ -196,7 +197,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -210,6 +211,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.18</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.18<br>在 MaxPQ 中，如果一个用例使用 insert() 插入了一个比队列中的所有元素都大的新元素，随后立即调用 delMax()。<br>假设没有重复元素，此时的堆和进行这些操作之前的堆完全相同吗？<br>进行两次 insert()<br>（第一次插入一个比队列所有元素都大的元素，第二次插入一个更大的元素）<br>操作接两次 delMax() 操作呢？</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先看第一种情况，一次 <code>insert()</code> 接一次 <code>delMax()</code>。<br>由于插入的数比堆中的所有元素都大，这个元素会一路上升到根结点。<br>记上升路径上的点为 $ a_1,a_2,a_3, \dots , a_k $，其中 $ a_k $是插入的结点，$ a_1 $ 是根结点。<br>插入完成后路径上点的次序变为 $ a_k, a_1, a_2, \dots, a_{k-1} $ 。<br>随后进行一次 <code>delMax()</code>，先做交换，次序变为 $ a_{k-1}, a_1, \dots, a_{k-2}, a_k $ 。<br>由于 $ a_1 $ 是堆中原来的最大值，下沉时一定会和它交换。<br>根据定义，二叉堆是父结点总是优于子结点的完全二叉树，因此以后续结点作为根结点的子树也都是堆。<br>故同理 $ a_{k-1} $ 会和 $ a_2, a_3, \dots,a_{k-2} $ 交换，即沿原路径返回。<br>因此这种情况下前后堆不发生改变。</p>
 <p>然后看第二种情况，操作顺序为 <code>insert() insert() delMax() delMax()</code>。<br>根据之前的结论，插入最大结点之后立即删除最大元素不会使堆发生变化，中间的两个操作抵消。<br>序列变为：<code>insert() delMax()</code>。<br>同理再次利用刚才的结论，操作抵消，堆不发生变化。<br>故第二种情况也不会使堆发生改变。</p>
@@ -191,7 +192,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -205,6 +206,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

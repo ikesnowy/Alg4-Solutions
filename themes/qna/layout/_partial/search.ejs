@@ -11,7 +11,7 @@
 					<input type="text" id="search-input" placeholder="<%= __(theme.search_placeholder) %>" <% if (config.search == null) { %>onkeyup="searchInputOnKeyUp()"<% } %>>
 					<div class="magnifying-glass" id="search-button" <% if (config.search == null) { %>onclick="searchInSite(event)"<% } %>>
 						<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"></path>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"></path>
 					</svg>
 				</div>
 			</div>

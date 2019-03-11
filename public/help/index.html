@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,11 +145,14 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>帮助</h1>
-			<p>上次更新：2019-02-11</p>
-			<h2 id="这个网站是做什么的？"><a href="#这个网站是做什么的？" class="headerlink" title="这个网站是做什么的？"></a>这个网站是做什么的？</h2><p>这个网站提供了一份《算法（第四版）》的个人题解，这份题解是由 @沈星繁 撰写的。<br>你可以点击网页最下方的 GitHub 标志访问题解的全部源代码。</p>
+			<p>上次更新：2019-03-06 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h2 id="这个网站是做什么的？"><a href="#这个网站是做什么的？" class="headerlink" title="这个网站是做什么的？"></a>这个网站是做什么的？</h2><p>这个网站提供了一份《算法（第四版）》的个人题解，这份题解是由 <a href="https://github.com/ikesnowy" target="_blank" rel="noopener">@沈星繁</a> 撰写的。<br>你可以点击网页最下方的 GitHub 标志访问题解的全部源代码。</p>
 <h2 id="如何搜索题解？"><a href="#如何搜索题解？" class="headerlink" title="如何搜索题解？"></a>如何搜索题解？</h2><p>在上方的搜索框中输入关键字即可，题目编号或者题目内容都可以。<br>如果没有显示搜索结果，可能是 js 脚本没有加载完毕，请耐心等待一会再试。</p>
+<h2 id="你似乎使用了自定义的类，它们的源代码在哪？"><a href="#你似乎使用了自定义的类，它们的源代码在哪？" class="headerlink" title="你似乎使用了自定义的类，它们的源代码在哪？"></a>你似乎使用了自定义的类，它们的源代码在哪？</h2><p>绝大部分情况下，它们都位于对应章节的类库之中，你可以在 API 文档中找到它们的说明和代码。<br>在搜索框中输入「API」来获得详细方法，或者点击这里 <a href="/如何：查找-API-说明/" title="如何：查找 API 说明">如何：查找 API 说明</a> 。</p>
 <h2 id="直接复制代码运行出错，怎么办？"><a href="#直接复制代码运行出错，怎么办？" class="headerlink" title="直接复制代码运行出错，怎么办？"></a>直接复制代码运行出错，怎么办？</h2><p>可能是这份代码里用到了自定义的库，你需要一并下载用到的库并添加到解决方案中去。<br>在搜索框中输入「运行代码」来获取详细方法，或者点击这里 <a href="/如何：运行题解代码/" title="如何：运行题解代码">如何：运行题解代码</a> 。</p>
 <h2 id="我发现了错误，如何反馈？"><a href="#我发现了错误，如何反馈？" class="headerlink" title="我发现了错误，如何反馈？"></a>我发现了错误，如何反馈？</h2><p>点击网页最下方的 GitHub 标志，然后提出一个 Issue 即可。<br>在搜索框中输入「反馈」来获取详细方法，或者点击这里 <a href="/如何：提交反馈/" title="如何：提交反馈">如何：提交反馈</a> 。</p>
+<h2 id="我可以翻译-转载你的题解和代码吗？"><a href="#我可以翻译-转载你的题解和代码吗？" class="headerlink" title="我可以翻译/转载你的题解和代码吗？"></a>我可以翻译/转载你的题解和代码吗？</h2><p>请自由使用本站的所有题解，可以商用，可以翻译，不需要注明出处，不需要获取授权。<br>若没有特殊注明，本站中的图片素材都是我自己做的，也包含在上一条范围之内。<br>有关《算法（第四版）》中的文字内容请遵守图书所有者的版权规定。<br>题解中出现的非本人原创的的内容请遵守其对应所有者的版权许可。<br>题解代码遵守 MIT 协议，详情见 GitHub。</p>
 
 		</div>
 	</div>
@@ -178,7 +181,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -192,6 +195,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

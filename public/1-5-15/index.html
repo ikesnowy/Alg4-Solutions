@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.5.15</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.5.15<br>二项树。<br>请证明，对于加权 quick-union 算法，<br>在最坏情况下树中的每一层的结点数均为二项式系数。<br>在这种情况下，计算含有 N=2^n 个节点的树中节点的平均深度。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先证明在最坏情况下加权 quick-union 算法生成的树中的每一层结点数均为二项式系数。<br>最坏情况下，每次 union 操作都是合并相同大小的树，如下图所示：<br><img src="./1.png" alt=""><br>设第 i 层的结点数为 ki，那么最坏情况下每次合并后的 ki’ = ki + ki-1 。<br>这符合二项式系数的构造特点（详情可以搜索杨辉三角），<br>第一个结论证明完毕。</p>
 <p>接下来求平均深度，首先根据二项式的求和公式，一棵深度为 n 的树（根结点的深度为零）结点总数为：<br>$$<br>\sum_{k=0}^{n}<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}<br>=2^n<br>$$<br>每层结点数 × 该层深度后的和为：<br>$$<br>\sum_{k=0}^{n}k \cdot<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}=n\sum_{k=1}^{n}<br>\begin{pmatrix}<br>n-1 \\<br>k-1<br>\end{pmatrix}=n\sum_{s=0}^{n-1}<br>\begin{pmatrix}<br>n-1 \\<br>s<br>\end{pmatrix}=n2^{n-1}<br>$$<br>这里用到了这个公式化简：<br>$$<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}=\frac{n}{k}<br>\begin{pmatrix}<br>n-1 \\<br>k-1<br>\end{pmatrix}<br>$$<br>相除可以求得平均深度：<br>$$<br>\bar{D} = \frac{\sum_{k=0}^{n}k\cdot\begin{pmatrix}n\\k\end{pmatrix}}{\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}}=\frac{n2^{n-1}}{2^n}=\frac{n}{2}<br>$$</p>
@@ -191,7 +192,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -205,6 +206,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

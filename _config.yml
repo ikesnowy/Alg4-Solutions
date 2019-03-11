@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://alg4.ikesnowy.com/
+url: https://alg4.ikesnowy.com/
 root: /
 permalink: :title/
 permalink_defaults:
@@ -97,7 +97,7 @@ deploy:
 
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
-  theme: 'atom-dark'
+  theme: 'hopscotch'
   line_number: true    # default false
 
 math:

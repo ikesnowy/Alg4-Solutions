@@ -11,11 +11,11 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css">
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
@@ -105,7 +105,7 @@
 					<input type="text" id="search-input" placeholder="题目编号/关键字">
 					<div class="magnifying-glass" id="search-button">
 						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+						<path id="search-button-path" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
 					</svg>
 				</div>
 			</div>
@@ -145,7 +145,8 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.9</h1>
-			<p>上次更新：2019-02-11</p>
+			<p>上次更新：2019-02-11 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.4.9<br>给出 A B C D E 五个元素可能构造出来的所有堆，<br>然后给出 A A A B B 这五个元素可能构造出来的所有堆。</p>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先 A B C D E 中，根节点必须是 E （假设为最大堆）<br>D 只能选择 E 作为父结点。<br>C 可以选择 D 或者 E 作为父结点。<br>B 可以选择 C 或 D 或 E 作为父结点。<br>A 可以选择 B 或 C 或 D 或 E 作为父结点。<br>又由于堆的大小为 5，堆的结构固定，一共三层。<br>E 只能为根节点<br>D 可以在左侧或者右侧<br>当 D 在左侧时，<br>D 的子结点可以在 A B C 中任取两个，剩下一个当 E 的右侧子结点<br>总共有 A(3, 2) = 6 种<br>当 D 在右侧时，<br>C 的子结点只能取 A 和 B ，故只有 A(2, 2) = 2 种情况。<br>综上，最大堆总共有 6 + 2 = 8 种构造堆的方式。<br>最小堆的构造同理，也有 8 种构造方式。<br>故总共有 8 + 8 = 16 种构造方式。<br>构造方式（最大堆）：<br><img src="./1.png" alt=""></p>
 <p>最大堆<br>B 只能作为 B 的子结点，A 可以是 B 或 A 的子结点。<br>根节点恒为 B<br>第二层结点有两种选择 A B 和 B A<br>第三层只有一种选择 A A<br>故总共有两种构造堆的方式。<br>最小堆<br>根节点恒为 A<br>第二层可以是 A A 或 A B<br>第二层是 A A 时<br>第三层只能选择 B B<br>第二层时 A B 时<br>第三层可选择 A B 或 B A<br>故总共有三种构造堆的方式。<br>综上所述，总共有 2 + 3 = 5 种构造方式。<br>构造方式（全部）：<br><img src="./2.png" alt=""></p>
@@ -191,7 +192,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -205,6 +206,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        var now = new Date();
+        if (now.getHours() > 18) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         
