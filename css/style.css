@@ -4,7 +4,7 @@ body,
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 18px;
     line-height: 28px;
-    color: #000000;
+    color: #323232;
     letter-spacing: 2px;
     overflow: hidden;
     overflow-y: auto
@@ -134,7 +134,7 @@ body,
 .main_content_wrapper {}
 
 header {
-    background-color: #0a0a0a;
+    background-color: #111111;
     left: 0;
     padding: 32.5px 40px;
     position: fixed;
@@ -317,12 +317,12 @@ button:hover {
 }
 
 #PostList {
-    background-color: #000000;
+    background-color: #ffffff;
     padding: 20px 15px;
     text-transform: uppercase;
     letter-spacing: 3px;
     text-align: center;
-    color: #fff;
+    color: #111111;
     line-height: 40px;
     font-size: 18px;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol
@@ -521,7 +521,7 @@ footer {
 
 .post-list .post-title {
     border-bottom: 1px dashed #ddd;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(50, 50, 50, 0.8);
     font-size: 18px;
     line-height: 37px;
     white-space: nowrap;
@@ -535,15 +535,15 @@ footer {
 
 .post-list .post-title:hover {
     white-space: normal;
-    border-color: rgba(255, 255, 255, 1)
+    border-color: rgba(50, 50, 50, 1)
 }
 
 .post-list .post-title a {
-    color: rgba(255, 255, 255, 0.8)
+    color: rgba(17, 17, 17, 0.8)
 }
 
 .post-list .post-title a:hover {
-    color: rgba(255, 255, 255, 1)
+    color: rgba(17, 17, 17, 1)
 }
 
 .post-list .post-title span {
@@ -577,7 +577,7 @@ footer {
 }
 
 #Pagenation {
-    background-color: #000000;
+    background-color: #ffffff;
     padding: 0 0 25px 0;
     text-align: center
 }

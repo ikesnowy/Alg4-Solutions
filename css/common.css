@@ -409,12 +409,12 @@
     margin: 0 auto;
     position: relative;
     max-width: none;
-    color: #494949
+    color: #111111
 }
 
 #Search {
-    background-color: #141414;
-    color: #fff;
+    background-color: #fafafa;
+    color: #111111;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 22px;
     letter-spacing: 3px;
@@ -424,11 +424,11 @@
 }
 
 #search-content #search-view {
-    background: #141414
+    background: #FAFAFA
 }
 
 #Search h3 {
-    color: #fff;
+    color: #111111;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 23px;
     letter-spacing: 3px;
@@ -443,8 +443,8 @@
 }
 
 #Search .search-info.box>input {
-    background: #141414 none repeat scroll 0 0;
-    border: 3px solid #fff;
+    background: #FAFAFA none repeat scroll 0 0;
+    border: 3px solid #111111;
     border-radius: 0;
     box-shadow: none;
     color: #fff;
