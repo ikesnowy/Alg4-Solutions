@@ -283,15 +283,15 @@ abbr[title] {
 }
 
 .mdcss a {
-    color: rgba(102, 186, 255, 0.8);
+    color: rgba(0, 112, 201, 0.8);
     text-decoration: none;
-    border-bottom: 1px solid rgba(102, 186, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 112, 201, 0.8);
     word-wrap: break-word
 }
 
 .mdcss a:hover {
-    color: rgba(102, 186, 255, 1);
-    border-bottom-color: rgba(102, 186, 255, 1)
+    color: rgba(0, 112, 201, 1);
+    border-bottom-color: rgba(0, 112, 201, 1)
 }
 
 .mdcss ul {
@@ -2461,7 +2461,7 @@ abbr[title] {
 }
 
 .mdcss a {
-    border-bottom-color: rgba(102, 186, 255, 0.8)
+    border-bottom-color: rgba(0, 112, 201, 0.8);
 }
 
 .mdcss hr {

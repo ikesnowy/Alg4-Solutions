@@ -11,10 +11,10 @@
         
         <link rel="icon" href="//favicon.ico">
         
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/common.css">
-        <link rel="stylesheet" href="/css/markdown.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
+        <link href="/css/style.css" rel="stylesheet" id="style">
+        <link href="/css/common.css" rel="stylesheet" id="common">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
@@ -608,7 +608,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+			&copy; 2019 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -622,6 +622,28 @@ function dismissSearchResultModal() {
         document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
         }
         isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        <script>
+        function lightOff() {
+            document.getElementById('style').href='/css/style-dark.css';
+            document.getElementById('common').href='/css/common-dark.css';
+            document.getElementById('markdown').href='/css/markdown-dark.css';
+            document.getElementById('normalize').href='/css/normalize-dark.css';
+            document.getElementById('search-button-path').style.stroke = '#111111';
+        }
+        function lightOn() {
+            document.getElementById('style').href='/css/style.css';
+            document.getElementById('common').href='/css/common.css';
+            document.getElementById('markdown').href='/css/markdown.css';
+            document.getElementById('normalize').href='/css/normalize.css';
+            document.getElementById('search-button-path').style.stroke = '#ffffff';
+        }
+        var now = new Date();
+        if (now.getHours() > 19) {
+            lightOff();
+        } else {
+            lightOn();
         }
         </script>
         

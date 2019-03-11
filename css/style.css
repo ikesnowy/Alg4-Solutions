@@ -134,7 +134,7 @@ body,
 .main_content_wrapper {}
 
 header {
-    background-color: #111111;
+    background-color: #F2F2F2;
     left: 0;
     padding: 32.5px 40px;
     position: fixed;
@@ -174,7 +174,7 @@ nav ul li {
 nav ul li a {
     display: block;
     padding: 0px 0px;
-    color: #fff;
+    color: #323232;
     text-transform: uppercase;
     font-size: 18px;
     line-height: 26px;
@@ -185,7 +185,7 @@ nav ul li a {
 
 nav ul li:hover a,
 nav ul li.active a {
-    border-bottom-color: #fff
+    border-bottom-color: #111111
 }
 
 nav ul li.dotted a {
@@ -286,14 +286,14 @@ button:hover {
 }
 
 #Post {
-    background-color: #000000;
+    background-color: #ffffff;
     padding: 20px 15px;
     letter-spacing: 3px;
     text-align: center;
     color: #fff;
     line-height: 40px;
     font-size: 18px;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
 
 .post_content {
@@ -553,27 +553,27 @@ footer {
 
 .section_content .breadcrumb {
     text-align: justify;
-    color: #fff;
-    background-color: #141414;
-    text-transform: uppercase
+    color: #111111;
+    background-color: #FAFAFA;
+    text-transform: uppercase;
 }
 
 .section_content .page_content {
     text-align: justify;
-    color: #fff;
-    background-color: #141414;
-    padding: 20px
+    color: #323232;
+    background-color: #fafafa;
+    padding: 20px;
 }
 
 .section_content .breadcrumb a {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-    color: rgba(255, 255, 255, 0.8);
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol
+    border-bottom: 1px solid rgba(17, 17, 17, 0.8);
+    color: rgba(17, 17, 17, 0.8);
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
 
 .section_content .breadcrumb a:hover {
-    border-bottom-color: rgba(255, 255, 255, 1);
-    color: rgba(255, 255, 255, 1)
+    border-bottom-color: rgba(17, 17, 17, 1);
+    color: rgba(17, 17, 17, 1);
 }
 
 #Pagenation {
@@ -907,7 +907,7 @@ input:-webkit-autofill {
 a {
     text-decoration: none;
     transition: 0.5s;
-    color: #fff
+    color: #111111
 }
 
 #disqus_thread,
