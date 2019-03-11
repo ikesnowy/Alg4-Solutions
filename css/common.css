@@ -486,26 +486,6 @@
     height: auto !important
 }
 
-input::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: #fff;
-}
-
-input:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #fff;
-}
-
-input::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #fff;
-}
-
-input:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: #fff;
-}
-
 body,
 input,
 textarea,
