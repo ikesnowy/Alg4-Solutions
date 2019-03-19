@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>《算法（第四版）》C# 题解</title>
+        <title>3.1.39 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -29,7 +29,7 @@
     <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -77,7 +77,7 @@
       <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -134,31 +134,49 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="PostList">
-	<h2 class="center">最近添加</h2>
-	<div class="post-list">
-		
-		<p class="post-title"><a href="/1-2-12/">1. 1.2.12</a></p>
-		
-		<p class="post-title"><a href="/1-2-11/">2. 1.2.11</a></p>
-		
-		<p class="post-title"><a href="/1-2-10/">3. 1.2.10</a></p>
-		
-		<p class="post-title"><a href="/1-2-9/">4. 1.2.9</a></p>
-		
-		<p class="post-title"><a href="/1-2-8/">5. 1.2.8</a></p>
-		
-		<p class="post-title"><a href="/1-2-7/">6. 1.2.7</a></p>
-		
-		<p class="post-title"><a href="/1-2-6/">7. 1.2.6</a></p>
-		
-		<p class="post-title"><a href="/1-2-5/">8. 1.2.5</a></p>
-		
-		<p class="post-title"><a href="/1-2-4/">9. 1.2.4</a></p>
-		
-		<p class="post-title"><a href="/1-2-3/">10. 1.2.3</a></p>
-		
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.1.39
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.1.39</h1>
+			<p>上次更新：2019-03-19 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.39<br>实际耗时。<br>修改 FrequencyCounter，用 Stopwatch 和 StdDraw 绘图，<br>其中 x 轴为 get() 和 put() 的调用次数之和，y 轴为总运行时间，<br>每次调用时就根据已运行的时间画一个点。<br>分别用 SequentialSearchST 和 BinarySearchST 处理《双城记》并讨论运行的结果。<br>注意：曲线中突然的跳跃可能是缓存导致的，这已经超出了这个问题的讨论范围。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>实验结果如下：<br><code>BinarySearchST</code><br><img src="./1.png" alt=""><br><code>SequentialSearchST</code><br><img src="./2.png" alt=""></p>
+<p>图像分为两段，分别代表不断向符号表中加入单词和寻找频率最大的单词两个部分。<br>第一段两个图像的形状类似（注意它们的 y 轴比例不同）。<br>第二段中 <code>BinarySearchST</code> 的表现要比 <code>SequentialSearchST</code> 稳定的多。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>绘图部分代码：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> x<span class="token punctuation">,</span> <span class="token keyword">long</span><span class="token punctuation">[</span><span class="token punctuation">]</span> y<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Graphics panel <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">CreateGraphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">float</span> unitX <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Width <span class="token operator">/</span> x<span class="token punctuation">.</span><span class="token function">Max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> unitY <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height <span class="token operator">/</span> y<span class="token punctuation">.</span><span class="token function">Max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> x<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        panel<span class="token punctuation">.</span><span class="token function">FillEllipse</span><span class="token punctuation">(</span>
+            Brushes<span class="token punctuation">.</span>Black<span class="token punctuation">,</span>
+            x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> unitX<span class="token punctuation">,</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ClientRectangle<span class="token punctuation">.</span>Height <span class="token operator">-</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> unitY<span class="token punctuation">,</span>
+            <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/SymbolTable.html">SymbolTable 库</a></p>
+
+		</div>
 	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -166,10 +184,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/page/34/">上一页</a>
+		<a href="/3-1-38/">上一题</a>
 		
-		
-		<a href="/page/36/">下一页</a>
 		
 	</div>
 	
