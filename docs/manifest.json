@@ -597,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PriorityQueue.MaxPQ-1.html",
-          "hash": "BLlqFZOKGoOT4z2UOsC9kQ=="
+          "hash": "gNWdLqiOAElxZgGLj2bFtQ=="
         }
       },
       "is_incremental": false,
@@ -1317,7 +1317,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SymbolTable.FrequencyCounter.html",
-          "hash": "1qXo+feKWMxncKXqQoyPfQ=="
+          "hash": "rwVA+UsZRGChu9YlVxAUUA=="
         }
       },
       "is_incremental": false,
@@ -1681,6 +1681,13 @@
         "skipped_file_count": 0
       },
       "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
@@ -1691,14 +1698,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 136,
-          "skipped_file_count": 44
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
+          "skipped_file_count": 125
         }
       }
     },

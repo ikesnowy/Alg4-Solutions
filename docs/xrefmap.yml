@@ -3404,6 +3404,23 @@ references:
   fullName.vb: PriorityQueue.MaxPQ(Of Key).System.Collections.IEnumerable.GetEnumerator
   nameWithType: MaxPQ<Key>.IEnumerable.GetEnumerator
   nameWithType.vb: MaxPQ(Of Key).System.Collections.IEnumerable.GetEnumerator
+- uid: PriorityQueue.MaxPQ`1.ToString
+  name: ToString()
+  href: api/PriorityQueue.MaxPQ-1.html#PriorityQueue_MaxPQ_1_ToString
+  commentId: M:PriorityQueue.MaxPQ`1.ToString
+  fullName: PriorityQueue.MaxPQ<Key>.ToString()
+  fullName.vb: PriorityQueue.MaxPQ(Of Key).ToString()
+  nameWithType: MaxPQ<Key>.ToString()
+  nameWithType.vb: MaxPQ(Of Key).ToString()
+- uid: PriorityQueue.MaxPQ`1.ToString*
+  name: ToString
+  href: api/PriorityQueue.MaxPQ-1.html#PriorityQueue_MaxPQ_1_ToString_
+  commentId: Overload:PriorityQueue.MaxPQ`1.ToString
+  isSpec: "True"
+  fullName: PriorityQueue.MaxPQ<Key>.ToString
+  fullName.vb: PriorityQueue.MaxPQ(Of Key).ToString
+  nameWithType: MaxPQ<Key>.ToString
+  nameWithType.vb: MaxPQ(Of Key).ToString
 - uid: PriorityQueue.MaxPQLinked`1
   name: MaxPQLinked<Key>
   href: api/PriorityQueue.MaxPQLinked-1.html
@@ -9894,6 +9911,15 @@ references:
   isSpec: "True"
   fullName: SymbolTable.FrequencyCounter.MostFrequentlyWord
   nameWithType: FrequencyCounter.MostFrequentlyWord
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32},System.Int32[]@,System.Int64[]@)
+  name: MostFrequentlyWordAnalysis(String, Int32, IST<String, Int32>, out Int32[], out Int64[])
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWordAnalysis_System_String_System_Int32_SymbolTable_IST_System_String_System_Int32__System_Int32____System_Int64____
+  commentId: M:SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32},System.Int32[]@,System.Int64[]@)
+  name.vb: MostFrequentlyWordAnalysis(String, Int32, IST(Of String, Int32), ByRef Int32(), ByRef Int64())
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, SymbolTable.IST<System.String, System.Int32>, out System.Int32[], out System.Int64[])
+  fullName.vb: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, SymbolTable.IST(Of System.String, System.Int32), ByRef System.Int32(), ByRef System.Int64())
+  nameWithType: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, IST<String, Int32>, out Int32[], out Int64[])
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, IST(Of String, Int32), ByRef Int32(), ByRef Int64())
 - uid: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,SymbolTable.ISTAnalysis{System.String,System.Int32})
   name: MostFrequentlyWordAnalysis(String, Int32, ISTAnalysis<String, Int32>)
   href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWordAnalysis_System_String_System_Int32_SymbolTable_ISTAnalysis_System_String_System_Int32__
