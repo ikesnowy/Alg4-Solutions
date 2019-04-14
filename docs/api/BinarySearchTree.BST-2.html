@@ -13,10 +13,10 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>MergeSortThreeWay 类
+    <title>BST&lt;TKey, TValue&gt; 类
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="MergeSortThreeWay 类
+    <meta name="title" content="BST&lt;TKey, TValue&gt; 类
    ">
     <meta name="generator" content="docfx 2.40.10.0">
     
@@ -91,8 +91,8 @@
                       <a href="BinarySearchTree.html" title="BinarySearchTree" class="">BinarySearchTree</a>
                         
                         <ul class="nav level2">
-                          <li class="">
-                            <a href="BinarySearchTree.BST-2.html" title="BST&lt;TKey, TValue&gt;" class="">BST&lt;TKey, TValue&gt;</a>
+                          <li class="active">
+                            <a href="BinarySearchTree.BST-2.html" title="BST&lt;TKey, TValue&gt;" class="active">BST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
                             <a href="BinarySearchTree.IOrderedST-2.html" title="IOrderedST&lt;TKey, TValue&gt;" class="">IOrderedST&lt;TKey, TValue&gt;</a>
@@ -211,8 +211,8 @@
                           <li class="">
                             <a href="Merge.MergeSortNatural.html" title="MergeSortNatural" class="">MergeSortNatural</a>
                           </li>
-                          <li class="active">
-                            <a href="Merge.MergeSortThreeWay.html" title="MergeSortThreeWay" class="active">MergeSortThreeWay</a>
+                          <li class="">
+                            <a href="Merge.MergeSortThreeWay.html" title="MergeSortThreeWay" class="">MergeSortThreeWay</a>
                           </li>
                           <li class="">
                             <a href="Merge.MergeSortUnstable.html" title="MergeSortUnstable" class="">MergeSortUnstable</a>
@@ -549,49 +549,26 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Merge.MergeSortThreeWay">
+            <article class="content wrap" id="_content" data-uid="BinarySearchTree.BST`2">
   
   
-  <h1 id="Merge_MergeSortThreeWay" data-uid="Merge.MergeSortThreeWay" class="text-break">MergeSortThreeWay 类
+  <h1 id="BinarySearchTree_BST_2" data-uid="BinarySearchTree.BST`2" class="text-break">BST&lt;TKey, TValue&gt; 类
   </h1>
-  <div class="markdown level0 summary"><p>三向归并排序。</p>
+  <div class="markdown level0 summary"><p>二叉查找树。</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>&#32487;&#25215;</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Merge.BaseSort.html">BaseSort</a></div>
-    <div class="level2"><span class="xref">MergeSortThreeWay</span></div>
+    <div class="level1"><span class="xref">BST&lt;TKey, TValue&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>&#23454;&#29616;</h5>
+    <div><a class="xref" href="BinarySearchTree.IST-2.html">IST</a>&lt;TKey, TValue&gt;</div>
+    <div><a class="xref" href="BinarySearchTree.IOrderedST-2.html">IOrderedST</a>&lt;TKey, TValue&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>&#32487;&#25215;&#25104;&#21592;</h5>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_Less__1___0___0_">BaseSort.Less&lt;T&gt;(T, T)</a>
-    </div>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_Less__1___0___0_System_Collections_Generic_IComparer___0__">BaseSort.Less&lt;T&gt;(T, T, IComparer&lt;T&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_Exch__1___0___System_Int32_System_Int32_">BaseSort.Exch&lt;T&gt;(T[], Int32, Int32)</a>
-    </div>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_Show__1___0___">BaseSort.Show&lt;T&gt;(T[])</a>
-    </div>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_IsSorted__1___0___">BaseSort.IsSorted&lt;T&gt;(T[])</a>
-    </div>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_IsSorted__1___0___System_Collections_Generic_IComparer___0__">BaseSort.IsSorted&lt;T&gt;(T[], IComparer&lt;T&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_IsSorted__1___0___System_Int32_System_Int32_">BaseSort.IsSorted&lt;T&gt;(T[], Int32, Int32)</a>
-    </div>
-    <div>
-      <a class="xref" href="Merge.BaseSort.html#Merge_BaseSort_IsSorted__1___0___System_Int32_System_Int32_System_Collections_Generic_IComparer___0__">BaseSort.IsSorted&lt;T&gt;(T[], Int32, Int32, IComparer&lt;T&gt;)</a>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -611,41 +588,60 @@
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
   </div>
-  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="Merge.html">Merge</a></h6>
-  <h6><strong>&#31243;&#24207;&#38598;</strong>: Merge.dll</h6>
-  <h5 id="Merge_MergeSortThreeWay_syntax">&#35821;&#27861;</h5>
+  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="BinarySearchTree.html">BinarySearchTree</a></h6>
+  <h6><strong>&#31243;&#24207;&#38598;</strong>: BinarySearchTree.dll</h6>
+  <h5 id="BinarySearchTree_BST_2_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class MergeSortThreeWay : BaseSort</code></pre>
+    <pre><code class="lang-csharp hljs">public class BST&lt;TKey, TValue&gt; : IST&lt;TKey, TValue&gt;, IOrderedST&lt;TKey, TValue&gt; where TKey : IComparable&lt;TKey&gt;</code></pre>
   </div>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td><p>键类型。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>值类型。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.2/Merge/MergeSortThreeWay.cs/#L14">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L72">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Merge_MergeSortThreeWay__ctor_" data-uid="Merge.MergeSortThreeWay.#ctor*"></a>
-  <h4 id="Merge_MergeSortThreeWay__ctor" data-uid="Merge.MergeSortThreeWay.#ctor">MergeSortThreeWay()</h4>
+  <a id="BinarySearchTree_BST_2__ctor_" data-uid="BinarySearchTree.BST`2.#ctor*"></a>
+  <h4 id="BinarySearchTree_BST_2__ctor" data-uid="BinarySearchTree.BST`2.#ctor">BST()</h4>
   <div class="markdown level1 summary"><p>默认构造函数。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MergeSortThreeWay()</code></pre>
+    <pre><code class="lang-csharp hljs">public BST()</code></pre>
   </div>
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.2/Merge/MergeSortThreeWay.cs/#L21">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L384">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Merge_MergeSortThreeWay_Sort_" data-uid="Merge.MergeSortThreeWay.Sort*"></a>
-  <h4 id="Merge_MergeSortThreeWay_Sort__1___0___" data-uid="Merge.MergeSortThreeWay.Sort``1(``0[])">Sort&lt;T&gt;(T[])</h4>
-  <div class="markdown level1 summary"><p>利用三项归并排序将数组按升序排序。</p>
+  <a id="BinarySearchTree_BST_2_Ceiling_" data-uid="BinarySearchTree.BST`2.Ceiling*"></a>
+  <h4 id="BinarySearchTree_BST_2_Ceiling__0_" data-uid="BinarySearchTree.BST`2.Ceiling(`0)">Ceiling(TKey)</h4>
+  <div class="markdown level1 summary"><p>获取符号表中大于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最小键。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Sort&lt;T&gt;(T[] a)
-
-    where T : IComparable&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public TKey Ceiling(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -658,31 +654,710 @@
     </thead>
     <tbody>
       <tr>
-        <td>T[]</td>
-        <td><span class="parametername">a</span></td>
-        <td><p>待排序的数组。</p>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>键。</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <h5 class="returns">&#36820;&#22238;</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><p>大于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最小键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L189">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Contains_" data-uid="BinarySearchTree.BST`2.Contains*"></a>
+  <h4 id="BinarySearchTree_BST_2_Contains__0_" data-uid="BinarySearchTree.BST`2.Contains(`0)">Contains(TKey)</h4>
+  <div class="markdown level1 summary"><p>检查二叉查找树是否含有 <code data-dev-comment-type="paramref" class="paramref">key</code>。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
         <th>&#21517;&#31216;</th>
         <th>&#25551;&#36848;</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>数组中的元素类型。</p>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>要查找的键值。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>如果含有则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L146">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Delete_" data-uid="BinarySearchTree.BST`2.Delete*"></a>
+  <h4 id="BinarySearchTree_BST_2_Delete__0_" data-uid="BinarySearchTree.BST`2.Delete(`0)">Delete(TKey)</h4>
+  <div class="markdown level1 summary"><p>删除含有某个键的结点。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Delete(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>要删除的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L510">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_DeleteMax_" data-uid="BinarySearchTree.BST`2.DeleteMax*"></a>
+  <h4 id="BinarySearchTree_BST_2_DeleteMax" data-uid="BinarySearchTree.BST`2.DeleteMax">DeleteMax()</h4>
+  <div class="markdown level1 summary"><p>删除二叉查找树中最大的结点。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteMax()</code></pre>
+  </div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出该异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L485">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_DeleteMin_" data-uid="BinarySearchTree.BST`2.DeleteMin*"></a>
+  <h4 id="BinarySearchTree_BST_2_DeleteMin" data-uid="BinarySearchTree.BST`2.DeleteMin">DeleteMin()</h4>
+  <div class="markdown level1 summary"><p>删除二叉查找树中最小的结点。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteMin()</code></pre>
+  </div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L344">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Floor_" data-uid="BinarySearchTree.BST`2.Floor*"></a>
+  <h4 id="BinarySearchTree_BST_2_Floor__0_" data-uid="BinarySearchTree.BST`2.Floor(`0)">Floor(TKey)</h4>
+  <div class="markdown level1 summary"><p>获得符号表中小于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最大键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TKey Floor(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><p>小于等于 <code data-dev-comment-type="paramref" class="paramref">key</code> 的最大键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L118">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Get_" data-uid="BinarySearchTree.BST`2.Get*"></a>
+  <h4 id="BinarySearchTree_BST_2_Get__0_" data-uid="BinarySearchTree.BST`2.Get(`0)">Get(TKey)</h4>
+  <div class="markdown level1 summary"><p>获得 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值，不存在则返回 <code>default(TValue)</code>。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TValue Get(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>需要查找的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><p>找到的值，不存在则返回 <code>default(TValue)</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L200">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_IsEmpty_" data-uid="BinarySearchTree.BST`2.IsEmpty*"></a>
+  <h4 id="BinarySearchTree_BST_2_IsEmpty" data-uid="BinarySearchTree.BST`2.IsEmpty">IsEmpty()</h4>
+  <div class="markdown level1 summary"><p>二叉查找树是否为空。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEmpty()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>为空则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L245">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Keys_" data-uid="BinarySearchTree.BST`2.Keys*"></a>
+  <h4 id="BinarySearchTree_BST_2_Keys" data-uid="BinarySearchTree.BST`2.Keys">Keys()</h4>
+  <div class="markdown level1 summary"><p>获得符号表全部的键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TKey&gt; Keys()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TKey&gt;</td>
+        <td><p>符号表全部的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L258">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Keys_" data-uid="BinarySearchTree.BST`2.Keys*"></a>
+  <h4 id="BinarySearchTree_BST_2_Keys__0__0_" data-uid="BinarySearchTree.BST`2.Keys(`0,`0)">Keys(TKey, TKey)</h4>
+  <div class="markdown level1 summary"><p>获取符号表中指定键之间的全部键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TKey&gt; Keys(TKey lo, TKey hi)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">lo</span></td>
+        <td><p>键的下限。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">hi</span></td>
+        <td><p>键的上限。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TKey&gt;</td>
+        <td><p>包含 <code data-dev-comment-type="paramref" class="paramref">lo</code> 和 <code data-dev-comment-type="paramref" class="paramref">hi</code> 及其之间的所有键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L320">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Max_" data-uid="BinarySearchTree.BST`2.Max*"></a>
+  <h4 id="BinarySearchTree_BST_2_Max" data-uid="BinarySearchTree.BST`2.Max">Max()</h4>
+  <div class="markdown level1 summary"><p>查找二叉查找树中的最大的键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TKey Max()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><p>二叉查找树中最大的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L296">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Min_" data-uid="BinarySearchTree.BST`2.Min*"></a>
+  <h4 id="BinarySearchTree_BST_2_Min" data-uid="BinarySearchTree.BST`2.Min">Min()</h4>
+  <div class="markdown level1 summary"><p>查找二叉查找树中的最小的键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TKey Min()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><p>二叉查找树中最小的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L79">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Put_" data-uid="BinarySearchTree.BST`2.Put*"></a>
+  <h4 id="BinarySearchTree_BST_2_Put__0__1_" data-uid="BinarySearchTree.BST`2.Put(`0,`1)">Put(TKey, TValue)</h4>
+  <div class="markdown level1 summary"><p>向二叉查找树中插入一个键值对。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Put(TKey key, TValue value)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>要插入的键。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>要插入的值。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L424">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Rank_" data-uid="BinarySearchTree.BST`2.Rank*"></a>
+  <h4 id="BinarySearchTree_BST_2_Rank__0_" data-uid="BinarySearchTree.BST`2.Rank(`0)">Rank(TKey)</h4>
+  <div class="markdown level1 summary"><p>返回 <code data-dev-comment-type="paramref" class="paramref">key</code> 在符号表中的排名。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Rank(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>要排名的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">key</code> 的排名。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L455">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Select_" data-uid="BinarySearchTree.BST`2.Select*"></a>
+  <h4 id="BinarySearchTree_BST_2_Select_System_Int32_" data-uid="BinarySearchTree.BST`2.Select(System.Int32)">Select(Int32)</h4>
+  <div class="markdown level1 summary"><p>挑拣出排名为 <code data-dev-comment-type="paramref" class="paramref">k</code> 的键。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TKey Select(int k)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">k</span></td>
+        <td><p>要挑拣的排名。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><p>排名为 <code data-dev-comment-type="paramref" class="paramref">k</code> 的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L206">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Size_" data-uid="BinarySearchTree.BST`2.Size*"></a>
+  <h4 id="BinarySearchTree_BST_2_Size" data-uid="BinarySearchTree.BST`2.Size">Size()</h4>
+  <div class="markdown level1 summary"><p>获取二叉查找树的结点数量。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Size()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>二叉查找树的结点数量。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L226">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_Size_" data-uid="BinarySearchTree.BST`2.Size*"></a>
+  <h4 id="BinarySearchTree_BST_2_Size__0__0_" data-uid="BinarySearchTree.BST`2.Size(`0,`0)">Size(TKey, TKey)</h4>
+  <div class="markdown level1 summary"><p>获取符号表中键在 <code data-dev-comment-type="paramref" class="paramref">lo</code> 和 <code data-dev-comment-type="paramref" class="paramref">hi</code> 之间的键的数目。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Size(TKey lo, TKey hi)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">lo</span></td>
+        <td><p>键的下限。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">hi</span></td>
+        <td><p>键的上限。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">lo</code> 和 <code data-dev-comment-type="paramref" class="paramref">hi</code> 之间键的数目。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L535">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BST_2_ToString_" data-uid="BinarySearchTree.BST`2.ToString*"></a>
+  <h4 id="BinarySearchTree_BST_2_ToString" data-uid="BinarySearchTree.BST`2.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>将二叉树按照树形输出。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>二叉查找树输出的字符串。</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">Merge.BaseSort.Sort&lt;T&gt;(T[])</span></div>
+  <div><span class="xref">System.Object.ToString()</span></div>
+  <h3 id="implements">&#23454;&#29616;</h3>
+  <div>
+      <a class="xref" href="BinarySearchTree.IST-2.html">IST&lt;TKey, TValue&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="BinarySearchTree.IOrderedST-2.html">IOrderedST&lt;TKey, TValue&gt;</a>
+  </div>
 </article>
           </div>
           
@@ -691,7 +1366,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.2/Merge/MergeSortThreeWay.cs/#L9" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BST.cs/#L12" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>
