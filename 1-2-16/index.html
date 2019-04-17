@@ -145,22 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.2.16</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.16<br>有理数。<br>为有理数实现一个不可变数据类型 Rational，支持加减乘除操作。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Rational</span>
-<span class="token punctuation">{</span>
-    <span class="token function">Rantional</span><span class="token punctuation">(</span><span class="token keyword">int</span> numerator<span class="token punctuation">,</span> <span class="token keyword">int</span> denominator<span class="token punctuation">)</span>
-    Rational <span class="token function">plus</span> <span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Rational <span class="token function">minus</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Rational <span class="token function">times</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Rational <span class="token function">divides</span><span class="token punctuation">(</span>Rational b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Boolean <span class="token function">equals</span><span class="token punctuation">(</span>Rational that<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>无需测试溢出（请见练习 1.2.17），只需使用两个 long 型实例变量表示分子和分母来控制溢出的可能性。<br>使用欧几里得算法来保证分子和分母没有公因子。<br>编写一个测试用例检测你实现的所有方法。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>JAVA 版本参考：<a href="http://algs4.cs.princeton.edu/12oop/Rational.java.html" target="_blank" rel="noopener">http://algs4.cs.princeton.edu/12oop/Rational.java.html</a></p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>JAVA 版本参考：<a href="http://algs4.cs.princeton.edu/12oop/Rational.java.html" target="_blank" rel="noopener">http://algs4.cs.princeton.edu/12oop/Rational.java.html</a></p>
 <p>欧几里得算法仅适用于正整数，使用前需要注意。</p>
 <p>用欧几里得算法找到公因子之后直接化简即可。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>

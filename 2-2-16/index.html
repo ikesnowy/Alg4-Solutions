@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.2.16</h1>
-			<p>上次更新：2019-02-13 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.16<br>自然的归并排序。<br>编写一个自底向上的归并排序，<br>当需要将两个子数组排序时能够利用数组中已经有序的部分。<br>首先找到一个有序的子数组<br>（移动指针直到当前元素比上一个元素小为止），<br>然后再找出另一个并将它们归并。<br>根据数组大小和数组中递增子数组的最大长度分析算法的运行时间。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>自然归并排序的一个示例如下图所示：<br><img src="./1.gif" alt=""><br>基本过程和自底向上的归并排序类似，只是每次归并的块大小不一定相同。<br>时间分析<br><img src="./2.png" alt=""><br>随着有序块的变大，排序速度会加快，但增长的数量级也会变高（平均分块大小变大了）。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>自然归并排序的一个示例如下图所示：<br><img src="./1.gif" alt=""><br>基本过程和自底向上的归并排序类似，只是每次归并的块大小不一定相同。<br>时间分析<br><img src="./2.png" alt=""><br>随着有序块的变大，排序速度会加快，但增长的数量级也会变高（平均分块大小变大了）。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 <span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
 

@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.7</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.7<br>用 select() 找出 N 个元素中的最小值平均大约需要多少次比较？</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>参考书中给出的快速排序性能分析方法（中文版 P186，英文版 P293）。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>参考书中给出的快速排序性能分析方法（中文版 P186，英文版 P293）。</p>
 <p>设 $ C_n $ 代表找出 $ n $ 个元素中的最小值所需要的比较次数。<br>一次切分需要 $ n+1 $ 次比较，下一侧的元素个数从 $ 0 $ 到 $ n-1 ​$ 都有可能，<br>于是根据全概率公式，有：<br>$$<br>\begin{eqnarray}<br>C_n&amp;=&amp;\frac {1}{n} (n+1) +\frac{1}{n} (n+1+C_1)+ \cdots + \frac{1}{n}(n+1+C_{n-1}) \\<br>C_n&amp;=&amp;n+1+\frac{1}{n}(C_1+C_2+\cdots+C_{n-1}) \\<br>nC_n&amp;=&amp;n(n+1)+(C_1+C_2+\cdots+C_{n-1}) \\<br>nC_n-(n-1)C_{n-1}&amp;=&amp;2n+C_{n-1} \\<br>nC_n&amp;=&amp;2n+nC_{n-1} \\<br>C_n&amp;=&amp;2+C_{n-1} \\<br>C_n &amp;=&amp; C_1+2(n-1) \\<br>C_n &amp;=&amp; 2n-2 &lt; 2n<br>\end{eqnarray}<br>$$<br>测试结果符合我们的预期。<br><img src="./1.png" alt=""></p>
 <p>附加：找出第 $ k $ 小的数平均需要的比较次数。<br>类似的方法也在计算快速排序的平均比较次数时使用，见 。</p>
 <p>首先和快速排序类似，<code>select</code> 方法的所有元素比较都发生在切分过程中。<br>接下来考虑第 $ i $ 小和第 $ j $ 小的元素（$ x_i $ ，$ x_j $），<br>当枢轴选为 $ x_i $ 或 $ x_j $ 时，它们会发生比较；<br>如果枢轴选为 $ x_i $ 和 $ x_j $ 之间的元素，那么它们会被切分到两侧，不可能发生比较；<br>如果枢轴选为小于 $ x_i $ 或大于 $ x_j $ 的元素，它们会被切分到同一侧，进入下次切分。<br>但要注意的是，<code>select</code> 只会对切分的一侧进行再切分，另一侧会被抛弃（快速排序则是两侧都会再切分）。<br>因此我们需要将第 $ k $ 小的数 $ x_k $ 纳入考虑。<br>如果 $ x_k&gt;x_j&gt;x_i $ ，且枢轴选了 $ x_k $ 到 $ x_j $ 之间的元素，切分后 $ x_i $ 和 $ x_j $ 会被一起抛弃，不发生比较。<br>如果 $ x_j  &gt; x_k &gt; x_i $ ，枢轴的选择情况和快速排序一致。<br>如果 $ x_j &gt; x_i &gt; x_k $ ，且枢轴选了 $ x_i $ 到 $ x_k $ 之间的元素，切分后 $ x_i $ 和 $ x_j $ 会被一起抛弃，不发生比较。<br>综上我们可以得到 $ x_i $ 和 $ x_j $ 之间发生比较的概率 $ \frac{2}{\max(j-i+1, k-i+1,j-k+1)} $ 。<br>我们利用线性规划的知识把最大值函数的区域画出来，如下图所示：<br><img src="./2.png" alt=""><br>对蓝色区域积分得：<br>$$<br>\begin{eqnarray}<br>&amp;&amp;\int_{0}^{k} dj \int_{0}^{j} \frac{2}{j-k+1} di \\<br>&amp;=&amp; 2 \int_{0}^{k} \frac{j}{j-k+1}   dj \\<br>&amp;&lt;&amp; 2 k<br>\end{eqnarray}<br>$$</p>

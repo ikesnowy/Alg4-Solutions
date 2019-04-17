@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.25</h1>
-			<p>上次更新：2019-02-13 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.5.25<br>平面上的点。<br>为表 1.2.3 的 Point2D 类型编写三个静态的比较器，<br>一个按照 x 坐标比较，一个按照 y 坐标比较，一个按照点到原点的距离进行比较。<br>编写两个非静态的比较器，一个按照两点到第三点的距离比较，一个按照两点相对于第三点的辐角比较。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答见：<a href="https://algs4.cs.princeton.edu/25applications/Point2D.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/25applications/Point2D.java.html</a></p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答见：<a href="https://algs4.cs.princeton.edu/25applications/Point2D.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/25applications/Point2D.java.html</a></p>
 <p>这些比较器都以嵌套类的形式在 <code>Point2D</code> 中定义。<br>静态比较器直接在类中以静态成员的方式声明。<br>非静态比较器则需要提供工厂方法，该方法新建并返回对应的比较器对象。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
 <span class="token comment" spellcheck="true">/// 按照 X 顺序比较。</span>

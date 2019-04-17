@@ -145,41 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.1.33</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.33<br>矩阵库。<br>编写一个 Matrix 库并实现以下 API</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">public class Matrix</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">static double dot(double[] x, double[] y)</td>
-<td style="text-align:center">实现向量点乘</td>
-</tr>
-<tr>
-<td style="text-align:center">static double[][] mult(double[][] a, double[][] b)</td>
-<td style="text-align:center">矩阵与矩阵相乘</td>
-</tr>
-<tr>
-<td style="text-align:center">static double[][] transpose(double[][] a)</td>
-<td style="text-align:center">矩阵转置</td>
-</tr>
-<tr>
-<td style="text-align:center">static double[] mult(double[][] a, double[] x)</td>
-<td style="text-align:center">矩阵与向量相乘</td>
-</tr>
-<tr>
-<td style="text-align:center">static double[] mult(double[] y, double[][] a)</td>
-<td style="text-align:center">向量与矩阵相乘</td>
-</tr>
-</tbody>
-</table>
-<p>编写一个测试用例，从标准输入读取矩阵并测试所有方法。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里矩阵使用交错数组实现（方便取行向量），不是普通的二维数组。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里矩阵使用交错数组实现（方便取行向量），不是普通的二维数组。</p>
 <p>矩阵和矩阵、矩阵和向量、向量和矩阵都使用行向量点乘列向量的方式计算。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Matrix</span>
 <span class="token punctuation">{</span>

@@ -145,14 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.25</h1>
-			<p>上次更新：2019-03-02 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.25<br>缓存。因为默认的 contains() 的实现中调用了 get()，<br>所以 FrequencyCounter 的内循环会将同一个键查找两三遍：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>st<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">)</span> st<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>word<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">else</span> st<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>word<span class="token punctuation">,</span> st<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>为了能够提高这样的用例代码的效率，我们可以用一种叫做缓存的技术手段，<br>即将访问最频繁的键的位置保存在一个变量中。<br>修改 SequentialSearchST 和 BinarySearchST 来实现这个点子。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>英文原文指的是 most recently accessed key，因此指的是最近访问的键。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>英文原文指的是 most recently accessed key，因此指的是最近访问的键。</p>
 <p>实现比较简单，先在类中定义一个新的成员 <code>cache</code> 作为缓存，<br>然后修改 <code>Get</code> 方法，在实际查找之前先检查缓存，如果缓存未命中则在查找之后更新它。<br>要注意的是缓存指向内容的有效性，在数组中指的是下标是否有效，在链表中指的是结点是否为空。</p>
 <p>利用《双城记》测试的结果：<br><img src="./1.png" alt=""></p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="BinarySearchST"><a href="#BinarySearchST" class="headerlink" title="BinarySearchST"></a>BinarySearchST</h3><p><code>cache</code> 是一个 <code>int</code> 类型的变量，代表下标。<br>在二分查找前先检查缓存，要注意<code>cache</code>超出数组大小的情况。<br>如果缓存未命中，则进行二分查找，并在返回结果前更新缓存。</p>

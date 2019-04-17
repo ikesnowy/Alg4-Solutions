@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.17</h1>
-			<p>上次更新：2019-02-24 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.17<br>为 BinarySearchST 实现 floor() 方法。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html</a></p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html</a></p>
 <p>先通过二分查找大于等于 <code>key</code> 的键下标 <code>i</code>，<br>如果 <code>keys[i]</code> 和 <code>key</code> 相等则直接返回 <code>keys[i]</code>，<br>否则返回 <code>keys[i-1]</code>。</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> TKey <span class="token function">Floor</span><span class="token punctuation">(</span>TKey key<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>

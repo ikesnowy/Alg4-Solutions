@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.2.12</h1>
-			<p>上次更新：2019-02-13 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.12<br>次线性的额外空间。<br>用大小 M 的数组分为 N/M 块（简单起见，设 M 是 N 的约数）。<br>实现一个归并方法，使之所需的额外空间减少到 max(M, N/M)：<br>（i）可以先将一个块看作一个元素，将块的第一个元素作为块的主键，用选择排序将块排序；<br>（ii）遍历数组，将第一块和第二块归并，完成后将第二块和第三块归并，等等。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>中文版的翻译比较难理解。<br>实际上就是另一种归并排序的实现方式。<br>先把数组分成若干个大小为 M 的块 。<br>对于每个块，用选择排序进行排序 。<br>随后遍历数组，将各个块归并起来。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>中文版的翻译比较难理解。<br>实际上就是另一种归并排序的实现方式。<br>先把数组分成若干个大小为 M 的块 。<br>对于每个块，用选择排序进行排序 。<br>随后遍历数组，将各个块归并起来。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 <span class="token keyword">using</span> Merge<span class="token punctuation">;</span>
 

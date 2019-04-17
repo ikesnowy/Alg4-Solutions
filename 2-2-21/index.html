@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.2.21</h1>
-			<p>上次更新：2019-02-13 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.21<br>一式三份。<br>给定三个列表，<br>每个列表中包含 N 个名字，<br>编写一个线性对数级别的算法来判定三分列表中是否含有公共的名字，<br>如果有，返回第一个被找到的这种名字。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对三份列表进行归并排序（$ O(nlogn) $），随后遍历一遍其中的一份表， 用二分查找检查在其余两个表中是否存在相同的姓名（$ O(nlogn) $）。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对三份列表进行归并排序（$ O(nlogn) $），随后遍历一遍其中的一份表， 用二分查找检查在其余两个表中是否存在相同的姓名（$ O(nlogn) $）。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 <span class="token keyword">using</span> Merge<span class="token punctuation">;</span>
 

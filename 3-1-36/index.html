@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.36</h1>
-			<p>上次更新：2019-03-10 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.36<br>性能验证 Ⅱ。<br>解释 FrequencyCounter 在使用 BinarySearchST 时<br>比使用 SequentialSearchST 时的性能提高程度好于预期的原因。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>实验结果如下，增长级为 O(N) ，但速度很快。<br><img src="./1.png" alt=""></p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>实验结果如下，增长级为 O(N) ，但速度很快。<br><img src="./1.png" alt=""></p>
 <p>其实只要列出《双城记》不同长度的单词数目，原因就一目了然了。<br><img src="./2.png" alt=""><br>大部分单词都集中在中间长度，因此大部分访问也集中在数组中部。<br>二分查找在访问数组中部的元素时速度很快，因此结果好于预期。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>

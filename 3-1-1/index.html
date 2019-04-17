@@ -145,42 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.1</h1>
-			<p>上次更新：2019-02-13 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.1<br>编写一段程序，创建一张符号表并建立字母成绩和数值分数的对应关系，如下表所示。从标准输入读取一系列字母成绩，计算并打印 GPA（字母成绩对应的分数的平均值）。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">A+</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">A-</th>
-<th style="text-align:center">B+</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">B-</th>
-<th style="text-align:center">C+</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">C-</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">F</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">4.33</td>
-<td style="text-align:center">4.00</td>
-<td style="text-align:center">3.67</td>
-<td style="text-align:center">3.33</td>
-<td style="text-align:center">3.00</td>
-<td style="text-align:center">2.67</td>
-<td style="text-align:center">2.33</td>
-<td style="text-align:center">2.00</td>
-<td style="text-align:center">1.67</td>
-<td style="text-align:center">1.00</td>
-<td style="text-align:center">0.00</td>
-</tr>
-</tbody>
-</table>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答：<a href="https://algs4.cs.princeton.edu/31elementary/GPA.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/GPA.java.html</a><br>ST.java：<a href="https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/ST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/ST.java.html</a></p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方解答：<a href="https://algs4.cs.princeton.edu/31elementary/GPA.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/GPA.java.html</a><br>ST.java：<a href="https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/ST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/ST.java.html</a></p>
 <p>建立一个符号表，然后把键值放进去，读取计算即可。<br>和上一章节用过的方法类似，先定义了一个接口 <code>IST&lt;Key, Value&gt;</code> ，包含书中提到的基本 API。<br>然后定义类 <code>ST</code> ，用标准库里面的 <code>Dictionary</code> 实现了 <code>IST</code> 。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
 <span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>

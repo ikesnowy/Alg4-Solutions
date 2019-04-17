@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.30</h1>
-			<p>上次更新：2019-03-05 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.30<br>验证。<br>向 BinarySearchST 加入断言（assert）语句，<br>在每次插入和删除数据后检查算法的有效性和数据结构的完整性。<br>例如，对于每个索引必有 i==rank(select(i)) 且数组应该总是有序的。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html</a>。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/BinarySearchST.java.html</a>。</p>
 <p>首先在 <code>BinarySearchST</code> 中添加如下方法。</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary> 检查符号表结构是否有效。 &lt;/summary></span>
 <span class="token keyword">private</span> <span class="token keyword">bool</span> <span class="token function">Check</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">IsSorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">RankCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

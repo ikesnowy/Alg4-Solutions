@@ -145,19 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.1.18</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.18<br>请看以下递归函数：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">mystery</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>mystery(2, 25) 和 mystery(3, 11) 的返回值是多少？ </p>
-<p>给定正整数 a 和 b，mystery(a, b) 计算的结果是什么？<br>将代码中的 + 替换为 * 并将 return 0 改为 return 1，然后回答相同的问题。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>其实就是一种快速乘法的实现，换成乘号之后就变成了快速乘幂。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>其实就是一种快速乘法的实现，换成乘号之后就变成了快速乘幂。</p>
 <p>例如对于乘法 $2 \times 4$ ，可以用 $2 + 2 + 2 + 2$ 做四次加法计算；也可以变为 $ (2 + 2) \times 2 = (2 + 2) + (2 + 2) $ 的形式，用两次加法就可以完成（先计算 $ 2 + 2 $ 的值，再计算 $ 4 + 4 $ 的值）。</p>
 <p>同理对于乘幂 $ 2^8 $  ，既可以用 $  2\times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 $ 做 8 次乘法，也可以只用三次乘法就计算出来：</p>
 <p>$$<br>2^2 = 2 \times 2 \\<br>2^4 = 2^2 \times 2^2\\<br>2^8 = 2^4 \times 2^4<br>$$<br>这样时间复杂度就从 $ O(n) $ 变为了 $ O(log n) $ 。</p>
