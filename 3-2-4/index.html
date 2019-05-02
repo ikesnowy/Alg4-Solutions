@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>《算法（第四版）》C# 题解</title>
+        <title>3.2.4 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -29,7 +29,7 @@
     <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -77,7 +77,7 @@
       <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -134,31 +134,29 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="PostList">
-	<h2 class="center">最近添加</h2>
-	<div class="post-list">
-		
-		<p class="post-title"><a href="/1-4-29/">1. 1.4.29</a></p>
-		
-		<p class="post-title"><a href="/1-4-28/">2. 1.4.28</a></p>
-		
-		<p class="post-title"><a href="/1-4-27/">3. 1.4.27</a></p>
-		
-		<p class="post-title"><a href="/1-4-26/">4. 1.4.26</a></p>
-		
-		<p class="post-title"><a href="/1-4-25/">5. 1.4.25</a></p>
-		
-		<p class="post-title"><a href="/1-4-24/">6. 1.4.24</a></p>
-		
-		<p class="post-title"><a href="/1-4-23/">7. 1.4.23</a></p>
-		
-		<p class="post-title"><a href="/1-4-22/">8. 1.4.22</a></p>
-		
-		<p class="post-title"><a href="/1-4-21/">9. 1.4.21</a></p>
-		
-		<p class="post-title"><a href="/1-4-20/">10. 1.4.20</a></p>
-		
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.2.4
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.2.4</h1>
+			<p>上次更新：2019-05-02 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>d 是错误的。</p>
+<p>要点是追踪序列中的左右顺序，<br>如果向右查找，那么后面的树一定都比它大，反之都比它小。<br>例如 d 选项，2-&gt;7 向右查找，但后面的 8 比 7 大，应该挂在 7 的右子树上，不可能在 7 的左子树里。</p>
+
+		</div>
 	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -166,10 +164,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/page/26/">上一页</a>
+		<a href="/3-2-3/">上一题</a>
 		
-		
-		<a href="/page/28/">下一页</a>
 		
 	</div>
 	
