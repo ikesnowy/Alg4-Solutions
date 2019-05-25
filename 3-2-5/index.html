@@ -205,7 +205,13 @@ function dismissSearchResultModal() {
 </tr>
 </tbody>
 </table>
-<p>当 $ s=2 $ 时，各个子树的开销如下表（根结点不唯一）：</p>
+<p>当 $ s=2 $ 时，各个子树的开销如下（根结点不唯一）：<br>$$<br>\begin{eqnarray*}<br>[1,2] =  \min \left\{<br>\begin{array}{lr} 0+[2,2]+0.5, &amp; \ <br>[1,1]+0+0.5,<br>\end{array}<br>\right.<br>=0.6 </p>
+<p>\\</p>
+<p>[2,3] = \min \left\{  \begin{array}{lr} 0+[3,3]+0.3, &amp; \  [2,2]+0+0.3,  \end{array} \right. =0.4 </p>
+<p>\\</p>
+<p>[3,4] = \min \left\{  \begin{array} {lr} 0+[4,4]+0.3, &amp; \  [3,3]+0+0.3,  \end{array} \right. =0.4 \end{eqnarray*}</p>
+<p>\\</p>
+<p>[4,5]=\min \left\{  \begin{array} {lr} 0 +[5,5]+0.3, &amp; \  [4,4]+0+0.3,  \end{array} \right. =0.4<br>$$</p>
 <table>
 <thead>
 <tr>
@@ -217,13 +223,6 @@ function dismissSearchResultModal() {
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>开销</td>
-<td>$$ \min \left\{  \begin{array}{lr} 0+[2,2]+0.5, &amp;\  [1,1]+0+0.5,  \end{array} \right. \\=0.6 $$</td>
-<td>$$ \min \left\{  \begin{array}{lr} 0+[3,3]+0.3, &amp;\  [2,2]+0+0.3,  \end{array} \right. \ =0.4 $$</td>
-<td>$$ \min \left\{  \begin{array} {lr} 0+[4,4]+0.3, &amp;\  [3,3]+0+0.3,  \end{array} \right. \ =0.4 $$</td>
-<td>$$ \min \left\{  \begin{array} {lr} 0 +[5,5]+0.3, &amp; \  [4,4]+0+0.3,  \end{array} \right. \ =0.4 $$</td>
-</tr>
 <tr>
 <td>根结点</td>
 <td>1</td>
@@ -246,9 +245,9 @@ function dismissSearchResultModal() {
 <tbody>
 <tr>
 <td>开销</td>
-<td>$$ \min \left\{  \begin{array}{lr} 0+[2,3]+0.7, &amp;\  [1,1]+[3,3]+0.7,  &amp;\  [1,2]+0+0.7, \end{array} \right. \ =1.1 $</td>
-<td>$ \min \left\{  \begin{array}{lr} 0+[3,4]+0.4, &amp;\  [2,2]+[4,4]+0.4,  &amp;\  [2,3]+0+0.4, \end{array} \right. \ =0.6 $</td>
-<td>$ \min \left\{  \begin{array}{lr} 0+[4,5]+0.5, &amp;\  [3,3]+[5,5]+0.5,  &amp;\  [3,4]+0+0.5, \end{array} \right. \ =0.9 $$</td>
+<td>$$ \min \left\{  \begin{array}{lr} 0+[2,3]+0.7, &amp;\  [1,1]+[3,3]+0.7,  &amp;\  [1,2]+0+0.7, \end{array} \right. \ =1.1 $$</td>
+<td>$ \min \left\{  \begin{array}{lr} 0+[3,4]+0.4, &amp; \  [2,2]+[4,4]+0.4,  &amp; \  [2,3]+0+0.4, \end{array} \right. \ =0.6 $</td>
+<td>$$ \min \left\{  \begin{array}{lr} 0+[4,5]+0.5, &amp;\  [3,3]+[5,5]+0.5,  &amp;\  [3,4]+0+0.5, \end{array} \right. \ =0.9 $$</td>
 </tr>
 <tr>
 <td>根结点</td>
