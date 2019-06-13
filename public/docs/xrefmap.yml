@@ -1,6 +1,734 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: BinarySearchTree
+  name: BinarySearchTree
+  href: api/BinarySearchTree.html
+  commentId: N:BinarySearchTree
+  fullName: BinarySearchTree
+  nameWithType: BinarySearchTree
+- uid: BinarySearchTree.BST`2
+  name: BST<TKey, TValue>
+  href: api/BinarySearchTree.BST-2.html
+  commentId: T:BinarySearchTree.BST`2
+  name.vb: BST(Of TKey, TValue)
+  fullName: BinarySearchTree.BST<TKey, TValue>
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue)
+  nameWithType: BST<TKey, TValue>
+  nameWithType.vb: BST(Of TKey, TValue)
+- uid: BinarySearchTree.BST`2.#ctor
+  name: BST()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2__ctor
+  commentId: M:BinarySearchTree.BST`2.#ctor
+  fullName: BinarySearchTree.BST<TKey, TValue>.BST()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).BST()
+  nameWithType: BST<TKey, TValue>.BST()
+  nameWithType.vb: BST(Of TKey, TValue).BST()
+- uid: BinarySearchTree.BST`2.#ctor*
+  name: BST
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2__ctor_
+  commentId: Overload:BinarySearchTree.BST`2.#ctor
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.BST
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).BST
+  nameWithType: BST<TKey, TValue>.BST
+  nameWithType.vb: BST(Of TKey, TValue).BST
+- uid: BinarySearchTree.BST`2.Ceiling(`0)
+  name: Ceiling(TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling__0_
+  commentId: M:BinarySearchTree.BST`2.Ceiling(`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: BST<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Ceiling(TKey)
+- uid: BinarySearchTree.BST`2.Ceiling*
+  name: Ceiling
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling_
+  commentId: Overload:BinarySearchTree.BST`2.Ceiling
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Ceiling
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Ceiling
+  nameWithType: BST<TKey, TValue>.Ceiling
+  nameWithType.vb: BST(Of TKey, TValue).Ceiling
+- uid: BinarySearchTree.BST`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Contains__0_
+  commentId: M:BinarySearchTree.BST`2.Contains(`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Contains(TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Contains(TKey)
+  nameWithType: BST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Contains(TKey)
+- uid: BinarySearchTree.BST`2.Contains*
+  name: Contains
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Contains_
+  commentId: Overload:BinarySearchTree.BST`2.Contains
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Contains
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Contains
+  nameWithType: BST<TKey, TValue>.Contains
+  nameWithType.vb: BST(Of TKey, TValue).Contains
+- uid: BinarySearchTree.BST`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete__0_
+  commentId: M:BinarySearchTree.BST`2.Delete(`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Delete(TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Delete(TKey)
+  nameWithType: BST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Delete(TKey)
+- uid: BinarySearchTree.BST`2.Delete*
+  name: Delete
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete_
+  commentId: Overload:BinarySearchTree.BST`2.Delete
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Delete
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Delete
+  nameWithType: BST<TKey, TValue>.Delete
+  nameWithType.vb: BST(Of TKey, TValue).Delete
+- uid: BinarySearchTree.BST`2.DeleteMax
+  name: DeleteMax()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax
+  commentId: M:BinarySearchTree.BST`2.DeleteMax
+  fullName: BinarySearchTree.BST<TKey, TValue>.DeleteMax()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMax()
+  nameWithType: BST<TKey, TValue>.DeleteMax()
+  nameWithType.vb: BST(Of TKey, TValue).DeleteMax()
+- uid: BinarySearchTree.BST`2.DeleteMax*
+  name: DeleteMax
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax_
+  commentId: Overload:BinarySearchTree.BST`2.DeleteMax
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.DeleteMax
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMax
+  nameWithType: BST<TKey, TValue>.DeleteMax
+  nameWithType.vb: BST(Of TKey, TValue).DeleteMax
+- uid: BinarySearchTree.BST`2.DeleteMin
+  name: DeleteMin()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin
+  commentId: M:BinarySearchTree.BST`2.DeleteMin
+  fullName: BinarySearchTree.BST<TKey, TValue>.DeleteMin()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMin()
+  nameWithType: BST<TKey, TValue>.DeleteMin()
+  nameWithType.vb: BST(Of TKey, TValue).DeleteMin()
+- uid: BinarySearchTree.BST`2.DeleteMin*
+  name: DeleteMin
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin_
+  commentId: Overload:BinarySearchTree.BST`2.DeleteMin
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.DeleteMin
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMin
+  nameWithType: BST<TKey, TValue>.DeleteMin
+  nameWithType.vb: BST(Of TKey, TValue).DeleteMin
+- uid: BinarySearchTree.BST`2.Floor(`0)
+  name: Floor(TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor__0_
+  commentId: M:BinarySearchTree.BST`2.Floor(`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Floor(TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Floor(TKey)
+  nameWithType: BST<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Floor(TKey)
+- uid: BinarySearchTree.BST`2.Floor*
+  name: Floor
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor_
+  commentId: Overload:BinarySearchTree.BST`2.Floor
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Floor
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Floor
+  nameWithType: BST<TKey, TValue>.Floor
+  nameWithType.vb: BST(Of TKey, TValue).Floor
+- uid: BinarySearchTree.BST`2.Get(`0)
+  name: Get(TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get__0_
+  commentId: M:BinarySearchTree.BST`2.Get(`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Get(TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Get(TKey)
+  nameWithType: BST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.BST`2.Get*
+  name: Get
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get_
+  commentId: Overload:BinarySearchTree.BST`2.Get
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Get
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Get
+  nameWithType: BST<TKey, TValue>.Get
+  nameWithType.vb: BST(Of TKey, TValue).Get
+- uid: BinarySearchTree.BST`2.IsEmpty
+  name: IsEmpty()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsEmpty
+  commentId: M:BinarySearchTree.BST`2.IsEmpty
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsEmpty()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsEmpty()
+  nameWithType: BST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: BST(Of TKey, TValue).IsEmpty()
+- uid: BinarySearchTree.BST`2.IsEmpty*
+  name: IsEmpty
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsEmpty_
+  commentId: Overload:BinarySearchTree.BST`2.IsEmpty
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsEmpty
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsEmpty
+  nameWithType: BST<TKey, TValue>.IsEmpty
+  nameWithType.vb: BST(Of TKey, TValue).IsEmpty
+- uid: BinarySearchTree.BST`2.Keys
+  name: Keys()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys
+  commentId: M:BinarySearchTree.BST`2.Keys
+  fullName: BinarySearchTree.BST<TKey, TValue>.Keys()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys()
+  nameWithType: BST<TKey, TValue>.Keys()
+  nameWithType.vb: BST(Of TKey, TValue).Keys()
+- uid: BinarySearchTree.BST`2.Keys(`0,`0)
+  name: Keys(TKey, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys__0__0_
+  commentId: M:BinarySearchTree.BST`2.Keys(`0,`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: BST<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Keys(TKey, TKey)
+- uid: BinarySearchTree.BST`2.Keys*
+  name: Keys
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys_
+  commentId: Overload:BinarySearchTree.BST`2.Keys
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Keys
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys
+  nameWithType: BST<TKey, TValue>.Keys
+  nameWithType.vb: BST(Of TKey, TValue).Keys
+- uid: BinarySearchTree.BST`2.Max
+  name: Max()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max
+  commentId: M:BinarySearchTree.BST`2.Max
+  fullName: BinarySearchTree.BST<TKey, TValue>.Max()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Max()
+  nameWithType: BST<TKey, TValue>.Max()
+  nameWithType.vb: BST(Of TKey, TValue).Max()
+- uid: BinarySearchTree.BST`2.Max*
+  name: Max
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max_
+  commentId: Overload:BinarySearchTree.BST`2.Max
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Max
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Max
+  nameWithType: BST<TKey, TValue>.Max
+  nameWithType.vb: BST(Of TKey, TValue).Max
+- uid: BinarySearchTree.BST`2.Min
+  name: Min()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min
+  commentId: M:BinarySearchTree.BST`2.Min
+  fullName: BinarySearchTree.BST<TKey, TValue>.Min()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Min()
+  nameWithType: BST<TKey, TValue>.Min()
+  nameWithType.vb: BST(Of TKey, TValue).Min()
+- uid: BinarySearchTree.BST`2.Min*
+  name: Min
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min_
+  commentId: Overload:BinarySearchTree.BST`2.Min
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Min
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Min
+  nameWithType: BST<TKey, TValue>.Min
+  nameWithType.vb: BST(Of TKey, TValue).Min
+- uid: BinarySearchTree.BST`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put__0__1_
+  commentId: M:BinarySearchTree.BST`2.Put(`0,`1)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BST(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.BST`2.Put*
+  name: Put
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put_
+  commentId: Overload:BinarySearchTree.BST`2.Put
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Put
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Put
+  nameWithType: BST<TKey, TValue>.Put
+  nameWithType.vb: BST(Of TKey, TValue).Put
+- uid: BinarySearchTree.BST`2.Rank(`0)
+  name: Rank(TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank__0_
+  commentId: M:BinarySearchTree.BST`2.Rank(`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Rank(TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Rank(TKey)
+  nameWithType: BST<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Rank(TKey)
+- uid: BinarySearchTree.BST`2.Rank*
+  name: Rank
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank_
+  commentId: Overload:BinarySearchTree.BST`2.Rank
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Rank
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Rank
+  nameWithType: BST<TKey, TValue>.Rank
+  nameWithType.vb: BST(Of TKey, TValue).Rank
+- uid: BinarySearchTree.BST`2.Select(System.Int32)
+  name: Select(Int32)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_System_Int32_
+  commentId: M:BinarySearchTree.BST`2.Select(System.Int32)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Select(System.Int32)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Select(System.Int32)
+  nameWithType: BST<TKey, TValue>.Select(Int32)
+  nameWithType.vb: BST(Of TKey, TValue).Select(Int32)
+- uid: BinarySearchTree.BST`2.Select*
+  name: Select
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_
+  commentId: Overload:BinarySearchTree.BST`2.Select
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Select
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Select
+  nameWithType: BST<TKey, TValue>.Select
+  nameWithType.vb: BST(Of TKey, TValue).Select
+- uid: BinarySearchTree.BST`2.Size
+  name: Size()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size
+  commentId: M:BinarySearchTree.BST`2.Size
+  fullName: BinarySearchTree.BST<TKey, TValue>.Size()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Size()
+  nameWithType: BST<TKey, TValue>.Size()
+  nameWithType.vb: BST(Of TKey, TValue).Size()
+- uid: BinarySearchTree.BST`2.Size(`0,`0)
+  name: Size(TKey, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size__0__0_
+  commentId: M:BinarySearchTree.BST`2.Size(`0,`0)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: BST<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Size(TKey, TKey)
+- uid: BinarySearchTree.BST`2.Size*
+  name: Size
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size_
+  commentId: Overload:BinarySearchTree.BST`2.Size
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Size
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Size
+  nameWithType: BST<TKey, TValue>.Size
+  nameWithType.vb: BST(Of TKey, TValue).Size
+- uid: BinarySearchTree.BST`2.ToString
+  name: ToString()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToString
+  commentId: M:BinarySearchTree.BST`2.ToString
+  fullName: BinarySearchTree.BST<TKey, TValue>.ToString()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToString()
+  nameWithType: BST<TKey, TValue>.ToString()
+  nameWithType.vb: BST(Of TKey, TValue).ToString()
+- uid: BinarySearchTree.BST`2.ToString*
+  name: ToString
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToString_
+  commentId: Overload:BinarySearchTree.BST`2.ToString
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.ToString
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToString
+  nameWithType: BST<TKey, TValue>.ToString
+  nameWithType.vb: BST(Of TKey, TValue).ToString
+- uid: BinarySearchTree.IOrderedST`2
+  name: IOrderedST<TKey, TValue>
+  href: api/BinarySearchTree.IOrderedST-2.html
+  commentId: T:BinarySearchTree.IOrderedST`2
+  name.vb: IOrderedST(Of TKey, TValue)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue)
+  nameWithType: IOrderedST<TKey, TValue>
+  nameWithType.vb: IOrderedST(Of TKey, TValue)
+- uid: BinarySearchTree.IOrderedST`2.Ceiling(`0)
+  name: Ceiling(TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Ceiling__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Ceiling(`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Ceiling(TKey)
+- uid: BinarySearchTree.IOrderedST`2.Ceiling*
+  name: Ceiling
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Ceiling_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Ceiling
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Ceiling
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Ceiling
+  nameWithType: IOrderedST<TKey, TValue>.Ceiling
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Ceiling
+- uid: BinarySearchTree.IOrderedST`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Contains__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Contains(`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Contains(TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Contains(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Contains(TKey)
+- uid: BinarySearchTree.IOrderedST`2.Contains*
+  name: Contains
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Contains_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Contains
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Contains
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Contains
+  nameWithType: IOrderedST<TKey, TValue>.Contains
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Contains
+- uid: BinarySearchTree.IOrderedST`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Delete__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Delete(`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Delete(TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Delete(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Delete(TKey)
+- uid: BinarySearchTree.IOrderedST`2.Delete*
+  name: Delete
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Delete_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Delete
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Delete
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Delete
+  nameWithType: IOrderedST<TKey, TValue>.Delete
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Delete
+- uid: BinarySearchTree.IOrderedST`2.DeleteMax
+  name: DeleteMax()
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_DeleteMax
+  commentId: M:BinarySearchTree.IOrderedST`2.DeleteMax
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.DeleteMax()
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).DeleteMax()
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMax()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMax()
+- uid: BinarySearchTree.IOrderedST`2.DeleteMax*
+  name: DeleteMax
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_DeleteMax_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.DeleteMax
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.DeleteMax
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).DeleteMax
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMax
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMax
+- uid: BinarySearchTree.IOrderedST`2.DeleteMin
+  name: DeleteMin()
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_DeleteMin
+  commentId: M:BinarySearchTree.IOrderedST`2.DeleteMin
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.DeleteMin()
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).DeleteMin()
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMin()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMin()
+- uid: BinarySearchTree.IOrderedST`2.DeleteMin*
+  name: DeleteMin
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_DeleteMin_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.DeleteMin
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.DeleteMin
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).DeleteMin
+  nameWithType: IOrderedST<TKey, TValue>.DeleteMin
+  nameWithType.vb: IOrderedST(Of TKey, TValue).DeleteMin
+- uid: BinarySearchTree.IOrderedST`2.Floor(`0)
+  name: Floor(TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Floor__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Floor(`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Floor(TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Floor(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Floor(TKey)
+- uid: BinarySearchTree.IOrderedST`2.Floor*
+  name: Floor
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Floor_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Floor
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Floor
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Floor
+  nameWithType: IOrderedST<TKey, TValue>.Floor
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Floor
+- uid: BinarySearchTree.IOrderedST`2.Get(`0)
+  name: Get(TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Get__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Get(`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Get(TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Get(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.IOrderedST`2.Get*
+  name: Get
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Get_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Get
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Get
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Get
+  nameWithType: IOrderedST<TKey, TValue>.Get
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Get
+- uid: BinarySearchTree.IOrderedST`2.IsEmpty
+  name: IsEmpty()
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_IsEmpty
+  commentId: M:BinarySearchTree.IOrderedST`2.IsEmpty
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.IsEmpty()
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).IsEmpty()
+  nameWithType: IOrderedST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).IsEmpty()
+- uid: BinarySearchTree.IOrderedST`2.IsEmpty*
+  name: IsEmpty
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_IsEmpty_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.IsEmpty
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.IsEmpty
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).IsEmpty
+  nameWithType: IOrderedST<TKey, TValue>.IsEmpty
+  nameWithType.vb: IOrderedST(Of TKey, TValue).IsEmpty
+- uid: BinarySearchTree.IOrderedST`2.Keys
+  name: Keys()
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Keys
+  commentId: M:BinarySearchTree.IOrderedST`2.Keys
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Keys()
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Keys()
+  nameWithType: IOrderedST<TKey, TValue>.Keys()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Keys()
+- uid: BinarySearchTree.IOrderedST`2.Keys(`0,`0)
+  name: Keys(TKey, TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Keys__0__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Keys(`0,`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Keys(TKey, TKey)
+- uid: BinarySearchTree.IOrderedST`2.Keys*
+  name: Keys
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Keys_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Keys
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Keys
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Keys
+  nameWithType: IOrderedST<TKey, TValue>.Keys
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Keys
+- uid: BinarySearchTree.IOrderedST`2.Max
+  name: Max()
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Max
+  commentId: M:BinarySearchTree.IOrderedST`2.Max
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Max()
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Max()
+  nameWithType: IOrderedST<TKey, TValue>.Max()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Max()
+- uid: BinarySearchTree.IOrderedST`2.Max*
+  name: Max
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Max_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Max
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Max
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Max
+  nameWithType: IOrderedST<TKey, TValue>.Max
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Max
+- uid: BinarySearchTree.IOrderedST`2.Min
+  name: Min()
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Min
+  commentId: M:BinarySearchTree.IOrderedST`2.Min
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Min()
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Min()
+  nameWithType: IOrderedST<TKey, TValue>.Min()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Min()
+- uid: BinarySearchTree.IOrderedST`2.Min*
+  name: Min
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Min_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Min
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Min
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Min
+  nameWithType: IOrderedST<TKey, TValue>.Min
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Min
+- uid: BinarySearchTree.IOrderedST`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Put__0__1_
+  commentId: M:BinarySearchTree.IOrderedST`2.Put(`0,`1)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: IOrderedST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.IOrderedST`2.Put*
+  name: Put
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Put_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Put
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Put
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Put
+  nameWithType: IOrderedST<TKey, TValue>.Put
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Put
+- uid: BinarySearchTree.IOrderedST`2.Rank(`0)
+  name: Rank(TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Rank__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Rank(`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Rank(TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Rank(TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Rank(TKey)
+- uid: BinarySearchTree.IOrderedST`2.Rank*
+  name: Rank
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Rank_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Rank
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Rank
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Rank
+  nameWithType: IOrderedST<TKey, TValue>.Rank
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Rank
+- uid: BinarySearchTree.IOrderedST`2.Select(System.Int32)
+  name: Select(Int32)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Select_System_Int32_
+  commentId: M:BinarySearchTree.IOrderedST`2.Select(System.Int32)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Select(System.Int32)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Select(System.Int32)
+  nameWithType: IOrderedST<TKey, TValue>.Select(Int32)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Select(Int32)
+- uid: BinarySearchTree.IOrderedST`2.Select*
+  name: Select
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Select_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Select
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Select
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Select
+  nameWithType: IOrderedST<TKey, TValue>.Select
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Select
+- uid: BinarySearchTree.IOrderedST`2.Size
+  name: Size()
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Size
+  commentId: M:BinarySearchTree.IOrderedST`2.Size
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Size()
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Size()
+  nameWithType: IOrderedST<TKey, TValue>.Size()
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Size()
+- uid: BinarySearchTree.IOrderedST`2.Size(`0,`0)
+  name: Size(TKey, TKey)
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Size__0__0_
+  commentId: M:BinarySearchTree.IOrderedST`2.Size(`0,`0)
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: IOrderedST<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Size(TKey, TKey)
+- uid: BinarySearchTree.IOrderedST`2.Size*
+  name: Size
+  href: api/BinarySearchTree.IOrderedST-2.html#BinarySearchTree_IOrderedST_2_Size_
+  commentId: Overload:BinarySearchTree.IOrderedST`2.Size
+  isSpec: "True"
+  fullName: BinarySearchTree.IOrderedST<TKey, TValue>.Size
+  fullName.vb: BinarySearchTree.IOrderedST(Of TKey, TValue).Size
+  nameWithType: IOrderedST<TKey, TValue>.Size
+  nameWithType.vb: IOrderedST(Of TKey, TValue).Size
+- uid: BinarySearchTree.IST`2
+  name: IST<TKey, TValue>
+  href: api/BinarySearchTree.IST-2.html
+  commentId: T:BinarySearchTree.IST`2
+  name.vb: IST(Of TKey, TValue)
+  fullName: BinarySearchTree.IST<TKey, TValue>
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue)
+  nameWithType: IST<TKey, TValue>
+  nameWithType.vb: IST(Of TKey, TValue)
+- uid: BinarySearchTree.IST`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Contains__0_
+  commentId: M:BinarySearchTree.IST`2.Contains(`0)
+  fullName: BinarySearchTree.IST<TKey, TValue>.Contains(TKey)
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Contains(TKey)
+  nameWithType: IST<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: IST(Of TKey, TValue).Contains(TKey)
+- uid: BinarySearchTree.IST`2.Contains*
+  name: Contains
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Contains_
+  commentId: Overload:BinarySearchTree.IST`2.Contains
+  isSpec: "True"
+  fullName: BinarySearchTree.IST<TKey, TValue>.Contains
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Contains
+  nameWithType: IST<TKey, TValue>.Contains
+  nameWithType.vb: IST(Of TKey, TValue).Contains
+- uid: BinarySearchTree.IST`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Delete__0_
+  commentId: M:BinarySearchTree.IST`2.Delete(`0)
+  fullName: BinarySearchTree.IST<TKey, TValue>.Delete(TKey)
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Delete(TKey)
+  nameWithType: IST<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: IST(Of TKey, TValue).Delete(TKey)
+- uid: BinarySearchTree.IST`2.Delete*
+  name: Delete
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Delete_
+  commentId: Overload:BinarySearchTree.IST`2.Delete
+  isSpec: "True"
+  fullName: BinarySearchTree.IST<TKey, TValue>.Delete
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Delete
+  nameWithType: IST<TKey, TValue>.Delete
+  nameWithType.vb: IST(Of TKey, TValue).Delete
+- uid: BinarySearchTree.IST`2.Get(`0)
+  name: Get(TKey)
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Get__0_
+  commentId: M:BinarySearchTree.IST`2.Get(`0)
+  fullName: BinarySearchTree.IST<TKey, TValue>.Get(TKey)
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Get(TKey)
+  nameWithType: IST<TKey, TValue>.Get(TKey)
+  nameWithType.vb: IST(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.IST`2.Get*
+  name: Get
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Get_
+  commentId: Overload:BinarySearchTree.IST`2.Get
+  isSpec: "True"
+  fullName: BinarySearchTree.IST<TKey, TValue>.Get
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Get
+  nameWithType: IST<TKey, TValue>.Get
+  nameWithType.vb: IST(Of TKey, TValue).Get
+- uid: BinarySearchTree.IST`2.IsEmpty
+  name: IsEmpty()
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_IsEmpty
+  commentId: M:BinarySearchTree.IST`2.IsEmpty
+  fullName: BinarySearchTree.IST<TKey, TValue>.IsEmpty()
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).IsEmpty()
+  nameWithType: IST<TKey, TValue>.IsEmpty()
+  nameWithType.vb: IST(Of TKey, TValue).IsEmpty()
+- uid: BinarySearchTree.IST`2.IsEmpty*
+  name: IsEmpty
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_IsEmpty_
+  commentId: Overload:BinarySearchTree.IST`2.IsEmpty
+  isSpec: "True"
+  fullName: BinarySearchTree.IST<TKey, TValue>.IsEmpty
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).IsEmpty
+  nameWithType: IST<TKey, TValue>.IsEmpty
+  nameWithType.vb: IST(Of TKey, TValue).IsEmpty
+- uid: BinarySearchTree.IST`2.Keys
+  name: Keys()
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Keys
+  commentId: M:BinarySearchTree.IST`2.Keys
+  fullName: BinarySearchTree.IST<TKey, TValue>.Keys()
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Keys()
+  nameWithType: IST<TKey, TValue>.Keys()
+  nameWithType.vb: IST(Of TKey, TValue).Keys()
+- uid: BinarySearchTree.IST`2.Keys*
+  name: Keys
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Keys_
+  commentId: Overload:BinarySearchTree.IST`2.Keys
+  isSpec: "True"
+  fullName: BinarySearchTree.IST<TKey, TValue>.Keys
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Keys
+  nameWithType: IST<TKey, TValue>.Keys
+  nameWithType.vb: IST(Of TKey, TValue).Keys
+- uid: BinarySearchTree.IST`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Put__0__1_
+  commentId: M:BinarySearchTree.IST`2.Put(`0,`1)
+  fullName: BinarySearchTree.IST<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: IST<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: IST(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.IST`2.Put*
+  name: Put
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Put_
+  commentId: Overload:BinarySearchTree.IST`2.Put
+  isSpec: "True"
+  fullName: BinarySearchTree.IST<TKey, TValue>.Put
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Put
+  nameWithType: IST<TKey, TValue>.Put
+  nameWithType.vb: IST(Of TKey, TValue).Put
+- uid: BinarySearchTree.IST`2.Size
+  name: Size()
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Size
+  commentId: M:BinarySearchTree.IST`2.Size
+  fullName: BinarySearchTree.IST<TKey, TValue>.Size()
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Size()
+  nameWithType: IST<TKey, TValue>.Size()
+  nameWithType.vb: IST(Of TKey, TValue).Size()
+- uid: BinarySearchTree.IST`2.Size*
+  name: Size
+  href: api/BinarySearchTree.IST-2.html#BinarySearchTree_IST_2_Size_
+  commentId: Overload:BinarySearchTree.IST`2.Size
+  isSpec: "True"
+  fullName: BinarySearchTree.IST<TKey, TValue>.Size
+  fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Size
+  nameWithType: IST<TKey, TValue>.Size
+  nameWithType.vb: IST(Of TKey, TValue).Size
 - uid: Commercial
   name: Commercial
   href: api/Commercial.html
@@ -3404,6 +4132,23 @@ references:
   fullName.vb: PriorityQueue.MaxPQ(Of Key).System.Collections.IEnumerable.GetEnumerator
   nameWithType: MaxPQ<Key>.IEnumerable.GetEnumerator
   nameWithType.vb: MaxPQ(Of Key).System.Collections.IEnumerable.GetEnumerator
+- uid: PriorityQueue.MaxPQ`1.ToString
+  name: ToString()
+  href: api/PriorityQueue.MaxPQ-1.html#PriorityQueue_MaxPQ_1_ToString
+  commentId: M:PriorityQueue.MaxPQ`1.ToString
+  fullName: PriorityQueue.MaxPQ<Key>.ToString()
+  fullName.vb: PriorityQueue.MaxPQ(Of Key).ToString()
+  nameWithType: MaxPQ<Key>.ToString()
+  nameWithType.vb: MaxPQ(Of Key).ToString()
+- uid: PriorityQueue.MaxPQ`1.ToString*
+  name: ToString
+  href: api/PriorityQueue.MaxPQ-1.html#PriorityQueue_MaxPQ_1_ToString_
+  commentId: Overload:PriorityQueue.MaxPQ`1.ToString
+  isSpec: "True"
+  fullName: PriorityQueue.MaxPQ<Key>.ToString
+  fullName.vb: PriorityQueue.MaxPQ(Of Key).ToString
+  nameWithType: MaxPQ<Key>.ToString
+  nameWithType.vb: MaxPQ(Of Key).ToString
 - uid: PriorityQueue.MaxPQLinked`1
   name: MaxPQLinked<Key>
   href: api/PriorityQueue.MaxPQLinked-1.html
@@ -8852,6 +9597,362 @@ references:
   fullName.vb: SymbolTable.BinarySearchST(Of TKey, TValue).Size
   nameWithType: BinarySearchST<TKey, TValue>.Size
   nameWithType.vb: BinarySearchST(Of TKey, TValue).Size
+- uid: SymbolTable.BinarySearchSTAnalysis`2
+  name: BinarySearchSTAnalysis<TKey, TValue>
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html
+  commentId: T:SymbolTable.BinarySearchSTAnalysis`2
+  name.vb: BinarySearchSTAnalysis(Of TKey, TValue)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.#ctor
+  name: BinarySearchSTAnalysis()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2__ctor
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.#ctor
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.BinarySearchSTAnalysis()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).BinarySearchSTAnalysis()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.BinarySearchSTAnalysis()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).BinarySearchSTAnalysis()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.#ctor(System.Int32)
+  name: BinarySearchSTAnalysis(Int32)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2__ctor_System_Int32_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.#ctor(System.Int32)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.BinarySearchSTAnalysis(System.Int32)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).BinarySearchSTAnalysis(System.Int32)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.BinarySearchSTAnalysis(Int32)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).BinarySearchSTAnalysis(Int32)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.#ctor*
+  name: BinarySearchSTAnalysis
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2__ctor_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.BinarySearchSTAnalysis
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).BinarySearchSTAnalysis
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.BinarySearchSTAnalysis
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).BinarySearchSTAnalysis
+- uid: SymbolTable.BinarySearchSTAnalysis`2.ArrayVisit
+  name: ArrayVisit
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_ArrayVisit
+  commentId: P:SymbolTable.BinarySearchSTAnalysis`2.ArrayVisit
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.ArrayVisit
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).ArrayVisit
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.ArrayVisit
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).ArrayVisit
+- uid: SymbolTable.BinarySearchSTAnalysis`2.ArrayVisit*
+  name: ArrayVisit
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_ArrayVisit_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.ArrayVisit
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.ArrayVisit
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).ArrayVisit
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.ArrayVisit
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).ArrayVisit
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Ceiling(`0)
+  name: Ceiling(TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Ceiling__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Ceiling(`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Ceiling(TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Ceiling*
+  name: Ceiling
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Ceiling_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Ceiling
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Ceiling
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Ceiling
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Ceiling
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Ceiling
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Contains__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Contains(`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Contains(TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Contains(TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Contains*
+  name: Contains
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Contains_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Contains
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Contains
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Contains
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Delete__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Delete(`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Delete(TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Delete(TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Delete*
+  name: Delete
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Delete_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Delete
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Delete
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Delete
+- uid: SymbolTable.BinarySearchSTAnalysis`2.DeleteMax
+  name: DeleteMax()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_DeleteMax
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.DeleteMax
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.DeleteMax()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).DeleteMax()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.DeleteMax()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).DeleteMax()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.DeleteMax*
+  name: DeleteMax
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_DeleteMax_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.DeleteMax
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.DeleteMax
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).DeleteMax
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.DeleteMax
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).DeleteMax
+- uid: SymbolTable.BinarySearchSTAnalysis`2.DeleteMin
+  name: DeleteMin()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_DeleteMin
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.DeleteMin
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.DeleteMin()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).DeleteMin()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.DeleteMin()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).DeleteMin()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.DeleteMin*
+  name: DeleteMin
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_DeleteMin_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.DeleteMin
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.DeleteMin
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).DeleteMin
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.DeleteMin
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).DeleteMin
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Floor(`0)
+  name: Floor(TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Floor__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Floor(`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Floor(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Floor(TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Floor(TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Floor*
+  name: Floor
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Floor_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Floor
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Floor
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Floor
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Floor
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Floor
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Get(`0)
+  name: Get(TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Get__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Get(`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Get(TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Get(TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Get*
+  name: Get
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Get_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Get
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Get
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Get
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Get
+- uid: SymbolTable.BinarySearchSTAnalysis`2.GetTimer
+  name: GetTimer
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_GetTimer
+  commentId: P:SymbolTable.BinarySearchSTAnalysis`2.GetTimer
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.GetTimer
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).GetTimer
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.GetTimer
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).GetTimer
+- uid: SymbolTable.BinarySearchSTAnalysis`2.GetTimer*
+  name: GetTimer
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_GetTimer_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.GetTimer
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.GetTimer
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).GetTimer
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.GetTimer
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).GetTimer
+- uid: SymbolTable.BinarySearchSTAnalysis`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_IsEmpty
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.IsEmpty
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).IsEmpty()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.IsEmpty()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).IsEmpty()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_IsEmpty_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).IsEmpty
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.IsEmpty
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).IsEmpty
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Keys
+  name: Keys()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Keys
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Keys
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Keys()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Keys()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Keys()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Keys(`0,`0)
+  name: Keys(TKey, TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Keys__0__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Keys(`0,`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Keys(TKey, TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Keys*
+  name: Keys
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Keys_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Keys
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Keys
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Keys
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Max
+  name: Max()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Max
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Max
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Max()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Max()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Max()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Max()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Max*
+  name: Max
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Max_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Max
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Max
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Max
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Max
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Max
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Min
+  name: Min()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Min
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Min
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Min()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Min()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Min()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Min()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Min*
+  name: Min
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Min_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Min
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Min
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Min
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Min
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Min
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Put__0__1_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Put(`0,`1)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Put(TKey, TValue)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Put*
+  name: Put
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Put_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Put
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Put
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Put
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Put
+- uid: SymbolTable.BinarySearchSTAnalysis`2.PutTimer
+  name: PutTimer
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_PutTimer
+  commentId: P:SymbolTable.BinarySearchSTAnalysis`2.PutTimer
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.PutTimer
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).PutTimer
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.PutTimer
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).PutTimer
+- uid: SymbolTable.BinarySearchSTAnalysis`2.PutTimer*
+  name: PutTimer
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_PutTimer_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.PutTimer
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.PutTimer
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).PutTimer
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.PutTimer
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).PutTimer
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Rank(`0)
+  name: Rank(TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Rank__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Rank(`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Rank(TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Rank(TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Rank(TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Rank*
+  name: Rank
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Rank_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Rank
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Rank
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Rank
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Rank
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Rank
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Select(System.Int32)
+  name: Select(Int32)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Select_System_Int32_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Select(System.Int32)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Select(System.Int32)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Select(System.Int32)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Select(Int32)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Select(Int32)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Select*
+  name: Select
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Select_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Select
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Select
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Select
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Select
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Select
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Size
+  name: Size()
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Size
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Size
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Size()
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Size()
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Size()
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Size(`0,`0)
+  name: Size(TKey, TKey)
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Size__0__0_
+  commentId: M:SymbolTable.BinarySearchSTAnalysis`2.Size(`0,`0)
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Size(TKey, TKey)
+- uid: SymbolTable.BinarySearchSTAnalysis`2.Size*
+  name: Size
+  href: api/SymbolTable.BinarySearchSTAnalysis-2.html#SymbolTable_BinarySearchSTAnalysis_2_Size_
+  commentId: Overload:SymbolTable.BinarySearchSTAnalysis`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.BinarySearchSTAnalysis<TKey, TValue>.Size
+  fullName.vb: SymbolTable.BinarySearchSTAnalysis(Of TKey, TValue).Size
+  nameWithType: BinarySearchSTAnalysis<TKey, TValue>.Size
+  nameWithType.vb: BinarySearchSTAnalysis(Of TKey, TValue).Size
 - uid: SymbolTable.BinarySearchSTCached`2
   name: BinarySearchSTCached<TKey, TValue>
   href: api/SymbolTable.BinarySearchSTCached-2.html
@@ -9522,6 +10623,15 @@ references:
   fullName.vb: SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, SymbolTable.IST(Of System.String, System.Int32))
   nameWithType: FrequencyCounter.MostFrequentlyWord(String, Int32, IST<String, Int32>)
   nameWithType.vb: FrequencyCounter.MostFrequentlyWord(String, Int32, IST(Of String, Int32))
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,System.Int32,SymbolTable.IST{System.String,System.Int32})
+  name: MostFrequentlyWord(String, Int32, Int32, IST<String, Int32>)
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWord_System_String_System_Int32_System_Int32_SymbolTable_IST_System_String_System_Int32__
+  commentId: M:SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,System.Int32,SymbolTable.IST{System.String,System.Int32})
+  name.vb: MostFrequentlyWord(String, Int32, Int32, IST(Of String, Int32))
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, System.Int32, SymbolTable.IST<System.String, System.Int32>)
+  fullName.vb: SymbolTable.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, System.Int32, SymbolTable.IST(Of System.String, System.Int32))
+  nameWithType: FrequencyCounter.MostFrequentlyWord(String, Int32, Int32, IST<String, Int32>)
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWord(String, Int32, Int32, IST(Of String, Int32))
 - uid: SymbolTable.FrequencyCounter.MostFrequentlyWord*
   name: MostFrequentlyWord
   href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWord_
@@ -9529,6 +10639,31 @@ references:
   isSpec: "True"
   fullName: SymbolTable.FrequencyCounter.MostFrequentlyWord
   nameWithType: FrequencyCounter.MostFrequentlyWord
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32},System.Int32[]@,System.Int64[]@)
+  name: MostFrequentlyWordAnalysis(String, Int32, IST<String, Int32>, out Int32[], out Int64[])
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWordAnalysis_System_String_System_Int32_SymbolTable_IST_System_String_System_Int32__System_Int32____System_Int64____
+  commentId: M:SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32},System.Int32[]@,System.Int64[]@)
+  name.vb: MostFrequentlyWordAnalysis(String, Int32, IST(Of String, Int32), ByRef Int32(), ByRef Int64())
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, SymbolTable.IST<System.String, System.Int32>, out System.Int32[], out System.Int64[])
+  fullName.vb: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, SymbolTable.IST(Of System.String, System.Int32), ByRef System.Int32(), ByRef System.Int64())
+  nameWithType: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, IST<String, Int32>, out Int32[], out Int64[])
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, IST(Of String, Int32), ByRef Int32(), ByRef Int64())
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,SymbolTable.ISTAnalysis{System.String,System.Int32})
+  name: MostFrequentlyWordAnalysis(String, Int32, ISTAnalysis<String, Int32>)
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWordAnalysis_System_String_System_Int32_SymbolTable_ISTAnalysis_System_String_System_Int32__
+  commentId: M:SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,SymbolTable.ISTAnalysis{System.String,System.Int32})
+  name.vb: MostFrequentlyWordAnalysis(String, Int32, ISTAnalysis(Of String, Int32))
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, SymbolTable.ISTAnalysis<System.String, System.Int32>)
+  fullName.vb: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, SymbolTable.ISTAnalysis(Of System.String, System.Int32))
+  nameWithType: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, ISTAnalysis<String, Int32>)
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, ISTAnalysis(Of String, Int32))
+- uid: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis*
+  name: MostFrequentlyWordAnalysis
+  href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWordAnalysis_
+  commentId: Overload:SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis
+  isSpec: "True"
+  fullName: SymbolTable.FrequencyCounter.MostFrequentlyWordAnalysis
+  nameWithType: FrequencyCounter.MostFrequentlyWordAnalysis
 - uid: SymbolTable.FrequencyCounter.MostFrequentlyWords(System.String,System.Int32,SymbolTable.IST{System.String,System.Int32})
   name: MostFrequentlyWords(String, Int32, IST<String, Int32>)
   href: api/SymbolTable.FrequencyCounter.html#SymbolTable_FrequencyCounter_MostFrequentlyWords_System_String_System_Int32_SymbolTable_IST_System_String_System_Int32__
@@ -10185,6 +11320,151 @@ references:
   fullName.vb: SymbolTable.IST(Of TKey, TValue).Size
   nameWithType: IST<TKey, TValue>.Size
   nameWithType.vb: IST(Of TKey, TValue).Size
+- uid: SymbolTable.ISTAnalysis`2
+  name: ISTAnalysis<TKey, TValue>
+  href: api/SymbolTable.ISTAnalysis-2.html
+  commentId: T:SymbolTable.ISTAnalysis`2
+  name.vb: ISTAnalysis(Of TKey, TValue)
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue)
+  nameWithType: ISTAnalysis<TKey, TValue>
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue)
+- uid: SymbolTable.ISTAnalysis`2.ArrayVisit
+  name: ArrayVisit
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_ArrayVisit
+  commentId: P:SymbolTable.ISTAnalysis`2.ArrayVisit
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.ArrayVisit
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).ArrayVisit
+  nameWithType: ISTAnalysis<TKey, TValue>.ArrayVisit
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).ArrayVisit
+- uid: SymbolTable.ISTAnalysis`2.ArrayVisit*
+  name: ArrayVisit
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_ArrayVisit_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.ArrayVisit
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.ArrayVisit
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).ArrayVisit
+  nameWithType: ISTAnalysis<TKey, TValue>.ArrayVisit
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).ArrayVisit
+- uid: SymbolTable.ISTAnalysis`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Contains__0_
+  commentId: M:SymbolTable.ISTAnalysis`2.Contains(`0)
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Contains(TKey)
+  nameWithType: ISTAnalysis<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Contains(TKey)
+- uid: SymbolTable.ISTAnalysis`2.Contains*
+  name: Contains
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Contains_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Contains
+  nameWithType: ISTAnalysis<TKey, TValue>.Contains
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Contains
+- uid: SymbolTable.ISTAnalysis`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Delete__0_
+  commentId: M:SymbolTable.ISTAnalysis`2.Delete(`0)
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Delete(TKey)
+  nameWithType: ISTAnalysis<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Delete(TKey)
+- uid: SymbolTable.ISTAnalysis`2.Delete*
+  name: Delete
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Delete_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Delete
+  nameWithType: ISTAnalysis<TKey, TValue>.Delete
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Delete
+- uid: SymbolTable.ISTAnalysis`2.Get(`0)
+  name: Get(TKey)
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Get__0_
+  commentId: M:SymbolTable.ISTAnalysis`2.Get(`0)
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Get(TKey)
+  nameWithType: ISTAnalysis<TKey, TValue>.Get(TKey)
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Get(TKey)
+- uid: SymbolTable.ISTAnalysis`2.Get*
+  name: Get
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Get_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Get
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Get
+  nameWithType: ISTAnalysis<TKey, TValue>.Get
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Get
+- uid: SymbolTable.ISTAnalysis`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_IsEmpty
+  commentId: M:SymbolTable.ISTAnalysis`2.IsEmpty
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).IsEmpty()
+  nameWithType: ISTAnalysis<TKey, TValue>.IsEmpty()
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).IsEmpty()
+- uid: SymbolTable.ISTAnalysis`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_IsEmpty_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).IsEmpty
+  nameWithType: ISTAnalysis<TKey, TValue>.IsEmpty
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).IsEmpty
+- uid: SymbolTable.ISTAnalysis`2.Keys
+  name: Keys()
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Keys
+  commentId: M:SymbolTable.ISTAnalysis`2.Keys
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Keys()
+  nameWithType: ISTAnalysis<TKey, TValue>.Keys()
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Keys()
+- uid: SymbolTable.ISTAnalysis`2.Keys*
+  name: Keys
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Keys_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Keys
+  nameWithType: ISTAnalysis<TKey, TValue>.Keys
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Keys
+- uid: SymbolTable.ISTAnalysis`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Put__0__1_
+  commentId: M:SymbolTable.ISTAnalysis`2.Put(`0,`1)
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: ISTAnalysis<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Put(TKey, TValue)
+- uid: SymbolTable.ISTAnalysis`2.Put*
+  name: Put
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Put_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Put
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Put
+  nameWithType: ISTAnalysis<TKey, TValue>.Put
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Put
+- uid: SymbolTable.ISTAnalysis`2.Size
+  name: Size()
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Size
+  commentId: M:SymbolTable.ISTAnalysis`2.Size
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Size()
+  nameWithType: ISTAnalysis<TKey, TValue>.Size()
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Size()
+- uid: SymbolTable.ISTAnalysis`2.Size*
+  name: Size
+  href: api/SymbolTable.ISTAnalysis-2.html#SymbolTable_ISTAnalysis_2_Size_
+  commentId: Overload:SymbolTable.ISTAnalysis`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.ISTAnalysis<TKey, TValue>.Size
+  fullName.vb: SymbolTable.ISTAnalysis(Of TKey, TValue).Size
+  nameWithType: ISTAnalysis<TKey, TValue>.Size
+  nameWithType.vb: ISTAnalysis(Of TKey, TValue).Size
 - uid: SymbolTable.Item`2
   name: Item<TKey, TValue>
   href: api/SymbolTable.Item-2.html
@@ -11029,6 +12309,61 @@ references:
   isSpec: "True"
   fullName: SymbolTable.SearchCompare.GetRandomArrayDouble
   nameWithType: SearchCompare.GetRandomArrayDouble
+- uid: SymbolTable.SearchCompare.GetRandomArrayLong(System.Int32,System.Int64,System.Int64)
+  name: GetRandomArrayLong(Int32, Int64, Int64)
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_GetRandomArrayLong_System_Int32_System_Int64_System_Int64_
+  commentId: M:SymbolTable.SearchCompare.GetRandomArrayLong(System.Int32,System.Int64,System.Int64)
+  fullName: SymbolTable.SearchCompare.GetRandomArrayLong(System.Int32, System.Int64, System.Int64)
+  nameWithType: SearchCompare.GetRandomArrayLong(Int32, Int64, Int64)
+- uid: SymbolTable.SearchCompare.GetRandomArrayLong*
+  name: GetRandomArrayLong
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_GetRandomArrayLong_
+  commentId: Overload:SymbolTable.SearchCompare.GetRandomArrayLong
+  isSpec: "True"
+  fullName: SymbolTable.SearchCompare.GetRandomArrayLong
+  nameWithType: SearchCompare.GetRandomArrayLong
+- uid: SymbolTable.SearchCompare.GetRandomArrayString(System.Int32,System.Int32,System.Int32)
+  name: GetRandomArrayString(Int32, Int32, Int32)
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_GetRandomArrayString_System_Int32_System_Int32_System_Int32_
+  commentId: M:SymbolTable.SearchCompare.GetRandomArrayString(System.Int32,System.Int32,System.Int32)
+  fullName: SymbolTable.SearchCompare.GetRandomArrayString(System.Int32, System.Int32, System.Int32)
+  nameWithType: SearchCompare.GetRandomArrayString(Int32, Int32, Int32)
+- uid: SymbolTable.SearchCompare.GetRandomArrayString*
+  name: GetRandomArrayString
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_GetRandomArrayString_
+  commentId: Overload:SymbolTable.SearchCompare.GetRandomArrayString
+  isSpec: "True"
+  fullName: SymbolTable.SearchCompare.GetRandomArrayString
+  nameWithType: SearchCompare.GetRandomArrayString
+- uid: SymbolTable.SearchCompare.GetRandomString(System.Int32,System.Int32)
+  name: GetRandomString(Int32, Int32)
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_GetRandomString_System_Int32_System_Int32_
+  commentId: M:SymbolTable.SearchCompare.GetRandomString(System.Int32,System.Int32)
+  fullName: SymbolTable.SearchCompare.GetRandomString(System.Int32, System.Int32)
+  nameWithType: SearchCompare.GetRandomString(Int32, Int32)
+- uid: SymbolTable.SearchCompare.GetRandomString*
+  name: GetRandomString
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_GetRandomString_
+  commentId: Overload:SymbolTable.SearchCompare.GetRandomString
+  isSpec: "True"
+  fullName: SymbolTable.SearchCompare.GetRandomString
+  nameWithType: SearchCompare.GetRandomString
+- uid: SymbolTable.SearchCompare.Performance(SymbolTable.IST{System.String,System.Int32},System.Int32,System.Int32)
+  name: Performance(IST<String, Int32>, Int32, Int32)
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_Performance_SymbolTable_IST_System_String_System_Int32__System_Int32_System_Int32_
+  commentId: M:SymbolTable.SearchCompare.Performance(SymbolTable.IST{System.String,System.Int32},System.Int32,System.Int32)
+  name.vb: Performance(IST(Of String, Int32), Int32, Int32)
+  fullName: SymbolTable.SearchCompare.Performance(SymbolTable.IST<System.String, System.Int32>, System.Int32, System.Int32)
+  fullName.vb: SymbolTable.SearchCompare.Performance(SymbolTable.IST(Of System.String, System.Int32), System.Int32, System.Int32)
+  nameWithType: SearchCompare.Performance(IST<String, Int32>, Int32, Int32)
+  nameWithType.vb: SearchCompare.Performance(IST(Of String, Int32), Int32, Int32)
+- uid: SymbolTable.SearchCompare.Performance*
+  name: Performance
+  href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_Performance_
+  commentId: Overload:SymbolTable.SearchCompare.Performance
+  isSpec: "True"
+  fullName: SymbolTable.SearchCompare.Performance
+  nameWithType: SearchCompare.Performance
 - uid: SymbolTable.SearchCompare.Time*
   name: Time
   href: api/SymbolTable.SearchCompare.html#SymbolTable_SearchCompare_Time_
@@ -11190,6 +12525,168 @@ references:
   fullName.vb: SymbolTable.SequentialSearchST(Of TKey, TValue).Size
   nameWithType: SequentialSearchST<TKey, TValue>.Size
   nameWithType.vb: SequentialSearchST(Of TKey, TValue).Size
+- uid: SymbolTable.SequentialSearchSTAnalysis`2
+  name: SequentialSearchSTAnalysis<TKey, TValue>
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html
+  commentId: T:SymbolTable.SequentialSearchSTAnalysis`2
+  name.vb: SequentialSearchSTAnalysis(Of TKey, TValue)
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue)
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue)
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.#ctor
+  name: SequentialSearchSTAnalysis()
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2__ctor
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.#ctor
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.SequentialSearchSTAnalysis()
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).SequentialSearchSTAnalysis()
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.SequentialSearchSTAnalysis()
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).SequentialSearchSTAnalysis()
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.#ctor*
+  name: SequentialSearchSTAnalysis
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2__ctor_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.SequentialSearchSTAnalysis
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).SequentialSearchSTAnalysis
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.SequentialSearchSTAnalysis
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).SequentialSearchSTAnalysis
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.ArrayVisit
+  name: ArrayVisit
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_ArrayVisit
+  commentId: P:SymbolTable.SequentialSearchSTAnalysis`2.ArrayVisit
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.ArrayVisit
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).ArrayVisit
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.ArrayVisit
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).ArrayVisit
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.ArrayVisit*
+  name: ArrayVisit
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_ArrayVisit_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.ArrayVisit
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.ArrayVisit
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).ArrayVisit
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.ArrayVisit
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).ArrayVisit
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Contains__0_
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.Contains(`0)
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Contains(TKey)
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Contains(TKey)
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Contains(TKey)
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Contains*
+  name: Contains
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Contains_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.Contains
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Contains
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Contains
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Contains
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Contains
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Delete__0_
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.Delete(`0)
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Delete(TKey)
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Delete(TKey)
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Delete(TKey)
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Delete*
+  name: Delete
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Delete_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.Delete
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Delete
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Delete
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Delete
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Delete
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Get(`0)
+  name: Get(TKey)
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Get__0_
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.Get(`0)
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Get(TKey)
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Get(TKey)
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Get(TKey)
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Get(TKey)
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Get*
+  name: Get
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Get_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.Get
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Get
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Get
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Get
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Get
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.IsEmpty
+  name: IsEmpty()
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_IsEmpty
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.IsEmpty
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.IsEmpty()
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).IsEmpty()
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.IsEmpty()
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).IsEmpty()
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.IsEmpty*
+  name: IsEmpty
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_IsEmpty_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.IsEmpty
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.IsEmpty
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).IsEmpty
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.IsEmpty
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).IsEmpty
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Keys
+  name: Keys()
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Keys
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.Keys
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Keys()
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Keys()
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Keys()
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Keys()
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Keys*
+  name: Keys
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Keys_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.Keys
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Keys
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Keys
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Keys
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Keys
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Put__0__1_
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.Put(`0,`1)
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Put(TKey, TValue)
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Put*
+  name: Put
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Put_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.Put
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Put
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Put
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Put
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Put
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Size
+  name: Size()
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Size
+  commentId: M:SymbolTable.SequentialSearchSTAnalysis`2.Size
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Size()
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Size()
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Size()
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Size()
+- uid: SymbolTable.SequentialSearchSTAnalysis`2.Size*
+  name: Size
+  href: api/SymbolTable.SequentialSearchSTAnalysis-2.html#SymbolTable_SequentialSearchSTAnalysis_2_Size_
+  commentId: Overload:SymbolTable.SequentialSearchSTAnalysis`2.Size
+  isSpec: "True"
+  fullName: SymbolTable.SequentialSearchSTAnalysis<TKey, TValue>.Size
+  fullName.vb: SymbolTable.SequentialSearchSTAnalysis(Of TKey, TValue).Size
+  nameWithType: SequentialSearchSTAnalysis<TKey, TValue>.Size
+  nameWithType.vb: SequentialSearchSTAnalysis(Of TKey, TValue).Size
 - uid: SymbolTable.SequentialSearchSTCached`2
   name: SequentialSearchSTCached<TKey, TValue>
   href: api/SymbolTable.SequentialSearchSTCached-2.html

@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.1.5</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.1.5<br>构造一个含有 N 个元素的数组，<br>使插入排序（算法 2.2）运行过程中内循环（for）的两个判断结果总是假。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>条件是：</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>条件是：</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">j <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token function">less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>第一个条件属于循环计数用的条件，与数组元素无关；<br>第二个条件当 a[j] 和 a[j - 1] 是一组逆序对时满足，因此这个条件总是为假 = 数组没有逆序对 = 数组有序。<br>因此只要输入已经排好序的数组即可。<br>逆序对：指序列中顺序相反的两个数，例如 1 2 3 4 5 7 6 8 9 中的 7 6。</p>

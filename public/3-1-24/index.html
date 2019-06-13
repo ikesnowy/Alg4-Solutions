@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.24</h1>
-			<p>上次更新：2019-03-02 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.24<br>插值法查找。<br>假设符号表的键支持算术操作（例如，它们可能是 Double 或者 Integer 类型的值）。<br>编写一个二分查找来模拟查字典的行为，<br>例如当单词的首字母在字母表的开头时我们也会在字典的前半部分进行查找。<br>具体来说，设 klo 为符号表的第一个键，khi 为符号表的最后一个键，<br>当要查找 kx 时，先和 [(kx-klo)/(khi-klo)] 进行比较，而非取中间元素。<br>用 SearchCompare 调用 FrequencyCounter 来比较你的实现和 BinarySearchST 的性能。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>FrequencyCounter 的官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html</a></p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>FrequencyCounter 的官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html</a></p>
 <p>二分查找总是与中间值进行比较，现在改为与数组中第 x% 位置上的元素比较。<br>具体而言，$ \frac{k_x-k_{lo}}{k_{hi}-k_{lo}} $ 代表数组在均匀情况下目标值 $ k_x $ 的相对位置（一个比率，在数组第 x% 的位置上）。<br>那么相对应的下标就等于 $ lo+\frac{k_x-k_{lo}}{k_{hi}-k_{lo}} \times (hi - lo) $。<br>用这个式子代替原来的 $ mid=lo + (hi-lo)/2 $ 即可。</p>
 <p>不难看出这种方法对于分布相对均匀的数组比较有利，相对于二分查找而言迭代次数会少很多。<br>但如果数组分布不够均匀，也可能表现出不如二分查找的性能。</p>
 <p>实验结果也证实了这一判断，就随机数组而言，插值查找相对于二分查找只有 1% 左右的性能提升。<br><img src="./1.png" alt=""></p>

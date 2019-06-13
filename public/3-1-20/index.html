@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.20</h1>
-			<p>上次更新：2019-03-01 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>3.1.20<br>补全命题 B 的证明（证明 N 的一般情况）。<br>提示：先证明 C(N) 的单调性，即对于所有的 N&gt;0，C(N)&lt;=C(N+1)。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>国内的书中关于命题 B 的证明有错误，新版的证明结论已经改为：<br>$$<br>C(n)=C(2^k-1) \le k = \lg (n+1) \le \lg n +1<br>$$<br>其中 $ n=2^k - 1  $ 。<br>先证单调性，利用数学归纳法：<br>已知对于 $ N=0 $，满足 $ C(0) \le C(1) $。<br>假设对于 $ N=n $，满足 $ C(n) \le C(n+1) $。<br>根据递归式，有：<br>$$<br>\begin{eqnarray*}<br>&amp; C(n) &amp; \le C(\lfloor n/2 \rfloor) + 1 \\<br>\\<br>&amp; C(n+1) &amp; \le<br> \begin{cases}<br> C(\lfloor n/2 \rfloor) +1 &amp; \text{$ n $ 是偶数} \\<br> C(\lfloor n/2 \rfloor + 1) + 1 &amp; \text{$ n $ 是奇数}<br> \end{cases}\\<br> \\<br> &amp; C(n+2) &amp; \le C(\lfloor n/2 \rfloor + 1) + 1<br> \end{eqnarray*}<br>$$<br>又 $ C(n) \le C(n+1) ​$ ，推出 $ C(\lfloor n/2 \rfloor) + 1 \le C(\lfloor n/2 \rfloor + 1) + 1 ​$。<br>故 $ C(n+1) \le C(n+2) ​$，由数学归纳法，$ C(n) \le C(n+1) ​$ 成立。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>国内的书中关于命题 B 的证明有错误，新版的证明结论已经改为：<br>$$<br>C(n)=C(2^k-1) \le k = \lg (n+1) \le \lg n +1<br>$$<br>其中 $ n=2^k - 1  $ 。<br>先证单调性，利用数学归纳法：<br>已知对于 $ N=0 $，满足 $ C(0) \le C(1) $。<br>假设对于 $ N=n $，满足 $ C(n) \le C(n+1) $。<br>根据递归式，有：<br>$$<br>\begin{eqnarray*}<br>&amp; C(n) &amp; \le C(\lfloor n/2 \rfloor) + 1 \\<br>\\<br>&amp; C(n+1) &amp; \le<br> \begin{cases}<br> C(\lfloor n/2 \rfloor) +1 &amp; \text{$ n $ 是偶数} \\<br> C(\lfloor n/2 \rfloor + 1) + 1 &amp; \text{$ n $ 是奇数}<br> \end{cases}\\<br> \\<br> &amp; C(n+2) &amp; \le C(\lfloor n/2 \rfloor + 1) + 1<br> \end{eqnarray*}<br>$$<br>又 $ C(n) \le C(n+1) ​$ ，推出 $ C(\lfloor n/2 \rfloor) + 1 \le C(\lfloor n/2 \rfloor + 1) + 1 ​$。<br>故 $ C(n+1) \le C(n+2) ​$，由数学归纳法，$ C(n) \le C(n+1) ​$ 成立。</p>
 <p>已知当 $ N = 2^k - 1 $ 时，有 $ C(N) \le k = \lg(N+1) \le \lg N + 1$。<br>接下来证明在 $ (2^k - 1,  2^{k + 1} -1)  $ 范围内上式仍然成立。<br>不妨设 $ 0 &lt; M &lt; 2^k $ ，则有 $ 2^k - 1 &lt; N + M &lt; 2^{k + 1} -1   $。<br>转变为证：$ C(N+M) \le \lg (N+M) + 1 $ 。<br>由于 $ C(N+M) $ 是一个整数，则 $ \lfloor \lg(N+M) +1\rfloor = k+1 $。<br>即求证： $ C(N+M) \le k+1 $。<br>由单调性可得 $ C(N+M) \le C(2^{k+1} - 1) \le k+1 ​$，得证。</p>
 
 		</div>

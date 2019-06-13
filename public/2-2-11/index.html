@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.2.11</h1>
-			<p>上次更新：2019-02-13 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>2.2.11<br>改进。<br>实现 2.2.2 节所述的对归并排序的三项改进：<br>加快小数组的排序速度，<br>检测数组是否已经有序以及通过在递归中交换参数来避免复制。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现见：<a href="https://algs4.cs.princeton.edu/22mergesort/MergeX.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/22mergesort/MergeX.java.html</a></p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现见：<a href="https://algs4.cs.princeton.edu/22mergesort/MergeX.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/22mergesort/MergeX.java.html</a></p>
 <p>在 MergeSortX 类里添加一个 CUTOFF 字段，排序时如果数组长度小于它则直接调用插入排序进行排序。</p>
 <p>在调用归并方法前判断第一个有序数组的最后一个元素是否大于第二个有序数组的第一个元素，<br>如果大于的话就不需要调用归并了，直接首尾相接即可。</p>
 <p>每次归并都需要两个数组，一个用于存放归并结果，这个数组中的内容是无关紧要的；<br>另一个则保存了归并前的数组，用于实际的归并过程。<br>归并结束后，前一个数组变成归并后的有序结果（也就是下一次归并时的「归并前数组」），后一个数组中的内容则不再有用。<br>我们可以看到这两个数组的角色在下一次归并时正好可以互换。</p>

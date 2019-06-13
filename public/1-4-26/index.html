@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,10 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.26</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.26<br>三点共线。<br>假设有一个算法，接受平面上的 N 个点并能够返回在同一直线上的三个点的组数。<br>证明你能够用这个算法解决 3-sum 问题。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先，我们将问题转化为证明三点<br>$$<br>A(a,a^3),B(b,b^3),C(c,c^3)<br>$$<br>共线，当且仅当满足<br>$$<br>a+b+c=0<br>$$<br>证明：<br>若 $A,B,C$ 三点共线，则直线 $AB$ 和 $BC$ 的斜率必定相等，有方程：<br>$$<br>\frac{b^3-a^3}{b-a}=\frac{c^3-b^3}{c-b}<br>$$<br>由立方差公式：<br>$$<br>\frac{(b-a)(b^2+ba+a^2)}{b-a}=\frac{(c-b)(c^2+cb+b^2)}{c-b}<br>$$<br>化简有：<br>$$<br>b^2+ba+a^2=c^2+cb+b^2\\<br>ba+a^2=c^2+cb<br>$$<br>移项，将 $c$ 视为未知数：<br>$$<br>c^2+cb-ba-a^2=0<br>$$<br>利用十字相乘法进行因式分解：<br>$$<br>(a+b+c)(c-a)=0<br>$$<br>解得：<br>$$<br>c_1=-a-b,c_2=a<br>$$<br>显然 $c\ne a$ ，因此当且仅当 $a+b+c=0$ 时 $A,B,C$ 三点共线。<br>证毕。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先，我们将问题转化为证明三点<br>$$<br>A(a,a^3),B(b,b^3),C(c,c^3)<br>$$<br>共线，当且仅当满足<br>$$<br>a+b+c=0<br>$$<br>证明：<br>若 $A,B,C$ 三点共线，则直线 $AB$ 和 $BC$ 的斜率必定相等，有方程：<br>$$<br>\frac{b^3-a^3}{b-a}=\frac{c^3-b^3}{c-b}<br>$$<br>由立方差公式：<br>$$<br>\frac{(b-a)(b^2+ba+a^2)}{b-a}=\frac{(c-b)(c^2+cb+b^2)}{c-b}<br>$$<br>化简有：<br>$$<br>b^2+ba+a^2=c^2+cb+b^2\\<br>ba+a^2=c^2+cb<br>$$<br>移项，将 $c$ 视为未知数：<br>$$<br>c^2+cb-ba-a^2=0<br>$$<br>利用十字相乘法进行因式分解：<br>$$<br>(a+b+c)(c-a)=0<br>$$<br>解得：<br>$$<br>c_1=-a-b,c_2=a<br>$$<br>显然 $c\ne a$ ，因此当且仅当 $a+b+c=0$ 时 $A,B,C$ 三点共线。<br>证毕。</p>
 
 		</div>
 	</div>

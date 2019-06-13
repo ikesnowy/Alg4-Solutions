@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,20 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.1.35</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.1.35<br>模拟掷骰子。<br>以下代码能够计算每种两个骰子之和的准确概率分布：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">int</span> SIDE <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
-<span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">*</span> SIDES <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> I <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> SIDES<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> SIDES<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-        dist<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
-
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> <span class="token number">2</span> <span class="token operator">*</span> SIDES<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
-    dist<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">/=</span> <span class="token number">36.0</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>dist[i] 的值就是两个骰子之和为 i 的概率。<br>用实验模拟 N 次掷骰子，<br>并在计算两个 1 到 6 之间的随机整数之和时记录每个值出现频率以验证它们的概率。<br>N 要多大才能够保证你的经验数据和准确数据的吻合程度达到小数点后 3 位？</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里用 Random 类模拟掷骰子并计算概率，最后和程序得出的比较。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里用 Random 类模拟掷骰子并计算概率，最后和程序得出的比较。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">//程序运行大概需要十几秒时间（也可能更长，看运气）</span>
 <span class="token comment" spellcheck="true">//我的数据：</span>
 <span class="token comment" spellcheck="true">//24098 44448 37776 44401 32541</span>

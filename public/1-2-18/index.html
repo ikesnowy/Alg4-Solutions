@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,36 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.2.18</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.2.18<br>累加器的方法。<br>以下代码为 Accumulator 类添加了 var() 和 stddev() 方法，<br>它们计算了 addDataValue() 方法的参数的方差和标准差，验证这段代码：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Accumulator</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">double</span> m<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">double</span> s<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> N<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addDataValue</span><span class="token punctuation">(</span><span class="token keyword">double</span> x<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        N<span class="token operator">++</span><span class="token punctuation">;</span>
-        s <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token number">1.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> N <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        m <span class="token operator">=</span> m <span class="token operator">+</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> m<span class="token punctuation">)</span> <span class="token operator">/</span> N<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">mean</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> m<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">var</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> s <span class="token operator">/</span> <span class="token punctuation">(</span>N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">stddev</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">var</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>与直接对所有数据的平方求和的方法相比较，<br>这种实现能够更好的避免四舍五入产生的误差。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>当数据比较大时—— 例如 10^9 加上随机小数组成的数列，这时 double 的小数精度将受限。<br>求和之后整数部分更大，小数部分将自动四舍五入，出现误差<br>这时再计算平均值时将会带来较大的误差。<br>因此采用另一个递推公式：<br>k 为下标。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>当数据比较大时—— 例如 10^9 加上随机小数组成的数列，这时 double 的小数精度将受限。<br>求和之后整数部分更大，小数部分将自动四舍五入，出现误差<br>这时再计算平均值时将会带来较大的误差。<br>因此采用另一个递推公式：<br>k 为下标。</p>
 <p>$M_k = M_{k-1}+ (x_k – M_{k-1})/k$<br>$S_k = S_{k-1} + (x_k – M_{k-1})\times(x_k – M_k)$.<br>方差 $s^2 = S_k/(k – 1)$.</p>
 <p>这种情况下并没有直接对所有输入值求和，小数精度不会过多受到整数部分长度的影响。</p>
 <p>有关这两个公式的证明可以参考<a href="http://www.tandfonline.com/doi/pdf/10.1080/00401706.1962.10490022?needAccess=true" target="_blank" rel="noopener">这篇论文</a>，或者去查看我的<a href="https://www.zhihu.com/question/59252399/answer/241132917" target="_blank" rel="noopener">知乎回答</a>。</p>

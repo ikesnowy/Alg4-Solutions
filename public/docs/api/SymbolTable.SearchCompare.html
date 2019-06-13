@@ -88,6 +88,21 @@
                   <ul class="nav level1">
                     <li class="">
                       <span class="expand-stub"></span>
+                      <a href="BinarySearchTree.html" title="BinarySearchTree" class="">BinarySearchTree</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="BinarySearchTree.BST-2.html" title="BST&lt;TKey, TValue&gt;" class="">BST&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="BinarySearchTree.IOrderedST-2.html" title="IOrderedST&lt;TKey, TValue&gt;" class="">IOrderedST&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="BinarySearchTree.IST-2.html" title="IST&lt;TKey, TValue&gt;" class="">IST&lt;TKey, TValue&gt;</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
                       <a href="Commercial.html" title="Commercial" class="">Commercial</a>
                         
                         <ul class="nav level2">
@@ -434,6 +449,9 @@
                             <a href="SymbolTable.BinarySearchST-2.html" title="BinarySearchST&lt;TKey, TValue&gt;" class="">BinarySearchST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.BinarySearchSTAnalysis-2.html" title="BinarySearchSTAnalysis&lt;TKey, TValue&gt;" class="">BinarySearchSTAnalysis&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.BinarySearchSTCached-2.html" title="BinarySearchSTCached&lt;TKey, TValue&gt;" class="">BinarySearchSTCached&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
@@ -452,6 +470,9 @@
                             <a href="SymbolTable.IST-2.html" title="IST&lt;TKey, TValue&gt;" class="">IST&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
+                            <a href="SymbolTable.ISTAnalysis-2.html" title="ISTAnalysis&lt;TKey, TValue&gt;" class="">ISTAnalysis&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
                             <a href="SymbolTable.Item-2.html" title="Item&lt;TKey, TValue&gt;" class="">Item&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
@@ -468,6 +489,9 @@
                           </li>
                           <li class="">
                             <a href="SymbolTable.SequentialSearchST-2.html" title="SequentialSearchST&lt;TKey, TValue&gt;" class="">SequentialSearchST&lt;TKey, TValue&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="SymbolTable.SequentialSearchSTAnalysis-2.html" title="SequentialSearchSTAnalysis&lt;TKey, TValue&gt;" class="">SequentialSearchSTAnalysis&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.SequentialSearchSTCached-2.html" title="SequentialSearchSTCached&lt;TKey, TValue&gt;" class="">SequentialSearchSTCached&lt;TKey, TValue&gt;</a>
@@ -571,7 +595,7 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L31">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L81">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_SearchCompare_GetRandomArrayDouble_" data-uid="SymbolTable.SearchCompare.GetRandomArrayDouble*"></a>
   <h4 id="SymbolTable_SearchCompare_GetRandomArrayDouble_System_Int32_" data-uid="SymbolTable.SearchCompare.GetRandomArrayDouble(System.Int32)">GetRandomArrayDouble(Int32)</h4>
@@ -617,7 +641,237 @@
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L17">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L68">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SearchCompare_GetRandomArrayLong_" data-uid="SymbolTable.SearchCompare.GetRandomArrayLong*"></a>
+  <h4 id="SymbolTable_SearchCompare_GetRandomArrayLong_System_Int32_System_Int64_System_Int64_" data-uid="SymbolTable.SearchCompare.GetRandomArrayLong(System.Int32,System.Int64,System.Int64)">GetRandomArrayLong(Int32, Int64, Int64)</h4>
+  <div class="markdown level1 summary"><p>生成包含 <code data-dev-comment-type="paramref" class="paramref">n</code> 个元素的随机整数数组，
+整数范围为 [<code data-dev-comment-type="paramref" class="paramref">min</code>, <code data-dev-comment-type="paramref" class="paramref">max</code>)。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static long[] GetRandomArrayLong(int n, long min, long max)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>生成的数组长度。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>生成的整数的包含下限。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>生成的整数的上限。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span>[]</td>
+        <td><p>包含 <code data-dev-comment-type="paramref" class="paramref">n</code> 个元素的随机整数数组。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L98">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SearchCompare_GetRandomArrayString_" data-uid="SymbolTable.SearchCompare.GetRandomArrayString*"></a>
+  <h4 id="SymbolTable_SearchCompare_GetRandomArrayString_System_Int32_System_Int32_System_Int32_" data-uid="SymbolTable.SearchCompare.GetRandomArrayString(System.Int32,System.Int32,System.Int32)">GetRandomArrayString(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>生成随机字符串数组，每个字符串的长度大于等于 <code data-dev-comment-type="paramref" class="paramref">minLength</code>，小于 <code data-dev-comment-type="paramref" class="paramref">maxLength</code>。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string[] GetRandomArrayString(int n, int minLength, int maxLength)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>生成字符串数组的大小。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minLength</span></td>
+        <td><p>随机字符串的最小长度。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxLength</span></td>
+        <td><p>随机字符串的最大长度。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><p>一个包含随机字符串的数组。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L114">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SearchCompare_GetRandomString_" data-uid="SymbolTable.SearchCompare.GetRandomString*"></a>
+  <h4 id="SymbolTable_SearchCompare_GetRandomString_System_Int32_System_Int32_" data-uid="SymbolTable.SearchCompare.GetRandomString(System.Int32,System.Int32)">GetRandomString(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>生成只包含字母和数字的随机字符串，长度大于等于 <code data-dev-comment-type="paramref" class="paramref">minLength</code>，小于 <code data-dev-comment-type="paramref" class="paramref">maxLength</code>。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetRandomString(int minLength, int maxLength)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minLength</span></td>
+        <td><p>随机字符串的最小长度。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxLength</span></td>
+        <td><p>随机字符串的最大长度。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>一个随机字符串。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L39">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_SearchCompare_Performance_" data-uid="SymbolTable.SearchCompare.Performance*"></a>
+  <h4 id="SymbolTable_SearchCompare_Performance_SymbolTable_IST_System_String_System_Int32__System_Int32_System_Int32_" data-uid="SymbolTable.SearchCompare.Performance(SymbolTable.IST{System.String,System.Int32},System.Int32,System.Int32)">Performance(IST&lt;String, Int32&gt;, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>对符号表进行性能测试，先 <a class="xref" href="SymbolTable.IST-2.html#SymbolTable_IST_2_Put__0__1_">Put(TKey, TValue)</a> <code data-dev-comment-type="paramref" class="paramref">n</code> 个字符串，
+再进行若干次 <a class="xref" href="SymbolTable.IST-2.html#SymbolTable_IST_2_Get__0_">Get(TKey)</a>，
+使得每个元素被平均访问 <code data-dev-comment-type="paramref" class="paramref">averageHit</code> 次，
+以及同样多的未命中访问。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static long Performance(IST&lt;string, int&gt; st, int n, int averageHit)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SymbolTable.IST-2.html">IST</a>&lt;<span class="xref">System.String</span>, <span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">st</span></td>
+        <td><p>需要进行性能测试的符号表。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>需要插入符号表中的字符串数量。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">averageHit</span></td>
+        <td><p>平均每个元素被查询的次数。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>测试耗时，单位为毫秒。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L20">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
   <a id="SymbolTable_SearchCompare_Time_" data-uid="SymbolTable.SearchCompare.Time*"></a>
   <h4 id="SymbolTable_SearchCompare_Time__1_SymbolTable_IST___0_System_Int32____0___" data-uid="SymbolTable.SearchCompare.Time``1(SymbolTable.IST{``0,System.Int32},``0[])">Time&lt;TKey&gt;(IST&lt;TKey, Int32&gt;, TKey[])</h4>
@@ -690,7 +944,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L9" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/SearchCompare.cs/#L10" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>

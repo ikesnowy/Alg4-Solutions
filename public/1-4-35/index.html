@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,46 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.35</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.4.35<br>下压栈的时间成本。<br>解释下表中的数据，它显示了各种下压栈的实现的一般时间成本，<br>其中成本模型会同时记录数据引用的数量<br>（指向被压入栈之中的数据的引用，指向的可能是数组，也可能是某个对象的实例变量）和被创建的变量数量。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">数据结构</th>
-<th style="text-align:center">元素类型</th>
-<th style="text-align:center">数据的引用</th>
-<th style="text-align:center">创建的对象</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">基于链表</td>
-<td style="text-align:center">int</td>
-<td style="text-align:center">2N</td>
-<td style="text-align:center">N</td>
-</tr>
-<tr>
-<td style="text-align:center">基于链表</td>
-<td style="text-align:center">Integer</td>
-<td style="text-align:center">3N</td>
-<td style="text-align:center">2N</td>
-</tr>
-<tr>
-<td style="text-align:center">基于大小可变的数组</td>
-<td style="text-align:center">int</td>
-<td style="text-align:center">~5N</td>
-<td style="text-align:center">lgN</td>
-</tr>
-<tr>
-<td style="text-align:center">基于大小可变的数组</td>
-<td style="text-align:center">Integer</td>
-<td style="text-align:center">~5N</td>
-<td style="text-align:center">~N</td>
-</tr>
-</tbody>
-</table>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>1. 一个 Node 对象包含一个 int(泛型 Item) 的引用和下一个 Node 对象的引用。push 操作创建新 Node 对象时会创建一个引用。<br>因此对于第一种情况，压入 n 个 int 类型的元素创建了 N 个 Node 对象，创建了 2N 个引用。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>1. 一个 Node 对象包含一个 int(泛型 Item) 的引用和下一个 Node 对象的引用。push 操作创建新 Node 对象时会创建一个引用。<br>因此对于第一种情况，压入 n 个 int 类型的元素创建了 N 个 Node 对象，创建了 2N 个引用。</p>
 <p>2. 比起上一种情况，每个 Node 对象多包含了一个指向 Integer 的引用。<br>因此对于第二中情况，压入 n 个 int 类型的元素创建了 N 个 Node 对象和 N 个 Integer 对象，比起第一种情况多创建了 N 个引用。</p>
 <p>3. 对于数组来说，创建对象只有扩容时重新创建数组对象一种情况，对于 N 次 push 操作只需要 lgN 次扩容，因此创建的对象为 lgN 个。<br>每次扩容都需要重新创建引用，(4 + 8 +…+ 2N)(扩容) + N(每次 push 操作) = 5N - 4 = ~5N</p>
 <p>4. 创建引用和上题一样，创建对象则多出了装箱过程，每次 push 都会新建一个 Integer 对象，N + lgN = ~N。</p>

@@ -97,7 +97,7 @@
 		<h3>
 		搜索解答
 		<br>
-		目前已完成到 2.5
+		目前已完成到 3.1
 		</h3>
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
@@ -145,49 +145,9 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.3.33</h1>
-			<p>上次更新：2019-02-11 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>1.3.33<br>Deque。<br>一个双向队列（或称 deque）和栈或队列类似，<br>但它同时支持在两端添加或删除元素。<br>Deque 能够存储一组元素并支持下表中的 API：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">函数</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Deque()</td>
-<td style="text-align:center">创建空双向队列。</td>
-</tr>
-<tr>
-<td style="text-align:center">Bool isEmpty()</td>
-<td style="text-align:center">双向队列是否为空。</td>
-</tr>
-<tr>
-<td style="text-align:center">int size()</td>
-<td style="text-align:center">双向队列中的元素数量。</td>
-</tr>
-<tr>
-<td style="text-align:center">void pushLeft(Item item)</td>
-<td style="text-align:center">向左端添加一个新元素。</td>
-</tr>
-<tr>
-<td style="text-align:center">void pushRight(Item item)</td>
-<td style="text-align:center">向右端添加一个新元素。</td>
-</tr>
-<tr>
-<td style="text-align:center">Item popLeft()</td>
-<td style="text-align:center">从左端删除一个元素。</td>
-</tr>
-<tr>
-<td style="text-align:center">Item popRight()</td>
-<td style="text-align:center">从右端删除一个元素。</td>
-</tr>
-</tbody>
-</table>
-<p>编写一个使用双向链表实现这份 API 的 Deque 类，<br>以及一个使用动态数组调整实现这份 API 的 ResizingArrayDeque 类。</p>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>动态数组这里要注意 first 不要小于零。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>动态数组这里要注意 first 不要小于零。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="Deque-类"><a href="#Deque-类" class="headerlink" title="Deque 类"></a>Deque 类</h2><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 <span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
 <span class="token keyword">using</span> System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic<span class="token punctuation">;</span>

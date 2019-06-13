@@ -4,10 +4,6 @@ date: {{ date }}
 tags: Searching
 ---
 
-# 题目
-
- {{ title }}
-
 
 # 解答
 
@@ -19,4 +15,4 @@ tags: Searching
 
 # 另请参阅
 
-[SymbolTable 库](https://alg4.ikesnowy.com/docs/api/SymbolTable.html)
+[BinarySearchTree 库](https://alg4.ikesnowy.com/docs/api/BinarySearchTree.html)
