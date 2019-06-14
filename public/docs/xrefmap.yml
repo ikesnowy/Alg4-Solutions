@@ -152,6 +152,23 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Get
   nameWithType: BST<TKey, TValue>.Get
   nameWithType.vb: BST(Of TKey, TValue).Get
+- uid: BinarySearchTree.BST`2.Height
+  name: Height()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height
+  commentId: M:BinarySearchTree.BST`2.Height
+  fullName: BinarySearchTree.BST<TKey, TValue>.Height()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Height()
+  nameWithType: BST<TKey, TValue>.Height()
+  nameWithType.vb: BST(Of TKey, TValue).Height()
+- uid: BinarySearchTree.BST`2.Height*
+  name: Height
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height_
+  commentId: Overload:BinarySearchTree.BST`2.Height
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Height
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Height
+  nameWithType: BST<TKey, TValue>.Height
+  nameWithType.vb: BST(Of TKey, TValue).Height
 - uid: BinarySearchTree.BST`2.IsEmpty
   name: IsEmpty()
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsEmpty
