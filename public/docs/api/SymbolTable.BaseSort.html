@@ -13,10 +13,10 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ErdosRenyi 类
+    <title>BaseSort 类
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ErdosRenyi 类
+    <meta name="title" content="BaseSort 类
    ">
     <meta name="generator" content="docfx 2.43.1.0">
     
@@ -445,8 +445,8 @@
                           <li class="">
                             <a href="SymbolTable.ArrayST-2.html" title="ArrayST&lt;TKey, TValue&gt;" class="">ArrayST&lt;TKey, TValue&gt;</a>
                           </li>
-                          <li class="">
-                            <a href="SymbolTable.BaseSort.html" title="BaseSort" class="">BaseSort</a>
+                          <li class="active">
+                            <a href="SymbolTable.BaseSort.html" title="BaseSort" class="active">BaseSort</a>
                           </li>
                           <li class="">
                             <a href="SymbolTable.BinarySearchST-2.html" title="BinarySearchST&lt;TKey, TValue&gt;" class="">BinarySearchST&lt;TKey, TValue&gt;</a>
@@ -517,8 +517,8 @@
                           <li class="">
                             <a href="UnionFind.Connection.html" title="Connection" class="">Connection</a>
                           </li>
-                          <li class="active">
-                            <a href="UnionFind.ErdosRenyi.html" title="ErdosRenyi" class="active">ErdosRenyi</a>
+                          <li class="">
+                            <a href="UnionFind.ErdosRenyi.html" title="ErdosRenyi" class="">ErdosRenyi</a>
                           </li>
                           <li class="">
                             <a href="UnionFind.QuickFindUF.html" title="QuickFindUF" class="">QuickFindUF</a>
@@ -555,18 +555,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="UnionFind.ErdosRenyi">
+            <article class="content wrap" id="_content" data-uid="SymbolTable.BaseSort">
   
   
-  <h1 id="UnionFind_ErdosRenyi" data-uid="UnionFind.ErdosRenyi" class="text-break">ErdosRenyi 类
+  <h1 id="SymbolTable_BaseSort" data-uid="SymbolTable.BaseSort" class="text-break">BaseSort 类
   </h1>
-  <div class="markdown level0 summary"><p>提供一系列对并查集进行随机测试的静态方法。</p>
+  <div class="markdown level0 summary"><p>排序算法类模板。</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>&#32487;&#25215;</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ErdosRenyi</span></div>
+    <div class="level1"><span class="xref">BaseSort</span></div>
+      <div class="level2"><a class="xref" href="SymbolTable.MergeSort.html">MergeSort</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>&#32487;&#25215;&#25104;&#21592;</h5>
@@ -592,25 +593,25 @@
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="UnionFind.html">UnionFind</a></h6>
-  <h6><strong>&#31243;&#24207;&#38598;</strong>: UnionFind.dll</h6>
-  <h5 id="UnionFind_ErdosRenyi_syntax">&#35821;&#27861;</h5>
+  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="SymbolTable.html">SymbolTable</a></h6>
+  <h6><strong>&#31243;&#24207;&#38598;</strong>: SymbolTable.dll</h6>
+  <h5 id="SymbolTable_BaseSort_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ErdosRenyi</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class BaseSort</code></pre>
   </div>
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.5/UnionFind/ErdosRenyi.cs/#L38">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L50">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="UnionFind_ErdosRenyi_Count_" data-uid="UnionFind.ErdosRenyi.Count*"></a>
-  <h4 id="UnionFind_ErdosRenyi_Count_UnionFind_UF_" data-uid="UnionFind.ErdosRenyi.Count(UnionFind.UF)">Count(UF)</h4>
-  <div class="markdown level1 summary"><p>随机生成连接，返回令并查集中只剩一个连通分量所需的连接总数。</p>
+  <a id="SymbolTable_BaseSort_Exch_" data-uid="SymbolTable.BaseSort.Exch*"></a>
+  <h4 id="SymbolTable_BaseSort_Exch__1___0___System_Int32_System_Int32_" data-uid="SymbolTable.BaseSort.Exch``1(``0[],System.Int32,System.Int32)">Exch&lt;T&gt;(T[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>交换数组中下标为 i, j 的两个元素。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int Count(UF uf)</code></pre>
+    <pre><code class="lang-csharp hljs">protected void Exch&lt;T&gt;(T[] a, int i, int j)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -623,9 +624,68 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="UnionFind.UF.html">UF</a></td>
-        <td><span class="parametername">uf</span></td>
-        <td><p>用于测试的并查集。</p>
+        <td>T[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>元素所在的数组。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">i</span></td>
+        <td><p>需要交换的第一个元素。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">j</span></td>
+        <td><p>需要交换的第二个元素。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>元素的类型。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L75">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_BaseSort_IsSorted_" data-uid="SymbolTable.BaseSort.IsSorted*"></a>
+  <h4 id="SymbolTable_BaseSort_IsSorted__1___0___" data-uid="SymbolTable.BaseSort.IsSorted``1(``0[])">IsSorted&lt;T&gt;(T[])</h4>
+  <div class="markdown level1 summary"><p>检查数组是否有序（升序）。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSorted&lt;T&gt;(T[] a)
+    where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>需要检查的数组。</p>
 </td>
       </tr>
     </tbody>
@@ -640,23 +700,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><p>需要的连接总数。</p>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>有序则返回 true，否则返回 false。</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.5/UnionFind/ErdosRenyi.cs/#L59">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L91">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="UnionFind_ErdosRenyi_Count_" data-uid="UnionFind.ErdosRenyi.Count*"></a>
-  <h4 id="UnionFind_ErdosRenyi_Count_UnionFind_UF_UnionFind_Connection___" data-uid="UnionFind.ErdosRenyi.Count(UnionFind.UF,UnionFind.Connection[])">Count(UF, Connection[])</h4>
-  <div class="markdown level1 summary"><p>使用指定的连接按顺序合并。</p>
+  <a id="SymbolTable_BaseSort_IsSorted_" data-uid="SymbolTable.BaseSort.IsSorted*"></a>
+  <h4 id="SymbolTable_BaseSort_IsSorted__1___0___System_Collections_Generic_IComparer___0__" data-uid="SymbolTable.BaseSort.IsSorted``1(``0[],System.Collections.Generic.IComparer{``0})">IsSorted&lt;T&gt;(T[], IComparer&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>检查数组是否有序。（使用指定的比较器）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Count(UF uf, Connection[] connections)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsSorted&lt;T&gt;(T[] a, IComparer&lt;T&gt; c)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -669,45 +744,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="UnionFind.UF.html">UF</a></td>
-        <td><span class="parametername">uf</span></td>
-        <td><p>需要测试的并查集。</p>
+        <td>T[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>需要检查的数组。</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="UnionFind.Connection.html">Connection</a>[]</td>
-        <td><span class="parametername">connections</span></td>
-        <td><p>用于输入的连接集合。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.5/UnionFind/ErdosRenyi.cs/#L16">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="UnionFind_ErdosRenyi_Generate_" data-uid="UnionFind.ErdosRenyi.Generate*"></a>
-  <h4 id="UnionFind_ErdosRenyi_Generate_System_Int32_" data-uid="UnionFind.ErdosRenyi.Generate(System.Int32)">Generate(Int32)</h4>
-  <div class="markdown level1 summary"><p>随机生成一组能让并查集只剩一个连通分量的连接。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Connection[] Generate(int n)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>并查集大小。</p>
+        <td><span class="xref">System.Collections.Generic.IComparer</span>&lt;T&gt;</td>
+        <td><span class="parametername">c</span></td>
+        <td><p>比较器。</p>
 </td>
       </tr>
     </tbody>
@@ -722,8 +767,413 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="UnionFind.Connection.html">Connection</a>[]</td>
-        <td><p>一组能让并查集只剩一个连通分量的连接。</p>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>有序则返回 true，否则返回 false。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L108">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_BaseSort_IsSorted_" data-uid="SymbolTable.BaseSort.IsSorted*"></a>
+  <h4 id="SymbolTable_BaseSort_IsSorted__1___0___System_Int32_System_Int32_" data-uid="SymbolTable.BaseSort.IsSorted``1(``0[],System.Int32,System.Int32)">IsSorted&lt;T&gt;(T[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>检查数组在范围 [lo, hi] 内是否有序（升序）。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSorted&lt;T&gt;(T[] a, int lo, int hi)
+    where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>需要检查的数组。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lo</span></td>
+        <td><p>检查范围的下界。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hi</span></td>
+        <td><p>检查范围的上界。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>有序则返回 true，否则返回 false。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L127">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_BaseSort_IsSorted_" data-uid="SymbolTable.BaseSort.IsSorted*"></a>
+  <h4 id="SymbolTable_BaseSort_IsSorted__1___0___System_Int32_System_Int32_System_Collections_Generic_IComparer___0__" data-uid="SymbolTable.BaseSort.IsSorted``1(``0[],System.Int32,System.Int32,System.Collections.Generic.IComparer{``0})">IsSorted&lt;T&gt;(T[], Int32, Int32, IComparer&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>检查数组在指定范围内是否有序。（使用指定的比较器）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSorted&lt;T&gt;(T[] a, int lo, int hi, IComparer&lt;T&gt; c)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>需要检查的数组。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lo</span></td>
+        <td><p>检查范围的下界。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hi</span></td>
+        <td><p>检查范围的上界。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IComparer</span>&lt;T&gt;</td>
+        <td><span class="parametername">c</span></td>
+        <td><p>比较器。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>有序则返回 true，否则返回 false。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>数组的元素类型。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L25">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_BaseSort_Less_" data-uid="SymbolTable.BaseSort.Less*"></a>
+  <h4 id="SymbolTable_BaseSort_Less__1___0___0_" data-uid="SymbolTable.BaseSort.Less``1(``0,``0)">Less&lt;T&gt;(T, T)</h4>
+  <div class="markdown level1 summary"><p>比较第一个参数是否小于第二个参数。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool Less&lt;T&gt;(T v, T w)
+    where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>第一个参数。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">w</span></td>
+        <td><p>第二个参数。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>如果第一个参数小于第二个参数则返回 true，
+否则返回 false。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L38">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_BaseSort_Less_" data-uid="SymbolTable.BaseSort.Less*"></a>
+  <h4 id="SymbolTable_BaseSort_Less__1___0___0_System_Collections_Generic_IComparer___0__" data-uid="SymbolTable.BaseSort.Less``1(``0,``0,System.Collections.Generic.IComparer{``0})">Less&lt;T&gt;(T, T, IComparer&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>使用指定的比较器比较第一个参数是否小于第二个参数。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool Less&lt;T&gt;(T v, T w, IComparer&lt;T&gt; c)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>比较的第一个元素。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">w</span></td>
+        <td><p>比较的第二个元素</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IComparer</span>&lt;T&gt;</td>
+        <td><span class="parametername">c</span></td>
+        <td><p>比较器。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>如果 <code data-dev-comment-type="paramref" class="paramref">v</code> 小于 <code data-dev-comment-type="paramref" class="paramref">w</code> 返回 <code>true</code>，否则返回 <code>false</code>。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>比较的元素类型。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L61">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_BaseSort_Show_" data-uid="SymbolTable.BaseSort.Show*"></a>
+  <h4 id="SymbolTable_BaseSort_Show__1___0___" data-uid="SymbolTable.BaseSort.Show``1(``0[])">Show&lt;T&gt;(T[])</h4>
+  <div class="markdown level1 summary"><p>将数组的内容打印在一行中。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Show&lt;T&gt;(T[] a)
+    where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>需要打印的数组。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L16">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="SymbolTable_BaseSort_Sort_" data-uid="SymbolTable.BaseSort.Sort*"></a>
+  <h4 id="SymbolTable_BaseSort_Sort__1___0___" data-uid="SymbolTable.BaseSort.Sort``1(``0[])">Sort&lt;T&gt;(T[])</h4>
+  <div class="markdown level1 summary"><p>对数组 a 进行排序，用各种不同的方式进行实现。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void Sort&lt;T&gt;(T[] a)
+    where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>需要排序的数组。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>用于排序的类型。</p>
 </td>
       </tr>
     </tbody>
@@ -736,7 +1186,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.5/UnionFind/ErdosRenyi.cs/#L9" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.1/SymbolTable/BaseSort.cs/#L9" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>

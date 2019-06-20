@@ -186,6 +186,24 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsEmpty
   nameWithType: BST<TKey, TValue>.IsEmpty
   nameWithType.vb: BST(Of TKey, TValue).IsEmpty
+- uid: BinarySearchTree.BST`2.IsStructureEqual*
+  name: IsStructureEqual
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsStructureEqual_
+  commentId: Overload:BinarySearchTree.BST`2.IsStructureEqual
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsStructureEqual
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsStructureEqual
+  nameWithType: BST<TKey, TValue>.IsStructureEqual
+  nameWithType.vb: BST(Of TKey, TValue).IsStructureEqual
+- uid: BinarySearchTree.BST`2.IsStructureEqual``4(BinarySearchTree.BST{``0,``1},BinarySearchTree.BST{``2,``3})
+  name: IsStructureEqual<TKeyA, TValueA, TKeyB, TValueB>(BST<TKeyA, TValueA>, BST<TKeyB, TValueB>)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsStructureEqual__4_BinarySearchTree_BST___0___1__BinarySearchTree_BST___2___3__
+  commentId: M:BinarySearchTree.BST`2.IsStructureEqual``4(BinarySearchTree.BST{``0,``1},BinarySearchTree.BST{``2,``3})
+  name.vb: IsStructureEqual(Of TKeyA, TValueA, TKeyB, TValueB)(BST(Of TKeyA, TValueA), BST(Of TKeyB, TValueB))
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsStructureEqual<TKeyA, TValueA, TKeyB, TValueB>(BinarySearchTree.BST<TKeyA, TValueA>, BinarySearchTree.BST<TKeyB, TValueB>)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsStructureEqual(Of TKeyA, TValueA, TKeyB, TValueB)(BinarySearchTree.BST(Of TKeyA, TValueA), BinarySearchTree.BST(Of TKeyB, TValueB))
+  nameWithType: BST<TKey, TValue>.IsStructureEqual<TKeyA, TValueA, TKeyB, TValueB>(BST<TKeyA, TValueA>, BST<TKeyB, TValueB>)
+  nameWithType.vb: BST(Of TKey, TValue).IsStructureEqual(Of TKeyA, TValueA, TKeyB, TValueB)(BST(Of TKeyA, TValueA), BST(Of TKeyB, TValueB))
 - uid: BinarySearchTree.BST`2.Keys
   name: Keys()
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys
@@ -321,6 +339,23 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Size
   nameWithType: BST<TKey, TValue>.Size
   nameWithType.vb: BST(Of TKey, TValue).Size
+- uid: BinarySearchTree.BST`2.ToKeyArray
+  name: ToKeyArray()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToKeyArray
+  commentId: M:BinarySearchTree.BST`2.ToKeyArray
+  fullName: BinarySearchTree.BST<TKey, TValue>.ToKeyArray()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToKeyArray()
+  nameWithType: BST<TKey, TValue>.ToKeyArray()
+  nameWithType.vb: BST(Of TKey, TValue).ToKeyArray()
+- uid: BinarySearchTree.BST`2.ToKeyArray*
+  name: ToKeyArray
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToKeyArray_
+  commentId: Overload:BinarySearchTree.BST`2.ToKeyArray
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.ToKeyArray
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToKeyArray
+  nameWithType: BST<TKey, TValue>.ToKeyArray
+  nameWithType.vb: BST(Of TKey, TValue).ToKeyArray
 - uid: BinarySearchTree.BST`2.ToString
   name: ToString()
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToString
@@ -338,6 +373,23 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToString
   nameWithType: BST<TKey, TValue>.ToString
   nameWithType.vb: BST(Of TKey, TValue).ToString
+- uid: BinarySearchTree.BST`2.ToValueArray
+  name: ToValueArray()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToValueArray
+  commentId: M:BinarySearchTree.BST`2.ToValueArray
+  fullName: BinarySearchTree.BST<TKey, TValue>.ToValueArray()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToValueArray()
+  nameWithType: BST<TKey, TValue>.ToValueArray()
+  nameWithType.vb: BST(Of TKey, TValue).ToValueArray()
+- uid: BinarySearchTree.BST`2.ToValueArray*
+  name: ToValueArray
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToValueArray_
+  commentId: Overload:BinarySearchTree.BST`2.ToValueArray
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.ToValueArray
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToValueArray
+  nameWithType: BST<TKey, TValue>.ToValueArray
+  nameWithType.vb: BST(Of TKey, TValue).ToValueArray
 - uid: BinarySearchTree.IOrderedST`2
   name: IOrderedST<TKey, TValue>
   href: api/BinarySearchTree.IOrderedST-2.html
@@ -9309,6 +9361,128 @@ references:
   fullName.vb: SymbolTable.ArrayST(Of TKey, TValue).Size
   nameWithType: ArrayST<TKey, TValue>.Size
   nameWithType.vb: ArrayST(Of TKey, TValue).Size
+- uid: SymbolTable.BaseSort
+  name: BaseSort
+  href: api/SymbolTable.BaseSort.html
+  commentId: T:SymbolTable.BaseSort
+  fullName: SymbolTable.BaseSort
+  nameWithType: BaseSort
+- uid: SymbolTable.BaseSort.Exch*
+  name: Exch
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Exch_
+  commentId: Overload:SymbolTable.BaseSort.Exch
+  isSpec: "True"
+  fullName: SymbolTable.BaseSort.Exch
+  nameWithType: BaseSort.Exch
+- uid: SymbolTable.BaseSort.Exch``1(``0[],System.Int32,System.Int32)
+  name: Exch<T>(T[], Int32, Int32)
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Exch__1___0___System_Int32_System_Int32_
+  commentId: M:SymbolTable.BaseSort.Exch``1(``0[],System.Int32,System.Int32)
+  name.vb: Exch(Of T)(T(), Int32, Int32)
+  fullName: SymbolTable.BaseSort.Exch<T>(T[], System.Int32, System.Int32)
+  fullName.vb: SymbolTable.BaseSort.Exch(Of T)(T(), System.Int32, System.Int32)
+  nameWithType: BaseSort.Exch<T>(T[], Int32, Int32)
+  nameWithType.vb: BaseSort.Exch(Of T)(T(), Int32, Int32)
+- uid: SymbolTable.BaseSort.IsSorted*
+  name: IsSorted
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_IsSorted_
+  commentId: Overload:SymbolTable.BaseSort.IsSorted
+  isSpec: "True"
+  fullName: SymbolTable.BaseSort.IsSorted
+  nameWithType: BaseSort.IsSorted
+- uid: SymbolTable.BaseSort.IsSorted``1(``0[])
+  name: IsSorted<T>(T[])
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_IsSorted__1___0___
+  commentId: M:SymbolTable.BaseSort.IsSorted``1(``0[])
+  name.vb: IsSorted(Of T)(T())
+  fullName: SymbolTable.BaseSort.IsSorted<T>(T[])
+  fullName.vb: SymbolTable.BaseSort.IsSorted(Of T)(T())
+  nameWithType: BaseSort.IsSorted<T>(T[])
+  nameWithType.vb: BaseSort.IsSorted(Of T)(T())
+- uid: SymbolTable.BaseSort.IsSorted``1(``0[],System.Collections.Generic.IComparer{``0})
+  name: IsSorted<T>(T[], IComparer<T>)
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_IsSorted__1___0___System_Collections_Generic_IComparer___0__
+  commentId: M:SymbolTable.BaseSort.IsSorted``1(``0[],System.Collections.Generic.IComparer{``0})
+  name.vb: IsSorted(Of T)(T(), IComparer(Of T))
+  fullName: SymbolTable.BaseSort.IsSorted<T>(T[], System.Collections.Generic.IComparer<T>)
+  fullName.vb: SymbolTable.BaseSort.IsSorted(Of T)(T(), System.Collections.Generic.IComparer(Of T))
+  nameWithType: BaseSort.IsSorted<T>(T[], IComparer<T>)
+  nameWithType.vb: BaseSort.IsSorted(Of T)(T(), IComparer(Of T))
+- uid: SymbolTable.BaseSort.IsSorted``1(``0[],System.Int32,System.Int32)
+  name: IsSorted<T>(T[], Int32, Int32)
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_IsSorted__1___0___System_Int32_System_Int32_
+  commentId: M:SymbolTable.BaseSort.IsSorted``1(``0[],System.Int32,System.Int32)
+  name.vb: IsSorted(Of T)(T(), Int32, Int32)
+  fullName: SymbolTable.BaseSort.IsSorted<T>(T[], System.Int32, System.Int32)
+  fullName.vb: SymbolTable.BaseSort.IsSorted(Of T)(T(), System.Int32, System.Int32)
+  nameWithType: BaseSort.IsSorted<T>(T[], Int32, Int32)
+  nameWithType.vb: BaseSort.IsSorted(Of T)(T(), Int32, Int32)
+- uid: SymbolTable.BaseSort.IsSorted``1(``0[],System.Int32,System.Int32,System.Collections.Generic.IComparer{``0})
+  name: IsSorted<T>(T[], Int32, Int32, IComparer<T>)
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_IsSorted__1___0___System_Int32_System_Int32_System_Collections_Generic_IComparer___0__
+  commentId: M:SymbolTable.BaseSort.IsSorted``1(``0[],System.Int32,System.Int32,System.Collections.Generic.IComparer{``0})
+  name.vb: IsSorted(Of T)(T(), Int32, Int32, IComparer(Of T))
+  fullName: SymbolTable.BaseSort.IsSorted<T>(T[], System.Int32, System.Int32, System.Collections.Generic.IComparer<T>)
+  fullName.vb: SymbolTable.BaseSort.IsSorted(Of T)(T(), System.Int32, System.Int32, System.Collections.Generic.IComparer(Of T))
+  nameWithType: BaseSort.IsSorted<T>(T[], Int32, Int32, IComparer<T>)
+  nameWithType.vb: BaseSort.IsSorted(Of T)(T(), Int32, Int32, IComparer(Of T))
+- uid: SymbolTable.BaseSort.Less*
+  name: Less
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Less_
+  commentId: Overload:SymbolTable.BaseSort.Less
+  isSpec: "True"
+  fullName: SymbolTable.BaseSort.Less
+  nameWithType: BaseSort.Less
+- uid: SymbolTable.BaseSort.Less``1(``0,``0)
+  name: Less<T>(T, T)
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Less__1___0___0_
+  commentId: M:SymbolTable.BaseSort.Less``1(``0,``0)
+  name.vb: Less(Of T)(T, T)
+  fullName: SymbolTable.BaseSort.Less<T>(T, T)
+  fullName.vb: SymbolTable.BaseSort.Less(Of T)(T, T)
+  nameWithType: BaseSort.Less<T>(T, T)
+  nameWithType.vb: BaseSort.Less(Of T)(T, T)
+- uid: SymbolTable.BaseSort.Less``1(``0,``0,System.Collections.Generic.IComparer{``0})
+  name: Less<T>(T, T, IComparer<T>)
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Less__1___0___0_System_Collections_Generic_IComparer___0__
+  commentId: M:SymbolTable.BaseSort.Less``1(``0,``0,System.Collections.Generic.IComparer{``0})
+  name.vb: Less(Of T)(T, T, IComparer(Of T))
+  fullName: SymbolTable.BaseSort.Less<T>(T, T, System.Collections.Generic.IComparer<T>)
+  fullName.vb: SymbolTable.BaseSort.Less(Of T)(T, T, System.Collections.Generic.IComparer(Of T))
+  nameWithType: BaseSort.Less<T>(T, T, IComparer<T>)
+  nameWithType.vb: BaseSort.Less(Of T)(T, T, IComparer(Of T))
+- uid: SymbolTable.BaseSort.Show*
+  name: Show
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Show_
+  commentId: Overload:SymbolTable.BaseSort.Show
+  isSpec: "True"
+  fullName: SymbolTable.BaseSort.Show
+  nameWithType: BaseSort.Show
+- uid: SymbolTable.BaseSort.Show``1(``0[])
+  name: Show<T>(T[])
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Show__1___0___
+  commentId: M:SymbolTable.BaseSort.Show``1(``0[])
+  name.vb: Show(Of T)(T())
+  fullName: SymbolTable.BaseSort.Show<T>(T[])
+  fullName.vb: SymbolTable.BaseSort.Show(Of T)(T())
+  nameWithType: BaseSort.Show<T>(T[])
+  nameWithType.vb: BaseSort.Show(Of T)(T())
+- uid: SymbolTable.BaseSort.Sort*
+  name: Sort
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Sort_
+  commentId: Overload:SymbolTable.BaseSort.Sort
+  isSpec: "True"
+  fullName: SymbolTable.BaseSort.Sort
+  nameWithType: BaseSort.Sort
+- uid: SymbolTable.BaseSort.Sort``1(``0[])
+  name: Sort<T>(T[])
+  href: api/SymbolTable.BaseSort.html#SymbolTable_BaseSort_Sort__1___0___
+  commentId: M:SymbolTable.BaseSort.Sort``1(``0[])
+  name.vb: Sort(Of T)(T())
+  fullName: SymbolTable.BaseSort.Sort<T>(T[])
+  fullName.vb: SymbolTable.BaseSort.Sort(Of T)(T())
+  nameWithType: BaseSort.Sort<T>(T[])
+  nameWithType.vb: BaseSort.Sort(Of T)(T())
 - uid: SymbolTable.BinarySearchST`2
   name: BinarySearchST<TKey, TValue>
   href: api/SymbolTable.BinarySearchST-2.html
@@ -11857,6 +12031,41 @@ references:
   fullName.vb: SymbolTable.ItemBinarySearchST(Of TKey, TValue).Size
   nameWithType: ItemBinarySearchST<TKey, TValue>.Size
   nameWithType.vb: ItemBinarySearchST(Of TKey, TValue).Size
+- uid: SymbolTable.MergeSort
+  name: MergeSort
+  href: api/SymbolTable.MergeSort.html
+  commentId: T:SymbolTable.MergeSort
+  fullName: SymbolTable.MergeSort
+  nameWithType: MergeSort
+- uid: SymbolTable.MergeSort.#ctor
+  name: MergeSort()
+  href: api/SymbolTable.MergeSort.html#SymbolTable_MergeSort__ctor
+  commentId: M:SymbolTable.MergeSort.#ctor
+  fullName: SymbolTable.MergeSort.MergeSort()
+  nameWithType: MergeSort.MergeSort()
+- uid: SymbolTable.MergeSort.#ctor*
+  name: MergeSort
+  href: api/SymbolTable.MergeSort.html#SymbolTable_MergeSort__ctor_
+  commentId: Overload:SymbolTable.MergeSort.#ctor
+  isSpec: "True"
+  fullName: SymbolTable.MergeSort.MergeSort
+  nameWithType: MergeSort.MergeSort
+- uid: SymbolTable.MergeSort.Sort*
+  name: Sort
+  href: api/SymbolTable.MergeSort.html#SymbolTable_MergeSort_Sort_
+  commentId: Overload:SymbolTable.MergeSort.Sort
+  isSpec: "True"
+  fullName: SymbolTable.MergeSort.Sort
+  nameWithType: MergeSort.Sort
+- uid: SymbolTable.MergeSort.Sort``1(``0[])
+  name: Sort<T>(T[])
+  href: api/SymbolTable.MergeSort.html#SymbolTable_MergeSort_Sort__1___0___
+  commentId: M:SymbolTable.MergeSort.Sort``1(``0[])
+  name.vb: Sort(Of T)(T())
+  fullName: SymbolTable.MergeSort.Sort<T>(T[])
+  fullName.vb: SymbolTable.MergeSort.Sort(Of T)(T())
+  nameWithType: MergeSort.Sort<T>(T[])
+  nameWithType.vb: MergeSort.Sort(Of T)(T())
 - uid: SymbolTable.MoveToFrontArrayST`2
   name: MoveToFrontArrayST<TKey, TValue>
   href: api/SymbolTable.MoveToFrontArrayST-2.html
