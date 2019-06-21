@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.24</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2019-06-20 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>FrequencyCounter 的官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html</a></p>
 <p>二分查找总是与中间值进行比较，现在改为与数组中第 x% 位置上的元素比较。<br>具体而言，$ \frac{k_x-k_{lo}}{k_{hi}-k_{lo}} $ 代表数组在均匀情况下目标值 $ k_x $ 的相对位置（一个比率，在数组第 x% 的位置上）。<br>那么相对应的下标就等于 $ lo+\frac{k_x-k_{lo}}{k_{hi}-k_{lo}} \times (hi - lo) $。<br>用这个式子代替原来的 $ mid=lo + (hi-lo)/2 $ 即可。</p>

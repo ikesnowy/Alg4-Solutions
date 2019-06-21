@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.23</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2019-06-20 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里我们使用 Floyd-Rivest 算法进行优化，大致思想是：<br>我们期望第 $ k $ 大的元素位于 <code>a[k]</code> 附近，因此优先对 <code>a[k]</code> 附近的区域进行选择。<br>每次切分时枢轴都选择 <code>a[k]</code>，先递归对样本区域选择，再对整个数组进行选择。</p>
 <p>运行示意图：<br><img src="./1.gif" alt=""></p>

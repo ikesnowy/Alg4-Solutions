@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.35</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2019-06-20 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>本题有两个翻译错误。<br><code>random()</code> ——返回索引 i 的概率是 p[i]/T，而非返回概率和索引。（return an index <code>i</code> with probability <code>p[i]/T</code>）<br>最后一句指的是像堆那样使用数组而非显式指针实现二叉树。（Avoid explicit pointers, as we do for heaps.）</p>
 <p>提示已经给出了实现方案，我们用一个例子来简单说明一下。<br>现在给出一个分布 <code>p</code>，总和 <code>T=1</code>，如下图所示：<br><img src="./1.png" alt=""><br>为了实现这样的随机分布，我们在 0~T 之间随机一个小数，然后根据结果返回不同的值。<br><img src="./2.png" alt=""></p>

@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.40</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2019-06-20 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>顺序查找平均需要进行 $ N/2 $ 次比较，二分查找则是 $ \lg N $ 次。<br>列出方程可以解出 N 的大小<br>$$<br>\begin {eqnarray*}<br>1000 \log_2 N &amp;=&amp; N / 2 \\<br>\log_2 N &amp;=&amp; N / 2000\\<br>\frac{\ln N}{\ln 2} &amp;=&amp; N/2000 \\<br>N &amp;=&amp; e^{\frac{\ln 2}{2000}N}\\<br>1 &amp;=&amp; Ne^{-\frac{\ln 2}{2000}N}\\<br>N_1 = e^{-W(-\frac{\ln 2}{2000})}=1 &amp; &amp; N_2= e^{-W_{-1}(-\frac{\ln 2}{2000})}=29718\ \\<br>\end {eqnarray*}<br>$$<br>这个方程是一个超越方程，最后的结果中出现了朗伯 W 函数。<br>同理可以求得 10000 倍的 N=369939。</p>
 <p>实验结果如下：<br><img src="./1.png" alt=""></p>

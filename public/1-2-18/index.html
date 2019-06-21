@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.2.18</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2019-06-20 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>当数据比较大时—— 例如 10^9 加上随机小数组成的数列，这时 double 的小数精度将受限。<br>求和之后整数部分更大，小数部分将自动四舍五入，出现误差<br>这时再计算平均值时将会带来较大的误差。<br>因此采用另一个递推公式：<br>k 为下标。</p>
 <p>$M_k = M_{k-1}+ (x_k – M_{k-1})/k$<br>$S_k = S_{k-1} + (x_k – M_{k-1})\times(x_k – M_k)$.<br>方差 $s^2 = S_k/(k – 1)$.</p>

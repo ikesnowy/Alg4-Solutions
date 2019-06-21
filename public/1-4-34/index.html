@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.34</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2019-06-20 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>第一种方案，类似于二分查找，先猜测左边界(lo)，再猜测右边界(hi)，如果边界值猜中的话直接返回，否则：<br>如果右边界比较热，那么左边界向右边界靠，lo=mid；否则，右边界向左边界靠，hi=mid。其中，mid = lo + (hi – lo)/2。<br>每次二分查找都要猜测两次，~2lgN。</p>
 <p>第二种方案，假设上次猜测值为 $lastGuess$，本次即将要猜测的值为 $nowGuess$，通过方程：<br>$(lastGuess + nowGuess)/2 = (lo + hi)/2$<br>可以求得 $nowGuess$，具体可以查看示意图：<br>数字是猜测顺序，黑色范围是猜测值的范围（$lastGuess$ 和 $nowGuess$），绿色的是实际查找的范围（lo 和 hi）。</p>

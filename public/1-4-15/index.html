@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.15</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2019-06-20 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>由于数组已经排序（从小到大），负数在左侧，正数在右侧。<br>TwoSumFaster<br>设最左侧下标为 lo，最右侧下标为 hi。<br>如果 a[lo] + a[hi] &gt; 0, 说明正数太大，hi–。<br>如果 a[lo] + a[hi] &lt; 0，说明负数太小，lo++。<br>否则就找到了一对和为零的整数对，lo++, hi–。 </p>
 <p>ThreeSumFaster<br>对于数组中的每一个数 a，ThreeSum 问题就等于求剩余数组中所有和为 -a 的 TwoSum 问题。<br>只要在 TwoSumFaster 外层再套一个循环即可。</p>
