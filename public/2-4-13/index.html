@@ -14,9 +14,9 @@
         <link href="/css/normalize.css" rel="stylesheet" id="normalize">
         <link href="/css/style.css" rel="stylesheet" id="style">
         <link href="/css/common.css" rel="stylesheet" id="common">
-        <link href="/css/markdown.css" rel="stylesheet" id="markdown">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
             <div class="mobile_menu_btn">
@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.13</h1>
-			<p>上次更新：2019-06-20 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>在官方实现的基础上直接删除 <code>j&lt;N</code> 语句，随后在 <code>DelMax()</code> 方法中在 <code>Sink(1)</code> 之前让 <code>pq[n + 1] = pq[1]</code> 即可。</p>
 <p>首先保存最大值，然后把堆中的第一个元素和最后一个元素交换，随后使 <code>n = n - 1</code>。<br>随后让 <code>pq[n + 1] = pq[1]</code>，这样在下沉操作时就不会下沉到 <code>pq[n + 1]</code>了。（相等的元素是不会交换的）<br>故之后的 <code>Sink()</code> 语句中不再需要进行边界判断，直接删去即可。</p>

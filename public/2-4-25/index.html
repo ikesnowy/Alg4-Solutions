@@ -14,9 +14,9 @@
         <link href="/css/normalize.css" rel="stylesheet" id="normalize">
         <link href="/css/style.css" rel="stylesheet" id="style">
         <link href="/css/common.css" rel="stylesheet" id="common">
-        <link href="/css/markdown.css" rel="stylesheet" id="markdown">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
             <div class="mobile_menu_btn">
@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.25</h1>
-			<p>上次更新：2019-06-20 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/24pq/CubeSum.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/24pq/CubeSum.java.html</a></p>
 <p>注意这道题并不是要打印所有的 $ a^3+b^3 $ 的结果，而是需要找到 $ a^3+b^3=c^3+d^3 $ 这个丢番图方程的解。<br>因此在官方实现的基础上，每次取出最小值之后和之前的最小值比较，如果相等则输出对应的组合。<br>关键代码如下：</p>

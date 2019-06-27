@@ -14,9 +14,9 @@
         <link href="/css/normalize.css" rel="stylesheet" id="normalize">
         <link href="/css/style.css" rel="stylesheet" id="style">
         <link href="/css/common.css" rel="stylesheet" id="common">
-        <link href="/css/markdown.css" rel="stylesheet" id="markdown">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
             <div class="mobile_menu_btn">
@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.3</h1>
-			<p>上次更新：2019-06-20 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>N / 2<br>在快速排序中，一个元素要被交换，有以下两种情况<br>1.该元素是枢轴，在切分的最后一步被交换<br>2.该元素位于枢轴错误的一侧，需要被交换到另一侧去<br>注意，以上两种情况在一次切分中只会出现一次</p>
 <p>首先来看第一种情况，如果一个元素变成了枢轴<br>那么在之后的切分中该元素会被排除，不存在后续的交换。<br>因此我们的目标应该是：<br>最大的元素总是出现在错误的一侧，同时切分的次数尽可能多。</p>

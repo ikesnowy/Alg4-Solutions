@@ -14,9 +14,9 @@
         <link href="/css/normalize.css" rel="stylesheet" id="normalize">
         <link href="/css/style.css" rel="stylesheet" id="style">
         <link href="/css/common.css" rel="stylesheet" id="common">
-        <link href="/css/markdown.css" rel="stylesheet" id="markdown">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
             <div class="mobile_menu_btn">
@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.5.11</h1>
-			<p>上次更新：2019-06-20 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>结果如下，其中快速排序去掉了一开始打乱数组的步骤：<br><img src="./1.png" alt=""></p>
 <p>只有快速排序和堆排序会进行交换，剩下四种排序都不会进行交换。<br>插入排序在排序元素完全相同的数组时只会进行一次遍历，不会交换。<br>选择排序第 <code>i</code> 次找到的最小值就是 <code>a[i]</code> ，只会让 <code>a[i]</code> 和 <code>a[i]</code> 交换，不会影响顺序。<br>希尔排序和插入排序类似，每轮排序都不会进行交换。<br>归并排序是稳定的，就本例而言，只会从左到右依次归并，不会发生顺序变化。<br>快速排序在遇到相同元素时会交换，因此顺序会发生变化，且每次都是对半切分。<br>堆排序在删除最大元素时会将第一个元素和最后一个元素交换，使元素顺序发生变化。</p>

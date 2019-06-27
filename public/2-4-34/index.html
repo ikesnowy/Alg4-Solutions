@@ -14,9 +14,9 @@
         <link href="/css/normalize.css" rel="stylesheet" id="normalize">
         <link href="/css/style.css" rel="stylesheet" id="style">
         <link href="/css/common.css" rel="stylesheet" id="common">
-        <link href="/css/markdown.css" rel="stylesheet" id="markdown">
+        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
             <div class="mobile_menu_btn">
@@ -145,7 +145,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.34</h1>
-			<p>上次更新：2019-06-20 <br>
+			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>这里给出最大堆的实现，原因同 2.4.33。</p>
 <p><code>maxIndex()</code>：<code>pq[1]</code> 就是最小元素的下标。<br><code>change()</code>：首先修改 <code>keys</code> 数组中对应的元素，然后对堆中该下标进行重排序。<br><code>delete()</code>：先从堆中删除元素，再把 <code>keys</code> 和 <code>qp</code> 数组中的对应元素初始化。</p>
