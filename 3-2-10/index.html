@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>《算法（第四版）》C# 题解</title>
+        <title>3.2.10 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -29,7 +29,7 @@
     <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -77,7 +77,7 @@
       <ul class="clearfix">
       
       
-      <li class="active"> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
       <li class=""> <a href="/help">帮助</a> </li>
@@ -134,31 +134,121 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="PostList">
-	<h2 class="center">最近添加</h2>
-	<div class="post-list">
-		
-		<p class="post-title"><a href="/1-3-5/">1. 1.3.5</a></p>
-		
-		<p class="post-title"><a href="/1-3-4/">2. 1.3.4</a></p>
-		
-		<p class="post-title"><a href="/1-3-3/">3. 1.3.3</a></p>
-		
-		<p class="post-title"><a href="/1-3-2/">4. 1.3.2</a></p>
-		
-		<p class="post-title"><a href="/1-3-1/">5. 1.3.1</a></p>
-		
-		<p class="post-title"><a href="/1-2-19/">6. 1.2.19</a></p>
-		
-		<p class="post-title"><a href="/1-2-18/">7. 1.2.18</a></p>
-		
-		<p class="post-title"><a href="/1-2-17/">8. 1.2.17</a></p>
-		
-		<p class="post-title"><a href="/1-2-16/">9. 1.2.16</a></p>
-		
-		<p class="post-title"><a href="/1-2-15/">10. 1.2.15</a></p>
-		
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.2.10
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.2.10</h1>
+			<p>上次更新：2019-06-28 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/32bst/TestBST.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/32bst/TestBST.java.html</a></p>
+<p>测试结果：</p>
+<pre><code>size = 10
+min = A
+max = X
+
+Testing keys()
+---------------------------
+A 8
+C 4
+E 12
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+X 7
+
+Testing select
+---------------------------
+0 A
+1 C
+2 E
+3 H
+4 L
+5 M
+6 P
+7 R
+8 S
+9 X
+
+key rank floor ceil
+---------------------------
+A 0 A A
+B 1 A C
+C 1 C C
+D 2 C E
+E 2 E E
+F 3 E H
+G 3 E H
+H 3 H H
+I 4 H L
+J 4 H L
+K 4 H L
+L 4 L L
+M 5 M M
+N 6 M P
+O 6 M P
+P 6 P P
+Q 7 P R
+R 7 R R
+S 8 S S
+T 9 S X
+U 9 S X
+V 9 S X
+W 9 S X
+X 9 X X
+Y 10 X
+Z 10 X
+range search
+---------------------------
+A-Z (11)A C E H L M P R S X
+Z-A (0)
+X-X (1)X
+0-Z (11)A C E H L M P R S X
+B-G (3)C E
+C-L (4)C E H L
+
+After deleting the smallest 3 keys
+---------------------------
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+X 7
+
+After deleting the remaining keys
+---------------------------
+
+After adding back the keys
+---------------------------
+A 8
+C 4
+E 12
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+X 7
+</code></pre>
+		</div>
 	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -166,10 +256,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/page/34/">上一页</a>
+		<a href="/3-2-9/">上一题</a>
 		
-		
-		<a href="/page/36/">下一页</a>
 		
 	</div>
 	
