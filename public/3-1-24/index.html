@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -150,7 +154,7 @@ function dismissSearchResultModal() {
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>FrequencyCounter 的官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html</a></p>
 <p>二分查找总是与中间值进行比较，现在改为与数组中第 x% 位置上的元素比较。<br>具体而言，$ \frac{k_x-k_{lo}}{k_{hi}-k_{lo}} $ 代表数组在均匀情况下目标值 $ k_x $ 的相对位置（一个比率，在数组第 x% 的位置上）。<br>那么相对应的下标就等于 $ lo+\frac{k_x-k_{lo}}{k_{hi}-k_{lo}} \times (hi - lo) $。<br>用这个式子代替原来的 $ mid=lo + (hi-lo)/2 $ 即可。</p>
 <p>不难看出这种方法对于分布相对均匀的数组比较有利，相对于二分查找而言迭代次数会少很多。<br>但如果数组分布不够均匀，也可能表现出不如二分查找的性能。</p>
-<p>实验结果也证实了这一判断，就随机数组而言，插值查找相对于二分查找只有 1% 左右的性能提升。<br><img src="./1.png" alt=""></p>
+<p>实验结果也证实了这一判断，就随机数组而言，插值查找相对于二分查找只有 1% 左右的性能提升。<br><img src="./1.png" alt></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><code>SearchCompare</code> 在书中没有出现，但可以简单的实现为调用 FrequencyCounter 并计时的方法：</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token generic-method function">Time<span class="token punctuation">&lt;</span>TKey<span class="token punctuation">></span></span><span class="token punctuation">(</span>IST<span class="token operator">&lt;</span>TKey<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> st<span class="token punctuation">,</span> TKey<span class="token punctuation">[</span><span class="token punctuation">]</span> keys<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
@@ -217,6 +221,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>

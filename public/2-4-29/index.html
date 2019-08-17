@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -148,8 +152,8 @@ function dismissSearchResultModal() {
 			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>算法思想比较简单，但在实现上会有一些复杂。</p>
-<p>用一个最大堆和一个最小堆，每个堆中都保存了全部数组元素，且相同的元素之间有指针相连。<br><img src="./1.png" alt=""><br>插入元素时需要构建两个完全相同的元素分别插入到两个堆中。<br>找到最小元素和找到最大元素只需要分别返回最大堆和最小堆的堆顶元素即可。<br>以删除最小元素为例，先对最小堆进行 DelMin() 操作，再通过指针找到对应最大堆的元素并删除。</p>
-<p>下面介绍删除堆中任意元素的算法。<br>首先将待删除元素与堆中最后一个元素交换，让堆的大小减一。<br>随后对交换后的元素先进行 Swim 再进行 Sink，移动到正确的位置上。<br>下图是一个例子，当删除最大元素 14 时，最小堆中删除元素 14 需要先 Swim。<br><img src="./2.png" alt=""><br>如果堆的层数更多一些，就需要先 Swim 再 Sink。</p>
+<p>用一个最大堆和一个最小堆，每个堆中都保存了全部数组元素，且相同的元素之间有指针相连。<br><img src="./1.png" alt><br>插入元素时需要构建两个完全相同的元素分别插入到两个堆中。<br>找到最小元素和找到最大元素只需要分别返回最大堆和最小堆的堆顶元素即可。<br>以删除最小元素为例，先对最小堆进行 DelMin() 操作，再通过指针找到对应最大堆的元素并删除。</p>
+<p>下面介绍删除堆中任意元素的算法。<br>首先将待删除元素与堆中最后一个元素交换，让堆的大小减一。<br>随后对交换后的元素先进行 Swim 再进行 Sink，移动到正确的位置上。<br>下图是一个例子，当删除最大元素 14 时，最小堆中删除元素 14 需要先 Swim。<br><img src="./2.png" alt><br>如果堆的层数更多一些，就需要先 Swim 再 Sink。</p>
 <p>现在来考虑一下实现，我们构建一个结点类，里面存放有当前结点的值、对应数组下标和另一个结点的指针。</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
 <span class="token comment" spellcheck="true">/// 最大-最小堆中的数据结点。</span>
@@ -522,6 +526,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>

@@ -84,9 +84,8 @@ feed:
   path: atom.xml
   limit: 0
   hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' '
+  content: true
+  icon: /favicon.ico
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

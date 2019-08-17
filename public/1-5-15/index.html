@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -147,7 +151,7 @@ function dismissSearchResultModal() {
 			<h1>1.5.15</h1>
 			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先证明在最坏情况下加权 quick-union 算法生成的树中的每一层结点数均为二项式系数。<br>最坏情况下，每次 union 操作都是合并相同大小的树，如下图所示：<br><img src="./1.png" alt=""><br>设第 i 层的结点数为 ki，那么最坏情况下每次合并后的 ki’ = ki + ki-1 。<br>这符合二项式系数的构造特点（详情可以搜索杨辉三角），<br>第一个结论证明完毕。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先证明在最坏情况下加权 quick-union 算法生成的树中的每一层结点数均为二项式系数。<br>最坏情况下，每次 union 操作都是合并相同大小的树，如下图所示：<br><img src="./1.png" alt><br>设第 i 层的结点数为 ki，那么最坏情况下每次合并后的 ki’ = ki + ki-1 。<br>这符合二项式系数的构造特点（详情可以搜索杨辉三角），<br>第一个结论证明完毕。</p>
 <p>接下来求平均深度，首先根据二项式的求和公式，一棵深度为 n 的树（根结点的深度为零）结点总数为：<br>$$<br>\sum_{k=0}^{n}<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}<br>=2^n<br>$$<br>每层结点数 × 该层深度后的和为：<br>$$<br>\sum_{k=0}^{n}k \cdot<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}=n\sum_{k=1}^{n}<br>\begin{pmatrix}<br>n-1 \\<br>k-1<br>\end{pmatrix}=n\sum_{s=0}^{n-1}<br>\begin{pmatrix}<br>n-1 \\<br>s<br>\end{pmatrix}=n2^{n-1}<br>$$<br>这里用到了这个公式化简：<br>$$<br>\begin{pmatrix}<br>n \\<br>k<br>\end{pmatrix}=\frac{n}{k}<br>\begin{pmatrix}<br>n-1 \\<br>k-1<br>\end{pmatrix}<br>$$<br>相除可以求得平均深度：<br>$$<br>\bar{D} = \frac{\sum_{k=0}^{n}k\cdot\begin{pmatrix}n\\k\end{pmatrix}}{\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}}=\frac{n2^{n-1}}{2^n}=\frac{n}{2}<br>$$</p>
 
 		</div>
@@ -185,6 +189,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>

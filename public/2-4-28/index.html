@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -150,7 +154,7 @@ function dismissSearchResultModal() {
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>开始时让 N=10^5，在 M=10^4 不变的情况下令 N 不断翻倍，求出算法增长的数量级。<br>再根据求出的增长的数量级估计 N=10^8 时所需要的时间。</p>
 <p>为了方便比较，需要编写一个欧几里得距离类，<br>构造时输入一个点的坐标，内部自动计算并保存这个点到原点的欧几里得距离。<br>欧几里得距离的计算公式如下：<br>$$<br>d(x,y)=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}<br>$$<br>其中，x 和 y 分别代表两个点。<br>在本题中，y 始终是原点，且使用三维坐标系，因此公式可以简化为：<br>$$<br>d=\sqrt {x^2+y^2+z^2}<br>$$<br>同时这个类需要实现 IComparable 接口以作为最小堆的元素。</p>
 <p>做测试时，先随机生成 N 个点，再建立一个最小堆。<br>随后开始计时，把开始的 m 个点插入。<br>剩余的 n-m 个点则是先删除最小值再插入，这样可以保证最小堆的大小不变。<br>最后再把堆中的所有元素输出，停止计时。<br>用不断倍增的的 N 值做上述测试，获得每次的耗时，进而求得算法增长的数量级。</p>
-<p>求得的结果如下：<br><img src="./1.png" alt=""><br>可以推出当 N=10^8 时耗时为 $ 398  ms × 1000 = 398  s $</p>
+<p>求得的结果如下：<br><img src="./1.png" alt><br>可以推出当 N=10^8 时耗时为 $ 398  ms × 1000 = 398  s $</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>欧几里得距离类，EuclideanDistance3D</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 
@@ -321,6 +325,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>

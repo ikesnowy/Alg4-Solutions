@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -149,7 +153,7 @@ function dismissSearchResultModal() {
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>主要介绍一下这个少于七次比较的五取样算法。<br>首先假设五个数字为 a b c d e<br>对 b c 排序，d e 排序。（两次比较）<br>比较 b 和 d，把较小那一组换到 b c 的位置上去。（一次比较）<br>此时会有 b &lt; c, b &lt; d &lt; e。<br>交换 a, b，重新对 b c 排序。（一次比较）<br>再次比较 b 和 d，把较小的那一组换到 b c 的位置上。（一次比较）<br>最后比较 c 和 d，较小的那一个即为中位数。（一次比较）<br>总共需要 6 次比较，严格小于 7 次。</p>
 <p>取样完毕后，a b 是最小值和次小值（这里没有对应关系，a 也可以是次小值）。<br>d 和 e 是最大值和次大值（同样没有对应关系）。<br>我们把 d 和 e 放到数组的最后作为哨兵，去掉右边界的判断。<br>同时让左右两侧指针都向中间移动两位，减少不必要的比较。</p>
-<p>测试结果，对比普通快排性能提升约 10%，和三取样快排区别不大。<br><img src="./1.png" alt=""></p>
+<p>测试结果，对比普通快排性能提升约 10%，和三取样快排区别不大。<br><img src="./1.png" alt></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>五取样快排</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 <span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
@@ -510,6 +514,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>

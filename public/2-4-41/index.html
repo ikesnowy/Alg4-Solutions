@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -148,11 +152,11 @@ function dismissSearchResultModal() {
 			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>多叉堆和二叉堆的实现上并没有很大的区别，<br>只不过下沉（<code>Sink</code>）时需要比较的子结点数量变多了，上浮时父结点的下标不再是 $ \lfloor k /2 \rfloor $。<br>于是只要能推出 $ d $ 叉堆的下标换算公式即可解决整个问题。</p>
-<p>先考虑 $ d $ 叉堆的在数组中的保存方式，<br>第一层显然只有根结点，第二层显然有 $ d $ 个结点，第三层则有 $ d \times d=d^2 $ 个结点，如下图所示：<br><img src="./1.png" alt=""><br>不难推出第 $ k $ 层有 $ d^{k-1} $ 个结点。</p>
-<p>接下来我们对其标号，根结点为 1，以此类推，如下图：<br><img src="./2.png" alt=""></p>
-<p>现在我们来推导某个结点的子结点的下标公式。<br>结点 $ i $ 的第一个子结点在哪里呢？<br>首先要加上本层剩下的结点，再加上它前面结点的所有子结点，再下一个就是它的第一个子结点了。<br>以 2 号结点为例，它是第二层的第一个结点，第二层共有 $ d^{2-1}=d $ 个结点，剩下 $ d-1 $ 个结点。<br>2 号结点前面没有更多兄弟结点，于是第一个子结点下标即为 $ 2 + d - 1 + 1= 2 + d $。<br>3 号结点之后剩余 $ d-2 $ 个结点，加上前面 2 号结点的 $ d $ 个子结点，<br>它的第一个子结点下标为 $ 3+d-2+d+1= 2+2d $。<br>不难发现规律，结点序号加一，子结点的下标就要对应加上 $ d $（要加上前一个结点的子结点），<br>这个规律也可以从图上（$ d=3 $）看出来：<br><img src="./3.png" alt=""><br>1号结点的子结点范围是 $ [2,d+1] $，每加一个结点子结点就要加上 $ d $ 。<br>于是立即可以推得结点 $ i $ 的子结点下标范围是 $ [d(i-1)+2,di+1] $ 。<br>代入 $ d=2 $，可以发现是符合我们已知的规律的。</p>
+<p>先考虑 $ d $ 叉堆的在数组中的保存方式，<br>第一层显然只有根结点，第二层显然有 $ d $ 个结点，第三层则有 $ d \times d=d^2 $ 个结点，如下图所示：<br><img src="./1.png" alt><br>不难推出第 $ k $ 层有 $ d^{k-1} $ 个结点。</p>
+<p>接下来我们对其标号，根结点为 1，以此类推，如下图：<br><img src="./2.png" alt></p>
+<p>现在我们来推导某个结点的子结点的下标公式。<br>结点 $ i $ 的第一个子结点在哪里呢？<br>首先要加上本层剩下的结点，再加上它前面结点的所有子结点，再下一个就是它的第一个子结点了。<br>以 2 号结点为例，它是第二层的第一个结点，第二层共有 $ d^{2-1}=d $ 个结点，剩下 $ d-1 $ 个结点。<br>2 号结点前面没有更多兄弟结点，于是第一个子结点下标即为 $ 2 + d - 1 + 1= 2 + d $。<br>3 号结点之后剩余 $ d-2 $ 个结点，加上前面 2 号结点的 $ d $ 个子结点，<br>它的第一个子结点下标为 $ 3+d-2+d+1= 2+2d $。<br>不难发现规律，结点序号加一，子结点的下标就要对应加上 $ d $（要加上前一个结点的子结点），<br>这个规律也可以从图上（$ d=3 $）看出来：<br><img src="./3.png" alt><br>1号结点的子结点范围是 $ [2,d+1] $，每加一个结点子结点就要加上 $ d $ 。<br>于是立即可以推得结点 $ i $ 的子结点下标范围是 $ [d(i-1)+2,di+1] $ 。<br>代入 $ d=2 $，可以发现是符合我们已知的规律的。</p>
 <p>接下来是结点 $ i $ 的父结点，<br>我们由上面的式子反推可以得到父结点的下标为 $ \lfloor (i-2)/d \rfloor +1$（或者 $\lceil (i-2)/d \rceil$）。<br>获得这两个公式之后，只需要将 <code>sink</code> 和 <code>swim</code> 方法中上升和下降的公式做相应更改即可。</p>
-<p>测试结果，注意下标可能会超过 <code>int</code> 的范围，请使用 <code>long</code>。：<br><img src="./4.png" alt=""></p>
+<p>测试结果，注意下标可能会超过 <code>int</code> 的范围，请使用 <code>long</code>。：<br><img src="./4.png" alt></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 
 <span class="token keyword">namespace</span> PriorityQueue
@@ -270,6 +274,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>

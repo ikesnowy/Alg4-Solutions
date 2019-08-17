@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -151,7 +155,7 @@ function dismissSearchResultModal() {
 <p><code>FrequencyCounter</code> 的官方实现：<a href="https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/31elementary/FrequencyCounter.java.html</a></p>
 <p>我们利用 <code>BinarySearchST</code> 会自动对键排序的性质来实现字典序排序。<br>首先将字典存到一个符号表中，按照 “单词-序号” 的形式保存。<br>然后读入文件，如果读入的单词存在于字典中，<br>则将其以 “序号-单词” 的形式存到 <code>BinarySearchST</code> 中去。<br>读入完毕后，遍历 <code>BinarySearchST</code> 即可获得字典序的单词列表。</p>
 <p>对于按频率排序，我们基于已有的实现修改。<br>在每次取得最大值之后，输出并删除最大值，如此循环即可获得频率排序的单词序列。<br>也可以将单词-频率序列全部读出来存放到数组之中，然后用第二章的排序算法排序。</p>
-<p>测试结果，取 minLength = 13，只截取了部分。<br><img src="./1.png" alt=""><br><img src="./2.png" alt=""></p>
+<p>测试结果，取 minLength = 13，只截取了部分。<br><img src="./1.png" alt><br><img src="./2.png" alt></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">LookUpDictionary</span><span class="token punctuation">(</span><span class="token keyword">string</span> filename<span class="token punctuation">,</span> <span class="token keyword">string</span> dictionaryFile<span class="token punctuation">,</span> <span class="token keyword">int</span> minLength<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 初始化字典</span>
@@ -243,6 +247,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>

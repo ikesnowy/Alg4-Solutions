@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -53,6 +53,10 @@
       
       
       
+      
+      
+      
+      <li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
       
       
     </ul>
@@ -77,16 +81,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -148,9 +152,9 @@ function dismissSearchResultModal() {
 			<p>上次更新：2019-04-17 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现见：<a href="https://algs4.cs.princeton.edu/23quicksort/QuickBentleyMcIlroy.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/23quicksort/QuickBentleyMcIlroy.java.html</a></p>
-<h2 id="快速三向切分"><a href="#快速三向切分" class="headerlink" title="快速三向切分"></a>快速三向切分</h2><p>论文引用见「另请参阅」部分。<br>算法演示<br><img src="./3.gif" alt=""></p>
+<h2 id="快速三向切分"><a href="#快速三向切分" class="headerlink" title="快速三向切分"></a>快速三向切分</h2><p>论文引用见「另请参阅」部分。<br>算法演示<br><img src="./3.gif" alt></p>
 <h2 id="Ninther-算法"><a href="#Ninther-算法" class="headerlink" title="Ninther 算法"></a>Ninther 算法</h2><p>官方实现中用到了 Ninther 算法用于选取近似中位数（作为枢轴），<br>该算法由 John Tukey 在 1978 年提出，论文引用见「另请参阅」部分。<br>这个算法的思想其实很简单，假设我们有三个数 $ y_1, y_2, y_3 $ ，那么其中位数为：<br>$$<br>y_A= {\rm median}\lbrace y_1,y_2,y_3 \rbrace<br>$$<br>现在对于九个数，我们以三个为一组，取三个中位数：<br>$$<br>y_A= {\rm median}\lbrace y_1,y_2,y_3 \rbrace \\<br>y_B= {\rm median}\lbrace y_4,y_5,y_6 \rbrace \\<br>y_C= {\rm median}\lbrace y_7,y_8,y_9 \rbrace<br>$$<br>接下来取这三个中位数的中位数，有：<br>$$<br>y_E= {\rm median}\lbrace y_A,y_B,y_C \rbrace<br>$$<br>我们把上述过程封装成函数，即 $ y_E= {\rm ninther}\lbrace y_1,y_2,\cdots,y_9 \rbrace $ 。<br>于是我们获得的 $ y_E $ 即为近似中位数，如果 $ \lbrace y_1,y_2,\cdots,y_9 \rbrace $ 是单调数列，那么 $ y_E $ 就是中位数。</p>
-<h2 id="获取三个数中的中位数"><a href="#获取三个数中的中位数" class="headerlink" title="获取三个数中的中位数"></a>获取三个数中的中位数</h2><p>事实上，我们可以直接画出三个数排列的所有可能，获得决策树。<br><img src="2.png" alt=""><br>然后根据决策树写出取中位数的算法：</p>
+<h2 id="获取三个数中的中位数"><a href="#获取三个数中的中位数" class="headerlink" title="获取三个数中的中位数"></a>获取三个数中的中位数</h2><p>事实上，我们可以直接画出三个数排列的所有可能，获得决策树。<br><img src="2.png" alt><br>然后根据决策树写出取中位数的算法：</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token generic-method function">Median3<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
 <span class="token punctuation">{</span>
     <span class="token keyword">return</span>
@@ -159,7 +163,7 @@ function dismissSearchResultModal() {
         <span class="token punctuation">(</span><span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> j <span class="token punctuation">:</span> <span class="token function">Less</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> k <span class="token punctuation">:</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>提高约 20% 左右的性能。<br><img src="./1.png" alt=""></p>
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>提高约 20% 左右的性能。<br><img src="./1.png" alt></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>QuickBentleyMcIlroy</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
 <span class="token keyword">using</span> System<span class="token punctuation">.</span>Diagnostics<span class="token punctuation">;</span>
@@ -408,6 +412,10 @@ function dismissSearchResultModal() {
 				
 				
 				
+				
+				
+				
+				<li> <a href="/atom.xml" target="_blank"> <img src="/img/Rss.png"> </a> </li>
 				
 				
 			</ul>
