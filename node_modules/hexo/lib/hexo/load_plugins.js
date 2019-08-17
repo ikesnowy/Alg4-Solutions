@@ -1,6 +1,6 @@
 'use strict';
 
-const pathFn = require('path');
+const { join } = require('path');
 const fs = require('hexo-fs');
 const Promise = require('bluebird');
 const chalk = require('chalk');
@@ -16,7 +16,7 @@ function loadModuleList(ctx) {
     return Promise.resolve(ctx.config.plugins).filter(item => typeof item === 'string');
   }
 
-  const packagePath = pathFn.join(ctx.base_dir, 'package.json');
+  const packagePath = join(ctx.base_dir, 'package.json');
 
   // Make sure package.json exists
   return fs.exists(packagePath).then(exist => {
@@ -33,6 +33,9 @@ function loadModuleList(ctx) {
   }).filter(name => {
     // Ignore plugins whose name is not started with "hexo-"
     if (!/^hexo-|^@[^/]+\/hexo-/.test(name)) return false;
+
+    // Ignore typescript definition file that is started with "@types/"
+    if (/^@types\//.test(name)) return false;
 
     // Make sure the plugin exists
     const path = ctx.resolvePlugin(name);
@@ -66,7 +69,7 @@ function loadScripts(ctx) {
   ], scriptDir => { // Ignore the directory if it does not exist
     return scriptDir ? fs.exists(scriptDir) : false;
   }).map(scriptDir => fs.listDir(scriptDir).map(name => {
-    const path = pathFn.join(scriptDir, name);
+    const path = join(scriptDir, name);
 
     return ctx.loadPlugin(path).then(() => {
       ctx.log.debug('Script loaded: %s', displayPath(path));
