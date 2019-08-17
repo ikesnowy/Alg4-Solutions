@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -77,16 +77,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -149,7 +149,7 @@ function dismissSearchResultModal() {
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>英文原文指的是 most recently accessed key，因此指的是最近访问的键。</p>
 <p>实现比较简单，先在类中定义一个新的成员 <code>cache</code> 作为缓存，<br>然后修改 <code>Get</code> 方法，在实际查找之前先检查缓存，如果缓存未命中则在查找之后更新它。<br>要注意的是缓存指向内容的有效性，在数组中指的是下标是否有效，在链表中指的是结点是否为空。</p>
-<p>利用《双城记》测试的结果：<br><img src="./1.png" alt=""></p>
+<p>利用《双城记》测试的结果：<br><img src="./1.png" alt></p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="BinarySearchST"><a href="#BinarySearchST" class="headerlink" title="BinarySearchST"></a>BinarySearchST</h3><p><code>cache</code> 是一个 <code>int</code> 类型的变量，代表下标。<br>在二分查找前先检查缓存，要注意<code>cache</code>超出数组大小的情况。<br>如果缓存未命中，则进行二分查找，并在返回结果前更新缓存。</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> TValue <span class="token function">Get</span><span class="token punctuation">(</span>TKey key<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>

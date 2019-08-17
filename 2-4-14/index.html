@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
+    <head><meta name="generator" content="Hexo 3.9.0">
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -29,16 +29,16 @@
     <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
     </ul>
   </nav>
@@ -77,16 +77,16 @@
       <ul class="clearfix">
       
       
-      <li class=""> <a href="/">主页</a> </li>
+      <li class> <a href="/">主页</a> </li>
       
       
-      <li class=""> <a href="/help">帮助</a> </li>
+      <li class> <a href="/help">帮助</a> </li>
       
       
-      <li class=""> <a href="/thanks">鸣谢</a> </li>
+      <li class> <a href="/thanks">鸣谢</a> </li>
       
       
-      <li class=""> <a href="/docs/api">API</a> </li>
+      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -150,8 +150,8 @@ function dismissSearchResultModal() {
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>对于 n &lt;= 2 的堆<br>第一步让最大元素和末端元素交换。<br>第二步下沉时由于 n &lt;= 1，不需要交换。<br>故总共发生了一次交换，两个元素发生了交换。</p>
 <p>对于 n = 3 的堆<br>第一步让最大元素和末端元素交换。<br>第二步如果末端元素大于另一侧的子结点，那么就不需要交换。<br>故最优情况时总共发生一次交换，两个元素被交换。</p>
 <p>对于 n &gt; 3 的堆。<br>第一步需要让最末端元素和最大元素交换。<br>由于堆中第二大的元素必定位于根节点之后。<br>故最末端元素一定小于该第二大元素。<br>因此在下沉操作时必定会和第二大元素进行交换。<br>故至少发生两次交换，总共有三个元素发生了交换。</p>
-<p>构造的堆（n=15）<br><img src="./1.png" alt=""><br>92 和 100 交换，随后 92 和 99 交换</p>
-<p>构造最优情况堆的方式如下（取根结点为 100）：<br><img src="./2.png" alt=""><br>对于每个结点，左子结点大于右子结点，<br>且左子结点的子元素都小于右子树的最小值，<br>（上例中省略了这部分元素，可以将它们当作负数）<br>于是第一次 DelMax 的时候，只需要两次交换，三个元素被交换。<br>（即 87 最后被交换到上例中 99 的位置）<br>第二次 DelMax 的时候，只需要三次交换，六个元素被交换.<br>（88 交换到 97 的位置）<br>因此当 n &gt; 7 时，连续两次 DelMax() 最少只需要 5 次交换。<br>第三次 DelMax 的时候，只需要四次交换，九个元素被交换。<br>（89 交换到 95 的位置）<br>因此当 n &gt; 15 时，连续三次 DelMax() 最少只需要 9 次交换。</p>
+<p>构造的堆（n=15）<br><img src="./1.png" alt><br>92 和 100 交换，随后 92 和 99 交换</p>
+<p>构造最优情况堆的方式如下（取根结点为 100）：<br><img src="./2.png" alt><br>对于每个结点，左子结点大于右子结点，<br>且左子结点的子元素都小于右子树的最小值，<br>（上例中省略了这部分元素，可以将它们当作负数）<br>于是第一次 DelMax 的时候，只需要两次交换，三个元素被交换。<br>（即 87 最后被交换到上例中 99 的位置）<br>第二次 DelMax 的时候，只需要三次交换，六个元素被交换.<br>（88 交换到 97 的位置）<br>因此当 n &gt; 7 时，连续两次 DelMax() 最少只需要 5 次交换。<br>第三次 DelMax 的时候，只需要四次交换，九个元素被交换。<br>（89 交换到 95 的位置）<br>因此当 n &gt; 15 时，连续三次 DelMax() 最少只需要 9 次交换。</p>
 
 		</div>
 	</div>
