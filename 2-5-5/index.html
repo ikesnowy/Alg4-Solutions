@@ -9,12 +9,12 @@
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
         
-        <link rel="icon" href="//favicon.ico">
+        <link rel="icon" href="/favicon.ico">
         
-        <link href="/css/normalize.css" rel="stylesheet" id="normalize">
-        <link href="/css/style.css" rel="stylesheet" id="style">
-        <link href="/css/common.css" rel="stylesheet" id="common">
-        <link href="/css/markdown.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        <link href="/css/normalize-dark.css" rel="stylesheet" id="normalize">
+        <link href="/css/style-dark.css" rel="stylesheet" id="style">
+        <link href="/css/common-dark.css" rel="stylesheet" id="common">
+        <link href="/css/markdown-dark.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
@@ -221,29 +221,29 @@ A B2 B2
         isMenuExpanded = !isMenuExpanded;
         }
         </script>
-        <script>
-        function lightOff() {
-            document.getElementById('style').href='/css/style-dark.css';
-            document.getElementById('common').href='/css/common-dark.css';
-            document.getElementById('markdown').href='/css/markdown-dark.css';
-            document.getElementById('normalize').href='/css/normalize-dark.css';
-            document.getElementById('search-button-path').style.stroke = '#ffffff';
-        }
-        function lightOn() {
-            document.getElementById('style').href='/css/style.css';
-            document.getElementById('common').href='/css/common.css';
-            document.getElementById('markdown').href='/css/markdown.css';
-            document.getElementById('normalize').href='/css/normalize.css';
-            document.getElementById('search-button-path').style.stroke = '#111111';
-        }
-        var now = new Date();
-        if (now.getHours() > 18) {
-            lightOff();
-        } else {
-            lightOn();
-        }
+        <script type="text/javascript">
+            function lightOff() {
+                document.getElementById('style').href='/css/style-dark.css';
+                document.getElementById('common').href='/css/common-dark.css';
+                document.getElementById('markdown').href='/css/markdown-dark.css';
+                document.getElementById('normalize').href='/css/normalize-dark.css';
+                document.getElementById('search-button-path').style.stroke = '#ffffff';
+            }
+            function lightOn() {
+                document.getElementById('style').href='/css/style.css';
+                document.getElementById('common').href='/css/common.css';
+                document.getElementById('markdown').href='/css/markdown.css';
+                document.getElementById('normalize').href='/css/normalize.css';
+                document.getElementById('search-button-path').style.stroke = '#111111';
+            }
+            var now = new Date();
+            if (now.getHours() > 18) {
+                lightOff();
+            } else {
+                lightOn();
+            }
         </script>
-        <script>
+        <script type="text/javascript">
             (function(){
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
