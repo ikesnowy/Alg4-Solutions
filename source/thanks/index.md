@@ -19,3 +19,4 @@ date: 2019-01-24 10:56:53
 
 [@miyuexingchen](https://github.com/miyuexingchen)，2.4.6 [#521](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/521)。
 
+[@ljdhhp](https://github.com/ljdhhp)，1.3.31 [#539](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/539)。
