@@ -263,6 +263,117 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Min
   nameWithType: BST<TKey, TValue>.Min
   nameWithType.vb: BST(Of TKey, TValue).Min
+- uid: BinarySearchTree.BST`2.Node
+  name: BST<TKey, TValue>.Node
+  href: api/BinarySearchTree.BST-2.Node.html
+  commentId: T:BinarySearchTree.BST`2.Node
+  name.vb: BST(Of TKey, TValue).Node
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node
+  nameWithType: BST<TKey, TValue>.Node
+  nameWithType.vb: BST(Of TKey, TValue).Node
+- uid: BinarySearchTree.BST`2.Node.#ctor(`0,`1,System.Int32)
+  name: Node(TKey, TValue, Int32)
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node__ctor__0__1_System_Int32_
+  commentId: M:BinarySearchTree.BST`2.Node.#ctor(`0,`1,System.Int32)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Node(TKey, TValue, System.Int32)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Node(TKey, TValue, System.Int32)
+  nameWithType: BST<TKey, TValue>.Node.Node(TKey, TValue, Int32)
+  nameWithType.vb: BST(Of TKey, TValue).Node.Node(TKey, TValue, Int32)
+- uid: BinarySearchTree.BST`2.Node.#ctor*
+  name: Node
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node__ctor_
+  commentId: Overload:BinarySearchTree.BST`2.Node.#ctor
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Node
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Node
+  nameWithType: BST<TKey, TValue>.Node.Node
+  nameWithType.vb: BST(Of TKey, TValue).Node.Node
+- uid: BinarySearchTree.BST`2.Node.Key
+  name: Key
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Key
+  commentId: P:BinarySearchTree.BST`2.Node.Key
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Key
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Key
+  nameWithType: BST<TKey, TValue>.Node.Key
+  nameWithType.vb: BST(Of TKey, TValue).Node.Key
+- uid: BinarySearchTree.BST`2.Node.Key*
+  name: Key
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Key_
+  commentId: Overload:BinarySearchTree.BST`2.Node.Key
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Key
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Key
+  nameWithType: BST<TKey, TValue>.Node.Key
+  nameWithType.vb: BST(Of TKey, TValue).Node.Key
+- uid: BinarySearchTree.BST`2.Node.Left
+  name: Left
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Left
+  commentId: P:BinarySearchTree.BST`2.Node.Left
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Left
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Left
+  nameWithType: BST<TKey, TValue>.Node.Left
+  nameWithType.vb: BST(Of TKey, TValue).Node.Left
+- uid: BinarySearchTree.BST`2.Node.Left*
+  name: Left
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Left_
+  commentId: Overload:BinarySearchTree.BST`2.Node.Left
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Left
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Left
+  nameWithType: BST<TKey, TValue>.Node.Left
+  nameWithType.vb: BST(Of TKey, TValue).Node.Left
+- uid: BinarySearchTree.BST`2.Node.Right
+  name: Right
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Right
+  commentId: P:BinarySearchTree.BST`2.Node.Right
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Right
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Right
+  nameWithType: BST<TKey, TValue>.Node.Right
+  nameWithType.vb: BST(Of TKey, TValue).Node.Right
+- uid: BinarySearchTree.BST`2.Node.Right*
+  name: Right
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Right_
+  commentId: Overload:BinarySearchTree.BST`2.Node.Right
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Right
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Right
+  nameWithType: BST<TKey, TValue>.Node.Right
+  nameWithType.vb: BST(Of TKey, TValue).Node.Right
+- uid: BinarySearchTree.BST`2.Node.Size
+  name: Size
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Size
+  commentId: P:BinarySearchTree.BST`2.Node.Size
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Size
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Size
+  nameWithType: BST<TKey, TValue>.Node.Size
+  nameWithType.vb: BST(Of TKey, TValue).Node.Size
+- uid: BinarySearchTree.BST`2.Node.Size*
+  name: Size
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Size_
+  commentId: Overload:BinarySearchTree.BST`2.Node.Size
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Size
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Size
+  nameWithType: BST<TKey, TValue>.Node.Size
+  nameWithType.vb: BST(Of TKey, TValue).Node.Size
+- uid: BinarySearchTree.BST`2.Node.Value
+  name: Value
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Value
+  commentId: P:BinarySearchTree.BST`2.Node.Value
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Value
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Value
+  nameWithType: BST<TKey, TValue>.Node.Value
+  nameWithType.vb: BST(Of TKey, TValue).Node.Value
+- uid: BinarySearchTree.BST`2.Node.Value*
+  name: Value
+  href: api/BinarySearchTree.BST-2.Node.html#BinarySearchTree_BST_2_Node_Value_
+  commentId: Overload:BinarySearchTree.BST`2.Node.Value
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.Node.Value
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Node.Value
+  nameWithType: BST<TKey, TValue>.Node.Value
+  nameWithType.vb: BST(Of TKey, TValue).Node.Value
 - uid: BinarySearchTree.BST`2.Put(`0,`1)
   name: Put(TKey, TValue)
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put__0__1_
@@ -297,6 +408,14 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Rank
   nameWithType: BST<TKey, TValue>.Rank
   nameWithType.vb: BST(Of TKey, TValue).Rank
+- uid: BinarySearchTree.BST`2.root
+  name: root
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_root
+  commentId: F:BinarySearchTree.BST`2.root
+  fullName: BinarySearchTree.BST<TKey, TValue>.root
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).root
+  nameWithType: BST<TKey, TValue>.root
+  nameWithType.vb: BST(Of TKey, TValue).root
 - uid: BinarySearchTree.BST`2.Select(System.Int32)
   name: Select(Int32)
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_System_Int32_
@@ -755,6 +874,32 @@ references:
   fullName.vb: BinarySearchTree.BSTNonRecursive(Of TKey, TValue).ToValueArray
   nameWithType: BSTNonRecursive<TKey, TValue>.ToValueArray
   nameWithType.vb: BSTNonRecursive(Of TKey, TValue).ToValueArray
+- uid: BinarySearchTree.BSTRandomKey`2
+  name: BSTRandomKey<TKey, TValue>
+  href: api/BinarySearchTree.BSTRandomKey-2.html
+  commentId: T:BinarySearchTree.BSTRandomKey`2
+  name.vb: BSTRandomKey(Of TKey, TValue)
+  fullName: BinarySearchTree.BSTRandomKey<TKey, TValue>
+  fullName.vb: BinarySearchTree.BSTRandomKey(Of TKey, TValue)
+  nameWithType: BSTRandomKey<TKey, TValue>
+  nameWithType.vb: BSTRandomKey(Of TKey, TValue)
+- uid: BinarySearchTree.BSTRandomKey`2.RandomKey
+  name: RandomKey()
+  href: api/BinarySearchTree.BSTRandomKey-2.html#BinarySearchTree_BSTRandomKey_2_RandomKey
+  commentId: M:BinarySearchTree.BSTRandomKey`2.RandomKey
+  fullName: BinarySearchTree.BSTRandomKey<TKey, TValue>.RandomKey()
+  fullName.vb: BinarySearchTree.BSTRandomKey(Of TKey, TValue).RandomKey()
+  nameWithType: BSTRandomKey<TKey, TValue>.RandomKey()
+  nameWithType.vb: BSTRandomKey(Of TKey, TValue).RandomKey()
+- uid: BinarySearchTree.BSTRandomKey`2.RandomKey*
+  name: RandomKey
+  href: api/BinarySearchTree.BSTRandomKey-2.html#BinarySearchTree_BSTRandomKey_2_RandomKey_
+  commentId: Overload:BinarySearchTree.BSTRandomKey`2.RandomKey
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTRandomKey<TKey, TValue>.RandomKey
+  fullName.vb: BinarySearchTree.BSTRandomKey(Of TKey, TValue).RandomKey
+  nameWithType: BSTRandomKey<TKey, TValue>.RandomKey
+  nameWithType.vb: BSTRandomKey(Of TKey, TValue).RandomKey
 - uid: BinarySearchTree.BSTTester
   name: BSTTester
   href: api/BinarySearchTree.BSTTester.html
