@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档 | 《算法（第四版）》C# 题解</title>
+        <title>3.2.24 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -138,75 +138,28 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2019</h4>
-        
-        <p class="post-title"><span>2019年1月14日</span><a href="/2-5-18/">2.5.18</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月12日</span><a href="/2-5-17/">2.5.17</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月12日</span><a href="/2-5-16/">2.5.16</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月11日</span><a href="/2-5-15/">2.5.15</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月11日</span><a href="/2-5-14/">2.5.14</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月10日</span><a href="/2-5-13/">2.5.13</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月9日</span><a href="/2-5-12/">2.5.12</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月8日</span><a href="/2-5-11/">2.5.11</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月8日</span><a href="/2-5-10/">2.5.10</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年1月8日</span><a href="/2-5-9/">2.5.9</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.2.24
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.2.24</h1>
+			<p>上次更新：2019-10-03 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>根据命题 D （英文版 P404，中文版 P255），一次插入所需的比较次数平均为 $ 1.39\lg N$。<br>(我们这里要求和，因此可以直接使用平均值进行计算）<br>于是构造一棵二叉查找树所需的比较次数为：<br>$$<br>1.39C= 1.39\sum_{i=0}^N \lg i=1.39 \times(\lg 1 + \lg2+\cdots+\lg N)<br>$$<br>根据对数恒等式，有：<br>$$<br>C=\lg 1 + \lg2+\cdots+\lg N=\lg(1\times2\times3\times\cdots\times N)=\lg(N!)<br>$$<br>于是有 $ 1.39C=1.39\lg(N!) &gt; \lg(N!)$ ，得证。</p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -214,10 +167,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/page/8/">上一页</a>
+		<a href="/3-2-23/">上一题</a>
 		
-		
-		<a href="/archives/page/10/">下一页</a>
 		
 	</div>
 	
@@ -316,7 +267,24 @@ function dismissSearchResultModal() {
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
         })();
-        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
         
     </body>
 </html>
