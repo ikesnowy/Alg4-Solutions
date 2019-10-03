@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档: 2019 | 《算法（第四版）》C# 题解</title>
+        <title>3.2.23 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -138,75 +138,45 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2019</h4>
-        
-        <p class="post-title"><span>2019年10月3日</span><a href="/3-2-23/">3.2.23</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年10月2日</span><a href="/3-2-22/">3.2.22</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年10月2日</span><a href="/3-2-21/">3.2.21</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年9月28日</span><a href="/3-2-20/">3.2.20</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年8月25日</span><a href="/3-2-19/">3.2.19</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年8月25日</span><a href="/3-2-18/">3.2.18</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年8月25日</span><a href="/3-2-17/">3.2.17</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年8月22日</span><a href="/3-2-16/">3.2.16</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年8月18日</span><a href="/3-2-15/">3.2.15</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年7月28日</span><a href="/3-2-14/">3.2.14</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.2.23
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.2.23</h1>
+			<p>上次更新：2019-10-03 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>不满足，反例如下：</p>
+<pre><code>    |-------10
+|---5---|
+3     |-8-|
+      6   9
+
+Delete 5 then delete 3
+|-------10
+6---|
+    8-|
+      9
+
+Delete 3 then delete 5
+  |---10
+|-8-|
+6   9
+</code></pre><p>这里先删除 3 会使 5 的左子树为空，导致删除 5 的时候采取的策略被改变（尽管 5 的右子树没有任何变化）。</p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://stackoverflow.com/questions/2990486/deletion-procedure-for-a-binary-search-tree" target="_blank" rel="noopener">Deletion procedure for a Binary Search Tree-Stackoverflow</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -214,8 +184,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
+		<a href="/3-2-22/">上一题</a>
 		
-		<a href="/archives/2019/page/2/">下一页</a>
 		
 	</div>
 	
