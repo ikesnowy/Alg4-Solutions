@@ -149,9 +149,10 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.2.25</h1>
-			<p>上次更新：2019-10-03 <br>
+			<p>上次更新：2019-10-04 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>先排序，然后视其为中序序列，每次取中间的键作为根结点，左半数组是左子树，右半数组是右子树，递归构造。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/32bst/PerfectBalance.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/32bst/PerfectBalance.java.html</a></p>
+<p>先排序，然后视其为中序序列，每次取中间的键作为根结点，左半数组是左子树，右半数组是右子树，递归构造。</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">private</span> Node <span class="token function">BuildTree</span><span class="token punctuation">(</span>KeyValuePair<span class="token operator">&lt;</span>TKey<span class="token punctuation">,</span> TValue<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> init<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span><span class="token comment" spellcheck="true">// init is sorted</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>lo <span class="token operator">></span> hi<span class="token punctuation">)</span>

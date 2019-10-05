@@ -509,6 +509,33 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).ToValueArray
   nameWithType: BST<TKey, TValue>.ToValueArray
   nameWithType.vb: BST(Of TKey, TValue).ToValueArray
+- uid: BinarySearchTree.BSTBalanced`2
+  name: BSTBalanced<TKey, TValue>
+  href: api/BinarySearchTree.BSTBalanced-2.html
+  commentId: T:BinarySearchTree.BSTBalanced`2
+  name.vb: BSTBalanced(Of TKey, TValue)
+  fullName: BinarySearchTree.BSTBalanced<TKey, TValue>
+  fullName.vb: BinarySearchTree.BSTBalanced(Of TKey, TValue)
+  nameWithType: BSTBalanced<TKey, TValue>
+  nameWithType.vb: BSTBalanced(Of TKey, TValue)
+- uid: BinarySearchTree.BSTBalanced`2.#ctor(System.Collections.Generic.KeyValuePair{`0,`1}[])
+  name: BSTBalanced(KeyValuePair<TKey, TValue>[])
+  href: api/BinarySearchTree.BSTBalanced-2.html#BinarySearchTree_BSTBalanced_2__ctor_System_Collections_Generic_KeyValuePair__0__1____
+  commentId: M:BinarySearchTree.BSTBalanced`2.#ctor(System.Collections.Generic.KeyValuePair{`0,`1}[])
+  name.vb: BSTBalanced(KeyValuePair(Of TKey, TValue)())
+  fullName: BinarySearchTree.BSTBalanced<TKey, TValue>.BSTBalanced(System.Collections.Generic.KeyValuePair<TKey, TValue>[])
+  fullName.vb: BinarySearchTree.BSTBalanced(Of TKey, TValue).BSTBalanced(System.Collections.Generic.KeyValuePair(Of TKey, TValue)())
+  nameWithType: BSTBalanced<TKey, TValue>.BSTBalanced(KeyValuePair<TKey, TValue>[])
+  nameWithType.vb: BSTBalanced(Of TKey, TValue).BSTBalanced(KeyValuePair(Of TKey, TValue)())
+- uid: BinarySearchTree.BSTBalanced`2.#ctor*
+  name: BSTBalanced
+  href: api/BinarySearchTree.BSTBalanced-2.html#BinarySearchTree_BSTBalanced_2__ctor_
+  commentId: Overload:BinarySearchTree.BSTBalanced`2.#ctor
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTBalanced<TKey, TValue>.BSTBalanced
+  fullName.vb: BinarySearchTree.BSTBalanced(Of TKey, TValue).BSTBalanced
+  nameWithType: BSTBalanced<TKey, TValue>.BSTBalanced
+  nameWithType.vb: BSTBalanced(Of TKey, TValue).BSTBalanced
 - uid: BinarySearchTree.BSTNonRecursive`2
   name: BSTNonRecursive<TKey, TValue>
   href: api/BinarySearchTree.BSTNonRecursive-2.html
@@ -1288,6 +1315,101 @@ references:
   fullName.vb: BinarySearchTree.BSTWithoutCounter(Of TKey, TValue).ToValueArray
   nameWithType: BSTWithoutCounter<TKey, TValue>.ToValueArray
   nameWithType.vb: BSTWithoutCounter(Of TKey, TValue).ToValueArray
+- uid: BinarySearchTree.FrequencyCounter
+  name: FrequencyCounter
+  href: api/BinarySearchTree.FrequencyCounter.html
+  commentId: T:BinarySearchTree.FrequencyCounter
+  fullName: BinarySearchTree.FrequencyCounter
+  nameWithType: FrequencyCounter
+- uid: BinarySearchTree.FrequencyCounter.CountDistinct*
+  name: CountDistinct
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_CountDistinct_
+  commentId: Overload:BinarySearchTree.FrequencyCounter.CountDistinct
+  isSpec: "True"
+  fullName: BinarySearchTree.FrequencyCounter.CountDistinct
+  nameWithType: FrequencyCounter.CountDistinct
+- uid: BinarySearchTree.FrequencyCounter.CountDistinct``1(``0[],BinarySearchTree.IST{``0,System.Int32})
+  name: CountDistinct<TKey>(TKey[], IST<TKey, Int32>)
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_CountDistinct__1___0___BinarySearchTree_IST___0_System_Int32__
+  commentId: M:BinarySearchTree.FrequencyCounter.CountDistinct``1(``0[],BinarySearchTree.IST{``0,System.Int32})
+  name.vb: CountDistinct(Of TKey)(TKey(), IST(Of TKey, Int32))
+  fullName: BinarySearchTree.FrequencyCounter.CountDistinct<TKey>(TKey[], BinarySearchTree.IST<TKey, System.Int32>)
+  fullName.vb: BinarySearchTree.FrequencyCounter.CountDistinct(Of TKey)(TKey(), BinarySearchTree.IST(Of TKey, System.Int32))
+  nameWithType: FrequencyCounter.CountDistinct<TKey>(TKey[], IST<TKey, Int32>)
+  nameWithType.vb: FrequencyCounter.CountDistinct(Of TKey)(TKey(), IST(Of TKey, Int32))
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyKey*
+  name: MostFrequentlyKey
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyKey_
+  commentId: Overload:BinarySearchTree.FrequencyCounter.MostFrequentlyKey
+  isSpec: "True"
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyKey
+  nameWithType: FrequencyCounter.MostFrequentlyKey
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyKey``1(BinarySearchTree.IST{``0,System.Int32},``0[])
+  name: MostFrequentlyKey<TKey>(IST<TKey, Int32>, TKey[])
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyKey__1_BinarySearchTree_IST___0_System_Int32____0___
+  commentId: M:BinarySearchTree.FrequencyCounter.MostFrequentlyKey``1(BinarySearchTree.IST{``0,System.Int32},``0[])
+  name.vb: MostFrequentlyKey(Of TKey)(IST(Of TKey, Int32), TKey())
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyKey<TKey>(BinarySearchTree.IST<TKey, System.Int32>, TKey[])
+  fullName.vb: BinarySearchTree.FrequencyCounter.MostFrequentlyKey(Of TKey)(BinarySearchTree.IST(Of TKey, System.Int32), TKey())
+  nameWithType: FrequencyCounter.MostFrequentlyKey<TKey>(IST<TKey, Int32>, TKey[])
+  nameWithType.vb: FrequencyCounter.MostFrequentlyKey(Of TKey)(IST(Of TKey, Int32), TKey())
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,BinarySearchTree.IST{System.String,System.Int32})
+  name: MostFrequentlyWord(String, Int32, IST<String, Int32>)
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyWord_System_String_System_Int32_BinarySearchTree_IST_System_String_System_Int32__
+  commentId: M:BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,BinarySearchTree.IST{System.String,System.Int32})
+  name.vb: MostFrequentlyWord(String, Int32, IST(Of String, Int32))
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, BinarySearchTree.IST<System.String, System.Int32>)
+  fullName.vb: BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, BinarySearchTree.IST(Of System.String, System.Int32))
+  nameWithType: FrequencyCounter.MostFrequentlyWord(String, Int32, IST<String, Int32>)
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWord(String, Int32, IST(Of String, Int32))
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,System.Int32,BinarySearchTree.IST{System.String,System.Int32})
+  name: MostFrequentlyWord(String, Int32, Int32, IST<String, Int32>)
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyWord_System_String_System_Int32_System_Int32_BinarySearchTree_IST_System_String_System_Int32__
+  commentId: M:BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String,System.Int32,System.Int32,BinarySearchTree.IST{System.String,System.Int32})
+  name.vb: MostFrequentlyWord(String, Int32, Int32, IST(Of String, Int32))
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, System.Int32, BinarySearchTree.IST<System.String, System.Int32>)
+  fullName.vb: BinarySearchTree.FrequencyCounter.MostFrequentlyWord(System.String, System.Int32, System.Int32, BinarySearchTree.IST(Of System.String, System.Int32))
+  nameWithType: FrequencyCounter.MostFrequentlyWord(String, Int32, Int32, IST<String, Int32>)
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWord(String, Int32, Int32, IST(Of String, Int32))
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyWord*
+  name: MostFrequentlyWord
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyWord_
+  commentId: Overload:BinarySearchTree.FrequencyCounter.MostFrequentlyWord
+  isSpec: "True"
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyWord
+  nameWithType: FrequencyCounter.MostFrequentlyWord
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,BinarySearchTree.IST{System.String,System.Int32},System.Int32[]@,System.Int64[]@)
+  name: MostFrequentlyWordAnalysis(String, Int32, IST<String, Int32>, out Int32[], out Int64[])
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyWordAnalysis_System_String_System_Int32_BinarySearchTree_IST_System_String_System_Int32__System_Int32____System_Int64____
+  commentId: M:BinarySearchTree.FrequencyCounter.MostFrequentlyWordAnalysis(System.String,System.Int32,BinarySearchTree.IST{System.String,System.Int32},System.Int32[]@,System.Int64[]@)
+  name.vb: MostFrequentlyWordAnalysis(String, Int32, IST(Of String, Int32), ByRef Int32(), ByRef Int64())
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, BinarySearchTree.IST<System.String, System.Int32>, out System.Int32[], out System.Int64[])
+  fullName.vb: BinarySearchTree.FrequencyCounter.MostFrequentlyWordAnalysis(System.String, System.Int32, BinarySearchTree.IST(Of System.String, System.Int32), ByRef System.Int32(), ByRef System.Int64())
+  nameWithType: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, IST<String, Int32>, out Int32[], out Int64[])
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWordAnalysis(String, Int32, IST(Of String, Int32), ByRef Int32(), ByRef Int64())
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyWordAnalysis*
+  name: MostFrequentlyWordAnalysis
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyWordAnalysis_
+  commentId: Overload:BinarySearchTree.FrequencyCounter.MostFrequentlyWordAnalysis
+  isSpec: "True"
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyWordAnalysis
+  nameWithType: FrequencyCounter.MostFrequentlyWordAnalysis
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyWords(System.String,System.Int32,BinarySearchTree.IST{System.String,System.Int32})
+  name: MostFrequentlyWords(String, Int32, IST<String, Int32>)
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyWords_System_String_System_Int32_BinarySearchTree_IST_System_String_System_Int32__
+  commentId: M:BinarySearchTree.FrequencyCounter.MostFrequentlyWords(System.String,System.Int32,BinarySearchTree.IST{System.String,System.Int32})
+  name.vb: MostFrequentlyWords(String, Int32, IST(Of String, Int32))
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyWords(System.String, System.Int32, BinarySearchTree.IST<System.String, System.Int32>)
+  fullName.vb: BinarySearchTree.FrequencyCounter.MostFrequentlyWords(System.String, System.Int32, BinarySearchTree.IST(Of System.String, System.Int32))
+  nameWithType: FrequencyCounter.MostFrequentlyWords(String, Int32, IST<String, Int32>)
+  nameWithType.vb: FrequencyCounter.MostFrequentlyWords(String, Int32, IST(Of String, Int32))
+- uid: BinarySearchTree.FrequencyCounter.MostFrequentlyWords*
+  name: MostFrequentlyWords
+  href: api/BinarySearchTree.FrequencyCounter.html#BinarySearchTree_FrequencyCounter_MostFrequentlyWords_
+  commentId: Overload:BinarySearchTree.FrequencyCounter.MostFrequentlyWords
+  isSpec: "True"
+  fullName: BinarySearchTree.FrequencyCounter.MostFrequentlyWords
+  nameWithType: FrequencyCounter.MostFrequentlyWords
 - uid: BinarySearchTree.IOrderedST`2
   name: IOrderedST<TKey, TValue>
   href: api/BinarySearchTree.IOrderedST-2.html
@@ -1696,6 +1818,57 @@ references:
   fullName.vb: BinarySearchTree.IST(Of TKey, TValue).Size
   nameWithType: IST<TKey, TValue>.Size
   nameWithType.vb: IST(Of TKey, TValue).Size
+- uid: BinarySearchTree.Properties
+  name: BinarySearchTree.Properties
+  href: api/BinarySearchTree.Properties.html
+  commentId: N:BinarySearchTree.Properties
+  fullName: BinarySearchTree.Properties
+  nameWithType: BinarySearchTree.Properties
+- uid: BinarySearchTree.Properties.Resources
+  name: Resources
+  href: api/BinarySearchTree.Properties.Resources.html
+  commentId: T:BinarySearchTree.Properties.Resources
+  fullName: BinarySearchTree.Properties.Resources
+  nameWithType: Resources
+- uid: BinarySearchTree.Properties.Resources.Culture
+  name: Culture
+  href: api/BinarySearchTree.Properties.Resources.html#BinarySearchTree_Properties_Resources_Culture
+  commentId: P:BinarySearchTree.Properties.Resources.Culture
+  fullName: BinarySearchTree.Properties.Resources.Culture
+  nameWithType: Resources.Culture
+- uid: BinarySearchTree.Properties.Resources.Culture*
+  name: Culture
+  href: api/BinarySearchTree.Properties.Resources.html#BinarySearchTree_Properties_Resources_Culture_
+  commentId: Overload:BinarySearchTree.Properties.Resources.Culture
+  isSpec: "True"
+  fullName: BinarySearchTree.Properties.Resources.Culture
+  nameWithType: Resources.Culture
+- uid: BinarySearchTree.Properties.Resources.ResourceManager
+  name: ResourceManager
+  href: api/BinarySearchTree.Properties.Resources.html#BinarySearchTree_Properties_Resources_ResourceManager
+  commentId: P:BinarySearchTree.Properties.Resources.ResourceManager
+  fullName: BinarySearchTree.Properties.Resources.ResourceManager
+  nameWithType: Resources.ResourceManager
+- uid: BinarySearchTree.Properties.Resources.ResourceManager*
+  name: ResourceManager
+  href: api/BinarySearchTree.Properties.Resources.html#BinarySearchTree_Properties_Resources_ResourceManager_
+  commentId: Overload:BinarySearchTree.Properties.Resources.ResourceManager
+  isSpec: "True"
+  fullName: BinarySearchTree.Properties.Resources.ResourceManager
+  nameWithType: Resources.ResourceManager
+- uid: BinarySearchTree.Properties.Resources.tale
+  name: tale
+  href: api/BinarySearchTree.Properties.Resources.html#BinarySearchTree_Properties_Resources_tale
+  commentId: P:BinarySearchTree.Properties.Resources.tale
+  fullName: BinarySearchTree.Properties.Resources.tale
+  nameWithType: Resources.tale
+- uid: BinarySearchTree.Properties.Resources.tale*
+  name: tale
+  href: api/BinarySearchTree.Properties.Resources.html#BinarySearchTree_Properties_Resources_tale_
+  commentId: Overload:BinarySearchTree.Properties.Resources.tale
+  isSpec: "True"
+  fullName: BinarySearchTree.Properties.Resources.tale
+  nameWithType: Resources.tale
 - uid: Commercial
   name: Commercial
   href: api/Commercial.html
