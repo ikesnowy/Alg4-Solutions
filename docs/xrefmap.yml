@@ -276,6 +276,33 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsEmpty
   nameWithType: BST<TKey, TValue>.IsEmpty
   nameWithType.vb: BST(Of TKey, TValue).IsEmpty
+- uid: BinarySearchTree.BST`2.IsOrdered(BinarySearchTree.BST{`0,`1})
+  name: IsOrdered(BST<TKey, TValue>)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsOrdered_BinarySearchTree_BST__0__1__
+  commentId: M:BinarySearchTree.BST`2.IsOrdered(BinarySearchTree.BST{`0,`1})
+  name.vb: IsOrdered(BST(Of TKey, TValue))
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsOrdered(BinarySearchTree.BST<TKey, TValue>)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsOrdered(BinarySearchTree.BST(Of TKey, TValue))
+  nameWithType: BST<TKey, TValue>.IsOrdered(BST<TKey, TValue>)
+  nameWithType.vb: BST(Of TKey, TValue).IsOrdered(BST(Of TKey, TValue))
+- uid: BinarySearchTree.BST`2.IsOrdered(BinarySearchTree.BST{`0,`1}.Node,`0,`0)
+  name: IsOrdered(BST<TKey, TValue>.Node, TKey, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsOrdered_BinarySearchTree_BST__0__1__Node__0__0_
+  commentId: M:BinarySearchTree.BST`2.IsOrdered(BinarySearchTree.BST{`0,`1}.Node,`0,`0)
+  name.vb: IsOrdered(BST(Of TKey, TValue).Node, TKey, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsOrdered(BinarySearchTree.BST<TKey, TValue>.Node, TKey, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsOrdered(BinarySearchTree.BST(Of TKey, TValue).Node, TKey, TKey)
+  nameWithType: BST<TKey, TValue>.IsOrdered(BST<TKey, TValue>.Node, TKey, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).IsOrdered(BST(Of TKey, TValue).Node, TKey, TKey)
+- uid: BinarySearchTree.BST`2.IsOrdered*
+  name: IsOrdered
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsOrdered_
+  commentId: Overload:BinarySearchTree.BST`2.IsOrdered
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsOrdered
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsOrdered
+  nameWithType: BST<TKey, TValue>.IsOrdered
+  nameWithType.vb: BST(Of TKey, TValue).IsOrdered
 - uid: BinarySearchTree.BST`2.IsStructureEqual*
   name: IsStructureEqual
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsStructureEqual_

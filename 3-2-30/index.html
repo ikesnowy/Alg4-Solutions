@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档 | 《算法（第四版）》C# 题解</title>
+        <title>3.2.30 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -138,75 +138,44 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2018</h4>
-        
-        <p class="post-title"><span>2018年6月28日</span><a href="/1-5-20/">1.5.20</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-19/">1.5.19</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-18/">1.5.18</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-17/">1.5.17</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-16/">1.5.16</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-15/">1.5.15</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-14/">1.5.14</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-13/">1.5.13</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-12/">1.5.12</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月22日</span><a href="/1-5-11/">1.5.11</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.2.30
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.2.30</h1>
+			<p>上次更新：2019-10-05 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>与上一题非常类似，条件有：<br>根结点必须在 <code>min</code> 和 <code>max</code> 范围内，<br>且左右子树要么不存在，要么小于/大于根结点的键，<br>左右子树同样满足上述条件。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">IsOrdered</span><span class="token punctuation">(</span>Node x<span class="token punctuation">,</span> TKey min<span class="token punctuation">,</span> TKey max<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 空树显然是满足要求的。</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token function">IsOrdered</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Left<span class="token punctuation">,</span> min<span class="token punctuation">,</span> max<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+           <span class="token function">IsOrdered</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Right<span class="token punctuation">,</span> min<span class="token punctuation">,</span> max<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>                        <span class="token comment" spellcheck="true">// 左右子树都满足要求。</span>
+           x<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>max<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>
+           x<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>min<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>                           <span class="token comment" spellcheck="true">// 当前结点位于范围内。</span>
+           <span class="token punctuation">(</span>x<span class="token punctuation">.</span>Left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> x<span class="token punctuation">.</span>Left<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+           <span class="token punctuation">(</span>x<span class="token punctuation">.</span>Right <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> x<span class="token punctuation">.</span>Right<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 当前结点与子结点满足大小关系。</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/BinarySearchTree.html">BinarySearchTree 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -214,10 +183,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/page/25/">上一页</a>
+		<a href="/3-2-29/">上一题</a>
 		
-		
-		<a href="/archives/page/27/">下一页</a>
 		
 	</div>
 	
