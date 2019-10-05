@@ -41,6 +41,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Ceiling(TKey)
   nameWithType: BST<TKey, TValue>.Ceiling(TKey)
   nameWithType.vb: BST(Of TKey, TValue).Ceiling(TKey)
+- uid: BinarySearchTree.BST`2.Ceiling(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name: Ceiling(BST<TKey, TValue>.Node, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling_BinarySearchTree_BST__0__1__Node__0_
+  commentId: M:BinarySearchTree.BST`2.Ceiling(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name.vb: Ceiling(BST(Of TKey, TValue).Node, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Ceiling(BinarySearchTree.BST<TKey, TValue>.Node, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Ceiling(BinarySearchTree.BST(Of TKey, TValue).Node, TKey)
+  nameWithType: BST<TKey, TValue>.Ceiling(BST<TKey, TValue>.Node, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Ceiling(BST(Of TKey, TValue).Node, TKey)
 - uid: BinarySearchTree.BST`2.Ceiling*
   name: Ceiling
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling_
@@ -75,6 +84,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Delete(TKey)
   nameWithType: BST<TKey, TValue>.Delete(TKey)
   nameWithType.vb: BST(Of TKey, TValue).Delete(TKey)
+- uid: BinarySearchTree.BST`2.Delete(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name: Delete(BST<TKey, TValue>.Node, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete_BinarySearchTree_BST__0__1__Node__0_
+  commentId: M:BinarySearchTree.BST`2.Delete(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name.vb: Delete(BST(Of TKey, TValue).Node, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Delete(BinarySearchTree.BST<TKey, TValue>.Node, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Delete(BinarySearchTree.BST(Of TKey, TValue).Node, TKey)
+  nameWithType: BST<TKey, TValue>.Delete(BST<TKey, TValue>.Node, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Delete(BST(Of TKey, TValue).Node, TKey)
 - uid: BinarySearchTree.BST`2.Delete*
   name: Delete
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete_
@@ -92,6 +110,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMax()
   nameWithType: BST<TKey, TValue>.DeleteMax()
   nameWithType.vb: BST(Of TKey, TValue).DeleteMax()
+- uid: BinarySearchTree.BST`2.DeleteMax(BinarySearchTree.BST{`0,`1}.Node)
+  name: DeleteMax(BST<TKey, TValue>.Node)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax_BinarySearchTree_BST__0__1__Node_
+  commentId: M:BinarySearchTree.BST`2.DeleteMax(BinarySearchTree.BST{`0,`1}.Node)
+  name.vb: DeleteMax(BST(Of TKey, TValue).Node)
+  fullName: BinarySearchTree.BST<TKey, TValue>.DeleteMax(BinarySearchTree.BST<TKey, TValue>.Node)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMax(BinarySearchTree.BST(Of TKey, TValue).Node)
+  nameWithType: BST<TKey, TValue>.DeleteMax(BST<TKey, TValue>.Node)
+  nameWithType.vb: BST(Of TKey, TValue).DeleteMax(BST(Of TKey, TValue).Node)
 - uid: BinarySearchTree.BST`2.DeleteMax*
   name: DeleteMax
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax_
@@ -109,6 +136,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMin()
   nameWithType: BST<TKey, TValue>.DeleteMin()
   nameWithType.vb: BST(Of TKey, TValue).DeleteMin()
+- uid: BinarySearchTree.BST`2.DeleteMin(BinarySearchTree.BST{`0,`1}.Node)
+  name: DeleteMin(BST<TKey, TValue>.Node)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin_BinarySearchTree_BST__0__1__Node_
+  commentId: M:BinarySearchTree.BST`2.DeleteMin(BinarySearchTree.BST{`0,`1}.Node)
+  name.vb: DeleteMin(BST(Of TKey, TValue).Node)
+  fullName: BinarySearchTree.BST<TKey, TValue>.DeleteMin(BinarySearchTree.BST<TKey, TValue>.Node)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).DeleteMin(BinarySearchTree.BST(Of TKey, TValue).Node)
+  nameWithType: BST<TKey, TValue>.DeleteMin(BST<TKey, TValue>.Node)
+  nameWithType.vb: BST(Of TKey, TValue).DeleteMin(BST(Of TKey, TValue).Node)
 - uid: BinarySearchTree.BST`2.DeleteMin*
   name: DeleteMin
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin_
@@ -126,6 +162,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Floor(TKey)
   nameWithType: BST<TKey, TValue>.Floor(TKey)
   nameWithType.vb: BST(Of TKey, TValue).Floor(TKey)
+- uid: BinarySearchTree.BST`2.Floor(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name: Floor(BST<TKey, TValue>.Node, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor_BinarySearchTree_BST__0__1__Node__0_
+  commentId: M:BinarySearchTree.BST`2.Floor(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name.vb: Floor(BST(Of TKey, TValue).Node, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Floor(BinarySearchTree.BST<TKey, TValue>.Node, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Floor(BinarySearchTree.BST(Of TKey, TValue).Node, TKey)
+  nameWithType: BST<TKey, TValue>.Floor(BST<TKey, TValue>.Node, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Floor(BST(Of TKey, TValue).Node, TKey)
 - uid: BinarySearchTree.BST`2.Floor*
   name: Floor
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor_
@@ -143,6 +188,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Get(TKey)
   nameWithType: BST<TKey, TValue>.Get(TKey)
   nameWithType.vb: BST(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.BST`2.Get(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name: Get(BST<TKey, TValue>.Node, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get_BinarySearchTree_BST__0__1__Node__0_
+  commentId: M:BinarySearchTree.BST`2.Get(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name.vb: Get(BST(Of TKey, TValue).Node, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Get(BinarySearchTree.BST<TKey, TValue>.Node, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Get(BinarySearchTree.BST(Of TKey, TValue).Node, TKey)
+  nameWithType: BST<TKey, TValue>.Get(BST<TKey, TValue>.Node, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Get(BST(Of TKey, TValue).Node, TKey)
 - uid: BinarySearchTree.BST`2.Get*
   name: Get
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get_
@@ -160,6 +214,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Height()
   nameWithType: BST<TKey, TValue>.Height()
   nameWithType.vb: BST(Of TKey, TValue).Height()
+- uid: BinarySearchTree.BST`2.Height(BinarySearchTree.BST{`0,`1}.Node)
+  name: Height(BST<TKey, TValue>.Node)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height_BinarySearchTree_BST__0__1__Node_
+  commentId: M:BinarySearchTree.BST`2.Height(BinarySearchTree.BST{`0,`1}.Node)
+  name.vb: Height(BST(Of TKey, TValue).Node)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Height(BinarySearchTree.BST<TKey, TValue>.Node)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Height(BinarySearchTree.BST(Of TKey, TValue).Node)
+  nameWithType: BST<TKey, TValue>.Height(BST<TKey, TValue>.Node)
+  nameWithType.vb: BST(Of TKey, TValue).Height(BST(Of TKey, TValue).Node)
 - uid: BinarySearchTree.BST`2.Height*
   name: Height
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height_
@@ -220,6 +283,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys(TKey, TKey)
   nameWithType: BST<TKey, TValue>.Keys(TKey, TKey)
   nameWithType.vb: BST(Of TKey, TValue).Keys(TKey, TKey)
+- uid: BinarySearchTree.BST`2.Keys(BinarySearchTree.BST{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+  name: Keys(BST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys_BinarySearchTree_BST__0__1__Node_System_Collections_Generic_Queue__0___0__0_
+  commentId: M:BinarySearchTree.BST`2.Keys(BinarySearchTree.BST{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+  name.vb: Keys(BST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Keys(BinarySearchTree.BST<TKey, TValue>.Node, System.Collections.Generic.Queue<TKey>, TKey, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys(BinarySearchTree.BST(Of TKey, TValue).Node, System.Collections.Generic.Queue(Of TKey), TKey, TKey)
+  nameWithType: BST<TKey, TValue>.Keys(BST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Keys(BST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
 - uid: BinarySearchTree.BST`2.Keys*
   name: Keys
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys_
@@ -237,6 +309,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Max()
   nameWithType: BST<TKey, TValue>.Max()
   nameWithType.vb: BST(Of TKey, TValue).Max()
+- uid: BinarySearchTree.BST`2.Max(BinarySearchTree.BST{`0,`1}.Node)
+  name: Max(BST<TKey, TValue>.Node)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max_BinarySearchTree_BST__0__1__Node_
+  commentId: M:BinarySearchTree.BST`2.Max(BinarySearchTree.BST{`0,`1}.Node)
+  name.vb: Max(BST(Of TKey, TValue).Node)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Max(BinarySearchTree.BST<TKey, TValue>.Node)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Max(BinarySearchTree.BST(Of TKey, TValue).Node)
+  nameWithType: BST<TKey, TValue>.Max(BST<TKey, TValue>.Node)
+  nameWithType.vb: BST(Of TKey, TValue).Max(BST(Of TKey, TValue).Node)
 - uid: BinarySearchTree.BST`2.Max*
   name: Max
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max_
@@ -254,6 +335,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Min()
   nameWithType: BST<TKey, TValue>.Min()
   nameWithType.vb: BST(Of TKey, TValue).Min()
+- uid: BinarySearchTree.BST`2.Min(BinarySearchTree.BST{`0,`1}.Node)
+  name: Min(BST<TKey, TValue>.Node)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min_BinarySearchTree_BST__0__1__Node_
+  commentId: M:BinarySearchTree.BST`2.Min(BinarySearchTree.BST{`0,`1}.Node)
+  name.vb: Min(BST(Of TKey, TValue).Node)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Min(BinarySearchTree.BST<TKey, TValue>.Node)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Min(BinarySearchTree.BST(Of TKey, TValue).Node)
+  nameWithType: BST<TKey, TValue>.Min(BST<TKey, TValue>.Node)
+  nameWithType.vb: BST(Of TKey, TValue).Min(BST(Of TKey, TValue).Node)
 - uid: BinarySearchTree.BST`2.Min*
   name: Min
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min_
@@ -382,6 +472,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Put(TKey, TValue)
   nameWithType: BST<TKey, TValue>.Put(TKey, TValue)
   nameWithType.vb: BST(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.BST`2.Put(BinarySearchTree.BST{`0,`1}.Node,`0,`1)
+  name: Put(BST<TKey, TValue>.Node, TKey, TValue)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put_BinarySearchTree_BST__0__1__Node__0__1_
+  commentId: M:BinarySearchTree.BST`2.Put(BinarySearchTree.BST{`0,`1}.Node,`0,`1)
+  name.vb: Put(BST(Of TKey, TValue).Node, TKey, TValue)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Put(BinarySearchTree.BST<TKey, TValue>.Node, TKey, TValue)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Put(BinarySearchTree.BST(Of TKey, TValue).Node, TKey, TValue)
+  nameWithType: BST<TKey, TValue>.Put(BST<TKey, TValue>.Node, TKey, TValue)
+  nameWithType.vb: BST(Of TKey, TValue).Put(BST(Of TKey, TValue).Node, TKey, TValue)
 - uid: BinarySearchTree.BST`2.Put*
   name: Put
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put_
@@ -399,6 +498,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Rank(TKey)
   nameWithType: BST<TKey, TValue>.Rank(TKey)
   nameWithType.vb: BST(Of TKey, TValue).Rank(TKey)
+- uid: BinarySearchTree.BST`2.Rank(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name: Rank(BST<TKey, TValue>.Node, TKey)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank_BinarySearchTree_BST__0__1__Node__0_
+  commentId: M:BinarySearchTree.BST`2.Rank(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name.vb: Rank(BST(Of TKey, TValue).Node, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Rank(BinarySearchTree.BST<TKey, TValue>.Node, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Rank(BinarySearchTree.BST(Of TKey, TValue).Node, TKey)
+  nameWithType: BST<TKey, TValue>.Rank(BST<TKey, TValue>.Node, TKey)
+  nameWithType.vb: BST(Of TKey, TValue).Rank(BST(Of TKey, TValue).Node, TKey)
 - uid: BinarySearchTree.BST`2.Rank*
   name: Rank
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank_
@@ -416,6 +524,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).root
   nameWithType: BST<TKey, TValue>.root
   nameWithType.vb: BST(Of TKey, TValue).root
+- uid: BinarySearchTree.BST`2.Select(BinarySearchTree.BST{`0,`1}.Node,System.Int32)
+  name: Select(BST<TKey, TValue>.Node, Int32)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_BinarySearchTree_BST__0__1__Node_System_Int32_
+  commentId: M:BinarySearchTree.BST`2.Select(BinarySearchTree.BST{`0,`1}.Node,System.Int32)
+  name.vb: Select(BST(Of TKey, TValue).Node, Int32)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Select(BinarySearchTree.BST<TKey, TValue>.Node, System.Int32)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Select(BinarySearchTree.BST(Of TKey, TValue).Node, System.Int32)
+  nameWithType: BST<TKey, TValue>.Select(BST<TKey, TValue>.Node, Int32)
+  nameWithType.vb: BST(Of TKey, TValue).Select(BST(Of TKey, TValue).Node, Int32)
 - uid: BinarySearchTree.BST`2.Select(System.Int32)
   name: Select(Int32)
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_System_Int32_
@@ -449,6 +566,15 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Size(TKey, TKey)
   nameWithType: BST<TKey, TValue>.Size(TKey, TKey)
   nameWithType.vb: BST(Of TKey, TValue).Size(TKey, TKey)
+- uid: BinarySearchTree.BST`2.Size(BinarySearchTree.BST{`0,`1}.Node)
+  name: Size(BST<TKey, TValue>.Node)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size_BinarySearchTree_BST__0__1__Node_
+  commentId: M:BinarySearchTree.BST`2.Size(BinarySearchTree.BST{`0,`1}.Node)
+  name.vb: Size(BST(Of TKey, TValue).Node)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Size(BinarySearchTree.BST<TKey, TValue>.Node)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Size(BinarySearchTree.BST(Of TKey, TValue).Node)
+  nameWithType: BST<TKey, TValue>.Size(BST<TKey, TValue>.Node)
+  nameWithType.vb: BST(Of TKey, TValue).Size(BST(Of TKey, TValue).Node)
 - uid: BinarySearchTree.BST`2.Size*
   name: Size
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size_
@@ -536,6 +662,67 @@ references:
   fullName.vb: BinarySearchTree.BSTBalanced(Of TKey, TValue).BSTBalanced
   nameWithType: BSTBalanced<TKey, TValue>.BSTBalanced
   nameWithType.vb: BSTBalanced(Of TKey, TValue).BSTBalanced
+- uid: BinarySearchTree.BSTCached`2
+  name: BSTCached<TKey, TValue>
+  href: api/BinarySearchTree.BSTCached-2.html
+  commentId: T:BinarySearchTree.BSTCached`2
+  name.vb: BSTCached(Of TKey, TValue)
+  fullName: BinarySearchTree.BSTCached<TKey, TValue>
+  fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue)
+  nameWithType: BSTCached<TKey, TValue>
+  nameWithType.vb: BSTCached(Of TKey, TValue)
+- uid: BinarySearchTree.BSTCached`2.Get(`0)
+  name: Get(TKey)
+  href: api/BinarySearchTree.BSTCached-2.html#BinarySearchTree_BSTCached_2_Get__0_
+  commentId: M:BinarySearchTree.BSTCached`2.Get(`0)
+  fullName: BinarySearchTree.BSTCached<TKey, TValue>.Get(TKey)
+  fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue).Get(TKey)
+  nameWithType: BSTCached<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BSTCached(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.BSTCached`2.Get(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name: Get(BST<TKey, TValue>.Node, TKey)
+  href: api/BinarySearchTree.BSTCached-2.html#BinarySearchTree_BSTCached_2_Get_BinarySearchTree_BST__0__1__Node__0_
+  commentId: M:BinarySearchTree.BSTCached`2.Get(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name.vb: Get(BST(Of TKey, TValue).Node, TKey)
+  fullName: BinarySearchTree.BSTCached<TKey, TValue>.Get(BinarySearchTree.BST<TKey, TValue>.Node, TKey)
+  fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue).Get(BinarySearchTree.BST(Of TKey, TValue).Node, TKey)
+  nameWithType: BSTCached<TKey, TValue>.Get(BST<TKey, TValue>.Node, TKey)
+  nameWithType.vb: BSTCached(Of TKey, TValue).Get(BST(Of TKey, TValue).Node, TKey)
+- uid: BinarySearchTree.BSTCached`2.Get*
+  name: Get
+  href: api/BinarySearchTree.BSTCached-2.html#BinarySearchTree_BSTCached_2_Get_
+  commentId: Overload:BinarySearchTree.BSTCached`2.Get
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTCached<TKey, TValue>.Get
+  fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue).Get
+  nameWithType: BSTCached<TKey, TValue>.Get
+  nameWithType.vb: BSTCached(Of TKey, TValue).Get
+- uid: BinarySearchTree.BSTCached`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/BinarySearchTree.BSTCached-2.html#BinarySearchTree_BSTCached_2_Put__0__1_
+  commentId: M:BinarySearchTree.BSTCached`2.Put(`0,`1)
+  fullName: BinarySearchTree.BSTCached<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BSTCached<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BSTCached(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.BSTCached`2.Put(BinarySearchTree.BST{`0,`1}.Node,`0,`1)
+  name: Put(BST<TKey, TValue>.Node, TKey, TValue)
+  href: api/BinarySearchTree.BSTCached-2.html#BinarySearchTree_BSTCached_2_Put_BinarySearchTree_BST__0__1__Node__0__1_
+  commentId: M:BinarySearchTree.BSTCached`2.Put(BinarySearchTree.BST{`0,`1}.Node,`0,`1)
+  name.vb: Put(BST(Of TKey, TValue).Node, TKey, TValue)
+  fullName: BinarySearchTree.BSTCached<TKey, TValue>.Put(BinarySearchTree.BST<TKey, TValue>.Node, TKey, TValue)
+  fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue).Put(BinarySearchTree.BST(Of TKey, TValue).Node, TKey, TValue)
+  nameWithType: BSTCached<TKey, TValue>.Put(BST<TKey, TValue>.Node, TKey, TValue)
+  nameWithType.vb: BSTCached(Of TKey, TValue).Put(BST(Of TKey, TValue).Node, TKey, TValue)
+- uid: BinarySearchTree.BSTCached`2.Put*
+  name: Put
+  href: api/BinarySearchTree.BSTCached-2.html#BinarySearchTree_BSTCached_2_Put_
+  commentId: Overload:BinarySearchTree.BSTCached`2.Put
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTCached<TKey, TValue>.Put
+  fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue).Put
+  nameWithType: BSTCached<TKey, TValue>.Put
+  nameWithType.vb: BSTCached(Of TKey, TValue).Put
 - uid: BinarySearchTree.BSTNonRecursive`2
   name: BSTNonRecursive<TKey, TValue>
   href: api/BinarySearchTree.BSTNonRecursive-2.html

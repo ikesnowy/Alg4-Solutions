@@ -13,10 +13,10 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interval2D 类
+    <title>BSTCached&lt;TKey, TValue&gt; 类
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interval2D 类
+    <meta name="title" content="BSTCached&lt;TKey, TValue&gt; 类
    ">
     <meta name="generator" content="docfx 2.45.1.0">
     
@@ -100,8 +100,8 @@
                           <li class="">
                             <a href="BinarySearchTree.BSTBalanced-2.html" title="BSTBalanced&lt;TKey, TValue&gt;" class="">BSTBalanced&lt;TKey, TValue&gt;</a>
                           </li>
-                          <li class="">
-                            <a href="BinarySearchTree.BSTCached-2.html" title="BSTCached&lt;TKey, TValue&gt;" class="">BSTCached&lt;TKey, TValue&gt;</a>
+                          <li class="active">
+                            <a href="BinarySearchTree.BSTCached-2.html" title="BSTCached&lt;TKey, TValue&gt;" class="active">BSTCached&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
                             <a href="BinarySearchTree.BSTNonRecursive-2.html" title="BSTNonRecursive&lt;TKey, TValue&gt;" class="">BSTNonRecursive&lt;TKey, TValue&gt;</a>
@@ -184,8 +184,8 @@
                           <li class="">
                             <a href="Geometry.Interval1D.html" title="Interval1D" class="">Interval1D</a>
                           </li>
-                          <li class="active">
-                            <a href="Geometry.Interval2D.html" title="Interval2D" class="active">Interval2D</a>
+                          <li class="">
+                            <a href="Geometry.Interval2D.html" title="Interval2D" class="">Interval2D</a>
                           </li>
                           <li class="">
                             <a href="Geometry.Point2D.html" title="Point2D" class="">Point2D</a>
@@ -588,23 +588,146 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Geometry.Interval2D">
+            <article class="content wrap" id="_content" data-uid="BinarySearchTree.BSTCached`2">
   
   
-  <h1 id="Geometry_Interval2D" data-uid="Geometry.Interval2D" class="text-break">Interval2D 类
+  <h1 id="BinarySearchTree_BSTCached_2" data-uid="BinarySearchTree.BSTCached`2" class="text-break">BSTCached&lt;TKey, TValue&gt; 类
   </h1>
-  <div class="markdown level0 summary"><p>二维闭合区间。</p>
+  <div class="markdown level0 summary"><p>带有缓存的 BST。</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>&#32487;&#25215;</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Interval2D</span></div>
+    <div class="level1"><a class="xref" href="BinarySearchTree.BST-2.html">BST</a>&lt;TKey, TValue&gt;</div>
+    <div class="level2"><span class="xref">BSTCached&lt;TKey, TValue&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>&#23454;&#29616;</h5>
+    <div><a class="xref" href="BinarySearchTree.IST-2.html">IST</a>&lt;TKey, TValue&gt;</div>
+    <div><a class="xref" href="BinarySearchTree.IOrderedST-2.html">IOrderedST</a>&lt;TKey, TValue&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>&#32487;&#25215;&#25104;&#21592;</h5>
     <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_root">BST&lt;TKey, TValue&gt;.root</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put__0__1_">BST&lt;TKey, TValue&gt;.Put(TKey, TValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put_BinarySearchTree_BST__0__1__Node__0__1_">BST&lt;TKey, TValue&gt;.Put(BST.Node&lt;&gt;, TKey, TValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get__0_">BST&lt;TKey, TValue&gt;.Get(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Get(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete__0_">BST&lt;TKey, TValue&gt;.Delete(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Delete(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Contains__0_">BST&lt;TKey, TValue&gt;.Contains(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsEmpty">BST&lt;TKey, TValue&gt;.IsEmpty()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size">BST&lt;TKey, TValue&gt;.Size()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Size(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size__0__0_">BST&lt;TKey, TValue&gt;.Size(TKey, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height">BST&lt;TKey, TValue&gt;.Height()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Height(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys">BST&lt;TKey, TValue&gt;.Keys()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys__0__0_">BST&lt;TKey, TValue&gt;.Keys(TKey, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys_BinarySearchTree_BST__0__1__Node_System_Collections_Generic_Queue__0___0__0_">BST&lt;TKey, TValue&gt;.Keys(BST.Node&lt;&gt;, Queue&lt;TKey&gt;, TKey, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min">BST&lt;TKey, TValue&gt;.Min()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Min(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max">BST&lt;TKey, TValue&gt;.Max()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Max(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor__0_">BST&lt;TKey, TValue&gt;.Floor(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Floor(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling__0_">BST&lt;TKey, TValue&gt;.Ceiling(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Ceiling(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank__0_">BST&lt;TKey, TValue&gt;.Rank(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Rank(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_System_Int32_">BST&lt;TKey, TValue&gt;.Select(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_BinarySearchTree_BST__0__1__Node_System_Int32_">BST&lt;TKey, TValue&gt;.Select(BST.Node&lt;&gt;, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin">BST&lt;TKey, TValue&gt;.DeleteMin()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.DeleteMin(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax">BST&lt;TKey, TValue&gt;.DeleteMax()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.DeleteMax(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToString">BST&lt;TKey, TValue&gt;.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToKeyArray">BST&lt;TKey, TValue&gt;.ToKeyArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToValueArray">BST&lt;TKey, TValue&gt;.ToValueArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsStructureEqual__4_BinarySearchTree_BST___0___1__BinarySearchTree_BST___2___3__">BST&lt;TKey, TValue&gt;.IsStructureEqual&lt;TKeyA, TValueA, TKeyB, TValueB&gt;(BST&lt;TKeyA, TValueA&gt;, BST&lt;TKeyB, TValueB&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
@@ -615,47 +738,33 @@
     <div>
       <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
-  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="Geometry.html">Geometry</a></h6>
-  <h6><strong>&#31243;&#24207;&#38598;</strong>: Geometry.dll</h6>
-  <h5 id="Geometry_Interval2D_syntax">&#35821;&#27861;</h5>
+  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="BinarySearchTree.html">BinarySearchTree</a></h6>
+  <h6><strong>&#31243;&#24207;&#38598;</strong>: BinarySearchTree.dll</h6>
+  <h5 id="BinarySearchTree_BSTCached_2_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Interval2D</code></pre>
+    <pre><code class="lang-csharp hljs">public class BSTCached&lt;TKey, TValue&gt; : BST&lt;TKey, TValue&gt;, IST&lt;TKey, TValue&gt;, IOrderedST&lt;TKey, TValue&gt; where TKey : IComparable&lt;TKey&gt;</code></pre>
   </div>
-  <h3 id="constructors">&#26500;&#36896;&#20989;&#25968;
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L18">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval2D__ctor_" data-uid="Geometry.Interval2D.#ctor*"></a>
-  <h4 id="Geometry_Interval2D__ctor_Geometry_Interval1D_Geometry_Interval1D_" data-uid="Geometry.Interval2D.#ctor(Geometry.Interval1D,Geometry.Interval1D)">Interval2D(Interval1D, Interval1D)</h4>
-  <div class="markdown level1 summary"><p>构造函数。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Interval2D(Interval1D x, Interval1D y)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>&#31867;&#22411;</th>
         <th>&#21517;&#31216;</th>
         <th>&#25551;&#36848;</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Geometry.Interval1D.html">Interval1D</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>x 轴上的范围。</p>
+        <td><span class="parametername">TKey</span></td>
+        <td><p>键类型。</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Geometry.Interval1D.html">Interval1D</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>y 轴上的范围。</p>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>值类型。</p>
 </td>
       </tr>
     </tbody>
@@ -663,44 +772,15 @@
   <h3 id="methods">&#26041;&#27861;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L68">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTCached.cs/#L18">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Geometry_Interval2D_Area_" data-uid="Geometry.Interval2D.Area*"></a>
-  <h4 id="Geometry_Interval2D_Area" data-uid="Geometry.Interval2D.Area">Area()</h4>
-  <div class="markdown level1 summary"><p>计算平面范围的面积。</p>
-</div>
+  <a id="BinarySearchTree_BSTCached_2_Get_" data-uid="BinarySearchTree.BSTCached`2.Get*"></a>
+  <h4 id="BinarySearchTree_BSTCached_2_Get__0_" data-uid="BinarySearchTree.BSTCached`2.Get(`0)">Get(TKey)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Area()</code></pre>
-  </div>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><p>平面范围的面积。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L49">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval2D_Contains_" data-uid="Geometry.Interval2D.Contains*"></a>
-  <h4 id="Geometry_Interval2D_Contains_Geometry_Interval2D_" data-uid="Geometry.Interval2D.Contains(Geometry.Interval2D)">Contains(Interval2D)</h4>
-  <div class="markdown level1 summary"><p>判断目标区间是否被本区间包含。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(Interval2D that)</code></pre>
+    <pre><code class="lang-csharp hljs">public override TValue Get(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -713,10 +793,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Geometry.Interval2D.html">Interval2D</a></td>
-        <td><span class="parametername">that</span></td>
-        <td><p>需要判断是否被包含的区间。</p>
-</td>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -730,177 +809,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>如果 <code data-dev-comment-type="paramref" class="paramref">that</code> 被包含，则返回 <code>true</code>，否则返回 <code>false</code>。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L59">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval2D_Contains_" data-uid="Geometry.Interval2D.Contains*"></a>
-  <h4 id="Geometry_Interval2D_Contains_Geometry_Point2D_" data-uid="Geometry.Interval2D.Contains(Geometry.Point2D)">Contains(Point2D)</h4>
-  <div class="markdown level1 summary"><p>判断一个二维点是否在该平面范围内。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Contains(Point2D p)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Geometry.Point2D.html">Point2D</a></td>
-        <td><span class="parametername">p</span></td>
-        <td><p>需要判断的二维点。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>如果 <code data-dev-comment-type="paramref" class="paramref">p</code> 被包含，则返回 <code>true</code>，否则 <code>false</code>。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L77">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval2D_Draw_" data-uid="Geometry.Interval2D.Draw*"></a>
-  <h4 id="Geometry_Interval2D_Draw_System_Drawing_Graphics_" data-uid="Geometry.Interval2D.Draw(System.Drawing.Graphics)">Draw(Graphics)</h4>
-  <div class="markdown level1 summary"><p>在画布上绘制二维区间。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Draw(Graphics g)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Drawing.Graphics</span></td>
-        <td><span class="parametername">g</span></td>
-        <td><p>原点在左下方，x轴向右，y轴向上的画布。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L98">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval2D_Equals_" data-uid="Geometry.Interval2D.Equals*"></a>
-  <h4 id="Geometry_Interval2D_Equals_System_Object_" data-uid="Geometry.Interval2D.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"><p>判断两个二维区间是否相等。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>需要比较的另一个区间。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>相等则返回 <code>true</code>，否则返回 <code>false</code>。</p>
-</td>
+        <td><span class="xref">TValue</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.Equals(System.Object)</span></div>
+  <div><span class="xref">BinarySearchTree.BST&lt;TKey, TValue&gt;.Get(TKey)</span></div>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L123">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTCached.cs/#L29">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Geometry_Interval2D_GetHashCode_" data-uid="Geometry.Interval2D.GetHashCode*"></a>
-  <h4 id="Geometry_Interval2D_GetHashCode" data-uid="Geometry.Interval2D.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"><p>获取哈希值</p>
-</div>
+  <a id="BinarySearchTree_BSTCached_2_Get_" data-uid="BinarySearchTree.BSTCached`2.Get*"></a>
+  <h4 id="BinarySearchTree_BSTCached_2_Get_BinarySearchTree_BST__0__1__Node__0_" data-uid="BinarySearchTree.BSTCached`2.Get(BinarySearchTree.BST{`0,`1}.Node,`0)">Get(BST&lt;TKey, TValue&gt;.Node, TKey)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><p>2D 区间的哈希值。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.GetHashCode()</span></div>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L29">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval2D_Intersects_" data-uid="Geometry.Interval2D.Intersects*"></a>
-  <h4 id="Geometry_Interval2D_Intersects_Geometry_Interval2D_" data-uid="Geometry.Interval2D.Intersects(Geometry.Interval2D)">Intersects(Interval2D)</h4>
-  <div class="markdown level1 summary"><p>判断两个平面是否相交。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Intersects(Interval2D that)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override TValue Get(BST&lt;TKey, TValue&gt;.Node x, TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -913,10 +838,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Geometry.Interval2D.html">Interval2D</a></td>
-        <td><span class="parametername">that</span></td>
-        <td><p>需要判断的另一个平面。</p>
-</td>
+        <td><a class="xref" href="BinarySearchTree.BST-2.Node.html">BST.Node</a>&lt;&gt;</td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -930,42 +859,110 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>相交则返回 <code>true</code>，否则返回 <code>false</code>。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L88">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Geometry_Interval2D_ToString_" data-uid="Geometry.Interval2D.ToString*"></a>
-  <h4 id="Geometry_Interval2D_ToString" data-uid="Geometry.Interval2D.ToString">ToString()</h4>
-  <div class="markdown level1 summary"><p>返回形如“[xmin, xmax] x [ymin, ymax]”的字符串。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>形如 &quot;[xmin, xmax] x [ymin, ymax]&quot; 的字符串。</p>
-</td>
+        <td><span class="xref">TValue</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">&#37325;&#20889;</h5>
-  <div><span class="xref">System.Object.ToString()</span></div>
+  <div><span class="xref">BinarySearchTree.BST&lt;TKey, TValue&gt;.Get(BinarySearchTree.BST.Node&lt;&gt;, TKey)</span></div>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTCached.cs/#L57">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BSTCached_2_Put_" data-uid="BinarySearchTree.BSTCached`2.Put*"></a>
+  <h4 id="BinarySearchTree_BSTCached_2_Put__0__1_" data-uid="BinarySearchTree.BSTCached`2.Put(`0,`1)">Put(TKey, TValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Put(TKey key, TValue value)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">&#37325;&#20889;</h5>
+  <div><span class="xref">BinarySearchTree.BST&lt;TKey, TValue&gt;.Put(TKey, TValue)</span></div>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTCached.cs/#L78">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BSTCached_2_Put_" data-uid="BinarySearchTree.BSTCached`2.Put*"></a>
+  <h4 id="BinarySearchTree_BSTCached_2_Put_BinarySearchTree_BST__0__1__Node__0__1_" data-uid="BinarySearchTree.BSTCached`2.Put(BinarySearchTree.BST{`0,`1}.Node,`0,`1)">Put(BST&lt;TKey, TValue&gt;.Node, TKey, TValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override BST&lt;TKey, TValue&gt;.Node Put(BST&lt;TKey, TValue&gt;.Node x, TKey key, TValue value)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BinarySearchTree.BST-2.Node.html">BST.Node</a>&lt;&gt;</td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">&#36820;&#22238;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BinarySearchTree.BST-2.Node.html">BST.Node</a>&lt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">&#37325;&#20889;</h5>
+  <div><span class="xref">BinarySearchTree.BST&lt;TKey, TValue&gt;.Put(BinarySearchTree.BST.Node&lt;&gt;, TKey, TValue)</span></div>
+  <h3 id="implements">&#23454;&#29616;</h3>
+  <div>
+      <a class="xref" href="BinarySearchTree.IST-2.html">IST&lt;TKey, TValue&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="BinarySearchTree.IOrderedST-2.html">IOrderedST&lt;TKey, TValue&gt;</a>
+  </div>
 </article>
           </div>
           
@@ -974,7 +971,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/1 Fundamental/1.2/Geometry/Interval2D.cs/#L8" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTCached.cs/#L10" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>
