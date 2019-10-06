@@ -348,6 +348,24 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsOrdered
   nameWithType: BST<TKey, TValue>.IsOrdered
   nameWithType.vb: BST(Of TKey, TValue).IsOrdered
+- uid: BinarySearchTree.BST`2.IsRankConsistent(BinarySearchTree.BST{`0,`1})
+  name: IsRankConsistent(BST<TKey, TValue>)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsRankConsistent_BinarySearchTree_BST__0__1__
+  commentId: M:BinarySearchTree.BST`2.IsRankConsistent(BinarySearchTree.BST{`0,`1})
+  name.vb: IsRankConsistent(BST(Of TKey, TValue))
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsRankConsistent(BinarySearchTree.BST<TKey, TValue>)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsRankConsistent(BinarySearchTree.BST(Of TKey, TValue))
+  nameWithType: BST<TKey, TValue>.IsRankConsistent(BST<TKey, TValue>)
+  nameWithType.vb: BST(Of TKey, TValue).IsRankConsistent(BST(Of TKey, TValue))
+- uid: BinarySearchTree.BST`2.IsRankConsistent*
+  name: IsRankConsistent
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsRankConsistent_
+  commentId: Overload:BinarySearchTree.BST`2.IsRankConsistent
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.IsRankConsistent
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).IsRankConsistent
+  nameWithType: BST<TKey, TValue>.IsRankConsistent
+  nameWithType.vb: BST(Of TKey, TValue).IsRankConsistent
 - uid: BinarySearchTree.BST`2.IsStructureEqual*
   name: IsStructureEqual
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsStructureEqual_
