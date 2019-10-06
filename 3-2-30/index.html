@@ -149,9 +149,10 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.2.30</h1>
-			<p>上次更新：2019-10-05 <br>
+			<p>上次更新：2019-10-06 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>与上一题非常类似，条件有：<br>根结点必须在 <code>min</code> 和 <code>max</code> 范围内，<br>且左右子树要么不存在，要么小于/大于根结点的键，<br>左右子树同样满足上述条件。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>本题在原书后续印刷中已修改，这里仍然采用中文版的题目。</p>
+<p>与上一题非常类似，条件有：<br>根结点必须在 <code>min</code> 和 <code>max</code> 范围内，<br>且左右子树要么不存在，要么小于/大于根结点的键，<br>左右子树同样满足上述条件。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">IsOrdered</span><span class="token punctuation">(</span>Node x<span class="token punctuation">,</span> TKey min<span class="token punctuation">,</span> TKey max<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>

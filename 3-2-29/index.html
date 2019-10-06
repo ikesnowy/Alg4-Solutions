@@ -149,9 +149,11 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.2.29</h1>
-			<p>上次更新：2019-10-05 <br>
+			<p>上次更新：2019-10-06 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>如果根结点记录的结点数=左子树的结点数+右子树的结点数+1，就符合要求。<br>按照这个题意编制递归方法即可。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>本题在原书后续印刷中已修改，这里仍采用中文版的题目。</p>
+<p>部分解答：<a href="https://algs4.cs.princeton.edu/32bst/BST.java.html（`isSizeConsistent()`）" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/32bst/BST.java.html（`isSizeConsistent()`）</a></p>
+<p>如果根结点记录的结点数=左子树的结点数+右子树的结点数+1，就符合要求。<br>按照这个题意编制递归方法即可。</p>
 <p>先写边界，当输入为 <code>null</code> 时，显然符合要求。<br>然后计算左子树的 <code>Size</code> 和右子树的 <code>Size</code> 加起来是否等于根结点的 <code>Size</code> + 1，<br>以及左子树和右子树是否符合同样的条件。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">IsBinaryTree</span><span class="token punctuation">(</span>Node x<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
