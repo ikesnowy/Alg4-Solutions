@@ -14,9 +14,9 @@
         <link href="/css/normalize-dark.css" rel="stylesheet" id="normalize">
         <link href="/css/style-dark.css" rel="stylesheet" id="style">
         <link href="/css/common-dark.css" rel="stylesheet" id="common">
-        <link href="/css/markdown-dark.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        <link href="/css/markdown-dark.css" rel="stylesheet" id="markdown">
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
     <body>
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
             <div class="mobile_menu_btn">
@@ -149,7 +149,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.2.28</h1>
-			<p>上次更新：2019-10-05 <br>
+			<p>上次更新：2019-10-08 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>修改一下 <code>Put</code> 和 <code>Get</code> 方法，在实际操作之前先检查缓存是否符合要求，然后在操作之后更新缓存。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">private</span> Node _cache<span class="token punctuation">;</span>
@@ -161,10 +161,10 @@ function dismissSearchResultModal() {
         <span class="token keyword">return</span> _cache<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">return</span> <span class="token keyword">base</span><span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">Get</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">protected</span> <span class="token keyword">override</span> TValue <span class="token function">Get</span><span class="token punctuation">(</span>Node x<span class="token punctuation">,</span> TKey key<span class="token punctuation">)</span>
+<span class="token keyword">protected</span> <span class="token keyword">override</span> Node <span class="token function">Get</span><span class="token punctuation">(</span>Node x<span class="token punctuation">,</span> TKey key<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
@@ -173,7 +173,7 @@ function dismissSearchResultModal() {
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">default</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">var</span> cmp <span class="token operator">=</span> key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>cmp <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
@@ -187,7 +187,7 @@ function dismissSearchResultModal() {
     <span class="token keyword">else</span>
     <span class="token punctuation">{</span>
         _cache <span class="token operator">=</span> x<span class="token punctuation">;</span>
-        <span class="token keyword">return</span> x<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> x<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
@@ -207,6 +207,7 @@ function dismissSearchResultModal() {
     <span class="token keyword">if</span> <span class="token punctuation">(</span>_cache <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> _cache<span class="token punctuation">.</span>Key<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         _cache<span class="token punctuation">.</span>Value <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     root <span class="token operator">=</span> <span class="token function">Put</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token keyword">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -228,7 +229,7 @@ function dismissSearchResultModal() {
     x<span class="token punctuation">.</span>Size <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token function">Size</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Left<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">Size</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Right<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> x<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/BinarySearchTree.html">BinarySearchTree 库</a></p>
 
 		</div>
