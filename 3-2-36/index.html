@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档: 2019 | 《算法（第四版）》C# 题解</title>
+        <title>3.2.36 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -138,75 +138,58 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2019</h4>
-        
-        <p class="post-title"><span>2019年3月3日</span><a href="/3-1-27/">3.1.27</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年3月3日</span><a href="/3-1-26/">3.1.26</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年3月2日</span><a href="/3-1-25/">3.1.25</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年3月2日</span><a href="/3-1-24/">3.1.24</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月28日</span><a href="/3-1-23/">3.1.23</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月28日</span><a href="/3-1-22/">3.1.22</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月28日</span><a href="/3-1-21/">3.1.21</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月26日</span><a href="/3-1-20/">3.1.20</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月25日</span><a href="/3-1-19/">3.1.19</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2019年2月24日</span><a href="/3-1-18/">3.1.18</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.2.36
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.2.36</h1>
+			<p>上次更新：2019-10-08 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>用一个栈来模拟递归即可，将路径上的结点记录到栈里。<br>注意 <code>Queue&lt;TKey&gt;</code> 不算额外空间，因为它在<code>keys</code>执行完毕之后不会被回收。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Keys</span><span class="token punctuation">(</span>Node x<span class="token punctuation">,</span> Queue<span class="token operator">&lt;</span>TKey<span class="token operator">></span> queue<span class="token punctuation">,</span> TKey lo<span class="token punctuation">,</span> TKey hi<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">var</span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span>Node<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">||</span> stack<span class="token punctuation">.</span>Count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> cmpLo <span class="token operator">=</span> lo<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> cmpHi <span class="token operator">=</span> hi<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cmpHi <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                stack<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cmpLo <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                x <span class="token operator">=</span> x<span class="token punctuation">.</span>Left<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                x <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            x <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> cmpLo <span class="token operator">=</span> lo<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> cmpHi <span class="token operator">=</span> hi<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cmpLo <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> cmpHi <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                queue<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>Key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            x <span class="token operator">=</span> x<span class="token punctuation">.</span>Right<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/BinarySearchTree.html">BinarySearchTree 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -214,10 +197,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/2019/page/5/">上一页</a>
+		<a href="/3-2-35/">上一题</a>
 		
-		
-		<a href="/archives/2019/page/7/">下一页</a>
 		
 	</div>
 	
