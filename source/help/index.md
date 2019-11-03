@@ -30,8 +30,15 @@ date: 2018-05-31 11:55:24
 
 ## 我可以翻译/转载你的题解和代码吗？
 
-请自由使用本站的所有题解，可以商用，可以翻译，不需要注明出处，不需要获取授权。
-若没有特殊注明，本站中的图片素材都是我自己做的，也包含在上一条范围之内。
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+  <a rel="license"
+     href="http://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="https://licensebuttons.net/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+  </a>
+</p>
+
+本站所有题解内容（非代码）遵守 CC0 协议。
+使用（含商业用途）题解内容不需要获取授权，也不需要强制署名/注明出处等。
 有关《算法（第四版）》中的文字内容请遵守图书所有者的版权规定。
 题解中出现的非本人原创的的内容请遵守其对应所有者的版权许可。
-题解代码遵守 MIT 协议，详情见 GitHub。
+题解代码遵守 MIT 协议，详情见 [GitHub](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp)。
