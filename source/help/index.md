@@ -30,12 +30,7 @@ date: 2018-05-31 11:55:24
 
 ## 我可以翻译/转载你的题解和代码吗？
 
-<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
-  <a rel="license"
-     href="http://creativecommons.org/publicdomain/zero/1.0/">
-    <img src="https://licensebuttons.net/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
-  </a>
-</p>
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">  <a rel="noopener" href="http://creativecommons.org/publicdomain/zero/1.0/" target="_blank">    <img src="https://licensebuttons.net/p/zero/1.0/88x31.png" style="border-style: none;display: inline;" alt="CC0">  </a></p>
 
 本站所有题解内容（非代码）遵守 CC0 协议。
 使用（含商业用途）题解内容不需要获取授权，也不需要强制署名/注明出处等。
