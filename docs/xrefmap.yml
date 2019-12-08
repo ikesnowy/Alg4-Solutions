@@ -33,6 +33,23 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).BST
   nameWithType: BST<TKey, TValue>.BST
   nameWithType.vb: BST(Of TKey, TValue).BST
+- uid: BinarySearchTree.BST`2.AverageInternalPathLength
+  name: AverageInternalPathLength()
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_AverageInternalPathLength
+  commentId: M:BinarySearchTree.BST`2.AverageInternalPathLength
+  fullName: BinarySearchTree.BST<TKey, TValue>.AverageInternalPathLength()
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).AverageInternalPathLength()
+  nameWithType: BST<TKey, TValue>.AverageInternalPathLength()
+  nameWithType.vb: BST(Of TKey, TValue).AverageInternalPathLength()
+- uid: BinarySearchTree.BST`2.AverageInternalPathLength*
+  name: AverageInternalPathLength
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_AverageInternalPathLength_
+  commentId: Overload:BinarySearchTree.BST`2.AverageInternalPathLength
+  isSpec: "True"
+  fullName: BinarySearchTree.BST<TKey, TValue>.AverageInternalPathLength
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).AverageInternalPathLength
+  nameWithType: BST<TKey, TValue>.AverageInternalPathLength
+  nameWithType.vb: BST(Of TKey, TValue).AverageInternalPathLength
 - uid: BinarySearchTree.BST`2.Ceiling(`0)
   name: Ceiling(TKey)
   href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling__0_
@@ -1413,6 +1430,303 @@ references:
   fullName.vb: BinarySearchTree.BSTAnalysis(Of TKey, TValue).ToValueArray
   nameWithType: BSTAnalysis<TKey, TValue>.ToValueArray
   nameWithType.vb: BSTAnalysis(Of TKey, TValue).ToValueArray
+- uid: BinarySearchTree.BSTArray`2
+  name: BSTArray<TKey, TValue>
+  href: api/BinarySearchTree.BSTArray-2.html
+  commentId: T:BinarySearchTree.BSTArray`2
+  name.vb: BSTArray(Of TKey, TValue)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue)
+  nameWithType: BSTArray<TKey, TValue>
+  nameWithType.vb: BSTArray(Of TKey, TValue)
+- uid: BinarySearchTree.BSTArray`2.#ctor(System.Int32)
+  name: BSTArray(Int32)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2__ctor_System_Int32_
+  commentId: M:BinarySearchTree.BSTArray`2.#ctor(System.Int32)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.BSTArray(System.Int32)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).BSTArray(System.Int32)
+  nameWithType: BSTArray<TKey, TValue>.BSTArray(Int32)
+  nameWithType.vb: BSTArray(Of TKey, TValue).BSTArray(Int32)
+- uid: BinarySearchTree.BSTArray`2.#ctor*
+  name: BSTArray
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2__ctor_
+  commentId: Overload:BinarySearchTree.BSTArray`2.#ctor
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.BSTArray
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).BSTArray
+  nameWithType: BSTArray<TKey, TValue>.BSTArray
+  nameWithType.vb: BSTArray(Of TKey, TValue).BSTArray
+- uid: BinarySearchTree.BSTArray`2.Ceiling(`0)
+  name: Ceiling(TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Ceiling__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Ceiling(`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Ceiling(TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Ceiling(TKey)
+  nameWithType: BSTArray<TKey, TValue>.Ceiling(TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Ceiling(TKey)
+- uid: BinarySearchTree.BSTArray`2.Ceiling*
+  name: Ceiling
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Ceiling_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Ceiling
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Ceiling
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Ceiling
+  nameWithType: BSTArray<TKey, TValue>.Ceiling
+  nameWithType.vb: BSTArray(Of TKey, TValue).Ceiling
+- uid: BinarySearchTree.BSTArray`2.Contains(`0)
+  name: Contains(TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Contains__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Contains(`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Contains(TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Contains(TKey)
+  nameWithType: BSTArray<TKey, TValue>.Contains(TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Contains(TKey)
+- uid: BinarySearchTree.BSTArray`2.Contains*
+  name: Contains
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Contains_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Contains
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Contains
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Contains
+  nameWithType: BSTArray<TKey, TValue>.Contains
+  nameWithType.vb: BSTArray(Of TKey, TValue).Contains
+- uid: BinarySearchTree.BSTArray`2.Delete(`0)
+  name: Delete(TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Delete__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Delete(`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Delete(TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Delete(TKey)
+  nameWithType: BSTArray<TKey, TValue>.Delete(TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Delete(TKey)
+- uid: BinarySearchTree.BSTArray`2.Delete*
+  name: Delete
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Delete_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Delete
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Delete
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Delete
+  nameWithType: BSTArray<TKey, TValue>.Delete
+  nameWithType.vb: BSTArray(Of TKey, TValue).Delete
+- uid: BinarySearchTree.BSTArray`2.DeleteMax
+  name: DeleteMax()
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_DeleteMax
+  commentId: M:BinarySearchTree.BSTArray`2.DeleteMax
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.DeleteMax()
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).DeleteMax()
+  nameWithType: BSTArray<TKey, TValue>.DeleteMax()
+  nameWithType.vb: BSTArray(Of TKey, TValue).DeleteMax()
+- uid: BinarySearchTree.BSTArray`2.DeleteMax*
+  name: DeleteMax
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_DeleteMax_
+  commentId: Overload:BinarySearchTree.BSTArray`2.DeleteMax
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.DeleteMax
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).DeleteMax
+  nameWithType: BSTArray<TKey, TValue>.DeleteMax
+  nameWithType.vb: BSTArray(Of TKey, TValue).DeleteMax
+- uid: BinarySearchTree.BSTArray`2.DeleteMin
+  name: DeleteMin()
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_DeleteMin
+  commentId: M:BinarySearchTree.BSTArray`2.DeleteMin
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.DeleteMin()
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).DeleteMin()
+  nameWithType: BSTArray<TKey, TValue>.DeleteMin()
+  nameWithType.vb: BSTArray(Of TKey, TValue).DeleteMin()
+- uid: BinarySearchTree.BSTArray`2.DeleteMin*
+  name: DeleteMin
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_DeleteMin_
+  commentId: Overload:BinarySearchTree.BSTArray`2.DeleteMin
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.DeleteMin
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).DeleteMin
+  nameWithType: BSTArray<TKey, TValue>.DeleteMin
+  nameWithType.vb: BSTArray(Of TKey, TValue).DeleteMin
+- uid: BinarySearchTree.BSTArray`2.Floor(`0)
+  name: Floor(TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Floor__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Floor(`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Floor(TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Floor(TKey)
+  nameWithType: BSTArray<TKey, TValue>.Floor(TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Floor(TKey)
+- uid: BinarySearchTree.BSTArray`2.Floor*
+  name: Floor
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Floor_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Floor
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Floor
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Floor
+  nameWithType: BSTArray<TKey, TValue>.Floor
+  nameWithType.vb: BSTArray(Of TKey, TValue).Floor
+- uid: BinarySearchTree.BSTArray`2.Get(`0)
+  name: Get(TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Get__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Get(`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Get(TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Get(TKey)
+  nameWithType: BSTArray<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.BSTArray`2.Get*
+  name: Get
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Get_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Get
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Get
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Get
+  nameWithType: BSTArray<TKey, TValue>.Get
+  nameWithType.vb: BSTArray(Of TKey, TValue).Get
+- uid: BinarySearchTree.BSTArray`2.IsEmpty
+  name: IsEmpty()
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_IsEmpty
+  commentId: M:BinarySearchTree.BSTArray`2.IsEmpty
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.IsEmpty()
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).IsEmpty()
+  nameWithType: BSTArray<TKey, TValue>.IsEmpty()
+  nameWithType.vb: BSTArray(Of TKey, TValue).IsEmpty()
+- uid: BinarySearchTree.BSTArray`2.IsEmpty*
+  name: IsEmpty
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_IsEmpty_
+  commentId: Overload:BinarySearchTree.BSTArray`2.IsEmpty
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.IsEmpty
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).IsEmpty
+  nameWithType: BSTArray<TKey, TValue>.IsEmpty
+  nameWithType.vb: BSTArray(Of TKey, TValue).IsEmpty
+- uid: BinarySearchTree.BSTArray`2.Keys
+  name: Keys()
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Keys
+  commentId: M:BinarySearchTree.BSTArray`2.Keys
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Keys()
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Keys()
+  nameWithType: BSTArray<TKey, TValue>.Keys()
+  nameWithType.vb: BSTArray(Of TKey, TValue).Keys()
+- uid: BinarySearchTree.BSTArray`2.Keys(`0,`0)
+  name: Keys(TKey, TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Keys__0__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Keys(`0,`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Keys(TKey, TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Keys(TKey, TKey)
+  nameWithType: BSTArray<TKey, TValue>.Keys(TKey, TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Keys(TKey, TKey)
+- uid: BinarySearchTree.BSTArray`2.Keys*
+  name: Keys
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Keys_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Keys
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Keys
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Keys
+  nameWithType: BSTArray<TKey, TValue>.Keys
+  nameWithType.vb: BSTArray(Of TKey, TValue).Keys
+- uid: BinarySearchTree.BSTArray`2.Max
+  name: Max()
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Max
+  commentId: M:BinarySearchTree.BSTArray`2.Max
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Max()
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Max()
+  nameWithType: BSTArray<TKey, TValue>.Max()
+  nameWithType.vb: BSTArray(Of TKey, TValue).Max()
+- uid: BinarySearchTree.BSTArray`2.Max*
+  name: Max
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Max_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Max
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Max
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Max
+  nameWithType: BSTArray<TKey, TValue>.Max
+  nameWithType.vb: BSTArray(Of TKey, TValue).Max
+- uid: BinarySearchTree.BSTArray`2.Min
+  name: Min()
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Min
+  commentId: M:BinarySearchTree.BSTArray`2.Min
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Min()
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Min()
+  nameWithType: BSTArray<TKey, TValue>.Min()
+  nameWithType.vb: BSTArray(Of TKey, TValue).Min()
+- uid: BinarySearchTree.BSTArray`2.Min*
+  name: Min
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Min_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Min
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Min
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Min
+  nameWithType: BSTArray<TKey, TValue>.Min
+  nameWithType.vb: BSTArray(Of TKey, TValue).Min
+- uid: BinarySearchTree.BSTArray`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Put__0__1_
+  commentId: M:BinarySearchTree.BSTArray`2.Put(`0,`1)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BSTArray<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.BSTArray`2.Put*
+  name: Put
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Put_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Put
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Put
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Put
+  nameWithType: BSTArray<TKey, TValue>.Put
+  nameWithType.vb: BSTArray(Of TKey, TValue).Put
+- uid: BinarySearchTree.BSTArray`2.Rank(`0)
+  name: Rank(TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Rank__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Rank(`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Rank(TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Rank(TKey)
+  nameWithType: BSTArray<TKey, TValue>.Rank(TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Rank(TKey)
+- uid: BinarySearchTree.BSTArray`2.Rank*
+  name: Rank
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Rank_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Rank
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Rank
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Rank
+  nameWithType: BSTArray<TKey, TValue>.Rank
+  nameWithType.vb: BSTArray(Of TKey, TValue).Rank
+- uid: BinarySearchTree.BSTArray`2.Select(System.Int32)
+  name: Select(Int32)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Select_System_Int32_
+  commentId: M:BinarySearchTree.BSTArray`2.Select(System.Int32)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Select(System.Int32)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Select(System.Int32)
+  nameWithType: BSTArray<TKey, TValue>.Select(Int32)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Select(Int32)
+- uid: BinarySearchTree.BSTArray`2.Select*
+  name: Select
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Select_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Select
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Select
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Select
+  nameWithType: BSTArray<TKey, TValue>.Select
+  nameWithType.vb: BSTArray(Of TKey, TValue).Select
+- uid: BinarySearchTree.BSTArray`2.Size
+  name: Size()
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Size
+  commentId: M:BinarySearchTree.BSTArray`2.Size
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Size()
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Size()
+  nameWithType: BSTArray<TKey, TValue>.Size()
+  nameWithType.vb: BSTArray(Of TKey, TValue).Size()
+- uid: BinarySearchTree.BSTArray`2.Size(`0,`0)
+  name: Size(TKey, TKey)
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Size__0__0_
+  commentId: M:BinarySearchTree.BSTArray`2.Size(`0,`0)
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Size(TKey, TKey)
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Size(TKey, TKey)
+  nameWithType: BSTArray<TKey, TValue>.Size(TKey, TKey)
+  nameWithType.vb: BSTArray(Of TKey, TValue).Size(TKey, TKey)
+- uid: BinarySearchTree.BSTArray`2.Size*
+  name: Size
+  href: api/BinarySearchTree.BSTArray-2.html#BinarySearchTree_BSTArray_2_Size_
+  commentId: Overload:BinarySearchTree.BSTArray`2.Size
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTArray<TKey, TValue>.Size
+  fullName.vb: BinarySearchTree.BSTArray(Of TKey, TValue).Size
+  nameWithType: BSTArray<TKey, TValue>.Size
+  nameWithType.vb: BSTArray(Of TKey, TValue).Size
 - uid: BinarySearchTree.BSTBalanced`2
   name: BSTBalanced<TKey, TValue>
   href: api/BinarySearchTree.BSTBalanced-2.html
@@ -1501,6 +1815,33 @@ references:
   fullName.vb: BinarySearchTree.BSTCached(Of TKey, TValue).Put
   nameWithType: BSTCached<TKey, TValue>.Put
   nameWithType.vb: BSTCached(Of TKey, TValue).Put
+- uid: BinarySearchTree.BSTNonHibbard`2
+  name: BSTNonHibbard<TKey, TValue>
+  href: api/BinarySearchTree.BSTNonHibbard-2.html
+  commentId: T:BinarySearchTree.BSTNonHibbard`2
+  name.vb: BSTNonHibbard(Of TKey, TValue)
+  fullName: BinarySearchTree.BSTNonHibbard<TKey, TValue>
+  fullName.vb: BinarySearchTree.BSTNonHibbard(Of TKey, TValue)
+  nameWithType: BSTNonHibbard<TKey, TValue>
+  nameWithType.vb: BSTNonHibbard(Of TKey, TValue)
+- uid: BinarySearchTree.BSTNonHibbard`2.Delete(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name: Delete(BST<TKey, TValue>.Node, TKey)
+  href: api/BinarySearchTree.BSTNonHibbard-2.html#BinarySearchTree_BSTNonHibbard_2_Delete_BinarySearchTree_BST__0__1__Node__0_
+  commentId: M:BinarySearchTree.BSTNonHibbard`2.Delete(BinarySearchTree.BST{`0,`1}.Node,`0)
+  name.vb: Delete(BST(Of TKey, TValue).Node, TKey)
+  fullName: BinarySearchTree.BSTNonHibbard<TKey, TValue>.Delete(BinarySearchTree.BST<TKey, TValue>.Node, TKey)
+  fullName.vb: BinarySearchTree.BSTNonHibbard(Of TKey, TValue).Delete(BinarySearchTree.BST(Of TKey, TValue).Node, TKey)
+  nameWithType: BSTNonHibbard<TKey, TValue>.Delete(BST<TKey, TValue>.Node, TKey)
+  nameWithType.vb: BSTNonHibbard(Of TKey, TValue).Delete(BST(Of TKey, TValue).Node, TKey)
+- uid: BinarySearchTree.BSTNonHibbard`2.Delete*
+  name: Delete
+  href: api/BinarySearchTree.BSTNonHibbard-2.html#BinarySearchTree_BSTNonHibbard_2_Delete_
+  commentId: Overload:BinarySearchTree.BSTNonHibbard`2.Delete
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTNonHibbard<TKey, TValue>.Delete
+  fullName.vb: BinarySearchTree.BSTNonHibbard(Of TKey, TValue).Delete
+  nameWithType: BSTNonHibbard<TKey, TValue>.Delete
+  nameWithType.vb: BSTNonHibbard(Of TKey, TValue).Delete
 - uid: BinarySearchTree.BSTNonRecursive`2
   name: BSTNonRecursive<TKey, TValue>
   href: api/BinarySearchTree.BSTNonRecursive-2.html
