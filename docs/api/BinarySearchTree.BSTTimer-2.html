@@ -13,10 +13,10 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SortCompare 类
+    <title>BSTTimer&lt;TKey, TValue&gt; 类
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="SortCompare 类
+    <meta name="title" content="BSTTimer&lt;TKey, TValue&gt; 类
    ">
     <meta name="generator" content="docfx 2.47.0.0">
     
@@ -124,8 +124,8 @@
                           <li class="">
                             <a href="BinarySearchTree.BSTTester.html" title="BSTTester" class="">BSTTester</a>
                           </li>
-                          <li class="">
-                            <a href="BinarySearchTree.BSTTimer-2.html" title="BSTTimer&lt;TKey, TValue&gt;" class="">BSTTimer&lt;TKey, TValue&gt;</a>
+                          <li class="active">
+                            <a href="BinarySearchTree.BSTTimer-2.html" title="BSTTimer&lt;TKey, TValue&gt;" class="active">BSTTimer&lt;TKey, TValue&gt;</a>
                           </li>
                           <li class="">
                             <a href="BinarySearchTree.BSTWithoutCounter-2.html" title="BSTWithoutCounter&lt;TKey, TValue&gt;" class="">BSTWithoutCounter&lt;TKey, TValue&gt;</a>
@@ -391,8 +391,8 @@
                           <li class="">
                             <a href="Quick.Sort2Distinct.html" title="Sort2Distinct" class="">Sort2Distinct</a>
                           </li>
-                          <li class="active">
-                            <a href="Quick.SortCompare.html" title="SortCompare" class="active">SortCompare</a>
+                          <li class="">
+                            <a href="Quick.SortCompare.html" title="SortCompare" class="">SortCompare</a>
                           </li>
                           <li class="">
                             <a href="Quick.SortUtil.html" title="SortUtil" class="">SortUtil</a>
@@ -609,88 +609,207 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Quick.SortCompare">
+            <article class="content wrap" id="_content" data-uid="BinarySearchTree.BSTTimer`2">
   
   
-  <h1 id="Quick_SortCompare" data-uid="Quick.SortCompare" class="text-break">SortCompare 类
+  <h1 id="BinarySearchTree_BSTTimer_2" data-uid="BinarySearchTree.BSTTimer`2" class="text-break">BSTTimer&lt;TKey, TValue&gt; 类
   </h1>
-  <div class="markdown level0 summary"><p>静态类，提供一系列用于测试排序算法的方法。</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>&#32487;&#25215;</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">SortCompare</span></div>
+    <div class="level1"><a class="xref" href="BinarySearchTree.BST-2.html">BST</a>&lt;TKey, TValue&gt;</div>
+    <div class="level2"><span class="xref">BSTTimer&lt;TKey, TValue&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>&#23454;&#29616;</h5>
+    <div><a class="xref" href="BinarySearchTree.IST-2.html">IST</a>&lt;TKey, TValue&gt;</div>
+    <div><a class="xref" href="BinarySearchTree.IOrderedST-2.html">IOrderedST</a>&lt;TKey, TValue&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>&#32487;&#25215;&#25104;&#21592;</h5>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_root">BST&lt;TKey, TValue&gt;.root</a>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put__0__1_">BST&lt;TKey, TValue&gt;.Put(TKey, TValue)</a>
     </div>
     <div>
-      <span class="xref">System.Object.GetHashCode()</span>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Put_BinarySearchTree_BST__0__1__Node__0__1_">BST&lt;TKey, TValue&gt;.Put(BST.Node&lt;&gt;, TKey, TValue)</a>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get__0_">BST&lt;TKey, TValue&gt;.Get(TKey)</a>
     </div>
     <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Get_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Get(BST.Node&lt;&gt;, TKey)</a>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete__0_">BST&lt;TKey, TValue&gt;.Delete(TKey)</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Delete_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Delete(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Contains__0_">BST&lt;TKey, TValue&gt;.Contains(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsEmpty">BST&lt;TKey, TValue&gt;.IsEmpty()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size">BST&lt;TKey, TValue&gt;.Size()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Size(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Size__0__0_">BST&lt;TKey, TValue&gt;.Size(TKey, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height">BST&lt;TKey, TValue&gt;.Height()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Height_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Height(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys">BST&lt;TKey, TValue&gt;.Keys()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys__0__0_">BST&lt;TKey, TValue&gt;.Keys(TKey, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys_BinarySearchTree_BST__0__1__Node_Queue__0___0__0_">BST&lt;TKey, TValue&gt;.Keys(BST.Node&lt;&gt;, Queue&lt;TKey&gt;, TKey, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min">BST&lt;TKey, TValue&gt;.Min()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Min_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Min(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max">BST&lt;TKey, TValue&gt;.Max()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Max_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.Max(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor__0_">BST&lt;TKey, TValue&gt;.Floor(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Floor_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Floor(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling__0_">BST&lt;TKey, TValue&gt;.Ceiling(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Ceiling_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Ceiling(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank__0_">BST&lt;TKey, TValue&gt;.Rank(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Rank_BinarySearchTree_BST__0__1__Node__0_">BST&lt;TKey, TValue&gt;.Rank(BST.Node&lt;&gt;, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_System_Int32_">BST&lt;TKey, TValue&gt;.Select(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Select_BinarySearchTree_BST__0__1__Node_System_Int32_">BST&lt;TKey, TValue&gt;.Select(BST.Node&lt;&gt;, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin">BST&lt;TKey, TValue&gt;.DeleteMin()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMin_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.DeleteMin(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax">BST&lt;TKey, TValue&gt;.DeleteMax()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_DeleteMax_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.DeleteMax(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_AverageInternalPathLength">BST&lt;TKey, TValue&gt;.AverageInternalPathLength()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_PrintLevel__0_">BST&lt;TKey, TValue&gt;.PrintLevel(TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToString">BST&lt;TKey, TValue&gt;.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToKeyArray">BST&lt;TKey, TValue&gt;.ToKeyArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_ToValueArray">BST&lt;TKey, TValue&gt;.ToValueArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsStructureEqual__4_BinarySearchTree_BST___0___1__BinarySearchTree_BST___2___3__">BST&lt;TKey, TValue&gt;.IsStructureEqual&lt;TKeyA, TValueA, TKeyB, TValueB&gt;(BST&lt;TKeyA, TValueA&gt;, BST&lt;TKeyB, TValueB&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsBinaryTree_BinarySearchTree_BST__0__1__">BST&lt;TKey, TValue&gt;.IsBinaryTree(BST&lt;TKey, TValue&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsBinaryTree_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.IsBinaryTree(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsOrdered_BinarySearchTree_BST__0__1__">BST&lt;TKey, TValue&gt;.IsOrdered(BST&lt;TKey, TValue&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsOrdered_BinarySearchTree_BST__0__1__Node__0__0_">BST&lt;TKey, TValue&gt;.IsOrdered(BST.Node&lt;&gt;, TKey, TKey)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_HasNoDuplicates_BinarySearchTree_BST__0__1__">BST&lt;TKey, TValue&gt;.HasNoDuplicates(BST&lt;TKey, TValue&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_HasNoDuplicates_BinarySearchTree_BST__0__1__Node_">BST&lt;TKey, TValue&gt;.HasNoDuplicates(BST.Node&lt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsBST_BinarySearchTree_BST__0__1__">BST&lt;TKey, TValue&gt;.IsBST(BST&lt;TKey, TValue&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_IsRankConsistent_BinarySearchTree_BST__0__1__">BST&lt;TKey, TValue&gt;.IsRankConsistent(BST&lt;TKey, TValue&gt;)</a>
     </div>
   </div>
-  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="Quick.html">Quick</a></h6>
-  <h6><strong>&#31243;&#24207;&#38598;</strong>: Quick.dll</h6>
-  <h5 id="Quick_SortCompare_syntax">&#35821;&#27861;</h5>
+  <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="BinarySearchTree.html">BinarySearchTree</a></h6>
+  <h6><strong>&#31243;&#24207;&#38598;</strong>: BinarySearchTree.dll</h6>
+  <h5 id="BinarySearchTree_BSTTimer_2_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class SortCompare</code></pre>
+    <pre><code class="lang-csharp hljs">public class BSTTimer&lt;TKey, TValue&gt; : BST&lt;TKey, TValue&gt;, IST&lt;TKey, TValue&gt;, IOrderedST&lt;TKey, TValue&gt; where TKey : IComparable&lt;TKey&gt;</code></pre>
   </div>
-  <h3 id="methods">&#26041;&#27861;
+  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">&#23646;&#24615;
   </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L171">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTTimer.cs/#L8">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Quick_SortCompare_GetDiscretDistributionArray_" data-uid="Quick.SortCompare.GetDiscretDistributionArray*"></a>
-  <h4 id="Quick_SortCompare_GetDiscretDistributionArray_System_Int32_System_Double___" data-uid="Quick.SortCompare.GetDiscretDistributionArray(System.Int32,System.Double[])">GetDiscretDistributionArray(Int32, Double[])</h4>
-  <div class="markdown level1 summary"><p>产生符合指定概率的离散分布的随机数组。</p>
-</div>
+  <a id="BinarySearchTree_BSTTimer_2_PutTime_" data-uid="BinarySearchTree.BSTTimer`2.PutTime*"></a>
+  <h4 id="BinarySearchTree_BSTTimer_2_PutTime" data-uid="BinarySearchTree.BSTTimer`2.PutTime">PutTime</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] GetDiscretDistributionArray(int n, double[] probabilities)</code></pre>
+    <pre><code class="lang-csharp hljs">public long PutTime { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>随机数组的大小。</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">probabilities</span></td>
-        <td><p>各取值的概率数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
+  <h5 class="propertyValue">&#23646;&#24615;&#20540;</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -700,405 +819,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><p>符合指定概率的离散分布的随机数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L155">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Quick_SortCompare_GetGeometricDistributionArray_" data-uid="Quick.SortCompare.GetGeometricDistributionArray*"></a>
-  <h4 id="Quick_SortCompare_GetGeometricDistributionArray_System_Int32_System_Double_" data-uid="Quick.SortCompare.GetGeometricDistributionArray(System.Int32,System.Double)">GetGeometricDistributionArray(Int32, Double)</h4>
-  <div class="markdown level1 summary"><p>产生符合几何分布的随机数组。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] GetGeometricDistributionArray(int n, double p)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>随机数组的大小。</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">p</span></td>
-        <td><p>几何分布的概率。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><p>符合几何分布的随机数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L123">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Quick_SortCompare_GetNormalDistributionArray_" data-uid="Quick.SortCompare.GetNormalDistributionArray*"></a>
-  <h4 id="Quick_SortCompare_GetNormalDistributionArray_System_Int32_" data-uid="Quick.SortCompare.GetNormalDistributionArray(System.Int32)">GetNormalDistributionArray(Int32)</h4>
-  <div class="markdown level1 summary"><p>获取符合标准正态分布的 double 数组。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] GetNormalDistributionArray(int n)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>数组大小。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><p>符合标准正态分布的 double 数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L138">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Quick_SortCompare_GetPossionDistributionArray_" data-uid="Quick.SortCompare.GetPossionDistributionArray*"></a>
-  <h4 id="Quick_SortCompare_GetPossionDistributionArray_System_Int32_" data-uid="Quick.SortCompare.GetPossionDistributionArray(System.Int32)">GetPossionDistributionArray(Int32)</h4>
-  <div class="markdown level1 summary"><p>产生符合泊松分布的随机数组。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] GetPossionDistributionArray(int n)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>随机数组的大小。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><p>符合泊松分布的数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L107">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Quick_SortCompare_GetRandomArrayDouble_" data-uid="Quick.SortCompare.GetRandomArrayDouble*"></a>
-  <h4 id="Quick_SortCompare_GetRandomArrayDouble_System_Int32_" data-uid="Quick.SortCompare.GetRandomArrayDouble(System.Int32)">GetRandomArrayDouble(Int32)</h4>
-  <div class="markdown level1 summary"><p>获取大小为 n 的随机 double 数组。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] GetRandomArrayDouble(int n)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>随机数组的大小。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><p>大小为 n 的随机 double 数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L91">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Quick_SortCompare_GetRandomArrayInt_" data-uid="Quick.SortCompare.GetRandomArrayInt*"></a>
-  <h4 id="Quick_SortCompare_GetRandomArrayInt_System_Int32_" data-uid="Quick.SortCompare.GetRandomArrayInt(System.Int32)">GetRandomArrayInt(Int32)</h4>
-  <div class="markdown level1 summary"><p>获取大小为 n 的随机整数数组。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int[] GetRandomArrayInt(int n)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>数组的大小。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span>[]</td>
-        <td><p>大小为 n 的随机整数数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L16">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Quick_SortCompare_Shuffle_" data-uid="Quick.SortCompare.Shuffle*"></a>
-  <h4 id="Quick_SortCompare_Shuffle__1___0___" data-uid="Quick.SortCompare.Shuffle``1(``0[])">Shuffle&lt;T&gt;(T[])</h4>
-  <div class="markdown level1 summary"><p>打乱数组。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Shuffle&lt;T&gt;(T[] a)</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>T[]</td>
-        <td><span class="parametername">a</span></td>
-        <td><p>需要打乱的数组。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>需要打乱的数组类型。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L34">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
-  </span>
-  <a id="Quick_SortCompare_Time_" data-uid="Quick.SortCompare.Time*"></a>
-  <h4 id="Quick_SortCompare_Time__1_Quick_BaseSort___0___" data-uid="Quick.SortCompare.Time``1(Quick.BaseSort,``0[])">Time&lt;T&gt;(BaseSort, T[])</h4>
-  <div class="markdown level1 summary"><p>对相应排序算法执行一次耗时测试。</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">&#22768;&#26126;</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double Time&lt;T&gt;(BaseSort sort, T[] a)
-    where T : IComparable&lt;T&gt;</code></pre>
-  </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Quick.BaseSort.html">BaseSort</a></td>
-        <td><span class="parametername">sort</span></td>
-        <td><p>用于测试的排序算法。</p>
-</td>
-      </tr>
-      <tr>
-        <td>T[]</td>
-        <td><span class="parametername">a</span></td>
-        <td><p>用于测试的数据。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><p>排序的耗时，单位为毫秒。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
+        <td><span class="xref">System.Int64</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L48">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTTimer.cs/#L9">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Quick_SortCompare_TimeRandomInput_" data-uid="Quick.SortCompare.TimeRandomInput*"></a>
-  <h4 id="Quick_SortCompare_TimeRandomInput_Quick_BaseSort_System_Int32_System_Int32_" data-uid="Quick.SortCompare.TimeRandomInput(Quick.BaseSort,System.Int32,System.Int32)">TimeRandomInput(BaseSort, Int32, Int32)</h4>
-  <div class="markdown level1 summary"><p>对相应排序算法做多次随机数据测试，返回总耗时。</p>
-</div>
+  <a id="BinarySearchTree_BSTTimer_2_SetTime_" data-uid="BinarySearchTree.BSTTimer`2.SetTime*"></a>
+  <h4 id="BinarySearchTree_BSTTimer_2_SetTime" data-uid="BinarySearchTree.BSTTimer`2.SetTime">SetTime</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double TimeRandomInput(BaseSort sort, int n, int trials)</code></pre>
+    <pre><code class="lang-csharp hljs">public long SetTime { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">&#21442;&#25968;</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>&#31867;&#22411;</th>
-        <th>&#21517;&#31216;</th>
-        <th>&#25551;&#36848;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Quick.BaseSort.html">BaseSort</a></td>
-        <td><span class="parametername">sort</span></td>
-        <td><p>用于测试的排序算法。</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>每次测试的数据量。</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">trials</span></td>
-        <td><p>测试次数。</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">&#36820;&#22238;</h5>
+  <h5 class="propertyValue">&#23646;&#24615;&#20540;</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -1108,23 +845,24 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><p>多次排序的总耗时，单位为毫秒。</p>
-</td>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">&#26041;&#27861;
+  </h3>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L71">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTTimer.cs/#L29">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
-  <a id="Quick_SortCompare_TimeSortedInput_" data-uid="Quick.SortCompare.TimeSortedInput*"></a>
-  <h4 id="Quick_SortCompare_TimeSortedInput_Quick_BaseSort_System_Int32_System_Int32_" data-uid="Quick.SortCompare.TimeSortedInput(Quick.BaseSort,System.Int32,System.Int32)">TimeSortedInput(BaseSort, Int32, Int32)</h4>
-  <div class="markdown level1 summary"><p>对相应排序算法做多次有序数据测试，返回总耗时。</p>
+  <a id="BinarySearchTree_BSTTimer_2_Get_" data-uid="BinarySearchTree.BSTTimer`2.Get*"></a>
+  <h4 id="BinarySearchTree_BSTTimer_2_Get__0_" data-uid="BinarySearchTree.BSTTimer`2.Get(`0)">Get(TKey)</h4>
+  <div class="markdown level1 summary"><p>获得 <code data-dev-comment-type="paramref" class="paramref">key</code> 对应的值，不存在则返回 <code>default(TValue)</code>。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">&#22768;&#26126;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double TimeSortedInput(BaseSort sort, int n, int trials)</code></pre>
+    <pre><code class="lang-csharp hljs">public override TValue Get(TKey key)</code></pre>
   </div>
   <h5 class="parameters">&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1137,21 +875,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Quick.BaseSort.html">BaseSort</a></td>
-        <td><span class="parametername">sort</span></td>
-        <td><p>用于测试的排序算法。</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">n</span></td>
-        <td><p>每次测试的数据量。</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">trials</span></td>
-        <td><p>测试次数。</p>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>需要查找的键。</p>
 </td>
       </tr>
     </tbody>
@@ -1166,12 +892,59 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><p>多次排序的总耗时，单位为毫秒。</p>
+        <td><span class="xref">TValue</span></td>
+        <td><p>找到的值，不存在则返回 <code>default(TValue)</code>。</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">&#37325;&#20889;</h5>
+  <div><span class="xref">BinarySearchTree.BST&lt;TKey, TValue&gt;.Get(TKey)</span></div>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTTimer.cs/#L16">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+  </span>
+  <a id="BinarySearchTree_BSTTimer_2_Put_" data-uid="BinarySearchTree.BSTTimer`2.Put*"></a>
+  <h4 id="BinarySearchTree_BSTTimer_2_Put__0__1_" data-uid="BinarySearchTree.BSTTimer`2.Put(`0,`1)">Put(TKey, TValue)</h4>
+  <div class="markdown level1 summary"><p>向二叉查找树中插入一个键值对。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">&#22768;&#26126;</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Put(TKey key, TValue value)</code></pre>
+  </div>
+  <h5 class="parameters">&#21442;&#25968;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#21517;&#31216;</th>
+        <th>&#25551;&#36848;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>要插入的键。</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>要插入的值。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">&#37325;&#20889;</h5>
+  <div><span class="xref">BinarySearchTree.BST&lt;TKey, TValue&gt;.Put(TKey, TValue)</span></div>
+  <h3 id="implements">&#23454;&#29616;</h3>
+  <div>
+      <a class="xref" href="BinarySearchTree.IST-2.html">IST&lt;TKey, TValue&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="BinarySearchTree.IOrderedST-2.html">IOrderedST&lt;TKey, TValue&gt;</a>
+  </div>
 </article>
           </div>
           
@@ -1180,7 +953,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/2 Sorting/2.3/Quick/SortCompare.cs/#L9" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
+                    <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTTimer.cs/#L6" class="contribution-link">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
                   </li>
                 </ul>
               </div>

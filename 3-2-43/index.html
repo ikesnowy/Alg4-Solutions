@@ -4,7 +4,7 @@
         <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>归档 | 《算法（第四版）》C# 题解</title>
+        <title>3.2.43 | 《算法（第四版）》C# 题解</title>
         
         <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
         
@@ -138,75 +138,49 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">归档</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2018</h4>
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-9/">2.2.9</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-8/">2.2.8</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-7/">2.2.7</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-6/">2.2.6</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-5/">2.2.5</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-4/">2.2.4</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-3/">2.2.3</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-2/">2.2.2</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年7月4日</span><a href="/2-2-1/">2.2.1</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>2018年6月30日</span><a href="/2-1-38/">2.1.38</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb">
+			<a href="/">
+				解答
+			</a>/ 
+			3.2.43
+
+		</p>
+		<div class="page_content mdcss">
+			<h1>3.2.43</h1>
+			<p>上次更新：2019-12-28 <br>
+			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
+			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>依照题意实现即可，put/get 大约 10 倍差距。</p>
+<p><img src="./1.png" alt></p>
+<p><code>MostFrequentlyKey</code> 的实现：</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> TKey <span class="token generic-method function">MostFrequentlyKey<span class="token punctuation">&lt;</span>TKey<span class="token punctuation">></span></span><span class="token punctuation">(</span>IST<span class="token operator">&lt;</span>TKey<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> st<span class="token punctuation">,</span> TKey<span class="token punctuation">[</span><span class="token punctuation">]</span> keys<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">var</span> s <span class="token keyword">in</span> keys<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>st<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            st<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> st<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            st<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> max <span class="token operator">=</span> keys<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">var</span> s <span class="token keyword">in</span> st<span class="token punctuation">.</span><span class="token function">Keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>st<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">></span> st<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>max<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            max <span class="token operator">=</span> s<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> max<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://alg4.ikesnowy.com/docs/api/BinarySearchTree.html">BinarySearchTree 库</a></p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
@@ -214,10 +188,8 @@ function dismissSearchResultModal() {
 	
 	<div class="section" id="Pagenation">
 		
-		<a href="/archives/page/21/">上一页</a>
+		<a href="/3-2-42/">上一题</a>
 		
-		
-		<a href="/archives/page/23/">下一页</a>
 		
 	</div>
 	

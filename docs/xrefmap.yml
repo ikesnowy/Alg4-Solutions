@@ -417,13 +417,13 @@ references:
   fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys(TKey, TKey)
   nameWithType: BST<TKey, TValue>.Keys(TKey, TKey)
   nameWithType.vb: BST(Of TKey, TValue).Keys(TKey, TKey)
-- uid: BinarySearchTree.BST`2.Keys(BinarySearchTree.BST{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+- uid: BinarySearchTree.BST`2.Keys(BinarySearchTree.BST{`0,`1}.Node,Queue{`0},`0,`0)
   name: Keys(BST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
-  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys_BinarySearchTree_BST__0__1__Node_System_Collections_Generic_Queue__0___0__0_
-  commentId: M:BinarySearchTree.BST`2.Keys(BinarySearchTree.BST{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+  href: api/BinarySearchTree.BST-2.html#BinarySearchTree_BST_2_Keys_BinarySearchTree_BST__0__1__Node_Queue__0___0__0_
+  commentId: M:BinarySearchTree.BST`2.Keys(BinarySearchTree.BST{`0,`1}.Node,Queue{`0},`0,`0)
   name.vb: Keys(BST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
-  fullName: BinarySearchTree.BST<TKey, TValue>.Keys(BinarySearchTree.BST<TKey, TValue>.Node, System.Collections.Generic.Queue<TKey>, TKey, TKey)
-  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys(BinarySearchTree.BST(Of TKey, TValue).Node, System.Collections.Generic.Queue(Of TKey), TKey, TKey)
+  fullName: BinarySearchTree.BST<TKey, TValue>.Keys(BinarySearchTree.BST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
+  fullName.vb: BinarySearchTree.BST(Of TKey, TValue).Keys(BinarySearchTree.BST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
   nameWithType: BST<TKey, TValue>.Keys(BST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
   nameWithType.vb: BST(Of TKey, TValue).Keys(BST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
 - uid: BinarySearchTree.BST`2.Keys*
@@ -1061,13 +1061,13 @@ references:
   fullName.vb: BinarySearchTree.BSTAnalysis(Of TKey, TValue).Keys(TKey, TKey)
   nameWithType: BSTAnalysis<TKey, TValue>.Keys(TKey, TKey)
   nameWithType.vb: BSTAnalysis(Of TKey, TValue).Keys(TKey, TKey)
-- uid: BinarySearchTree.BSTAnalysis`2.Keys(BinarySearchTree.BSTAnalysis{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+- uid: BinarySearchTree.BSTAnalysis`2.Keys(BinarySearchTree.BSTAnalysis{`0,`1}.Node,Queue{`0},`0,`0)
   name: Keys(BSTAnalysis<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
-  href: api/BinarySearchTree.BSTAnalysis-2.html#BinarySearchTree_BSTAnalysis_2_Keys_BinarySearchTree_BSTAnalysis__0__1__Node_System_Collections_Generic_Queue__0___0__0_
-  commentId: M:BinarySearchTree.BSTAnalysis`2.Keys(BinarySearchTree.BSTAnalysis{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+  href: api/BinarySearchTree.BSTAnalysis-2.html#BinarySearchTree_BSTAnalysis_2_Keys_BinarySearchTree_BSTAnalysis__0__1__Node_Queue__0___0__0_
+  commentId: M:BinarySearchTree.BSTAnalysis`2.Keys(BinarySearchTree.BSTAnalysis{`0,`1}.Node,Queue{`0},`0,`0)
   name.vb: Keys(BSTAnalysis(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
-  fullName: BinarySearchTree.BSTAnalysis<TKey, TValue>.Keys(BinarySearchTree.BSTAnalysis<TKey, TValue>.Node, System.Collections.Generic.Queue<TKey>, TKey, TKey)
-  fullName.vb: BinarySearchTree.BSTAnalysis(Of TKey, TValue).Keys(BinarySearchTree.BSTAnalysis(Of TKey, TValue).Node, System.Collections.Generic.Queue(Of TKey), TKey, TKey)
+  fullName: BinarySearchTree.BSTAnalysis<TKey, TValue>.Keys(BinarySearchTree.BSTAnalysis<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
+  fullName.vb: BinarySearchTree.BSTAnalysis(Of TKey, TValue).Keys(BinarySearchTree.BSTAnalysis(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
   nameWithType: BSTAnalysis<TKey, TValue>.Keys(BSTAnalysis<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
   nameWithType.vb: BSTAnalysis(Of TKey, TValue).Keys(BSTAnalysis(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
 - uid: BinarySearchTree.BSTAnalysis`2.Keys*
@@ -1736,13 +1736,13 @@ references:
   fullName.vb: BinarySearchTree.BSTBalanced(Of TKey, TValue)
   nameWithType: BSTBalanced<TKey, TValue>
   nameWithType.vb: BSTBalanced(Of TKey, TValue)
-- uid: BinarySearchTree.BSTBalanced`2.#ctor(System.Collections.Generic.KeyValuePair{`0,`1}[])
+- uid: BinarySearchTree.BSTBalanced`2.#ctor(KeyValuePair{`0,`1}[])
   name: BSTBalanced(KeyValuePair<TKey, TValue>[])
-  href: api/BinarySearchTree.BSTBalanced-2.html#BinarySearchTree_BSTBalanced_2__ctor_System_Collections_Generic_KeyValuePair__0__1____
-  commentId: M:BinarySearchTree.BSTBalanced`2.#ctor(System.Collections.Generic.KeyValuePair{`0,`1}[])
+  href: api/BinarySearchTree.BSTBalanced-2.html#BinarySearchTree_BSTBalanced_2__ctor_KeyValuePair__0__1____
+  commentId: M:BinarySearchTree.BSTBalanced`2.#ctor(KeyValuePair{`0,`1}[])
   name.vb: BSTBalanced(KeyValuePair(Of TKey, TValue)())
-  fullName: BinarySearchTree.BSTBalanced<TKey, TValue>.BSTBalanced(System.Collections.Generic.KeyValuePair<TKey, TValue>[])
-  fullName.vb: BinarySearchTree.BSTBalanced(Of TKey, TValue).BSTBalanced(System.Collections.Generic.KeyValuePair(Of TKey, TValue)())
+  fullName: BinarySearchTree.BSTBalanced<TKey, TValue>.BSTBalanced(KeyValuePair<TKey, TValue>[])
+  fullName.vb: BinarySearchTree.BSTBalanced(Of TKey, TValue).BSTBalanced(KeyValuePair(Of TKey, TValue)())
   nameWithType: BSTBalanced<TKey, TValue>.BSTBalanced(KeyValuePair<TKey, TValue>[])
   nameWithType.vb: BSTBalanced(Of TKey, TValue).BSTBalanced(KeyValuePair(Of TKey, TValue)())
 - uid: BinarySearchTree.BSTBalanced`2.#ctor*
@@ -2255,6 +2255,83 @@ references:
   isSpec: "True"
   fullName: BinarySearchTree.BSTTester.Test
   nameWithType: BSTTester.Test
+- uid: BinarySearchTree.BSTTimer`2
+  name: BSTTimer<TKey, TValue>
+  href: api/BinarySearchTree.BSTTimer-2.html
+  commentId: T:BinarySearchTree.BSTTimer`2
+  name.vb: BSTTimer(Of TKey, TValue)
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue)
+  nameWithType: BSTTimer<TKey, TValue>
+  nameWithType.vb: BSTTimer(Of TKey, TValue)
+- uid: BinarySearchTree.BSTTimer`2.Get(`0)
+  name: Get(TKey)
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Get__0_
+  commentId: M:BinarySearchTree.BSTTimer`2.Get(`0)
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Get(TKey)
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Get(TKey)
+  nameWithType: BSTTimer<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.BSTTimer`2.Get*
+  name: Get
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Get_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.Get
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Get
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Get
+  nameWithType: BSTTimer<TKey, TValue>.Get
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Get
+- uid: BinarySearchTree.BSTTimer`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Put__0__1_
+  commentId: M:BinarySearchTree.BSTTimer`2.Put(`0,`1)
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BSTTimer<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.BSTTimer`2.Put*
+  name: Put
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Put_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.Put
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Put
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Put
+  nameWithType: BSTTimer<TKey, TValue>.Put
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Put
+- uid: BinarySearchTree.BSTTimer`2.PutTime
+  name: PutTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_PutTime
+  commentId: P:BinarySearchTree.BSTTimer`2.PutTime
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.PutTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).PutTime
+  nameWithType: BSTTimer<TKey, TValue>.PutTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).PutTime
+- uid: BinarySearchTree.BSTTimer`2.PutTime*
+  name: PutTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_PutTime_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.PutTime
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.PutTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).PutTime
+  nameWithType: BSTTimer<TKey, TValue>.PutTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).PutTime
+- uid: BinarySearchTree.BSTTimer`2.SetTime
+  name: SetTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_SetTime
+  commentId: P:BinarySearchTree.BSTTimer`2.SetTime
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.SetTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).SetTime
+  nameWithType: BSTTimer<TKey, TValue>.SetTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).SetTime
+- uid: BinarySearchTree.BSTTimer`2.SetTime*
+  name: SetTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_SetTime_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.SetTime
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.SetTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).SetTime
+  nameWithType: BSTTimer<TKey, TValue>.SetTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).SetTime
 - uid: BinarySearchTree.BSTWithoutCounter`2
   name: BSTWithoutCounter<TKey, TValue>
   href: api/BinarySearchTree.BSTWithoutCounter-2.html
@@ -3433,13 +3510,13 @@ references:
   fullName.vb: BinarySearchTree.ThreadedST(Of TKey, TValue).Keys(TKey, TKey)
   nameWithType: ThreadedST<TKey, TValue>.Keys(TKey, TKey)
   nameWithType.vb: ThreadedST(Of TKey, TValue).Keys(TKey, TKey)
-- uid: BinarySearchTree.ThreadedST`2.Keys(BinarySearchTree.ThreadedST{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+- uid: BinarySearchTree.ThreadedST`2.Keys(BinarySearchTree.ThreadedST{`0,`1}.Node,Queue{`0},`0,`0)
   name: Keys(ThreadedST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
-  href: api/BinarySearchTree.ThreadedST-2.html#BinarySearchTree_ThreadedST_2_Keys_BinarySearchTree_ThreadedST__0__1__Node_System_Collections_Generic_Queue__0___0__0_
-  commentId: M:BinarySearchTree.ThreadedST`2.Keys(BinarySearchTree.ThreadedST{`0,`1}.Node,System.Collections.Generic.Queue{`0},`0,`0)
+  href: api/BinarySearchTree.ThreadedST-2.html#BinarySearchTree_ThreadedST_2_Keys_BinarySearchTree_ThreadedST__0__1__Node_Queue__0___0__0_
+  commentId: M:BinarySearchTree.ThreadedST`2.Keys(BinarySearchTree.ThreadedST{`0,`1}.Node,Queue{`0},`0,`0)
   name.vb: Keys(ThreadedST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
-  fullName: BinarySearchTree.ThreadedST<TKey, TValue>.Keys(BinarySearchTree.ThreadedST<TKey, TValue>.Node, System.Collections.Generic.Queue<TKey>, TKey, TKey)
-  fullName.vb: BinarySearchTree.ThreadedST(Of TKey, TValue).Keys(BinarySearchTree.ThreadedST(Of TKey, TValue).Node, System.Collections.Generic.Queue(Of TKey), TKey, TKey)
+  fullName: BinarySearchTree.ThreadedST<TKey, TValue>.Keys(BinarySearchTree.ThreadedST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
+  fullName.vb: BinarySearchTree.ThreadedST(Of TKey, TValue).Keys(BinarySearchTree.ThreadedST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
   nameWithType: ThreadedST<TKey, TValue>.Keys(ThreadedST<TKey, TValue>.Node, Queue<TKey>, TKey, TKey)
   nameWithType.vb: ThreadedST(Of TKey, TValue).Keys(ThreadedST(Of TKey, TValue).Node, Queue(Of TKey), TKey, TKey)
 - uid: BinarySearchTree.ThreadedST`2.Keys*
@@ -4945,11 +5022,11 @@ references:
   isSpec: "True"
   fullName: Geometry.Interval1D.Contains
   nameWithType: Interval1D.Contains
-- uid: Geometry.Interval1D.Draw(System.Drawing.Graphics,System.Int32)
+- uid: Geometry.Interval1D.Draw(Graphics,System.Int32)
   name: Draw(Graphics, Int32)
-  href: api/Geometry.Interval1D.html#Geometry_Interval1D_Draw_System_Drawing_Graphics_System_Int32_
-  commentId: M:Geometry.Interval1D.Draw(System.Drawing.Graphics,System.Int32)
-  fullName: Geometry.Interval1D.Draw(System.Drawing.Graphics, System.Int32)
+  href: api/Geometry.Interval1D.html#Geometry_Interval1D_Draw_Graphics_System_Int32_
+  commentId: M:Geometry.Interval1D.Draw(Graphics,System.Int32)
+  fullName: Geometry.Interval1D.Draw(Graphics, System.Int32)
   nameWithType: Interval1D.Draw(Graphics, Int32)
 - uid: Geometry.Interval1D.Draw*
   name: Draw
@@ -5118,11 +5195,11 @@ references:
   isSpec: "True"
   fullName: Geometry.Interval2D.Contains
   nameWithType: Interval2D.Contains
-- uid: Geometry.Interval2D.Draw(System.Drawing.Graphics)
+- uid: Geometry.Interval2D.Draw(Graphics)
   name: Draw(Graphics)
-  href: api/Geometry.Interval2D.html#Geometry_Interval2D_Draw_System_Drawing_Graphics_
-  commentId: M:Geometry.Interval2D.Draw(System.Drawing.Graphics)
-  fullName: Geometry.Interval2D.Draw(System.Drawing.Graphics)
+  href: api/Geometry.Interval2D.html#Geometry_Interval2D_Draw_Graphics_
+  commentId: M:Geometry.Interval2D.Draw(Graphics)
+  fullName: Geometry.Interval2D.Draw(Graphics)
   nameWithType: Interval2D.Draw(Graphics)
 - uid: Geometry.Interval2D.Draw*
   name: Draw
@@ -5293,11 +5370,11 @@ references:
   isSpec: "True"
   fullName: Geometry.Point2D.DistanceTo_Order
   nameWithType: Point2D.DistanceTo_Order
-- uid: Geometry.Point2D.Draw(System.Drawing.Graphics)
+- uid: Geometry.Point2D.Draw(Graphics)
   name: Draw(Graphics)
-  href: api/Geometry.Point2D.html#Geometry_Point2D_Draw_System_Drawing_Graphics_
-  commentId: M:Geometry.Point2D.Draw(System.Drawing.Graphics)
-  fullName: Geometry.Point2D.Draw(System.Drawing.Graphics)
+  href: api/Geometry.Point2D.html#Geometry_Point2D_Draw_Graphics_
+  commentId: M:Geometry.Point2D.Draw(Graphics)
+  fullName: Geometry.Point2D.Draw(Graphics)
   nameWithType: Point2D.Draw(Graphics)
 - uid: Geometry.Point2D.Draw*
   name: Draw
