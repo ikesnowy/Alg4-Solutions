@@ -486,6 +486,10 @@
     height: auto !important
 }
 
+#search-button-path {
+    stroke: #111;
+}
+
 body,
 input,
 textarea,
