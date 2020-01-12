@@ -2255,6 +2255,83 @@ references:
   isSpec: "True"
   fullName: BinarySearchTree.BSTTester.Test
   nameWithType: BSTTester.Test
+- uid: BinarySearchTree.BSTTimer`2
+  name: BSTTimer<TKey, TValue>
+  href: api/BinarySearchTree.BSTTimer-2.html
+  commentId: T:BinarySearchTree.BSTTimer`2
+  name.vb: BSTTimer(Of TKey, TValue)
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue)
+  nameWithType: BSTTimer<TKey, TValue>
+  nameWithType.vb: BSTTimer(Of TKey, TValue)
+- uid: BinarySearchTree.BSTTimer`2.Get(`0)
+  name: Get(TKey)
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Get__0_
+  commentId: M:BinarySearchTree.BSTTimer`2.Get(`0)
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Get(TKey)
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Get(TKey)
+  nameWithType: BSTTimer<TKey, TValue>.Get(TKey)
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Get(TKey)
+- uid: BinarySearchTree.BSTTimer`2.Get*
+  name: Get
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Get_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.Get
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Get
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Get
+  nameWithType: BSTTimer<TKey, TValue>.Get
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Get
+- uid: BinarySearchTree.BSTTimer`2.Put(`0,`1)
+  name: Put(TKey, TValue)
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Put__0__1_
+  commentId: M:BinarySearchTree.BSTTimer`2.Put(`0,`1)
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Put(TKey, TValue)
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Put(TKey, TValue)
+  nameWithType: BSTTimer<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Put(TKey, TValue)
+- uid: BinarySearchTree.BSTTimer`2.Put*
+  name: Put
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_Put_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.Put
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.Put
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).Put
+  nameWithType: BSTTimer<TKey, TValue>.Put
+  nameWithType.vb: BSTTimer(Of TKey, TValue).Put
+- uid: BinarySearchTree.BSTTimer`2.PutTime
+  name: PutTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_PutTime
+  commentId: P:BinarySearchTree.BSTTimer`2.PutTime
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.PutTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).PutTime
+  nameWithType: BSTTimer<TKey, TValue>.PutTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).PutTime
+- uid: BinarySearchTree.BSTTimer`2.PutTime*
+  name: PutTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_PutTime_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.PutTime
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.PutTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).PutTime
+  nameWithType: BSTTimer<TKey, TValue>.PutTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).PutTime
+- uid: BinarySearchTree.BSTTimer`2.SetTime
+  name: SetTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_SetTime
+  commentId: P:BinarySearchTree.BSTTimer`2.SetTime
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.SetTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).SetTime
+  nameWithType: BSTTimer<TKey, TValue>.SetTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).SetTime
+- uid: BinarySearchTree.BSTTimer`2.SetTime*
+  name: SetTime
+  href: api/BinarySearchTree.BSTTimer-2.html#BinarySearchTree_BSTTimer_2_SetTime_
+  commentId: Overload:BinarySearchTree.BSTTimer`2.SetTime
+  isSpec: "True"
+  fullName: BinarySearchTree.BSTTimer<TKey, TValue>.SetTime
+  fullName.vb: BinarySearchTree.BSTTimer(Of TKey, TValue).SetTime
+  nameWithType: BSTTimer<TKey, TValue>.SetTime
+  nameWithType.vb: BSTTimer(Of TKey, TValue).SetTime
 - uid: BinarySearchTree.BSTWithoutCounter`2
   name: BSTWithoutCounter<TKey, TValue>
   href: api/BinarySearchTree.BSTWithoutCounter-2.html
@@ -4945,11 +5022,11 @@ references:
   isSpec: "True"
   fullName: Geometry.Interval1D.Contains
   nameWithType: Interval1D.Contains
-- uid: Geometry.Interval1D.Draw(System.Drawing.Graphics,System.Int32)
+- uid: Geometry.Interval1D.Draw(Graphics,System.Int32)
   name: Draw(Graphics, Int32)
-  href: api/Geometry.Interval1D.html#Geometry_Interval1D_Draw_System_Drawing_Graphics_System_Int32_
-  commentId: M:Geometry.Interval1D.Draw(System.Drawing.Graphics,System.Int32)
-  fullName: Geometry.Interval1D.Draw(System.Drawing.Graphics, System.Int32)
+  href: api/Geometry.Interval1D.html#Geometry_Interval1D_Draw_Graphics_System_Int32_
+  commentId: M:Geometry.Interval1D.Draw(Graphics,System.Int32)
+  fullName: Geometry.Interval1D.Draw(Graphics, System.Int32)
   nameWithType: Interval1D.Draw(Graphics, Int32)
 - uid: Geometry.Interval1D.Draw*
   name: Draw
@@ -5118,11 +5195,11 @@ references:
   isSpec: "True"
   fullName: Geometry.Interval2D.Contains
   nameWithType: Interval2D.Contains
-- uid: Geometry.Interval2D.Draw(System.Drawing.Graphics)
+- uid: Geometry.Interval2D.Draw(Graphics)
   name: Draw(Graphics)
-  href: api/Geometry.Interval2D.html#Geometry_Interval2D_Draw_System_Drawing_Graphics_
-  commentId: M:Geometry.Interval2D.Draw(System.Drawing.Graphics)
-  fullName: Geometry.Interval2D.Draw(System.Drawing.Graphics)
+  href: api/Geometry.Interval2D.html#Geometry_Interval2D_Draw_Graphics_
+  commentId: M:Geometry.Interval2D.Draw(Graphics)
+  fullName: Geometry.Interval2D.Draw(Graphics)
   nameWithType: Interval2D.Draw(Graphics)
 - uid: Geometry.Interval2D.Draw*
   name: Draw
@@ -5293,11 +5370,11 @@ references:
   isSpec: "True"
   fullName: Geometry.Point2D.DistanceTo_Order
   nameWithType: Point2D.DistanceTo_Order
-- uid: Geometry.Point2D.Draw(System.Drawing.Graphics)
+- uid: Geometry.Point2D.Draw(Graphics)
   name: Draw(Graphics)
-  href: api/Geometry.Point2D.html#Geometry_Point2D_Draw_System_Drawing_Graphics_
-  commentId: M:Geometry.Point2D.Draw(System.Drawing.Graphics)
-  fullName: Geometry.Point2D.Draw(System.Drawing.Graphics)
+  href: api/Geometry.Point2D.html#Geometry_Point2D_Draw_Graphics_
+  commentId: M:Geometry.Point2D.Draw(Graphics)
+  fullName: Geometry.Point2D.Draw(Graphics)
   nameWithType: Point2D.Draw(Graphics)
 - uid: Geometry.Point2D.Draw*
   name: Draw

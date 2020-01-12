@@ -11,10 +11,32 @@
         
         <link rel="icon" href="/favicon.ico">
         
-        <link href="/css/normalize-dark.css" rel="stylesheet" id="normalize">
-        <link href="/css/style-dark.css" rel="stylesheet" id="style">
-        <link href="/css/common-dark.css" rel="stylesheet" id="common">
-        <link href="/css/markdown-dark.css" rel="stylesheet" id="markdown"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        <link rel="stylesheet" id="normalize">
+        <link rel="stylesheet" id="style">
+        <link rel="stylesheet" id="common">
+        <link rel="stylesheet" id="markdown">
+        <script type="text/javascript">
+            function lightOff() {
+                document.getElementById('style').href='/css/style-dark.css';
+                document.getElementById('common').href='/css/common-dark.css';
+                document.getElementById('markdown').href='/css/markdown-dark.css';
+                document.getElementById('normalize').href='/css/normalize-dark.css';
+                document.getElementById('search-button-path').style.stroke = '#ffffff';
+            }
+            function lightOn() {
+                document.getElementById('style').href='/css/style.css';
+                document.getElementById('common').href='/css/common.css';
+                document.getElementById('markdown').href='/css/markdown.css';
+                document.getElementById('normalize').href='/css/normalize.css';
+                document.getElementById('search-button-path').style.stroke = '#111111';
+            }
+            var now = new Date();
+            if (now.getHours() > 18 || now.getHours() < 6) {
+                lightOff();
+            } else {
+                lightOn();
+            }
+        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
     <body>
@@ -62,7 +84,7 @@
     </ul>
   </div>
   <div class="copyright">
-    &copy; 2019 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
+    &copy; 2020 《算法（第四版）》C# 题解 | Provided By  <a title="沈星繁" href="http://chengkang.me/" target="_blank">沈星繁</a>
   </div>
 </div>
 <header>
@@ -149,7 +171,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.2.35</h1>
-			<p>上次更新：2019-10-07 <br>
+			<p>上次更新：2019-12-23 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>根据书中已经给出的归纳关系式（中文版P255/英文版P403）：<br>$$<br>C_N=N-1+(C_0+C_{N-1})/N+(C_1+C_{N-2})/N+\cdots+(C_{N-1}+C_0)/N<br>$$<br>整理得：<br>$$<br>C_N=N-1+(C_0+C_1+\cdots+C_{N-1})/N+(C_{N-1}+\cdots+C_1+C_0)/N<br>$$<br>这和快速排序的式子基本一致，只是 $ N+1 $ 变成了 $ N-1 $。</p>
 <p>遵循相同的推导过程，我们可以获得类似的结果，两边同乘以 $ N $：<br>$$<br>NC_N=N(N-1)+2(C_0+C_1+\cdots+C_{N-1})<br>$$<br>用 $ N+1 $ 时的等式减去该式得：<br>$$<br>(N+1)C_{N+1}-NC_N=2N+2C_N \\<br>(N+1)C_{N+1}=2N+(N+2)C_N \\<br>\frac{C_{N+1}}{N+2}=\frac{2N}{(N+1)(N+2)} + \frac{C_N}{N+1}<br>$$<br>令 $ T_N = \frac{C_N}{N+1} $，得到：<br>$$<br>T_{N+1}=\frac{2N}{(N+1)(N+2)} + T_N \\<br>T_{N+1}-T_{N} = \frac{2N}{(N+1)(N+2)}<br>$$<br>归纳得：<br>$$<br>\begin{aligned}<br>T_N &amp;= 2 \sum_{i=2}^{N} \frac{i-1}{i(i+1)} \\<br>C_N&amp;=2(N+1)\sum_{i=2}^{N} \frac{i-1}{i(i+1)} \\<br>C_N&amp;=2(N+1)\sum_{i=2}^{N}(i-1) (\frac{1}{i}-\frac{1}{i+1}) \\<br>C_N&amp;=-2(N-1)+ 2(N+1)\sum_{i=2}^{N}\frac{1}{i}\\<br>C_N&amp;=-2(N-1)+ 2(N+1)(-1+\sum_{i=1}^{N}\frac{1}{i})\\<br>C_N&amp;=-4N+2(N+1)(\ln N+\gamma)<br>\end{aligned}<br>$$<br>于是平均成本为：$ 1+C_N/N \sim 2\ln N+2\gamma-3 $ 。</p>
@@ -199,7 +221,7 @@ function dismissSearchResultModal() {
 		</div>
 		<img src="/img/line.jpg">
 		<div class="copyright">
-			&copy; 2019 《算法（第四版）》C# 题解
+			&copy; 2020 《算法（第四版）》C# 题解
 		</div>
 	</div>
 </footer>
@@ -214,28 +236,6 @@ function dismissSearchResultModal() {
         }
         isMenuExpanded = !isMenuExpanded;
         }
-        </script>
-        <script type="text/javascript">
-            function lightOff() {
-                document.getElementById('style').href='/css/style-dark.css';
-                document.getElementById('common').href='/css/common-dark.css';
-                document.getElementById('markdown').href='/css/markdown-dark.css';
-                document.getElementById('normalize').href='/css/normalize-dark.css';
-                document.getElementById('search-button-path').style.stroke = '#ffffff';
-            }
-            function lightOn() {
-                document.getElementById('style').href='/css/style.css';
-                document.getElementById('common').href='/css/common.css';
-                document.getElementById('markdown').href='/css/markdown.css';
-                document.getElementById('normalize').href='/css/normalize.css';
-                document.getElementById('search-button-path').style.stroke = '#111111';
-            }
-            var now = new Date();
-            if (now.getHours() > 18) {
-                lightOff();
-            } else {
-                lightOn();
-            }
         </script>
         <script type="text/javascript">
             (function(){
