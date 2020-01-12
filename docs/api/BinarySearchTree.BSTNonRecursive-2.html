@@ -627,11 +627,32 @@
     <div><a class="xref" href="BinarySearchTree.IST-2.html">IST</a>&lt;TKey, TValue&gt;</div>
     <div><a class="xref" href="BinarySearchTree.IOrderedST-2.html">IOrderedST</a>&lt;TKey, TValue&gt;</div>
   </div>
+  <div class="inheritedMembers">
+    <h5>&#32487;&#25215;&#25104;&#21592;</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
   <h6><strong>&#21629;&#21517;&#31354;&#38388;</strong>: <a class="xref" href="BinarySearchTree.html">BinarySearchTree</a></h6>
   <h6><strong>&#31243;&#24207;&#38598;</strong>: BinarySearchTree.dll</h6>
   <h5 id="BinarySearchTree_BSTNonRecursive_2_syntax">&#35821;&#27861;</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BSTNonRecursive&lt;TKey, TValue&gt; : object, IST&lt;TKey, TValue&gt;, IOrderedST&lt;TKey, TValue&gt; where TKey : IComparable&lt;TKey&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class BSTNonRecursive&lt;TKey, TValue&gt; : IST&lt;TKey, TValue&gt;, IOrderedST&lt;TKey, TValue&gt; where TKey : IComparable&lt;TKey&gt;</code></pre>
   </div>
   <h5 class="typeParameters">&#31867;&#22411;&#21442;&#25968;</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -792,6 +813,22 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTNonRecursive.cs/#L617">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
@@ -804,6 +841,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void DeleteMax()</code></pre>
   </div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出该异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTNonRecursive.cs/#L592">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
@@ -816,6 +869,22 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void DeleteMin()</code></pre>
   </div>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTNonRecursive.cs/#L411">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
@@ -986,7 +1055,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;TKey&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TKey&gt;</td>
         <td><p>符号表全部的键。</p>
 </td>
       </tr>
@@ -1038,7 +1107,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;TKey&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TKey&gt;</td>
         <td><p>包含 <code data-dev-comment-type="paramref" class="paramref">lo</code> 和 <code data-dev-comment-type="paramref" class="paramref">hi</code> 及其之间的所有键。</p>
 </td>
       </tr>
@@ -1072,6 +1141,22 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTNonRecursive.cs/#L355">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
@@ -1096,6 +1181,22 @@
       <tr>
         <td><span class="xref">TKey</span></td>
         <td><p>二叉查找树中最小的键。</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">&#24322;&#24120;</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>&#31867;&#22411;</th>
+        <th>&#26465;&#20214;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>当二叉查找树为空时抛出此异常。</p>
 </td>
       </tr>
     </tbody>
@@ -1364,6 +1465,8 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">&#37325;&#20889;</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/dev/3 Searching/3.2/BinarySearchTree/BSTNonRecursive.cs/#L780">&#26597;&#30475;&#28304;&#20195;&#30721;</a>
   </span>
