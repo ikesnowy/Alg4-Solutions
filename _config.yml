@@ -99,6 +99,11 @@ prism_plugin:
   theme: 'hopscotch'
   line_number: true    # default false
 
+lazyload:
+  enable: true 
+  onlypost: false
+  loadingImg: # eg. ./images/loading.png
+
 math:
   engine: 'mathjax' # or 'katex'
   mathjax:
