@@ -488,6 +488,8 @@ function dismissSearchResultModal() {
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-121852990-1', 'auto');
+        ga('set', 'dimension3', new Date().toString());
+        ga('set', 'metric1', Math.round(Date.now() / 1000));
         ga('send', 'pageview');
         </script>
         

@@ -43,16 +43,16 @@ highlight:
   line_number: false
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -75,10 +75,10 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: qna
 sitemap:
-    path: sitemap.xml
-    template:
+  path: sitemap.xml
+  template:
 baidusitemap:
-    path: baidusitemap.xml
+  path: baidusitemap.xml
 feed:
   type: atom
   path: atom.xml
@@ -91,31 +91,33 @@ feed:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:ikesnowy/Alg4-Solutions.git
-  brench: gh-pages
+  repo: https://github.com/ikesnowy/Alg4-Solutions
+  branch: gh-pages
+  name: ikesnowy
+  email: ikesnowy@outlook.com
 
 prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
-  theme: 'hopscotch'
-  line_number: true    # default false
+  mode: "preprocess" # realtime/preprocess
+  theme: "hopscotch"
+  line_number: true # default false
 
 lazyload:
-  enable: true 
+  enable: true
   onlypost: false
   loadingImg: # eg. ./images/loading.png
 
 math:
-  engine: 'mathjax' # or 'katex'
+  engine: "mathjax" # or 'katex'
   mathjax:
     src: //cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
     config:
       tex2jax:
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ]
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        inlineMath: [["$", "$"], ["\\(", "\\)"]]
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
         processEscapes: true
       # MathJax config
   katex:
-    css: 
-    js:  # not used
+    css:
+    js: # not used
     config:
       # KaTeX config
