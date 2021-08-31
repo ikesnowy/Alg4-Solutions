@@ -6,7 +6,7 @@ date: 2018-05-31 11:55:24
 ## 这个网站是做什么的？
 
 这个网站提供了一份《算法（第四版）》的个人题解，这份题解是由 [@沈星繁](https://github.com/ikesnowy) 撰写的。
-你可以点击网页最下方的 GitHub 标志访问题解的全部源代码。
+你可以点击网页最下方的 GitHub 标志访问题解的全部源代码，也可以直接访问 [这里](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp)。
 
 ## 如何搜索题解？
 
