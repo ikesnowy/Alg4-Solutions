@@ -57,9 +57,6 @@
       
       <li class> <a href="/thanks">鸣谢</a> </li>
       
-      
-      <li class> <a href="/docs/api">API</a> </li>
-      
     </ul>
   </nav>
   <div class="social">
@@ -108,9 +105,6 @@
       
       
       <li class> <a href="/thanks">鸣谢</a> </li>
-      
-      
-      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -169,7 +163,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.28</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2021-09-06 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>开始时让 N=10^5，在 M=10^4 不变的情况下令 N 不断翻倍，求出算法增长的数量级。<br>再根据求出的增长的数量级估计 N=10^8 时所需要的时间。</p>
 <p>为了方便比较，需要编写一个欧几里得距离类，<br>构造时输入一个点的坐标，内部自动计算并保存这个点到原点的欧几里得距离。<br>欧几里得距离的计算公式如下：<br>$$<br>d(x,y)=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}<br>$$<br>其中，x 和 y 分别代表两个点。<br>在本题中，y 始终是原点，且使用三维坐标系，因此公式可以简化为：<br>$$<br>d=\sqrt {x^2+y^2+z^2}<br>$$<br>同时这个类需要实现 IComparable 接口以作为最小堆的元素。</p>
@@ -308,7 +302,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://zh.wikipedia.org/wiki/欧几里得距离" target="_blank" rel="noopener">欧几里得距离-维基百科</a><br><a href="https://alg4.ikesnowy.com/docs/api/PriorityQueue.html">PriorityQueue 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="https://zh.wikipedia.org/wiki/欧几里得距离" target="_blank" rel="noopener">欧几里得距离-维基百科</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>
@@ -406,7 +400,9 @@ function dismissSearchResultModal() {
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
         })();
-        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+        </script>
+        
+    <script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
 </script>
@@ -423,7 +419,5 @@ function dismissSearchResultModal() {
 <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-        
-    <script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+<!-- hexo-inject:end --></body>
 </html>

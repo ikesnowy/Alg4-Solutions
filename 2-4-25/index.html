@@ -57,9 +57,6 @@
       
       <li class> <a href="/thanks">鸣谢</a> </li>
       
-      
-      <li class> <a href="/docs/api">API</a> </li>
-      
     </ul>
   </nav>
   <div class="social">
@@ -108,9 +105,6 @@
       
       
       <li class> <a href="/thanks">鸣谢</a> </li>
-      
-      
-      <li class> <a href="/docs/api">API</a> </li>
       
       </ul>
     </nav>
@@ -169,7 +163,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.25</h1>
-			<p>上次更新：2019-04-17 <br>
+			<p>上次更新：2021-09-06 <br>
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官方实现：<a href="https://algs4.cs.princeton.edu/24pq/CubeSum.java.html" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/24pq/CubeSum.java.html</a></p>
 <p>注意这道题并不是要打印所有的 $ a^3+b^3 $ 的结果，而是需要找到 $ a^3+b^3=c^3+d^3 $ 这个丢番图方程的解。<br>因此在官方实现的基础上，每次取出最小值之后和之前的最小值比较，如果相等则输出对应的组合。<br>关键代码如下：</p>
@@ -308,7 +302,7 @@ function dismissSearchResultModal() {
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="http://mathworld.wolfram.com/DiophantineEquation3rdPowers.html" target="_blank" rel="noopener">Diophantine Equation-3rd Powers - Wolfram MathWorld</a><br><a href="https://alg4.ikesnowy.com/docs/api/PriorityQueue.html">PriorityQueue 库</a></p>
+<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="http://mathworld.wolfram.com/DiophantineEquation3rdPowers.html" target="_blank" rel="noopener">Diophantine Equation-3rd Powers - Wolfram MathWorld</a><br><a href="https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.4/PriorityQueue" target="_blank" rel="noopener">PriorityQueue 库</a></p>
 
 		</div>
 	</div>
@@ -406,7 +400,9 @@ function dismissSearchResultModal() {
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
         })();
-        </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+        </script>
+        
+    <script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true}});
 </script>
@@ -423,7 +419,5 @@ function dismissSearchResultModal() {
 <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-        
-    <script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
