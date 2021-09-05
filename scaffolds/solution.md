@@ -15,4 +15,4 @@ tags: Searching
 
 # 另请参阅
 
-[BinarySearchTree 库](https://alg4.ikesnowy.com/docs/api/BinarySearchTree.html)
+[BalancedSearchTree 库](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/dev/3%20Searching/3.3/BalancedSearchTree)
