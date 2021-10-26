@@ -1,15 +1,18 @@
 'use strict';
 
 const tildify = require('tildify');
-const chalk = require('chalk');
+const { magenta } = require('chalk');
 
 const reservedKeys = {
   _: true,
   title: true,
   layout: true,
   slug: true,
+  s: true,
   path: true,
+  p: true,
   replace: true,
+  r: true,
   // Global options
   config: true,
   debug: true,
@@ -38,7 +41,7 @@ function newConsole(args) {
   }
 
   return this.post.create(data, args.r || args.replace).then(post => {
-    this.log.info('Created: %s', chalk.magenta(tildify(post.path)));
+    this.log.info('Created: %s', magenta(tildify(post.path)));
   });
 }
 

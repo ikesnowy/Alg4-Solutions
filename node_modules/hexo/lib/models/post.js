@@ -5,6 +5,7 @@ const moment = require('moment');
 const { extname, join, sep } = require('path');
 const Promise = require('bluebird');
 const Moment = require('./types/moment');
+const { full_url_for } = require('hexo-util');
 
 function pickID(data) {
   return data._id;
@@ -26,7 +27,6 @@ module.exports = ctx => {
     },
     updated: {
       type: Moment,
-      default: moment,
       language: ctx.config.languages,
       timezone: ctx.config.timezone
     },
@@ -50,11 +50,7 @@ module.exports = ctx => {
   });
 
   Post.virtual('permalink').get(function() {
-    const self = Object.assign({}, ctx.extend.helper.list(), ctx);
-    const { config } = ctx;
-    let partial_url = self.url_for(this.path);
-    if (config.relative_link) partial_url = `/${partial_url}`;
-    return config.url + partial_url.replace(config.root, '/');
+    return full_url_for.call(ctx, this.path);
   });
 
   Post.virtual('full_source').get(function() {

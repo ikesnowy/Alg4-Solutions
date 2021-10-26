@@ -25,7 +25,8 @@ function buildTree(routes) {
 
     for (let j = 0, lenj = item.length; j < lenj; j++) {
       const seg = item[j];
-      cursor = cursor[seg] = cursor[seg] || {};
+      cursor[seg] = cursor[seg] || {};
+      cursor = cursor[seg];
     }
   }
 
@@ -33,13 +34,9 @@ function buildTree(routes) {
 }
 
 function buildNodes(tree) {
-  const keys = Object.keys(tree);
   const nodes = [];
 
-  for (let i = 0, len = keys.length; i < len; i++) {
-    const key = keys[i];
-    const item = tree[key];
-
+  for (const [key, item] of Object.entries(tree)) {
     if (Object.keys(item).length) {
       nodes.push({
         label: key,

@@ -1,291 +1,309 @@
 'use strict';
 
+const assert = require('assert');
 const moment = require('moment');
 const Promise = require('bluebird');
-const { join, extname } = require('path');
-const assignIn = require('lodash/assignIn');
-const clone = require('lodash/clone');
-const chalk = require('chalk');
-const yaml = require('js-yaml');
+const { join, extname, basename } = require('path');
+const { magenta } = require('chalk');
+const { load } = require('js-yaml');
 const { slugize, escapeRegExp } = require('hexo-util');
-const fs = require('hexo-fs');
-const yfm = require('hexo-front-matter');
-
+const { copyDir, exists, listDir, mkdirs, readFile, rmdir, unlink, writeFile } = require('hexo-fs');
+const { parse: yfmParse, split: yfmSplit, stringify: yfmStringify } = require('hexo-front-matter');
 const preservedKeys = ['title', 'slug', 'path', 'layout', 'date', 'content'];
 
-function PostRenderCache() {
-  this.cache = [];
-}
+const rHexoPostRenderEscape = /<hexoPostRenderCodeBlock>([\s\S]+?)<\/hexoPostRenderCodeBlock>/g;
+const rSwigVarAndComment = /{[{#][\s\S]+?[}#]}/g;
+const rSwigFullBlock = /{% *(\S+?)(?: *| +.+?)%}[\s\S]+?{% *end\1 *%}/g;
+const rSwigBlock = /{%[\s\S]+?%}/g;
 
-const _escapeContent = (cache, str) => {
-  const placeholder = '\uFFFC';
-  return `<!--${placeholder}${cache.push(str) - 1}-->`;
+const rSwigPlaceHolder = /(?:<|&lt;)!--swig\uFFFC(\d+)--(?:>|&gt;)/g;
+const rCodeBlockPlaceHolder = /(?:<|&lt;)!--code\uFFFC(\d+)--(?:>|&gt;)/g;
+
+const _escapeContent = (cache, flag, str) => `<!--${flag}\uFFFC${cache.push(str) - 1}-->`;
+
+const _restoreContent = cache => (_, index) => {
+  assert(cache[index]);
+  const value = cache[index];
+  cache[index] = null;
+  return value;
 };
 
-PostRenderCache.prototype.escapeContent = function(str) {
-  const rEscapeContent = /<escape(?:[^>]*)>([\s\S]*?)<\/escape>/g;
-  return str.replace(rEscapeContent, (_, content) => _escapeContent(this.cache, content));
-};
-
-PostRenderCache.prototype.loadContent = function(str) {
-  const rPlaceholder = /(?:<|&lt;)!--\uFFFC(\d+)--(?:>|&gt;)/g;
-  return str.replace(rPlaceholder, (_, index) => this.cache[index]);
-};
-
-PostRenderCache.prototype.escapeAllSwigTags = function(str) {
-  const rSwigVar = /\{\{[\s\S]*?\}\}/g;
-  const rSwigComment = /\{#[\s\S]*?#\}/g;
-  const rSwigBlock = /\{%[\s\S]*?%\}/g;
-  const rSwigFullBlock = /\{% *(.+?)(?: *| +.*)%\}[\s\S]+?\{% *end\1 *%\}/g;
-
-  const escape = _str => _escapeContent(this.cache, _str);
-  return str.replace(rSwigFullBlock, escape)
-    .replace(rSwigBlock, escape)
-    .replace(rSwigComment, '')
-    .replace(rSwigVar, escape);
-};
-
-function Post(context) {
-  this.context = context;
-}
-
-Post.prototype.create = function(data, replace, callback) {
-  if (!callback && typeof replace === 'function') {
-    callback = replace;
-    replace = false;
+class PostRenderCache {
+  constructor() {
+    this.cache = [];
   }
 
-  const ctx = this.context;
-  const { config } = ctx;
+  restoreAllSwigTags(str) {
+    const restored = str.replace(rSwigPlaceHolder, _restoreContent(this.cache));
+    if (restored === str) return restored;
+    return this.restoreAllSwigTags(restored); // self-recursive for nexted escaping
+  }
 
-  data.slug = slugize((data.slug || data.title).toString(), {transform: config.filename_case});
-  data.layout = (data.layout || config.default_layout).toLowerCase();
-  data.date = data.date ? moment(data.date) : moment();
+  restoreCodeBlocks(str) {
+    return str.replace(rCodeBlockPlaceHolder, _restoreContent(this.cache));
+  }
 
-  return Promise.all([
-    // Get the post path
-    ctx.execFilter('new_post_path', data, {
-      args: [replace],
-      context: ctx
-    }),
-    this._renderScaffold(data)
-  ]).spread((path, content) => {
-    const result = { path, content };
+  escapeCodeBlocks(str) {
+    return str.replace(rHexoPostRenderEscape, (_, content) => _escapeContent(this.cache, 'code', content));
+  }
 
-    return Promise.all([
-      // Write content to file
-      fs.writeFile(path, content),
-      // Create asset folder
-      createAssetFolder(path, config.post_asset_folder)
-    ]).then(() => {
-      ctx.emit('new', result);
-    }).thenReturn(result);
-  }).asCallback(callback);
-};
+  escapeAllSwigTags(str) {
+    const escape = _str => _escapeContent(this.cache, 'swig', _str);
+    return str.replace(rSwigVarAndComment, escape) // Remove swig comment first to reduce string size being matched next
+      .replace(rSwigFullBlock, escape) // swig full block must escaped before swig block to avoid confliction
+      .replace(rSwigBlock, escape);
+  }
+}
 
-function prepareFrontMatter(data) {
-  for (const key of Object.keys(data)) {
-    const item = data[key];
-
+const prepareFrontMatter = (data, jsonMode) => {
+  for (const [key, item] of Object.entries(data)) {
     if (moment.isMoment(item)) {
       data[key] = item.utc().format('YYYY-MM-DD HH:mm:ss');
     } else if (moment.isDate(item)) {
       data[key] = moment.utc(item).format('YYYY-MM-DD HH:mm:ss');
     } else if (typeof item === 'string') {
-      data[key] = `"${item}"`;
+      if (jsonMode || item.includes(':') || item.startsWith('#') || item.startsWith('!!')) data[key] = `"${item}"`;
     }
   }
 
   return data;
-}
-
-Post.prototype._getScaffold = function(layout) {
-  const ctx = this.context;
-
-  return ctx.scaffold.get(layout).then(result => {
-    if (result != null) return result;
-    return ctx.scaffold.get('normal');
-  });
 };
 
-Post.prototype._renderScaffold = function(data) {
-  const { tag } = this.context.extend;
-  let yfmSplit;
 
-  return this._getScaffold(data.layout).then(scaffold => {
-    const frontMatter = prepareFrontMatter(clone(data));
-    yfmSplit = yfm.split(scaffold);
-
-    return tag.render(yfmSplit.data, frontMatter);
-  }).then(frontMatter => {
-    const { separator } = yfmSplit;
-    const jsonMode = separator[0] === ';';
-
-    // Parse front-matter
-    const obj = jsonMode ? JSON.parse(`{${frontMatter}}`) : yaml.load(frontMatter);
-
-    // Add data which are not in the front-matter
-    for (const key of Object.keys(data)) {
-      if (!preservedKeys.includes(key) && obj[key] == null) {
-        obj[key] = data[key];
-      }
-    }
-
-    let content = '';
-    // Prepend the separator
-    if (yfmSplit.prefixSeparator) content += `${separator}\n`;
-
-    content += yfm.stringify(obj, {
-      mode: jsonMode ? 'json' : ''
-    });
-
-    // Concat content
-    content += yfmSplit.content;
-
-    if (data.content) {
-      content += `\n${data.content}`;
-    }
-
-    return content;
-  });
+const removeExtname = str => {
+  return str.substring(0, str.length - extname(str).length);
 };
 
-function createAssetFolder(path, assetFolder) {
+const createAssetFolder = (path, assetFolder) => {
   if (!assetFolder) return Promise.resolve();
 
   const target = removeExtname(path);
 
-  return fs.exists(target).then(exist => {
-    if (!exist) return fs.mkdirs(target);
+  if (basename(target) === 'index') return Promise.resolve();
+
+  return exists(target).then(exist => {
+    if (!exist) return mkdirs(target);
   });
-}
+};
 
-function removeExtname(str) {
-  return str.substring(0, str.length - extname(str).length);
-}
-
-Post.prototype.publish = function(data, replace, callback) {
-  if (!callback && typeof replace === 'function') {
-    callback = replace;
-    replace = false;
+class Post {
+  constructor(context) {
+    this.context = context;
   }
 
-  if (data.layout === 'draft') data.layout = 'post';
+  create(data, replace, callback) {
+    if (!callback && typeof replace === 'function') {
+      callback = replace;
+      replace = false;
+    }
 
-  const ctx = this.context;
-  const { config } = ctx;
-  const draftDir = join(ctx.source_dir, '_drafts');
-  const slug = data.slug = slugize(data.slug.toString(), {transform: config.filename_case});
-  const regex = new RegExp(`^${escapeRegExp(slug)}(?:[^\\/\\\\]+)`);
-  let src = '';
-  const result = {};
+    const ctx = this.context;
+    const { config } = ctx;
 
-  data.layout = (data.layout || config.default_layout).toLowerCase();
+    data.slug = slugize((data.slug || data.title).toString(), { transform: config.filename_case });
+    data.layout = (data.layout || config.default_layout).toLowerCase();
+    data.date = data.date ? moment(data.date) : moment();
 
-  // Find the draft
-  return fs.listDir(draftDir).then(list => {
-    return list.find(item => regex.test(item));
-  }).then(item => {
-    if (!item) throw new Error(`Draft "${slug}" does not exist.`);
+    return Promise.all([
+      // Get the post path
+      ctx.execFilter('new_post_path', data, {
+        args: [replace],
+        context: ctx
+      }),
+      this._renderScaffold(data)
+    ]).spread((path, content) => {
+      const result = { path, content };
 
-    // Read the content
-    src = join(draftDir, item);
-    return fs.readFile(src);
-  }).then(content => {
-    // Create post
-    assignIn(data, yfm(content));
-    data.content = data._content;
-    delete data._content;
+      return Promise.all([
+        // Write content to file
+        writeFile(path, content),
+        // Create asset folder
+        createAssetFolder(path, config.post_asset_folder)
+      ]).then(() => {
+        ctx.emit('new', result);
+      }).thenReturn(result);
+    }).asCallback(callback);
+  }
 
-    return this.create(data, replace).then(post => {
+  _getScaffold(layout) {
+    const ctx = this.context;
+
+    return ctx.scaffold.get(layout).then(result => {
+      if (result != null) return result;
+      return ctx.scaffold.get('normal');
+    });
+  }
+
+  _renderScaffold(data) {
+    const { tag } = this.context.extend;
+    let splited;
+
+    return this._getScaffold(data.layout).then(scaffold => {
+      splited = yfmSplit(scaffold);
+      const jsonMode = splited.separator.startsWith(';');
+      const frontMatter = prepareFrontMatter({ ...data }, jsonMode);
+
+      return tag.render(splited.data, frontMatter);
+    }).then(frontMatter => {
+      const { separator } = splited;
+      const jsonMode = separator.startsWith(';');
+
+      // Parse front-matter
+      const obj = jsonMode ? JSON.parse(`{${frontMatter}}`) : load(frontMatter);
+
+      // Add data which are not in the front-matter
+      for (const key of Object.keys(data)) {
+        if (!preservedKeys.includes(key) && obj[key] == null) {
+          obj[key] = data[key];
+        }
+      }
+
+      let content = '';
+      // Prepend the separator
+      if (splited.prefixSeparator) content += `${separator}\n`;
+
+      content += yfmStringify(obj, {
+        mode: jsonMode ? 'json' : ''
+      });
+
+      // Concat content
+      content += splited.content;
+
+      if (data.content) {
+        content += `\n${data.content}`;
+      }
+
+      return content;
+    });
+  }
+
+  publish(data, replace, callback) {
+    if (!callback && typeof replace === 'function') {
+      callback = replace;
+      replace = false;
+    }
+
+    if (data.layout === 'draft') data.layout = 'post';
+
+    const ctx = this.context;
+    const { config } = ctx;
+    const draftDir = join(ctx.source_dir, '_drafts');
+    const slug = slugize(data.slug.toString(), { transform: config.filename_case });
+    data.slug = slug;
+    const regex = new RegExp(`^${escapeRegExp(slug)}(?:[^\\/\\\\]+)`);
+    let src = '';
+    const result = {};
+
+    data.layout = (data.layout || config.default_layout).toLowerCase();
+
+    // Find the draft
+    return listDir(draftDir).then(list => {
+      const item = list.find(item => regex.test(item));
+      if (!item) throw new Error(`Draft "${slug}" does not exist.`);
+
+      // Read the content
+      src = join(draftDir, item);
+      return readFile(src);
+    }).then(content => {
+      // Create post
+      Object.assign(data, yfmParse(content));
+      data.content = data._content;
+      delete data._content;
+
+      return this.create(data, replace);
+    }).then(post => {
       result.path = post.path;
       result.content = post.content;
-    });
-  }).then(() => // Remove the original draft file
-    fs.unlink(src)).then(() => {
-    if (!config.post_asset_folder) return;
+      return unlink(src);
+    }).then(() => { // Remove the original draft file
+      if (!config.post_asset_folder) return;
 
-    // Copy assets
-    const assetSrc = removeExtname(src);
-    const assetDest = removeExtname(result.path);
+      // Copy assets
+      const assetSrc = removeExtname(src);
+      const assetDest = removeExtname(result.path);
 
-    return fs.exists(assetSrc).then(exist => {
-      if (!exist) return;
+      return exists(assetSrc).then(exist => {
+        if (!exist) return;
 
-      return fs.copyDir(assetSrc, assetDest).then(() => fs.rmdir(assetSrc));
-    });
-  }).thenReturn(result).asCallback(callback);
-};
-
-Post.prototype.render = function(source, data = {}, callback) {
-  const ctx = this.context;
-  const { config } = ctx;
-  const { tag } = ctx.extend;
-  const ext = data.engine || (source ? extname(source) : '');
-
-  let promise;
-
-  if (data.content != null) {
-    promise = Promise.resolve(data.content);
-  } else if (source) {
-    // Read content from files
-    promise = fs.readFile(source);
-  } else {
-    return Promise.reject(new Error('No input file or string!')).asCallback(callback);
+        return copyDir(assetSrc, assetDest).then(() => rmdir(assetSrc));
+      });
+    }).thenReturn(result).asCallback(callback);
   }
 
-  const isSwig = ext === 'swig';
+  render(source, data = {}, callback) {
+    const ctx = this.context;
+    const { config } = ctx;
+    const { tag } = ctx.extend;
+    const ext = data.engine || (source ? extname(source) : '');
 
-  // disable Nunjucks when the renderer spcify that.
-  const disableNunjucks = ext && ctx.render.renderer.get(ext) && !!ctx.render.renderer.get(ext).disableNunjucks;
+    let promise;
 
-  const cacheObj = new PostRenderCache();
-
-  return promise.then(content => {
-    data.content = content;
-
-    // Run "before_post_render" filters
-    return ctx.execFilter('before_post_render', data, {context: ctx});
-  }).then(() => {
-    data.content = cacheObj.escapeContent(data.content);
-
-    if (isSwig) {
-      // Render with Nunjucks if this is a swig file
-      return tag.render(data.content, data);
+    if (data.content != null) {
+      promise = Promise.resolve(data.content);
+    } else if (source) {
+      // Read content from files
+      promise = readFile(source);
+    } else {
+      return Promise.reject(new Error('No input file or string!')).asCallback(callback);
     }
 
-    // Escape all Swig tags
-    if (!disableNunjucks) {
-      data.content = cacheObj.escapeAllSwigTags(data.content);
-    }
-
-    const options = data.markdown || {};
-    if (!config.highlight.enable) options.highlight = null;
-
-    ctx.log.debug('Rendering post: %s', chalk.magenta(source));
-    // Render with markdown or other renderer
-    return ctx.render.render({
-      text: data.content,
-      path: source,
-      engine: data.engine,
-      toString: true,
-      onRenderEnd(content) {
-        // Replace cache data with real contents
-        data.content = cacheObj.loadContent(content);
-
-        // Return content after replace the placeholders
-        if (disableNunjucks) return data.content;
-
-        // Render with Nunjucks
-        return tag.render(data.content, data);
+    // disable Nunjucks when the renderer specify that.
+    let disableNunjucks = false;
+    let extRenderer = ext && ctx.render.renderer.get(ext);
+    if (extRenderer) {
+      disableNunjucks = Boolean(extRenderer.disableNunjucks);
+      if (!Object.prototype.hasOwnProperty.call(extRenderer, 'disableNunjucks')) {
+        extRenderer = ctx.render.renderer.get(ext, true);
+        if (extRenderer) {
+          disableNunjucks = Boolean(extRenderer.disableNunjucks);
+        }
       }
-    }, options);
-  }).then(content => {
-    data.content = content;
+    }
 
-    // Run "after_post_render" filters
-    return ctx.execFilter('after_post_render', data, {context: ctx});
-  }).asCallback(callback);
-};
+    // front-matter overrides renderer's option
+    if (typeof data.disableNunjucks === 'boolean') disableNunjucks = data.disableNunjucks;
+
+    const cacheObj = new PostRenderCache();
+
+    return promise.then(content => {
+      data.content = content;
+      // Run "before_post_render" filters
+      return ctx.execFilter('before_post_render', data, { context: ctx });
+    }).then(() => {
+      data.content = cacheObj.escapeCodeBlocks(data.content);
+      // Escape all Nunjucks/Swig tags
+      if (disableNunjucks === false) {
+        data.content = cacheObj.escapeAllSwigTags(data.content);
+      }
+
+      const options = data.markdown || {};
+      if (!config.highlight.enable) options.highlight = null;
+
+      ctx.log.debug('Rendering post: %s', magenta(source));
+      // Render with markdown or other renderer
+      return ctx.render.render({
+        text: data.content,
+        path: source,
+        engine: data.engine,
+        toString: true,
+        onRenderEnd(content) {
+          // Replace cache data with real contents
+          data.content = cacheObj.restoreAllSwigTags(content);
+
+          // Return content after replace the placeholders
+          if (disableNunjucks) return data.content;
+
+          // Render with Nunjucks
+          return tag.render(data.content, data);
+        }
+      }, options);
+    }).then(content => {
+      data.content = cacheObj.restoreCodeBlocks(content);
+
+      // Run "after_post_render" filters
+      return ctx.execFilter('after_post_render', data, { context: ctx });
+    }).asCallback(callback);
+  }
+}
 
 module.exports = Post;

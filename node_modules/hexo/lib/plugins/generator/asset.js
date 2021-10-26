@@ -3,7 +3,7 @@
 const fs = require('hexo-fs');
 const Promise = require('bluebird');
 const { extname } = require('path');
-const chalk = require('chalk');
+const { magenta } = require('chalk');
 
 const process = (name, ctx) => {
   return Promise.filter(ctx.model(name).toArray(), asset => fs.exists(asset.source).tap(exist => {
@@ -25,7 +25,7 @@ const process = (name, ctx) => {
         path: source,
         toString: true
       }).catch(err => {
-        ctx.log.error({err}, 'Asset render failed: %s', chalk.magenta(path));
+        ctx.log.error({err}, 'Asset render failed: %s', magenta(path));
       });
     } else {
       data.data = () => fs.createReadStream(source);
@@ -35,7 +35,7 @@ const process = (name, ctx) => {
   });
 };
 
-function assetGenerator(locals) {
+function assetGenerator() {
   return Promise.all([
     process('Asset', this),
     process('PostAsset', this)

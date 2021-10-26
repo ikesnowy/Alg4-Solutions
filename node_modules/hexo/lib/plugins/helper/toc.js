@@ -1,37 +1,32 @@
 'use strict';
 
-let cheerio;
-const escape = require('lodash/escape');
+const { tocObj, escapeHTML, encodeURL } = require('hexo-util');
 
 function tocHelper(str, options = {}) {
-  if (!cheerio) cheerio = require('cheerio');
+  options = Object.assign({
+    min_depth: 1,
+    max_depth: 6,
+    class: 'toc',
+    list_number: true
+  }, options);
 
-  const $ = cheerio.load(str);
-  const headingsMaxDepth = options.hasOwnProperty('max_depth') ? options.max_depth : 6;
-  const headingsSelector = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].slice(0, headingsMaxDepth).join(',');
-  const headings = $(headingsSelector);
+  const data = tocObj(str, { min_depth: options.min_depth, max_depth: options.max_depth });
 
-  if (!headings.length) return '';
+  if (!data.length) return '';
 
-  const className = options.class || 'toc';
-  const listNumber = options.hasOwnProperty('list_number') ? options.list_number : true;
+  const className = escapeHTML(options.class);
+  const listNumber = options.list_number;
+
   let result = `<ol class="${className}">`;
+
   const lastNumber = [0, 0, 0, 0, 0, 0];
   let firstLevel = 0;
   let lastLevel = 0;
 
-  function getId(ele) {
-    const id = $(ele).attr('id');
-    const $parent = $(ele).parent();
-    return id ||
-    ($parent.length < 1 ? null :
-      getId($parent));
-  }
-
-  headings.each(function() {
-    const level = +this.name[1];
-    const id = getId(this);
-    const text = escape($(this).text());
+  for (let i = 0, len = data.length; i < len; i++) {
+    const el = data[i];
+    const { level, id, text } = el;
+    const href = id ? `#${encodeURL(id)}` : null;
 
     lastNumber[level - 1]++;
 
@@ -54,7 +49,12 @@ function tocHelper(str, options = {}) {
     }
 
     result += `<li class="${className}-item ${className}-level-${level}">`;
-    result += `<a class="${className}-link" href="#${id}">`;
+    if (href) {
+      result += `<a class="${className}-link" href="${href}">`;
+    } else {
+      result += `<a class="${className}-link">`;
+    }
+
 
     if (listNumber) {
       result += `<span class="${className}-number">`;
@@ -69,7 +69,7 @@ function tocHelper(str, options = {}) {
     result += `<span class="${className}-text">${text}</span></a>`;
 
     lastLevel = level;
-  });
+  }
 
   for (let i = firstLevel - 1; i < lastLevel; i++) {
     result += '</li></ol>';

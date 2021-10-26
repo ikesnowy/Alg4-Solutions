@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head><meta name="generator" content="Hexo 3.9.0">
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <title>
+            
+                2.1.21 | 
+                        《算法（第四版）》C# 题解
+        </title>
         
-        <title>2.1.21 | 《算法（第四版）》C# 题解</title>
-        
-        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
-        
-        
-        <link rel="icon" href="/favicon.ico">
-        
-        <link rel="stylesheet" id="normalize">
-        <link rel="stylesheet" id="style">
-        <link rel="stylesheet" id="common">
-        <link rel="stylesheet" id="markdown">
-        <script type="text/javascript">
-            function lightOff() {
-                document.getElementById('style').href='/css/style-dark.css';
-                document.getElementById('common').href='/css/common-dark.css';
-                document.getElementById('markdown').href='/css/markdown-dark.css';
-                document.getElementById('normalize').href='/css/normalize-dark.css';
-            }
-            function lightOn() {
-                document.getElementById('style').href='/css/style.css';
-                document.getElementById('common').href='/css/common.css';
-                document.getElementById('markdown').href='/css/markdown.css';
-                document.getElementById('normalize').href='/css/normalize.css';
-            }
-            var now = new Date();
-            if (now.getHours() > 18 || now.getHours() < 6) {
-                lightOff();
-            } else {
-                lightOn();
-            }
-        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-    <link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
+            <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+            
+                
+                    <link rel="icon" href="/favicon.ico">
+                    
+                        <link rel="stylesheet" id="normalize">
+                        <link rel="stylesheet" id="style">
+                        <link rel="stylesheet" id="common">
+                        <link rel="stylesheet" id="markdown">
+                        <script type="text/javascript">
+                            function lightOff() {
+                                document.getElementById('style').href = '/css/style-dark.css';
+                                document.getElementById('common').href = '/css/common-dark.css';
+                                document.getElementById('markdown').href = '/css/markdown-dark.css';
+                                document.getElementById('normalize').href = '/css/normalize-dark.css';
+                            }
+                            function lightOn() {
+                                document.getElementById('style').href = '/css/style.css';
+                                document.getElementById('common').href = '/css/common.css';
+                                document.getElementById('markdown').href = '/css/markdown.css';
+                                document.getElementById('normalize').href = '/css/normalize.css';
+                            }
+                            var now = new Date();
+                            if (now.getHours() > 18 || now.getHours() < 6) {
+                                lightOff();
+                            } else {
+                                lightOn();
+                            }
+                        </script>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
-    <body>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
-            <div class="mobile_menu_btn">
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+        <div class="mobile_menu_btn">
   <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
   <span>toggle menu</span>
   </button>
@@ -49,13 +55,13 @@
     <ul class="clearfix">
       
       
-      <li class> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
-      <li class> <a href="/help">帮助</a> </li>
+      <li class=""> <a href="/help">帮助</a> </li>
       
       
-      <li class> <a href="/thanks">鸣谢</a> </li>
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
       
     </ul>
   </nav>
@@ -98,13 +104,13 @@
       <ul class="clearfix">
       
       
-      <li class> <a href="/">主页</a> </li>
+      <li class=""> <a href="/">主页</a> </li>
       
       
-      <li class> <a href="/help">帮助</a> </li>
+      <li class=""> <a href="/help">帮助</a> </li>
       
       
-      <li class> <a href="/thanks">鸣谢</a> </li>
+      <li class=""> <a href="/thanks">鸣谢</a> </li>
       
       </ul>
     </nav>
@@ -120,10 +126,10 @@
 		<div id="search-content" class="search-content-modal unexpanded">
 			<div id="search-view">
 				<div class="search-info box">
-					<input type="text" id="search-input" placeholder="题目编号/关键字">
-					<div class="magnifying-glass" id="search-button">
-						<svg xmlns="https://www.w3.org/2000/svg" viewbox="0 0 500 500">
-						<path id="search-button-path" fill="none" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+					<input type="text" id="search-input" placeholder="题目编号/关键字" >
+					<div class="magnifying-glass" id="search-button" >
+						<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 500 500">
+						<path id="search-button-path" fill="none" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"></path>
 						</svg>
 				</div>
 			</div>
@@ -139,8 +145,12 @@
 	</div>
 </div>
 
+
 <script src="/js/jquery-3.1.1.min.js"></script>
+
+
 <script src="/js/search.js"></script>
+
 <script type="text/javascript">
 var path = "/search.xml";
 searchFunc(path, 'search-input', 'search-result-list');
@@ -163,7 +173,7 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.1.21</h1>
-			<p>上次更新：2021-09-06 <br>
+			<p>上次更新：2021-09-06 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>事实上官方给出来的 Date 类以及 Transaction 类都已经实现了这些接口。<br>Date 类：<a href="https://algs4.cs.princeton.edu/12oop/Date.java.html" target="_blank" rel="noopener">Date.java</a><br>Transaction 类：<a href="https://algs4.cs.princeton.edu/12oop/Transaction.java.html" target="_blank" rel="noopener">Transaction.java</a></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
@@ -231,7 +241,7 @@ function dismissSearchResultModal() {
 	</div>
 	
 
-            <footer>
+                <footer>
 	<div class="footer_wrap">
 		<div class="social">
 			<ul class="clearfix">
@@ -258,20 +268,20 @@ function dismissSearchResultModal() {
 		</div>
 	</div>
 </footer>
-        </div>
-        <script type="text/javascript">
+    </div>
+    <script type="text/javascript">
         var isMenuExpanded = false;
         document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
-        if (isMenuExpanded) {
-        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
-        } else {
-        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+            if (isMenuExpanded) {
+                document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+            } else {
+                document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+            }
+            isMenuExpanded = !isMenuExpanded;
         }
-        isMenuExpanded = !isMenuExpanded;
-        }
-        </script>
-        <script type="text/javascript">
-            (function(){
+    </script>
+    <script type="text/javascript">
+            (function () {
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
                 if (curProtocol === 'https') {
@@ -283,29 +293,48 @@ function dismissSearchResultModal() {
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(bp, s);
             })();
-        </script>            
-        
+    </script>
+    
         <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-121852990-1', 'auto');
-        ga('set', 'dimension3', new Date().toString());
-        ga('set', 'metric1', Math.round(Date.now() / 1000));
-        ga('send', 'pageview');
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-121852990-1', 'auto');
+            ga('set', 'dimension3', new Date().toString());
+            ga('set', 'metric1', Math.round(Date.now() / 1000));
+            ga('send', 'pageview');
         </script>
         
-        
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?1ba6aff1459206104682ef794c4d3eeb";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-        })();
-        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-        
-    <script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+            
+                <script>
+                    var _hmt = _hmt || [];
+                    (function () {
+                        var hm = document.createElement("script");
+                        hm.src = "https://hm.baidu.com/hm.js?1ba6aff1459206104682ef794c4d3eeb";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+                <script>
+                    MathJax = {
+                        tex: {
+                            inlineMath: [['$', '$'], ['\\(', '\\)']]
+                        }
+                    };
+                </script>
+                <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                <script id="MathJax-script" async
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+
 </html>

@@ -2,17 +2,29 @@
 
 const { Pattern } = require('hexo-util');
 const moment = require('moment-timezone');
-const minimatch = require('minimatch');
+const micromatch = require('micromatch');
 
 const DURATION_MINUTE = 1000 * 60;
 
+function isMatch(path, patterns) {
+  if (!patterns) return false;
+
+  return micromatch.isMatch(path, patterns);
+}
+
 function isTmpFile(path) {
-  const last = path[path.length - 1];
-  return last === '%' || last === '~';
+  return path.endsWith('%') || path.endsWith('~');
 }
 
 function isHiddenFile(path) {
   return /(^|\/)[_.]/.test(path);
+}
+
+function isExcludedFile(path, config) {
+  if (isTmpFile(path)) return true;
+  if (isMatch(path, config.exclude)) return true;
+  if (isHiddenFile(path) && !isMatch(path, config.include)) return true;
+  return false;
 }
 
 exports.ignoreTmpAndHiddenFile = new Pattern(path => {
@@ -22,6 +34,7 @@ exports.ignoreTmpAndHiddenFile = new Pattern(path => {
 
 exports.isTmpFile = isTmpFile;
 exports.isHiddenFile = isHiddenFile;
+exports.isExcludedFile = isExcludedFile;
 
 exports.toDate = date => {
   if (!date || moment.isMoment(date)) return date;
@@ -46,9 +59,4 @@ exports.timezone = (date, timezone) => {
   return new Date(ms - diff);
 };
 
-exports.isMatch = (path, patterns) => {
-  if (!patterns) return false;
-  if (!Array.isArray(patterns)) patterns = [patterns];
-
-  return patterns.some(pattern => pattern && minimatch(path, pattern));
-};
+exports.isMatch = isMatch;

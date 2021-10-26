@@ -1,7 +1,6 @@
 'use strict';
 
 const { Pattern } = require('hexo-util');
-const _ = require('lodash');
 
 function i18nLocalsFilter(locals) {
   const { i18n } = this.theme;
@@ -23,13 +22,12 @@ function i18nLocalsFilter(locals) {
       // i18n.languages is always an array with at least one argument ('default')
       lang = i18nConfigLanguages[0];
     }
-
-    page.lang = lang;
   }
 
+  page.lang = lang;
   page.canonical_path = page.canonical_path || locals.path;
 
-  const languages = _([].concat(lang, i18nConfigLanguages, i18nLanguages)).compact().uniq().value();
+  const languages = [...new Set([].concat(lang, i18nConfigLanguages, i18nLanguages).filter(Boolean))];
 
   locals.__ = i18n.__(languages);
   locals._p = i18n._p(languages);

@@ -1,10 +1,7 @@
 'use strict';
 
-const assignIn = require('lodash/assignIn');
-const clone = require('lodash/clone');
-const fs = require('hexo-fs');
-const chalk = require('chalk');
-const Promise = require('bluebird');
+const { exists } = require('hexo-fs');
+const { underline, magenta } = require('chalk');
 
 function deployConsole(args) {
   let config = this.config.deploy;
@@ -16,26 +13,27 @@ function deployConsole(args) {
     help += 'You should configure deployment settings in _config.yml first!\n\n';
     help += 'Available deployer plugins:\n';
     help += `  ${Object.keys(deployers).join(', ')}\n\n`;
-    help += `For more help, you can check the online docs: ${chalk.underline('https://hexo.io/')}`;
+    help += `For more help, you can check the online docs: ${underline('https://hexo.io/')}`;
 
     console.log(help);
     return;
   }
 
-  return new Promise((resolve, reject) => {
-    const generateArgs = clone(args);
-    generateArgs.d = false;
-    generateArgs.deploy = false;
+  const generateArgs = {...args};
+  generateArgs.d = false;
+  generateArgs.deploy = false;
 
-    if (args.g || args.generate) {
-      this.call('generate', args).then(resolve, reject);
-    } else {
-      fs.exists(this.public_dir, exist => {
-        if (exist) return resolve();
-        this.call('generate', args).then(resolve, reject);
-      });
-    }
-  }).then(() => {
+  let promise;
+
+  if (args.g || args.generate) {
+    promise = this.call('generate', args);
+  } else {
+    promise = exists(this.public_dir).then(exist => {
+      if (!exist) return this.call('generate', args);
+    });
+  }
+
+  return promise.then(() => {
     this.emit('deployBefore');
 
     if (!Array.isArray(config)) config = [config];
@@ -46,14 +44,14 @@ function deployConsole(args) {
     const { type } = item;
 
     if (!deployers[type]) {
-      this.log.error('Deployer not found: %s', chalk.magenta(type));
+      this.log.error('Deployer not found: %s', magenta(type));
       return;
     }
 
-    this.log.info('Deploying: %s', chalk.magenta(type));
+    this.log.info('Deploying: %s', magenta(type));
 
-    return Reflect.apply(deployers[type], this, [assignIn({}, item, args)]).then(() => {
-      this.log.info('Deploy done: %s', chalk.magenta(type));
+    return Reflect.apply(deployers[type], this, [{ ...item, ...args }]).then(() => {
+      this.log.info('Deploy done: %s', magenta(type));
     });
   }).then(() => {
     this.emit('deployAfter');

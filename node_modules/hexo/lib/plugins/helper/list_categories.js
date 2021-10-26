@@ -1,7 +1,9 @@
 'use strict';
 
+const { url_for } = require('hexo-util');
+
 function listCategoriesHelper(categories, options) {
-  if (!options && (!categories || !categories.hasOwnProperty('length'))) {
+  if (!options && (!categories || !Object.prototype.hasOwnProperty.call(categories, 'length'))) {
     options = categories;
     categories = this.site.categories;
   }
@@ -10,13 +12,13 @@ function listCategoriesHelper(categories, options) {
   options = options || {};
 
   const { style = 'list', transform, separator = ', ', suffix = '' } = options;
-  const showCount = options.hasOwnProperty('show_count') ? options.show_count : true;
+  const showCount = Object.prototype.hasOwnProperty.call(options, 'show_count') ? options.show_count : true;
   const className = options.class || 'category';
   const depth = options.depth ? parseInt(options.depth, 10) : 0;
   const orderby = options.orderby || 'name';
   const order = options.order || 1;
   const showCurrent = options.show_current || false;
-  const childrenIndicator = options.hasOwnProperty('children_indicator') ? options.children_indicator : false;
+  const childrenIndicator = Object.prototype.hasOwnProperty.call(options, 'children_indicator') ? options.children_indicator : false;
 
   const prepareQuery = parent => {
     const query = {};
@@ -57,7 +59,7 @@ function listCategoriesHelper(categories, options) {
 
       result += `<li class="${className}-list-item${additionalClassName}">`;
 
-      result += `<a class="${className}-list-link${isCurrent ? ' current' : ''}" href="${this.url_for(cat.path)}${suffix}">`;
+      result += `<a class="${className}-list-link${isCurrent ? ' current' : ''}" href="${url_for.call(this, cat.path)}${suffix}">`;
       result += transform ? transform(cat.name) : cat.name;
       result += '</a>';
 
@@ -81,7 +83,7 @@ function listCategoriesHelper(categories, options) {
     prepareQuery(parent).forEach((cat, i) => {
       if (i || level) result += separator;
 
-      result += `<a class="${className}-link" href="${this.url_for(cat.path)}${suffix}">`;
+      result += `<a class="${className}-link" href="${url_for.call(this, cat.path)}${suffix}">`;
       result += transform ? transform(cat.name) : cat.name;
 
       if (showCount) {

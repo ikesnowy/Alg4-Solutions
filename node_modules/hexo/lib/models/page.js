@@ -4,6 +4,7 @@ const { Schema } = require('warehouse');
 const { join } = require('path');
 const Moment = require('./types/moment');
 const moment = require('moment');
+const { full_url_for } = require('hexo-util');
 
 module.exports = ctx => {
   const Page = new Schema({
@@ -16,7 +17,6 @@ module.exports = ctx => {
     },
     updated: {
       type: Moment,
-      default: moment,
       language: ctx.config.languages,
       timezone: ctx.config.timezone
     },
@@ -32,7 +32,7 @@ module.exports = ctx => {
   });
 
   Page.virtual('permalink').get(function() {
-    return `${ctx.config.url}/${this.path}`;
+    return full_url_for.call(ctx, this.path);
   });
 
   Page.virtual('full_source').get(function() {

@@ -32,7 +32,6 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
@@ -105,19 +104,3 @@ lazyload:
   enable: true
   onlypost: false
   loadingImg: # eg. ./images/loading.png
-
-math:
-  engine: "mathjax" # or 'katex'
-  mathjax:
-    src: //cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-    config:
-      tex2jax:
-        inlineMath: [["$", "$"], ["\\(", "\\)"]]
-        skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
-        processEscapes: true
-      # MathJax config
-  katex:
-    css:
-    js: # not used
-    config:
-      # KaTeX config

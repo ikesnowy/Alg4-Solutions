@@ -1,8 +1,8 @@
 'use strict';
 
-const common = require('./common');
+const { timezone, toDate, isExcludedFile, isMatch } = require('./common');
 const Promise = require('bluebird');
-const yfm = require('hexo-front-matter');
+const { parse: yfm } = require('hexo-front-matter');
 const { extname, relative } = require('path');
 const { Pattern } = require('hexo-util');
 
@@ -12,7 +12,9 @@ module.exports = ctx => {
     const { path } = file;
     const doc = Page.findOne({source: path});
     const { config } = ctx;
-    const { timezone } = config;
+    const { timezone: timezoneCfg } = config;
+    // Deprecated: use_date_for_updated will be removed in future
+    const updated_option = config.use_date_for_updated === true ? 'date' : config.updated_option;
 
     if (file.type === 'skip' && doc) {
       return;
@@ -36,18 +38,22 @@ module.exports = ctx => {
       data.source = path;
       data.raw = content;
 
-      data.date = common.toDate(data.date);
+      data.date = toDate(data.date);
 
       if (data.date) {
-        if (timezone) data.date = common.timezone(data.date, timezone);
+        if (timezoneCfg) data.date = timezone(data.date, timezoneCfg);
       } else {
         data.date = stats.ctime;
       }
 
-      data.updated = common.toDate(data.updated);
+      data.updated = toDate(data.updated);
 
       if (data.updated) {
-        if (timezone) data.updated = common.timezone(data.updated, timezone);
+        if (timezoneCfg) data.updated = timezone(data.updated, timezoneCfg);
+      } else if (updated_option === 'date') {
+        data.updated = data.date;
+      } else if (updated_option === 'empty') {
+        delete data.updated;
       } else {
         data.updated = stats.mtime;
       }
@@ -56,7 +62,7 @@ module.exports = ctx => {
         data.path = data.permalink;
         delete data.permalink;
 
-        if (data.path[data.path.length - 1] === '/') {
+        if (data.path.endsWith('/')) {
           data.path += 'index';
         }
 
@@ -106,14 +112,10 @@ module.exports = ctx => {
 
   return {
     pattern: new Pattern(path => {
-      if (common.isTmpFile(path) || common.isMatch(path, ctx.config.exclude)) return;
-
-      if (common.isHiddenFile(path) && !common.isMatch(path, ctx.config.include)) {
-        return;
-      }
+      if (isExcludedFile(path, ctx.config)) return;
 
       return {
-        renderable: ctx.render.isRenderable(path) && !common.isMatch(path, ctx.config.skip_render)
+        renderable: ctx.render.isRenderable(path) && !isMatch(path, ctx.config.skip_render)
       };
     }),
 

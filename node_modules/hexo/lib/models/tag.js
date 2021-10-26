@@ -1,7 +1,7 @@
 'use strict';
 
 const { Schema } = require('warehouse');
-const { slugize } = require('hexo-util');
+const { slugize, full_url_for } = require('hexo-util');
 const { hasOwnProperty: hasOwn } = Object.prototype;
 
 module.exports = ctx => {
@@ -23,13 +23,13 @@ module.exports = ctx => {
 
   Tag.virtual('path').get(function() {
     let tagDir = ctx.config.tag_dir;
-    if (tagDir[tagDir.length - 1] !== '/') tagDir += '/';
+    if (!tagDir.endsWith('/')) tagDir += '/';
 
     return `${tagDir + this.slug}/`;
   });
 
   Tag.virtual('permalink').get(function() {
-    return `${ctx.config.url}/${this.path}`;
+    return full_url_for.call(ctx, this.path);
   });
 
   Tag.virtual('posts').get(function() {

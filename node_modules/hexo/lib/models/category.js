@@ -1,7 +1,7 @@
 'use strict';
 
 const { Schema } = require('warehouse');
-const { slugize } = require('hexo-util');
+const { slugize, full_url_for } = require('hexo-util');
 
 module.exports = ctx => {
   const Category = new Schema({
@@ -32,13 +32,13 @@ module.exports = ctx => {
   Category.virtual('path').get(function() {
     let catDir = ctx.config.category_dir;
     if (catDir === '/') catDir = '';
-    if (catDir.length && catDir[catDir.length - 1] !== '/') catDir += '/';
+    if (!catDir.endsWith('/')) catDir += '/';
 
     return `${catDir + this.slug}/`;
   });
 
   Category.virtual('permalink').get(function() {
-    return `${ctx.config.url}/${this.path}`;
+    return full_url_for.call(ctx, this.path);
   });
 
   Category.virtual('posts').get(function() {

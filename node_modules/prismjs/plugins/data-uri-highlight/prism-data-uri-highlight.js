@@ -1,9 +1,6 @@
 (function () {
 
-	if (
-		typeof self !== 'undefined' && !self.Prism ||
-		typeof global !== 'undefined' && !global.Prism
-	) {
+	if (typeof Prism === 'undefined') {
 		return;
 	}
 
@@ -47,7 +44,7 @@
 			}
 
 			Prism.languages.DFS(grammar, function (key, def, type) {
-				if (candidates.indexOf(type) > -1 && Prism.util.type(def) !== 'Array') {
+				if (candidates.indexOf(type) > -1 && !Array.isArray(def)) {
 					if (!def.pattern) {
 						def = this[key] = {
 							pattern: def
@@ -60,8 +57,7 @@
 						Prism.languages.insertBefore('inside', def.inside['url-link'] ? 'url-link' : 'punctuation', {
 							'data-uri': dataURI
 						}, def);
-					}
-					else {
+					} else {
 						if (def.inside['url-link']) {
 							Prism.languages.insertBefore('inside', 'url-link', {
 								'data-uri': dataURI

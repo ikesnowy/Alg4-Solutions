@@ -15,13 +15,14 @@ module.exports = ctx => {
 
   helper.register('search_form', require('./search_form'));
 
-  const format = require('./format');
+  const { strip_html, trim, titlecase, word_wrap, truncate, escape_html } = require('./format');
 
-  helper.register('strip_html', format.strip_html);
-  helper.register('trim', format.trim);
-  helper.register('titlecase', format.titlecase);
-  helper.register('word_wrap', format.word_wrap);
-  helper.register('truncate', format.truncate);
+  helper.register('strip_html', strip_html);
+  helper.register('trim', trim);
+  helper.register('titlecase', titlecase);
+  helper.register('word_wrap', word_wrap);
+  helper.register('truncate', truncate);
+  helper.register('escape_html', escape_html);
 
   helper.register('fragment_cache', require('./fragment_cache')(ctx));
 
@@ -42,6 +43,8 @@ module.exports = ctx => {
   helper.register('list_categories', require('./list_categories'));
   helper.register('list_tags', require('./list_tags'));
   helper.register('list_posts', require('./list_posts'));
+
+  helper.register('meta_generator', require('./meta_generator'));
 
   helper.register('open_graph', require('./open_graph'));
 
@@ -70,6 +73,7 @@ module.exports = ctx => {
 
   helper.register('relative_url', require('./relative_url'));
   helper.register('url_for', require('./url_for'));
+  helper.register('full_url_for', require('./full_url_for'));
 
   const debug = require('./debug');
   helper.register('inspect', debug.inspectObject);
