@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <title>
+            
+                2.3.6 | 
+                        《算法（第四版）》C# 题解
+        </title>
         
-        <title>2.3.6 | 《算法（第四版）》C# 题解</title>
-        
-        <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
-        
-        
-        <link rel="icon" href="/favicon.ico">
-        
-        <link rel="stylesheet" id="normalize">
-        <link rel="stylesheet" id="style">
-        <link rel="stylesheet" id="common">
-        <link rel="stylesheet" id="markdown">
-        <script type="text/javascript">
-            function lightOff() {
-                document.getElementById('style').href='/css/style-dark.css';
-                document.getElementById('common').href='/css/common-dark.css';
-                document.getElementById('markdown').href='/css/markdown-dark.css';
-                document.getElementById('normalize').href='/css/normalize-dark.css';
-            }
-            function lightOn() {
-                document.getElementById('style').href='/css/style.css';
-                document.getElementById('common').href='/css/common.css';
-                document.getElementById('markdown').href='/css/markdown.css';
-                document.getElementById('normalize').href='/css/normalize.css';
-            }
-            var now = new Date();
-            if (now.getHours() > 18 || now.getHours() < 6) {
-                lightOff();
-            } else {
-                lightOn();
-            }
-        </script>
-    <meta name="generator" content="Hexo 5.4.0"><style>mjx-container[jax="SVG"] {
+            <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
+            
+                
+                    <link rel="icon" href="/favicon.ico">
+                    
+                        <link rel="stylesheet" id="normalize">
+                        <link rel="stylesheet" id="style">
+                        <link rel="stylesheet" id="common">
+                        <link rel="stylesheet" id="markdown">
+                        <script type="text/javascript">
+                            function lightOff() {
+                                document.getElementById('style').href = '/css/style-dark.css';
+                                document.getElementById('common').href = '/css/common-dark.css';
+                                document.getElementById('markdown').href = '/css/markdown-dark.css';
+                                document.getElementById('normalize').href = '/css/normalize-dark.css';
+                            }
+                            function lightOn() {
+                                document.getElementById('style').href = '/css/style.css';
+                                document.getElementById('common').href = '/css/common.css';
+                                document.getElementById('markdown').href = '/css/markdown.css';
+                                document.getElementById('normalize').href = '/css/normalize.css';
+                            }
+                            var now = new Date();
+                            if (now.getHours() > 18 || now.getHours() < 6) {
+                                lightOff();
+                            } else {
+                                lightOn();
+                            }
+                        </script>
+<meta name="generator" content="Hexo 5.4.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -149,9 +154,10 @@ mjx-container[display="true"] + br {
 }
 </style><link rel="stylesheet" href="/css/prism-hopscotch.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
-    <body>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
-            <div class="mobile_menu_btn">
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="wrapper">
+        <div class="mobile_menu_btn">
   <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
   <span>toggle menu</span>
   </button>
@@ -520,7 +526,7 @@ function dismissSearchResultModal() {
 	</div>
 	
 
-            <footer>
+                <footer>
 	<div class="footer_wrap">
 		<div class="social">
 			<ul class="clearfix">
@@ -547,20 +553,20 @@ function dismissSearchResultModal() {
 		</div>
 	</div>
 </footer>
-        </div>
-        <script type="text/javascript">
+    </div>
+    <script type="text/javascript">
         var isMenuExpanded = false;
         document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
-        if (isMenuExpanded) {
-        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
-        } else {
-        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+            if (isMenuExpanded) {
+                document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+            } else {
+                document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+            }
+            isMenuExpanded = !isMenuExpanded;
         }
-        isMenuExpanded = !isMenuExpanded;
-        }
-        </script>
-        <script type="text/javascript">
-            (function(){
+    </script>
+    <script type="text/javascript">
+            (function () {
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
                 if (curProtocol === 'https') {
@@ -572,35 +578,48 @@ function dismissSearchResultModal() {
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(bp, s);
             })();
-        </script>            
-        
+    </script>
+    
         <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-121852990-1', 'auto');
-        ga('set', 'dimension3', new Date().toString());
-        ga('set', 'metric1', Math.round(Date.now() / 1000));
-        ga('send', 'pageview');
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-121852990-1', 'auto');
+            ga('set', 'dimension3', new Date().toString());
+            ga('set', 'metric1', Math.round(Date.now() / 1000));
+            ga('send', 'pageview');
         </script>
         
-        
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?1ba6aff1459206104682ef794c4d3eeb";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-        })();
-        </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-        
-    <script>
+            
+                <script>
+                    var _hmt = _hmt || [];
+                    (function () {
+                        var hm = document.createElement("script");
+                        hm.src = "https://hm.baidu.com/hm.js?1ba6aff1459206104682ef794c4d3eeb";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+                <script>
+                    MathJax = {
+                        tex: {
+                            inlineMath: [['$', '$'], ['\\(', '\\)']]
+                        }
+                    };
+                </script>
+                <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                <script id="MathJax-script" async
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                
+<script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+
 </html>
