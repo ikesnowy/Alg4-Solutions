@@ -39,9 +39,10 @@ relative_link: false
 future: true
 highlight:
   enable: false
+prismjs:
+  enable: true
+  theme: "hopscotch"
   line_number: false
-  auto_detect: false
-  tab_replace:
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -95,12 +96,7 @@ deploy:
   name: ikesnowy
   email: ikesnowy@outlook.com
 
-prism_plugin:
-  mode: "preprocess" # realtime/preprocess
-  theme: "hopscotch"
-  line_number: true # default false
-
 lazyload:
   enable: true
-  onlypost: false
+  onlypost: true
   loadingImg: # eg. ./images/loading.png

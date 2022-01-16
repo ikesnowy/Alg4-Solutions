@@ -19,6 +19,8 @@ date: 2019-01-24 10:56:53
 
 [@张越](https://www.zhihu.com/people/zyecho/activities) ，1.4.19
 
+[@5ME](https://github.com/5ME)，1.1.1 [#592](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/592)
+
 ## 第二章
 
 [@雨碎江南](https://github.com/consoles) ，2.2.12 [#532](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/532)

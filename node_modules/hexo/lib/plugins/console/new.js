@@ -1,7 +1,7 @@
 'use strict';
 
 const tildify = require('tildify');
-const { magenta } = require('chalk');
+const { magenta } = require('picocolors');
 
 const reservedKeys = {
   _: true,
