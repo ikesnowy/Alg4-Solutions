@@ -175,58 +175,146 @@ function dismissSearchResultModal() {
 			<p>上次更新：2022-01-16 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
 			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><blockquote>
-<p>注：英文版原文使用的是 “ignore the order of the subtrees”，也就是忽略子树的顺序，只统计每层两种结点的不同数量组合。</p>
+<p>注：英文版原文使用的是 “ignore the order of the subtrees”，也就是忽略子树的顺序。</p>
 </blockquote>
 <p>我们将 N=6 时的树形简记为 <code>[&#123;3&#125;, &#123;2, 2, 3&#125;]</code>，代表根结点是一个 3-结点，第二层有两个 2-结点和一个 3-结点。</p>
 <p>一个 N=6 的示例：</p>
-<pre class="language-none"><code class="language-none"> |--GO--|
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;
+
+ |--GO--|
 D   K   SY</code></pre>
 
-<p>考虑插入元素的两种效用，一种是使 2-结点变成 3-结点（当前结点或者它的父结点）；另一种是使树高增加，3-结点变回 2-结点。这两种操作的顺序不影响最后的树形（注意开头的条件，忽略子树顺序）。</p>
+<p>考虑插入元素的两种效用，一种是使 2-结点变成 3-结点（当前结点或者它的父结点）；另一种是使树高增加，被插入元素的 3-结点（及其父 3-结点）变回 2-结点。这两种操作的顺序不影响最后的树形。</p>
 <p>于是 N=7 时，我们有两种树形。</p>
 <p><code>[&#123;3&#125;, &#123;2, 3, 3&#125;]</code>（插入到某个 2-结点）。</p>
-<pre class="language-none"><code class="language-none"> |--GO--|
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;L&#39;
+
+&#x2F;&#x2F; before
+ |--GO--|
+D   K   SY
+
+&#x2F;&#x2F; after
+ |--GO--|
 D   KL   SY</code></pre>
 
 <p><code>[&#123;2&#125;, &#123;2, 2&#125;, &#123;2, 2, 2, 2&#125;]</code>（插入到 3-结点，变成满二叉树）。</p>
-<pre class="language-none"><code class="language-none">       |--------O--------|
+<pre class="language-none"><code class="language-none">
+&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;Q&#39;
+
+&#x2F;&#x2F; before
+ |--GO--|
+D   K   SY
+
+&#x2F;&#x2F; after
+       |--------O--------|
  |--G--|                 |--S--|
 D       K               Q       Y</code></pre>
 
-<p>N=8，对于 N=7 时的第一种树形，如果向 3-结点插入，会触发平衡，最后树形和第二种满二叉树插入一个元素后的相同。向 2-结点插入则会变成一个全部由 3-结点构成的 2-3 树。</p>
+<p>N=8，对于 N=7 时的第一种树形，如果向 3-结点插入，会触发树高增加，结果相当于向第二种满二叉树底层 2-结点中的某一个插入元素后的树形。向第一种树形的 2-结点插入则会变成一个全部由 3-结点构成的 2-3 树。</p>
 <blockquote>
 <p>注：可以把这里插入到 2-结点的操作看作是插入到 3-结点的一种“拖延”，它只是延后了树高增加的变换，但对最后的树形没有影响。</p>
 </blockquote>
 <p><code>[&#123;3&#125;, &#123;3, 3, 3&#125;]</code>（插入到唯一的 2-结点）</p>
-<pre class="language-none"><code class="language-none"> |--GO--|
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;L&#39;, &#39;A&#39;
+
+&#x2F;&#x2F; before
+ |--GO--|
+D   KL   SY
+
+&#x2F;&#x2F; after
+ |--GO--|
 AD   KL   SY</code></pre>
 
 <p><code>[&#123;2&#125;, &#123;2, 2&#125;, &#123;2, 2, 2, 3&#125;]</code>（插入到满二叉树底部任意一个 2-结点）</p>
-<pre class="language-none"><code class="language-none">       |--------O--------|
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;Q&#39;, &#39;Z&#39;
+
+&#x2F;&#x2F; before
+       |--------O--------|
+ |--G--|                 |--S--|
+D       K               Q       Y
+
+&#x2F;&#x2F; after
+       |--------O--------|
  |--G--|                 |--S--|
 D       K               Q       YZ</code></pre>
 
-<p>N=9，和 N=8 时类似，对于 N=8 时的第一种树形，插入底层任意一个 3-结点都会触发平衡，等同于满二叉树底部两个 2-结点各插入一个元素的树形。因此我们只讨论第二种树形的插入情况即可。</p>
-<p><code>[&#123;2&#125;, &#123;2, 2&#125;, &#123;2, 2, 3, 3&#125;]</code>（插入到 2-结点）</p>
-<pre class="language-none"><code class="language-none">       |--------G--------|
+<p>N=9，和 N=8 时类似，对于 N=8 时的第一种树形，插入底层任意一个 3-结点都会触发平衡，等同于满二叉树底部两个 2-结点各插入一个元素的树形。考虑第二种树形最底层各结点插入元素后的树形即可。</p>
+<p><code>[&#123;2&#125;, &#123;2, 2&#125;, &#123;2, 2, 3, 3&#125;]</code>（插入到 3-结点同侧 2-结点）</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;L&#39;, &#39;A&#39;, &#39;C&#39;
+
+&#x2F;&#x2F; before
+ |--GO--|
+AD   KL   SY
+
+&#x2F;&#x2F; after
+       |--------G--------|
  |--C--|                 |--O--|
 A       D               KL       SY</code></pre>
 
+<p><code>[&#123;2&#125;, &#123;2, 2&#125;, &#123;2, 3, 2, 3&#125;]</code> （插入到 3-结点对侧 2-结点）</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;L&#39;, &#39;A&#39;, &#39;J&#39;
+
+&#x2F;&#x2F; before
+ |--GO--|
+AD   KL   SY
+
+&#x2F;&#x2F; after
+       |--------K--------|
+ |--G--|                 |--O--|
+AD       J               L       SY</code></pre>
+
 <p><code>[&#123;2&#125;, &#123;2, 3&#125;, &#123;2, 2, 2, 2, 2&#125;]</code>（插入到 3-结点）</p>
-<pre class="language-none"><code class="language-none">       |--------O--------|
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;Q&#39;, &#39;Z&#39;, &#39;X&#39;
+
+&#x2F;&#x2F; before
+       |--------O--------|
+ |--G--|                 |--S--|
+D       K               Q       YZ
+
+&#x2F;&#x2F; after
+       |--------O--------|
  |--G--|                 |--SY--|
 D       K               Q   X   Z</code></pre>
 
 <p>N=10</p>
 <p><code>[&#123;2&#125;, &#123;2, 2&#125;, &#123;2, 3, 3, 3&#125;]</code> （插入到 2-结点）</p>
-<pre class="language-none"><code class="language-none">       |--------G--------|
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;L&#39;, &#39;A&#39;, &#39;C&#39;, &#39;B&#39;
+
+&#x2F;&#x2F; before
+       |--------G--------|
+ |--C--|                 |--O--|
+A       D               KL       SY
+
+&#x2F;&#x2F; after
+       |--------G--------|
  |--C--|                 |--O--|
 AB       D               KL       SY</code></pre>
 
-<p><code>[&#123;2&#125;, &#123;2, 3&#125;, &#123;2, 2, 2, 2, 3&#125;]</code>（插入到 3-结点）</p>
-<pre class="language-none"><code class="language-none">       |--------O--------|
+<p><code>[&#123;2&#125;, &#123;2, 3&#125;, &#123;2, 2, 2, 2, 3&#125;]</code>（插入到 3-结点下的 2-结点）</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;Q&#39;, &#39;Z&#39;, &#39;X&#39;, &#39;P&#39;
+
+&#x2F;&#x2F; before
+       |--------O--------|
+ |--G--|                 |--SY--|
+D       K               Q   X   Z
+
+&#x2F;&#x2F; after
+       |--------O--------|
  |--G--|                 |--SY--|
 D       K               PQ   X   Z</code></pre>
+
+<p><code>[&#123;2&#125;, &#123;2, 3&#125;, &#123;2, 3, 2, 2, 2&#125;]</code>（插入到 2-结点下的 2-结点）</p>
+<pre class="language-none"><code class="language-none">&#x2F;&#x2F; &#39;D&#39;, &#39;G&#39;, &#39;K&#39;, &#39;O&#39;, &#39;S&#39;, &#39;Y&#39;, &#39;Q&#39;, &#39;Z&#39;, &#39;X&#39;, &#39;J&#39;
+
+&#x2F;&#x2F; before
+       |--------O--------|
+ |--G--|                 |--SY--|
+D       K               Q   X   Z
+
+&#x2F;&#x2F; after
+       |--------O--------|
+ |--G--|                 |--SY--|
+D       JK               Q   X   Z</code></pre>
 		</div>
 	</div>
 
@@ -333,7 +421,7 @@ D       K               PQ   X   Z</code></pre>
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -341,6 +429,6 @@ D       K               PQ   X   Z</code></pre>
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>
