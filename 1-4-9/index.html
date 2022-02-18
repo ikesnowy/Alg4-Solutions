@@ -174,7 +174,19 @@ function dismissSearchResultModal() {
 			<h1>1.4.9</h1>
 			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>由题意可得：<br>$$<br>T(2N_0)=2^bT\\<br>T(4N_0)=2^b(2^bT)=2^{2b}T\\<br>……\\<br>T(2^rN_0)=2^{rb}T<br>$$<br>设：<br>$$<br>N=2^rN_0<br>$$<br>则：<br>$$<br>r=log_2(\frac{N}{N_0})<br>$$<br>所以：<br>$$<br>T(N) = 2^{log_2(\frac{N}{N_0})b}T<br>$$</p>
+			<h1 id="解答">解答</h1>
+<p>由题意可得： <span class="math display">\[
+T(2N_0)=2^bT\\
+T(4N_0)=2^b(2^bT)=2^{2b}T\\
+......\\
+T(2^rN_0)=2^{rb}T
+\]</span> 设： <span class="math display">\[
+N=2^rN_0
+\]</span> 则： <span class="math display">\[
+r=log_2(\frac{N}{N_0})
+\]</span> 所以： <span class="math display">\[
+T(N) = 2^{log_2(\frac{N}{N_0})b}T
+\]</span></p>
 
 		</div>
 	</div>
