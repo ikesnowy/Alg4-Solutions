@@ -172,10 +172,36 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.1.20</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>国内的书中关于命题 B 的证明有错误，新版的证明结论已经改为：<br>$$<br>C(n)=C(2^k-1) \le k = \lg (n+1) \le \lg n +1<br>$$<br>其中 $ n=2^k - 1  $ 。<br>先证单调性，利用数学归纳法：<br>已知对于 $ N=0 $，满足 $ C(0) \le C(1) $。<br>假设对于 $ N=n $，满足 $ C(n) \le C(n+1) $。<br>根据递归式，有：<br>$$<br>\begin{eqnarray*}<br>&amp; C(n) &amp; \le C(\lfloor n/2 \rfloor) + 1 \\<br>\\<br>&amp; C(n+1) &amp; \le<br> \begin{cases}<br> C(\lfloor n/2 \rfloor) +1 &amp; \text{$ n $ 是偶数} \\<br> C(\lfloor n/2 \rfloor + 1) + 1 &amp; \text{$ n $ 是奇数}<br> \end{cases}\\<br> \\<br> &amp; C(n+2) &amp; \le C(\lfloor n/2 \rfloor + 1) + 1<br> \end{eqnarray*}<br>$$<br>又 $ C(n) \le C(n+1) ​$ ，推出 $ C(\lfloor n/2 \rfloor) + 1 \le C(\lfloor n/2 \rfloor + 1) + 1 ​$。<br>故 $ C(n+1) \le C(n+2) ​$，由数学归纳法，$ C(n) \le C(n+1) ​$ 成立。</p>
-<p>已知当 $ N = 2^k - 1 $ 时，有 $ C(N) \le k = \lg(N+1) \le \lg N + 1$。<br>接下来证明在 $ (2^k - 1,  2^{k + 1} -1)  $ 范围内上式仍然成立。<br>不妨设 $ 0 &lt; M &lt; 2^k $ ，则有 $ 2^k - 1 &lt; N + M &lt; 2^{k + 1} -1   $。<br>转变为证：$ C(N+M) \le \lg (N+M) + 1 $ 。<br>由于 $ C(N+M) $ 是一个整数，则 $ \lfloor \lg(N+M) +1\rfloor = k+1 $。<br>即求证： $ C(N+M) \le k+1 $。<br>由单调性可得 $ C(N+M) \le C(2^{k+1} - 1) \le k+1 ​$，得证。</p>
+			<h1 id="解答">解答</h1>
+<p>国内的书中关于命题 B 的证明有错误，新版的证明结论已经改为： <span
+class="math display">\[
+C(n)=C(2^k-1) \le k = \lg (n+1) \le \lg n +1
+\]</span> 其中 $ n=2^k - 1 $ 。 先证单调性，利用数学归纳法： 已知对于 $
+N=0 $，满足 $ C(0) C(1) $。 假设对于 $ N=n $，满足 $ C(n) C(n+1) $。
+根据递归式，有： <span class="math display">\[
+\begin{eqnarray*}
+&amp; C(n) &amp; \le C(\lfloor n/2 \rfloor) + 1 \newline
+\newline
+&amp; C(n+1) &amp; \le  
+\begin{cases}
+C(\lfloor n/2 \rfloor) +1 &amp; \text{$ n $ 是偶数} \newline
+C(\lfloor n/2 \rfloor + 1) + 1 &amp; \text{$ n $ 是奇数}
+\end{cases}\newline
+\newline
+&amp; C(n+2) &amp; \le C(\lfloor n/2 \rfloor + 1) + 1
+\end{eqnarray*}
+\]</span> 又 $ C(n) C(n+1) ​$ ，推出 $ C(n/2 ) + 1 C(n/2 + 1) + 1 ​$。
+故 $ C(n+1) C(n+2) ​<span
+class="math inline">\(，由数学归纳法，\)</span> C(n) C(n+1) ​$
+成立。</p>
+<p>已知当 $ N = 2^k - 1 $ 时，有 $ C(N) k = (N+1) N + 1$。 接下来证明在
+$ (2^k - 1, 2^{k + 1} -1) $ 范围内上式仍然成立。 不妨设 $ 0 &lt; M &lt;
+2^k $ ，则有 $ 2^k - 1 &lt; N + M &lt; 2^{k + 1} -1 <span
+class="math inline">\(。 转变为证：\)</span> C(N+M) (N+M) + 1 $ 。 由于
+$ C(N+M) $ 是一个整数，则 $ (N+M) +1= k+1 $。 即求证： $ C(N+M) k+1 $。
+由单调性可得 $ C(N+M) C(2^{k+1} - 1) k+1 ​$，得证。</p>
 
 		</div>
 	</div>
@@ -285,7 +311,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -293,6 +319,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

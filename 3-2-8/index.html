@@ -172,26 +172,47 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>3.2.8</h1>
-			<p>上次更新：2019-06-14 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>假设输入的完全二叉树结点数目为 $ n $。</p>
+			<h1 id="解答">解答</h1>
+<p>假设输入的完全二叉树结点数目为 $ n $。</p>
 <p>完全二叉树总是可以分成两部分，一个满二叉树，以及多余的结点。</p>
-<p>于是完全二叉树中满二叉树的部分层数为 $ l = \lfloor \log_2 (n+1) \rfloor $。（根结点位于第一层）<br>满二叉树占的结点数量为 $ n_1 = 2^l -1 $，多余结点数量为 $ n_2=n-n_1 $。</p>
-<p>又因为深度等于层数 - 1，多余结点正好在满二叉树的下一层，因此多余结点的深度即为 $ l $。<br>于是多余结点的深度和 $ d_2 = l \times n_2 $。</p>
-<p>接下来计算满二叉树的深度和。<br>一个层数为 $ l $ 的满二叉树，最后一层正好有 $ 2^{l-1} $ 个结点。<br>于是深度和为 $ d_1 = 0 \times 1 + 1 \times 2+2 \times 4+\cdots+(l-1)2^{l-1}  =\sum_{i=1}^{l-1} i2^i $。<br>用错位相减法，有：<br>$$<br>\begin{eqnarray*}<br>d_1&amp;=&amp;1\times 2^1 + &amp;2 \times 2^2 + \cdots + (l-1)2^{l-1} \\<br>2d_1&amp;=&amp; &amp;1\times 2^2 + \cdots+(l-2)2^{l-1} +(l-1)2^{l} \\<br>d_1-2d_1&amp;=&amp; 1 \times2^1+ &amp;1 \times2^2+\cdots+1\times2^{l-1}-(l-1)2^l \\<br>d_1 &amp;=&amp;(l-1)2^l &amp;-2^l+2 \\<br> &amp;=&amp;(l-2)2^l &amp;+2<br>\end{eqnarray*}<br>$$<br>于是可得总深度和： $ d=d_1+d_2=l\times n_2+ (l-2)2^l+2$。<br>平均查找次数即为：$ avgCompare=d / n + 1 $ 。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">OptCompares</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 完全二叉树 = 满二叉树 + 多余结点</span>
-    <span class="token comment" spellcheck="true">// 满二叉树的层数。</span>
-    <span class="token keyword">var</span> l <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 多余结点的个数。</span>
-    <span class="token keyword">var</span> extraNodes <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>于是完全二叉树中满二叉树的部分层数为 $ l = _2 (n+1)
+$。（根结点位于第一层） 满二叉树占的结点数量为 $ n_1 = 2^l -1
+$，多余结点数量为 $ n_2=n-n_1 $。</p>
+<p>又因为深度等于层数 -
+1，多余结点正好在满二叉树的下一层，因此多余结点的深度即为 $ l $。
+于是多余结点的深度和 $ d_2 = l n_2 $。</p>
+<p>接下来计算满二叉树的深度和。 一个层数为 $ l $
+的满二叉树，最后一层正好有 $ 2^{l-1} $ 个结点。 于是深度和为 $ d_1 = 0 +
+1 +2 ++(l-1)2^{l-1} =_{i=1}^{l-1} i2^i $。 用错位相减法，有： <span
+class="math display">\[
+\begin{eqnarray*}
+d_1&amp;=&amp;1\times 2^1 + &amp;2 \times 2^2 + \cdots + (l-1)2^{l-1}
+\newline
+2d_1&amp;=&amp; &amp;1\times 2^2 + \cdots+(l-2)2^{l-1} +(l-1)2^{l}
+\newline
+d_1-2d_1&amp;=&amp; 1 \times2^1+ &amp;1
+\times2^2+\cdots+1\times2^{l-1}-(l-1)2^l \newline
+d_1 &amp;=&amp;(l-1)2^l &amp;-2^l+2 \newline
+&amp;=&amp;(l-2)2^l &amp;+2
+\end{eqnarray*}
+\]</span> 于是可得总深度和： $ d=d_1+d_2=ln_2+ (l-2)2^l+2<span
+class="math inline">\(。 平均查找次数即为：\)</span> avgCompare=d / n +
+1 $ 。</p>
+<h1 id="代码">代码</h1>
+<pre class="language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">OptCompares</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> n<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">// 完全二叉树 = 满二叉树 + 多余结点</span>
+    <span class="token comment">// 满二叉树的层数。</span>
+    <span class="token class-name"><span class="token keyword">var</span></span> l <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Log</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 多余结点的个数。</span>
+    <span class="token class-name"><span class="token keyword">var</span></span> extraNodes <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> l<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">var</span> depthSum <span class="token operator">=</span>
+    <span class="token class-name"><span class="token keyword">var</span></span> depthSum <span class="token operator">=</span>
         extraNodes <span class="token operator">*</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>l <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> Math<span class="token punctuation">.</span><span class="token function">Pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> l<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> depthSum <span class="token operator">/</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span></code></pre>
 
 		</div>
 	</div>
@@ -301,7 +322,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -309,6 +330,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

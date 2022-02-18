@@ -172,15 +172,96 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.23</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><h2 id="简单的-sink-实现"><a href="#简单的-sink-实现" class="headerlink" title="简单的 sink 实现"></a>简单的 sink 实现</h2><p>sink 方法会在所有的 $ t $ 个子结点中寻找最大的结点。<br>如果找到的结点比当前结点大，那么就进行交换。<br>否则视为结点已经下沉到了合适的位置，结束循环。<br>根据题意，在 $ t $ 个元素中找最大值需要 $ t $ 次比较。<br>sink 操作需要找到 $ t $ 个子结点中的最大值并与当前结点相比较。<br>于是 sink 操作每次最多需要 $ t + 1 $ 次比较。</p>
-<p>建堆过程，对 2.4.20 的证明进行推广。<br>设 $ t $ 叉树的高度为 $ h $ ，叶子结点的高度为 $ 0 $，根结点的高度为 $ h $。<br>根据 sink 操作的定义，高度为 $ k $ 的结点最多进行 $ k $ 次交换（到达叶子结点）。<br>于是建堆需要的总<strong>交换</strong>次数为：<br>$$<br>\begin{align*}<br>&amp; h+t(h-1)+t^2(h-2)+ \dots + t^h(0) \\<br>&amp; =\sum_{k=0}^{h-1} t^k(h-k) \\<br>&amp; =h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \\<br>\end {align*}<br>$$</p>
-<p>其中，第一个数列是等比数列，第二个数列是等差数列和等比数列之积，可以利用错位相减法求得，即：<br>$$<br>\begin{align*}<br>&amp; h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \\<br>&amp; =\frac{h-ht^{h}}{1-t}-\sum_{k=0}^{h-1}kt^k \\<br>&amp; =\frac{h-ht^{h}}{1-t} -\frac{\sum kt^k - t\sum kt^k}{1-t} \\<br>&amp; =\frac{h-ht^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2}+\frac{(h-1)t^h}{1-t} \\<br>&amp; =\frac{h-t^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2} \\<br>&amp; =\frac{h-ht+t^{h+1}-t}{(1-t)^2}<br>\end{align*}<br>$$<br>考虑到对于 $ t $ 叉堆，结点数可以表示为 $ n=\frac{t^{h+1}-1}{t-1} $ 。故<strong>交换</strong>次数可以化简为：<br>$$<br>\begin{align*}<br>&amp; \frac{h-ht+t^{h+1}-t}{(1-t)^2} \\<br>&amp; =\frac{h-ht+t^{h+1}-t +1-1}{(1-t)^2} \\<br>&amp; =\frac{t^{h+1}-1}{(1-t)^2}+\frac{h-ht-t+1}{(1-t)^2} \\<br>&amp; =-\frac{n}{1-t}+\frac{h}{1-t}+\frac{1}{1-t} \\<br>&amp; =\frac{n-h-1}{t-1} \le n<br>\end{align*}<br>$$</p>
-<p>故建堆所需<strong>比较</strong>次数最大为 $ (t+1)n $ 。<br>每次删除最大元素都会对根结点调用一次 sink 操作，<br>因此排序所需的比较次数最多为 $ (t+1)n\log_t(n) $ 。<br>相加得堆排序所需的总交换次数最多为 $  (t+1)n + (t+1)n\log_t(n) =(t+1)(n\log_tn+n) $ 。<br>利用换底公式将对数的底换成 2，得到：$ \frac{t+1}{\lg t} n\log n $ 。<br>于是问题变为求 $ f(t)= \frac{t+1}{\lg t} $ 的最小值，对其求导，得到：<br>$$<br>( \frac{t+1}{\lg t} )’=\frac{-t+t\ln t-1}{t\ln^2t}·\ln 2<br>$$<br>直接求导数的零点会比较困难，但利用勘根公式可以寻找到根所在的区间。<br>由于 $\ln 2$ 不影响正负，我们直接将其去掉，变为：<br>$$<br>\frac{-t+t\ln t-1}{t\ln^2t}=\frac{-1+\ln t-\frac{1}{t}}{\ln^2t}<br>$$<br>由于 $ t &gt; 1 $，分母总是为正，因此导函数正负就等于下面这个函数的正负：<br>$$<br>\begin {align*}<br>g(t)=\ln t -1-\frac{1}{t}<br>\end {align*}<br>$$<br>$ t = e $ 时 $ g(t) &lt; 0 $，$ t=e+1 $ 时 $ g(t) &gt; 0 $。于是可以求得在 $ (e, e+1) $ 上 $ f(t) $ 存在极小值。<br>又由于 $ g(t) $ 在 $ (e + 1, +\infty) $ 始终为正，因此在 $ (e, e+1) $ 上存在的是最小值（$ t \ge 2 $）。<br>因为 $ t $ 为大于 $ 1 $ 的正整数，且 $ f(4) &lt; f(3) $，故 $ t=4 $ 时系数最小，此时系数为 $ 2.5 $ 。</p>
-<h2 id="Floyd-方法"><a href="#Floyd-方法" class="headerlink" title="Floyd 方法"></a>Floyd 方法</h2><p>在删除最大元素的过程中，根结点会和最后一个结点交换，然后对新的根结点执行 sink 操作。<br>大多数情况下，这个结点会被一路交换到树的最后一层。<br>因此我们省去 sink 操作中与自己比较的过程，直接和子结点中的较大者进行交换。<br>这样一路交换到树的底部，随后再让这个结点与自己的父结点比较，向上「回到」合适的位置。<br>大多数结点都不需要向上交换，<br>因此这样的优化可以减少比较次数（下降一层需要的比较次数从 $ t+1 $ 变为 $ t $）。</p>
-<p>利用 Floyd 方法对于建堆没有影响（建堆也可以使用 Floyd 方法，参见「另请参阅」部分）。<br>于是建堆的比较次数仍为 $ (t+1)n $ 。<br>排序的比较次数变为 $ tn\log_t(n) $ 。<br>总的比较次数变为 $ (t+1)n + tn\log_t(n) $ 。<br>我们仍然只关心 $n\lg n$ 的系数，系数为 $ f(t)= \frac{t}{\lg t} $ 。<br>按照之前的方法再求一次最小值，求得 $ t = 3 $ 时系数最小，此时系数为 $ 1.89 $ 。</p>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p>Floyd 提出的堆排序优化<br><a href="https://dl.acm.org/citation.cfm?id=365103" target="_blank" rel="noopener">Floyd R W. Algorithm 245: treesort[J]. Communications of the ACM, 1964, 7(12): 701.</a><br>通过将这种方法应用到建堆获得的快速建堆方法<br><a href="https://www.sciencedirect.com/science/article/pii/0196677489900333" target="_blank" rel="noopener">McDiarmid C J H, Reed B A. Building heaps fast[J]. Journal of algorithms, 1989, 10(3): 352-365.</a></p>
+			<h1 id="解答">解答</h1>
+<h2 id="简单的-sink-实现">简单的 sink 实现</h2>
+<p>sink 方法会在所有的 $ t $ 个子结点中寻找最大的结点。
+如果找到的结点比当前结点大，那么就进行交换。
+否则视为结点已经下沉到了合适的位置，结束循环。 根据题意，在 $ t $
+个元素中找最大值需要 $ t $ 次比较。 sink 操作需要找到 $ t $
+个子结点中的最大值并与当前结点相比较。 于是 sink 操作每次最多需要 $ t +
+1 $ 次比较。</p>
+<p>建堆过程，对 2.4.20 的证明进行推广。 设 $ t $ 叉树的高度为 $ h $
+，叶子结点的高度为 $ 0 $，根结点的高度为 $ h $。 根据 sink
+操作的定义，高度为 $ k $ 的结点最多进行 $ k $ 次交换（到达叶子结点）。
+于是建堆需要的总<strong>交换</strong>次数为： <span
+class="math display">\[
+\begin{align*}
+&amp; h+t(h-1)+t^2(h-2)+ \dots + t^h(0) \newline
+&amp; =\sum_{k=0}^{h-1} t^k(h-k) \newline
+&amp; =h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \newline
+\end {align*}
+\]</span></p>
+<p>其中，第一个数列是等比数列，第二个数列是等差数列和等比数列之积，可以利用错位相减法求得，即：
+<span class="math display">\[
+\begin{align*}
+&amp; h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \newline
+&amp; =\frac{h-ht^{h}}{1-t}-\sum_{k=0}^{h-1}kt^k \newline
+&amp; =\frac{h-ht^{h}}{1-t} -\frac{\sum kt^k - t\sum kt^k}{1-t} \newline
+&amp;
+=\frac{h-ht^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2}+\frac{(h-1)t^h}{1-t}
+\newline
+&amp; =\frac{h-t^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2} \newline
+&amp; =\frac{h-ht+t^{h+1}-t}{(1-t)^2}
+\end{align*}
+\]</span> 考虑到对于 $ t $ 叉堆，结点数可以表示为 $ n= $
+。故<strong>交换</strong>次数可以化简为： <span class="math display">\[
+\begin{align*}
+&amp; \frac{h-ht+t^{h+1}-t}{(1-t)^2} \newline
+&amp; =\frac{h-ht+t^{h+1}-t +1-1}{(1-t)^2} \newline
+&amp; =\frac{t^{h+1}-1}{(1-t)^2}+\frac{h-ht-t+1}{(1-t)^2} \newline
+&amp; =-\frac{n}{1-t}+\frac{h}{1-t}+\frac{1}{1-t} \newline
+&amp; =\frac{n-h-1}{t-1} \le n
+\end{align*}
+\]</span></p>
+<p>故建堆所需<strong>比较</strong>次数最大为 $ (t+1)n $ 。
+每次删除最大元素都会对根结点调用一次 sink 操作，
+因此排序所需的比较次数最多为 $ (t+1)n_t(n) $ 。
+相加得堆排序所需的总交换次数最多为 $ (t+1)n + (t+1)n_t(n) =(t+1)(n_tn+n)
+$ 。 利用换底公式将对数的底换成 2，得到：$ nn $ 。 于是问题变为求 $
+f(t)= $ 的最小值，对其求导，得到： <span class="math display">\[
+( \frac{t+1}{\lg t} )&#39;=\frac{-t+t\ln t-1}{t\ln^2t}·\ln 2
+\]</span>
+直接求导数的零点会比较困难，但利用勘根公式可以寻找到根所在的区间。 由于
+<span class="math inline">\(\ln 2\)</span>
+不影响正负，我们直接将其去掉，变为： <span class="math display">\[
+\frac{-t+t\ln t-1}{t\ln^2t}=\frac{-1+\ln t-\frac{1}{t}}{\ln^2t}
+\]</span> 由于 $ t &gt; 1
+$，分母总是为正，因此导函数正负就等于下面这个函数的正负： <span
+class="math display">\[
+\begin {align*}
+g(t)=\ln t -1-\frac{1}{t}
+\end {align*}
+\]</span> $ t = e $ 时 $ g(t) &lt; 0 <span
+class="math inline">\(，\)</span> t=e+1 $ 时 $ g(t) &gt; 0
+$。于是可以求得在 $ (e, e+1) $ 上 $ f(t) $ 存在极小值。 又由于 $ g(t) $
+在 $ (e + 1, +) $ 始终为正，因此在 $ (e, e+1) $ 上存在的是最小值（$ t
+$）。 因为 $ t $ 为大于 $ 1 $ 的正整数，且 $ f(4) &lt; f(3) $，故 $ t=4
+$ 时系数最小，此时系数为 $ 2.5 $ 。</p>
+<h2 id="floyd-方法">Floyd 方法</h2>
+<p>在删除最大元素的过程中，根结点会和最后一个结点交换，然后对新的根结点执行
+sink 操作。 大多数情况下，这个结点会被一路交换到树的最后一层。
+因此我们省去 sink
+操作中与自己比较的过程，直接和子结点中的较大者进行交换。
+这样一路交换到树的底部，随后再让这个结点与自己的父结点比较，向上「回到」合适的位置。
+大多数结点都不需要向上交换，
+因此这样的优化可以减少比较次数（下降一层需要的比较次数从 $ t+1 $ 变为 $
+t $）。</p>
+<p>利用 Floyd 方法对于建堆没有影响（建堆也可以使用 Floyd
+方法，参见「另请参阅」部分）。 于是建堆的比较次数仍为 $ (t+1)n $ 。
+排序的比较次数变为 $ tn_t(n) $ 。 总的比较次数变为 $ (t+1)n + tn_t(n) $
+。 我们仍然只关心 <span class="math inline">\(n\lg n\)</span>
+的系数，系数为 $ f(t)= $ 。 按照之前的方法再求一次最小值，求得 $ t = 3 $
+时系数最小，此时系数为 $ 1.89 $ 。</p>
+<h1 id="另请参阅">另请参阅</h1>
+<p>Floyd 提出的堆排序优化 <a
+target="_blank" rel="noopener" href="https://dl.acm.org/citation.cfm?id=365103">Floyd R W. Algorithm
+245: treesort[J]. Communications of the ACM, 1964, 7(12): 701.</a>
+通过将这种方法应用到建堆获得的快速建堆方法 <a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/0196677489900333">McDiarmid
+C J H, Reed B A. Building heaps fast[J]. Journal of algorithms, 1989,
+10(3): 352-365.</a></p>
 
 		</div>
 	</div>
@@ -290,7 +371,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -298,6 +379,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

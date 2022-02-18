@@ -172,49 +172,59 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.1.18</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>其实就是一种快速乘法的实现，换成乘号之后就变成了快速乘幂。</p>
-<p>例如对于乘法 $2 \times 4$ ，可以用 $2 + 2 + 2 + 2$ 做四次加法计算；也可以变为 $ (2 + 2) \times 2 = (2 + 2) + (2 + 2) $ 的形式，用两次加法就可以完成（先计算 $ 2 + 2 $ 的值，再计算 $ 4 + 4 $ 的值）。</p>
-<p>同理对于乘幂 $ 2^8 $  ，既可以用 $  2\times 2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 $ 做 8 次乘法，也可以只用三次乘法就计算出来：</p>
-<p>$$<br>2^2 = 2 \times 2 \\<br>2^4 = 2^2 \times 2^2\\<br>2^8 = 2^4 \times 2^4<br>$$<br>这样时间复杂度就从 $ O(n) $ 变为了 $ O(log n) $ 。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mystery(2, 25): {mystery(2, 25)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mystery(3, 11): {mystery(3, 11)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<h1 id="解答">解答</h1>
+<p>其实就是一种快速乘法的实现，换成乘号之后就变成了快速乘幂。</p>
+<p>例如对于乘法 <span class="math inline">\(2 \times 4\)</span> ，可以用
+<span class="math inline">\(2 + 2 + 2 + 2\)</span>
+做四次加法计算；也可以变为 $ (2 + 2) = (2 + 2) + (2 + 2) $
+的形式，用两次加法就可以完成（先计算 $ 2 + 2 $ 的值，再计算 $ 4 + 4 $
+的值）。</p>
+<p>同理对于乘幂 $ 2^8 $ ，既可以用 $ 2 $ 做 8
+次乘法，也可以只用三次乘法就计算出来：</p>
+<p><span class="math display">\[
+2^2 = 2 \times 2 \newline
+2^4 = 2^2 \times 2^2\newline
+2^8 = 2^4 \times 2^4
+\]</span> 这样时间复杂度就从 $ O(n) $ 变为了 $ O(log n) $ 。</p>
+<h1 id="代码">代码</h1>
+<pre class="language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> args<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"mystery(2, 25): </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token expression language-csharp"><span class="token function">mystery</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span></span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"mystery(3, 11): </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token expression language-csharp"><span class="token function">mystery</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span></span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mysteryChanged(2, 8): {mysteryChanged(2, 8)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>$<span class="token string">"mysteryChanged(3, 2): {mysteryChanged(3, 2)}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"mysteryChanged(2, 8): </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token expression language-csharp"><span class="token function">mysteryChanged</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span></span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"mysteryChanged(3, 2): </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token expression language-csharp"><span class="token function">mysteryChanged</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span></span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token comment" spellcheck="true">//mystery(a, b) = a * b</span>
-<span class="token comment" spellcheck="true">//利用等式：a * b = 2a * b/2 = (2a * (b-1) / 2) + a</span>
-<span class="token comment" spellcheck="true">//示例：</span>
-<span class="token comment" spellcheck="true">//mystery(2, 25) =</span>
-<span class="token comment" spellcheck="true">//mystery(2 + 2, 12) + 2 =</span>
-<span class="token comment" spellcheck="true">//mystery(4 + 4, 6) + 2 =</span>
-<span class="token comment" spellcheck="true">//mystery(8 + 8, 3) =</span>
-<span class="token comment" spellcheck="true">//mystery(16 + 16, 1) + 16 + 2 =</span>
-<span class="token comment" spellcheck="true">//mystery(32 + 32, 0) + 32 + 16 + 2 =</span>
-<span class="token comment" spellcheck="true">//0 + 32 + 16 + 2 =</span>
-<span class="token comment" spellcheck="true">//50</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">mystery</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token comment">//mystery(a, b) = a * b</span>
+<span class="token comment">//利用等式：a * b = 2a * b/2 = (2a * (b-1) / 2) + a</span>
+<span class="token comment">//示例：</span>
+<span class="token comment">//mystery(2, 25) =</span>
+<span class="token comment">//mystery(2 + 2, 12) + 2 =</span>
+<span class="token comment">//mystery(4 + 4, 6) + 2 =</span>
+<span class="token comment">//mystery(8 + 8, 3) =</span>
+<span class="token comment">//mystery(16 + 16, 1) + 16 + 2 =</span>
+<span class="token comment">//mystery(32 + 32, 0) + 32 + 16 + 2 =</span>
+<span class="token comment">//0 + 32 + 16 + 2 =</span>
+<span class="token comment">//50</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">mystery</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> a<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> b<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">mystery</span><span class="token punctuation">(</span>a <span class="token operator">+</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> a<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token comment" spellcheck="true">//mysteryChanged(a, b) = a ^ b</span>
-<span class="token comment" spellcheck="true">//同理（乘方与乘法，乘法与加法之间具有类似的性质）</span>
-<span class="token comment" spellcheck="true">//a ^ b = (a ^ 2) ^ (b / 2) = (a ^ 2) ^ ((b - 1) / 2) * a</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">mysteryChanged</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token comment">//mysteryChanged(a, b) = a ^ b</span>
+<span class="token comment">//同理（乘方与乘法，乘法与加法之间具有类似的性质）</span>
+<span class="token comment">//a ^ b = (a ^ 2) ^ (b / 2) = (a ^ 2) ^ ((b - 1) / 2) * a</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">mysteryChanged</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> a<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> b<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">mysteryChanged</span><span class="token punctuation">(</span>a <span class="token operator">*</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">mysteryChanged</span><span class="token punctuation">(</span>a <span class="token operator">*</span> a<span class="token punctuation">,</span> b <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> a<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span></code></pre>
 
 		</div>
 	</div>
@@ -324,7 +334,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -332,6 +342,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

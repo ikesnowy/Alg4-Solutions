@@ -172,11 +172,42 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.20</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>官网给出了解答：<a href="https://algs4.cs.princeton.edu/24pq/" target="_blank" rel="noopener">https://algs4.cs.princeton.edu/24pq/</a></p>
-<p>首先介绍第一种解法。<br>设叶子结点的高度为 $ 0 $，根结点的高度为 $ h ​$。<br>于是某个结点 sink 时的最大交换次数即为该结点的高度。<br>故某一层结点的最大交换次数为 该层结点数 × 该层的高度。<br>于是总交换次数最大为：<br>$$<br>\begin{align*}<br>&amp; h+2(h-1)+2^2(h-2)+ \dots + 2^h(0) \\<br>&amp; =\sum_{k=0}^{h-1} 2^k(h-k) \\<br>&amp; =h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \\<br>\end {align*}<br>$$<br>第一项为等比数列的和，第二项为等差数列乘以等比数列的和。<br>于是第一项可以直接通过公式求得，第二项可以利用错位相减法求得。<br>$$<br>\begin{align}<br>&amp; h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \\<br>&amp; =h2^{h}-h-\sum_{k=0}^{h-1}k2^k \\<br>&amp; =h2^{h}-h +\sum_{k=0}^{h-1} k2^k - 2\sum_{k=0}^{h-1} k2^k \\<br>&amp; =h2^{h}-h+2^h - 2-(h-1)2^h \\<br>&amp; =2^{h+1}-h-2 \\<br>&amp; =N-h-1 \le N<br>\end{align}<br>$$<br>于是交换次数小于 $ N $，比较次数小于 $ 2N $。</p>
-<p>另一种解法，可以配合官网的图片帮助理解。<br>首先堆中某个结点最多一路下沉到叶子结点，<br>最大交换次数就是该结点的高度（记叶子结点的高度为 0）。<br>考虑根结点一路下沉到叶子结点的轨迹，<br>设为 $ a_0, a_1, a_2, … , a_k $，其中 $ k $ 为根结点的高度，$ a_0 $ 是根结点。<br>$ a_0 $ 下沉后结点顺序变为 $ a_1, a_2, …, a_k, a_0 $ 。<br>根据下沉的定义，有 $ a_1 &gt; a_2 &gt; \dots &gt; a_k &gt; a_0 $ 。<br>因此 $ a_1 $ 下沉时不可能与 $ a_2 $ 交换，而会向另一个方向下沉。<br>其余结点同理，可以发现每个结点的下沉路径不会与其他结点重合。<br>一棵完全二叉树共有 $ N - 1 $ 条边，每访问一条边代表进行了一次交换。<br>故交换次数必定小于 $ N $，比较次数为交换次数的两倍小于 $ 2N $。</p>
+			<h1 id="解答">解答</h1>
+<p>官网给出了解答：https://algs4.cs.princeton.edu/24pq/</p>
+<p>首先介绍第一种解法。 设叶子结点的高度为 $ 0 $，根结点的高度为 $ h
+​$。 于是某个结点 sink 时的最大交换次数即为该结点的高度。
+故某一层结点的最大交换次数为 该层结点数 × 该层的高度。
+于是总交换次数最大为： <span class="math display">\[
+\begin{align*}
+&amp; h+2(h-1)+2^2(h-2)+ \dots + 2^h(0) \newline
+&amp; =\sum_{k=0}^{h-1} 2^k(h-k) \newline
+&amp; =h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \newline
+\end {align*}
+\]</span> 第一项为等比数列的和，第二项为等差数列乘以等比数列的和。
+于是第一项可以直接通过公式求得，第二项可以利用错位相减法求得。 <span
+class="math display">\[
+\begin{align}
+&amp; h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \newline
+&amp; =h2^{h}-h-\sum_{k=0}^{h-1}k2^k \newline
+&amp; =h2^{h}-h +\sum_{k=0}^{h-1} k2^k - 2\sum_{k=0}^{h-1} k2^k \newline
+&amp; =h2^{h}-h+2^h - 2-(h-1)2^h \newline
+&amp; =2^{h+1}-h-2 \newline
+&amp; =N-h-1 \le N
+\end{align}
+\]</span> 于是交换次数小于 $ N $，比较次数小于 $ 2N $。</p>
+<p>另一种解法，可以配合官网的图片帮助理解。
+首先堆中某个结点最多一路下沉到叶子结点，
+最大交换次数就是该结点的高度（记叶子结点的高度为 0）。
+考虑根结点一路下沉到叶子结点的轨迹， 设为 $ a_0, a_1, a_2, ... , a_k
+$，其中 $ k $ 为根结点的高度，$ a_0 $ 是根结点。 $ a_0 $
+下沉后结点顺序变为 $ a_1, a_2, ..., a_k, a_0 $ 。 根据下沉的定义，有 $
+a_1 &gt; a_2 &gt; &gt; a_k &gt; a_0 $ 。 因此 $ a_1 $ 下沉时不可能与 $
+a_2 $ 交换，而会向另一个方向下沉。
+其余结点同理，可以发现每个结点的下沉路径不会与其他结点重合。
+一棵完全二叉树共有 $ N - 1 $ 条边，每访问一条边代表进行了一次交换。
+故交换次数必定小于 $ N $，比较次数为交换次数的两倍小于 $ 2N $。</p>
 
 		</div>
 	</div>
@@ -286,7 +317,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -294,6 +325,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

@@ -172,11 +172,31 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.21</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先引入命题 I 的结论，对于互不相同的主键值，基于比较的排序算法的下界等于所形成的比较树的高度，即：<br>$$<br>h \ge \log_2{N!}<br>$$<br>那么我们题目即可转化为求证<br>$$<br>h \ge \log_2 (\frac{N!}{f_1!f_2!\cdots f_k!}) \ge \log_2 N!<br>$$<br>这里的 $ f_i $ 为某个主键值出现的频率，即某个主键值出现的次数，因此 $f_i\ge 1$ 。<br>根据题目给出的条件，如果主键互不重复，此时 $ k=N $，且 $ f_1=f_2=\cdots=f_k=1 $ 。<br>那么 $ f_1!f_2!\cdots f_k!=1 $ ，待证式子即为命题 I 的结论。</p>
-<p>那么当主键有重复时，此时 $ k &lt; N $，为使 $ f_1+f_2+ \cdots + f_k=N $ ，至少存在一个 $ f_m \ge 2 $。<br>故此时：<br>$$<br>f_1!f_2!\cdots f_k! &gt;1\Rightarrow \frac{N!}{f_1!f_2!\cdots f_k!}&lt;N! \Rightarrow \\<br>h \ge \log_2 (\frac{N!}{f_1!f_2!\cdots f_k!}) \ge \log_2 N!  \blacksquare<br>$$<br>得证。</p>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p><a href="http://www.cs.umd.edu/~meesh/351/mount/lectures/lect16-lower-bnds-sorting.pdf" target="_blank" rel="noopener">lower bounds of sorting-The University of Maryland</a></p>
+			<h1 id="解答">解答</h1>
+<p>首先引入命题 I
+的结论，对于互不相同的主键值，基于比较的排序算法的下界等于所形成的比较树的高度，即：
+<span class="math display">\[
+h \ge \log_2{N!}
+\]</span> 那么我们题目即可转化为求证 <span class="math display">\[
+h \ge \log_2 (\frac{N!}{f_1!f_2!\cdots f_k!}) \ge \log_2 N!
+\]</span> 这里的 $ f_i $
+为某个主键值出现的频率，即某个主键值出现的次数，因此 <span
+class="math inline">\(f_i\ge 1\)</span> 。
+根据题目给出的条件，如果主键互不重复，此时 $ k=N $，且 $ f_1=f_2==f_k=1
+$ 。 那么 $ f_1!f_2!f_k!=1 $ ，待证式子即为命题 I 的结论。</p>
+<p>那么当主键有重复时，此时 $ k &lt; N $，为使 $ f_1+f_2+ + f_k=N $
+，至少存在一个 $ f_m $。 故此时： <span class="math display">\[
+f_1!f_2!\cdots f_k! &gt;1\Rightarrow \frac{N!}{f_1!f_2!\cdots
+f_k!}&lt;N! \Rightarrow \newline
+h \ge \log_2 (\frac{N!}{f_1!f_2!\cdots f_k!}) \ge \log_2 N! \
+\blacksquare
+\]</span> 得证。</p>
+<h1 id="另请参阅">另请参阅</h1>
+<p><a
+target="_blank" rel="noopener" href="http://www.cs.umd.edu/~meesh/351/mount/lectures/lect16-lower-bnds-sorting.pdf">lower
+bounds of sorting-The University of Maryland</a></p>
 
 		</div>
 	</div>
@@ -286,7 +306,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -294,6 +314,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

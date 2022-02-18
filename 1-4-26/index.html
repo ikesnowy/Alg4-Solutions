@@ -172,9 +172,33 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.4.26</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>首先，我们将问题转化为证明三点<br>$$<br>A(a,a^3),B(b,b^3),C(c,c^3)<br>$$<br>共线，当且仅当满足<br>$$<br>a+b+c=0<br>$$<br>证明：<br>若 $A,B,C$ 三点共线，则直线 $AB$ 和 $BC$ 的斜率必定相等，有方程：<br>$$<br>\frac{b^3-a^3}{b-a}=\frac{c^3-b^3}{c-b}<br>$$<br>由立方差公式：<br>$$<br>\frac{(b-a)(b^2+ba+a^2)}{b-a}=\frac{(c-b)(c^2+cb+b^2)}{c-b}<br>$$<br>化简有：<br>$$<br>b^2+ba+a^2=c^2+cb+b^2\\<br>ba+a^2=c^2+cb<br>$$<br>移项，将 $c$ 视为未知数：<br>$$<br>c^2+cb-ba-a^2=0<br>$$<br>利用十字相乘法进行因式分解：<br>$$<br>(a+b+c)(c-a)=0<br>$$<br>解得：<br>$$<br>c_1=-a-b,c_2=a<br>$$<br>显然 $c\ne a$ ，因此当且仅当 $a+b+c=0$ 时 $A,B,C$ 三点共线。<br>证毕。</p>
+			<h1 id="解答">解答</h1>
+<p>首先，我们将问题转化为证明三点 <span class="math display">\[
+A(a,a^3),B(b,b^3),C(c,c^3)
+\]</span> 共线，当且仅当满足 <span class="math display">\[
+a+b+c=0
+\]</span> 证明： 若 <span class="math inline">\(A,B,C\)</span>
+三点共线，则直线 <span class="math inline">\(AB\)</span> 和 <span
+class="math inline">\(BC\)</span> 的斜率必定相等，有方程： <span
+class="math display">\[
+\frac{b^3-a^3}{b-a}=\frac{c^3-b^3}{c-b}
+\]</span> 由立方差公式： <span class="math display">\[
+\frac{(b-a)(b^2+ba+a^2)}{b-a}=\frac{(c-b)(c^2+cb+b^2)}{c-b}
+\]</span> 化简有： <span class="math display">\[
+b^2+ba+a^2=c^2+cb+b^2\newline
+ba+a^2=c^2+cb
+\]</span> 移项，将 <span class="math inline">\(c\)</span> 视为未知数：
+<span class="math display">\[
+c^2+cb-ba-a^2=0
+\]</span> 利用十字相乘法进行因式分解： <span class="math display">\[
+(a+b+c)(c-a)=0
+\]</span> 解得： <span class="math display">\[
+c_1=-a-b,c_2=a
+\]</span> 显然 <span class="math inline">\(c\ne a\)</span>
+，因此当且仅当 <span class="math inline">\(a+b+c=0\)</span> 时 <span
+class="math inline">\(A,B,C\)</span> 三点共线。 证毕。</p>
 
 		</div>
 	</div>
@@ -284,7 +308,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -292,6 +316,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

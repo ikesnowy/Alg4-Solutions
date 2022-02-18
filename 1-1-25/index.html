@@ -172,13 +172,25 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>1.1.25</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>已知：$ a,b $ 皆为正整数，且 $ a&gt;b $。$ g $ 是 $ a,b$ 的最大公约数<br>设 $  r_0=a\bmod b $ ，$ r_k = r_{k-2} \bmod r_{k-1} $ 。<br>那么有 $ gcd(a,b)=gcd(b,r_0)=gcd(r_0,r_1)…=gcd(r_{n-1},r_n) $ 。<br>且 $ r_n=0 $ （此时算法终止）。</p>
-<p>由于 $ r_{n-2}=q_n\times r_{n-1} + r_n=q_n\times r_{n-1}  (q_n=\lfloor r_{n-2}/r_{n-1}\rfloor) $ 。<br>可得 $ r_{n-2} $ 能被 $ r_{n-1} $ 整除。<br>则有<br>$ r_{n-3}\\=q_{n-1} \times r_{n-2} + r_{n-1}\\=q_{n-1}\times (q_n \times r_{n-1})+r_{n-1}\\=q_{n-1}\times q_n \times r_{n-1} + r_{n-1} \\=(q_{n-1} \times q_n +1)\times r_{n-1} $<br>可得 $ r_{n-3} $ 也能被 $ r_{n-1} $ 整除<br>以此类推，$ r_{n-1} $ 可以整除 $ a $ 和 $ b $ ，即 $ r_{n-1} $  是 $ a $ 和 $ b $ 的公约数<br>则 $ r_{n-1}\le g $ 。</p>
-<p>因为 $ g $ 是 $ a,b $ 的最大公约数，由其性质可得：<br>$ a=mg,b=ng $ ，其中 $ m,n $ 是自然数。</p>
-<p>$ r_0 \\=a \bmod b \\=a-q_0 \times b\qquad (q_0=\lfloor a/b \rfloor) \\= mg-q_0\times ng\\=(m-q_0\times n)g $ </p>
-<p>可得 $ r_0 $ 能够被 $ g $ 整除。<br>同理 $ r_0,r_1,r_2\dots r_{n-1} $ 都可以被 $ g $ 整除。<br>因此 $ g\le r_{n-1} $ </p>
+			<h1 id="解答">解答</h1>
+<p>已知：$ a,b $ 皆为正整数，且 $ a&gt;b <span
+class="math inline">\(。\)</span> g $ 是 $ a,b$ 的最大公约数 设 $
+ r_0=ab $ ，$ r_k = r_{k-2}  r_{k-1} $ 。 那么有 $
+gcd(a,b)=gcd(b,r_0)=gcd(r_0,r_1)...=gcd(r_{n-1},r_n) $ 。 且 $ r_n=0 $
+（此时算法终止）。</p>
+<p>由于 $ r_{n-2}=q_nr_{n-1} + r_n=q_nr_{n-1}  (q_n=r_{n-2}/r_{n-1}) $
+。 可得 $ r_{n-2} $ 能被 $ r_{n-1} $ 整除。 则有 $ r_{n-3}=q_{n-1}
+r_{n-2} + r_{n-1}=q_{n-1}(q_n r_{n-1})+r_{n-1}=q_{n-1}q_n r_{n-1} +
+r_{n-1} =(q_{n-1} q_n +1)r_{n-1} $ 可得 $ r_{n-3} $ 也能被 $ r_{n-1} $
+整除 以此类推，$ r_{n-1} $ 可以整除 $ a $ 和 $ b $ ，即 $ r_{n-1} $ 是 $
+a $ 和 $ b $ 的公约数 则 $ r_{n-1}g $ 。</p>
+<p>因为 $ g $ 是 $ a,b $ 的最大公约数，由其性质可得： $ a=mg,b=ng $
+，其中 $ m,n $ 是自然数。</p>
+<p>$ r_0 =a b =a-q_0 b(q_0=a/b ) = mg-q_0ng=(m-q_0n)g $</p>
+<p>可得 $ r_0 $ 能够被 $ g $ 整除。 同理 $ r_0,r_1,r_2r_{n-1} $ 都可以被
+$ g $ 整除。 因此 $ gr_{n-1} $</p>
 <p>综上，$ g=r_{n-1} $ ，证明完毕。</p>
 
 		</div>
@@ -289,7 +301,7 @@ function dismissSearchResultModal() {
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -297,6 +309,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>
