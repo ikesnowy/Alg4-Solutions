@@ -18,10 +18,6 @@
             integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
             crossorigin="anonymous"></script>
 
-        <!-- To automatically render math in text elements, include the auto-render extension: -->
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
-            integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-            onload="renderMathInElement(document.body);"></script>
         
             <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
             
@@ -422,7 +418,11 @@ function dismissSearchResultModal() {
                         s.parentNode.insertBefore(hm, s);
                     })();
                 </script>
-                <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                <!-- To automatically render math in text elements, include the auto-render extension: -->
+                <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+                    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+                    crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
                 
 </body>
 
