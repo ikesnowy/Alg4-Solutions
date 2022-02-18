@@ -175,10 +175,21 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.4.7</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>k = 2 时，<br>只可能出现在位置 2、3 上（根节点的子结点，深度为 2，根节点深度为 1）<br>k = 3 时，<br>可以直接是根节点的子结点（第 2 或第 3 位，深度为 2），<br>也可以是第二大元素的子结点（第 4~7 位，也就是深度为 3 的所有位置）<br>k = 4 时，<br>可以直接是根节点的子结点（深度为 2 的点）<br>也可以是第二大元素的子结点（深度为 3 的点）<br>也可以是第三大元素的子结点（深度为 4 的点）<br>故范围为第 2~15 位。</p>
-<p>不难看出第 k 大元素只可能出现在深度＜k 的位置（$ k \ge 2 $）<br>即位置小于 $ 2 ^ k - 1, (k \ge 2) $</p>
+			<h1 id="解答"><a class="markdownIt-Anchor" href="#解答"></a> 解答</h1>
+<p>k = 2 时，<br />
+只可能出现在位置 2、3 上（根节点的子结点，深度为 2，根节点深度为 1）<br />
+k = 3 时，<br />
+可以直接是根节点的子结点（第 2 或第 3 位，深度为 2），<br />
+也可以是第二大元素的子结点（第 4~7 位，也就是深度为 3 的所有位置）<br />
+k = 4 时，<br />
+可以直接是根节点的子结点（深度为 2 的点）<br />
+也可以是第二大元素的子结点（深度为 3 的点）<br />
+也可以是第三大元素的子结点（深度为 4 的点）<br />
+故范围为第 2~15 位。</p>
+<p>不难看出第 k 大元素只可能出现在深度＜k 的位置（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k \ge 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>）<br />
+即位置小于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mo stretchy="false">(</mo><mi>k</mi><mo>≥</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2 ^ k - 1, (k \ge 2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.932438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span></p>
 
 		</div>
 	</div>
