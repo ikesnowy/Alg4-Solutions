@@ -185,19 +185,19 @@ C_N=N-1+(C_0+C_1+\cdots+C_{N-1})/N+(C_{N-1}+\cdots+C_1+C_0)/N
 class="math display">\[
 NC_N=N(N-1)+2(C_0+C_1+\cdots+C_{N-1})
 \]</span> 用 $ N+1 $ 时的等式减去该式得： <span class="math display">\[
-(N+1)C_{N+1}-NC_N=2N+2C_N \newline
-(N+1)C_{N+1}=2N+(N+2)C_N \newline
+(N+1)C_{N+1}-NC_N=2N+2C_N \\
+(N+1)C_{N+1}=2N+(N+2)C_N \\
 \frac{C_{N+1}}{N+2}=\frac{2N}{(N+1)(N+2)} + \frac{C_N}{N+1}
 \]</span> 令 $ T_N = $，得到： <span class="math display">\[
-T_{N+1}=\frac{2N}{(N+1)(N+2)} + T_N \newline
+T_{N+1}=\frac{2N}{(N+1)(N+2)} + T_N \\
 T_{N+1}-T_{N} = \frac{2N}{(N+1)(N+2)}
 \]</span> 归纳得： <span class="math display">\[
 \begin{aligned}
-T_N &amp;= 2 \sum_{i=2}^{N} \frac{i-1}{i(i+1)} \newline
-C_N&amp;=2(N+1)\sum_{i=2}^{N} \frac{i-1}{i(i+1)} \newline
-C_N&amp;=2(N+1)\sum_{i=2}^{N}(i-1) (\frac{1}{i}-\frac{1}{i+1}) \newline
-C_N&amp;=-2(N-1)+ 2(N+1)\sum_{i=2}^{N}\frac{1}{i}\newline
-C_N&amp;=-2(N-1)+ 2(N+1)(-1+\sum_{i=1}^{N}\frac{1}{i})\newline
+T_N &amp;= 2 \sum_{i=2}^{N} \frac{i-1}{i(i+1)} \\
+C_N&amp;=2(N+1)\sum_{i=2}^{N} \frac{i-1}{i(i+1)} \\
+C_N&amp;=2(N+1)\sum_{i=2}^{N}(i-1) (\frac{1}{i}-\frac{1}{i+1}) \\
+C_N&amp;=-2(N-1)+ 2(N+1)\sum_{i=2}^{N}\frac{1}{i}\\
+C_N&amp;=-2(N-1)+ 2(N+1)(-1+\sum_{i=1}^{N}\frac{1}{i})\\
 C_N&amp;=-4N+2(N+1)(\ln N+\gamma)
 \end{aligned}
 \]</span> 于是平均成本为：$ 1+C_N/N 2N+2 $ 。</p>
@@ -310,7 +310,7 @@ C_N&amp;=-4N+2(N+1)(\ln N+\gamma)
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                    src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.min.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -318,6 +318,6 @@ C_N&amp;=-4N+2(N+1)(\ln N+\gamma)
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 
 </html>

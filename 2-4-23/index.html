@@ -188,30 +188,29 @@ function dismissSearchResultModal() {
 于是建堆需要的总<strong>交换</strong>次数为： <span
 class="math display">\[
 \begin{align*}
-&amp; h+t(h-1)+t^2(h-2)+ \dots + t^h(0) \newline
-&amp; =\sum_{k=0}^{h-1} t^k(h-k) \newline
-&amp; =h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \newline
+&amp; h+t(h-1)+t^2(h-2)+ \dots + t^h(0) \\
+&amp; =\sum_{k=0}^{h-1} t^k(h-k) \\
+&amp; =h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \\
 \end {align*}
 \]</span></p>
 <p>其中，第一个数列是等比数列，第二个数列是等差数列和等比数列之积，可以利用错位相减法求得，即：
 <span class="math display">\[
 \begin{align*}
-&amp; h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \newline
-&amp; =\frac{h-ht^{h}}{1-t}-\sum_{k=0}^{h-1}kt^k \newline
-&amp; =\frac{h-ht^{h}}{1-t} -\frac{\sum kt^k - t\sum kt^k}{1-t} \newline
+&amp; h\sum_{k=0}^{h-1}t^k - \sum_{k=0}^{h-1}kt^k \\
+&amp; =\frac{h-ht^{h}}{1-t}-\sum_{k=0}^{h-1}kt^k \\
+&amp; =\frac{h-ht^{h}}{1-t} -\frac{\sum kt^k - t\sum kt^k}{1-t} \\
 &amp;
-=\frac{h-ht^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2}+\frac{(h-1)t^h}{1-t}
-\newline
-&amp; =\frac{h-t^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2} \newline
+=\frac{h-ht^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2}+\frac{(h-1)t^h}{1-t} \\
+&amp; =\frac{h-t^h}{1-t}-\frac{t(1-t^{h-1})}{(1-t)^2} \\
 &amp; =\frac{h-ht+t^{h+1}-t}{(1-t)^2}
 \end{align*}
 \]</span> 考虑到对于 $ t $ 叉堆，结点数可以表示为 $ n= $
 。故<strong>交换</strong>次数可以化简为： <span class="math display">\[
 \begin{align*}
-&amp; \frac{h-ht+t^{h+1}-t}{(1-t)^2} \newline
-&amp; =\frac{h-ht+t^{h+1}-t +1-1}{(1-t)^2} \newline
-&amp; =\frac{t^{h+1}-1}{(1-t)^2}+\frac{h-ht-t+1}{(1-t)^2} \newline
-&amp; =-\frac{n}{1-t}+\frac{h}{1-t}+\frac{1}{1-t} \newline
+&amp; \frac{h-ht+t^{h+1}-t}{(1-t)^2} \\
+&amp; =\frac{h-ht+t^{h+1}-t +1-1}{(1-t)^2} \\
+&amp; =\frac{t^{h+1}-1}{(1-t)^2}+\frac{h-ht-t+1}{(1-t)^2} \\
+&amp; =-\frac{n}{1-t}+\frac{h}{1-t}+\frac{1}{1-t} \\
 &amp; =\frac{n-h-1}{t-1} \le n
 \end{align*}
 \]</span></p>
@@ -371,7 +370,7 @@ C J H, Reed B A. Building heaps fast[J]. Journal of algorithms, 1989,
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                    src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.min.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -379,6 +378,6 @@ C J H, Reed B A. Building heaps fast[J]. Journal of algorithms, 1989,
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 
 </html>

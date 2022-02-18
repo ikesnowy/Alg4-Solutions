@@ -178,13 +178,13 @@ function dismissSearchResultModal() {
 <p>顺序查找平均需要进行 $ N/2 $ 次比较，二分查找则是 $ N $ 次。
 列出方程可以解出 N 的大小 <span class="math display">\[
 \begin {eqnarray*}
-1000 \log_2 N &amp;=&amp; N / 2 \newline
-\log_2 N &amp;=&amp; N / 2000\newline
-\frac{\ln N}{\ln 2} &amp;=&amp; N/2000 \newline
-N &amp;=&amp; e^{\frac{\ln 2}{2000}N}\newline
-1 &amp;=&amp; Ne^{-\frac{\ln 2}{2000}N}\newline
+1000 \log_2 N &amp;=&amp; N / 2 \\
+\log_2 N &amp;=&amp; N / 2000\\
+\frac{\ln N}{\ln 2} &amp;=&amp; N/2000 \\
+N &amp;=&amp; e^{\frac{\ln 2}{2000}N}\\
+1 &amp;=&amp; Ne^{-\frac{\ln 2}{2000}N}\\
 N_1 = e^{-W(-\frac{\ln 2}{2000})}=1 &amp;\ &amp; N_2=
-e^{-W_{-1}(-\frac{\ln 2}{2000})}=29718\newline \newline
+e^{-W_{-1}(-\frac{\ln 2}{2000})}=29718\\ \\
 \end {eqnarray*}
 \]</span> 这个方程是一个超越方程，最后的结果中出现了朗伯 W 函数。
 同理可以求得 10000 倍的 N=369939。</p>
@@ -304,7 +304,7 @@ W 函数-维基百科</a></p>
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                    src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.min.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -312,6 +312,6 @@ W 函数-维基百科</a></p>
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 
 </html>

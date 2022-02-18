@@ -181,19 +181,19 @@ function dismissSearchResultModal() {
 故某一层结点的最大交换次数为 该层结点数 × 该层的高度。
 于是总交换次数最大为： <span class="math display">\[
 \begin{align*}
-&amp; h+2(h-1)+2^2(h-2)+ \dots + 2^h(0) \newline
-&amp; =\sum_{k=0}^{h-1} 2^k(h-k) \newline
-&amp; =h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \newline
+&amp; h+2(h-1)+2^2(h-2)+ \dots + 2^h(0) \\
+&amp; =\sum_{k=0}^{h-1} 2^k(h-k) \\
+&amp; =h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \\
 \end {align*}
 \]</span> 第一项为等比数列的和，第二项为等差数列乘以等比数列的和。
 于是第一项可以直接通过公式求得，第二项可以利用错位相减法求得。 <span
 class="math display">\[
 \begin{align}
-&amp; h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \newline
-&amp; =h2^{h}-h-\sum_{k=0}^{h-1}k2^k \newline
-&amp; =h2^{h}-h +\sum_{k=0}^{h-1} k2^k - 2\sum_{k=0}^{h-1} k2^k \newline
-&amp; =h2^{h}-h+2^h - 2-(h-1)2^h \newline
-&amp; =2^{h+1}-h-2 \newline
+&amp; h\sum_{k=0}^{h-1}2^k - \sum_{k=0}^{h-1}k2^k \\
+&amp; =h2^{h}-h-\sum_{k=0}^{h-1}k2^k \\
+&amp; =h2^{h}-h +\sum_{k=0}^{h-1} k2^k - 2\sum_{k=0}^{h-1} k2^k \\
+&amp; =h2^{h}-h+2^h - 2-(h-1)2^h \\
+&amp; =2^{h+1}-h-2 \\
 &amp; =N-h-1 \le N
 \end{align}
 \]</span> 于是交换次数小于 $ N $，比较次数小于 $ 2N $。</p>
@@ -317,7 +317,7 @@ a_2 $ 交换，而会向另一个方向下沉。
                 </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                 <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                    src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.min.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -325,6 +325,6 @@ a_2 $ 交换，而会向另一个方向下沉。
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 
 </html>
