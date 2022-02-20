@@ -21,6 +21,8 @@ date: 2019-01-24 10:56:53
 
 [@5ME](https://github.com/5ME)，1.1.1 [#592](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/592)
 
+[@Hao Liu](https://github.com/Higurashi-kagome), 公式渲染问题 [#596](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/596), [#594](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/594)
+
 ## 第二章
 
 [@雨碎江南](https://github.com/consoles) ，2.2.12 [#532](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/issues/532)
