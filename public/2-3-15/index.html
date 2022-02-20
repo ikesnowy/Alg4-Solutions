@@ -10,6 +10,9 @@
                 2.3.15 | 
                         《算法（第四版）》C# 题解
         </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+            integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+
         
             <link rel="alternate" href="/atom.xml" title="《算法（第四版）》C# 题解" type="application/atom+xml">
             
@@ -172,140 +175,142 @@ function dismissSearchResultModal() {
 		</p>
 		<div class="page_content mdcss">
 			<h1>2.3.15</h1>
-			<p>上次更新：2019-04-17 <br />
+			<p>上次更新：2022-02-18 <br />
 			发现了题解错误/代码缺陷/排版问题？请点这里：<a title="如何：提交反馈" href="/如何：提交反馈/">如何：提交反馈</a> 。</p>
-			<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>事实上只需要修改快速排序的切分方法，分两次进行切分。<br>首先选第一个螺母作为枢轴，找到对应的螺丝（$ O(n) $）放到第一位，对螺丝数组进行切分。<br>然后再用找到的螺丝对螺母数组进行切分。</p>
+			<h1 id="解答"><a class="markdownIt-Anchor" href="#解答"></a> 解答</h1>
+<p>事实上只需要修改快速排序的切分方法，分两次进行切分。<br />
+首先选第一个螺母作为枢轴，找到对应的螺丝（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>）放到第一位，对螺丝数组进行切分。<br />
+然后再用找到的螺丝对螺母数组进行切分。</p>
 <p>螺母类，实现了对螺丝类的 IComparable 接口</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 螺母类。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Nut</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Bolt<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">></span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 螺母的值。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">public</span> T Value <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre class="language-csharp" data-language="csharp"><code class="language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// 螺母类。</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Nut<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IComparable<span class="token punctuation">&lt;</span>Bolt<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">></span></span></span> <span class="token keyword">where</span> <span class="token class-name">T</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IComparable<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// 螺母的值。</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token return-type class-name">T</span> Value <span class="token punctuation">&#123;</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 螺母的构造函数。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token comment" spellcheck="true">/// &lt;param name="value">螺母的值。&lt;/param></span>
-    <span class="token keyword">public</span> <span class="token function">Nut</span><span class="token punctuation">(</span>T <span class="token keyword">value</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>Value <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// 螺母的构造函数。</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="value">螺母的值。&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token function">Nut</span><span class="token punctuation">(</span><span class="token class-name">T</span> <span class="token keyword">value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>Value <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 比较方法，螺母只能和螺丝比较。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token comment" spellcheck="true">/// &lt;param name="other">需要比较的螺丝。&lt;/param></span>
-    <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>Bolt<span class="token operator">&lt;</span>T<span class="token operator">></span> other<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// 比较方法，螺母只能和螺丝比较。</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="other">需要比较的螺丝。&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">CompareTo</span><span class="token punctuation">(</span><span class="token class-name">Bolt<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> other<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
         <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>Value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>类似的有螺丝类。</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">/// &lt;summary></span>
-<span class="token comment" spellcheck="true">/// 螺丝类。</span>
-<span class="token comment" spellcheck="true">/// &lt;/summary></span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Bolt</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>Nut<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">></span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 螺丝的值。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token keyword">public</span> T Value <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre class="language-csharp" data-language="csharp"><code class="language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// 螺丝类。</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Bolt<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IComparable<span class="token punctuation">&lt;</span>Nut<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">></span></span></span> <span class="token keyword">where</span> <span class="token class-name">T</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IComparable<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// 螺丝的值。</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token return-type class-name">T</span> Value <span class="token punctuation">&#123;</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
 
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 螺丝的默认构造函数。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token comment" spellcheck="true">/// &lt;param name="value">螺丝的值。&lt;/param></span>
-    <span class="token keyword">public</span> <span class="token function">Bolt</span><span class="token punctuation">(</span>T <span class="token keyword">value</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>Value <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// 螺丝的默认构造函数。</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="value">螺丝的值。&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token function">Bolt</span><span class="token punctuation">(</span><span class="token class-name">T</span> <span class="token keyword">value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>Value <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 比较方法，螺丝只能和螺母比较。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-    <span class="token comment" spellcheck="true">/// &lt;param name="other">需要比较的螺母。&lt;/param></span>
-    <span class="token comment" spellcheck="true">/// &lt;returns>&lt;/returns></span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">CompareTo</span><span class="token punctuation">(</span>Nut<span class="token operator">&lt;</span>T<span class="token operator">></span> other<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// 比较方法，螺丝只能和螺母比较。</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="other">需要比较的螺母。&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">CompareTo</span><span class="token punctuation">(</span><span class="token class-name">Nut<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> other<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
         <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>Value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>修改后的排序方法。</p>
-<pre class="line-numbers language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<h1 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h1>
+<p>修改后的排序方法。</p>
+<pre class="language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
 
-<span class="token keyword">namespace</span> _2<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_15
-<span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/// &lt;summary></span>
-    <span class="token comment" spellcheck="true">/// 用快排的方式解决螺母和螺帽的问题。</span>
-    <span class="token comment" spellcheck="true">/// &lt;/summary></span>
+<span class="token keyword">namespace</span> <span class="token namespace">_2<span class="token punctuation">.</span>_3<span class="token punctuation">.</span>_15</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// 用快排的方式解决螺母和螺帽的问题。</span>
+    <span class="token comment">/// &lt;/summary></span>
     <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BoltsAndNuts</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">readonly</span> Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">Random</span> random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 默认构造函数。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token keyword">public</span> <span class="token function">BoltsAndNuts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+        <span class="token comment">/// &lt;summary></span>
+        <span class="token comment">/// 默认构造函数。</span>
+        <span class="token comment">/// &lt;/summary></span>
+        <span class="token keyword">public</span> <span class="token function">BoltsAndNuts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span>
 
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 对螺丝和螺母排序。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的元素类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="bolts">螺母数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="nuts">螺丝数组。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>Bolt<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> bolts<span class="token punctuation">,</span> Nut<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> nuts<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
+        <span class="token comment">/// &lt;summary></span>
+        <span class="token comment">/// 对螺丝和螺母排序。</span>
+        <span class="token comment">/// &lt;/summary></span>
+        <span class="token comment">/// &lt;typeparam name="T">需要排序的元素类型。&lt;/typeparam></span>
+        <span class="token comment">/// &lt;param name="bolts">螺母数组。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="nuts">螺丝数组。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token generic-method"><span class="token function">Sort</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token class-name">Bolt<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> bolts<span class="token punctuation">,</span> <span class="token class-name">Nut<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> nuts<span class="token punctuation">)</span> <span class="token keyword">where</span> <span class="token class-name">T</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IComparable<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span>
+        <span class="token punctuation">&#123;</span>
             <span class="token keyword">if</span> <span class="token punctuation">(</span>bolts<span class="token punctuation">.</span>Length <span class="token operator">!=</span> nuts<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
-                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"数组长度必须一致"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ArgumentException</span><span class="token punctuation">(</span><span class="token string">"数组长度必须一致"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
             <span class="token function">Shuffle</span><span class="token punctuation">(</span>bolts<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token function">Shuffle</span><span class="token punctuation">(</span>nuts<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token function">Sort</span><span class="token punctuation">(</span>bolts<span class="token punctuation">,</span> nuts<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> bolts<span class="token punctuation">.</span>Length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 对螺丝和螺母排序。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的元素类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="bolts">螺母数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="nuts">螺丝数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="lo">起始下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="hi">终止下标。&lt;/param></span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token generic-method function">Sort<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>Bolt<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> bolts<span class="token punctuation">,</span> Nut<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> nuts<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
+        <span class="token comment">/// &lt;summary></span>
+        <span class="token comment">/// 对螺丝和螺母排序。</span>
+        <span class="token comment">/// &lt;/summary></span>
+        <span class="token comment">/// &lt;typeparam name="T">需要排序的元素类型。&lt;/typeparam></span>
+        <span class="token comment">/// &lt;param name="bolts">螺母数组。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="nuts">螺丝数组。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="lo">起始下标。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="hi">终止下标。&lt;/param></span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token generic-method"><span class="token function">Sort</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token class-name">Bolt<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> bolts<span class="token punctuation">,</span> <span class="token class-name">Nut<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> nuts<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> lo<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> <span class="token class-name">T</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IComparable<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span>
+        <span class="token punctuation">&#123;</span>
             <span class="token keyword">if</span> <span class="token punctuation">(</span>hi <span class="token operator">&lt;=</span> lo<span class="token punctuation">)</span>
                 <span class="token keyword">return</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token function">Partition</span><span class="token punctuation">(</span>bolts<span class="token punctuation">,</span> nuts<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name"><span class="token keyword">int</span></span> j <span class="token operator">=</span> <span class="token function">Partition</span><span class="token punctuation">(</span>bolts<span class="token punctuation">,</span> nuts<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token function">Sort</span><span class="token punctuation">(</span>bolts<span class="token punctuation">,</span> nuts<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token function">Sort</span><span class="token punctuation">(</span>bolts<span class="token punctuation">,</span> nuts<span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> hi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 对数组进行切分。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要排序的数组类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="bolts">螺母数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="nuts">螺丝数组。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="lo">起始下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="hi">终止下标。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;returns>切分位置。&lt;/returns></span>
-        <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token generic-method function">Partition<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>Bolt<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> bolts<span class="token punctuation">,</span> Nut<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> nuts<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> IComparable<span class="token operator">&lt;</span>T<span class="token operator">></span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> i <span class="token operator">=</span> lo<span class="token punctuation">,</span> j <span class="token operator">=</span> hi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            Bolt<span class="token operator">&lt;</span>T<span class="token operator">></span> pivotB <span class="token operator">=</span> bolts<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">// 找到对应螺丝</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> lo<span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> hi<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
+        <span class="token comment">/// &lt;summary></span>
+        <span class="token comment">/// 对数组进行切分。</span>
+        <span class="token comment">/// &lt;/summary></span>
+        <span class="token comment">/// &lt;typeparam name="T">需要排序的数组类型。&lt;/typeparam></span>
+        <span class="token comment">/// &lt;param name="bolts">螺母数组。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="nuts">螺丝数组。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="lo">起始下标。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="hi">终止下标。&lt;/param></span>
+        <span class="token comment">/// &lt;returns>切分位置。&lt;/returns></span>
+        <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token generic-method"><span class="token function">Partition</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token class-name">Bolt<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> bolts<span class="token punctuation">,</span> <span class="token class-name">Nut<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> nuts<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> lo<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> hi<span class="token punctuation">)</span> <span class="token keyword">where</span> <span class="token class-name">T</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IComparable<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> lo<span class="token punctuation">,</span> j <span class="token operator">=</span> hi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token class-name">Bolt<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> pivotB <span class="token operator">=</span> bolts<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// 找到对应螺丝</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> k <span class="token operator">=</span> lo<span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> hi<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
                 <span class="token keyword">if</span> <span class="token punctuation">(</span>nuts<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>pivotB<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
+                <span class="token punctuation">&#123;</span>
                     <span class="token function">Exch</span><span class="token punctuation">(</span>nuts<span class="token punctuation">,</span> k<span class="token punctuation">,</span> lo<span class="token punctuation">)</span><span class="token punctuation">;</span>
                     <span class="token keyword">break</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-            <span class="token comment" spellcheck="true">// 先用螺母去套螺丝</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">// 先用螺母去套螺丝</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
                 <span class="token keyword">while</span> <span class="token punctuation">(</span>nuts<span class="token punctuation">[</span><span class="token operator">++</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>pivotB<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
                     <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> hi<span class="token punctuation">)</span>
                         <span class="token keyword">break</span><span class="token punctuation">;</span>
@@ -316,15 +321,15 @@ function dismissSearchResultModal() {
                 <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> j<span class="token punctuation">)</span>
                     <span class="token keyword">break</span><span class="token punctuation">;</span>
                 <span class="token function">Exch</span><span class="token punctuation">(</span>nuts<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+            <span class="token punctuation">&#125;</span>
             <span class="token function">Exch</span><span class="token punctuation">(</span>nuts<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token comment" spellcheck="true">// 再用螺丝去比较螺母</span>
-            Nut<span class="token operator">&lt;</span>T<span class="token operator">></span> pivotN <span class="token operator">=</span> nuts<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// 再用螺丝去比较螺母</span>
+            <span class="token class-name">Nut<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> pivotN <span class="token operator">=</span> nuts<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
             i <span class="token operator">=</span> lo<span class="token punctuation">;</span>
             j <span class="token operator">=</span> hi <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
                 <span class="token keyword">while</span> <span class="token punctuation">(</span>bolts<span class="token punctuation">[</span><span class="token operator">++</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>pivotN<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
                     <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> hi<span class="token punctuation">)</span>
                         <span class="token keyword">break</span><span class="token punctuation">;</span>
@@ -336,44 +341,45 @@ function dismissSearchResultModal() {
                     <span class="token keyword">break</span><span class="token punctuation">;</span>
 
                 <span class="token function">Exch</span><span class="token punctuation">(</span>bolts<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+            <span class="token punctuation">&#125;</span>
             <span class="token function">Exch</span><span class="token punctuation">(</span>bolts<span class="token punctuation">,</span> lo<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
             <span class="token keyword">return</span> j<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 打乱数组。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">需要打乱的数组类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要打乱的数组。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token generic-method function">Shuffle<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">int</span> r <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>Length <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                T temp <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">/// &lt;summary></span>
+        <span class="token comment">/// 打乱数组。</span>
+        <span class="token comment">/// &lt;/summary></span>
+        <span class="token comment">/// &lt;typeparam name="T">需要打乱的数组类型。&lt;/typeparam></span>
+        <span class="token comment">/// &lt;param name="a">需要打乱的数组。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token generic-method"><span class="token function">Shuffle</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token class-name">T<span class="token punctuation">[</span><span class="token punctuation">]</span></span> a<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token class-name"><span class="token keyword">int</span></span> r <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>random<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>Length <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">T</span> temp <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
                 a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span>
                 a<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="token comment" spellcheck="true">/// &lt;summary></span>
-        <span class="token comment" spellcheck="true">/// 交换两个元素。</span>
-        <span class="token comment" spellcheck="true">/// &lt;/summary></span>
-        <span class="token comment" spellcheck="true">/// &lt;typeparam name="T">元素类型。&lt;/typeparam></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="a">需要交换的第一个元素。&lt;/param></span>
-        <span class="token comment" spellcheck="true">/// &lt;param name="b">需要交换的第二个元素。&lt;/param></span>
-        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token generic-method function">Exch<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> lo<span class="token punctuation">,</span> <span class="token keyword">int</span> hi<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            T t <span class="token operator">=</span> a<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">/// &lt;summary></span>
+        <span class="token comment">/// 交换两个元素。</span>
+        <span class="token comment">/// &lt;/summary></span>
+        <span class="token comment">/// &lt;typeparam name="T">元素类型。&lt;/typeparam></span>
+        <span class="token comment">/// &lt;param name="a">需要交换的第一个元素。&lt;/param></span>
+        <span class="token comment">/// &lt;param name="b">需要交换的第二个元素。&lt;/param></span>
+        <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token generic-method"><span class="token function">Exch</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token class-name">T<span class="token punctuation">[</span><span class="token punctuation">]</span></span> a<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> lo<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> hi<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token class-name">T</span> t <span class="token operator">=</span> a<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">;</span>
             a<span class="token punctuation">[</span>lo<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>hi<span class="token punctuation">]</span><span class="token punctuation">;</span>
             a<span class="token punctuation">[</span>hi<span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="另请参阅"><a href="#另请参阅" class="headerlink" title="另请参阅"></a>另请参阅</h1><p>下面这个网站给出了这道题的解法，还给出了另一种确定性算法（非随机的算法）的论文链接。<br><a href="http://www.wisdom.weizmann.ac.il/~naor/PUZZLES/nuts_solution.html" target="_blank" rel="noopener">Matching Nuts and Bolts - Solution</a></p>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<h1 id="另请参阅"><a class="markdownIt-Anchor" href="#另请参阅"></a> 另请参阅</h1>
+<p>下面这个网站给出了这道题的解法，还给出了另一种确定性算法（非随机的算法）的论文链接。<br />
+<a target="_blank" rel="noopener" href="http://www.wisdom.weizmann.ac.il/~naor/PUZZLES/nuts_solution.html">Matching Nuts and Bolts - Solution</a></p>
 
 		</div>
 	</div>
@@ -474,16 +480,12 @@ function dismissSearchResultModal() {
                         s.parentNode.insertBefore(hm, s);
                     })();
                 </script>
-                <script>
-                    MathJax = {
-                        tex: {
-                            inlineMath: [['$', '$'], ['\\(', '\\)']]
-                        }
-                    };
-                </script>
                 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-                <script id="MathJax-script" async
-                    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+                <!-- The loading of KaTeX is deferred to speed up page rendering -->
+                <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
+                    integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
+                    crossorigin="anonymous"
+                    onload="document.querySelectorAll('.math').forEach(x => katex.render(x.textContent, x))"></script>
                 
 <script>
             window.imageLazyLoadSetting = {
@@ -491,6 +493,6 @@ function dismissSearchResultModal() {
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>
